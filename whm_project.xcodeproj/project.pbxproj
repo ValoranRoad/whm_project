@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E1EE3841DB4CBB500C85D3B /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37A1DB4CBB500C85D3B /* 1.png */; };
+		8E1EE3851DB4CBB500C85D3B /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37B1DB4CBB500C85D3B /* 2.png */; };
+		8E1EE3861DB4CBB500C85D3B /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37C1DB4CBB500C85D3B /* 3.png */; };
+		8E1EE3871DB4CBB500C85D3B /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37D1DB4CBB500C85D3B /* 4.png */; };
+		8E1EE3881DB4CBB500C85D3B /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37E1DB4CBB500C85D3B /* 5.png */; };
+		8E1EE3891DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37F1DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png */; };
+		8E1EE38A1DB4CBB500C85D3B /* 矢量智能对象-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE3801DB4CBB500C85D3B /* 矢量智能对象-1.png */; };
+		8E1EE38B1DB4CBB500C85D3B /* 矢量智能对象-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE3811DB4CBB500C85D3B /* 矢量智能对象-2.png */; };
+		8E1EE38C1DB4CBB500C85D3B /* 矢量智能对象-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE3821DB4CBB500C85D3B /* 矢量智能对象-3.png */; };
+		8E1EE38D1DB4CBB500C85D3B /* 矢量智能对象.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE3831DB4CBB500C85D3B /* 矢量智能对象.png */; };
 		C86353851DB4661C00ED8B16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353841DB4661C00ED8B16 /* main.m */; };
 		C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353871DB4661C00ED8B16 /* AppDelegate.m */; };
 		C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C863538F1DB4661C00ED8B16 /* Assets.xcassets */; };
@@ -51,9 +61,9 @@
 		C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354761DB4969A00ED8B16 /* CreateMD5WithImage.m */; };
 		C863547D1DB4969A00ED8B16 /* Md5.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354781DB4969A00ED8B16 /* Md5.m */; };
 		C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = C863547B1DB4969A00ED8B16 /* NSString+PinYin.m */; };
-		C863548A1DB4CD2C00ED8B16 /* JwBackBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354821DB4CD2C00ED8B16 /* JwBackBaseController.m */; };
-		C863548B1DB4CD2C00ED8B16 /* JwMenuBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354841DB4CD2C00ED8B16 /* JwMenuBaseController.m */; };
-		C863548C1DB4CD2C00ED8B16 /* JwRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354861DB4CD2C00ED8B16 /* JwRootViewController.m */; };
+		C86354971DB4CF1B00ED8B16 /* JwBackBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354911DB4CF1B00ED8B16 /* JwBackBaseController.m */; };
+		C86354981DB4CF1B00ED8B16 /* JwMenuBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354931DB4CF1B00ED8B16 /* JwMenuBaseController.m */; };
+		C86354991DB4CF1B00ED8B16 /* JwRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354951DB4CF1B00ED8B16 /* JwRootViewController.m */; };
 		E1327D65F4A650A23DCB0E1D /* libPods-whm_project.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +87,16 @@
 /* Begin PBXFileReference section */
 		0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-whm_project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.debug.xcconfig"; sourceTree = "<group>"; };
+		8E1EE37A1DB4CBB500C85D3B /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		8E1EE37B1DB4CBB500C85D3B /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		8E1EE37C1DB4CBB500C85D3B /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		8E1EE37D1DB4CBB500C85D3B /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		8E1EE37E1DB4CBB500C85D3B /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		8E1EE37F1DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象 拷贝 7.png"; sourceTree = "<group>"; };
+		8E1EE3801DB4CBB500C85D3B /* 矢量智能对象-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象-1.png"; sourceTree = "<group>"; };
+		8E1EE3811DB4CBB500C85D3B /* 矢量智能对象-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象-2.png"; sourceTree = "<group>"; };
+		8E1EE3821DB4CBB500C85D3B /* 矢量智能对象-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象-3.png"; sourceTree = "<group>"; };
+		8E1EE3831DB4CBB500C85D3B /* 矢量智能对象.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象.png"; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C86353801DB4661C00ED8B16 /* whm_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whm_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86353841DB4661C00ED8B16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -170,12 +190,12 @@
 		C86354781DB4969A00ED8B16 /* Md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Md5.m; sourceTree = "<group>"; };
 		C863547A1DB4969A00ED8B16 /* NSString+PinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin.h"; sourceTree = "<group>"; };
 		C863547B1DB4969A00ED8B16 /* NSString+PinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin.m"; sourceTree = "<group>"; };
-		C86354811DB4CD2C00ED8B16 /* JwBackBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwBackBaseController.h; sourceTree = "<group>"; };
-		C86354821DB4CD2C00ED8B16 /* JwBackBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwBackBaseController.m; sourceTree = "<group>"; };
-		C86354831DB4CD2C00ED8B16 /* JwMenuBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwMenuBaseController.h; sourceTree = "<group>"; };
-		C86354841DB4CD2C00ED8B16 /* JwMenuBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwMenuBaseController.m; sourceTree = "<group>"; };
-		C86354851DB4CD2C00ED8B16 /* JwRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwRootViewController.h; sourceTree = "<group>"; };
-		C86354861DB4CD2C00ED8B16 /* JwRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwRootViewController.m; sourceTree = "<group>"; };
+		C86354901DB4CF1B00ED8B16 /* JwBackBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwBackBaseController.h; sourceTree = "<group>"; };
+		C86354911DB4CF1B00ED8B16 /* JwBackBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwBackBaseController.m; sourceTree = "<group>"; };
+		C86354921DB4CF1B00ED8B16 /* JwMenuBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwMenuBaseController.h; sourceTree = "<group>"; };
+		C86354931DB4CF1B00ED8B16 /* JwMenuBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwMenuBaseController.m; sourceTree = "<group>"; };
+		C86354941DB4CF1B00ED8B16 /* JwRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwRootViewController.h; sourceTree = "<group>"; };
+		C86354951DB4CF1B00ED8B16 /* JwRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwRootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +241,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8E1EE3791DB4CBB500C85D3B /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				8E1EE37A1DB4CBB500C85D3B /* 1.png */,
+				8E1EE37B1DB4CBB500C85D3B /* 2.png */,
+				8E1EE37C1DB4CBB500C85D3B /* 3.png */,
+				8E1EE37D1DB4CBB500C85D3B /* 4.png */,
+				8E1EE37E1DB4CBB500C85D3B /* 5.png */,
+				8E1EE37F1DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png */,
+				8E1EE3801DB4CBB500C85D3B /* 矢量智能对象-1.png */,
+				8E1EE3811DB4CBB500C85D3B /* 矢量智能对象-2.png */,
+				8E1EE3821DB4CBB500C85D3B /* 矢量智能对象-3.png */,
+				8E1EE3831DB4CBB500C85D3B /* 矢量智能对象.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		C86353771DB4661C00ED8B16 = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +283,7 @@
 		C86353821DB4661C00ED8B16 /* whm_project */ = {
 			isa = PBXGroup;
 			children = (
+				8E1EE3791DB4CBB500C85D3B /* Image */,
 				C86353B61DB4666000ED8B16 /* Macro */,
 				C86353E81DB4674100ED8B16 /* Model */,
 				C86353CD1DB466ED00ED8B16 /* Core */,
@@ -403,7 +441,7 @@
 		C86354081DB4682100ED8B16 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				C863547F1DB4CD2C00ED8B16 /* Main */,
+				C863548E1DB4CF1B00ED8B16 /* Main */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -538,29 +576,29 @@
 			path = "NSString+PinYin";
 			sourceTree = "<group>";
 		};
-		C863547F1DB4CD2C00ED8B16 /* Main */ = {
+		C863548E1DB4CF1B00ED8B16 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C86354801DB4CD2C00ED8B16 /* C */,
-				C86354871DB4CD2C00ED8B16 /* V */,
+				C863548F1DB4CF1B00ED8B16 /* C */,
+				C86354961DB4CF1B00ED8B16 /* V */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		C86354801DB4CD2C00ED8B16 /* C */ = {
+		C863548F1DB4CF1B00ED8B16 /* C */ = {
 			isa = PBXGroup;
 			children = (
-				C86354811DB4CD2C00ED8B16 /* JwBackBaseController.h */,
-				C86354821DB4CD2C00ED8B16 /* JwBackBaseController.m */,
-				C86354831DB4CD2C00ED8B16 /* JwMenuBaseController.h */,
-				C86354841DB4CD2C00ED8B16 /* JwMenuBaseController.m */,
-				C86354851DB4CD2C00ED8B16 /* JwRootViewController.h */,
-				C86354861DB4CD2C00ED8B16 /* JwRootViewController.m */,
+				C86354901DB4CF1B00ED8B16 /* JwBackBaseController.h */,
+				C86354911DB4CF1B00ED8B16 /* JwBackBaseController.m */,
+				C86354921DB4CF1B00ED8B16 /* JwMenuBaseController.h */,
+				C86354931DB4CF1B00ED8B16 /* JwMenuBaseController.m */,
+				C86354941DB4CF1B00ED8B16 /* JwRootViewController.h */,
+				C86354951DB4CF1B00ED8B16 /* JwRootViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
 		};
-		C86354871DB4CD2C00ED8B16 /* V */ = {
+		C86354961DB4CF1B00ED8B16 /* V */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -678,10 +716,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E1EE3851DB4CBB500C85D3B /* 2.png in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
+				8E1EE38C1DB4CBB500C85D3B /* 矢量智能对象-3.png in Resources */,
 				C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */,
+				8E1EE38A1DB4CBB500C85D3B /* 矢量智能对象-1.png in Resources */,
 				C86354651DB473B300ED8B16 /* LICENSE in Resources */,
+				8E1EE3871DB4CBB500C85D3B /* 4.png in Resources */,
 				C863543C1DB473A600ED8B16 /* IQKeyboardManager.bundle in Resources */,
+				8E1EE3881DB4CBB500C85D3B /* 5.png in Resources */,
+				8E1EE38B1DB4CBB500C85D3B /* 矢量智能对象-2.png in Resources */,
+				8E1EE3891DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png in Resources */,
+				8E1EE38D1DB4CBB500C85D3B /* 矢量智能对象.png in Resources */,
+				8E1EE3861DB4CBB500C85D3B /* 3.png in Resources */,
+				8E1EE3841DB4CBB500C85D3B /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,7 +818,7 @@
 				C86353E31DB4672700ED8B16 /* UIView+Extension.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				C86353851DB4661C00ED8B16 /* main.m in Sources */,
-				C863548C1DB4CD2C00ED8B16 /* JwRootViewController.m in Sources */,
+				C86354991DB4CF1B00ED8B16 /* JwRootViewController.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,
 				C86353C91DB4669A00ED8B16 /* JwDataService.m in Sources */,
@@ -789,11 +837,11 @@
 				C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */,
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
 				C86353D31DB4670700ED8B16 /* NSString+Email.m in Sources */,
-				C863548A1DB4CD2C00ED8B16 /* JwBackBaseController.m in Sources */,
+				C86354971DB4CF1B00ED8B16 /* JwBackBaseController.m in Sources */,
 				C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */,
 				C86353CB1DB4669A00ED8B16 /* JwServiceBase.m in Sources */,
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
-				C863548B1DB4CD2C00ED8B16 /* JwMenuBaseController.m in Sources */,
+				C86354981DB4CF1B00ED8B16 /* JwMenuBaseController.m in Sources */,
 				C86354611DB473B300ED8B16 /* UIActionSheet+LBXAlertAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
