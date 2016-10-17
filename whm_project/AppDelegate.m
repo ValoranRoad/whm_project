@@ -19,6 +19,9 @@
     // Override point for customization after application launch.
     
     
+    
+    
+    NSLog(@"小明的屁股");
     return YES;
 }
 
