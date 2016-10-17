@@ -8,20 +8,8 @@
 
 #import "JwRootViewController.h"
 #import "UIView+Extension.h"
-#import "MacroUtility.h"
-#import "UIAlertView+BlockExtension.h"
-#import "JwNavigationController.h"
-
-
-#import "AppDelegate.h"
-#import "JwUserCenter.h"
-#import "JGProgressHelper.h"
-
-
 
 @interface JwRootViewController ()
-
-
 
 
 @end

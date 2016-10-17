@@ -12,7 +12,7 @@
 
 @interface JwBackBaseController : UIViewController
 
-@property (nonatomic, strong) JwDataService *backService;
+@property (nonatomic, strong) JwDataService *dataService;
 @property (nonatomic, strong) JwUserService *userService;
 
 - (void)backBaseAction:(UIBarButtonItem *)barButton;

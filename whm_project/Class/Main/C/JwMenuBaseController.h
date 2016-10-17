@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "JwDataService.h"
-
-typedef void(^MenuBaseAction)(void);
+#import "JwUserService.h"
 
 @interface JwMenuBaseController : UIViewController
 
-@property (nonatomic, copy) MenuBaseAction menuBaseAction;
-
-@property (nonatomic, strong) JwDataService *managerService;
+@property (nonatomic, strong) JwDataService *dataService;
+@property (nonatomic, strong) JwUserService *userService;
 
 @end

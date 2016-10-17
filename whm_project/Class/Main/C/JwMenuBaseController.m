@@ -22,19 +22,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self Action:@selector(menuBaseAction:) image:@"nav_menu" highImage:@"nav_menu"];
     
 }
 
-- (void)menuBaseAction:(UIBarButtonItem *)barButton{
-    //菜单按钮点击事件的通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"menuBaseAction" object:nil];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"viewWillAppearAction" object:nil];
-}
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     // 禁用 iOS7 返回手势
@@ -42,13 +32,9 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 }
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-}
+
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"viewDidDisappearAction" object:nil];
-    
     // 开启
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -56,10 +42,16 @@
 }
 
 #pragma mark -- Getter
--(JwDataService *)managerService
+-(JwDataService *)backService
 {
-    _managerService = [[JwDataService alloc] init];
-    return _managerService;
+    _dataService = [[JwDataService alloc] init];
+    return _dataService;
+}
+
+- (JwUserService *)userService{
+    
+    _userService = [[JwUserService alloc] init];
+    return _userService;
 }
 
 - (void)didReceiveMemoryWarning {

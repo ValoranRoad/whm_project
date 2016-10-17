@@ -40,8 +40,8 @@
 #pragma mark -- Getter
 -(JwDataService *)backService
 {
-    _backService = [[JwDataService alloc] init];
-    return _backService;
+    _dataService = [[JwDataService alloc] init];
+    return _dataService;
 }
 
 - (JwUserService *)userService{

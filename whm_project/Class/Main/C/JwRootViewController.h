@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JwUserService.h"
 
 @interface JwRootViewController : UIViewController
 
-@property (nonatomic, strong) JwUserService *service;
 
 @end
