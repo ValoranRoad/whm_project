@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "RootTarBarController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,7 +18,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
+    self.window  = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    //    [NSThread sleepForTimeInterval:5.0];
+    RootTarBarController *rootView = [[RootTarBarController alloc]init];
+    self.window.rootViewController = rootView;
+
     
     
     NSLog(@"小明的屁股");

@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E1EE36C1DB4CAF100C85D3B /* RootTarBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1EE36B1DB4CAF100C85D3B /* RootTarBarController.m */; };
+		8E1EE36F1DB4CB3F00C85D3B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1EE36E1DB4CB3F00C85D3B /* MainViewController.m */; };
+		8E1EE3751DB4CB6100C85D3B /* ArtistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1EE3741DB4CB6100C85D3B /* ArtistTableViewController.m */; };
+		8E1EE3781DB4CB7900C85D3B /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1EE3771DB4CB7900C85D3B /* JoinViewController.m */; };
+		8E1EE3841DB4CBB500C85D3B /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37A1DB4CBB500C85D3B /* 1.png */; };
+		8E1EE3851DB4CBB500C85D3B /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37B1DB4CBB500C85D3B /* 2.png */; };
+		8E1EE3861DB4CBB500C85D3B /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37C1DB4CBB500C85D3B /* 3.png */; };
+		8E1EE3871DB4CBB500C85D3B /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37D1DB4CBB500C85D3B /* 4.png */; };
+		8E1EE3881DB4CBB500C85D3B /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37E1DB4CBB500C85D3B /* 5.png */; };
+		8E1EE3891DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE37F1DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png */; };
+		8E1EE38A1DB4CBB500C85D3B /* 矢量智能对象-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE3801DB4CBB500C85D3B /* 矢量智能对象-1.png */; };
+		8E1EE38B1DB4CBB500C85D3B /* 矢量智能对象-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE3811DB4CBB500C85D3B /* 矢量智能对象-2.png */; };
+		8E1EE38C1DB4CBB500C85D3B /* 矢量智能对象-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE3821DB4CBB500C85D3B /* 矢量智能对象-3.png */; };
+		8E1EE38D1DB4CBB500C85D3B /* 矢量智能对象.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1EE3831DB4CBB500C85D3B /* 矢量智能对象.png */; };
+		8E1EE3901DB4CC3B00C85D3B /* UsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1EE38F1DB4CC3B00C85D3B /* UsersTableViewController.m */; };
 		C86353851DB4661C00ED8B16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353841DB4661C00ED8B16 /* main.m */; };
 		C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353871DB4661C00ED8B16 /* AppDelegate.m */; };
 		C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C863538F1DB4661C00ED8B16 /* Assets.xcassets */; };
@@ -74,6 +89,26 @@
 /* Begin PBXFileReference section */
 		0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-whm_project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.debug.xcconfig"; sourceTree = "<group>"; };
+		8E1EE36A1DB4CAF100C85D3B /* RootTarBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTarBarController.h; sourceTree = "<group>"; };
+		8E1EE36B1DB4CAF100C85D3B /* RootTarBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTarBarController.m; sourceTree = "<group>"; };
+		8E1EE36D1DB4CB3F00C85D3B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8E1EE36E1DB4CB3F00C85D3B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8E1EE3731DB4CB6100C85D3B /* ArtistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistTableViewController.h; sourceTree = "<group>"; };
+		8E1EE3741DB4CB6100C85D3B /* ArtistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistTableViewController.m; sourceTree = "<group>"; };
+		8E1EE3761DB4CB7900C85D3B /* JoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinViewController.h; sourceTree = "<group>"; };
+		8E1EE3771DB4CB7900C85D3B /* JoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinViewController.m; sourceTree = "<group>"; };
+		8E1EE37A1DB4CBB500C85D3B /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		8E1EE37B1DB4CBB500C85D3B /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		8E1EE37C1DB4CBB500C85D3B /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		8E1EE37D1DB4CBB500C85D3B /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		8E1EE37E1DB4CBB500C85D3B /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		8E1EE37F1DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象 拷贝 7.png"; sourceTree = "<group>"; };
+		8E1EE3801DB4CBB500C85D3B /* 矢量智能对象-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象-1.png"; sourceTree = "<group>"; };
+		8E1EE3811DB4CBB500C85D3B /* 矢量智能对象-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象-2.png"; sourceTree = "<group>"; };
+		8E1EE3821DB4CBB500C85D3B /* 矢量智能对象-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象-3.png"; sourceTree = "<group>"; };
+		8E1EE3831DB4CBB500C85D3B /* 矢量智能对象.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "矢量智能对象.png"; sourceTree = "<group>"; };
+		8E1EE38E1DB4CC3B00C85D3B /* UsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersTableViewController.h; sourceTree = "<group>"; };
+		8E1EE38F1DB4CC3B00C85D3B /* UsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersTableViewController.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C86353801DB4661C00ED8B16 /* whm_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whm_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86353841DB4661C00ED8B16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -212,6 +247,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8E1EE3691DB4CAF100C85D3B /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				8E1EE36A1DB4CAF100C85D3B /* RootTarBarController.h */,
+				8E1EE36B1DB4CAF100C85D3B /* RootTarBarController.m */,
+				8E1EE3761DB4CB7900C85D3B /* JoinViewController.h */,
+				8E1EE3771DB4CB7900C85D3B /* JoinViewController.m */,
+				8E1EE3731DB4CB6100C85D3B /* ArtistTableViewController.h */,
+				8E1EE3741DB4CB6100C85D3B /* ArtistTableViewController.m */,
+				8E1EE36D1DB4CB3F00C85D3B /* MainViewController.h */,
+				8E1EE36E1DB4CB3F00C85D3B /* MainViewController.m */,
+				8E1EE38E1DB4CC3B00C85D3B /* UsersTableViewController.h */,
+				8E1EE38F1DB4CC3B00C85D3B /* UsersTableViewController.m */,
+			);
+			path = tabbar;
+			sourceTree = "<group>";
+		};
+		8E1EE3791DB4CBB500C85D3B /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				8E1EE37A1DB4CBB500C85D3B /* 1.png */,
+				8E1EE37B1DB4CBB500C85D3B /* 2.png */,
+				8E1EE37C1DB4CBB500C85D3B /* 3.png */,
+				8E1EE37D1DB4CBB500C85D3B /* 4.png */,
+				8E1EE37E1DB4CBB500C85D3B /* 5.png */,
+				8E1EE37F1DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png */,
+				8E1EE3801DB4CBB500C85D3B /* 矢量智能对象-1.png */,
+				8E1EE3811DB4CBB500C85D3B /* 矢量智能对象-2.png */,
+				8E1EE3821DB4CBB500C85D3B /* 矢量智能对象-3.png */,
+				8E1EE3831DB4CBB500C85D3B /* 矢量智能对象.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		C86353771DB4661C00ED8B16 = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +306,8 @@
 		C86353821DB4661C00ED8B16 /* whm_project */ = {
 			isa = PBXGroup;
 			children = (
+				8E1EE3791DB4CBB500C85D3B /* Image */,
+				8E1EE3691DB4CAF100C85D3B /* tabbar */,
 				C86353B61DB4666000ED8B16 /* Macro */,
 				C86353E81DB4674100ED8B16 /* Model */,
 				C86353CD1DB466ED00ED8B16 /* Core */,
@@ -639,10 +710,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E1EE3851DB4CBB500C85D3B /* 2.png in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
+				8E1EE38C1DB4CBB500C85D3B /* 矢量智能对象-3.png in Resources */,
 				C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */,
+				8E1EE38A1DB4CBB500C85D3B /* 矢量智能对象-1.png in Resources */,
 				C86354651DB473B300ED8B16 /* LICENSE in Resources */,
+				8E1EE3871DB4CBB500C85D3B /* 4.png in Resources */,
 				C863543C1DB473A600ED8B16 /* IQKeyboardManager.bundle in Resources */,
+				8E1EE3881DB4CBB500C85D3B /* 5.png in Resources */,
+				8E1EE38B1DB4CBB500C85D3B /* 矢量智能对象-2.png in Resources */,
+				8E1EE3891DB4CBB500C85D3B /* 矢量智能对象 拷贝 7.png in Resources */,
+				8E1EE38D1DB4CBB500C85D3B /* 矢量智能对象.png in Resources */,
+				8E1EE3861DB4CBB500C85D3B /* 3.png in Resources */,
+				8E1EE3841DB4CBB500C85D3B /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,12 +799,14 @@
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
+				8E1EE36F1DB4CB3F00C85D3B /* MainViewController.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
 				C863543A1DB473A600ED8B16 /* IQToolbar.m in Sources */,
 				C86354331DB473A500ED8B16 /* IQUIWindow+Hierarchy.m in Sources */,
+				8E1EE36C1DB4CAF100C85D3B /* RootTarBarController.m in Sources */,
 				C86354621DB473B300ED8B16 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				C863547D1DB4969A00ED8B16 /* Md5.m in Sources */,
 				C86353CC1DB4669A00ED8B16 /* JwUserService.m in Sources */,
@@ -748,11 +831,14 @@
 				C86354321DB473A500ED8B16 /* IQUIViewController+Additions.m in Sources */,
 				C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */,
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
+				8E1EE3901DB4CC3B00C85D3B /* UsersTableViewController.m in Sources */,
 				C86353D31DB4670700ED8B16 /* NSString+Email.m in Sources */,
 				C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */,
 				C86353CB1DB4669A00ED8B16 /* JwServiceBase.m in Sources */,
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
+				8E1EE3751DB4CB6100C85D3B /* ArtistTableViewController.m in Sources */,
 				C86354611DB473B300ED8B16 /* UIActionSheet+LBXAlertAction.m in Sources */,
+				8E1EE3781DB4CB7900C85D3B /* JoinViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
