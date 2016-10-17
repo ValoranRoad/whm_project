@@ -51,6 +51,9 @@
 		C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354761DB4969A00ED8B16 /* CreateMD5WithImage.m */; };
 		C863547D1DB4969A00ED8B16 /* Md5.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354781DB4969A00ED8B16 /* Md5.m */; };
 		C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = C863547B1DB4969A00ED8B16 /* NSString+PinYin.m */; };
+		C863548A1DB4CD2C00ED8B16 /* JwBackBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354821DB4CD2C00ED8B16 /* JwBackBaseController.m */; };
+		C863548B1DB4CD2C00ED8B16 /* JwMenuBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354841DB4CD2C00ED8B16 /* JwMenuBaseController.m */; };
+		C863548C1DB4CD2C00ED8B16 /* JwRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354861DB4CD2C00ED8B16 /* JwRootViewController.m */; };
 		E1327D65F4A650A23DCB0E1D /* libPods-whm_project.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +170,12 @@
 		C86354781DB4969A00ED8B16 /* Md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Md5.m; sourceTree = "<group>"; };
 		C863547A1DB4969A00ED8B16 /* NSString+PinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin.h"; sourceTree = "<group>"; };
 		C863547B1DB4969A00ED8B16 /* NSString+PinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin.m"; sourceTree = "<group>"; };
+		C86354811DB4CD2C00ED8B16 /* JwBackBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwBackBaseController.h; sourceTree = "<group>"; };
+		C86354821DB4CD2C00ED8B16 /* JwBackBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwBackBaseController.m; sourceTree = "<group>"; };
+		C86354831DB4CD2C00ED8B16 /* JwMenuBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwMenuBaseController.h; sourceTree = "<group>"; };
+		C86354841DB4CD2C00ED8B16 /* JwMenuBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwMenuBaseController.m; sourceTree = "<group>"; };
+		C86354851DB4CD2C00ED8B16 /* JwRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwRootViewController.h; sourceTree = "<group>"; };
+		C86354861DB4CD2C00ED8B16 /* JwRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwRootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,6 +403,7 @@
 		C86354081DB4682100ED8B16 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				C863547F1DB4CD2C00ED8B16 /* Main */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -526,6 +536,35 @@
 				C863547B1DB4969A00ED8B16 /* NSString+PinYin.m */,
 			);
 			path = "NSString+PinYin";
+			sourceTree = "<group>";
+		};
+		C863547F1DB4CD2C00ED8B16 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C86354801DB4CD2C00ED8B16 /* C */,
+				C86354871DB4CD2C00ED8B16 /* V */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C86354801DB4CD2C00ED8B16 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				C86354811DB4CD2C00ED8B16 /* JwBackBaseController.h */,
+				C86354821DB4CD2C00ED8B16 /* JwBackBaseController.m */,
+				C86354831DB4CD2C00ED8B16 /* JwMenuBaseController.h */,
+				C86354841DB4CD2C00ED8B16 /* JwMenuBaseController.m */,
+				C86354851DB4CD2C00ED8B16 /* JwRootViewController.h */,
+				C86354861DB4CD2C00ED8B16 /* JwRootViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		C86354871DB4CD2C00ED8B16 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -731,6 +770,7 @@
 				C86353E31DB4672700ED8B16 /* UIView+Extension.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				C86353851DB4661C00ED8B16 /* main.m in Sources */,
+				C863548C1DB4CD2C00ED8B16 /* JwRootViewController.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,
 				C86353C91DB4669A00ED8B16 /* JwDataService.m in Sources */,
@@ -749,9 +789,11 @@
 				C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */,
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
 				C86353D31DB4670700ED8B16 /* NSString+Email.m in Sources */,
+				C863548A1DB4CD2C00ED8B16 /* JwBackBaseController.m in Sources */,
 				C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */,
 				C86353CB1DB4669A00ED8B16 /* JwServiceBase.m in Sources */,
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
+				C863548B1DB4CD2C00ED8B16 /* JwMenuBaseController.m in Sources */,
 				C86354611DB473B300ED8B16 /* UIActionSheet+LBXAlertAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
