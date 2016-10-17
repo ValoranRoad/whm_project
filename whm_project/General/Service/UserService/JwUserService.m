@@ -8,20 +8,110 @@
 
 #import "JwUserService.h"
 #import "JwUserCenter.h"
+#import "JwUser.h"
 
 @implementation JwUserService
 
+//登录接口
+- (void)loginWithMobile:(NSString *)mobile password:(NSString *)password success:(void (^)(JwUser *user))success failure:(void (^)(NSError *error))failure{
+    
+    NSMutableDictionary *param = [@{@"mobile": mobile,
+                                    @"pwd": password} mutableCopy];
+    param = [[self filterParam:param interface:@"login"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kb/login" success:^(id data) {
+        
+        NSDictionary *info = data[@"data"];
+        JwUser *user = [[JwUser alloc] initWithDictionary:info error:nil];
+        
+        [JwUserCenter sharedCenter].user = user;
+        [JwUserCenter sharedCenter].isLogined = YES;
+        [[JwUserCenter sharedCenter] save];
+        
+        if (success) {
+            success(user);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+//用户或代理人注册
+- (void)registWithName:(NSString *)name
+          mobile:(NSString *)mobile
+         captcha:(NSString *)captcha
+             pwd:(NSString *)pwd
+            type:(NSString *)type
+      company_id:(NSString *)company_id
+          org_id:(NSString *)org_id
+   exhibition_no:(NSString *)exhibition_no
+        nickname:(NSString *)nickname
+       work_time:(NSString *)work_time
+       id_number:(NSString *)id_number
+      profession:(NSString *)profession
+   specialize_in:(NSString *)specialize_in
+         address:(NSString *)address
+         success:(void (^)(JwUser *user))success failure:(void (^)(NSError *error))failure{
+    
+    NSMutableDictionary *param = [@{@"name": name,
+                                    @"mobile": mobile,
+                                    @"captcha": captcha,
+                                    @"pwd": pwd,
+                                    @"type": type} mutableCopy];
+    if ([type isEqualToString:@"1"]) {
+        param[@"company_id"] = company_id;
+        param[@"org_id"] = org_id;
+        param[@"exhibition_no"] = exhibition_no;
+        param[@"nickname"] = nickname;
+        param[@"id_number"] = id_number;
+        if (work_time) {
+            param[@"work_time"] = work_time;
+        }
+        if (profession) {
+            param[@"profession"] = work_time;
+        }
+        if (specialize_in) {
+            param[@"specialize_in"] = work_time;
+        }
+        if (address) {
+            param[@"address"] = work_time;
+        }
+    }
+    
+    param = [[self filterParam:param interface:@"regist"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kb/regist" success:^(id data) {
+        
+        NSDictionary *info = data[@"data"];
+        JwUser *user = [[JwUser alloc] initWithDictionary:info error:nil];
+        
+        [JwUserCenter sharedCenter].user = user;
+        [JwUserCenter sharedCenter].isLogined = YES;
+        [[JwUserCenter sharedCenter] save];
+        
+        if (success) {
+            success(user);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+//退出登录
 - (void)logoutWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure{
     
-    NSString *session = [JwUserCenter sharedCenter].session;
-    if (session.length == 0) {
-        failure(nil);
-        return;
-    }
-    NSDictionary *param = @{@"sessionKey": session};
-    param = [self filterParam:param];
+    NSMutableDictionary *param = [@{@"uid": [JwUserCenter sharedCenter].session} mutableCopy];
+    param = [[self filterParam:param interface:@"logout"] mutableCopy];
     
-    [self.httpManager GET:param withPoint:@"logout" success:^(id data) {
+    [self.httpManager POST:param withPoint:@"kb/logout" success:^(id data) {
+        
+        [JwUserCenter sharedCenter].user = nil;
+        [JwUserCenter sharedCenter].isLogined = NO;
+        [[JwUserCenter sharedCenter] save];
         
         if (success) {
             success();
@@ -31,95 +121,7 @@
             failure(error);
         }
     }];
+
 }
-
-- (void)dynamicCodeSuccess:(void (^)(NSString *token))success failure:(void (^)(NSError *error))failure {
-    if ([JwUserCenter sharedCenter].session == nil) {
-        NSError *error = [NSError errorWithDomain:@"http.service.dynamicCode.invalidateSession" code:-1 userInfo:nil];
-        failure(error);
-        return;
-    }
-    NSDictionary *param = @{@"sessionKey": [JwUserCenter sharedCenter].session};
-    param = [self filterParam:param];
-    [self.httpManager GET:param withPoint:@"getToken" success:^(id data) {
-        
-        success(data[@"token"]);
-    } failure:^(NSError *error) {
-        
-        failure(error);
-    }];
-}
-
-- (void)change2Password:(NSString *)aNewPassword oldPwd:(NSString *)oldPwd success:(void (^)())success failure:(void (^)(NSError *error))failure{
-    
-    if ([JwUserCenter sharedCenter].session == nil) {
-        NSError *error = [NSError errorWithDomain:@"http.service.changePassword.invalidateSession" code:-1 userInfo:nil];
-        failure(error);
-        return;
-    }
-    
-    NSDictionary *param = @{@"newPassword": aNewPassword,
-                            @"currentPassword": oldPwd,
-                            @"sessionKey": [JwUserCenter sharedCenter].session};
-    
-    param = [self filterParam:param];
-    param = [self signaturedParam:param];
-    [self.httpManager GET:param withPoint:@"changePassword" success:^(id data) {
-        if (success) {
-            success();
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-- (void)updateCheck:(void (^)(BOOL shouldUpdate, id info))success failure:(void (^)(NSError *error))failure{
-    NSDictionary *param = @{};
-    param = [self filterParam:param];
-    param = [self signaturedParam:param];
-    
-    [self.httpManager GET:param withPoint:@"checkUpdate" success:^(id data) {
-        if (success) {
-            BOOL shouldUpdate = NO;
-            id appVersion = data[@"appVersion"];
-            if (appVersion == nil || [appVersion isKindOfClass: [NSNull class]]) {
-                success(NO, nil);
-                
-                return;
-            }
-            
-            id version = data[@"appVersion"][@"versionNumber"];
-            NSString *localVer= param[@"ver"];
-            NSArray *versionComponents = [version componentsSeparatedByString:@"."];
-            NSArray *localComponents = [localVer componentsSeparatedByString:@"."];
-            
-            for (int i=0; i < versionComponents.count; i++) {
-                id s = versionComponents[i];
-                id l = nil;
-                if (i < localComponents.count) {
-                    l = localComponents[i];
-                    
-                    if ([l compare:s] == NSOrderedAscending) {
-                        shouldUpdate = YES;
-                        break;
-                    }
-                }else {
-                    shouldUpdate = YES;
-                    break;
-                }
-            }
-            
-            success(shouldUpdate, data);
-        }
-
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
 
 @end

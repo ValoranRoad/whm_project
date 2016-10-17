@@ -12,6 +12,7 @@
 #import "JwServiceDefine.h"
 #import "AppDelegate.h"
 #import <NSString+Hashes.h>
+#import "Md5.h"
 
 @interface JwServiceBase ()
 
@@ -19,51 +20,25 @@
 
 @implementation JwServiceBase
 
-- (NSDictionary *)filterParam:(NSDictionary *)param {
+- (NSDictionary *)filterParam:(NSDictionary *)param interface:(NSString *)interface {
+    //加密和数据处理
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateStr = [dateFormatter stringFromDate:date];
+    //NSArray *inters = [interface componentsSeparatedByString:@"/"];
+    NSString *kbStr = [[Md5 md5:[NSString stringWithFormat:@"kuaibao%@%@%@api", @"kb", dateStr, interface]] lowercaseString];
+    
     NSMutableDictionary *paramM = [NSMutableDictionary dictionaryWithDictionary:param];
-    paramM[@"deviceId"] = [[UIDevice currentDevice].identifierForVendor UUIDString];
-    paramM[@"deviceType"] = @"iOS";
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *appVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    paramM[@"ver"] = appVersion;
-    paramM[@"timestamp"] = [NSString stringWithFormat:@"%lld", (long long)([[NSDate date] timeIntervalSince1970] * 1000)];
+    paramM[@"kb"] = kbStr;
     return paramM;
 }
 
-- (NSDictionary *)signaturedParam:(NSDictionary *)param {
-    NSString *signature = [self signature:param];
-    NSMutableDictionary *paramM = [NSMutableDictionary dictionaryWithDictionary:param];
-    paramM[@"signature"] = signature;
-    return paramM;
-}
-
-- (NSString *)signature:(NSDictionary *)param {
-    NSMutableString *toSignatureString = [NSMutableString stringWithString:@""];
-    NSMutableArray *params = [NSMutableArray arrayWithCapacity:2];
-    
-    NSString *deviceId = param[@"deviceId"];
-    NSString *timestamp = param[@"timestamp"];
-    if (deviceId) {
-        [params addObject:deviceId];
-    }
-    if (timestamp) {
-        [params addObject:timestamp];
-    }
-    //sort arguments
-    NSArray *sortedArguments = [params sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [obj1 compare:obj2 options:NSLiteralSearch];
-    }];
-    for (NSString *item in sortedArguments) {
-        [toSignatureString appendString:item];
-    }
-    
-    return [toSignatureString sha1];
-}
 
 #pragma mark - HttpManagerDelegate
 
 - (BOOL)httpManager:(id)hepler isSuccess:(NSDictionary *)response {
-    NSDictionary *result = response[@"ret"];
+    NSDictionary *result = response[@"err"];
     if ([result[@"status"] intValue] == kErrorCodeSuccess ) {
         return YES;
     }else {
@@ -76,23 +51,14 @@
         [JGProgressHelper showError:[NSString stringWithFormat:@"请求出错了 ~>_<~ \n%@", error.localizedDescription] ];
     }else if(error) {
         switch (error.code) {
-            case kErrorCodeOperationTimeout:
-            case kErrorCodeInvalidateSession:
-                // 上次登录超过有效期，请重新登录。
-                //[(id)[UIApplication sharedApplication].delegate showLoginController];
-                [JGProgressHelper showError:@"上次登录超过有效期，请重新登录"];
+            case kErrorCodeRequestParam:
+                [JGProgressHelper showError:error.domain];
                 break;
                 
-            case kErrorCodeAccountDisable:
-                // 用户已被停用，请联系主管。
-                //[(id)[UIApplication sharedApplication].delegate showLoginController];
-                [JGProgressHelper showError:@"用户已被停用，请联系主管。"];
+            case kErrorCodeBackerData:
+                [JGProgressHelper showError:error.domain];
                 break;
-                
-            case kErrorCodeAccountLocked:
-                //[(id)[UIApplication sharedApplication].delegate showLoginController];
-                [JGProgressHelper showError:@"用户超过登录限制，已被锁死，请联系主管解锁。"];
-                break;
+
             default:
                 break;
         }

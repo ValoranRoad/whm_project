@@ -47,6 +47,10 @@
 		C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354451DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m */; };
 		C86354641DB473B300ED8B16 /* LBXAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354471DB473B300ED8B16 /* LBXAlertAction.m */; };
 		C86354651DB473B300ED8B16 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C86354481DB473B300ED8B16 /* LICENSE */; };
+		C86354731DB4780000ED8B16 /* JwUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354721DB4780000ED8B16 /* JwUser.m */; };
+		C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354761DB4969A00ED8B16 /* CreateMD5WithImage.m */; };
+		C863547D1DB4969A00ED8B16 /* Md5.m in Sources */ = {isa = PBXBuildFile; fileRef = C86354781DB4969A00ED8B16 /* Md5.m */; };
+		C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = C863547B1DB4969A00ED8B16 /* NSString+PinYin.m */; };
 		E1327D65F4A650A23DCB0E1D /* libPods-whm_project.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +159,14 @@
 		C86354461DB473B300ED8B16 /* LBXAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXAlertAction.h; sourceTree = "<group>"; };
 		C86354471DB473B300ED8B16 /* LBXAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBXAlertAction.m; sourceTree = "<group>"; };
 		C86354481DB473B300ED8B16 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C86354711DB4780000ED8B16 /* JwUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwUser.h; sourceTree = "<group>"; };
+		C86354721DB4780000ED8B16 /* JwUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwUser.m; sourceTree = "<group>"; };
+		C86354751DB4969A00ED8B16 /* CreateMD5WithImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMD5WithImage.h; sourceTree = "<group>"; };
+		C86354761DB4969A00ED8B16 /* CreateMD5WithImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMD5WithImage.m; sourceTree = "<group>"; };
+		C86354771DB4969A00ED8B16 /* Md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Md5.h; sourceTree = "<group>"; };
+		C86354781DB4969A00ED8B16 /* Md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Md5.m; sourceTree = "<group>"; };
+		C863547A1DB4969A00ED8B16 /* NSString+PinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin.h"; sourceTree = "<group>"; };
+		C863547B1DB4969A00ED8B16 /* NSString+PinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +374,8 @@
 			children = (
 				C86353F91DB4674100ED8B16 /* JwModelBase.h */,
 				C86353FA1DB4674100ED8B16 /* JwModelBase.m */,
+				C86354711DB4780000ED8B16 /* JwUser.h */,
+				C86354721DB4780000ED8B16 /* JwUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -369,6 +383,8 @@
 		C86354071DB4680300ED8B16 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C86354741DB4969A00ED8B16 /* md5 */,
+				C86354791DB4969A00ED8B16 /* NSString+PinYin */,
 				C863543D1DB473B300ED8B16 /* LBXAlertAction */,
 				C86354091DB473A500ED8B16 /* IQKeyboardManager */,
 			);
@@ -492,6 +508,26 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		C86354741DB4969A00ED8B16 /* md5 */ = {
+			isa = PBXGroup;
+			children = (
+				C86354751DB4969A00ED8B16 /* CreateMD5WithImage.h */,
+				C86354761DB4969A00ED8B16 /* CreateMD5WithImage.m */,
+				C86354771DB4969A00ED8B16 /* Md5.h */,
+				C86354781DB4969A00ED8B16 /* Md5.m */,
+			);
+			path = md5;
+			sourceTree = "<group>";
+		};
+		C86354791DB4969A00ED8B16 /* NSString+PinYin */ = {
+			isa = PBXGroup;
+			children = (
+				C863547A1DB4969A00ED8B16 /* NSString+PinYin.h */,
+				C863547B1DB4969A00ED8B16 /* NSString+PinYin.m */,
+			);
+			path = "NSString+PinYin";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -557,6 +593,7 @@
 		C86353781DB4661C00ED8B16 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Jw;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = chenJw;
 				TargetAttributes = {
@@ -682,11 +719,13 @@
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
 				C863543A1DB473A600ED8B16 /* IQToolbar.m in Sources */,
 				C86354331DB473A500ED8B16 /* IQUIWindow+Hierarchy.m in Sources */,
 				C86354621DB473B300ED8B16 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
+				C863547D1DB4969A00ED8B16 /* Md5.m in Sources */,
 				C86353CC1DB4669A00ED8B16 /* JwUserService.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
 				C86353E31DB4672700ED8B16 /* UIView+Extension.m in Sources */,
@@ -696,6 +735,7 @@
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,
 				C86353C91DB4669A00ED8B16 /* JwDataService.m in Sources */,
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
+				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
 				C86353D41DB4670700ED8B16 /* UIColor+Hex.m in Sources */,
 				C86353D71DB4670F00ED8B16 /* JGProgressHelper.m in Sources */,
 				C86354051DB4674100ED8B16 /* JwModelBase.m in Sources */,
@@ -709,6 +749,7 @@
 				C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */,
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
 				C86353D31DB4670700ED8B16 /* NSString+Email.m in Sources */,
+				C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */,
 				C86353CB1DB4669A00ED8B16 /* JwServiceBase.m in Sources */,
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
 				C86354611DB473B300ED8B16 /* UIActionSheet+LBXAlertAction.m in Sources */,

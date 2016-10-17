@@ -28,6 +28,8 @@
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
     session.requestSerializer.timeoutInterval = 30;
     
+    [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
+    
     //申明请求的结果是json类型
     //session.requestSerializer = [AFJSONRequestSerializer serializer];
     
@@ -53,10 +55,8 @@
                 [self.delegate httpManager:self response:responseObject error:nil];
             }
         }else{
-            NSString *domain = @"HTTP.HttpManager.GET";
-            NSDictionary *ret = responseObject[@"ret"];
-            NSError *error = [NSError errorWithDomain:domain code:[ret[@"status"] integerValue]
-                                             userInfo:responseObject];
+            NSString *domain = responseObject[@"info"];
+            NSError *error = [NSError errorWithDomain:domain code:[responseObject[@"err"] integerValue] userInfo:responseObject];
             failure(error);
             
             if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
@@ -81,6 +81,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
     session.requestSerializer.timeoutInterval = 30;
+    [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
     
     //申明请求的结果是json类型
     //session.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -107,10 +108,8 @@
                 [self.delegate httpManager:self response:responseObject error:nil];
             }
         }else{
-            NSString *domain = @"HTTP.HttpManager.GET";
-            NSDictionary *ret = responseObject[@"ret"];
-            NSError *error = [NSError errorWithDomain:domain code:[ret[@"status"] integerValue]
-                                         userInfo:responseObject];
+            NSString *domain = responseObject[@"info"];
+            NSError *error = [NSError errorWithDomain:domain code:[responseObject[@"err"] integerValue] userInfo:responseObject];
             failure(error, responseObject);
             
             if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
@@ -118,51 +117,6 @@
             }
         }
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        DLog(@"%@", error);
-        failure(error, nil);
-        if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
-            [self.delegate httpManager:self response:nil error:error];
-        }
-    }];
-}
-
-- (void)POST:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failureBack:(void (^)(NSError * error, id data))failure{
-    
-    NSURL *baseURL = [NSURL URLWithString:kServiceBaseURL];
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
-    session.requestSerializer.timeoutInterval = 30;
-    
-    session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
-    session.responseSerializer = [AFJSONResponseSerializer serializer];
-
-    session.securityPolicy.allowInvalidCertificates = YES;
-    session.securityPolicy.validatesDomainName = NO;
-    
-    [session POST:point parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        DLog(@"%@", responseObject);
-        
-        if ([self.delegate httpManager:self isSuccess:responseObject]) {
-            success(responseObject);
-            
-            if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
-                [self.delegate httpManager:self response:responseObject error:nil];
-            }
-        }else{
-            NSString *domain = @"HTTP.HttpManager.POST";
-            NSDictionary *ret = responseObject[@"ret"];
-            NSError *error = [NSError errorWithDomain:domain code:[ret[@"status"] integerValue]
-                                             userInfo:responseObject];
-            failure(error, responseObject);
-            
-            if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
-                [self.delegate httpManager:self response:responseObject error:error];
-            }
-        }
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         DLog(@"%@", error);
         failure(error, nil);
@@ -178,6 +132,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
     session.requestSerializer.timeoutInterval = 30;
+    [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
     
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -197,10 +152,8 @@
                 [self.delegate httpManager:self response:responseObject error:nil];
             }
         }else{
-            NSString *domain = @"HTTP.HttpManager.POST";
-            NSDictionary *ret = responseObject[@"ret"];
-            NSError *error = [NSError errorWithDomain:domain code:[ret[@"status"] integerValue]
-                                             userInfo:responseObject];
+            NSString *domain = responseObject[@"info"];
+            NSError *error = [NSError errorWithDomain:domain code:[responseObject[@"err"] integerValue] userInfo:responseObject];
             failure(error);
             
             if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
@@ -217,12 +170,56 @@
     }];
 }
 
+- (void)POST:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failureBack:(void (^)(NSError * error, id data))failure{
+    
+    NSURL *baseURL = [NSURL URLWithString:kServiceBaseURL];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
+    session.requestSerializer.timeoutInterval = 30;
+    [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
+    
+    session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
+    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    session.securityPolicy.allowInvalidCertificates = YES;
+    session.securityPolicy.validatesDomainName = NO;
+    
+    [session POST:point parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        DLog(@"%@", responseObject);
+        
+        if ([self.delegate httpManager:self isSuccess:responseObject]) {
+            success(responseObject);
+            
+            if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
+                [self.delegate httpManager:self response:responseObject error:nil];
+            }
+        }else{
+            NSString *domain = responseObject[@"info"];
+            NSError *error = [NSError errorWithDomain:domain code:[responseObject[@"err"] integerValue] userInfo:responseObject];
+            failure(error, responseObject);
+            
+            if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
+                [self.delegate httpManager:self response:responseObject error:error];
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        DLog(@"%@", error);
+        failure(error, nil);
+        if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
+            [self.delegate httpManager:self response:nil error:error];
+        }
+    }];
+}
 
 - (void)DELETE:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failure:(void (^)(NSError * error))failure{
     NSURL *baseURL = [NSURL URLWithString:kServiceBaseURL];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
     session.requestSerializer.timeoutInterval = 30;
+    [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
     
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -241,10 +238,8 @@
                 [self.delegate httpManager:self response:responseObject error:nil];
             }
         }else{
-            NSString *domain = @"HTTP.HttpManager.DELETE";
-            NSDictionary *ret = responseObject[@"ret"];
-            NSError *error = [NSError errorWithDomain:domain code:[ret[@"status"] integerValue]
-                                             userInfo:responseObject];
+            NSString *domain = responseObject[@"info"];
+            NSError *error = [NSError errorWithDomain:domain code:[responseObject[@"err"] integerValue] userInfo:responseObject];
             failure(error);
             
             if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
@@ -270,6 +265,8 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
     session.requestSerializer.timeoutInterval = 30;
+    [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
+    
     session.requestSerializer = [AFJSONRequestSerializer serializer];
     session.responseSerializer = [AFJSONResponseSerializer serializer];
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"test/json",@"application/json",@"text/plain", nil];
@@ -302,10 +299,8 @@
                  [self.delegate httpManager:self response:responseObject error:nil];
              }
          }else{
-             NSString *domain = @"HTTP.HttpManager.GET";
-             NSDictionary *ret = responseObject[@"ret"];
-             NSError *error = [NSError errorWithDomain:domain code:[ret[@"status"] integerValue]
-                                              userInfo:responseObject];
+             NSString *domain = responseObject[@"info"];
+             NSError *error = [NSError errorWithDomain:domain code:[responseObject[@"err"] integerValue] userInfo:responseObject];
              failure(error);
              
              if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
@@ -326,8 +321,10 @@
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     configuration.timeoutIntervalForRequest = 30;
+    
     NSURL *baseURL = [NSURL URLWithString:kServiceBaseURL];
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
+    [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
 
     NSURL *url = [NSURL URLWithString:point];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

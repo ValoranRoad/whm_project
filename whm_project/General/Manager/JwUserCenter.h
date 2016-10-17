@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
+#import "JwUser.h"
+
 
 @interface JwUserCenter : JwModelBase<NSCoding>
 
-@property (nonatomic, strong) JwModelBase *mobileUser;
+@property (nonatomic, strong) JwUser *user;
 @property (nonatomic, strong) NSString *session;
 @property (nonatomic, assign) BOOL isLogined;
 

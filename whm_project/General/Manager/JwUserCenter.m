@@ -8,7 +8,7 @@
 
 #import "JwUserCenter.h"
 
-#define kKeyMobileBase @"MobileBase"
+#define kKeyMobileBase @"user"
 
 @implementation JwUserCenter
 
@@ -45,7 +45,7 @@
 #define kKeyIsLogined @"isLogined"
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSData *userData = [self.mobileUser toJSONData];
+    NSData *userData = [self.user toJSONData];
     [aCoder encodeObject:userData forKey:kKeyUser];
     
     [aCoder encodeBool:self.isLogined forKey:kKeyIsLogined];
@@ -55,13 +55,13 @@
     self.isLogined = [aDecoder decodeBoolForKey:kKeyIsLogined];
     
     NSData *userData = [aDecoder decodeObjectForKey:kKeyUser];
-    self.mobileUser = [[JwModelBase alloc] initWithData:userData error:nil];
+    self.user = [[JwUser alloc] initWithData:userData error:nil];
     return self;
 }
 
 #pragma mark - getter
 - (NSString *)session {
-    return @"session";
+    return self.user.uid;
 }
 
 

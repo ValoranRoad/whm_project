@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) JwHttpManager *httpManager;
 
-- (NSDictionary *)filterParam:(NSDictionary *)param;
-- (NSDictionary *)signaturedParam:(NSDictionary *)param;
+- (NSDictionary *)filterParam:(NSDictionary *)param interface:(NSString *)interface;
 
 @end
