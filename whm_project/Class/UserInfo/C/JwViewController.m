@@ -1,26 +1,22 @@
 //
-//  JwRootViewController.m
-//  Jw_ebank
+//  JwViewController.m
+//  whm_project
 //
-//  Created by Jw on 16/3/8.
-//  Copyright © 2016年 Jw. All rights reserved.
+//  Created by chenJw on 16/10/17.
+//  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "JwRootViewController.h"
-#import "UIView+Extension.h"
+#import "JwViewController.h"
 
-@interface JwRootViewController ()
-
+@interface JwViewController ()
 
 @end
 
-@implementation JwRootViewController
-
+@implementation JwViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
