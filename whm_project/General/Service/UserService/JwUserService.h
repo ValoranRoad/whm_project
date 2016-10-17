@@ -11,8 +11,6 @@
 
 @interface JwUserService : JwServiceBase
 
-//账号登录
-- (void)loginWithEmail:(NSString *)email password:(NSString *)password dynamicCode:(NSString *)dynamicCode success:(void (^)())success failure:(void (^)(NSError *error))failure;
 //账号登出
 - (void)logoutWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure;
 //验证码发送

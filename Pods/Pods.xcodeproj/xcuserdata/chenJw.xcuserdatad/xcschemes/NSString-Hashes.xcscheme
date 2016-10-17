@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '44AA53989A781D703940A9B8DC86B1B6'
-               BlueprintName = 'SVPullToRefresh'
+               BlueprintIdentifier = 'FB27C5663D98BE23AC1C9081A44FCB88'
+               BlueprintName = 'NSString-Hashes'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSVPullToRefresh.a'>
+               BuildableName = 'libNSString-Hashes.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

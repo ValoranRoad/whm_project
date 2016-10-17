@@ -29,7 +29,9 @@
 
 - (void)GET:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failureBack:(void (^)(NSError * error, id data))failure;
 
-- (void)POST:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failure:(void (^)(NSError * error, id data))failure;
+- (void)POST:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failure:(void (^)(NSError * error))failure;
+
+- (void)POST:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failureBack:(void (^)(NSError * error, id data))failure;
 
 - (void)DELETE:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failure:(void (^)(NSError * error))failure;
 

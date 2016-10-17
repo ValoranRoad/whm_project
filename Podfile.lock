@@ -18,6 +18,7 @@ PODS:
   - Masonry (0.6.4)
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.11)
+  - NSString-Hashes (1.2.2)
   - pop (1.0.9)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - Masonry (< 1.0)
   - MBProgressHUD (~> 0.9)
   - MJExtension (~> 3.0.7)
+  - NSString-Hashes (~> 1.2)
   - pop (~> 1.0)
   - SDWebImage
   - SVPullToRefresh (~> 0.4)
@@ -42,11 +44,12 @@ SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: f9ae6ddc0f1c482c3c9af750280ccebd14381958
+  NSString-Hashes: c3848d809e92650e4fb17db5d8cc4bd2aa1eaddd
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   UIAlertViewBlockExtension: 53bdbdf81953851facd2a419863c26c4def93d49
 
-PODFILE CHECKSUM: 5a4c3653dceb9bfc2639cdd895a36d18485f6ae4
+PODFILE CHECKSUM: 5cbc1ad8ae63a28effcc3450b61604be123841ae
 
 COCOAPODS: 1.0.1

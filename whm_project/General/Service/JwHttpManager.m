@@ -127,7 +127,7 @@
     }];
 }
 
-- (void)POST:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failure:(void (^)(NSError * error, id data))failure{
+- (void)POST:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failureBack:(void (^)(NSError * error, id data))failure{
     
     NSURL *baseURL = [NSURL URLWithString:kServiceBaseURL];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -171,6 +171,52 @@
         }
     }];
 }
+
+- (void)POST:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failure:(void (^)(NSError * error))failure{
+    
+    NSURL *baseURL = [NSURL URLWithString:kServiceBaseURL];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:configuration];
+    session.requestSerializer.timeoutInterval = 30;
+    
+    session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
+    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    session.securityPolicy.allowInvalidCertificates = YES;
+    session.securityPolicy.validatesDomainName = NO;
+    
+    [session POST:point parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        DLog(@"%@", responseObject);
+        
+        if ([self.delegate httpManager:self isSuccess:responseObject]) {
+            success(responseObject);
+            
+            if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
+                [self.delegate httpManager:self response:responseObject error:nil];
+            }
+        }else{
+            NSString *domain = @"HTTP.HttpManager.POST";
+            NSDictionary *ret = responseObject[@"ret"];
+            NSError *error = [NSError errorWithDomain:domain code:[ret[@"status"] integerValue]
+                                             userInfo:responseObject];
+            failure(error);
+            
+            if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
+                [self.delegate httpManager:self response:responseObject error:error];
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        DLog(@"%@", error);
+        failure(error);
+        if ([self.delegate respondsToSelector:@selector(httpManager:response:error:)]) {
+            [self.delegate httpManager:self response:nil error:error];
+        }
+    }];
+}
+
 
 - (void)DELETE:(NSDictionary *)params withPoint:(NSString *)point success:(void (^)(id data))success failure:(void (^)(NSError * error))failure{
     NSURL *baseURL = [NSURL URLWithString:kServiceBaseURL];

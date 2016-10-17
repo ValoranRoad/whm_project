@@ -8,52 +8,8 @@
 
 #import "JwUserService.h"
 #import "JwUserCenter.h"
-#import "JwMobileUser.h"
 
 @implementation JwUserService
-
-- (void)loginWithEmail:(NSString *)email password:(NSString *)password dynamicCode:(NSString *)dynamicCode success:(void (^)())success failure:(void (^)(NSError *error))failure{
-    
-    NSMutableDictionary *param = [@{@"email": email,
-                                    @"password": password} mutableCopy];
-    if (dynamicCode) {
-        param[@"token"] = dynamicCode;
-    }
-    param = [[self filterParam:param] mutableCopy];
-    param = [[self signaturedParam:param] mutableCopy];
-    
-    [self.httpManager POST:param withPoint:@"login" success:^(id data) {
-        
-        NSDictionary *userinfo = data[@"user"];
-        [JwUserCenter sharedCenter].mobileUser = [[JwMobileUser alloc] initWithDictionary:userinfo error:nil];
-        [JwUserCenter sharedCenter].isLogined = YES;
-        [[JwUserCenter sharedCenter] save];
-
-        if (success) {
-            success();
-        }
-
-    } failure:^(NSError *error, id data) {
-        
-        if (error.code == kErrorCodeNeedFirstTimeLogin) {
-            NSDictionary *userinfo = data[@"user"];
-            [JwUserCenter sharedCenter].mobileUser = [[JwMobileUser alloc] initWithDictionary:userinfo error:nil];
-        }
-        id wrongTimes = data[@"wrongTimes"];
-        NSMutableDictionary *userinfo = nil;
-        if (wrongTimes) {
-            userinfo = [error.userInfo mutableCopy];
-            userinfo[@"wrongTimes"] = wrongTimes;
-        }
-        if (userinfo) {
-            error = [NSError errorWithDomain:error.domain code:error.code userInfo:userinfo];
-        }
-        if (failure) {
-            failure(error);
-        }
-
-    }];
-}
 
 - (void)logoutWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure{
     

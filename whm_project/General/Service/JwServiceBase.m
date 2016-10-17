@@ -79,18 +79,18 @@
             case kErrorCodeOperationTimeout:
             case kErrorCodeInvalidateSession:
                 // 上次登录超过有效期，请重新登录。
-                [(id)[UIApplication sharedApplication].delegate showLoginController];
+                //[(id)[UIApplication sharedApplication].delegate showLoginController];
                 [JGProgressHelper showError:@"上次登录超过有效期，请重新登录"];
                 break;
                 
             case kErrorCodeAccountDisable:
                 // 用户已被停用，请联系主管。
-                [(id)[UIApplication sharedApplication].delegate showLoginController];
+                //[(id)[UIApplication sharedApplication].delegate showLoginController];
                 [JGProgressHelper showError:@"用户已被停用，请联系主管。"];
                 break;
                 
             case kErrorCodeAccountLocked:
-                [(id)[UIApplication sharedApplication].delegate showLoginController];
+                //[(id)[UIApplication sharedApplication].delegate showLoginController];
                 [JGProgressHelper showError:@"用户超过登录限制，已被锁死，请联系主管解锁。"];
                 break;
             default:

@@ -20,11 +20,7 @@
 #define Weak(name) __weak __typeof(name) w##name = name
 
 /** 用户邮箱本地存储key */
-#define kUDKeyLastEmail @"lastLoginEmail"
-
-#define kMANAGER @"MANAGER"
-#define kCASHIER @"CASHIER"
-#define kTRANSACTOR @"TRANSACTOR"
+#define kUDKeyLoginEmail @"LoginEmail"
 
 /*** DLOG */
 #if DEBUG

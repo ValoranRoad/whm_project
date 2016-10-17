@@ -8,7 +8,7 @@
 
 #import "JwUserCenter.h"
 
-#define kKeyMobileUser @"MobileUser"
+#define kKeyMobileBase @"MobileBase"
 
 @implementation JwUserCenter
 
@@ -25,7 +25,7 @@
 }
 
 + (instancetype)load {
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyMobileUser];
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyMobileBase];
     if (data) {
         return [NSKeyedUnarchiver unarchiveObjectWithData:data];
     } else {
@@ -35,7 +35,7 @@
 
 - (void)save {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kKeyMobileUser];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kKeyMobileBase];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -55,13 +55,13 @@
     self.isLogined = [aDecoder decodeBoolForKey:kKeyIsLogined];
     
     NSData *userData = [aDecoder decodeObjectForKey:kKeyUser];
-    self.mobileUser = [[JwMobileUser alloc] initWithData:userData error:nil];
+    self.mobileUser = [[JwModelBase alloc] initWithData:userData error:nil];
     return self;
 }
 
 #pragma mark - getter
 - (NSString *)session {
-    return self.mobileUser.session;
+    return @"session";
 }
 
 
