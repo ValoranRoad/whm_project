@@ -7,8 +7,16 @@
 //
 
 #import "JwLoginController.h"
+#import "UIColor+Hex.h"
 
 @interface JwLoginController ()
+
+@property (weak, nonatomic) IBOutlet UIView *mobV;
+@property (weak, nonatomic) IBOutlet UIView *pwdV;
+
+@property (weak, nonatomic) IBOutlet UIButton *newsB;
+@property (weak, nonatomic) IBOutlet UIButton *baoB;
+
 
 @end
 
@@ -18,6 +26,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"登录";
+    [self setupView];
+}
+
+- (void)setupView{
+    
+    self.mobV.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
+    self.pwdV.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
+    self.newsB.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
+    self.baoB.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {

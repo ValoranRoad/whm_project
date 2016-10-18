@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Jw_mob.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Jw_mob.png",
       "scale" : "2x"
     },
     {
