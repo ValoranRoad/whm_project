@@ -39,7 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.arrayOfGroup = @[@"a", @"b", @"c"];
+    self.arrayOfGroup = [NSArray arrayWithObjects:@"A",@"B",@"C", nil];
     
     // 布局
     [self setupUI];
@@ -133,7 +133,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"";
+    return @"A";
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
