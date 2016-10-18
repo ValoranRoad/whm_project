@@ -7,7 +7,6 @@
 //
 
 #import "JwPhysicalController.h"
-#import "HmSelectInsuredController.h"
 
 @interface JwPhysicalController ()
 
@@ -18,8 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
