@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */; };
+		961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358AE1DB5C29F00F5107F /* HmSelectInsuredCell.m */; };
+		961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358AF1DB5C29F00F5107F /* HmSelectInsuredCell.xib */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
 		C8343DFE1DB5B79A00999301 /* JwFindController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFD1DB5B79A00999301 /* JwFindController.m */; };
 		C8343E011DB5B7B600999301 /* JwUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E001DB5B7B600999301 /* JwUserInfoController.m */; };
-		C8343E051DB5DDD800999301 /* JwLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E031DB5DDD800999301 /* JwLoginController.m */; };
-		C8343E061DB5DDD800999301 /* JwLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8343E041DB5DDD800999301 /* JwLoginController.xib */; };
+		C8343E0A1DB5F30300999301 /* JwLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E081DB5F30300999301 /* JwLoginController.m */; };
+		C8343E0B1DB5F30300999301 /* JwLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8343E091DB5F30300999301 /* JwLoginController.xib */; };
 		C86353851DB4661C00ED8B16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353841DB4661C00ED8B16 /* main.m */; };
 		C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353871DB4661C00ED8B16 /* AppDelegate.m */; };
 		C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C863538F1DB4661C00ED8B16 /* Assets.xcassets */; };
@@ -84,6 +87,11 @@
 /* Begin PBXFileReference section */
 		0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-whm_project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.debug.xcconfig"; sourceTree = "<group>"; };
+		961358AA1DB5C29800F5107F /* HmSelectInsuredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectInsuredController.h; sourceTree = "<group>"; };
+		961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectInsuredController.m; sourceTree = "<group>"; };
+		961358AD1DB5C29F00F5107F /* HmSelectInsuredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectInsuredCell.h; sourceTree = "<group>"; };
+		961358AE1DB5C29F00F5107F /* HmSelectInsuredCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectInsuredCell.m; sourceTree = "<group>"; };
+		961358AF1DB5C29F00F5107F /* HmSelectInsuredCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmSelectInsuredCell.xib; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C8343DF31DB5B75500999301 /* JwHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwHomeController.h; sourceTree = "<group>"; };
 		C8343DF41DB5B75500999301 /* JwHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwHomeController.m; sourceTree = "<group>"; };
@@ -95,9 +103,9 @@
 		C8343DFD1DB5B79A00999301 /* JwFindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwFindController.m; sourceTree = "<group>"; };
 		C8343DFF1DB5B7B600999301 /* JwUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwUserInfoController.h; sourceTree = "<group>"; };
 		C8343E001DB5B7B600999301 /* JwUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwUserInfoController.m; sourceTree = "<group>"; };
-		C8343E021DB5DDD800999301 /* JwLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwLoginController.h; sourceTree = "<group>"; };
-		C8343E031DB5DDD800999301 /* JwLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwLoginController.m; sourceTree = "<group>"; };
-		C8343E041DB5DDD800999301 /* JwLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JwLoginController.xib; sourceTree = "<group>"; };
+		C8343E071DB5F30300999301 /* JwLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwLoginController.h; sourceTree = "<group>"; };
+		C8343E081DB5F30300999301 /* JwLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwLoginController.m; sourceTree = "<group>"; };
+		C8343E091DB5F30300999301 /* JwLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JwLoginController.xib; sourceTree = "<group>"; };
 		C86353801DB4661C00ED8B16 /* whm_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whm_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86353841DB4661C00ED8B16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C86353861DB4661C00ED8B16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -328,6 +336,8 @@
 		C8343DE91DB5B6ED00999301 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				961358AA1DB5C29800F5107F /* HmSelectInsuredController.h */,
+				961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */,
 				C8343DF61DB5B77800999301 /* JwPhysicalController.h */,
 				C8343DF71DB5B77800999301 /* JwPhysicalController.m */,
 			);
@@ -337,6 +347,9 @@
 		C8343DEA1DB5B6ED00999301 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				961358AD1DB5C29F00F5107F /* HmSelectInsuredCell.h */,
+				961358AE1DB5C29F00F5107F /* HmSelectInsuredCell.m */,
+				961358AF1DB5C29F00F5107F /* HmSelectInsuredCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -706,9 +719,9 @@
 			children = (
 				C8343DFF1DB5B7B600999301 /* JwUserInfoController.h */,
 				C8343E001DB5B7B600999301 /* JwUserInfoController.m */,
-				C8343E021DB5DDD800999301 /* JwLoginController.h */,
-				C8343E031DB5DDD800999301 /* JwLoginController.m */,
-				C8343E041DB5DDD800999301 /* JwLoginController.xib */,
+				C8343E071DB5F30300999301 /* JwLoginController.h */,
+				C8343E081DB5F30300999301 /* JwLoginController.m */,
+				C8343E091DB5F30300999301 /* JwLoginController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -831,7 +844,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8343E061DB5DDD800999301 /* JwLoginController.xib in Resources */,
+				C8343E0B1DB5F30300999301 /* JwLoginController.xib in Resources */,
+				961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
 				C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */,
 				C86354651DB473B300ED8B16 /* LICENSE in Resources */,
@@ -913,6 +927,7 @@
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
+				C8343E0A1DB5F30300999301 /* JwLoginController.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
 				C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */,
@@ -923,15 +938,16 @@
 				C863547D1DB4969A00ED8B16 /* Md5.m in Sources */,
 				C86353CC1DB4669A00ED8B16 /* JwUserService.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
+				961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */,
 				C86353E31DB4672700ED8B16 /* UIView+Extension.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				C86353851DB4661C00ED8B16 /* main.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,
 				C86353C91DB4669A00ED8B16 /* JwDataService.m in Sources */,
+				961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */,
 				C8343DFE1DB5B79A00999301 /* JwFindController.m in Sources */,
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
-				C8343E051DB5DDD800999301 /* JwLoginController.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
 				C86353D41DB4670700ED8B16 /* UIColor+Hex.m in Sources */,
 				C86353D71DB4670F00ED8B16 /* JGProgressHelper.m in Sources */,
