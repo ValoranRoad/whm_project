@@ -18,6 +18,8 @@
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
 		C8343DFE1DB5B79A00999301 /* JwFindController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFD1DB5B79A00999301 /* JwFindController.m */; };
 		C8343E011DB5B7B600999301 /* JwUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E001DB5B7B600999301 /* JwUserInfoController.m */; };
+		C8343E0A1DB5F30300999301 /* JwLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E081DB5F30300999301 /* JwLoginController.m */; };
+		C8343E0B1DB5F30300999301 /* JwLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8343E091DB5F30300999301 /* JwLoginController.xib */; };
 		C86353851DB4661C00ED8B16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353841DB4661C00ED8B16 /* main.m */; };
 		C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353871DB4661C00ED8B16 /* AppDelegate.m */; };
 		C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C863538F1DB4661C00ED8B16 /* Assets.xcassets */; };
@@ -109,6 +111,9 @@
 		C8343DFD1DB5B79A00999301 /* JwFindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwFindController.m; sourceTree = "<group>"; };
 		C8343DFF1DB5B7B600999301 /* JwUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwUserInfoController.h; sourceTree = "<group>"; };
 		C8343E001DB5B7B600999301 /* JwUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwUserInfoController.m; sourceTree = "<group>"; };
+		C8343E071DB5F30300999301 /* JwLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwLoginController.h; sourceTree = "<group>"; };
+		C8343E081DB5F30300999301 /* JwLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwLoginController.m; sourceTree = "<group>"; };
+		C8343E091DB5F30300999301 /* JwLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JwLoginController.xib; sourceTree = "<group>"; };
 		C86353801DB4661C00ED8B16 /* whm_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whm_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86353841DB4661C00ED8B16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C86353861DB4661C00ED8B16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -727,6 +732,9 @@
 			children = (
 				C8343DFF1DB5B7B600999301 /* JwUserInfoController.h */,
 				C8343E001DB5B7B600999301 /* JwUserInfoController.m */,
+				C8343E071DB5F30300999301 /* JwLoginController.h */,
+				C8343E081DB5F30300999301 /* JwLoginController.m */,
+				C8343E091DB5F30300999301 /* JwLoginController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -849,6 +857,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8343E0B1DB5F30300999301 /* JwLoginController.xib in Resources */,
 				961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */,
 				961358B61DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
@@ -932,6 +941,7 @@
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
+				C8343E0A1DB5F30300999301 /* JwLoginController.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
 				C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */,

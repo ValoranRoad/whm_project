@@ -7,6 +7,8 @@
 //
 
 #import "JwUserInfoController.h"
+#import "JwNavigationController.h"
+#import "JwLoginController.h"
 
 @interface JwUserInfoController ()
 
@@ -17,6 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    JwLoginController *loginVC = [[JwLoginController alloc] init];
+    [self.navigationController pushViewController:loginVC animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
