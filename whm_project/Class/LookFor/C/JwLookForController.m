@@ -21,6 +21,7 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
