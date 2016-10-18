@@ -50,5 +50,10 @@ NSLog(@"[%s:%d]: " format "\n", strrchr(__FILE__, '/') + 1, __LINE__, ## args);
 #define JwColorRGBA(r,g,b,a)  [UIColor colorWithRed:(r)/255.f green:(g)/255.f blue:(b)/255.f alpha:(a)]
 
 
+/**
+ *  体检-->选择被保人-->背景颜色(灰色)
+ */
+#define HmInsuredBGGrayColor JwColorRGB(244, 244, 244)
+
 
 #endif /* MacroUtility_h */

@@ -123,6 +123,8 @@
     }];
 
 }
+
+
 //忘记密码
 -(void)forgetwordWithMobile:(NSString *)mobile
                     captcha:(NSString *)captcha
@@ -132,20 +134,21 @@
     NSMutableDictionary * param = [@{@"mobile":mobile,
                                      @"captcha":captcha,
                                      @"pwd":pwd}mutableCopy];
-    
     param = [[self filterParam:param interface:@"reset_pwd"]mutableCopy];
-    
     [self.httpManager POST:param withPoint:@"kb/reset_pwd" success:^(id data) {
-    
+        
         if (success) {
             success();
         }
+
         
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
         }
     }];
+
+    
 }
 
 //发送短信
@@ -154,7 +157,7 @@
                templates:(NSString *)templates
             check_mobile:(NSString *)check_mobile
                  user_id:(NSString *)user_id
-                 success:(void (^)(JwUser *))success failure:(void (^)(NSError *))failure
+                 success:(void (^)())success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * parm = [@{@"modile":mobile,
                                     @"type":type,
@@ -162,13 +165,9 @@
                                     @"check_mobile":check_mobile,
                                     @"user_id":user_id}mutableCopy];
     [self.httpManager POST:parm withPoint:@"send_sms" success:^(id data) {
-        NSDictionary * info = data[@"data"];
-        JwUser * user = [[JwUser alloc]initWithDictionary:info error:nil];
-        [JwUserCenter sharedCenter].user = user;
-        [JwUserCenter sharedCenter].isLogined = YES;
-        [[JwUserCenter sharedCenter] save];
+        
         if (success) {
-            success(user);
+            success();
         }
         
     } failure:^(NSError *error) {
@@ -176,33 +175,34 @@
         if (failure) {
             failure(error);
         }
+
     }];
+    
 }
 
 //修改密码
 -(void)updatepwdUid:(NSString *)uid
             old_pwd:(NSString *)old_pwd
                 pwd:(NSString *)pwd
-            success:(void (^)(JwUser *))success failure:(void (^)(NSError *))failure
+            success:(void (^)())success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * parm = [@{@"uid":uid,
                                     @"old_pwd":old_pwd,
                                     @"pwd":pwd}mutableCopy];
     [self.httpManager POST:parm withPoint:@"update_pwd" success:^(id data) {
-        NSDictionary * info = data[@"data"];
-        JwUser * user = [[JwUser alloc]initWithDictionary:info error:nil];
-        [JwUserCenter sharedCenter].user = user;
-        [JwUserCenter sharedCenter].isLogined = YES;
-        [[JwUserCenter sharedCenter]save];
+        
         if (success) {
-            success(user);
+            success();
         }
+        
+        
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
         }
         
     }];
+    
 }
 
 
