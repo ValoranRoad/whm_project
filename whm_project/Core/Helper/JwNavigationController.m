@@ -23,7 +23,7 @@
     self.navigationBar.tintColor = [UIColor whiteColor];
     
     //用户图标判断
-    UIImage *backImage = [UIImage imageNamed:@"nav_manager"];
+    UIImage *backImage = [UIImage imageNamed:@"nav"];
     
     CGSize navBarSize = self.navigationBar.bounds.size;
     backImage = [self scaleToSize:backImage size:CGSizeMake(navBarSize.width, navBarSize.height + 20)];

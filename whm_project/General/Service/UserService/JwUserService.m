@@ -70,13 +70,13 @@
             param[@"work_time"] = work_time;
         }
         if (profession) {
-            param[@"profession"] = work_time;
+            param[@"profession"] = profession;
         }
         if (specialize_in) {
-            param[@"specialize_in"] = work_time;
+            param[@"specialize_in"] = specialize_in;
         }
         if (address) {
-            param[@"address"] = work_time;
+            param[@"address"] = address;
         }
     }
     
