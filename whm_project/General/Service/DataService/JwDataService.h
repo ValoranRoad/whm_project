@@ -7,7 +7,13 @@
 //
 
 #import "JwServiceBase.h"
+#import "JwServiceDefine.h"
+@class JwUser;
 
 @interface JwDataService : JwServiceBase
+//获取公司列表
+
+
+
 
 @end
