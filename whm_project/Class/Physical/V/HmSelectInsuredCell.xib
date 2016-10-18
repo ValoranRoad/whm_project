@@ -16,7 +16,7 @@
                 <frame key="frameInset" width="397" height="115"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TfO-mt-oJs">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_head" translatesAutoresizingMaskIntoConstraints="NO" id="TfO-mt-oJs" userLabel="headimg">
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="Du7-mm-6e8"/>
                             <constraint firstAttribute="width" constant="60" id="QaT-0a-y3I"/>
@@ -28,22 +28,47 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4lB-Ai-LZg">
-                        <frame key="frameInset" minX="108" minY="28" width="20" height="20"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1D-Pi-tSP" userLabel="LineView">
+                        <color key="backgroundColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="dOU-AP-kdd"/>
-                            <constraint firstAttribute="width" constant="20" id="zNJ-d2-meY"/>
+                            <constraint firstAttribute="height" constant="2" id="mId-PI-wYH"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_name" translatesAutoresizingMaskIntoConstraints="NO" id="mlj-7Y-8Pu" userLabel="nameimg">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="E3Q-e7-icp"/>
+                            <constraint firstAttribute="height" constant="15" id="Q8d-Zo-uAJ"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="孙一金" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7j-6x-aZx">
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_famale" translatesAutoresizingMaskIntoConstraints="NO" id="rY9-Wn-C4j"/>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Y7j-6x-aZx" firstAttribute="leading" secondItem="mlj-7Y-8Pu" secondAttribute="trailing" constant="3" id="0I6-H5-FY6"/>
+                    <constraint firstItem="rY9-Wn-C4j" firstAttribute="leading" secondItem="Y7j-6x-aZx" secondAttribute="trailing" constant="3" id="46Y-jY-Ibg"/>
+                    <constraint firstItem="l1D-Pi-tSP" firstAttribute="top" secondItem="mlj-7Y-8Pu" secondAttribute="bottom" constant="7" id="6Mu-ae-Hqo"/>
                     <constraint firstItem="TfO-mt-oJs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="6Sy-33-fST"/>
-                    <constraint firstItem="TfO-mt-oJs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6oe-6S-IUg"/>
-                    <constraint firstItem="4lB-Ai-LZg" firstAttribute="leading" secondItem="TfO-mt-oJs" secondAttribute="trailing" constant="15" id="B7E-ZA-ggG"/>
+                    <constraint firstAttribute="trailing" secondItem="l1D-Pi-tSP" secondAttribute="trailing" constant="15" id="JgD-Oa-yWb"/>
+                    <constraint firstItem="l1D-Pi-tSP" firstAttribute="centerY" secondItem="TfO-mt-oJs" secondAttribute="centerY" id="T2D-jF-YMQ"/>
+                    <constraint firstItem="l1D-Pi-tSP" firstAttribute="leading" secondItem="mlj-7Y-8Pu" secondAttribute="leading" id="cda-dn-THf"/>
+                    <constraint firstItem="rY9-Wn-C4j" firstAttribute="height" secondItem="mlj-7Y-8Pu" secondAttribute="height" id="chV-qL-fBk"/>
                     <constraint firstItem="TfO-mt-oJs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="ePd-nv-TOl"/>
+                    <constraint firstItem="l1D-Pi-tSP" firstAttribute="leading" secondItem="TfO-mt-oJs" secondAttribute="trailing" constant="15" id="iVz-CY-69x"/>
+                    <constraint firstItem="rY9-Wn-C4j" firstAttribute="width" secondItem="mlj-7Y-8Pu" secondAttribute="width" id="nrF-k5-9IC"/>
+                    <constraint firstItem="rY9-Wn-C4j" firstAttribute="centerY" secondItem="mlj-7Y-8Pu" secondAttribute="centerY" id="wPS-71-ecO"/>
+                    <constraint firstItem="Y7j-6x-aZx" firstAttribute="centerY" secondItem="mlj-7Y-8Pu" secondAttribute="centerY" id="y3V-UC-DYx"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="-29.5" y="24"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="test_famale" width="60" height="60"/>
+        <image name="test_head" width="200" height="200"/>
+        <image name="test_name" width="60" height="60"/>
+    </resources>
 </document>
