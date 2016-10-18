@@ -53,7 +53,7 @@
 -(void)setupUI
 {
     self.title = @"选择被保人";
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44) style:UITableViewStylePlain];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
     _tableV.delegate = self;
     _tableV.dataSource = self;
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -86,6 +86,15 @@
         headView;
     });
     [self.view addSubview:_tableV];
+    
+    // 添加 (右上角)
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"test_add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewAction:)];
+}
+
+#pragma mark -- Private
+-(void)addNewAction:(UIBarButtonItem *)sender
+{
+    
 }
 
 -(void)createIndexList

@@ -13,6 +13,9 @@
 		961358B51DB5D12600F5107F /* HmSelectInsuredCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358B31DB5D12600F5107F /* HmSelectInsuredCollectionCell.m */; };
 		961358B61DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358B41DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib */; };
 		961358B91DB606DE00F5107F /* CMIndexBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358B81DB606DE00F5107F /* CMIndexBar.m */; };
+		961358BC1DB60FA300F5107F /* HmSelectProductController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358BB1DB60FA300F5107F /* HmSelectProductController.m */; };
+		961358C01DB6102700F5107F /* HmSelectProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358BE1DB6102700F5107F /* HmSelectProductCell.m */; };
+		961358C11DB6102700F5107F /* HmSelectProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358BF1DB6102700F5107F /* HmSelectProductCell.xib */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
@@ -100,6 +103,11 @@
 		961358B41DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmSelectInsuredCollectionCell.xib; sourceTree = "<group>"; };
 		961358B71DB606DE00F5107F /* CMIndexBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMIndexBar.h; sourceTree = "<group>"; };
 		961358B81DB606DE00F5107F /* CMIndexBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMIndexBar.m; sourceTree = "<group>"; };
+		961358BA1DB60FA300F5107F /* HmSelectProductController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectProductController.h; sourceTree = "<group>"; };
+		961358BB1DB60FA300F5107F /* HmSelectProductController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectProductController.m; sourceTree = "<group>"; };
+		961358BD1DB6102700F5107F /* HmSelectProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectProductCell.h; sourceTree = "<group>"; };
+		961358BE1DB6102700F5107F /* HmSelectProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectProductCell.m; sourceTree = "<group>"; };
+		961358BF1DB6102700F5107F /* HmSelectProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmSelectProductCell.xib; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C8343DF31DB5B75500999301 /* JwHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwHomeController.h; sourceTree = "<group>"; };
 		C8343DF41DB5B75500999301 /* JwHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwHomeController.m; sourceTree = "<group>"; };
@@ -344,10 +352,12 @@
 		C8343DE91DB5B6ED00999301 /* C */ = {
 			isa = PBXGroup;
 			children = (
-				961358AA1DB5C29800F5107F /* HmSelectInsuredController.h */,
-				961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */,
 				C8343DF61DB5B77800999301 /* JwPhysicalController.h */,
 				C8343DF71DB5B77800999301 /* JwPhysicalController.m */,
+				961358AA1DB5C29800F5107F /* HmSelectInsuredController.h */,
+				961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */,
+				961358BA1DB60FA300F5107F /* HmSelectProductController.h */,
+				961358BB1DB60FA300F5107F /* HmSelectProductController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -363,6 +373,9 @@
 				961358B41DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib */,
 				961358B71DB606DE00F5107F /* CMIndexBar.h */,
 				961358B81DB606DE00F5107F /* CMIndexBar.m */,
+				961358BD1DB6102700F5107F /* HmSelectProductCell.h */,
+				961358BE1DB6102700F5107F /* HmSelectProductCell.m */,
+				961358BF1DB6102700F5107F /* HmSelectProductCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -863,6 +876,7 @@
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
 				C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */,
 				C86354651DB473B300ED8B16 /* LICENSE in Resources */,
+				961358C11DB6102700F5107F /* HmSelectProductCell.xib in Resources */,
 				C863543C1DB473A600ED8B16 /* IQKeyboardManager.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -938,6 +952,7 @@
 			files = (
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				961358C01DB6102700F5107F /* HmSelectProductCell.m in Sources */,
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
@@ -948,6 +963,7 @@
 				C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */,
 				C863543A1DB473A600ED8B16 /* IQToolbar.m in Sources */,
 				C86354331DB473A500ED8B16 /* IQUIWindow+Hierarchy.m in Sources */,
+				961358BC1DB60FA300F5107F /* HmSelectProductController.m in Sources */,
 				C86354621DB473B300ED8B16 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				C863547D1DB4969A00ED8B16 /* Md5.m in Sources */,
 				C86353CC1DB4669A00ED8B16 /* JwUserService.m in Sources */,
