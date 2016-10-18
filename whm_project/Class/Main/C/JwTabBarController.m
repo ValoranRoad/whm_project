@@ -9,8 +9,14 @@
 #import "JwTabBarController.h"
 #import "JwNavigationController.h"
 #import "UIView+Extension.h"
-#import "JwViewController.h"
 #import "MacroUtility.h"
+
+#import "JwHomeController.h"
+#import "JwPhysicalController.h"
+#import "JwLookForController.h"
+#import "JwFindController.h"
+#import "JwUserInfoController.h"
+
 
 @interface JwTabBarController ()<UITabBarControllerDelegate>
 
@@ -23,43 +29,40 @@
     // Do any additional setup after loading the view.
     self.delegate = self;
     
-    JwViewController *home = [[JwViewController alloc] init];
-    JwViewController *reminder = [[JwViewController alloc] init];
-    JwViewController *share = [[JwViewController alloc] init];
-    JwViewController *notifiction = [[JwViewController alloc] init];
-    JwViewController *account = [[JwViewController alloc] init];
+    JwHomeController *home = [[JwHomeController alloc] init];
+    JwPhysicalController *physical = [[JwPhysicalController alloc] init];
+    JwLookForController *lookfor = [[JwLookForController alloc] init];
+    JwFindController *find = [[JwFindController alloc] init];
+    JwUserInfoController *user = [[JwUserInfoController alloc] init];
     
     JwNavigationController *homeVC = [[JwNavigationController alloc] initWithRootViewController:home];
-    JwNavigationController *reminderVC = [[JwNavigationController alloc] initWithRootViewController:reminder];
-    JwNavigationController *shareVC = [[JwNavigationController alloc] initWithRootViewController:share];
-    JwNavigationController *notifictionVC = [[JwNavigationController alloc] initWithRootViewController:notifiction];
-    JwNavigationController *accountVC = [[JwNavigationController alloc] initWithRootViewController:account];
+    JwNavigationController *physicalVC = [[JwNavigationController alloc] initWithRootViewController:physical];
+    JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
+    JwNavigationController *findVC = [[JwNavigationController alloc] initWithRootViewController:find];
+    JwNavigationController *userVC = [[JwNavigationController alloc] initWithRootViewController:user];
     
     homeVC.tabBarItem.image = [[UIImage imageNamed:@"home"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
-    reminderVC.tabBarItem.image = [[UIImage imageNamed:@"physical"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
-    shareVC.tabBarItem.image = [[UIImage imageNamed:@"lookfor"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
-    shareVC.tabBarItem.tag = 101;
+    physicalVC.tabBarItem.image = [[UIImage imageNamed:@"physical"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    lookforVC.tabBarItem.image = [[UIImage imageNamed:@"lookfor"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    lookforVC.tabBarItem.tag = 101;
     
     
-    notifictionVC.tabBarItem.image = [[UIImage imageNamed:@"find"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
-    accountVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    findVC.tabBarItem.image = [[UIImage imageNamed:@"find"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    userVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     
     homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"home_h"];
-    reminderVC.tabBarItem.selectedImage = [UIImage imageNamed:@"physical_h"];
-    shareVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
-    notifictionVC.tabBarItem.selectedImage = [UIImage imageNamed:@"find_h"];
-    accountVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
+    physicalVC.tabBarItem.selectedImage = [UIImage imageNamed:@"physical_h"];
+    lookforVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
+    findVC.tabBarItem.selectedImage = [UIImage imageNamed:@"find_h"];
+    userVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     
     home.title = homeVC.title = @"首页";
-    reminder.title = reminderVC.title = @"体检";
-    share.title = shareVC.title = @"找险";
-    notifiction.title = notifictionVC.title = @"发现";
-    account.title = accountVC.title = @"我的";
+    physical.title = physicalVC.title = @"体检";
+    lookfor.title = lookforVC.title = @"找险";
+    find.title = findVC.title = @"发现";
+    user.title = userVC.title = @"我的";
     
-    //self.tabBar.tintColor = [UIColor whiteColor];
-    //self.tabBar.barTintColor = [UIColor whiteColor];
-    
-    self.viewControllers = @[homeVC, reminderVC, shareVC, notifictionVC, accountVC];
+    self.viewControllers = @[homeVC, physicalVC, lookforVC, findVC, userVC];
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
@@ -74,6 +77,10 @@
     
     //中间按钮pop控制器
     DLog(@"中间点击事件");
+    JwLookForController *lookfor = [[JwLookForController alloc] init];
+    JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
+    lookfor.title = lookforVC.title = @"找险";
+    [self presentViewController:lookforVC animated:YES completion:nil];
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{

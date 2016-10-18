@@ -1,22 +1,22 @@
 //
-//  JwViewController.m
+//  JwHomeController.m
 //  whm_project
 //
-//  Created by chenJw on 16/10/17.
+//  Created by chenJw on 16/10/18.
 //  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "JwViewController.h"
+#import "JwHomeController.h"
 
-@interface JwViewController ()
+@interface JwHomeController ()
 
 @end
 
-@implementation JwViewController
+@implementation JwHomeController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
