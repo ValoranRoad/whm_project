@@ -8,6 +8,7 @@
 
 #import "JwLoginController.h"
 #import "UIColor+Hex.h"
+#import "JwRegistController.h"
 
 @interface JwLoginController ()
 
@@ -36,6 +37,13 @@
     self.newsB.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
     self.baoB.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
 }
+
+- (IBAction)onLogin:(UIButton *)sender {
+    
+    JwRegistController *registVC = [[JwRegistController alloc] init];
+    [self.navigationController pushViewController:registVC animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
