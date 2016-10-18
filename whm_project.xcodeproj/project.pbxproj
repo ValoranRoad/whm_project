@@ -13,9 +13,6 @@
 		961358B51DB5D12600F5107F /* HmSelectInsuredCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358B31DB5D12600F5107F /* HmSelectInsuredCollectionCell.m */; };
 		961358B61DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358B41DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib */; };
 		961358B91DB606DE00F5107F /* CMIndexBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358B81DB606DE00F5107F /* CMIndexBar.m */; };
-		961358BC1DB60FA300F5107F /* HmSelectProductController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358BB1DB60FA300F5107F /* HmSelectProductController.m */; };
-		961358C01DB6102700F5107F /* HmSelectProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358BE1DB6102700F5107F /* HmSelectProductCell.m */; };
-		961358C11DB6102700F5107F /* HmSelectProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358BF1DB6102700F5107F /* HmSelectProductCell.xib */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
@@ -23,6 +20,8 @@
 		C8343E011DB5B7B600999301 /* JwUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E001DB5B7B600999301 /* JwUserInfoController.m */; };
 		C8343E0A1DB5F30300999301 /* JwLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E081DB5F30300999301 /* JwLoginController.m */; };
 		C8343E0B1DB5F30300999301 /* JwLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8343E091DB5F30300999301 /* JwLoginController.xib */; };
+		C8343E0F1DB60C2000999301 /* JwRegistController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E0D1DB60C2000999301 /* JwRegistController.m */; };
+		C8343E101DB60C2000999301 /* JwRegistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8343E0E1DB60C2000999301 /* JwRegistController.xib */; };
 		C86353851DB4661C00ED8B16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353841DB4661C00ED8B16 /* main.m */; };
 		C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353871DB4661C00ED8B16 /* AppDelegate.m */; };
 		C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C863538F1DB4661C00ED8B16 /* Assets.xcassets */; };
@@ -103,11 +102,6 @@
 		961358B41DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmSelectInsuredCollectionCell.xib; sourceTree = "<group>"; };
 		961358B71DB606DE00F5107F /* CMIndexBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMIndexBar.h; sourceTree = "<group>"; };
 		961358B81DB606DE00F5107F /* CMIndexBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMIndexBar.m; sourceTree = "<group>"; };
-		961358BA1DB60FA300F5107F /* HmSelectProductController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectProductController.h; sourceTree = "<group>"; };
-		961358BB1DB60FA300F5107F /* HmSelectProductController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectProductController.m; sourceTree = "<group>"; };
-		961358BD1DB6102700F5107F /* HmSelectProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectProductCell.h; sourceTree = "<group>"; };
-		961358BE1DB6102700F5107F /* HmSelectProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectProductCell.m; sourceTree = "<group>"; };
-		961358BF1DB6102700F5107F /* HmSelectProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmSelectProductCell.xib; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C8343DF31DB5B75500999301 /* JwHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwHomeController.h; sourceTree = "<group>"; };
 		C8343DF41DB5B75500999301 /* JwHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwHomeController.m; sourceTree = "<group>"; };
@@ -122,6 +116,9 @@
 		C8343E071DB5F30300999301 /* JwLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwLoginController.h; sourceTree = "<group>"; };
 		C8343E081DB5F30300999301 /* JwLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwLoginController.m; sourceTree = "<group>"; };
 		C8343E091DB5F30300999301 /* JwLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JwLoginController.xib; sourceTree = "<group>"; };
+		C8343E0C1DB60C2000999301 /* JwRegistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwRegistController.h; sourceTree = "<group>"; };
+		C8343E0D1DB60C2000999301 /* JwRegistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwRegistController.m; sourceTree = "<group>"; };
+		C8343E0E1DB60C2000999301 /* JwRegistController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JwRegistController.xib; sourceTree = "<group>"; };
 		C86353801DB4661C00ED8B16 /* whm_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whm_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86353841DB4661C00ED8B16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C86353861DB4661C00ED8B16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -352,12 +349,10 @@
 		C8343DE91DB5B6ED00999301 /* C */ = {
 			isa = PBXGroup;
 			children = (
-				C8343DF61DB5B77800999301 /* JwPhysicalController.h */,
-				C8343DF71DB5B77800999301 /* JwPhysicalController.m */,
 				961358AA1DB5C29800F5107F /* HmSelectInsuredController.h */,
 				961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */,
-				961358BA1DB60FA300F5107F /* HmSelectProductController.h */,
-				961358BB1DB60FA300F5107F /* HmSelectProductController.m */,
+				C8343DF61DB5B77800999301 /* JwPhysicalController.h */,
+				C8343DF71DB5B77800999301 /* JwPhysicalController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -373,9 +368,6 @@
 				961358B41DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib */,
 				961358B71DB606DE00F5107F /* CMIndexBar.h */,
 				961358B81DB606DE00F5107F /* CMIndexBar.m */,
-				961358BD1DB6102700F5107F /* HmSelectProductCell.h */,
-				961358BE1DB6102700F5107F /* HmSelectProductCell.m */,
-				961358BF1DB6102700F5107F /* HmSelectProductCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -748,6 +740,9 @@
 				C8343E071DB5F30300999301 /* JwLoginController.h */,
 				C8343E081DB5F30300999301 /* JwLoginController.m */,
 				C8343E091DB5F30300999301 /* JwLoginController.xib */,
+				C8343E0C1DB60C2000999301 /* JwRegistController.h */,
+				C8343E0D1DB60C2000999301 /* JwRegistController.m */,
+				C8343E0E1DB60C2000999301 /* JwRegistController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -876,7 +871,7 @@
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
 				C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */,
 				C86354651DB473B300ED8B16 /* LICENSE in Resources */,
-				961358C11DB6102700F5107F /* HmSelectProductCell.xib in Resources */,
+				C8343E101DB60C2000999301 /* JwRegistController.xib in Resources */,
 				C863543C1DB473A600ED8B16 /* IQKeyboardManager.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -952,7 +947,6 @@
 			files = (
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
-				961358C01DB6102700F5107F /* HmSelectProductCell.m in Sources */,
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
@@ -963,7 +957,6 @@
 				C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */,
 				C863543A1DB473A600ED8B16 /* IQToolbar.m in Sources */,
 				C86354331DB473A500ED8B16 /* IQUIWindow+Hierarchy.m in Sources */,
-				961358BC1DB60FA300F5107F /* HmSelectProductController.m in Sources */,
 				C86354621DB473B300ED8B16 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				C863547D1DB4969A00ED8B16 /* Md5.m in Sources */,
 				C86353CC1DB4669A00ED8B16 /* JwUserService.m in Sources */,
@@ -978,6 +971,7 @@
 				961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */,
 				C8343DFE1DB5B79A00999301 /* JwFindController.m in Sources */,
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
+				C8343E0F1DB60C2000999301 /* JwRegistController.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
 				C86353D41DB4670700ED8B16 /* UIColor+Hex.m in Sources */,
 				C86353D71DB4670F00ED8B16 /* JGProgressHelper.m in Sources */,

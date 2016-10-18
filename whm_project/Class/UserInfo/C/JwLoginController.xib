@@ -43,23 +43,24 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jw_clear" translatesAutoresizingMaskIntoConstraints="NO" id="djr-OZ-1c6">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNk-zL-iHG">
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="djr-OZ-1c6" secondAttribute="height" multiplier="1:1" id="42H-7M-TUL"/>
-                                <constraint firstAttribute="width" constant="20" id="viu-hJ-sNV"/>
+                                <constraint firstAttribute="width" secondItem="eNk-zL-iHG" secondAttribute="height" multiplier="1:1" id="bzc-Zd-Q3Y"/>
+                                <constraint firstAttribute="width" constant="20" id="zLH-Q5-5Kq"/>
                             </constraints>
-                        </imageView>
+                            <state key="normal" backgroundImage="Jw_clear"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="s4k-0U-WlL" firstAttribute="leading" secondItem="2Jf-V3-6hE" secondAttribute="leading" constant="20" id="0aZ-1H-tC3"/>
-                        <constraint firstItem="djr-OZ-1c6" firstAttribute="centerY" secondItem="2Jf-V3-6hE" secondAttribute="centerY" id="DUc-Rt-hR6"/>
                         <constraint firstItem="NYc-a2-Osf" firstAttribute="leading" secondItem="s4k-0U-WlL" secondAttribute="trailing" constant="10" id="MY2-Aa-YKq"/>
                         <constraint firstItem="s4k-0U-WlL" firstAttribute="centerY" secondItem="2Jf-V3-6hE" secondAttribute="centerY" id="MrX-L3-XVQ"/>
-                        <constraint firstItem="djr-OZ-1c6" firstAttribute="leading" secondItem="NYc-a2-Osf" secondAttribute="trailing" constant="10" id="Un9-Jd-efm"/>
+                        <constraint firstItem="eNk-zL-iHG" firstAttribute="centerY" secondItem="2Jf-V3-6hE" secondAttribute="centerY" id="RDu-Vv-w1N"/>
+                        <constraint firstAttribute="trailing" secondItem="eNk-zL-iHG" secondAttribute="trailing" constant="20" id="dD0-C3-yb4"/>
                         <constraint firstAttribute="height" constant="44" id="hf0-TJ-ujk"/>
                         <constraint firstItem="NYc-a2-Osf" firstAttribute="centerY" secondItem="2Jf-V3-6hE" secondAttribute="centerY" id="m4x-WM-ux9"/>
-                        <constraint firstAttribute="trailing" secondItem="djr-OZ-1c6" secondAttribute="trailing" constant="20" id="mlo-D5-35T"/>
+                        <constraint firstItem="eNk-zL-iHG" firstAttribute="leading" secondItem="NYc-a2-Osf" secondAttribute="trailing" constant="10" id="w9P-SU-0ME"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -86,22 +87,23 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jw_eye" translatesAutoresizingMaskIntoConstraints="NO" id="OPy-0d-aEg">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLM-5e-cyQ">
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="OPy-0d-aEg" secondAttribute="height" multiplier="1:1" id="Cm3-Qv-5PY"/>
-                                <constraint firstAttribute="width" constant="20" id="EQe-El-1F7"/>
+                                <constraint firstAttribute="width" secondItem="uLM-5e-cyQ" secondAttribute="height" multiplier="1:1" id="a5h-KB-Ob1"/>
+                                <constraint firstAttribute="width" constant="20" id="rGK-Cr-XsG"/>
                             </constraints>
-                        </imageView>
+                            <state key="normal" title="Button" backgroundImage="Jw_eye"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="OPy-0d-aEg" secondAttribute="trailing" constant="20" id="8U4-z6-C95"/>
+                        <constraint firstAttribute="trailing" secondItem="uLM-5e-cyQ" secondAttribute="trailing" constant="20" id="2hm-kB-VEc"/>
                         <constraint firstItem="IyZ-9B-zfp" firstAttribute="leading" secondItem="uDQ-Oe-YdZ" secondAttribute="trailing" constant="10" id="NVy-a1-lHE"/>
                         <constraint firstAttribute="height" constant="44" id="Nsp-ch-xML"/>
-                        <constraint firstItem="OPy-0d-aEg" firstAttribute="centerY" secondItem="Gzy-My-EID" secondAttribute="centerY" id="Vq1-pz-6Tj"/>
                         <constraint firstItem="uDQ-Oe-YdZ" firstAttribute="centerY" secondItem="Gzy-My-EID" secondAttribute="centerY" id="bey-2G-Lc3"/>
                         <constraint firstItem="uDQ-Oe-YdZ" firstAttribute="leading" secondItem="Gzy-My-EID" secondAttribute="leading" constant="20" id="jle-jj-N2H"/>
-                        <constraint firstItem="OPy-0d-aEg" firstAttribute="leading" secondItem="IyZ-9B-zfp" secondAttribute="trailing" constant="10" id="maY-nt-kaj"/>
+                        <constraint firstItem="uLM-5e-cyQ" firstAttribute="centerY" secondItem="Gzy-My-EID" secondAttribute="centerY" id="kFh-Kz-1qk"/>
+                        <constraint firstItem="uLM-5e-cyQ" firstAttribute="leading" secondItem="IyZ-9B-zfp" secondAttribute="trailing" constant="10" id="lBD-tB-dzY"/>
                         <constraint firstItem="IyZ-9B-zfp" firstAttribute="centerY" secondItem="Gzy-My-EID" secondAttribute="centerY" id="v8S-1G-L2a"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -128,6 +130,9 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onLogin:" destination="-1" eventType="touchUpInside" id="3Ii-dq-bsn"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEE-20-kuF">
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
