@@ -1,31 +1,23 @@
 //
-//  JwUserInfoController.m
+//  JwLoginController.m
 //  whm_project
 //
 //  Created by chenJw on 16/10/18.
 //  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "JwUserInfoController.h"
-#import "JwNavigationController.h"
 #import "JwLoginController.h"
 
-@interface JwUserInfoController ()
+@interface JwLoginController ()
 
 @end
 
-@implementation JwUserInfoController
+@implementation JwLoginController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    JwLoginController *loginVC = [[JwLoginController alloc] init];
-    [self.navigationController pushViewController:loginVC animated:YES];
-    
+    // Do any additional setup after loading the view from its nib.
+    self.title = @"登录";
 }
 
 - (void)didReceiveMemoryWarning {
