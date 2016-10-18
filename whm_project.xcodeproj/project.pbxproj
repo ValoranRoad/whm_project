@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		961358A41DB5BE1000F5107F /* HmSelectInsuredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358A31DB5BE1000F5107F /* HmSelectInsuredController.m */; };
+		961358A81DB5BEF600F5107F /* HmSelectInsuredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358A61DB5BEF600F5107F /* HmSelectInsuredCell.m */; };
+		961358A91DB5BEF600F5107F /* HmSelectInsuredCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358A71DB5BEF600F5107F /* HmSelectInsuredCell.xib */; };
 		C86353851DB4661C00ED8B16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353841DB4661C00ED8B16 /* main.m */; };
 		C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353871DB4661C00ED8B16 /* AppDelegate.m */; };
 		C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C863538F1DB4661C00ED8B16 /* Assets.xcassets */; };
@@ -79,6 +82,11 @@
 /* Begin PBXFileReference section */
 		0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-whm_project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.debug.xcconfig"; sourceTree = "<group>"; };
+		961358A21DB5BE1000F5107F /* HmSelectInsuredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectInsuredController.h; sourceTree = "<group>"; };
+		961358A31DB5BE1000F5107F /* HmSelectInsuredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectInsuredController.m; sourceTree = "<group>"; };
+		961358A51DB5BEF600F5107F /* HmSelectInsuredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectInsuredCell.h; sourceTree = "<group>"; };
+		961358A61DB5BEF600F5107F /* HmSelectInsuredCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectInsuredCell.m; sourceTree = "<group>"; };
+		961358A71DB5BEF600F5107F /* HmSelectInsuredCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmSelectInsuredCell.xib; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C86353801DB4661C00ED8B16 /* whm_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whm_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86353841DB4661C00ED8B16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -224,6 +232,34 @@
 				0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9613589F1DB5BD2700F5107F /* PhysicalExamination */ = {
+			isa = PBXGroup;
+			children = (
+				961358A01DB5BD2700F5107F /* C */,
+				961358A11DB5BD2700F5107F /* V */,
+			);
+			path = PhysicalExamination;
+			sourceTree = "<group>";
+		};
+		961358A01DB5BD2700F5107F /* C */ = {
+			isa = PBXGroup;
+			children = (
+				961358A21DB5BE1000F5107F /* HmSelectInsuredController.h */,
+				961358A31DB5BE1000F5107F /* HmSelectInsuredController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		961358A11DB5BD2700F5107F /* V */ = {
+			isa = PBXGroup;
+			children = (
+				961358A51DB5BEF600F5107F /* HmSelectInsuredCell.h */,
+				961358A61DB5BEF600F5107F /* HmSelectInsuredCell.m */,
+				961358A71DB5BEF600F5107F /* HmSelectInsuredCell.xib */,
+			);
+			path = V;
 			sourceTree = "<group>";
 		};
 		C86353771DB4661C00ED8B16 = {
@@ -408,6 +444,7 @@
 		C86354081DB4682100ED8B16 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				9613589F1DB5BD2700F5107F /* PhysicalExamination */,
 				C863548E1DB4CF1B00ED8B16 /* Main */,
 				C86354AA1DB4D43600ED8B16 /* UserInfo */,
 			);
@@ -713,6 +750,7 @@
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
 				C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */,
 				C86354651DB473B300ED8B16 /* LICENSE in Resources */,
+				961358A91DB5BEF600F5107F /* HmSelectInsuredCell.xib in Resources */,
 				C863543C1DB473A600ED8B16 /* IQKeyboardManager.bundle in Resources */,
 				C86354B11DB4D45000ED8B16 /* JwViewController.xib in Resources */,
 			);
@@ -798,9 +836,11 @@
 				C86354331DB473A500ED8B16 /* IQUIWindow+Hierarchy.m in Sources */,
 				C86354621DB473B300ED8B16 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				C863547D1DB4969A00ED8B16 /* Md5.m in Sources */,
+				961358A81DB5BEF600F5107F /* HmSelectInsuredCell.m in Sources */,
 				C86353CC1DB4669A00ED8B16 /* JwUserService.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
 				C86353E31DB4672700ED8B16 /* UIView+Extension.m in Sources */,
+				961358A41DB5BE1000F5107F /* HmSelectInsuredController.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				C86353851DB4661C00ED8B16 /* main.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
