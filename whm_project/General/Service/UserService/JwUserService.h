@@ -38,4 +38,30 @@
 //退出登录
 - (void)logoutWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure;
 
+//忘记密码
+-(void)forgetwordWithMobile:(NSString *)mobile
+                    captcha:(NSString * )captcha
+                       pwd :(NSString *)pwd
+                    success:(void (^)(JwUser *user))success failure:(void (^)(NSError *error))failure;
+
+//发送短信
+
+-(void)sendsmsWithMobile:(NSString *)mobile
+                    type: (NSString *) type
+              templates :(NSString *)templates
+            check_mobile: (NSString *)check_mobile
+                user_id :(NSString *)user_id
+success:(void (^)(JwUser *user))success failure:(void (^)(NSError *error))failure;
+
+//修改密码
+
+-(void)updatepwdUid:(NSString *)uid
+            old_pwd:(NSString *)old_pwd
+                pwd:(NSString * )pwd
+
+            success:(void (^)(JwUser *user))success failure:(void (^)(NSError *error))failure;
+
+
+
+
 @end
