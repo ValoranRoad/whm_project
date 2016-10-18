@@ -41,6 +41,16 @@
     return scaledImage;
 }
 
+/**
+ * push的时候隐藏tabBar
+ */
+-(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (self.viewControllers.count) {
+        viewController.hidesBottomBarWhenPushed = YES;
+    }
+    [super pushViewController:viewController animated:animated];
+}
+
 ////重写NavC的push方法
 //- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 //{

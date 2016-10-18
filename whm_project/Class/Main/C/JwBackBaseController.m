@@ -24,7 +24,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self Action:@selector(backBaseAction:) image:@"Arrow-back" highImage:@"Arrow-back"];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self Action:@selector(backBaseAction:) image:@"back" highImage:@"back"];
     
 }
 
