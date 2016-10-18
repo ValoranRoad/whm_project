@@ -7,21 +7,12 @@
 //
 
 #import "JwPhysicalController.h"
-#import "HmSelectProductController.h"
 
 @interface JwPhysicalController ()
 
 @end
 
 @implementation JwPhysicalController
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    HmSelectProductController *cv = [[HmSelectProductController alloc] init];
-    [self.navigationController pushViewController:cv animated:YES];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
