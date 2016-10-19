@@ -38,8 +38,8 @@
 #pragma mark - HttpManagerDelegate
 
 - (BOOL)httpManager:(id)hepler isSuccess:(NSDictionary *)response {
-    NSDictionary *result = response[@"err"];
-    if ([result[@"status"] intValue] == kErrorCodeSuccess ) {
+    NSInteger result = [response[@"err"] integerValue];
+    if (result == kErrorCodeSuccess) {
         return YES;
     }else {
         return NO;

@@ -36,7 +36,7 @@
     //如果报接受类型不一致请替换一致text/html , 也可以在AFURLResponseSerialization里面的init方法中设
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
     //申明返回的结果是json类型
-    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    //session.responseSerializer = [AFJSONResponseSerializer serializer];
     //信任非法证书
     session.securityPolicy.allowInvalidCertificates = YES;
     //校验证书
@@ -135,7 +135,7 @@
     [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
     
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
-    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    //session.responseSerializer = [AFJSONResponseSerializer serializer];
     
     session.securityPolicy.allowInvalidCertificates = YES;
     session.securityPolicy.validatesDomainName = NO;
@@ -179,7 +179,7 @@
     [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
     
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
-    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    //session.responseSerializer = [AFJSONResponseSerializer serializer];
     
     session.securityPolicy.allowInvalidCertificates = YES;
     session.securityPolicy.validatesDomainName = NO;
@@ -222,7 +222,7 @@
     [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
     
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/json",@"application/json",@"text/plain", @"text/javascript", nil];
-    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    //session.responseSerializer = [AFJSONResponseSerializer serializer];
     
     session.securityPolicy.allowInvalidCertificates = YES;
     session.securityPolicy.validatesDomainName = NO;
@@ -268,7 +268,7 @@
     [session.requestSerializer setValue:@"ios" forHTTPHeaderField:@"client"];
     
     session.requestSerializer = [AFJSONRequestSerializer serializer];
-    session.responseSerializer = [AFJSONResponseSerializer serializer];
+    //session.responseSerializer = [AFJSONResponseSerializer serializer];
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"test/json",@"application/json",@"text/plain", nil];
     session.securityPolicy.allowInvalidCertificates = YES;
     session.securityPolicy.validatesDomainName = NO;

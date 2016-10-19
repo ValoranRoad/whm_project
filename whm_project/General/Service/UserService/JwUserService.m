@@ -21,8 +21,8 @@
     
     [self.httpManager POST:param withPoint:@"kb/login" success:^(id data) {
         
-        NSDictionary *info = data[@"data"];
-        JwUser *user = [[JwUser alloc] initWithDictionary:info error:nil];
+        NSArray *infos = data[@"data"];
+        JwUser *user = [[JwUser alloc] initWithDictionary:[infos firstObject] error:nil];
         
         [JwUserCenter sharedCenter].user = user;
         [JwUserCenter sharedCenter].isLogined = YES;

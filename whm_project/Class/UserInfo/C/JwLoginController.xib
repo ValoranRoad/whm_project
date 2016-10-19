@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JwLoginController">
             <connections>
                 <outlet property="baoB" destination="xFA-ru-2go" id="Iky-dM-3Ei"/>
+                <outlet property="mobTF" destination="NYc-a2-Osf" id="KnJ-l6-f1u"/>
                 <outlet property="mobV" destination="2Jf-V3-6hE" id="whA-VY-7lO"/>
                 <outlet property="newsB" destination="h1L-Ji-RF7" id="7n2-K9-UHL"/>
-                <outlet property="pwdText" destination="IyZ-9B-zfp" id="baE-X2-JVH"/>
+                <outlet property="pwdTF" destination="IyZ-9B-zfp" id="bgr-4E-lMp"/>
                 <outlet property="pwdV" destination="Gzy-My-EID" id="0lx-AQ-tpB"/>
-                <outlet property="telText" destination="NYc-a2-Osf" id="EHi-hj-cgI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -173,7 +173,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="newB:" destination="-1" eventType="touchUpInside" id="F0S-fk-Ku9"/>
+                        <action selector="onNews:" destination="-1" eventType="touchUpInside" id="vcw-bV-rPo"/>
                     </connections>
                 </button>
             </subviews>

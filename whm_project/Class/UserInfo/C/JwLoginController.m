@@ -10,6 +10,7 @@
 #import "UIColor+Hex.h"
 #import "JwRegistController.h"
 #import "JGProgressHelper.h"
+#import "JwUser.h"
 
 @interface JwLoginController ()
 
@@ -19,8 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *newsB;
 @property (weak, nonatomic) IBOutlet UIButton *baoB;
 
-@property (weak, nonatomic) IBOutlet UITextField *telText;
-@property (weak, nonatomic) IBOutlet UITextField *pwdText;
+@property (weak, nonatomic) IBOutlet UITextField *mobTF;
+@property (weak, nonatomic) IBOutlet UITextField *pwdTF;
 
 @end
 
@@ -39,37 +40,35 @@
     self.pwdV.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
     self.newsB.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
     self.baoB.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
-}
-- (IBAction)newB:(id)sender {
     
+    self.mobTF.text = @"13213011251";
+    self.pwdTF.text = @"wyg511688";
+}
+
+- (IBAction)onNews:(UIButton *)sender {
     JwRegistController *registVC = [[JwRegistController alloc] init];
     [self.navigationController pushViewController:registVC animated:YES];
-
 }
 
 - (IBAction)onLogin:(UIButton *)sender {
     
-    if (self.telText.text.length != 0 && self.pwdText.text.length != 0 ) {
+    if (self.mobTF.text.length != 0 && self.pwdTF.text.length != 0) {
         
-        [self.userService loginWithMobile:self.telText.text password:self.pwdText.text success:^(JwUser *user) {
-            
+        id hud = [JGProgressHelper showProgressInView:self.view];
+        [self.userService loginWithMobile:self.mobTF.text password:self.pwdTF.text success:^(JwUser *user) {
+            [hud hide:YES];
             [JGProgressHelper  showSuccess:@"登录成功"];
             
-        } failure:^(NSError *error) {
-            [JGProgressHelper showError:@"登录失败"];
+            NSLog(@"%@", user.name);
             
+        } failure:^(NSError *error) {
+            [hud hide:YES];
+            [JGProgressHelper showError:nil];
         }];
-      
+        
+    }else{
+        [JGProgressHelper showError:@"请输入账号或密码!"];
     }
-    
-        else
-    {
-    
-        [JGProgressHelper showError:@"有未填写项,请填写"];
-    }
-    
-//    JwRegistController *registVC = [[JwRegistController alloc] init];
-//    [self.navigationController pushViewController:registVC animated:YES];
 }
 
 
