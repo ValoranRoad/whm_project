@@ -87,10 +87,6 @@
         NSDictionary *info = data[@"data"];
         JwUser *user = [[JwUser alloc] initWithDictionary:info error:nil];
         
-        [JwUserCenter sharedCenter].user = user;
-        [JwUserCenter sharedCenter].isLogined = YES;
-        [[JwUserCenter sharedCenter] save];
-        
         if (success) {
             success(user);
         }
@@ -121,34 +117,29 @@
             failure(error);
         }
     }];
-
 }
-
 
 //忘记密码
 -(void)forgetwordWithMobile:(NSString *)mobile
                     captcha:(NSString *)captcha
                         pwd:(NSString *)pwd
-                    success:(void (^)())success failure:(void (^)(NSError *))failure
-{
+                    success:(void (^)())success failure:(void (^)(NSError *))failure{
+    
     NSMutableDictionary * param = [@{@"mobile":mobile,
                                      @"captcha":captcha,
-                                     @"pwd":pwd}mutableCopy];
+                                     @"pwd":pwd} mutableCopy];
+    
     param = [[self filterParam:param interface:@"reset_pwd"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/reset_pwd" success:^(id data) {
         
         if (success) {
             success();
         }
-
-        
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
         }
     }];
-
-    
 }
 
 //发送短信
@@ -157,52 +148,49 @@
                templates:(NSString *)templates
             check_mobile:(NSString *)check_mobile
                  user_id:(NSString *)user_id
-                 success:(void (^)())success failure:(void (^)(NSError *))failure
-{
-    NSMutableDictionary * parm = [@{@"modile":mobile,
-                                    @"type":type,
-                                    @"templates":templates,
-                                    @"check_mobile":check_mobile,
-                                    @"user_id":user_id}mutableCopy];
-    [self.httpManager POST:parm withPoint:@"send_sms" success:^(id data) {
+                 success:(void (^)())success failure:(void (^)(NSError *))failure{
+    
+    NSMutableDictionary * param = [@{@"modile":mobile,
+                                     @"type":type,
+                                     @"templates":templates,
+                                     @"check_mobile":check_mobile,
+                                     @"user_id":user_id} mutableCopy];
+    param = [[self filterParam:param interface:@"send_sms"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kb/send_sms" success:^(id data) {
         
         if (success) {
             success();
         }
-        
     } failure:^(NSError *error) {
         
         if (failure) {
             failure(error);
         }
-
     }];
-    
 }
 
 //修改密码
 -(void)updatepwdUid:(NSString *)uid
             old_pwd:(NSString *)old_pwd
                 pwd:(NSString *)pwd
-            success:(void (^)())success failure:(void (^)(NSError *))failure
-{
-    NSMutableDictionary * parm = [@{@"uid":uid,
-                                    @"old_pwd":old_pwd,
-                                    @"pwd":pwd}mutableCopy];
-    [self.httpManager POST:parm withPoint:@"update_pwd" success:^(id data) {
+            success:(void (^)())success failure:(void (^)(NSError *))failure{
+    
+    NSMutableDictionary * param = [@{@"uid":uid,
+                                     @"old_pwd":old_pwd,
+                                     @"pwd":pwd} mutableCopy];
+    param = [[self filterParam:param interface:@"send_sms"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kb/update_pwd" success:^(id data) {
         
         if (success) {
             success();
         }
-        
-        
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
         }
-        
     }];
-    
 }
 
 
