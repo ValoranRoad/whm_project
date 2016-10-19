@@ -12,7 +12,7 @@
 #import "JGProgressHelper.h"
 #import "JwUser.h"
 
-@interface JwLoginController ()
+@interface JwLoginController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mobV;
 @property (weak, nonatomic) IBOutlet UIView *pwdV;
@@ -22,6 +22,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *mobTF;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTF;
+
+@property (weak, nonatomic) IBOutlet UIButton *clearB;
+@property (weak, nonatomic) IBOutlet UIButton *eyeB;
+
 
 @end
 
@@ -41,8 +45,50 @@
     self.newsB.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
     self.baoB.layer.borderColor = [UIColor colorWithHex:0xc4c4c4].CGColor;
     
-    self.mobTF.text = @"13213011251";
-    self.pwdTF.text = @"wyg511688";
+    self.clearB.hidden = YES;
+    self.eyeB.hidden = YES;
+    
+    [self.mobTF addTarget:self action:@selector(mobTFChange:) forControlEvents:(UIControlEventEditingChanged)];
+    [self.pwdTF addTarget:self action:@selector(pwdTFChange:) forControlEvents:(UIControlEventEditingChanged)];
+    self.pwdTF.delegate = self;
+}
+
+- (void)mobTFChange:(UITextField *)textField{
+    if (textField.text.length > 0) {
+        self.clearB.hidden = NO;
+    }else{
+        self.clearB.hidden = YES;
+    }
+}
+
+- (void)pwdTFChange:(UITextField *)textField{
+    if (textField.text.length > 0) {
+        self.eyeB.hidden = NO;
+    }else{
+        self.eyeB.hidden = YES;
+    }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [self pwdTFChange:textField];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField;{
+    self.pwdTF.secureTextEntry = YES;
+    self.eyeB.hidden = YES;
+}
+
+- (IBAction)onClear:(UIButton *)sender {
+    self.mobTF.text = @"";
+    self.clearB.hidden = YES;
+}
+
+- (IBAction)onEye:(UIButton *)sender {
+    if (self.pwdTF.secureTextEntry == YES) {
+        self.pwdTF.secureTextEntry = NO;
+    }else{
+        self.pwdTF.secureTextEntry = YES;
+    }
 }
 
 - (IBAction)onNews:(UIButton *)sender {
