@@ -11,6 +11,7 @@
 #import "JwRegistController.h"
 #import "JGProgressHelper.h"
 #import "JwUser.h"
+#import "ForgetPwdViewController.h"
 
 @interface JwLoginController ()<UITextFieldDelegate>
 
@@ -67,6 +68,12 @@
     }else{
         self.eyeB.hidden = YES;
     }
+}
+
+//忘记密码
+- (IBAction)ForgetPwdAction:(id)sender {
+    ForgetPwdViewController * forgetPwd = [[ForgetPwdViewController alloc]init];
+    [self.navigationController pushViewController:forgetPwd animated:YES];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
