@@ -6,7 +6,7 @@ pod 'AFNetworking', '~> 3.0'
 pod 'UIAlertViewBlockExtension' , '~> 1.0'
 pod 'MBProgressHUD', '~> 0.9'
 pod 'NSString-Hashes', '~> 1.2'
-
+pod 'Mantle'
 pod 'Masonry', '< 1.0'
 pod 'pop', '~> 1.0'
 

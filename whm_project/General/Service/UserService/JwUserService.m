@@ -159,12 +159,14 @@
                  user_id:(NSString *)user_id
                  success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * parm = [@{@"modile":mobile,
+    NSMutableDictionary * param = [@{@"modile":mobile,
                                     @"type":type,
                                     @"templates":templates,
                                     @"check_mobile":check_mobile,
                                     @"user_id":user_id}mutableCopy];
-    [self.httpManager POST:parm withPoint:@"send_sms" success:^(id data) {
+    param = [[self filterParam:param interface:@"send_sms"]mutableCopy];
+
+    [self.httpManager POST:param withPoint:@"kb/send_sms" success:^(id data) {
         
         if (success) {
             success();
@@ -186,10 +188,11 @@
                 pwd:(NSString *)pwd
             success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * parm = [@{@"uid":uid,
+    NSMutableDictionary * param = [@{@"uid":uid,
                                     @"old_pwd":old_pwd,
                                     @"pwd":pwd}mutableCopy];
-    [self.httpManager POST:parm withPoint:@"update_pwd" success:^(id data) {
+    param = [[self filterParam:param interface:@"update_pwd"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/update_pwd" success:^(id data) {
         
         if (success) {
             success();
