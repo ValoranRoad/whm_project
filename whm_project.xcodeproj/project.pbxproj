@@ -16,6 +16,12 @@
 		961358C41DB6258900F5107F /* HmSelectProductController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358C31DB6258900F5107F /* HmSelectProductController.m */; };
 		961358C81DB6259600F5107F /* HmSelectProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358C61DB6259600F5107F /* HmSelectProductCell.m */; };
 		961358C91DB6259600F5107F /* HmSelectProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358C71DB6259600F5107F /* HmSelectProductCell.xib */; };
+		961358CC1DB6263300F5107F /* HmSelectCompanyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358CB1DB6263300F5107F /* HmSelectCompanyController.m */; };
+		961358D01DB6268600F5107F /* HmCompanyTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358CE1DB6268600F5107F /* HmCompanyTableCell.m */; };
+		961358D11DB6268600F5107F /* HmCompanyTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358CF1DB6268600F5107F /* HmCompanyTableCell.xib */; };
+		961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358D31DB6280000F5107F /* HmCompanyCollectionCell.m */; };
+		961358D61DB6280000F5107F /* HmCompanyCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358D41DB6280000F5107F /* HmCompanyCollectionCell.xib */; };
+		961358D91DB645DF00F5107F /* HmHotCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358D81DB645DF00F5107F /* HmHotCompanyCell.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
@@ -110,6 +116,16 @@
 		961358C51DB6259600F5107F /* HmSelectProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectProductCell.h; sourceTree = "<group>"; };
 		961358C61DB6259600F5107F /* HmSelectProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectProductCell.m; sourceTree = "<group>"; };
 		961358C71DB6259600F5107F /* HmSelectProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmSelectProductCell.xib; sourceTree = "<group>"; };
+		961358CA1DB6263300F5107F /* HmSelectCompanyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectCompanyController.h; sourceTree = "<group>"; };
+		961358CB1DB6263300F5107F /* HmSelectCompanyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectCompanyController.m; sourceTree = "<group>"; };
+		961358CD1DB6268600F5107F /* HmCompanyTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmCompanyTableCell.h; sourceTree = "<group>"; };
+		961358CE1DB6268600F5107F /* HmCompanyTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmCompanyTableCell.m; sourceTree = "<group>"; };
+		961358CF1DB6268600F5107F /* HmCompanyTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmCompanyTableCell.xib; sourceTree = "<group>"; };
+		961358D21DB6280000F5107F /* HmCompanyCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmCompanyCollectionCell.h; sourceTree = "<group>"; };
+		961358D31DB6280000F5107F /* HmCompanyCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmCompanyCollectionCell.m; sourceTree = "<group>"; };
+		961358D41DB6280000F5107F /* HmCompanyCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmCompanyCollectionCell.xib; sourceTree = "<group>"; };
+		961358D71DB645DF00F5107F /* HmHotCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmHotCompanyCell.h; sourceTree = "<group>"; };
+		961358D81DB645DF00F5107F /* HmHotCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmHotCompanyCell.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C8343DF31DB5B75500999301 /* JwHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwHomeController.h; sourceTree = "<group>"; };
 		C8343DF41DB5B75500999301 /* JwHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwHomeController.m; sourceTree = "<group>"; };
@@ -357,12 +373,14 @@
 		C8343DE91DB5B6ED00999301 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				C8343DF61DB5B77800999301 /* JwPhysicalController.h */,
+				C8343DF71DB5B77800999301 /* JwPhysicalController.m */,
 				961358C21DB6258900F5107F /* HmSelectProductController.h */,
 				961358C31DB6258900F5107F /* HmSelectProductController.m */,
 				961358AA1DB5C29800F5107F /* HmSelectInsuredController.h */,
 				961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */,
-				C8343DF61DB5B77800999301 /* JwPhysicalController.h */,
-				C8343DF71DB5B77800999301 /* JwPhysicalController.m */,
+				961358CA1DB6263300F5107F /* HmSelectCompanyController.h */,
+				961358CB1DB6263300F5107F /* HmSelectCompanyController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -370,9 +388,6 @@
 		C8343DEA1DB5B6ED00999301 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				961358C51DB6259600F5107F /* HmSelectProductCell.h */,
-				961358C61DB6259600F5107F /* HmSelectProductCell.m */,
-				961358C71DB6259600F5107F /* HmSelectProductCell.xib */,
 				961358AD1DB5C29F00F5107F /* HmSelectInsuredCell.h */,
 				961358AE1DB5C29F00F5107F /* HmSelectInsuredCell.m */,
 				961358AF1DB5C29F00F5107F /* HmSelectInsuredCell.xib */,
@@ -381,6 +396,17 @@
 				961358B41DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib */,
 				961358B71DB606DE00F5107F /* CMIndexBar.h */,
 				961358B81DB606DE00F5107F /* CMIndexBar.m */,
+				961358C51DB6259600F5107F /* HmSelectProductCell.h */,
+				961358C61DB6259600F5107F /* HmSelectProductCell.m */,
+				961358C71DB6259600F5107F /* HmSelectProductCell.xib */,
+				961358CD1DB6268600F5107F /* HmCompanyTableCell.h */,
+				961358CE1DB6268600F5107F /* HmCompanyTableCell.m */,
+				961358CF1DB6268600F5107F /* HmCompanyTableCell.xib */,
+				961358D21DB6280000F5107F /* HmCompanyCollectionCell.h */,
+				961358D31DB6280000F5107F /* HmCompanyCollectionCell.m */,
+				961358D41DB6280000F5107F /* HmCompanyCollectionCell.xib */,
+				961358D71DB645DF00F5107F /* HmHotCompanyCell.h */,
+				961358D81DB645DF00F5107F /* HmHotCompanyCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -879,12 +905,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8343E0B1DB5F30300999301 /* JwLoginController.xib in Resources */,
+				961358D61DB6280000F5107F /* HmCompanyCollectionCell.xib in Resources */,
 				961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */,
 				961358B61DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib in Resources */,
 				961358C91DB6259600F5107F /* HmSelectProductCell.xib in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
 				C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */,
 				C86354651DB473B300ED8B16 /* LICENSE in Resources */,
+				961358D11DB6268600F5107F /* HmCompanyTableCell.xib in Resources */,
 				C8343E101DB60C2000999301 /* JwRegistController.xib in Resources */,
 				C863543C1DB473A600ED8B16 /* IQKeyboardManager.bundle in Resources */,
 			);
@@ -975,8 +1003,10 @@
 				C863547D1DB4969A00ED8B16 /* Md5.m in Sources */,
 				C86353CC1DB4669A00ED8B16 /* JwUserService.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
+				961358CC1DB6263300F5107F /* HmSelectCompanyController.m in Sources */,
 				961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */,
 				C86353E31DB4672700ED8B16 /* UIView+Extension.m in Sources */,
+				961358D01DB6268600F5107F /* HmCompanyTableCell.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				C86353851DB4661C00ED8B16 /* main.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
@@ -988,6 +1018,7 @@
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
 				C8343E0F1DB60C2000999301 /* JwRegistController.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
+				961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */,
 				C86353D41DB4670700ED8B16 /* UIColor+Hex.m in Sources */,
 				C86353D71DB4670F00ED8B16 /* JGProgressHelper.m in Sources */,
 				C86354051DB4674100ED8B16 /* JwModelBase.m in Sources */,
@@ -1004,6 +1035,7 @@
 				C86354321DB473A500ED8B16 /* IQUIViewController+Additions.m in Sources */,
 				C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */,
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
+				961358D91DB645DF00F5107F /* HmHotCompanyCell.m in Sources */,
 				961358B51DB5D12600F5107F /* HmSelectInsuredCollectionCell.m in Sources */,
 				C86353D31DB4670700ED8B16 /* NSString+Email.m in Sources */,
 				C86354A61DB4D3AB00ED8B16 /* JwBackBaseController.m in Sources */,
