@@ -31,6 +31,7 @@
 		C8343E0B1DB5F30300999301 /* JwLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8343E091DB5F30300999301 /* JwLoginController.xib */; };
 		C8343E0F1DB60C2000999301 /* JwRegistController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343E0D1DB60C2000999301 /* JwRegistController.m */; };
 		C8343E101DB60C2000999301 /* JwRegistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8343E0E1DB60C2000999301 /* JwRegistController.xib */; };
+		C84EAA0D1DB76A980098C2A1 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = C84EAA0C1DB76A980098C2A1 /* UIImage+Color.m */; };
 		C86353851DB4661C00ED8B16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353841DB4661C00ED8B16 /* main.m */; };
 		C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86353871DB4661C00ED8B16 /* AppDelegate.m */; };
 		C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C863538F1DB4661C00ED8B16 /* Assets.xcassets */; };
@@ -143,6 +144,8 @@
 		C8343E0C1DB60C2000999301 /* JwRegistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwRegistController.h; sourceTree = "<group>"; };
 		C8343E0D1DB60C2000999301 /* JwRegistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwRegistController.m; sourceTree = "<group>"; };
 		C8343E0E1DB60C2000999301 /* JwRegistController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JwRegistController.xib; sourceTree = "<group>"; };
+		C84EAA0B1DB76A980098C2A1 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		C84EAA0C1DB76A980098C2A1 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		C86353801DB4661C00ED8B16 /* whm_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whm_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86353841DB4661C00ED8B16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C86353861DB4661C00ED8B16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -562,6 +565,8 @@
 				C86353DE1DB4672700ED8B16 /* UIBarButtonItem+Extension.m */,
 				C86353DF1DB4672700ED8B16 /* UIColor+AddColor.h */,
 				C86353E01DB4672700ED8B16 /* UIColor+AddColor.m */,
+				C84EAA0B1DB76A980098C2A1 /* UIImage+Color.h */,
+				C84EAA0C1DB76A980098C2A1 /* UIImage+Color.m */,
 				C86353E11DB4672700ED8B16 /* NSString+Height.h */,
 				C86353E21DB4672700ED8B16 /* NSString+Height.m */,
 			);
@@ -1016,6 +1021,7 @@
 				961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */,
 				C8343DFE1DB5B79A00999301 /* JwFindController.m in Sources */,
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
+				C84EAA0D1DB76A980098C2A1 /* UIImage+Color.m in Sources */,
 				C8343E0F1DB60C2000999301 /* JwRegistController.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
 				961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */,

@@ -16,7 +16,8 @@
 #import "JwLookForController.h"
 #import "JwFindController.h"
 #import "JwUserInfoController.h"
-
+#import "UIImage+Color.h"
+#import "UIColor+Hex.h"
 
 @interface JwTabBarController ()<UITabBarControllerDelegate>
 
@@ -62,7 +63,23 @@
     find.title = findVC.title = @"发现";
     user.title = userVC.title = @"我的";
     
+    [self setupView];
     self.viewControllers = @[homeVC, physicalVC, lookforVC, findVC, userVC];
+}
+
+- (void)setupView{
+    self.tabBar.translucent = NO;
+    [self.tabBar setBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithHex:0xf5f7f9]]];
+    [self.tabBar setShadowImage:[UIImage createImageWithColor:[UIColor colorWithHex:0xf5f7f9]]];
+    
+    UIView *view = [[UIView alloc] initWithFrame:(CGRectMake(0, 0, self.tabBar.jw_height + 25, self.tabBar.jw_height + 25))];
+    view.layer.cornerRadius = view.jw_width/2;
+    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage createImageWithColor:[UIColor colorWithHex:0xf5f7f9]]];
+    view.layer.masksToBounds = YES;
+    view.jw_centerX = self.tabBar.jw_width/2;
+    view.jw_centerY = self.tabBar.jw_height/2;
+    [self.tabBar addSubview:view];
+    [self.tabBar sendSubviewToBack:view];
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
