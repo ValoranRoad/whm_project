@@ -8,6 +8,8 @@
 
 #import "WHrestPwdViewController.h"
 #import "UIColor+Hex.h"
+#import "JGProgressHelper.h"
+#import "JwUserCenter.h"
 
 @interface WHrestPwdViewController ()
 @property(nonatomic,strong)UIImageView * passWordImage;
@@ -83,9 +85,45 @@
     [self.myBut setTintColor:[UIColor whiteColor]];
     self.myBut.layer.cornerRadius = 20.0;
     [self.view addSubview:_myBut];
+    [self.myBut addTarget:self action:@selector(myButAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+
+    
+}
+-(void)myButAction:(UIButton *)sender
+{
+    if (self.passWordText.text.length != 0 && self.truePassText.text.length != 0) {
+        
+        if ([self.passWordText.text isEqualToString:self.truePassText.text]) {
+            
+            id hud = [JGProgressHelper showProgressInView:self.view];
+            [self.userService updatepwdUid:@""  old_pwd:self.oldPwd pwd:self.passWordText.text success:^{
+                [hud hide:YES];
+                [JGProgressHelper showSuccess:@"修改密码成功"];
+                
+                
+                } failure:^(NSError *error) {
+                    [hud hide:YES];
+                    [JGProgressHelper showError:@"修改密码失败"];
+                
+                }];
+            
+            
+        }
+        
+        else
+        {
+            [JGProgressHelper showError:@"两次输入密码不一致,请核查"];
+        }
+        
+    }
+    else{
+        [JGProgressHelper showError:@"有未填写项,请填写"];
+    }
     
     
 }
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -92,6 +92,8 @@
 -(void)myButAction:(UIButton *)sender
 {
     WHrestPwdViewController * restPwd = [[WHrestPwdViewController alloc]init];
+    
+    restPwd.oldPwd = self.OldpwdText.text;
     [self.navigationController pushViewController:restPwd animated:NO];
 }
 
