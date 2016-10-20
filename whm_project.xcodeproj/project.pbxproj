@@ -24,6 +24,7 @@
 		961358D91DB645DF00F5107F /* HmHotCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358D81DB645DF00F5107F /* HmHotCompanyCell.m */; };
 		9F8AB5A61DB7A0E900269609 /* ForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AB5A51DB7A0E900269609 /* ForgetPwdViewController.m */; };
 		9F8AB5A91DB7A0F500269609 /* ForgetPwdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8AB5A81DB7A0F500269609 /* ForgetPwdView.m */; };
+		9FED55141DB8539B0026760F /* MyfirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FED55131DB8539B0026760F /* MyfirstViewController.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
@@ -133,6 +134,8 @@
 		9F8AB5A51DB7A0E900269609 /* ForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdViewController.m; sourceTree = "<group>"; };
 		9F8AB5A71DB7A0EF00269609 /* ForgetPwdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdView.h; sourceTree = "<group>"; };
 		9F8AB5A81DB7A0F500269609 /* ForgetPwdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdView.m; sourceTree = "<group>"; };
+		9FED55121DB853930026760F /* MyfirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyfirstViewController.h; sourceTree = "<group>"; };
+		9FED55131DB8539B0026760F /* MyfirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyfirstViewController.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C8343DF31DB5B75500999301 /* JwHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwHomeController.h; sourceTree = "<group>"; };
 		C8343DF41DB5B75500999301 /* JwHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwHomeController.m; sourceTree = "<group>"; };
@@ -785,6 +788,8 @@
 		C86354AB1DB4D43600ED8B16 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				9FED55121DB853930026760F /* MyfirstViewController.h */,
+				9FED55131DB8539B0026760F /* MyfirstViewController.m */,
 				9F8AB5A41DB7A0E200269609 /* ForgetPwdViewController.h */,
 				9F8AB5A51DB7A0E900269609 /* ForgetPwdViewController.m */,
 				9F8AB5A71DB7A0EF00269609 /* ForgetPwdView.h */,
@@ -1003,6 +1008,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
+				9FED55141DB8539B0026760F /* MyfirstViewController.m in Sources */,
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,

@@ -1,0 +1,428 @@
+//
+//  MyfirstViewController.m
+//  kuaibaoAPP
+//
+//  Created by 王义国 on 16/9/30.
+//  Copyright © 2016年 王义国. All rights reserved.
+//
+
+#import "MyfirstViewController.h"
+
+
+
+@interface MyfirstViewController ()<UIScrollViewDelegate>
+
+
+@property(nonatomic,strong)UIView * headview;
+
+@property(nonatomic,strong)UIImageView * myImage;
+
+@property(nonatomic,strong)UILabel * nameLaber;
+
+@property(nonatomic,strong)UIImageView * image;
+
+@property(nonatomic,strong)UIImageView * baojianImage;
+@property(nonatomic,strong)UILabel * baojianLaber;
+
+@property(nonatomic,strong)UIImageView * renzhengImage;
+@property(nonatomic,strong)UILabel * renzhengLaber;
+
+//button键的创建
+@property(nonatomic,strong)UIScrollView * scolw;
+
+@property(nonatomic,strong)UIButton * myBut1;
+@property(nonatomic,strong)UIButton * myBut2;
+@property(nonatomic,strong)UIButton * myBut3;
+@property(nonatomic,strong)UIButton * myBut4;
+@property(nonatomic,strong)UIButton * myBut5;
+@property(nonatomic,strong)UIButton * myBut6;
+
+@property(nonatomic,strong)UILabel * myLaber1;
+@property(nonatomic,strong)UILabel * myLaber2;
+@property(nonatomic,strong)UILabel * myLaber3;
+@property(nonatomic,strong)UILabel * myLaber4;
+@property(nonatomic,strong)UILabel * myLaber5;
+@property(nonatomic,strong)UILabel * myLaber6;
+
+@property(nonatomic,strong)UIView * myView1 ;
+
+@property(nonatomic,strong)UIView * myView2;
+
+//
+@property(nonatomic,strong)UIButton * myBut7;
+@property(nonatomic,strong)UIButton * myBut8;
+@property(nonatomic,strong)UIButton * myBut9;
+@property(nonatomic,strong)UIButton * myBut10;
+@property(nonatomic,strong)UIButton * myBut11;
+@property(nonatomic,strong)UIButton * myBut12;
+
+@property(nonatomic,strong)UILabel * myLaber7;
+@property(nonatomic,strong)UILabel * myLaber8;
+@property(nonatomic,strong)UILabel * myLaber9;
+@property(nonatomic,strong)UILabel * myLaber10;
+@property(nonatomic,strong)UILabel * myLaber11;
+@property(nonatomic,strong)UILabel * myLaber12;
+
+@property(nonatomic,strong)UIView * myView3 ;
+
+@property(nonatomic,strong)UIView * myView4;
+
+
+
+
+
+
+
+
+
+
+
+@end
+
+@implementation MyfirstViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    //self.view.backgroundColor = [UIColor yellowColor];
+    
+    self.navigationItem.title = @"我的";
+    
+    self.scolw.delegate = self;
+    self.scolw = [[UIScrollView alloc]init];
+    self.scolw.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
+    
+    
+    self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*1.2);
+    [self.view addSubview:_scolw];
+    
+  //  [self UI];
+    //self.headview = [[UIView alloc]init];
+   // self.headview.frame = CGRectMake(0,64 , CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.24);
+    
+    //self.headview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"我的_02.png"]];
+    self.image= [[UIImageView alloc]init];
+    self.image.frame = CGRectMake(0,0 , CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.24);
+    self.image.image = [UIImage imageNamed:@"我的_02.png"];
+    [self.scolw addSubview:_image];
+    
+    
+   // [self.view addSubview:_headview];
+    
+    self.myImage = [[UIImageView alloc]init];
+    self.myImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.42, 10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18);
+    self.myImage.image = [UIImage imageNamed:@"形状 2.png"];
+    [self.scolw addSubview:_myImage];
+    
+    self.nameLaber = [[UILabel alloc]init];
+    
+    self.nameLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.35, CGRectGetMaxY(self.myImage.frame)+15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.6, 20);
+    self.nameLaber.text = @"孙一心( 康泰人寿 ) >";
+    self.nameLaber.textColor = [UIColor whiteColor];
+    self.nameLaber.font = [UIFont systemFontOfSize:17.0];
+    [self.scolw addSubview:_nameLaber];
+    
+    //
+    self.baojianImage = [[UIImageView alloc]init];
+    self.baojianImage.frame = CGRectMake(CGRectGetMinX(self.nameLaber.frame), CGRectGetMaxY(self.nameLaber.frame)+5, 20, 20);
+    self.baojianImage.image = [UIImage imageNamed:@"baojian.png"];
+    [self.scolw addSubview:_baojianImage];
+    //
+    self.baojianLaber = [[UILabel alloc]init];
+    self.baojianLaber.frame = CGRectMake(CGRectGetMaxX(self.baojianImage.frame)+2, CGRectGetMinY(self.baojianImage.frame), CGRectGetWidth(self.baojianImage.frame)*2.5, CGRectGetHeight(self.baojianImage.frame));
+    self.baojianLaber.text = @"保监认证";
+    self.baojianLaber.textColor = [UIColor whiteColor];
+    self.baojianLaber.font = [UIFont systemFontOfSize:11.0];
+    [self.scolw addSubview:_baojianLaber];
+    
+    //
+    self.renzhengImage = [[UIImageView alloc]init];
+    self.renzhengImage.frame = CGRectMake(CGRectGetMaxX(self.baojianLaber.frame), CGRectGetMinY(self.baojianLaber.frame), CGRectGetWidth(self.baojianImage.frame), CGRectGetHeight(self.baojianImage.frame));
+    self.renzhengImage.image = [UIImage imageNamed:@"renzheng.png"];
+    [self.scolw addSubview:_renzhengImage];
+    //
+    self.renzhengLaber = [[UILabel alloc]init];
+    self.renzhengLaber.frame = CGRectMake(CGRectGetMaxX(self.renzhengImage.frame)+2, CGRectGetMinY(self.renzhengImage.frame), CGRectGetWidth(self.baojianLaber.frame)*1.2, CGRectGetHeight(self.baojianLaber.frame));
+    self.renzhengLaber.textColor = [UIColor whiteColor];
+    self.renzhengLaber.text = @"快保家认证";
+    self.renzhengLaber.font = [UIFont systemFontOfSize:11.0];
+    [self.scolw addSubview:_renzhengLaber];
+    
+    
+    //
+    [self setUI];
+    
+}
+
+-(void)setUI
+{
+    
+//    self.scolw.delegate = self;
+//    self.scolw = [[UIScrollView alloc]init];
+//    self.scolw.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
+// 
+//    
+//    self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*3.0);
+//       [self.view addSubview:_scolw];
+    
+    self.myBut1 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut1.frame = CGRectMake(20, CGRectGetMaxY(self.baojianLaber.frame)+50, CGRectGetWidth([UIScreen mainScreen].bounds)*0.15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.15);
+    
+    [self.myBut1 setBackgroundImage:[UIImage imageNamed:@"myhome.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut1];
+    
+    //
+    self.myLaber1 = [[UILabel alloc]init];
+    self.myLaber1.frame = CGRectMake(CGRectGetMinX(self.myBut1.frame), CGRectGetMaxY(self.myBut1.frame)+10, CGRectGetWidth(self.myBut1.frame)*1.5, 20);
+    self.myLaber1.text = @"我的.家人";
+    self.myLaber1.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber1];
+    
+    
+    //
+    self.myBut2 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut2.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.4, CGRectGetMinY(self.myBut1.frame), CGRectGetWidth(self.myBut1.frame), CGRectGetHeight(self.myBut1.frame));
+    [self.myBut2 setBackgroundImage:[UIImage imageNamed:@"tijian.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut2];
+    //
+    self.myLaber2 = [[UILabel alloc]init];
+    self.myLaber2.frame = CGRectMake(CGRectGetMinX(self.myBut2.frame)-13, CGRectGetMinY(self.myLaber1.frame), CGRectGetWidth(self.myLaber1.frame)*1.2, CGRectGetHeight(self.myLaber1.frame));
+    self.myLaber2.text = @"我的体检报告";
+    self.myLaber2.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber2];
+    
+    
+    //
+    self.myBut3 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut3.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.75, CGRectGetMinY(self.myBut1.frame), CGRectGetWidth(self.myBut1.frame), CGRectGetHeight(self.myBut1.frame));
+    [self.myBut3 setBackgroundImage:[UIImage imageNamed:@"baodan.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut3];
+    //
+    self.myLaber3 = [[UILabel alloc]init];
+    self.myLaber3.frame = CGRectMake(CGRectGetMinX(self.myBut3.frame), CGRectGetMinY(self.myLaber2.frame), CGRectGetWidth(self.myLaber2.frame), CGRectGetHeight(self.myLaber2.frame));
+    self.myLaber3.text = @"我的.保单";
+    self.myLaber3.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber3];
+    //
+    self.myView1 = [[UIView alloc]init];
+    self.myView1.frame = CGRectMake(0, CGRectGetMaxY(self.myLaber1.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds), 1);
+    self.myView1.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
+    [self.scolw addSubview:_myView1];
+    
+    
+    
+    
+    //
+    
+    self.myBut4 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut4.frame = CGRectMake(CGRectGetMinX(self.myBut1.frame), CGRectGetMaxY(self.myView1.frame)+20, CGRectGetWidth(self.myBut1.frame), CGRectGetHeight(self.myBut1.frame));
+    [self.myBut4 setBackgroundImage:[UIImage imageNamed:@"kehu.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut4];
+    //
+    self.myLaber4 = [[UILabel alloc]init];
+    self.myLaber4.frame = CGRectMake(CGRectGetMinX(self.myLaber1.frame), CGRectGetMaxY(self.myBut4.frame)+10, CGRectGetWidth(self.myLaber1.frame), CGRectGetHeight(self.myLaber1.frame));
+    self.myLaber4.text = @"我的.客户";
+    self.myLaber4.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber4];
+    
+    //
+    self.myBut5 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut5.frame = CGRectMake(CGRectGetMinX(self.myBut2.frame), CGRectGetMinY(self.myBut4.frame), CGRectGetWidth(self.myBut4.frame), CGRectGetHeight(self.myBut4.frame));
+    [self.myBut5 setBackgroundImage:[UIImage imageNamed:@"jihuashu.png"] forState:(UIControlStateNormal)];
+    
+    [self.scolw addSubview:_myBut5];
+    
+    //
+    self.myLaber5 = [[UILabel alloc]init];
+    self.myLaber5.frame = CGRectMake(CGRectGetMinX(self.myLaber2.frame)+3, CGRectGetMinY(self.myLaber4.frame), CGRectGetWidth(self.myLaber2.frame), CGRectGetHeight(self.myLaber2.frame));
+    self.myLaber5.text = @"保险计划书";
+    self.myLaber5.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber5];
+    
+    //
+    self.myBut6 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut6.frame = CGRectMake(CGRectGetMinX(self.myBut3.frame), CGRectGetMinY(self.myBut4.frame), CGRectGetWidth(self.myBut4.frame), CGRectGetHeight(self.myBut4.frame));
+    [self.myBut6 setBackgroundImage:[UIImage imageNamed:@"biaoshu.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut6];
+    //
+    self.myLaber6 = [[UILabel alloc]init];
+    self.myLaber6.frame = CGRectMake(CGRectGetMinX(self.myLaber3.frame), CGRectGetMinY(self.myLaber5.frame), CGRectGetWidth(self.myLaber3.frame), CGRectGetHeight(self.myLaber3.frame));
+    self.myLaber6.text = @"我的.标书";
+    self.myLaber6.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber6];
+    
+    //
+    self.myView2 = [[UIView alloc]init];
+    self.myView2.frame = CGRectMake(0, CGRectGetMaxY(self.myLaber4.frame)+10, CGRectGetWidth(self.myView1.frame), 1);
+    self.myView2.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
+    [self.scolw addSubview:_myView2];
+    
+    //
+    self.myBut7 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut7.frame = CGRectMake(CGRectGetMinX(self.myBut4.frame), CGRectGetMaxY(self.myView2.frame)+20, CGRectGetWidth(self.myBut4.frame), CGRectGetHeight(self.myBut4.frame));
+    [self.myBut7 setBackgroundImage:[UIImage imageNamed:@"shoucang.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut7];
+    //
+    self.myLaber7 = [[UILabel alloc]init];
+    self.myLaber7.frame = CGRectMake(CGRectGetMinX(self.myLaber4.frame), CGRectGetMaxY(self.myBut7.frame)+10, CGRectGetWidth(self.myLaber4.frame), CGRectGetHeight(self.myLaber4.frame));
+    self.myLaber7.text = @"我的.收藏";
+    self.myLaber7.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber7];
+    
+    //
+    
+    self.myBut8 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut8.frame = CGRectMake(CGRectGetMinX(self.myBut5.frame), CGRectGetMinY(self.myBut7.frame), CGRectGetWidth(self.myBut7.frame), CGRectGetHeight(self.myBut7.frame));
+    
+    [self.myBut8 setBackgroundImage:[UIImage imageNamed:@"guanzhu.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut8];
+    //
+    self.myLaber8 = [[UILabel alloc]init];
+    self.myLaber8.frame = CGRectMake(CGRectGetMinX(self.myLaber5.frame)+7, CGRectGetMinY(self.myLaber7.frame), CGRectGetWidth(self.myLaber5.frame), CGRectGetHeight(self.myLaber5.frame));
+    self.myLaber8.text = @"我的.关注";
+    self.myLaber8.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber8];
+    
+    //
+    self.myBut9 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut9.frame = CGRectMake(CGRectGetMinX(self.myBut6.frame), CGRectGetMinY(self.myBut8.frame), CGRectGetWidth(self.myBut8.frame), CGRectGetHeight(self.myBut8.frame));
+    [self.myBut9 setBackgroundImage:([UIImage imageNamed:@"weizhan.png"]) forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut9];
+    
+    //
+    self.myLaber9 = [[UILabel alloc]init];
+    self.myLaber9.frame = CGRectMake(CGRectGetMinX(self.myLaber6.frame), CGRectGetMinY(self.myLaber8.frame), CGRectGetWidth(self.myLaber8.frame), CGRectGetHeight(self.myLaber8.frame));
+    self.myLaber9.text = @"我的.微站";
+    self.myLaber9.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber9];
+    
+    //
+    self.myView3 = [[UIView alloc]init];
+    self.myView3.frame = CGRectMake(0, CGRectGetMaxY(self.myLaber7.frame)+20, CGRectGetWidth(self.myView2.frame), 1);
+    self.myView3.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
+    [self.scolw addSubview:_myView3];
+    //
+    
+    self.myBut10 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut10.frame = CGRectMake(CGRectGetMinX(self.myBut7.frame), CGRectGetMaxY(self.myView3.frame)+10, CGRectGetWidth(self.myBut7.frame), CGRectGetHeight(self.myBut7.frame));
+    [self.myBut10 setBackgroundImage:[UIImage imageNamed:@"we.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut10];
+    //
+    self.myLaber10 = [[UILabel alloc]init];
+    self.myLaber10.frame = CGRectMake(CGRectGetMinX(self.myLaber7.frame), CGRectGetMaxY(self.myBut10.frame)+10, CGRectGetWidth(self.myLaber7.frame), CGRectGetHeight(self.myLaber7.frame));
+    self.myLaber10.text = @"关于我们";
+    self.myLaber10.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber10];
+    
+    //
+    self.myBut11 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut11.frame = CGRectMake(CGRectGetMinX(self.myBut8.frame), CGRectGetMinY(self.myBut10.frame), CGRectGetWidth(self.myBut10.frame), CGRectGetHeight(self.myBut10.frame));
+    [self.myBut11 setBackgroundImage:[UIImage imageNamed:@"mima.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut11];
+    
+    //
+    self.myLaber11 = [[UILabel alloc]init];
+    self.myLaber11.frame = CGRectMake(CGRectGetMinX(self.myLaber8.frame), CGRectGetMinY(self.myLaber10.frame), CGRectGetWidth(self.myLaber8.frame), CGRectGetHeight(self.myLaber8.frame));
+    self.myLaber11.text = @"修改.密码";
+    
+    self.myLaber11.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber11];
+    //
+    self.myBut12 = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.myBut12.frame = CGRectMake(CGRectGetMinX(self.myBut9.frame), CGRectGetMinY(self.myBut11.frame), CGRectGetWidth(self.myBut11.frame), CGRectGetHeight(self.myBut11.frame));
+    [self.myBut12 setBackgroundImage:[UIImage imageNamed:@"shezhi.png"] forState:(UIControlStateNormal)];
+    [self.scolw addSubview:_myBut12];
+    //
+    self.myLaber12 = [[UILabel alloc]init];
+    self.myLaber12.frame = CGRectMake(CGRectGetMinX(self.myBut12.frame)+10, CGRectGetMinY(self.myLaber11.frame), CGRectGetWidth(self.myLaber11.frame), CGRectGetHeight(self.myLaber11.frame));
+    self.myLaber12.text = @"设置";
+    self.myLaber12.font = [UIFont systemFontOfSize:13.0];
+    [self.scolw addSubview:_myLaber12];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+-(void)UI
+{
+    //
+    
+    
+    //
+    UICollectionViewFlowLayout *flowlayOut = [[UICollectionViewFlowLayout alloc]init];
+    
+    flowlayOut.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame)/3 - 10, CGRectGetWidth(self.view.frame)/3 -10);
+    
+    flowlayOut.minimumInteritemSpacing = 5;
+    
+    flowlayOut.minimumLineSpacing = 5 ;
+    
+    flowlayOut.scrollDirection = UICollectionViewScrollDirectionVertical ;
+    
+    flowlayOut.sectionInset = UIEdgeInsetsMake(CGRectGetHeight([UIScreen mainScreen].bounds)*0.25, 5, 5, 5);
+    
+    UICollectionView *collectView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:flowlayOut];
+    [self.view addSubview:collectView];
+    //背景设置为白色
+    collectView.backgroundColor = [UIColor whiteColor];
+    
+    collectView.delegate = self;
+    collectView.dataSource = self;
+   [collectView registerClass:[ MyfirstCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+//    
+//    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc ]initWithImage:[UIImage imageNamed:@"btn_nav_list@2x.png"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:@selector(aa:)];
+    
+}
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 12;
+}
+
+//显示数据
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    MyfirstCollectionViewCell * cell = [collectionView  dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+//    if (indexPath == 0) {
+       cell.titlaber.text = @"我的.家人";
+       cell.aImageVew.image = [UIImage imageNamed:@"6.png"];
+//    }
+
+    
+    
+    
+    
+    return cell;
+}
+ */
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
