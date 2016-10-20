@@ -174,7 +174,7 @@
     NSMutableDictionary * param = [@{@"uid":uid,
                                      @"old_pwd":old_pwd,
                                      @"pwd":pwd} mutableCopy];
-    param = [[self filterParam:param interface:@"send_sms"]mutableCopy];
+    param = [[self filterParam:param interface:@"update_pwd"]mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/update_pwd" success:^(id data) {
         

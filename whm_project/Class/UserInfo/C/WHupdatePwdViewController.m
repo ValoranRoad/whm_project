@@ -10,7 +10,7 @@
 
 #import "WHrestPwdViewController.h"
 #import "ForgetPwdViewController.h"
-
+#import "UIColor+Hex.h"
 @interface WHupdatePwdViewController ()
 @property(nonatomic,strong)UIImageView * myImage;
 @property(nonatomic,strong)UITextField * OldpwdText;
@@ -35,7 +35,7 @@
 -(void)setUi
 {
     self.OldpwdText = [[UITextField alloc]init];
-    self.OldpwdText.frame = CGRectMake(10, CGRectGetHeight([UIScreen mainScreen].bounds)*0.055, CGRectGetWidth([UIScreen mainScreen].bounds)*0.6, 36);
+    self.OldpwdText.frame = CGRectMake(10, CGRectGetHeight([UIScreen mainScreen].bounds)*0.055, CGRectGetWidth([UIScreen mainScreen].bounds)-20, 36);
     self.OldpwdText.placeholder = @"请输入你的原密码";
     self.OldpwdText.borderStyle = UITextBorderStyleNone;
     self.OldpwdText.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -43,6 +43,8 @@
     self.myImage.frame = CGRectMake(0, 0, 30, 30);
     self.myImage.image = [UIImage imageNamed:@"Jw_lock"];
     self.OldpwdText.leftView = self.myImage;
+    
+    self.OldpwdText.secureTextEntry = YES;
     self.OldpwdText.leftViewMode = UITextFieldViewModeAlways;
     //
     self.lineView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.OldpwdText.frame)    , CGRectGetWidth([UIScreen mainScreen].bounds), 1)];
@@ -53,19 +55,21 @@
     
     //
     self.myBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.myBut.frame = CGRectMake(20, CGRectGetMaxY(self.lineView.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)-40, CGRectGetHeight(self.OldpwdText.frame)*1.2);
+    self.myBut.frame = CGRectMake(30, CGRectGetMaxY(self.lineView.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)-60, CGRectGetHeight(self.OldpwdText.frame)*1.2);
     [self.myBut setTitle:@"下一步" forState:(UIControlStateNormal)];
-    self.myBut.backgroundColor = [UIColor colorWithRed:0.234 green:0.332 blue:0.996 alpha:1];
+    //self.myBut.backgroundColor = [UIColor colorWithRed:0.234 green:0.332 blue:0.996 alpha:1];
+    self.myBut.backgroundColor = [UIColor colorWithHex:0x4367FF ];
+    
     self.myBut.layer.shadowOffset = CGSizeMake(1, 1);
     self.myBut.layer.shadowOpacity = 0.8;
-    self.myBut.layer.shadowColor = [UIColor blueColor].CGColor;
+    self.myBut.layer.shadowColor = [UIColor colorWithHex:0x4367FF ].CGColor;
     
     [self.myBut setTintColor:[UIColor whiteColor]];
-    self.myBut.layer.cornerRadius = 15.0;
+    self.myBut.layer.cornerRadius = 20.0;
     [self.view addSubview:_myBut];
  //
     self.forgetPwdBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.forgetPwdBut.frame = CGRectMake(CGRectGetWidth(self.myBut.frame)*0.35, CGRectGetMaxY(self.myBut.frame)+10, CGRectGetWidth(self.myBut.frame)*0.4, CGRectGetHeight(self.myBut.frame)*0.8);
+    self.forgetPwdBut.frame = CGRectMake(CGRectGetWidth(self.myBut.frame)*0.40, CGRectGetMaxY(self.myBut.frame)+10, CGRectGetWidth(self.myBut.frame)*0.4, CGRectGetHeight(self.myBut.frame)*0.8);
     
     [self.forgetPwdBut  setTitle:@"忘记密码?" forState:(UIControlStateNormal)];
     self.forgetPwdBut.font = [UIFont systemFontOfSize:15.0];

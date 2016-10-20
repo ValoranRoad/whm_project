@@ -7,6 +7,7 @@
 //
 
 #import "WHrestPwdViewController.h"
+#import "UIColor+Hex.h"
 
 @interface WHrestPwdViewController ()
 @property(nonatomic,strong)UIImageView * passWordImage;
@@ -33,7 +34,7 @@
 -(void)setUI
 {
     self.passWordText = [[UITextField alloc]init];
-    self.passWordText.frame = CGRectMake(10, CGRectGetHeight([UIScreen mainScreen].bounds)*0.055, CGRectGetWidth([UIScreen mainScreen].bounds)*0.6, 36);
+    self.passWordText.frame = CGRectMake(10, CGRectGetHeight([UIScreen mainScreen].bounds)*0.055, CGRectGetWidth([UIScreen mainScreen].bounds)-20, 36);
     self.passWordText.placeholder = @"请输入您的新密码(8-20位)";
     self.passWordText.borderStyle = UITextBorderStyleNone;
     self.passWordText.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -42,6 +43,7 @@
     self.passWordImage.image = [UIImage imageNamed:@"Jw_lock"];
     self.passWordText.leftView = self.passWordImage;
     self.passWordText.leftViewMode = UITextFieldViewModeAlways;
+    self.passWordText.secureTextEntry =YES;
     //
     self.lineView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.passWordText.frame)    , CGRectGetWidth([UIScreen mainScreen].bounds), 1)];
     self.lineView.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
@@ -50,7 +52,7 @@
     [self.view addSubview:_passWordText];
     //
     self.truePassText = [[UITextField alloc]init];
-    self.truePassText.frame = CGRectMake(10, CGRectGetMaxY(self.lineView.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)*0.6, 36);
+    self.truePassText.frame = CGRectMake(10, CGRectGetMaxY(self.lineView.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)-20, 36);
     self.truePassText.placeholder = @"再次确认您的密码(8-20位)";
     self.truePassText.borderStyle = UITextBorderStyleNone;
     self.truePassText.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -59,6 +61,8 @@
     self.truePassImage.image = [UIImage imageNamed:@"Jw_passwd"];
     self.truePassText.leftView = self.truePassImage;
     self.truePassText.leftViewMode = UITextFieldViewModeAlways;
+    self.truePassText.secureTextEntry = YES;
+    
     //
     self.lineView2 = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.truePassText.frame)    , CGRectGetWidth([UIScreen mainScreen].bounds), 1)];
     self.lineView2.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
@@ -67,15 +71,17 @@
 //
     //
     self.myBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.myBut.frame = CGRectMake(20, CGRectGetMaxY(self.lineView2.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)-40, CGRectGetHeight(self.truePassText.frame)*1.3);
+    self.myBut.frame = CGRectMake(30, CGRectGetMaxY(self.lineView2.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)-60, CGRectGetHeight(self.truePassText.frame)*1.2);
     [self.myBut setTitle:@"提交" forState:(UIControlStateNormal)];
-    self.myBut.backgroundColor = [UIColor colorWithRed:0.234 green:0.332 blue:0.996 alpha:1];
+   // self.myBut.backgroundColor = [UIColor colorWithRed:0.234 green:0.332 blue:0.996 alpha:1];
+    
+    self.myBut.backgroundColor = [UIColor colorWithHex:0x4367FF ];
     self.myBut.layer.shadowOffset = CGSizeMake(1, 1);
     self.myBut.layer.shadowOpacity = 0.8;
-    self.myBut.layer.shadowColor = [UIColor blueColor].CGColor;
+    self.myBut.layer.shadowColor = [UIColor colorWithHex:0x4367FF ].CGColor;
     
     [self.myBut setTintColor:[UIColor whiteColor]];
-    self.myBut.layer.cornerRadius = 15.0;
+    self.myBut.layer.cornerRadius = 20.0;
     [self.view addSubview:_myBut];
     
     

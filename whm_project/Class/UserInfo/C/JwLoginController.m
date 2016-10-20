@@ -13,7 +13,7 @@
 #import "JwUser.h"
 #import "ForgetPwdViewController.h"
 
-#import "MyfirstViewController.h"
+#import "WHpersonCenterViewController.h"
 
 @interface JwLoginController ()<UITextFieldDelegate>
 
@@ -120,7 +120,7 @@
         [self.userService loginWithMobile:self.mobTF.text password:self.pwdTF.text success:^(JwUser *user) {
             [hud hide:YES];
             [JGProgressHelper  showSuccess:@"登录成功"];
-            MyfirstViewController * myself = [[MyfirstViewController alloc]init];
+            WHpersonCenterViewController * myself = [[WHpersonCenterViewController alloc]init];
             [self.navigationController pushViewController:myself animated:NO];
             
             NSLog(@"%@", user.name);

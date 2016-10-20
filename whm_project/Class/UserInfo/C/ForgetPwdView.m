@@ -8,6 +8,7 @@
 
 #import "ForgetPwdView.h"
 
+#import "UIColor+Hex.h"
 @implementation ForgetPwdView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -132,16 +133,16 @@
     //
     
     self.nextBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.nextBut.frame = CGRectMake(20, CGRectGetMaxY(self.truePassText.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)-40, CGRectGetHeight(self.telText.frame));
+    self.nextBut.frame = CGRectMake(30, CGRectGetMaxY(self.truePassText.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)-60, CGRectGetHeight(self.telText.frame)*1.2);
     [self.nextBut setTitle:@"提交" forState:(UIControlStateNormal)];
-    self.nextBut.backgroundColor = [UIColor colorWithRed:0.234 green:0.332 blue:0.996 alpha:1];
+    self.nextBut.backgroundColor = [UIColor colorWithHex:0x4367FF ];
     
     self.nextBut.layer.shadowOffset = CGSizeMake(1, 1);
     self.nextBut.layer.shadowOpacity = 0.8;
-    self.nextBut.layer.shadowColor = [UIColor blueColor].CGColor;
+    self.nextBut.layer.shadowColor = [UIColor colorWithHex:0x4367FF ].CGColor;
     
     [self.nextBut setTintColor:[UIColor whiteColor]];
-    self.nextBut.layer.cornerRadius = 15.0;
+    self.nextBut.layer.cornerRadius = 20.0;
     [self addSubview:_nextBut];
 
     
