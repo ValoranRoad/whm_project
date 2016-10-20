@@ -144,15 +144,10 @@
 
 //发送短信
 -(void)sendsmsWithMobile:(NSString *)mobile
-                   // type:(NSString *)type
-              // templates:(NSString *)templates
             check_mobile:(NSString *)check_mobile
-                 //user_id:(NSString *)user_id
                  success:(void (^)())success failure:(void (^)(NSError *))failure{
     
     NSMutableDictionary * param = [@{@"mobile":mobile,
-                                     //@"type":type,
-                                     //@"templates":templates,
                                      @"check_mobile":check_mobile
                                      } mutableCopy];
     param = [[self filterParam:param interface:@"send_sms"]mutableCopy];

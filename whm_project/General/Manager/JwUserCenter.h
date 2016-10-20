@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSString *key;
 @property (nonatomic, assign) BOOL isLogined;
 
-
 + (instancetype)load;
 + (instancetype)sharedCenter;
 

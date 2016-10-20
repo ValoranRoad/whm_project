@@ -46,10 +46,7 @@
 
 //发送短信
 -(void)sendsmsWithMobile:(NSString *)mobile
-                  //  type:(NSString *)type
-              // templates:(NSString *)templates
             check_mobile:(NSString *)check_mobile
-               //  user_id:(NSString *)user_id
                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 //修改密码
