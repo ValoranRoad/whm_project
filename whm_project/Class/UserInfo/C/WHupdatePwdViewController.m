@@ -11,6 +11,8 @@
 #import "WHrestPwdViewController.h"
 #import "ForgetPwdViewController.h"
 #import "UIColor+Hex.h"
+
+#import "JGProgressHelper.h"
 @interface WHupdatePwdViewController ()
 @property(nonatomic,strong)UIImageView * myImage;
 @property(nonatomic,strong)UITextField * OldpwdText;
@@ -91,10 +93,18 @@
 //重置密码
 -(void)myButAction:(UIButton *)sender
 {
+    
+    if (self.OldpwdText.text.length != 0) {
+        
     WHrestPwdViewController * restPwd = [[WHrestPwdViewController alloc]init];
     
     restPwd.oldPwd = self.OldpwdText.text;
     [self.navigationController pushViewController:restPwd animated:NO];
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请输入旧密码"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

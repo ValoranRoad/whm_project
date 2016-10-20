@@ -79,6 +79,12 @@
     }
 }
 
+//保险顾问注册
+- (IBAction)PropertBut:(id)sender {
+    
+    NSLog(@"hhh");
+}
+
 //忘记密码
 - (IBAction)ForgetPwdAction:(id)sender {
     ForgetPwdViewController * forgetPwd = [[ForgetPwdViewController alloc]init];
