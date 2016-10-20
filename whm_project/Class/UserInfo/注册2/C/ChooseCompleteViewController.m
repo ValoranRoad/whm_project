@@ -64,7 +64,7 @@
 
 -(void)creatUI
 {
-    self.backView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenH - 100, kScreenW, 100)];
+    self.backView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenH - 100 -64, kScreenW, 100)];
     self.backView.backgroundColor  = [UIColor colorWithRed:67/255.0 green:98/255.0 blue:224/255.0 alpha:1.0];
     [self.view addSubview:_backView];
     
@@ -148,7 +148,7 @@
     [self.areaView addSubview:_areaImage];
 
     // 选择框
-    _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(CGRectGetMinX(_provinceView.frame), kScreenH -CGRectGetHeight(_backView.frame) - 150 , CGRectGetWidth(_provinceView.frame), 200)];
+    _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(CGRectGetMinX(_provinceView.frame), kScreenH -CGRectGetHeight(_backView.frame) - 150 - 64 , CGRectGetWidth(_provinceView.frame), 200)];
     _pickerView.backgroundColor = [UIColor grayColor];
     // 显示选中框
     _pickerView.showsSelectionIndicator=YES;
@@ -159,7 +159,7 @@
     _pickerView.hidden = YES;
     
     //选择框2
-    _cityPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(CGRectGetMinX(_cityView.frame), kScreenH -CGRectGetHeight(_backView.frame) - 150 , CGRectGetWidth(_cityView.frame), 200)];
+    _cityPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(CGRectGetMinX(_cityView.frame), kScreenH -CGRectGetHeight(_backView.frame) - 150- 64 , CGRectGetWidth(_cityView.frame), 200)];
     _cityPickerView.backgroundColor = [UIColor grayColor];
     // 显示选中框
     _cityPickerView.showsSelectionIndicator=YES;
@@ -171,7 +171,7 @@
     
     
     //选择框3
-    _areaPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(CGRectGetMinX(_areaView.frame), kScreenH -CGRectGetHeight(_backView.frame) - 150 , CGRectGetWidth(_areaView.frame), 200)];
+    _areaPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(CGRectGetMinX(_areaView.frame), kScreenH -CGRectGetHeight(_backView.frame) - 150- 64 , CGRectGetWidth(_areaView.frame), 200)];
     _areaPickerView.backgroundColor = [UIColor grayColor];
     // 显示选中框
     _areaPickerView.showsSelectionIndicator=YES;

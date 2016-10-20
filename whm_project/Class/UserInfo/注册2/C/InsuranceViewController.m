@@ -62,7 +62,7 @@
 - (void)createList
 {
     
-    indexBar = [[CMIndexBar alloc] initWithFrame:CGRectMake(self.view.frame.size.width-25, 64 + 30, 25.0, self.view.frame.size.height-64 - 30)];
+    indexBar = [[CMIndexBar alloc] initWithFrame:CGRectMake(self.view.frame.size.width-25, 30, 25.0, self.view.frame.size.height-64 - 30)];
 //    indexBar.backgroundColor = [UIColor redColor];
     indexBar.textColor = [UIColor colorWithRed:61/255.0 green:163/255.0  blue:255/255.0  alpha:1.0];
     indexBar.textFont = [UIFont systemFontOfSize:12];
@@ -92,7 +92,7 @@
 }
 -(void)setUI
 {
-    self.headView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, kScreenW, (kScreenW - 2)/3*2+1+30)];
+    self.headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, (kScreenW - 2)/3*2+1+30)];
     self.headView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:_headView];
     

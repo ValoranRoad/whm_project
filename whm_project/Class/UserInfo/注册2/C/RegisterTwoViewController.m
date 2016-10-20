@@ -31,7 +31,7 @@
 }
 -(void)setUI
 {
-    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 64,kScreenW , 40)];
+    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,kScreenW , 40)];
     headView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:headView];
     
@@ -47,6 +47,7 @@
     
     [self creatTable];
     self.tableView.tableHeaderView = headView;
+    //self.tableView.backgroundColor
     
     UIButton *registBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     registBtn.frame = CGRectMake(50, CGRectGetMaxY(_tableView.frame) + 40, kScreenW - 100, 50);
@@ -68,7 +69,7 @@
 
 -(void)creatTable
 {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 304) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 240) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.scrollEnabled = NO;
@@ -82,7 +83,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

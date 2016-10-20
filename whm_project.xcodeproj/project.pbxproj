@@ -13,10 +13,8 @@
 		8E529DF11DB8CD9900E2DFAA /* leixing.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E529DD71DB8CD9900E2DFAA /* leixing.png */; };
 		8E529DF21DB8CD9900E2DFAA /* tjzh-2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E529DD81DB8CD9900E2DFAA /* tjzh-2@3x.png */; };
 		8E529DF31DB8CD9900E2DFAA /* ChooseCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E529DDB1DB8CD9900E2DFAA /* ChooseCompleteViewController.m */; };
-		8E529DF41DB8CD9900E2DFAA /* CMIndexBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E529DDD1DB8CD9900E2DFAA /* CMIndexBar.m */; };
 		8E529DF51DB8CD9900E2DFAA /* InsuranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E529DDF1DB8CD9900E2DFAA /* InsuranceViewController.m */; };
 		8E529DF61DB8CD9900E2DFAA /* RegisterTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E529DE11DB8CD9900E2DFAA /* RegisterTwoViewController.m */; };
-		8E529DF71DB8CD9900E2DFAA /* rootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E529DE31DB8CD9900E2DFAA /* rootViewController.m */; };
 		8E529DF81DB8CD9900E2DFAA /* ChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E529DE71DB8CD9900E2DFAA /* ChooseTableViewCell.m */; };
 		8E529DF91DB8CD9900E2DFAA /* completeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E529DE91DB8CD9900E2DFAA /* completeTableViewCell.m */; };
 		8E529DFA1DB8CD9900E2DFAA /* insuranceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E529DEB1DB8CD9900E2DFAA /* insuranceCollectionViewCell.m */; };
@@ -129,14 +127,10 @@
 		8E529DD81DB8CD9900E2DFAA /* tjzh-2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tjzh-2@3x.png"; sourceTree = "<group>"; };
 		8E529DDA1DB8CD9900E2DFAA /* ChooseCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCompleteViewController.h; sourceTree = "<group>"; };
 		8E529DDB1DB8CD9900E2DFAA /* ChooseCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCompleteViewController.m; sourceTree = "<group>"; };
-		8E529DDC1DB8CD9900E2DFAA /* CMIndexBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMIndexBar.h; sourceTree = "<group>"; };
-		8E529DDD1DB8CD9900E2DFAA /* CMIndexBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMIndexBar.m; sourceTree = "<group>"; };
 		8E529DDE1DB8CD9900E2DFAA /* InsuranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceViewController.h; sourceTree = "<group>"; };
 		8E529DDF1DB8CD9900E2DFAA /* InsuranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceViewController.m; sourceTree = "<group>"; };
 		8E529DE01DB8CD9900E2DFAA /* RegisterTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTwoViewController.h; sourceTree = "<group>"; };
 		8E529DE11DB8CD9900E2DFAA /* RegisterTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTwoViewController.m; sourceTree = "<group>"; };
-		8E529DE21DB8CD9900E2DFAA /* rootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rootViewController.h; sourceTree = "<group>"; };
-		8E529DE31DB8CD9900E2DFAA /* rootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rootViewController.m; sourceTree = "<group>"; };
 		8E529DE61DB8CD9900E2DFAA /* ChooseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseTableViewCell.h; sourceTree = "<group>"; };
 		8E529DE71DB8CD9900E2DFAA /* ChooseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTableViewCell.m; sourceTree = "<group>"; };
 		8E529DE81DB8CD9900E2DFAA /* completeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = completeTableViewCell.h; sourceTree = "<group>"; };
@@ -373,14 +367,10 @@
 			children = (
 				8E529DDA1DB8CD9900E2DFAA /* ChooseCompleteViewController.h */,
 				8E529DDB1DB8CD9900E2DFAA /* ChooseCompleteViewController.m */,
-				8E529DDC1DB8CD9900E2DFAA /* CMIndexBar.h */,
-				8E529DDD1DB8CD9900E2DFAA /* CMIndexBar.m */,
 				8E529DDE1DB8CD9900E2DFAA /* InsuranceViewController.h */,
 				8E529DDF1DB8CD9900E2DFAA /* InsuranceViewController.m */,
 				8E529DE01DB8CD9900E2DFAA /* RegisterTwoViewController.h */,
 				8E529DE11DB8CD9900E2DFAA /* RegisterTwoViewController.m */,
-				8E529DE21DB8CD9900E2DFAA /* rootViewController.h */,
-				8E529DE31DB8CD9900E2DFAA /* rootViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1137,7 +1127,6 @@
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
 				9FED551F1DB8A9D10026760F /* WHpersonCenterViewController.m in Sources */,
 				8E529DF61DB8CD9900E2DFAA /* RegisterTwoViewController.m in Sources */,
-				8E529DF41DB8CD9900E2DFAA /* CMIndexBar.m in Sources */,
 				C8343E0A1DB5F30300999301 /* JwLoginController.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
@@ -1153,7 +1142,6 @@
 				961358CC1DB6263300F5107F /* HmSelectCompanyController.m in Sources */,
 				961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */,
 				C86353E31DB4672700ED8B16 /* UIView+Extension.m in Sources */,
-				8E529DF71DB8CD9900E2DFAA /* rootViewController.m in Sources */,
 				961358D01DB6268600F5107F /* HmCompanyTableCell.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				9F8AB5A61DB7A0E900269609 /* ForgetPwdViewController.m in Sources */,

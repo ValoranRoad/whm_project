@@ -15,6 +15,8 @@
 
 #import "WHpersonCenterViewController.h"
 
+
+#import "RegisterTwoViewController.h"
 @interface JwLoginController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mobV;
@@ -83,6 +85,11 @@
 - (IBAction)PropertBut:(id)sender {
     
     NSLog(@"hhh");
+    
+    
+    RegisterTwoViewController *regVC = [[RegisterTwoViewController alloc]init];
+    
+    [self.navigationController pushViewController:regVC animated:YES];
 }
 
 //忘记密码
