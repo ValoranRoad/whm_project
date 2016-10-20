@@ -8,6 +8,9 @@
 
 #import "MyfirstViewController.h"
 
+#import "UIColor+Hex.h"
+
+#import "WHupdatePwdViewController.h"
 
 
 @interface MyfirstViewController ()<UIScrollViewDelegate>
@@ -67,6 +70,9 @@
 
 @property(nonatomic,strong)UIView * myView4;
 
+@property(nonatomic,strong)UIView * myView5;
+@property(nonatomic,strong)UIView * myView6;
+
 
 
 
@@ -103,7 +109,7 @@
     //self.headview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"我的_02.png"]];
     self.image= [[UIImageView alloc]init];
     self.image.frame = CGRectMake(0,0 , CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.24);
-    self.image.image = [UIImage imageNamed:@"我的_02.png"];
+    self.image.image = [UIImage imageNamed:@"Hm_black.png"];
     [self.scolw addSubview:_image];
     
     
@@ -111,7 +117,10 @@
     
     self.myImage = [[UIImageView alloc]init];
     self.myImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.42, 10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18);
-    self.myImage.image = [UIImage imageNamed:@"形状 2.png"];
+    self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
+    self.myImage.layer.masksToBounds = YES;
+    self.myImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.18/2;
+    
     [self.scolw addSubview:_myImage];
     
     self.nameLaber = [[UILabel alloc]init];
@@ -339,76 +348,33 @@
     self.myLaber12.font = [UIFont systemFontOfSize:13.0];
     [self.scolw addSubview:_myLaber12];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
--(void)UI
-{
     //
+    self.myView5 = [[UIView alloc]init];
+    self.myView5.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.3, CGRectGetMaxY(self.image.frame),1, CGRectGetHeight([UIScreen mainScreen].bounds)*0.8);
     
+    self.myView5.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
+    [self.scolw addSubview:_myView5];
     
     //
-    UICollectionViewFlowLayout *flowlayOut = [[UICollectionViewFlowLayout alloc]init];
+    self.myView6 = [[UIView alloc]init];
+    self.myView6.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.65, CGRectGetMinY(self.myView5.frame),1, CGRectGetHeight([UIScreen mainScreen].bounds)*0.8);
+    self.myView6.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
+    [self.scolw addSubview:_myView6];
     
-    flowlayOut.itemSize = CGSizeMake(CGRectGetWidth(self.view.frame)/3 - 10, CGRectGetWidth(self.view.frame)/3 -10);
+//
     
-    flowlayOut.minimumInteritemSpacing = 5;
+    [self.myBut11 addTarget:self action:@selector(updatePwd:) forControlEvents:(UIControlEventTouchUpInside)];
     
-    flowlayOut.minimumLineSpacing = 5 ;
     
-    flowlayOut.scrollDirection = UICollectionViewScrollDirectionVertical ;
-    
-    flowlayOut.sectionInset = UIEdgeInsetsMake(CGRectGetHeight([UIScreen mainScreen].bounds)*0.25, 5, 5, 5);
-    
-    UICollectionView *collectView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:flowlayOut];
-    [self.view addSubview:collectView];
-    //背景设置为白色
-    collectView.backgroundColor = [UIColor whiteColor];
-    
-    collectView.delegate = self;
-    collectView.dataSource = self;
-   [collectView registerClass:[ MyfirstCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-//    
-//    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc ]initWithImage:[UIImage imageNamed:@"btn_nav_list@2x.png"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:@selector(aa:)];
-    
-}
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 12;
 }
 
-//显示数据
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+//修改密码事件
+-(void)updatePwd:(UIButton *)sender
 {
-    MyfirstCollectionViewCell * cell = [collectionView  dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-//    if (indexPath == 0) {
-       cell.titlaber.text = @"我的.家人";
-       cell.aImageVew.image = [UIImage imageNamed:@"6.png"];
-//    }
-
-    
-    
-    
-    
-    return cell;
+    WHupdatePwdViewController * updatePwd = [[WHupdatePwdViewController alloc]init];
+    [self.navigationController pushViewController:updatePwd animated:YES];
 }
- */
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
