@@ -60,8 +60,12 @@
 }
 
 #pragma mark - getter
-- (NSString *)session {
+- (NSString *)uid{
     return self.user.uid;
+}
+
+- (NSString *)key{
+    return self.user.key;
 }
 
 

@@ -100,7 +100,7 @@
 //退出登录
 - (void)logoutWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure{
     
-    NSMutableDictionary *param = [@{@"uid": [JwUserCenter sharedCenter].session} mutableCopy];
+    NSMutableDictionary *param = [@{@"uid": [JwUserCenter sharedCenter].uid} mutableCopy];
     param = [[self filterParam:param interface:@"logout"] mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/logout" success:^(id data) {
