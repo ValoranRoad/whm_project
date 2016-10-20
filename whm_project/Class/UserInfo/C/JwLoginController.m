@@ -11,6 +11,9 @@
 #import "JwRegistController.h"
 #import "JGProgressHelper.h"
 #import "JwUser.h"
+#import "ForgetPwdViewController.h"
+
+#import "MyfirstViewController.h"
 
 @interface JwLoginController ()<UITextFieldDelegate>
 
@@ -34,8 +37,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    //去除返回按钮附近的字体
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
     self.title = @"登录";
     [self setupView];
+    
+    self.mobTF.text = @"13213011251";
+    self.pwdTF.text = @"wyg511688";
 }
 
 - (void)setupView{
@@ -67,6 +77,12 @@
     }else{
         self.eyeB.hidden = YES;
     }
+}
+
+//忘记密码
+- (IBAction)ForgetPwdAction:(id)sender {
+    ForgetPwdViewController * forgetPwd = [[ForgetPwdViewController alloc]init];
+    [self.navigationController pushViewController:forgetPwd animated:YES];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -104,6 +120,8 @@
         [self.userService loginWithMobile:self.mobTF.text password:self.pwdTF.text success:^(JwUser *user) {
             [hud hide:YES];
             [JGProgressHelper  showSuccess:@"登录成功"];
+            MyfirstViewController * myself = [[MyfirstViewController alloc]init];
+            [self.navigationController pushViewController:myself animated:NO];
             
             NSLog(@"%@", user.name);
             

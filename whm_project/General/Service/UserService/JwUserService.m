@@ -144,17 +144,17 @@
 
 //发送短信
 -(void)sendsmsWithMobile:(NSString *)mobile
-                    type:(NSString *)type
-               templates:(NSString *)templates
+                   // type:(NSString *)type
+              // templates:(NSString *)templates
             check_mobile:(NSString *)check_mobile
-                 user_id:(NSString *)user_id
+                 //user_id:(NSString *)user_id
                  success:(void (^)())success failure:(void (^)(NSError *))failure{
     
-    NSMutableDictionary * param = [@{@"modile":mobile,
-                                     @"type":type,
-                                     @"templates":templates,
-                                     @"check_mobile":check_mobile,
-                                     @"user_id":user_id} mutableCopy];
+    NSMutableDictionary * param = [@{@"mobile":mobile,
+                                     //@"type":type,
+                                     //@"templates":templates,
+                                     @"check_mobile":check_mobile
+                                     } mutableCopy];
     param = [[self filterParam:param interface:@"send_sms"]mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/send_sms" success:^(id data) {
