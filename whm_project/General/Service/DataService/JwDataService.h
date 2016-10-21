@@ -8,12 +8,12 @@
 
 #import "JwServiceBase.h"
 #import "JwServiceDefine.h"
-@class JwUser;
+@class JwCompanys;
 
 @interface JwDataService : JwServiceBase
 
 //获取公司列表
-
-
+- (void)get_CompanysWithType:(NSString *)type
+                     success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
 @end
