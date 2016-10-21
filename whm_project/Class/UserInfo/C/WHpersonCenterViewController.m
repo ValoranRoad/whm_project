@@ -12,6 +12,7 @@
 
 #import "WHupdatePwdViewController.h"
 
+#import "WHaccountDetaTableViewController.h"
 
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIView * headview;
@@ -105,6 +106,13 @@
     self.myImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.18/2;
     
     [self.scolw addSubview:_myImage];
+    //图片点击事件触发账户详情
+    self.myImage.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage)];
+    [self.myImage addGestureRecognizer:singleTap];
+    
+    //
     
     self.nameLaber = [[UILabel alloc]init];
     
@@ -149,13 +157,6 @@
 -(void)setUI
 {
     
-    //    self.scolw.delegate = self;
-    //    self.scolw = [[UIScrollView alloc]init];
-    //    self.scolw.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
-    //
-    //
-    //    self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*3.0);
-    //       [self.view addSubview:_scolw];
     
     self.myBut1 = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.myBut1.frame = CGRectMake(20, CGRectGetMaxY(self.baojianLaber.frame)+50, CGRectGetWidth([UIScreen mainScreen].bounds)*0.15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.15);
@@ -357,7 +358,14 @@
     WHupdatePwdViewController * updatePwd = [[WHupdatePwdViewController alloc]init];
     [self.navigationController pushViewController:updatePwd animated:NO];
 }
-
+//账户详情点击事件
+-(void)onClickImage
+{
+    WHaccountDetaTableViewController * account = [[WHaccountDetaTableViewController alloc]init];
+    [self.navigationController pushViewController:account animated:YES];
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
