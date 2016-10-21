@@ -13,8 +13,10 @@
 #import "JwUser.h"
 #import "ForgetPwdViewController.h"
 
-#import "MyfirstViewController.h"
+#import "WHpersonCenterViewController.h"
 
+
+#import "RegisterTwoViewController.h"
 @interface JwLoginController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mobV;
@@ -79,6 +81,18 @@
     }
 }
 
+//保险顾问注册
+- (IBAction)PropertBut:(id)sender {
+    
+    NSLog(@"hhh");
+    
+    JwRegistController *registVC = [[JwRegistController alloc] init];
+    [self.navigationController pushViewController:registVC animated:YES];
+//    RegisterTwoViewController *regVC = [[RegisterTwoViewController alloc]init];
+//    
+//    [self.navigationController pushViewController:regVC animated:YES];
+}
+
 //忘记密码
 - (IBAction)ForgetPwdAction:(id)sender {
     ForgetPwdViewController * forgetPwd = [[ForgetPwdViewController alloc]init];
@@ -106,9 +120,12 @@
         self.pwdTF.secureTextEntry = YES;
     }
 }
-
+//新用户注册
 - (IBAction)onNews:(UIButton *)sender {
     JwRegistController *registVC = [[JwRegistController alloc] init];
+     NSString * s1 = @"new";
+    
+    registVC.strNew = s1;
     [self.navigationController pushViewController:registVC animated:YES];
 }
 
@@ -120,7 +137,7 @@
         [self.userService loginWithMobile:self.mobTF.text password:self.pwdTF.text success:^(JwUser *user) {
             [hud hide:YES];
             [JGProgressHelper  showSuccess:@"登录成功"];
-            MyfirstViewController * myself = [[MyfirstViewController alloc]init];
+            WHpersonCenterViewController * myself = [[WHpersonCenterViewController alloc]init];
             [self.navigationController pushViewController:myself animated:NO];
             
             NSLog(@"%@", user.name);

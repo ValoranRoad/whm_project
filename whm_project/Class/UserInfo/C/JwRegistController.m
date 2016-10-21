@@ -9,6 +9,8 @@
 #import "JwRegistController.h"
 
 #import "JGProgressHelper.h"
+
+#import "RegisterTwoViewController.h"
 @interface JwRegistController ()
 
 
@@ -32,10 +34,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"注册";
+    if ([self.strNew isEqualToString:@"new"]) {
+        [self.protlBut setTitle:@"注册" forState:(UIControlStateNormal)];
+    }else
+    {
+        [self.protlBut setTitle:@"下一步" forState:(UIControlStateNormal)];
+        
+    }
 }
+
+
 //注册事件
 - (IBAction)nextButAction:(id)sender {
 
+    if ([self.strNew isEqualToString:@"new"]) {
+        
+    
     if (self.nameText.text.length != 0 && self.telText.text.length != 0 && self.CodeText.text.length != 0 && self.pwdText.text !=0 && self.comforPwdText.text.length != 0) {
         
         if ([self.pwdText.text isEqualToString:self.comforPwdText.text ]) {
@@ -65,6 +79,13 @@
         [JGProgressHelper showError:@"有未填写项,请填写"];
     }
     
+    }else
+    {
+        //顾问注册进入下一步
+        RegisterTwoViewController * regTwo = [[RegisterTwoViewController alloc]init];
+        [self.navigationController pushViewController:regTwo animated:NO];
+
+    }
     
 }
  //验证码事件发送

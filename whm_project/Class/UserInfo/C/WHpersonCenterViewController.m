@@ -1,21 +1,20 @@
 //
-//  MyfirstViewController.m
-//  kuaibaoAPP
+//  WHpersonCenterViewController.m
+//  whm_project
 //
-//  Created by 王义国 on 16/9/30.
-//  Copyright © 2016年 王义国. All rights reserved.
+//  Created by 王义国 on 16/10/20.
+//  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "MyfirstViewController.h"
+#import "WHpersonCenterViewController.h"
 
 #import "UIColor+Hex.h"
 
 #import "WHupdatePwdViewController.h"
 
+#import "WHaccountDetaTableViewController.h"
 
-@interface MyfirstViewController ()<UIScrollViewDelegate>
-
-
+@interface WHpersonCenterViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIView * headview;
 
 @property(nonatomic,strong)UIImageView * myImage;
@@ -74,23 +73,13 @@
 @property(nonatomic,strong)UIView * myView6;
 
 
-
-
-
-
-
-
-
-
-
 @end
 
-@implementation MyfirstViewController
+@implementation WHpersonCenterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.view.backgroundColor = [UIColor yellowColor];
     
     self.navigationItem.title = @"我的";
     
@@ -101,19 +90,14 @@
     
     self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*1.2);
     [self.view addSubview:_scolw];
-    
-  //  [self UI];
-    //self.headview = [[UIView alloc]init];
-   // self.headview.frame = CGRectMake(0,64 , CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.24);
-    
-    //self.headview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"我的_02.png"]];
+
     self.image= [[UIImageView alloc]init];
     self.image.frame = CGRectMake(0,0 , CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.24);
     self.image.image = [UIImage imageNamed:@"Hm_black.png"];
     [self.scolw addSubview:_image];
     
     
-   // [self.view addSubview:_headview];
+    // [self.view addSubview:_headview];
     
     self.myImage = [[UIImageView alloc]init];
     self.myImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.42, 10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18);
@@ -122,6 +106,13 @@
     self.myImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.18/2;
     
     [self.scolw addSubview:_myImage];
+    //图片点击事件触发账户详情
+    self.myImage.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage)];
+    [self.myImage addGestureRecognizer:singleTap];
+    
+    //
     
     self.nameLaber = [[UILabel alloc]init];
     
@@ -166,13 +157,6 @@
 -(void)setUI
 {
     
-//    self.scolw.delegate = self;
-//    self.scolw = [[UIScrollView alloc]init];
-//    self.scolw.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
-// 
-//    
-//    self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*3.0);
-//       [self.view addSubview:_scolw];
     
     self.myBut1 = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.myBut1.frame = CGRectMake(20, CGRectGetMaxY(self.baojianLaber.frame)+50, CGRectGetWidth([UIScreen mainScreen].bounds)*0.15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.15);
@@ -361,7 +345,7 @@
     self.myView6.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
     [self.scolw addSubview:_myView6];
     
-//
+    //
     
     [self.myBut11 addTarget:self action:@selector(updatePwd:) forControlEvents:(UIControlEventTouchUpInside)];
     
@@ -372,9 +356,16 @@
 -(void)updatePwd:(UIButton *)sender
 {
     WHupdatePwdViewController * updatePwd = [[WHupdatePwdViewController alloc]init];
-    [self.navigationController pushViewController:updatePwd animated:YES];
+    [self.navigationController pushViewController:updatePwd animated:NO];
 }
-
+//账户详情点击事件
+-(void)onClickImage
+{
+    WHaccountDetaTableViewController * account = [[WHaccountDetaTableViewController alloc]init];
+    [self.navigationController pushViewController:account animated:YES];
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

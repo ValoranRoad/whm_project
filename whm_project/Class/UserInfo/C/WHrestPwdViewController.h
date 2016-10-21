@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JwBackBaseController.h"
 
-@interface WHrestPwdViewController : UIViewController
+@interface WHrestPwdViewController : JwBackBaseController
+
+@property(nonatomic,strong)NSString * oldPwd;
 
 @end

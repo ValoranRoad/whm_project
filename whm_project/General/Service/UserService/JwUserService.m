@@ -171,13 +171,14 @@
                 pwd:(NSString *)pwd
             success:(void (^)())success failure:(void (^)(NSError *))failure{
     
-    NSMutableDictionary * param = [@{@"uid":uid,
-                                     @"old_pwd":old_pwd,
-                                     @"pwd":pwd} mutableCopy];
-    param = [[self filterParam:param interface:@"kb/update_pwd"]mutableCopy];
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"pwd":pwd,
+                                     @"token":[JwUserCenter sharedCenter].key
+                                     } mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/update_pwd"]mutableCopy];
     
-    [self.httpManager POST:param withPoint:@"kb/update_pwd" success:^(id data) {
-        
+    [self.httpManager POST:param withPoint:@"kbj/update_pwd" success:^(id data) {
+
         if (success) {
             success();
         }
