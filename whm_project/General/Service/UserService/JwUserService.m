@@ -172,6 +172,7 @@
             success:(void (^)())success failure:(void (^)(NSError *))failure{
     
     NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"old_pwd":old_pwd,
                                      @"pwd":pwd,
                                      @"token":[JwUserCenter sharedCenter].key
                                      } mutableCopy];
