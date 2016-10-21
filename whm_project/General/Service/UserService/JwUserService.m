@@ -17,7 +17,7 @@
     
     NSMutableDictionary *param = [@{@"mobile": mobile,
                                     @"pwd": password} mutableCopy];
-    param = [[self filterParam:param interface:@"login"] mutableCopy];
+    param = [[self filterParam:param interface:@"kb/login"] mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/login" success:^(id data) {
         
@@ -80,7 +80,7 @@
         }
     }
     
-    param = [[self filterParam:param interface:@"regist"] mutableCopy];
+    param = [[self filterParam:param interface:@"kb/regist"] mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/regist" success:^(id data) {
         
@@ -101,7 +101,7 @@
 - (void)logoutWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure{
     
     NSMutableDictionary *param = [@{@"uid": [JwUserCenter sharedCenter].uid} mutableCopy];
-    param = [[self filterParam:param interface:@"logout"] mutableCopy];
+    param = [[self filterParam:param interface:@"kb/logout"] mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/logout" success:^(id data) {
         
@@ -129,7 +129,7 @@
                                      @"captcha":captcha,
                                      @"pwd":pwd} mutableCopy];
     
-    param = [[self filterParam:param interface:@"reset_pwd"]mutableCopy];
+    param = [[self filterParam:param interface:@"kb/reset_pwd"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/reset_pwd" success:^(id data) {
         
         if (success) {
@@ -150,7 +150,7 @@
     NSMutableDictionary * param = [@{@"mobile":mobile,
                                      @"check_mobile":check_mobile
                                      } mutableCopy];
-    param = [[self filterParam:param interface:@"send_sms"]mutableCopy];
+    param = [[self filterParam:param interface:@"kb/send_sms"]mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/send_sms" success:^(id data) {
         
@@ -174,7 +174,7 @@
     NSMutableDictionary * param = [@{@"uid":uid,
                                      @"old_pwd":old_pwd,
                                      @"pwd":pwd} mutableCopy];
-    param = [[self filterParam:param interface:@"send_sms"]mutableCopy];
+    param = [[self filterParam:param interface:@"kb/update_pwd"]mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/update_pwd" success:^(id data) {
         
