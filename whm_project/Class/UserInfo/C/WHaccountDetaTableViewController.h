@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WHaccountDetaTableViewController : UITableViewController
+#import "JwBackBaseController.h"
+@interface WHaccountDetaTableViewController : JwBackBaseController
 
 @end

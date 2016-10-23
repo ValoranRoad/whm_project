@@ -116,7 +116,7 @@
     
     self.nameLaber = [[UILabel alloc]init];
     
-    self.nameLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.35, CGRectGetMaxY(self.myImage.frame)+15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.6, 20);
+    self.nameLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.30, CGRectGetMaxY(self.myImage.frame)+15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.6, 20);
     self.nameLaber.text = @"孙一心( 康泰人寿 ) >";
     self.nameLaber.textColor = [UIColor whiteColor];
     self.nameLaber.font = [UIFont systemFontOfSize:17.0];
