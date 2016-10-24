@@ -26,6 +26,10 @@
 		9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDB1DB9FF7F0069A085 /* ASBirthSelectSheet.m */; };
 		9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */; };
 		9F056EE21DBA1A960069A085 /* WHaccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */; };
+		9F0A20BB1DBDAC64004C5F67 /* WHsetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */; };
+		9F0A20BE1DBDB972004C5F67 /* WHsavesetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20BD1DBDB972004C5F67 /* WHsavesetupTableViewController.m */; };
+		9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */; };
+		9F0A20C71DBDEAA2004C5F67 /* WHtelephoneNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20C61DBDEAA2004C5F67 /* WHtelephoneNumViewController.m */; };
 		9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE5821DBB293900B68F76 /* WHsexViewController.m */; };
 		9F0EE58C1DBB52EB00B68F76 /* WHorganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE58B1DBB52EB00B68F76 /* WHorganization.m */; };
 		9F0EE58F1DBB547C00B68F76 /* WHhotcompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE58E1DBB547C00B68F76 /* WHhotcompany.m */; };
@@ -161,6 +165,14 @@
 		9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaddressDetalViewController.m; sourceTree = "<group>"; };
 		9F056EE01DBA1A960069A085 /* WHaccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHaccountTableViewCell.h; sourceTree = "<group>"; };
 		9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaccountTableViewCell.m; sourceTree = "<group>"; };
+		9F0A20B91DBDAC64004C5F67 /* WHsetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsetupTableViewController.h; sourceTree = "<group>"; };
+		9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsetupTableViewController.m; sourceTree = "<group>"; };
+		9F0A20BC1DBDB972004C5F67 /* WHsavesetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsavesetupTableViewController.h; sourceTree = "<group>"; };
+		9F0A20BD1DBDB972004C5F67 /* WHsavesetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsavesetupTableViewController.m; sourceTree = "<group>"; };
+		9F0A20C21DBDDFC4004C5F67 /* WHupdateTelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHupdateTelView.h; sourceTree = "<group>"; };
+		9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHupdateTelView.m; sourceTree = "<group>"; };
+		9F0A20C51DBDEAA2004C5F67 /* WHtelephoneNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHtelephoneNumViewController.h; sourceTree = "<group>"; };
+		9F0A20C61DBDEAA2004C5F67 /* WHtelephoneNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHtelephoneNumViewController.m; sourceTree = "<group>"; };
 		9F0EE5811DBB293900B68F76 /* WHsexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsexViewController.h; sourceTree = "<group>"; };
 		9F0EE5821DBB293900B68F76 /* WHsexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsexViewController.m; sourceTree = "<group>"; };
 		9F0EE58A1DBB52EB00B68F76 /* WHorganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorganization.h; sourceTree = "<group>"; };
@@ -898,6 +910,12 @@
 				9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */,
 				9F0EE5811DBB293900B68F76 /* WHsexViewController.h */,
 				9F0EE5821DBB293900B68F76 /* WHsexViewController.m */,
+				9F0A20B91DBDAC64004C5F67 /* WHsetupTableViewController.h */,
+				9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */,
+				9F0A20BC1DBDB972004C5F67 /* WHsavesetupTableViewController.h */,
+				9F0A20BD1DBDB972004C5F67 /* WHsavesetupTableViewController.m */,
+				9F0A20C51DBDEAA2004C5F67 /* WHtelephoneNumViewController.h */,
+				9F0A20C61DBDEAA2004C5F67 /* WHtelephoneNumViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -948,6 +966,8 @@
 				C8C10CC51DB9C0AD00A5FB9A /* ForgetPwdView.m */,
 				9F056EE01DBA1A960069A085 /* WHaccountTableViewCell.h */,
 				9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */,
+				9F0A20C21DBDDFC4004C5F67 /* WHupdateTelView.h */,
+				9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1168,6 +1188,7 @@
 				C8C10CBA1DB9C06F00A5FB9A /* WHpersonCenterViewController.m in Sources */,
 				C8C10CBC1DB9C06F00A5FB9A /* WHupdatePwdViewController.m in Sources */,
 				C8C10CBD1DB9C06F00A5FB9A /* ChooseCompleteViewController.m in Sources */,
+				9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
 				9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */,
 				961358CC1DB6263300F5107F /* HmSelectCompanyController.m in Sources */,
@@ -1190,6 +1211,7 @@
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
 				C84EAA0D1DB76A980098C2A1 /* UIImage+Color.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
+				9F0A20C71DBDEAA2004C5F67 /* WHtelephoneNumViewController.m in Sources */,
 				961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */,
 				C86353D41DB4670700ED8B16 /* UIColor+Hex.m in Sources */,
 				C8C10CC01DB9C06F00A5FB9A /* ChooseTableViewCell.m in Sources */,
@@ -1197,6 +1219,7 @@
 				C86353D71DB4670F00ED8B16 /* JGProgressHelper.m in Sources */,
 				9F056EE21DBA1A960069A085 /* WHaccountTableViewCell.m in Sources */,
 				C8C10CBE1DB9C06F00A5FB9A /* InsuranceViewController.m in Sources */,
+				9F0A20BE1DBDB972004C5F67 /* WHsavesetupTableViewController.m in Sources */,
 				C8C10CB61DB9C06F00A5FB9A /* JwRegistController.m in Sources */,
 				C86354051DB4674100ED8B16 /* JwModelBase.m in Sources */,
 				C8C10CB41DB9C06F00A5FB9A /* JwLoginController.m in Sources */,
@@ -1208,6 +1231,7 @@
 				C86354A91DB4D3AB00ED8B16 /* JwTabBarController.m in Sources */,
 				C86354361DB473A600ED8B16 /* IQTextView.m in Sources */,
 				961358B91DB606DE00F5107F /* CMIndexBar.m in Sources */,
+				9F0A20BB1DBDAC64004C5F67 /* WHsetupTableViewController.m in Sources */,
 				C86353C81DB4669A00ED8B16 /* JwUserCenter.m in Sources */,
 				C86354371DB473A600ED8B16 /* IQBarButtonItem.m in Sources */,
 				961358C81DB6259600F5107F /* HmSelectProductCell.m in Sources */,

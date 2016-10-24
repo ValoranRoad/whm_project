@@ -20,6 +20,8 @@
 #import "WHaccountTableViewCell.h"
 
 #import "WHsexViewController.h"
+
+
 #define kScreenWitdh [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 @interface WHaccountDetaTableViewController ()<UITableViewDelegate,UITableViewDataSource>
