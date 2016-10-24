@@ -26,8 +26,8 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateStr = [dateFormatter stringFromDate:date];
-    //NSArray *inters = [interface componentsSeparatedByString:@"/"];
-    NSString *kbStr = [[Md5 md5:[NSString stringWithFormat:@"kuaibao%@%@%@api", @"kb", dateStr, interface]] lowercaseString];
+    NSArray *inters = [interface componentsSeparatedByString:@"/"];
+    NSString *kbStr = [[Md5 md5:[NSString stringWithFormat:@"kuaibao%@%@%@api", [inters firstObject], dateStr, [inters lastObject]]] lowercaseString];
     
     NSMutableDictionary *paramM = [NSMutableDictionary dictionaryWithDictionary:param];
     paramM[@"kb"] = kbStr;
@@ -38,8 +38,8 @@
 #pragma mark - HttpManagerDelegate
 
 - (BOOL)httpManager:(id)hepler isSuccess:(NSDictionary *)response {
-    NSDictionary *result = response[@"err"];
-    if ([result[@"status"] intValue] == kErrorCodeSuccess ) {
+    NSInteger result = [response[@"err"] integerValue];
+    if (result == kErrorCodeSuccess) {
         return YES;
     }else {
         return NO;

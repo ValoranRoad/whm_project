@@ -9,5 +9,6 @@
 #import "JwBackBaseController.h"
 
 @interface JwRegistController : JwBackBaseController
+@property(nonatomic,strong)NSString * strNew;
 
 @end

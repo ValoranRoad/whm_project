@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -11,8 +11,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JwLoginController">
             <connections>
                 <outlet property="baoB" destination="xFA-ru-2go" id="Iky-dM-3Ei"/>
+                <outlet property="clearB" destination="eNk-zL-iHG" id="gDh-Nm-8KB"/>
+                <outlet property="eyeB" destination="uLM-5e-cyQ" id="qrF-Nq-ia7"/>
+                <outlet property="mobTF" destination="NYc-a2-Osf" id="KnJ-l6-f1u"/>
                 <outlet property="mobV" destination="2Jf-V3-6hE" id="whA-VY-7lO"/>
                 <outlet property="newsB" destination="h1L-Ji-RF7" id="7n2-K9-UHL"/>
+                <outlet property="pwdTF" destination="IyZ-9B-zfp" id="bgr-4E-lMp"/>
                 <outlet property="pwdV" destination="Gzy-My-EID" id="0lx-AQ-tpB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,13 +39,13 @@
                                 <constraint firstAttribute="width" constant="25" id="rM5-3M-Oob"/>
                             </constraints>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-a2-Osf">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-a2-Osf">
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="f9V-Ju-qr9"/>
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNk-zL-iHG">
                             <constraints>
@@ -49,6 +53,9 @@
                                 <constraint firstAttribute="width" constant="20" id="zLH-Q5-5Kq"/>
                             </constraints>
                             <state key="normal" backgroundImage="Jw_clear"/>
+                            <connections>
+                                <action selector="onClear:" destination="-1" eventType="touchUpInside" id="d0O-PB-kzJ"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -79,13 +86,13 @@
                                 <constraint firstAttribute="width" constant="25" id="fn8-rL-9tp"/>
                             </constraints>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IyZ-9B-zfp">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IyZ-9B-zfp">
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="3vf-vi-sBe"/>
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLM-5e-cyQ">
                             <constraints>
@@ -93,6 +100,9 @@
                                 <constraint firstAttribute="width" constant="20" id="rGK-Cr-XsG"/>
                             </constraints>
                             <state key="normal" title="Button" backgroundImage="Jw_eye"/>
+                            <connections>
+                                <action selector="onEye:" destination="-1" eventType="touchUpInside" id="sdt-8o-uCf"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,6 +149,9 @@
                     <state key="normal" title="忘记密码?">
                         <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="ForgetPwdAction:" destination="-1" eventType="touchUpInside" id="sHa-9Z-edM"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFA-ru-2go">
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -153,6 +166,9 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="PropertBut:" destination="-1" eventType="touchUpInside" id="2Nh-l6-cRw"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-Ji-RF7">
                     <constraints>
@@ -170,6 +186,9 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onNews:" destination="-1" eventType="touchUpInside" id="vcw-bV-rPo"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

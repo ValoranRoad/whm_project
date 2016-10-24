@@ -14,9 +14,9 @@
 @interface JwUserCenter : JwModelBase<NSCoding>
 
 @property (nonatomic, strong) JwUser *user;
-@property (nonatomic, strong) NSString *session;
+@property (nonatomic, strong) NSString *uid;
+@property (nonatomic, strong) NSString *key;
 @property (nonatomic, assign) BOOL isLogined;
-
 
 + (instancetype)load;
 + (instancetype)sharedCenter;

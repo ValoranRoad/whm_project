@@ -17,12 +17,12 @@
     
     NSMutableDictionary *param = [@{@"mobile": mobile,
                                     @"pwd": password} mutableCopy];
-    param = [[self filterParam:param interface:@"login"] mutableCopy];
+    param = [[self filterParam:param interface:@"kb/login"] mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/login" success:^(id data) {
         
-        NSDictionary *info = data[@"data"];
-        JwUser *user = [[JwUser alloc] initWithDictionary:info error:nil];
+        NSArray *infos = data[@"data"];
+        JwUser *user = [[JwUser alloc] initWithDictionary:[infos firstObject] error:nil];
         
         [JwUserCenter sharedCenter].user = user;
         [JwUserCenter sharedCenter].isLogined = YES;
@@ -80,16 +80,12 @@
         }
     }
     
-    param = [[self filterParam:param interface:@"regist"] mutableCopy];
+    param = [[self filterParam:param interface:@"kb/regist"] mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/regist" success:^(id data) {
         
         NSDictionary *info = data[@"data"];
         JwUser *user = [[JwUser alloc] initWithDictionary:info error:nil];
-        
-        [JwUserCenter sharedCenter].user = user;
-        [JwUserCenter sharedCenter].isLogined = YES;
-        [[JwUserCenter sharedCenter] save];
         
         if (success) {
             success(user);
@@ -104,8 +100,8 @@
 //退出登录
 - (void)logoutWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure{
     
-    NSMutableDictionary *param = [@{@"uid": [JwUserCenter sharedCenter].session} mutableCopy];
-    param = [[self filterParam:param interface:@"logout"] mutableCopy];
+    NSMutableDictionary *param = [@{@"uid": [JwUserCenter sharedCenter].uid} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/logout"] mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/logout" success:^(id data) {
         
@@ -121,90 +117,180 @@
             failure(error);
         }
     }];
-
 }
-
 
 //忘记密码
 -(void)forgetwordWithMobile:(NSString *)mobile
                     captcha:(NSString *)captcha
                         pwd:(NSString *)pwd
-                    success:(void (^)())success failure:(void (^)(NSError *))failure
-{
+                    success:(void (^)())success failure:(void (^)(NSError *))failure{
+    
     NSMutableDictionary * param = [@{@"mobile":mobile,
                                      @"captcha":captcha,
-                                     @"pwd":pwd}mutableCopy];
-    param = [[self filterParam:param interface:@"reset_pwd"]mutableCopy];
+                                     @"pwd":pwd} mutableCopy];
+    
+    param = [[self filterParam:param interface:@"kb/reset_pwd"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/reset_pwd" success:^(id data) {
         
         if (success) {
             success();
         }
-
-        
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
         }
     }];
-
-    
 }
 
 //发送短信
 -(void)sendsmsWithMobile:(NSString *)mobile
-                    type:(NSString *)type
-               templates:(NSString *)templates
             check_mobile:(NSString *)check_mobile
-                 user_id:(NSString *)user_id
-                 success:(void (^)())success failure:(void (^)(NSError *))failure
-{
-    NSMutableDictionary * param = [@{@"modile":mobile,
-                                    @"type":type,
-                                    @"templates":templates,
-                                    @"check_mobile":check_mobile,
-                                    @"user_id":user_id}mutableCopy];
-    param = [[self filterParam:param interface:@"send_sms"]mutableCopy];
-
+                 success:(void (^)())success failure:(void (^)(NSError *))failure{
+    
+    NSMutableDictionary * param = [@{@"mobile":mobile,
+                                     @"check_mobile":check_mobile
+                                     } mutableCopy];
+    param = [[self filterParam:param interface:@"kb/send_sms"]mutableCopy];
+    
     [self.httpManager POST:param withPoint:@"kb/send_sms" success:^(id data) {
         
         if (success) {
             success();
         }
-        
     } failure:^(NSError *error) {
         
         if (failure) {
             failure(error);
         }
-
     }];
-    
 }
 
 //修改密码
 -(void)updatepwdUid:(NSString *)uid
             old_pwd:(NSString *)old_pwd
                 pwd:(NSString *)pwd
-            success:(void (^)())success failure:(void (^)(NSError *))failure
-{
-    NSMutableDictionary * param = [@{@"uid":uid,
-                                    @"old_pwd":old_pwd,
-                                    @"pwd":pwd}mutableCopy];
-    param = [[self filterParam:param interface:@"update_pwd"]mutableCopy];
-    [self.httpManager POST:param withPoint:@"kb/update_pwd" success:^(id data) {
-        
+            success:(void (^)())success failure:(void (^)(NSError *))failure{
+    
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"old_pwd":old_pwd,
+                                     @"pwd":pwd,
+                                     @"token":[JwUserCenter sharedCenter].key
+                                     } mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/update_pwd"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/update_pwd" success:^(id data) {
+
         if (success) {
             success();
         }
-        
-        
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);
         }
-        
     }];
+}
+//保存用户信息
+
+-(void)save_userWithUid:(NSString *)uid
+                 avatar:(NSString *)avatar
+                   name:(NSString *)name
+                    sex:(NSString *)sex
+               birthday:(NSString *)birthday
+              area_info:(NSString *)area_info
+           area_info_id:(NSString *)area_info_id
+                address:(NSString *)address
+                success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid ,
+                              @"avatar":avatar ,
+                              @"name":name ,
+                              @"sex":sex ,
+                              @"birthday":birthday,
+                              @"area_info":area_info ,
+                              @"area_info_id":area_info_id,
+                              @"address":address,
+                              @"token":[JwUserCenter sharedCenter].key
+                              }mutableCopy];
+    
+    param = [[self filterParam:param interface:@"kbj/save_user"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/save_user" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+    
+}
+
+//保存认证信息
+-(void)save_verifyWithUid:(NSString *)uid
+                  company:(NSString *)company
+                     name:(NSString *)name
+               cardnumber:(NSString *)cardnumber
+       organizationnumber:(NSString *)organizationnumber
+                    point:(NSString *)point
+                  address:(NSString *)address
+                      job:(NSString *)job
+                  success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid ,
+                              @"company":company ,
+                              @"name":name ,
+                              @"cardnumber":cardnumber ,
+                              @"organizationnumber":organizationnumber,
+                              @"point":point ,
+                              @"address":address,
+                              @"job":job,
+                              @"token":[JwUserCenter sharedCenter].key}
+                            mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/save_verify"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/save_verify" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+    
+}
+
+//修改手机号
+-(void)update_mobileWithUid:(NSString *)uid
+                     mobile:(NSString *)mobile
+                    captcha:(NSString *)captcha
+                    success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"mobile":mobile,
+                              @"captcha":captcha,
+                              @"token":[JwUserCenter sharedCenter].key}
+                            mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/update_mobile"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/update_mobile" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
     
 }
 

@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSURL *avatar;
+@property (nonatomic, strong) NSString *avatar;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString<Optional> *status;
 @property (nonatomic, strong) NSString<Optional> *company;
