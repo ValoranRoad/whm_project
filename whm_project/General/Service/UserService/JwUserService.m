@@ -189,6 +189,110 @@
         }
     }];
 }
+//保存用户信息
+
+-(void)save_userWithUid:(NSString *)uid
+                 avatar:(NSString *)avatar
+                   name:(NSString *)name
+                    sex:(NSString *)sex
+               birthday:(NSString *)birthday
+              area_info:(NSString *)area_info
+           area_info_id:(NSString *)area_info_id
+                address:(NSString *)address
+                success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid ,
+                              @"avatar":avatar ,
+                              @"name":name ,
+                              @"sex":sex ,
+                              @"birthday":birthday,
+                              @"area_info":area_info ,
+                              @"area_info_id":area_info_id,
+                              @"address":address,
+                              @"token":[JwUserCenter sharedCenter].key
+                              }mutableCopy];
+    
+    param = [[self filterParam:param interface:@"kbj/save_user"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/save_user" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+    
+}
+
+//保存认证信息
+-(void)save_verifyWithUid:(NSString *)uid
+                  company:(NSString *)company
+                     name:(NSString *)name
+               cardnumber:(NSString *)cardnumber
+       organizationnumber:(NSString *)organizationnumber
+                    point:(NSString *)point
+                  address:(NSString *)address
+                      job:(NSString *)job
+                  success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid ,
+                              @"company":company ,
+                              @"name":name ,
+                              @"cardnumber":cardnumber ,
+                              @"organizationnumber":organizationnumber,
+                              @"point":point ,
+                              @"address":address,
+                              @"job":job,
+                              @"token":[JwUserCenter sharedCenter].key}
+                            mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/save_verify"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/save_verify" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+    
+}
+
+//修改手机号
+-(void)update_mobileWithUid:(NSString *)uid
+                     mobile:(NSString *)mobile
+                    captcha:(NSString *)captcha
+                    success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"mobile":mobile,
+                              @"captcha":captcha,
+                              @"token":[JwUserCenter sharedCenter].key}
+                            mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/update_mobile"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/update_mobile" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+}
 
 
 

@@ -22,6 +22,22 @@
 		961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358D31DB6280000F5107F /* HmCompanyCollectionCell.m */; };
 		961358D61DB6280000F5107F /* HmCompanyCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358D41DB6280000F5107F /* HmCompanyCollectionCell.xib */; };
 		961358D91DB645DF00F5107F /* HmHotCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358D81DB645DF00F5107F /* HmHotCompanyCell.m */; };
+		9F056ED01DB9E7410069A085 /* WHinsuranceNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056ECF1DB9E7410069A085 /* WHinsuranceNameViewController.m */; };
+		9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDB1DB9FF7F0069A085 /* ASBirthSelectSheet.m */; };
+		9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */; };
+		9F056EE21DBA1A960069A085 /* WHaccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */; };
+		9F0A20BB1DBDAC64004C5F67 /* WHsetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */; };
+		9F0A20BE1DBDB972004C5F67 /* WHsavesetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20BD1DBDB972004C5F67 /* WHsavesetupTableViewController.m */; };
+		9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */; };
+		9F0A20C71DBDEAA2004C5F67 /* WHtelephoneNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20C61DBDEAA2004C5F67 /* WHtelephoneNumViewController.m */; };
+		9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE5821DBB293900B68F76 /* WHsexViewController.m */; };
+		9F0EE58C1DBB52EB00B68F76 /* WHorganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE58B1DBB52EB00B68F76 /* WHorganization.m */; };
+		9F0EE58F1DBB547C00B68F76 /* WHhotcompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE58E1DBB547C00B68F76 /* WHhotcompany.m */; };
+		9F0EE5921DBB568000B68F76 /* WHgetproduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE5911DBB568000B68F76 /* WHgetproduct.m */; };
+		9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */; };
+		9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */; };
+		9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */; };
+		9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
@@ -141,6 +157,38 @@
 		961358D41DB6280000F5107F /* HmCompanyCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmCompanyCollectionCell.xib; sourceTree = "<group>"; };
 		961358D71DB645DF00F5107F /* HmHotCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmHotCompanyCell.h; sourceTree = "<group>"; };
 		961358D81DB645DF00F5107F /* HmHotCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmHotCompanyCell.m; sourceTree = "<group>"; };
+		9F056ECE1DB9E7410069A085 /* WHinsuranceNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHinsuranceNameViewController.h; sourceTree = "<group>"; };
+		9F056ECF1DB9E7410069A085 /* WHinsuranceNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHinsuranceNameViewController.m; sourceTree = "<group>"; };
+		9F056EDA1DB9FF790069A085 /* ASBirthSelectSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBirthSelectSheet.h; sourceTree = "<group>"; };
+		9F056EDB1DB9FF7F0069A085 /* ASBirthSelectSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASBirthSelectSheet.m; sourceTree = "<group>"; };
+		9F056EDD1DBA02E40069A085 /* WHaddressDetalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHaddressDetalViewController.h; sourceTree = "<group>"; };
+		9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaddressDetalViewController.m; sourceTree = "<group>"; };
+		9F056EE01DBA1A960069A085 /* WHaccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHaccountTableViewCell.h; sourceTree = "<group>"; };
+		9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaccountTableViewCell.m; sourceTree = "<group>"; };
+		9F0A20B91DBDAC64004C5F67 /* WHsetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsetupTableViewController.h; sourceTree = "<group>"; };
+		9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsetupTableViewController.m; sourceTree = "<group>"; };
+		9F0A20BC1DBDB972004C5F67 /* WHsavesetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsavesetupTableViewController.h; sourceTree = "<group>"; };
+		9F0A20BD1DBDB972004C5F67 /* WHsavesetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsavesetupTableViewController.m; sourceTree = "<group>"; };
+		9F0A20C21DBDDFC4004C5F67 /* WHupdateTelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHupdateTelView.h; sourceTree = "<group>"; };
+		9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHupdateTelView.m; sourceTree = "<group>"; };
+		9F0A20C51DBDEAA2004C5F67 /* WHtelephoneNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHtelephoneNumViewController.h; sourceTree = "<group>"; };
+		9F0A20C61DBDEAA2004C5F67 /* WHtelephoneNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHtelephoneNumViewController.m; sourceTree = "<group>"; };
+		9F0EE5811DBB293900B68F76 /* WHsexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsexViewController.h; sourceTree = "<group>"; };
+		9F0EE5821DBB293900B68F76 /* WHsexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsexViewController.m; sourceTree = "<group>"; };
+		9F0EE58A1DBB52EB00B68F76 /* WHorganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorganization.h; sourceTree = "<group>"; };
+		9F0EE58B1DBB52EB00B68F76 /* WHorganization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorganization.m; sourceTree = "<group>"; };
+		9F0EE58D1DBB547C00B68F76 /* WHhotcompany.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHhotcompany.h; sourceTree = "<group>"; };
+		9F0EE58E1DBB547C00B68F76 /* WHhotcompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHhotcompany.m; sourceTree = "<group>"; };
+		9F0EE5901DBB568000B68F76 /* WHgetproduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetproduct.h; sourceTree = "<group>"; };
+		9F0EE5911DBB568000B68F76 /* WHgetproduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetproduct.m; sourceTree = "<group>"; };
+		9FBAA04C1DBC88CB00C288E3 /* WHgetuseinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetuseinfo.h; sourceTree = "<group>"; };
+		9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetuseinfo.m; sourceTree = "<group>"; };
+		9FBAA04F1DBC9D5100C288E3 /* WHcompanyDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHcompanyDetail.h; sourceTree = "<group>"; };
+		9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHcompanyDetail.m; sourceTree = "<group>"; };
+		9FBAA0521DBCC5AD00C288E3 /* WHhospital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHhospital.h; sourceTree = "<group>"; };
+		9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHhospital.m; sourceTree = "<group>"; };
+		9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_product_detail.h; sourceTree = "<group>"; };
+		9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_product_detail.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C8343DF31DB5B75500999301 /* JwHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwHomeController.h; sourceTree = "<group>"; };
 		C8343DF41DB5B75500999301 /* JwHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwHomeController.m; sourceTree = "<group>"; };
@@ -624,6 +672,20 @@
 				C86354721DB4780000ED8B16 /* JwUser.m */,
 				C8C10C6F1DB9BE2B00A5FB9A /* JwCompanys.h */,
 				C8C10C701DB9BE2B00A5FB9A /* JwCompanys.m */,
+				9F0EE58A1DBB52EB00B68F76 /* WHorganization.h */,
+				9F0EE58B1DBB52EB00B68F76 /* WHorganization.m */,
+				9F0EE58D1DBB547C00B68F76 /* WHhotcompany.h */,
+				9F0EE58E1DBB547C00B68F76 /* WHhotcompany.m */,
+				9F0EE5901DBB568000B68F76 /* WHgetproduct.h */,
+				9F0EE5911DBB568000B68F76 /* WHgetproduct.m */,
+				9FBAA04C1DBC88CB00C288E3 /* WHgetuseinfo.h */,
+				9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */,
+				9FBAA04F1DBC9D5100C288E3 /* WHcompanyDetail.h */,
+				9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */,
+				9FBAA0521DBCC5AD00C288E3 /* WHhospital.h */,
+				9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */,
+				9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */,
+				9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -842,6 +904,18 @@
 				C8C10C9D1DB9C06F00A5FB9A /* WHrestPwdViewController.m */,
 				C8C10C9E1DB9C06F00A5FB9A /* WHupdatePwdViewController.h */,
 				C8C10C9F1DB9C06F00A5FB9A /* WHupdatePwdViewController.m */,
+				9F056ECE1DB9E7410069A085 /* WHinsuranceNameViewController.h */,
+				9F056ECF1DB9E7410069A085 /* WHinsuranceNameViewController.m */,
+				9F056EDD1DBA02E40069A085 /* WHaddressDetalViewController.h */,
+				9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */,
+				9F0EE5811DBB293900B68F76 /* WHsexViewController.h */,
+				9F0EE5821DBB293900B68F76 /* WHsexViewController.m */,
+				9F0A20B91DBDAC64004C5F67 /* WHsetupTableViewController.h */,
+				9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */,
+				9F0A20BC1DBDB972004C5F67 /* WHsavesetupTableViewController.h */,
+				9F0A20BD1DBDB972004C5F67 /* WHsavesetupTableViewController.m */,
+				9F0A20C51DBDEAA2004C5F67 /* WHtelephoneNumViewController.h */,
+				9F0A20C61DBDEAA2004C5F67 /* WHtelephoneNumViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -886,8 +960,14 @@
 		C8C10CB11DB9C06F00A5FB9A /* V */ = {
 			isa = PBXGroup;
 			children = (
+				9F056EDA1DB9FF790069A085 /* ASBirthSelectSheet.h */,
+				9F056EDB1DB9FF7F0069A085 /* ASBirthSelectSheet.m */,
 				C8C10CC41DB9C0AD00A5FB9A /* ForgetPwdView.h */,
 				C8C10CC51DB9C0AD00A5FB9A /* ForgetPwdView.m */,
+				9F056EE01DBA1A960069A085 /* WHaccountTableViewCell.h */,
+				9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */,
+				9F0A20C21DBDDFC4004C5F67 /* WHupdateTelView.h */,
+				9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -963,7 +1043,7 @@
 				TargetAttributes = {
 					C863537F1DB4661C00ED8B16 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 2LBCQNBX4S;
+						DevelopmentTeam = MNRRAJV8LF;
 						ProvisioningStyle = Automatic;
 					};
 					C86353981DB4661C00ED8B16 = {
@@ -1089,8 +1169,13 @@
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
+				9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */,
+				9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
+				9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */,
+				9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
 				C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */,
@@ -1103,7 +1188,9 @@
 				C8C10CBA1DB9C06F00A5FB9A /* WHpersonCenterViewController.m in Sources */,
 				C8C10CBC1DB9C06F00A5FB9A /* WHupdatePwdViewController.m in Sources */,
 				C8C10CBD1DB9C06F00A5FB9A /* ChooseCompleteViewController.m in Sources */,
+				9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
+				9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */,
 				961358CC1DB6263300F5107F /* HmSelectCompanyController.m in Sources */,
 				961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */,
 				C86353E31DB4672700ED8B16 /* UIView+Extension.m in Sources */,
@@ -1111,22 +1198,28 @@
 				961358D01DB6268600F5107F /* HmCompanyTableCell.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				C8C10C711DB9BE2B00A5FB9A /* JwCompanys.m in Sources */,
+				9F056ED01DB9E7410069A085 /* WHinsuranceNameViewController.m in Sources */,
 				C86353851DB4661C00ED8B16 /* main.m in Sources */,
+				9F0EE58C1DBB52EB00B68F76 /* WHorganization.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,
 				C86353C91DB4669A00ED8B16 /* JwDataService.m in Sources */,
 				961358C41DB6258900F5107F /* HmSelectProductController.m in Sources */,
 				961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */,
+				9F0EE5921DBB568000B68F76 /* WHgetproduct.m in Sources */,
 				C8343DFE1DB5B79A00999301 /* JwFindController.m in Sources */,
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
 				C84EAA0D1DB76A980098C2A1 /* UIImage+Color.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
+				9F0A20C71DBDEAA2004C5F67 /* WHtelephoneNumViewController.m in Sources */,
 				961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */,
 				C86353D41DB4670700ED8B16 /* UIColor+Hex.m in Sources */,
 				C8C10CC01DB9C06F00A5FB9A /* ChooseTableViewCell.m in Sources */,
 				C8C10CC21DB9C06F00A5FB9A /* insuranceCollectionViewCell.m in Sources */,
 				C86353D71DB4670F00ED8B16 /* JGProgressHelper.m in Sources */,
+				9F056EE21DBA1A960069A085 /* WHaccountTableViewCell.m in Sources */,
 				C8C10CBE1DB9C06F00A5FB9A /* InsuranceViewController.m in Sources */,
+				9F0A20BE1DBDB972004C5F67 /* WHsavesetupTableViewController.m in Sources */,
 				C8C10CB61DB9C06F00A5FB9A /* JwRegistController.m in Sources */,
 				C86354051DB4674100ED8B16 /* JwModelBase.m in Sources */,
 				C8C10CB41DB9C06F00A5FB9A /* JwLoginController.m in Sources */,
@@ -1138,6 +1231,7 @@
 				C86354A91DB4D3AB00ED8B16 /* JwTabBarController.m in Sources */,
 				C86354361DB473A600ED8B16 /* IQTextView.m in Sources */,
 				961358B91DB606DE00F5107F /* CMIndexBar.m in Sources */,
+				9F0A20BB1DBDAC64004C5F67 /* WHsetupTableViewController.m in Sources */,
 				C86353C81DB4669A00ED8B16 /* JwUserCenter.m in Sources */,
 				C86354371DB473A600ED8B16 /* IQBarButtonItem.m in Sources */,
 				961358C81DB6259600F5107F /* HmSelectProductCell.m in Sources */,
@@ -1151,9 +1245,11 @@
 				961358D91DB645DF00F5107F /* HmHotCompanyCell.m in Sources */,
 				961358B51DB5D12600F5107F /* HmSelectInsuredCollectionCell.m in Sources */,
 				C86353D31DB4670700ED8B16 /* NSString+Email.m in Sources */,
+				9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */,
 				C86354A61DB4D3AB00ED8B16 /* JwBackBaseController.m in Sources */,
 				C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */,
 				C8C10CBF1DB9C06F00A5FB9A /* RegisterTwoViewController.m in Sources */,
+				9F0EE58F1DBB547C00B68F76 /* WHhotcompany.m in Sources */,
 				C86353CB1DB4669A00ED8B16 /* JwServiceBase.m in Sources */,
 				C8C10CC61DB9C0AD00A5FB9A /* ForgetPwdView.m in Sources */,
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
@@ -1300,7 +1396,7 @@
 			baseConfigurationReference = 20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2LBCQNBX4S;
+				DEVELOPMENT_TEAM = MNRRAJV8LF;
 				INFOPLIST_FILE = whm_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "chenJw.whm-project";
@@ -1313,7 +1409,7 @@
 			baseConfigurationReference = AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2LBCQNBX4S;
+				DEVELOPMENT_TEAM = MNRRAJV8LF;
 				INFOPLIST_FILE = whm_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "chenJw.whm-project";

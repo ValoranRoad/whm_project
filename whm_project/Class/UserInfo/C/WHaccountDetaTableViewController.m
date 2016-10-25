@@ -10,12 +10,38 @@
 #import "UIColor+Hex.h"
 #define WHhight CGRectGetHeight([UIScreen mainScreen].bounds)
 //414x736
-@interface WHaccountDetaTableViewController ()
+#import "WHinsuranceNameViewController.h"
+
+//出生日期选择
+#import "ASBirthSelectSheet.h"
+
+#import "WHaddressDetalViewController.h"
+
+#import "WHaccountTableViewCell.h"
+
+#import "WHsexViewController.h"
+
+
+#define kScreenWitdh [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+@interface WHaccountDetaTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UIButton * addBut;
 
 @property(nonatomic,strong)UIView * myView;
 
 @property(nonatomic,strong)UIImageView * phoImage;
+
+@property(nonatomic,strong)UIImageView * sexImage;
+@property(nonatomic,strong)UILabel * sexLaber;
+
+
+@property (nonatomic, strong) UITableView *tableV;
+@property (nonatomic, strong) WHaccountTableViewCell *cell;
+
+
+
+
+
 
 @end
 
@@ -24,11 +50,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"账户详情";
+   self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
+
+    
+    _tableV.delegate = self;
+    _tableV.dataSource = self;
+    _tableV.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_tableV];
+    
    
 
 }
 
 
+
+//
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     /**
@@ -117,6 +153,8 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+   
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"formCell" ];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:(UITableViewCellStyleValue1) reuseIdentifier:@"formCell"];
@@ -156,10 +194,21 @@
             cell.textLabel.text = @"性别";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             //cell.detailTextLabel.textColor = [UIColor grayColor];
-            cell.detailTextLabel.textColor = [UIColor grayColor];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
+           // cell.detailTextLabel.textColor = [UIColor grayColor];
+           // cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
             
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
+            //
+            self.sexLaber = [[UILabel alloc]init];
+            self.sexLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.65, CGRectGetMaxY(cell.textLabel.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.09, CGRectGetWidth([UIScreen mainScreen].bounds)*0.09);
+          //  self.sexLaber.text = @"男";
+            [cell.contentView addSubview:_sexLaber];
+            //
+            
+            self.sexImage = [[UIImageView alloc]init];
+            self.sexImage.frame = CGRectMake(CGRectGetMaxX(self.sexLaber.frame)+10, CGRectGetMinY(self.sexLaber.frame), CGRectGetWidth(self.sexLaber.frame), CGRectGetHeight(self.sexLaber.frame));
+         //   self.sexImage.image = [UIImage imageNamed:@"test_male"];
+            [cell.contentView addSubview:_sexImage];
             
         }
 
@@ -213,6 +262,80 @@
     return cell;
 }
 
+//选中事件
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        WHinsuranceNameViewController * insurance = [[WHinsuranceNameViewController alloc]init];
+        insurance.mblock1 = ^(NSString * s1)
+        {
+            cell.detailTextLabel.text = s1 ;
+            
+           
+        };
+        
+        [self.navigationController pushViewController:insurance animated:NO];
+        
+    }
+    
+    //
+    if (indexPath.section == 0 && indexPath.row == 3) {
+        UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+
+//        
+        ASBirthSelectSheet *datesheet = [[ASBirthSelectSheet alloc] initWithFrame:self.view.bounds];
+        datesheet.selectDate = cell.detailTextLabel.text;
+        datesheet.GetSelectDate = ^(NSString *dateStr) {
+            cell.detailTextLabel.text = dateStr;
+        };
+        [self.view addSubview:datesheet];
+        
+    }
+   
+    
+    if (indexPath.section == 2 && indexPath.row == 1) {
+        UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        //
+        WHaddressDetalViewController *address = [[WHaddressDetalViewController alloc] init];
+    
+       address.mblock1 = ^(NSString * s1)
+        {
+            cell.detailTextLabel.text = s1 ;
+        };
+        
+        [self.navigationController pushViewController:address animated:NO];
+        
+
+    
+    }
+    
+    if (indexPath.section == 0 && indexPath.row == 2) {
+       // UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        WHsexViewController *sex = [[WHsexViewController alloc] init];
+        
+        sex.mblock1 = ^(NSString * s1)
+        {
+            self.sexLaber.text = s1 ;
+            
+            if ([s1 isEqualToString:@"男"]) {
+                self.sexImage.image = [UIImage imageNamed:@"test_male"];
+            }
+            else
+            {
+                self.sexImage.image = [UIImage imageNamed:@"test_famale"];
+            }
+        };
+        
+        [self.navigationController pushViewController:sex animated:NO];
+        
+           }
+
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

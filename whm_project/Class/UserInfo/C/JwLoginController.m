@@ -128,7 +128,7 @@
     registVC.strNew = s1;
     [self.navigationController pushViewController:registVC animated:YES];
 }
-
+//登录
 - (IBAction)onLogin:(UIButton *)sender {
     
     if (self.mobTF.text.length != 0 && self.pwdTF.text.length != 0) {

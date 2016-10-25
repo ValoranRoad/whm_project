@@ -57,5 +57,49 @@
 
 
 
+//保存用户信息
+-(void)save_userWithUid:(NSString *)uid
+                 avatar:(NSString *)avatar
+                   name:(NSString *)name
+                    sex:(NSString *)sex
+               birthday:(NSString *)birthday
+              area_info:(NSString *)area_info
+           area_info_id:(NSString *)area_info_id
+               address :(NSString *)address
+   success:(void (^)())success failure:(void (^)(NSError *error))failure;
+
+
+//保存认证信息
+-(void)save_verifyWithUid:(NSString *)uid
+                  company:(NSString *)company
+                     name:(NSString *)name
+               cardnumber:(NSString *)cardnumber
+       organizationnumber:(NSString *)organizationnumber
+                    point:(NSString *)point
+                  address:(NSString *)address
+                       jb:(NSString *)job
+success:(void (^)())success failure:(void (^)(NSError *error))failure;
+
+//修改手机号
+-(void)update_mobileWithUid:(NSString *)uid
+                     mobile:(NSString *)mobile
+                    captcha:(NSString *)captcha
+             success:(void (^)())success failure:(void (^)(NSError *error))failure;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
