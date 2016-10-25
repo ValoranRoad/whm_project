@@ -74,7 +74,7 @@
     self.forgetPwdBut.frame = CGRectMake(CGRectGetWidth(self.myBut.frame)*0.40, CGRectGetMaxY(self.myBut.frame)+10, CGRectGetWidth(self.myBut.frame)*0.4, CGRectGetHeight(self.myBut.frame)*0.8);
     
     [self.forgetPwdBut  setTitle:@"忘记密码?" forState:(UIControlStateNormal)];
-    self.forgetPwdBut.font = [UIFont systemFontOfSize:15.0];
+    self.forgetPwdBut.titleLabel.font = [UIFont systemFontOfSize:15.0];
     self.forgetPwdBut.tintColor = [UIColor grayColor];
     [self.view addSubview:_forgetPwdBut];
     

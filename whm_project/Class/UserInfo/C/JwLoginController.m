@@ -86,10 +86,11 @@
     
     NSLog(@"hhh");
     
-    
-    RegisterTwoViewController *regVC = [[RegisterTwoViewController alloc]init];
-    
-    [self.navigationController pushViewController:regVC animated:YES];
+    JwRegistController *registVC = [[JwRegistController alloc] init];
+    [self.navigationController pushViewController:registVC animated:YES];
+//    RegisterTwoViewController *regVC = [[RegisterTwoViewController alloc]init];
+//    
+//    [self.navigationController pushViewController:regVC animated:YES];
 }
 
 //忘记密码
@@ -119,12 +120,15 @@
         self.pwdTF.secureTextEntry = YES;
     }
 }
-
+//新用户注册
 - (IBAction)onNews:(UIButton *)sender {
     JwRegistController *registVC = [[JwRegistController alloc] init];
+     NSString * s1 = @"new";
+    
+    registVC.strNew = s1;
     [self.navigationController pushViewController:registVC animated:YES];
 }
-
+//登录
 - (IBAction)onLogin:(UIButton *)sender {
     
     if (self.mobTF.text.length != 0 && self.pwdTF.text.length != 0) {

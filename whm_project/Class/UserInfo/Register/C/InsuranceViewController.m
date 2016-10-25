@@ -302,7 +302,7 @@
     NSLog(@"选择%ld",indexPath.item);
     
     // cityOtherModer *model = _myCarr[indexPath.row];
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    //UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     UIImageView *seleView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 64, 24)];
     seleView.image = [UIImage imageNamed:@"xzfwcx-2"];
     
