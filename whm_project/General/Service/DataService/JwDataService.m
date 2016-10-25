@@ -78,7 +78,9 @@
 //获取热门公司里边没有参数??
 -(void)get_hot_companyWithsuccess:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = [[self filterParam:param interface:@"kb/get_hot_company"]mutableCopy];
+    NSMutableDictionary * param = [@{} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_hot_company"] mutableCopy];
+    
     [self.httpManager POST:param withPoint:@"kb/get_hot_company" success:^(id data) {
         NSArray *infos = data[@"data"];
         NSArray *hotcompanys = [WHhotcompany arrayOfModelsFromDictionaries:infos error:nil];
@@ -133,7 +135,7 @@
 
 //获取用户信息
 -(void)get_user_infoWithUid:(NSString *)uid
-                    success:(void (^)(NSArray *lists))success failure:(void (^)(NSError * error))failure
+                    success:(void (^)(WHgetuseinfo *userInfo))success failure:(void (^)(NSError * error))failure
 {
     NSMutableDictionary *param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                                     @"token":[JwUserCenter sharedCenter].key}
@@ -143,7 +145,7 @@
     [self.httpManager POST:param withPoint:@"kbj/get_user_info" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        NSArray *userinfos = [WHgetuseinfo arrayOfModelsFromDictionaries:infos error:nil];
+        WHgetuseinfo *userinfos = [[WHgetuseinfo alloc] initWithDictionary:[infos firstObject] error:nil];
         
         if (success) {
             success(userinfos);

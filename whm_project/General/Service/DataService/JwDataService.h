@@ -49,7 +49,7 @@ success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))fail
 
 //获取用户信息
 -(void)get_user_infoWithUid:(NSString *)uid
-                    success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
+                    success:(void (^)(WHgetuseinfo *userInfo))success failure:(void (^)(NSError * error))failure;
 
 
 //公司详情列表
