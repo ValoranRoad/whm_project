@@ -22,6 +22,9 @@
 		961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358D31DB6280000F5107F /* HmCompanyCollectionCell.m */; };
 		961358D61DB6280000F5107F /* HmCompanyCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358D41DB6280000F5107F /* HmCompanyCollectionCell.xib */; };
 		961358D91DB645DF00F5107F /* HmHotCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358D81DB645DF00F5107F /* HmHotCompanyCell.m */; };
+		9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */; };
+		9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */; };
+		9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */; };
 		9F056ED01DB9E7410069A085 /* WHinsuranceNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056ECF1DB9E7410069A085 /* WHinsuranceNameViewController.m */; };
 		9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDB1DB9FF7F0069A085 /* ASBirthSelectSheet.m */; };
 		9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */; };
@@ -157,6 +160,12 @@
 		961358D41DB6280000F5107F /* HmCompanyCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmCompanyCollectionCell.xib; sourceTree = "<group>"; };
 		961358D71DB645DF00F5107F /* HmHotCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmHotCompanyCell.h; sourceTree = "<group>"; };
 		961358D81DB645DF00F5107F /* HmHotCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmHotCompanyCell.m; sourceTree = "<group>"; };
+		9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_user_realtion.h; sourceTree = "<group>"; };
+		9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_user_realtion.m; sourceTree = "<group>"; };
+		9F0101D11DBF1F2B00AF13C9 /* WHget_relation_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_relation_detail.h; sourceTree = "<group>"; };
+		9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_relation_detail.m; sourceTree = "<group>"; };
+		9F0101D41DBF1F3C00AF13C9 /* WHget_pro_rate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_pro_rate.h; sourceTree = "<group>"; };
+		9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_pro_rate.m; sourceTree = "<group>"; };
 		9F056ECE1DB9E7410069A085 /* WHinsuranceNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHinsuranceNameViewController.h; sourceTree = "<group>"; };
 		9F056ECF1DB9E7410069A085 /* WHinsuranceNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHinsuranceNameViewController.m; sourceTree = "<group>"; };
 		9F056EDA1DB9FF790069A085 /* ASBirthSelectSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBirthSelectSheet.h; sourceTree = "<group>"; };
@@ -686,6 +695,12 @@
 				9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */,
 				9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */,
 				9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */,
+				9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */,
+				9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */,
+				9F0101D11DBF1F2B00AF13C9 /* WHget_relation_detail.h */,
+				9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */,
+				9F0101D41DBF1F3C00AF13C9 /* WHget_pro_rate.h */,
+				9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1171,6 +1186,7 @@
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */,
 				9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */,
 				9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
@@ -1182,6 +1198,7 @@
 				C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */,
 				C863543A1DB473A600ED8B16 /* IQToolbar.m in Sources */,
 				C86354331DB473A500ED8B16 /* IQUIWindow+Hierarchy.m in Sources */,
+				9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */,
 				C86354621DB473B300ED8B16 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				C863547D1DB4969A00ED8B16 /* Md5.m in Sources */,
 				C86353CC1DB4669A00ED8B16 /* JwUserService.m in Sources */,
@@ -1222,6 +1239,7 @@
 				9F0A20BE1DBDB972004C5F67 /* WHsavesetupTableViewController.m in Sources */,
 				C8C10CB61DB9C06F00A5FB9A /* JwRegistController.m in Sources */,
 				C86354051DB4674100ED8B16 /* JwModelBase.m in Sources */,
+				9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */,
 				C8C10CB41DB9C06F00A5FB9A /* JwLoginController.m in Sources */,
 				C86354641DB473B300ED8B16 /* LBXAlertAction.m in Sources */,
 				C86353CA1DB4669A00ED8B16 /* JwHttpManager.m in Sources */,

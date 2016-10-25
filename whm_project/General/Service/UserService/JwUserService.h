@@ -89,6 +89,29 @@ success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 
 
+//保存用户关系成员接口
+-(void)save_user_realtionWithUid:(NSString *)uid
+                              id:(NSString * )ids
+                            name:(NSString *)name
+                             sex:(NSString *)sex
+                        birthday:(NSString *)birthday
+                        relation:(NSString *)relation
+                   yearly_income:(NSString *)yearly_income
+                      yearly_out:(NSString *)yearly_out
+                            debt:(NSString *)debt
+
+                         success:(void (^)())success failure:(void (^)(NSError *error))failure;
+
+
+//删除关系人
+-(void)del_relationWithId:(NSString *)ids
+                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
+
+//获取地区
+-(void)get_all_areaWithsuccess:(void (^)())success failure:(void (^)(NSError *error))failure;
+
+
+
 
 
 

@@ -16,6 +16,8 @@
 @class WHcompanyDetail;
 @class WHhospital;
 @class WHget_product_detail;
+@class WHget_user_realtion;
+@class WHget_relation_detail;
 
 @interface JwDataService : JwServiceBase
 
@@ -55,7 +57,7 @@ success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))fail
 //公司详情列表
 -(void)get_company_detailWithCom_id:(NSString * )com_id
                                 uid:(NSString *)uid
-success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
+success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError *error))failure;
 
 //医院列表
 -(void)get_hospitalWithCom_id:(NSString *)com_id
@@ -72,8 +74,19 @@ success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))fail
 //险种详情
 -(void)get_product_detailWithPro_id:(NSString * )pro_id
                                 uid:(NSString * )uid
-                            success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
+                            success:(void (^)(WHget_product_detail * userInfo))success failure:(void (^)(NSError *error))failure;
 
+
+
+//获取用户关系成员列表
+-(void)get_user_realtionWithUid:(NSString *)uid
+                        success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
+
+
+//获取关系人详情
+-(void)get_relation_detailWithId :(NSString *)ids
+
+                          success:(void (^)(WHget_relation_detail * userInfo))success failure:(void (^)(NSError *error))failure;
 
 
 

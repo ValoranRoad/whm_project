@@ -15,6 +15,9 @@
 #import "WHcompanyDetail.h"
 #import "WHhospital.h"
 #import "WHget_product_detail.h"
+#import "WHget_user_realtion.h"
+#import "WHget_relation_detail.h"
+
 
 #import "JwUserCenter.h"
 #import "JwUser.h"
@@ -162,7 +165,7 @@
 //公司详情
 -(void)get_company_detailWithCom_id:(NSString *)com_id
                                 uid:(NSString *)uid
-                            success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
+                            success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"com_id":com_id,
                                      @"uid":[JwUserCenter sharedCenter].uid}
@@ -172,9 +175,8 @@
     [self.httpManager POST:param withPoint:@"kb/get_company_detail" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        NSArray *companydetals = [WHcompanyDetail arrayOfModelsFromDictionaries:infos error:nil];
-        
-        if (success) {
+        WHcompanyDetail *companydetals = [[WHcompanyDetail  alloc]initWithDictionary:[infos firstObject] error:nil];
+      if (success) {
             success(companydetals);
         }
     } failure:^(NSError *error) {
@@ -228,7 +230,7 @@
 //险种详情
 -(void)get_product_detailWithPro_id:(NSString *)pro_id
                                 uid:(NSString *)uid
-                            success:(void (^)(NSArray * ))success failure:(void (^)(NSError *))failure
+                            success:(void (^)(WHget_product_detail * userInfo ))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"pro_id":pro_id,
                                      @"uid":[JwUserCenter sharedCenter].uid}
@@ -238,7 +240,7 @@
     [self.httpManager POST:param withPoint:@"kb/get_product_detail" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        NSArray *productdetails = [WHget_product_detail arrayOfModelsFromDictionaries:infos error:nil];
+        WHget_product_detail *productdetails = [[WHget_product_detail  alloc]initWithDictionary:[infos firstObject] error:nil];
         
         if (success) {
             success(productdetails);
@@ -249,6 +251,58 @@
         }
     }];
 
+    
+    
+}
+//获取用户关系成员接口列表
+-(void)get_user_realtionWithUid:(NSString *)uid
+                        success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"token":[JwUserCenter sharedCenter].key}
+                                   mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_user_realtion"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/get_user_realtion" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *user_realtions = [WHget_user_realtion arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(user_realtions);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+    
+    
+}
+
+//获取关系人详情
+-(void)get_relation_detailWithId:(NSString *)ids
+                         success:(void (^)(WHget_relation_detail * userInfo))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param =[@{@"id":ids,
+                                    @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_relation_detail"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/get_relation_detail" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+       WHget_relation_detail *relation_detail = [[WHget_relation_detail alloc]initWithDictionary:[infos firstObject] error:nil];
+        if (success) {
+            success(relation_detail);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
     
     
 }
