@@ -23,9 +23,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *comforPwdText;
 @property (weak, nonatomic) IBOutlet UIButton *protlBut;
 
-
-
-
 @end
 
 @implementation JwRegistController
@@ -49,43 +46,32 @@
 
     if ([self.strNew isEqualToString:@"new"]) {
         
-    
-    if (self.nameText.text.length != 0 && self.telText.text.length != 0 && self.CodeText.text.length != 0 && self.pwdText.text !=0 && self.comforPwdText.text.length != 0) {
-        
-        if ([self.pwdText.text isEqualToString:self.comforPwdText.text ]) {
+        if (self.nameText.text.length != 0 && self.telText.text.length != 0 && self.CodeText.text.length != 0 && self.pwdText.text !=0 && self.comforPwdText.text.length != 0) {
             
-            
-            id hud = [JGProgressHelper showProgressInView:self.view];
-            
-            [self.userService registWithName:self.nameText.text mobile:self.telText.text captcha:self.CodeText.text pwd:self.pwdText.text type:@"0" company_id:@"" org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
-                [hud hide:YES];
-                [JGProgressHelper showSuccess:@"普通用户注册成功"];
+            if ([self.pwdText.text isEqualToString:self.comforPwdText.text ]) {
+                id hud = [JGProgressHelper showProgressInView:self.view];
                 
-            } failure:^(NSError *error) {
-                
-                [JGProgressHelper showError:@"注册失败"];
-            }];
-            
+                [self.userService registWithName:self.nameText.text mobile:self.telText.text captcha:self.CodeText.text pwd:self.pwdText.text type:@"0" company_id:@"" org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
+                    [hud hide:YES];
+                    [JGProgressHelper showSuccess:@"普通用户注册成功"];
+                    
+                } failure:^(NSError *error) {
+                    
+                    [JGProgressHelper showError:@"注册失败"];
+                }];
+            }else{
+                [JGProgressHelper showError:@"两次密码不一致"];
+            }
+        }else{
+            [JGProgressHelper showError:@"有未填写项,请填写"];
         }
-        
-        else
-        {
-            [JGProgressHelper showError:@"两次密码不一致"];
-        }
-    }
-    
-    else
-    {
-        [JGProgressHelper showError:@"有未填写项,请填写"];
-    }
-    
-    }else
-    {
+    }else{
         //顾问注册进入下一步
         RegisterTwoViewController * regTwo = [[RegisterTwoViewController alloc]init];
-        [self.navigationController pushViewController:regTwo animated:NO];
-
+        [self.navigationController pushViewController:regTwo animated:YES];
+        
     }
+    
     
 }
  //验证码事件发送
