@@ -38,6 +38,7 @@
 		9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */; };
 		9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */; };
 		9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */; };
+		C807B99B1DC0561100D3C700 /* JwArea.m in Sources */ = {isa = PBXBuildFile; fileRef = C807B99A1DC0561100D3C700 /* JwArea.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
@@ -190,6 +191,8 @@
 		9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_product_detail.h; sourceTree = "<group>"; };
 		9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_product_detail.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
+		C807B9991DC0561100D3C700 /* JwArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwArea.h; sourceTree = "<group>"; };
+		C807B99A1DC0561100D3C700 /* JwArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwArea.m; sourceTree = "<group>"; };
 		C8343DF31DB5B75500999301 /* JwHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwHomeController.h; sourceTree = "<group>"; };
 		C8343DF41DB5B75500999301 /* JwHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwHomeController.m; sourceTree = "<group>"; };
 		C8343DF61DB5B77800999301 /* JwPhysicalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwPhysicalController.h; sourceTree = "<group>"; };
@@ -686,6 +689,8 @@
 				9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */,
 				9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */,
 				9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */,
+				C807B9991DC0561100D3C700 /* JwArea.h */,
+				C807B99A1DC0561100D3C700 /* JwArea.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1199,6 +1204,7 @@
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				C8C10C711DB9BE2B00A5FB9A /* JwCompanys.m in Sources */,
 				9F056ED01DB9E7410069A085 /* WHinsuranceNameViewController.m in Sources */,
+				C807B99B1DC0561100D3C700 /* JwArea.m in Sources */,
 				C86353851DB4661C00ED8B16 /* main.m in Sources */,
 				9F0EE58C1DBB52EB00B68F76 /* WHorganization.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
