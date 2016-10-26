@@ -47,7 +47,7 @@
 
 //图像data
 @property (nonatomic, strong) NSData * picData;
-
+@property (nonatomic, strong)NSString *picStr;
 
 
 
@@ -384,6 +384,9 @@
     self.picData = UIImageJPEGRepresentation(saveImage, 1.0);
     //设置头像图片显示
     self.phoImage.image = saveImage;
+    
+    //数据转化上传
+    self.picStr = [self.picData base64Encoding];
 }
 
 

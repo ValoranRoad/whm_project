@@ -71,13 +71,13 @@
 //        
 //        [JGProgressHelper showError:@"注册失败"];
 //    }];
-    [self.userService get_all_areaWithsuccess:^(NSDictionary *dict) {
-        
-        NSLog(@"%@----------------",dict);
-    } failure:^(NSError *error) {
-        
-        
-    }];
+   [self.userService get_all_areaWithsuccess:^(NSArray *areas) {
+       
+       
+   } failure:^(NSError *error) {
+       
+       
+   }];
     
 }
 

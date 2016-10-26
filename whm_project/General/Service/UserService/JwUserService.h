@@ -10,6 +10,7 @@
 #import "JwServiceDefine.h"
 
 @class JwUser;
+@class JwAreass;
 
 @interface JwUserService : JwServiceBase
 
@@ -108,7 +109,9 @@ success:(void (^)())success failure:(void (^)(NSError *error))failure;
                   success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 //获取地区
--(void)get_all_areaWithsuccess:(void (^)())success failure:(void (^)(NSError *))failure;
+
+-(void)get_all_areaWithsuccess:(void (^)(NSArray *areas))success failure:(void (^)(NSError *error))failure;
+
 
 
 
