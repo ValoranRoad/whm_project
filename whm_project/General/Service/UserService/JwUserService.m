@@ -9,7 +9,7 @@
 #import "JwUserService.h"
 #import "JwUserCenter.h"
 #import "JwUser.h"
-#import "JwArea.h"
+#import "JwAreass.h"
 
 @implementation JwUserService
 
@@ -358,19 +358,23 @@
     
 }
 //获取地区
--(void)get_all_areaWithsuccess:(void (^)(JwArea *area))success failure:(void (^)(NSError *error))failure
+-(void)get_all_areaWithsuccess:(void (^)(NSArray *areas))success failure:(void (^)(NSError *error))failure
 {
+
+  
+
    
     NSMutableDictionary * param = [@{} mutableCopy];
     
     param = [[self filterParam:param interface:@"kb/get_all_area"] mutableCopy];
 
+
     [self.httpManager POST:param withPoint:@"kb/get_all_area" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        JwArea *area = [[JwArea alloc] initWithDictionary:[infos firstObject] error:nil];
+        NSArray *areas = [JwAreass arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
-            success(area);
+            success(areas);
         }
         
     } failure:^(NSError *error) {
@@ -380,6 +384,5 @@
     }];
     
 }
-
 
 @end

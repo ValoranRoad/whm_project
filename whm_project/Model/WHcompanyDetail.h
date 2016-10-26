@@ -14,7 +14,7 @@
 @property(nonatomic,strong)NSString * name;
 @property(nonatomic,strong)NSString * initial;
 @property(nonatomic,strong)NSString * pinyin;
-@property(nonatomic,strong)NSString <Optional> * description;
+@property(nonatomic,strong)NSString <Optional> * descriptionJw;
 @property(nonatomic,strong)NSString * logo;
 @property(nonatomic,strong)NSString * add;
 @property(nonatomic,strong)NSString * tel;
