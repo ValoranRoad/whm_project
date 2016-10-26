@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ChooseCompleteViewController : UIViewController
+#import "JwBackBaseController.h"
+@interface ChooseCompleteViewController : JwBackBaseController
 
 @end

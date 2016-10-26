@@ -24,7 +24,13 @@
 
 #define kScreenWitdh [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
-@interface WHaccountDetaTableViewController ()<UITableViewDelegate,UITableViewDataSource>
+#define IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ? YES : NO)
+@interface WHaccountDetaTableViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    
+    UIActionSheet *sheet;
+}
+
 @property(nonatomic,strong)UIButton * addBut;
 
 @property(nonatomic,strong)UIView * myView;
@@ -39,6 +45,8 @@
 @property (nonatomic, strong) WHaccountTableViewCell *cell;
 
 
+//图像data
+@property (nonatomic, strong) NSData * picData;
 
 
 
@@ -172,7 +180,9 @@
             self.phoImage.image = [UIImage imageNamed:@"test_head"];
             self.phoImage.layer.masksToBounds = YES;
             self.phoImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.144/2;
-            
+            self.phoImage.userInteractionEnabled = YES;
+            UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(picTapAction)];
+            [self.phoImage addGestureRecognizer:picTap];
             [cell.contentView addSubview:_phoImage];
             
             
@@ -261,6 +271,122 @@
     }
     return cell;
 }
+
+-(void)picTapAction
+{
+    if (IOS8) {
+        
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"获取图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        ///从相册中选择
+        UIAlertAction *defaultAction1 = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //相册
+            UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+            imagePickerController.delegate = self;
+            imagePickerController.allowsEditing = YES;
+            imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:imagePickerController animated:YES completion:^{}];
+            
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        UIAlertAction *defaultAction2 = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //相册
+            UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+            imagePickerController.delegate = self;
+            imagePickerController.allowsEditing = YES;
+            imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:imagePickerController animated:YES completion:^{}];
+            
+        }];
+        
+        [alertController addAction:defaultAction2];
+        [alertController addAction:cancelAction];
+        [alertController addAction:defaultAction1];
+        
+        //弹出视图，使用uiviewController的方法
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        
+        sheet = [[UIActionSheet alloc]initWithTitle:@"获取图片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"相册", nil];
+        [sheet showInView:self.view];
+    }
+
+}
+
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    NSInteger soureType = 0;
+    //是否支持相机，模拟器没有相机
+    switch (buttonIndex) {
+        case 1://相册
+            soureType = UIImagePickerControllerSourceTypePhotoLibrary;
+            break;
+        default:
+            break;
+    }
+    if (buttonIndex == 1) {
+        soureType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    }
+    
+    //跳转到相机或相册页面
+    UIImagePickerController *imagePick = [[UIImagePickerController alloc]init];
+    imagePick.delegate = self;
+    imagePick.allowsEditing = YES;
+    imagePick.sourceType = soureType;
+    [self presentViewController:imagePick animated:YES completion:nil];
+}
+
+#pragma mark - 保存图片到沙盒中
+-(void)saveImage:(UIImage *)currentImage withName:(NSString *)imageName{
+    NSData *imageData = UIImageJPEGRepresentation(currentImage, 1); //返回的数据大小(1~0.0)
+    //获取沙盒目录
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:imageName];
+    
+    //将图片写入文件
+    [imageData writeToFile:fullPath atomically:NO];
+}
+#pragma mark -  压缩图片
+- (UIImage *)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    return newImage;
+}
+
+
+
+#pragma mark - iOS7 iOS8 都要调用方法，选择完成调用该方法
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    //保存图片到本地，上传图片到服务器需要使用
+    [self saveImage:[self imageWithImageSimple:image scaledToSize:CGSizeMake(CGRectGetWidth(self.phoImage.frame)*2, CGRectGetHeight(self.phoImage.frame)*2)] withName:@"avatar.png"];
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"avatar.png"];
+    
+    //存储路径
+    NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!!!存储路径%@", fullPath);
+    UIImage *saveImage = [[UIImage alloc]initWithContentsOfFile:fullPath];
+    
+    //1 //UIImage转换为NSData// 提交的时候用的数据
+    self.picData = UIImageJPEGRepresentation(saveImage, 1.0);
+    //设置头像图片显示
+    self.phoImage.image = saveImage;
+}
+
+
 
 //选中事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

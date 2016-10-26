@@ -52,7 +52,7 @@
     
 
     
-    
+    [self getData];
     _proTimeList = [[NSArray alloc]initWithObjects:@"河南省",@"河北省",@"浙江省",@"北京",@"天津",@"重庆",@"四川省",@"新疆省",@"黑龙江省",@"安徽省",nil];
 
     _cityArr = [[NSArray alloc]initWithObjects:@"郑州",@"厦门",@"哈尔滨",@"南阳",@"信阳",nil];
@@ -61,6 +61,25 @@
     [self creatUI];
 }
 
+-(void)getData
+{
+//    [self.userService registWithName:self.nameText.text mobile:self.telText.text captcha:self.CodeText.text pwd:self.pwdText.text type:@"0" company_id:@"" org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
+//        [hud hide:YES];
+//        [JGProgressHelper showSuccess:@"普通用户注册成功"];
+//        
+//    } failure:^(NSError *error) {
+//        
+//        [JGProgressHelper showError:@"注册失败"];
+//    }];
+    [self.userService get_all_areaWithsuccess:^(NSDictionary *dict) {
+        
+        NSLog(@"%@----------------",dict);
+    } failure:^(NSError *error) {
+        
+        
+    }];
+    
+}
 
 -(void)creatUI
 {
