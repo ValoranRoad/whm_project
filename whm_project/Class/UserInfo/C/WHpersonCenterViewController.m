@@ -14,6 +14,9 @@
 
 #import "WHaccountDetaTableViewController.h"
 
+#import "WHsetupTableViewController.h"
+
+
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIView * headview;
 
@@ -348,8 +351,15 @@
     //
     
     [self.myBut11 addTarget:self action:@selector(updatePwd:) forControlEvents:(UIControlEventTouchUpInside)];
+    //
+    [self.myBut12 addTarget:self action:@selector(whsetAction:) forControlEvents:(UIControlEventTouchUpInside)];
     
-    
+}
+//设置事件
+-(void)whsetAction:(UIButton *)sender
+{
+    WHsetupTableViewController * setup = [[WHsetupTableViewController alloc]init];
+    [self.navigationController pushViewController:setup animated:NO];
 }
 
 //修改密码事件
