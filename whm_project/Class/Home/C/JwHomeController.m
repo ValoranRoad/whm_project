@@ -7,6 +7,7 @@
 //
 
 #import "JwHomeController.h"
+#import "JwUserService.h"
 
 @interface JwHomeController ()
 
@@ -17,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    //测试
+    [self.userService get_all_areaWithsuccess:^(NSArray *areas) {
+        
+        NSLog(@"%@", areas);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (void)setupData{

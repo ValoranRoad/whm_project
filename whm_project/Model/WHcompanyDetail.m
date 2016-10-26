@@ -10,4 +10,8 @@
 
 @implementation WHcompanyDetail
 
++(JSONKeyMapper *)keyMapper{
+    return [[JSONKeyMapper alloc]initWithDictionary:@{@"description":@"descriptionJw"}];
+}
+
 @end

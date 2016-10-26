@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import <NSString+Hashes.h>
 #import "Md5.h"
+#import "MacroUtility.h"
 
 @interface JwServiceBase ()
 
@@ -28,6 +29,7 @@
     NSString *dateStr = [dateFormatter stringFromDate:date];
     NSArray *inters = [interface componentsSeparatedByString:@"/"];
     NSString *kbStr = [[Md5 md5:[NSString stringWithFormat:@"kuaibao%@%@%@api", [inters firstObject], dateStr, [inters lastObject]]] lowercaseString];
+    DLog(@"%@", kbStr);
     
     NSMutableDictionary *paramM = [NSMutableDictionary dictionaryWithDictionary:param];
     paramM[@"kb"] = kbStr;
