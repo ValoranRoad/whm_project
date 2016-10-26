@@ -23,7 +23,7 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jw_user" translatesAutoresizingMaskIntoConstraints="NO" id="xkU-yh-g90">
                                     <constraints>
                                         <constraint firstAttribute="width" constant="110" id="UPG-xW-QDA"/>
-                                        <constraint firstAttribute="height" constant="120" id="igc-iS-7s0"/>
+                                        <constraint firstAttribute="height" constant="110" id="igc-iS-7s0"/>
                                     </constraints>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eG5-ZC-Bhl" userLabel="NameView">
@@ -153,9 +153,9 @@
                                 <constraint firstAttribute="trailing" secondItem="CEl-Q4-wEu" secondAttribute="trailing" id="ZiU-rH-RWS"/>
                                 <constraint firstItem="eG5-ZC-Bhl" firstAttribute="leading" secondItem="xkU-yh-g90" secondAttribute="trailing" id="dU2-vj-whk"/>
                                 <constraint firstAttribute="trailing" secondItem="RhT-YL-c3h" secondAttribute="trailing" id="hT1-iO-ZwS"/>
+                                <constraint firstItem="eG5-ZC-Bhl" firstAttribute="top" secondItem="Kti-5r-cPp" secondAttribute="top" id="jea-k3-Ked"/>
                                 <constraint firstAttribute="height" constant="150" id="kXh-1I-LX3"/>
                                 <constraint firstAttribute="trailing" secondItem="eG5-ZC-Bhl" secondAttribute="trailing" id="lF2-3c-LJg"/>
-                                <constraint firstItem="eG5-ZC-Bhl" firstAttribute="top" secondItem="xkU-yh-g90" secondAttribute="top" id="sPa-VD-z7u"/>
                                 <constraint firstItem="RhT-YL-c3h" firstAttribute="leading" secondItem="xkU-yh-g90" secondAttribute="trailing" id="t6v-oj-nnE"/>
                             </constraints>
                         </view>
