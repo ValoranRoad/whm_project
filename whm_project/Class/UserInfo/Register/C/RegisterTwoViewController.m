@@ -142,13 +142,17 @@
 {
     if (sender.tag == 101)
     {
-        ChooseCompleteViewController *chooseVC = [[ChooseCompleteViewController alloc]init];
-        [self.navigationController pushViewController:chooseVC animated:YES];
+        NSLog(@"点击了公司类型");
     }
     if (sender.tag == 102)
     {
         InsuranceViewController *insuranceVC = [[InsuranceViewController alloc]init];
         [self.navigationController pushViewController:insuranceVC animated:YES];
+    }
+    if (sender.tag == 103)
+    {
+        ChooseCompleteViewController *chooseVC = [[ChooseCompleteViewController alloc]init];
+        [self.navigationController pushViewController:chooseVC animated:YES];
     }
 }
 

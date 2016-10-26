@@ -2,4 +2,84 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "whm_project/General/Service/UserService/JwUserService.m"
+            timestampString = "499159018.272455"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "-get_all_areaWithsuccess:failure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[JwUserService get_all_areaWithsuccess:failure:]_block_invoke"
+                  moduleName = "whm_project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/UserService/JwUserService.m"
+                  timestampString = "499159387.32414"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "177">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.206"
+                  moduleName = "whm_project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/UserService/JwUserService.m"
+                  timestampString = "499159387.32582"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.207"
+                  moduleName = "whm_project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/UserService/JwUserService.m"
+                  timestampString = "499159387.327284"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "29">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[JwUserService get_all_areaWithsuccess:failure:]_block_invoke.209"
+                  moduleName = "whm_project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/UserService/JwUserService.m"
+                  timestampString = "499159387.329018"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -109,7 +109,9 @@ success:(void (^)())success failure:(void (^)(NSError *error))failure;
                   success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 //获取地区
+
 -(void)get_all_areaWithsuccess:(void (^)(NSArray *areas))success failure:(void (^)(NSError *error))failure;
+
 
 
 

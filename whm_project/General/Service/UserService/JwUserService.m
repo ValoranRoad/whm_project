@@ -360,10 +360,14 @@
 //获取地区
 -(void)get_all_areaWithsuccess:(void (^)(NSArray *areas))success failure:(void (^)(NSError *error))failure
 {
+
+  
+
    
     NSMutableDictionary * param = [@{} mutableCopy];
     
     param = [[self filterParam:param interface:@"kb/get_all_area"] mutableCopy];
+
 
     [self.httpManager POST:param withPoint:@"kb/get_all_area" success:^(id data) {
         
@@ -380,6 +384,5 @@
     }];
     
 }
-
 
 @end
