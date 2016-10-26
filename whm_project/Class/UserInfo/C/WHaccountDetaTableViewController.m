@@ -95,8 +95,10 @@
         
     self.myView = [[UIView alloc]init];
     self.myView.backgroundColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0];
+        self.myView.frame = CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds)*0.7, CGRectGetWidth([UIScreen mainScreen].bounds), 50);
+        
     self.addBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.addBut.frame = CGRectMake(30, CGRectGetMinY(self.myView.frame)+40, CGRectGetWidth(self.view.frame)-60, CGRectGetHeight(self.myView.frame)+50);
+    self.addBut.frame = CGRectMake(30, CGRectGetMinY(self.myView.frame)+40, CGRectGetWidth(self.view.frame)-60, CGRectGetHeight(self.myView.frame));
     self.addBut.backgroundColor = [UIColor colorWithHex:0x4367FF ];
     
     [self.addBut addTarget:self action:@selector(nextButAction:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -109,7 +111,9 @@
     self.addBut.layer.shadowOpacity = 0.8;
     self.addBut.layer.shadowColor = [UIColor colorWithHex:0x4367FF ].CGColor;
     
-    [self.myView addSubview:_addBut];
+    //[self.tableV addSubview:_myView];
+        
+    [self.tableV addSubview:_addBut];
     }
     
     return self.myView;
@@ -333,6 +337,13 @@
         [self.navigationController pushViewController:sex animated:NO];
         
            }
+    
+    //图片选择
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        
+        
+        
+    }
 
     
 }
