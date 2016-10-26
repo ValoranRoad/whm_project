@@ -30,6 +30,8 @@
 		9615F8131DC04715001081FD /* HmPhysicalGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9615F80A1DC04715001081FD /* HmPhysicalGroupCell.xib */; };
 		9615F8141DC04715001081FD /* HmPhysicalMainPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9615F80C1DC04715001081FD /* HmPhysicalMainPageCell.m */; };
 		9615F8151DC04715001081FD /* HmPhysicalMainPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9615F80D1DC04715001081FD /* HmPhysicalMainPageCell.xib */; };
+		9615F8191DC04F89001081FD /* HmAddInsuredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9615F8171DC04F89001081FD /* HmAddInsuredController.m */; };
+		9615F81A1DC04F89001081FD /* HmAddInsuredController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9615F8181DC04F89001081FD /* HmAddInsuredController.xib */; };
 		9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */; };
 		9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */; };
 		9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */; };
@@ -180,6 +182,9 @@
 		9615F80B1DC04715001081FD /* HmPhysicalMainPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmPhysicalMainPageCell.h; sourceTree = "<group>"; };
 		9615F80C1DC04715001081FD /* HmPhysicalMainPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhysicalMainPageCell.m; sourceTree = "<group>"; };
 		9615F80D1DC04715001081FD /* HmPhysicalMainPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmPhysicalMainPageCell.xib; sourceTree = "<group>"; };
+		9615F8161DC04F89001081FD /* HmAddInsuredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmAddInsuredController.h; sourceTree = "<group>"; };
+		9615F8171DC04F89001081FD /* HmAddInsuredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmAddInsuredController.m; sourceTree = "<group>"; };
+		9615F8181DC04F89001081FD /* HmAddInsuredController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmAddInsuredController.xib; sourceTree = "<group>"; };
 		9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_user_realtion.h; sourceTree = "<group>"; };
 		9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_user_realtion.m; sourceTree = "<group>"; };
 		9F0101D11DBF1F2B00AF13C9 /* WHget_relation_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_relation_detail.h; sourceTree = "<group>"; };
@@ -531,6 +536,9 @@
 				961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */,
 				961358CA1DB6263300F5107F /* HmSelectCompanyController.h */,
 				961358CB1DB6263300F5107F /* HmSelectCompanyController.m */,
+				9615F8161DC04F89001081FD /* HmAddInsuredController.h */,
+				9615F8171DC04F89001081FD /* HmAddInsuredController.m */,
+				9615F8181DC04F89001081FD /* HmAddInsuredController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1153,6 +1161,7 @@
 				961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */,
 				9615F8111DC04715001081FD /* HmFujiaCell.xib in Resources */,
 				C8C10CB71DB9C06F00A5FB9A /* JwRegistController.xib in Resources */,
+				9615F81A1DC04F89001081FD /* HmAddInsuredController.xib in Resources */,
 				961358B61DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib in Resources */,
 				961358C91DB6259600F5107F /* HmSelectProductCell.xib in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
@@ -1260,6 +1269,7 @@
 				C8C10CBD1DB9C06F00A5FB9A /* ChooseCompleteViewController.m in Sources */,
 				9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
+				9615F8191DC04F89001081FD /* HmAddInsuredController.m in Sources */,
 				9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */,
 				961358CC1DB6263300F5107F /* HmSelectCompanyController.m in Sources */,
 				961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */,

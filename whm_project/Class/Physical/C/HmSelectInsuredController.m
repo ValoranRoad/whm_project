@@ -12,6 +12,7 @@
 #import "HmSelectInsuredCollectionCell.h"
 #import "UIColor+Hex.h"
 #import "CMIndexBar.h"
+#import "HmAddInsuredController.h"
 
 #define kCellIdentifierOfInsured @"kCellIdentifierOfInsuredCell"
 #define kCellIdentifierOfCollection @"kCellIdentifierOfCollectionCell"
@@ -94,7 +95,8 @@
 #pragma mark -- Private
 -(void)addNewAction:(UIBarButtonItem *)sender
 {
-    
+    HmAddInsuredController *VC = [[HmAddInsuredController alloc] init];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 -(void)createIndexList
