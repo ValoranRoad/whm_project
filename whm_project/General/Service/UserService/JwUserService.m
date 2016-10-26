@@ -294,6 +294,90 @@
     
 }
 
+//保存用户关系成员接口
+-(void)save_user_realtionWithUid:(NSString *)uid
+                              id:(NSString *)ids
+                            name:(NSString *)name
+                             sex:(NSString *)sex
+                        birthday:(NSString *)birthday
+                        relation:(NSString *)relation
+                   yearly_income:(NSString *)yearly_income
+                      yearly_out:(NSString *)yearly_out
+                            debt:(NSString *)debt
+                         success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"id":ids,
+                              @"name":name,
+                              @"sex":sex,
+                              @"birthday":birthday,
+                              @"relation":relation,
+                              @"yearly_income":yearly_income,
+                              @"yearly_out":yearly_out,
+                              @"debt":debt,
+                              @"token":[JwUserCenter sharedCenter].key}
+                            mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/save_user_realtion"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/save_user_realtion" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+    
+}
+
+//删除联系人
+-(void)del_relationWithId:(NSString *)ids
+                  success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"id":ids,
+                                     @"token":[JwUserCenter sharedCenter].key}
+                                   mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/del_relation"]mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/del_relation" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+}
+//获取地区
+-(void)get_all_areaWithsuccess:(void (^)())success failure:(void (^)(NSError *))failure
+{
+   
+    NSMutableDictionary * param = [@{}mutableCopy];
+    
+    param = [[self filterParam:param interface:@"kb/get_all_area"]mutableCopy];
+
+    [self.httpManager POST:param withPoint:@"kb/get_all_area" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+        
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+}
 
 
 @end
