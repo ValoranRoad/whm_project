@@ -54,12 +54,17 @@
     // 索引
     [self createIndexList];
     
+<<<<<<< HEAD
 
    
 
     //数据
     [self setupData];
 
+=======
+    //数据
+    [self setupData];
+>>>>>>> b7ae52b1d2d847155ac20bb50f7b5324b4a723e7
     
 }
 
@@ -180,12 +185,15 @@
         nibsRegistered = YES;
     }
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
+<<<<<<< HEAD
 
      //cell.lblName.text =;
     
     cell.model = self.dataArry[indexPath.row];
     
 
+=======
+>>>>>>> b7ae52b1d2d847155ac20bb50f7b5324b4a723e7
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
