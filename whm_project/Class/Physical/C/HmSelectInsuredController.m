@@ -48,6 +48,8 @@
     // 索引
     [self createIndexList];
     
+  
+    
 }
 
 #pragma mark -- 布局
@@ -148,8 +150,8 @@
      [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
          
          NSLog(@"====%@",lists);
-        // cell.model =  lists[indexPath.row];
-         //cell.lblName.text = lists[indexPath.row]
+         cell.model = lists[indexPath.row];
+         
          
      } failure:^(NSError *error) {
          
