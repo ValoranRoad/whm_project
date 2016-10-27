@@ -8,6 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import "JwBackBaseController.h"
+
+#import "WHorganization.h"
+
+@protocol completeInsDelegate <NSObject>
+
+-(void)institutions:(WHorganization *)instModel;
+
+@end
+
+
 @interface ChooseCompleteViewController : JwBackBaseController
+
+
+@property (nonatomic,weak)id<completeInsDelegate>delegate;
+
+
+@property (nonatomic ,strong)WHorganization  *insModel;
+@property (nonatomic,strong)NSString *cId;
+
+
 
 @end

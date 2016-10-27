@@ -13,6 +13,10 @@
 #import "JwDataService.h"
 #import "WHhotcompany.h"
 #import "JGProgressHelper.h"
+#import <UIImageView+WebCache.h>
+#import "JwCompanys.h"
+#import "NSString+PinYin.h"
+
 
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 @interface InsuranceViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,CMIndexBarDelegate>
@@ -38,8 +42,9 @@
 // 组头
 @property (nonatomic, strong) NSArray *groupsTitle;
 @property (nonatomic, strong) NSMutableArray *hotNameArr;
-
-
+@property (nonatomic,strong)NSMutableArray *allArr;
+@property (nonatomic,strong)NSMutableArray *firstArr;
+@property (nonatomic,strong)NSMutableDictionary * dic;
 // 每组内容
 @property (nonatomic, strong) NSArray *contentsRow;
 @end
@@ -50,15 +55,17 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
     
-    [self setUI];
+    
     
     
     _groupsTitle = [NSArray array];
     _contentsRow = [NSArray array];
     _hotNameArr = [NSMutableArray array];
+    _allArr = [NSMutableArray array];
+    _firstArr =[NSMutableArray array];
 
     [self shuju];
-    [self createList];
+   
     [self getData];
 }
 
@@ -72,15 +79,60 @@
         [hud hide:YES];
         for (WHhotcompany *model in lists)
         {
-            [_hotNameArr addObject:model.name];
-            
+            [_hotNameArr addObject:model];
         }
+        [self setUI];
     } failure:^(NSError *error) {
         
         [hud hide:YES];
         [JGProgressHelper showError:nil inView:self.view];
     }];
+    
+    
+    //所有公司
+    [self.dataService get_CompanysWithType:self.completeId success:^(NSArray *lists) {
+        for (JwCompanys *model in lists)
+        {
+            [_allArr addObject:model];
+        }
+        
+        NSArray * ary = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"];
+        
+        
+        
+        //数据处理
+         self.dic = [NSMutableDictionary dictionaryWithCapacity:0];
+        
+        for (NSString * str in ary) {
+            NSMutableArray * modelAry = [@[] mutableCopy];
+            for (JwCompanys * model in _allArr) {
+                if ([[model.name getFirstLetter] isEqualToString:str]) {
+                    [modelAry addObject:model];
+                }
+            }
+            if (modelAry.count != 0) {
+                NSDictionary * smallDic = @{str : modelAry};
+                [self.dic addEntriesFromDictionary:smallDic];
+                [_firstArr addObject:str];
+            }
+            
+            
+        }
+        
+        
+         [self createList];
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+    
+    
+    
+    
 }
+
 
 
 
@@ -92,7 +144,7 @@
 //    indexBar.backgroundColor = [UIColor redColor];
     indexBar.textColor = [UIColor colorWithRed:61/255.0 green:163/255.0  blue:255/255.0  alpha:1.0];
     indexBar.textFont = [UIFont systemFontOfSize:12];
-    [indexBar setIndexes:_groupsTitle];
+    [indexBar setIndexes:_firstArr];
     //   indexBar.backgroundColor = [UIColor cyanColor];
     //    [indexBar setTextColor:[UIColor redColor]];
     indexBar.delegate = self;
@@ -150,7 +202,7 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    return _groupsTitle.count;
+    return _firstArr.count;
     
 }
 
@@ -159,8 +211,18 @@
 {
     
     
-    return 3;
+    NSString * key = self.firstArr[section];
+    return [[self.dic objectForKey:key] count];
     
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString * key = self.firstArr[indexPath.section];
+    NSArray * ary = [self.dic objectForKey:key];
+    JwCompanys *model = ary[indexPath.row];
+    
+    [_delegate completeId:model.id completeName:model.name];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - tableview事件
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,8 +230,12 @@
 //    tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     completeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"completeCell" forIndexPath:indexPath];
     
-     cell.headImage.image = [UIImage imageNamed:@"leixing"];
-    cell.titleLab.text = @"中国神周五好";
+    NSString * key = self.firstArr[indexPath.section];
+    NSArray * ary = [self.dic objectForKey:key];
+    JwCompanys *model = ary[indexPath.row];
+    cell.headImage.contentMode = UIViewContentModeScaleAspectFit;//图片自适应
+    [cell.headImage sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"leixing"]] ;
+    cell.titleLab.text = model.name;
    
     cell.backgroundColor = [UIColor whiteColor];
     
@@ -189,15 +255,6 @@
 //    cell.englishCityLab.textColor = kDarkGrayColor;
 //}
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
-    
-    
-    
-    
-}
 #pragma mark - 返回tableview 表头高度
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -221,7 +278,7 @@
     
     UILabel *myLab = [[UILabel alloc]initWithFrame:CGRectMake(12, 0, 100, 30)];
     myLab.backgroundColor = [UIColor clearColor];
-    myLab.text = _groupsTitle[section];
+    myLab.text = _firstArr[section];
     myLab.font = [UIFont systemFontOfSize:16];
     myLab.textColor = [UIColor colorWithRed:0/255.0 green:0/255.0  blue:0/255.0  alpha:1.0];
     
@@ -297,9 +354,10 @@
     insuranceCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     [cell sizeToFit];
-    
-    cell.completeImage.image = [UIImage imageNamed:@"jigou"];
-    cell.completeLab.text = @"泰康人寿";
+    WHhotcompany *model = _hotNameArr[indexPath.row];
+    cell.completeImage.contentMode = UIViewContentModeScaleAspectFit;//图片自适应
+    [cell.completeImage sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:[UIImage imageNamed:@"leixing"]] ;
+    cell.completeLab.text = model.short_name;
     
     
 //    //cell.layer.borderColor = [UIColor colorWithRed:118/255.0 green:118/255.0  blue:118/255.0  alpha:1.0].CGColor;

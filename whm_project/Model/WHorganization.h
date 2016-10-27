@@ -10,17 +10,17 @@
 #import "JwModelBase.h"
 
 @interface WHorganization : JwModelBase
-@property(nonatomic,strong)NSString * id;
-@property(nonatomic,strong)NSString * name;
-@property(nonatomic,strong)NSString * tel;
-@property(nonatomic,strong)NSString * address;
+@property(nonatomic,strong)NSString <Optional>* id;
+@property(nonatomic,strong)NSString <Optional>* name;
+@property(nonatomic,strong)NSString <Optional>* tel;
+@property(nonatomic,strong)NSString <Optional>* address;
 @property(nonatomic,strong)NSString <Optional> *province_name;
 @property(nonatomic,strong)NSString <Optional> *city_name;
-@property(nonatomic,strong)NSString * province;
-@property(nonatomic,strong)NSString * city;
-@property(nonatomic,strong)NSString * longitude;
-@property(nonatomic,strong)NSString * latitude;
-@property(nonatomic,strong)NSString * distance;
+@property(nonatomic,strong)NSString <Optional>* province;
+@property(nonatomic,strong)NSString <Optional>* city;
+@property(nonatomic,strong)NSString <Optional>* longitude;
+@property(nonatomic,strong)NSString <Optional>* latitude;
+@property(nonatomic,strong)NSString <Optional>* distance;
 
 
 @end

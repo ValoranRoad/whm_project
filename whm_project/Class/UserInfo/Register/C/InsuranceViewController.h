@@ -9,9 +9,23 @@
 #import <UIKit/UIKit.h>
 
 #import "JwBackBaseController.h"
+
+
+@protocol completeDelegate <NSObject>
+
+-(void)completeId:(NSString *)cId completeName:(NSString *)cName;
+
+@end
+
 @interface InsuranceViewController : JwBackBaseController
 
+@property (nonatomic,weak)id<completeDelegate>delegate;
 
+
+@property (nonatomic,strong)NSString *compId;
+@property (nonatomic,strong)NSString *compName;
+
+@property (nonatomic,strong)NSString *completeId;
 
 
 @end

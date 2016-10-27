@@ -13,6 +13,9 @@
 #import "JwDataService.h"
 
 
+#import "JwDataService.h"
+#import "WHorganization.h"
+
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 #define kScreenH [[UIScreen mainScreen] bounds].size.height
 @interface ChooseCompleteViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
@@ -42,12 +45,20 @@
 
 @property (nonatomic,strong)NSMutableArray *allArr;//全部数据
 @property (nonatomic,strong) NSMutableArray  *proTimeList;//全部省
+@property (nonatomic,strong) NSMutableArray  *proTimeListId;//全部省
+
 
 @property (nonatomic,strong)NSMutableArray  *cityAllArr;//城市的全部数据(包括id什么的)
 @property (nonatomic,strong)NSMutableArray *cityArr;//省内的城市
+@property (nonatomic,strong)NSMutableArray *cityArrId;//省内的城市Id
 
 @property (nonatomic,strong)NSMutableArray  *areaAllArr;//区的全部数据(包括id)
 @property (nonatomic,strong)NSMutableArray  *areaArr;//全部区
+@property (nonatomic,strong)NSMutableArray  *areaArrId;//全部区id
+
+@property (nonatomic,strong)NSMutableArray *listArr;
+
+
 
 @property (nonatomic,strong)UIPickerView *pickerView ;
 
@@ -71,18 +82,19 @@
     _allArr = [NSMutableArray array];
     _cityAllArr = [NSMutableArray array];
     _areaAllArr = [NSMutableArray array];
+    _listArr = [NSMutableArray array];
 
-
-    
+    _proTimeList = [NSMutableArray array];
+     _proTimeListId = [NSMutableArray array];
+    _cityArr = [NSMutableArray array];
+    _cityArrId = [NSMutableArray array];
+    _areaArr = [NSMutableArray array];
+     _areaArrId = [NSMutableArray array];
     [self getData];
-    
+    [self getListWithId:self.cId cityName:@"" provinceId:@"" cityId:@"" countryId:@""];
  
    
-    _proTimeList = [NSMutableArray array];
-
-    _cityArr = [NSMutableArray array];
-    _areaArr = [NSMutableArray array];
-   
+    
 }
 
 -(void)getData
@@ -95,6 +107,7 @@
        for (JwAreass *area in areas)
        {
            [_proTimeList addObject:area.area_name];
+           [_proTimeListId addObject:area.area_id];
            
            //处理空数组
            if (area.child.count == 0)
@@ -118,7 +131,32 @@
    }];
     
      NSLog(@"%@",_allArr);
+    
+  
+    
+    
+    
+    
 }
+-(void)getListWithId:(NSString *)comId cityName:(NSString *)cityName provinceId:(NSString *)pId cityId:(NSString *)cId countryId:(NSString *)countryId
+{
+    //列表信息
+    
+    [_listArr removeAllObjects];//清空
+    [self.dataService get_OrganizationWithCom_id:comId city_name:cityName province:pId city:cId county:countryId success:^(NSArray *lists) {
+        
+        for (WHorganization *model in lists) {
+            [_listArr addObject:model];
+        }
+        
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+}
+
 
 -(void)creatUI
 {
@@ -282,7 +320,10 @@
         NSString  *_proTimeStr = [_proTimeList objectAtIndex:row];
         
         [_provinceBtn setTitle:_proTimeStr forState:UIControlStateNormal];
+        
         _pickerView.hidden = YES;
+        //刷新值
+        [self getListWithId:self.cId cityName:@"" provinceId:[_proTimeListId objectAtIndex:row] cityId:@"" countryId:@""];
         
           //取出对应的区
         _cityAllArr = _allArr[row];
@@ -291,6 +332,7 @@
         for (JwAreass *city in _cityAllArr) {
            
             [_cityArr addObject:city.area_name];
+            [_cityArrId addObject:city.area_id];
             [_areaAllArr addObject:city.child];
         }
         [_cityPickerView reloadAllComponents];
@@ -303,11 +345,14 @@
         
         [_cityBtn setTitle:_proTimeStr forState:UIControlStateNormal];
         _cityPickerView.hidden = YES;
+        //刷新值
+        [self getListWithId:self.cId cityName:@"" provinceId:@""cityId:[_cityArrId objectAtIndex:row] countryId:@""];
         
         NSArray *arr = _areaAllArr[row];
         [_areaArr removeAllObjects];
         for (JwAreass *area in arr) {
             [_areaArr addObject: area.area_name];
+            [_areaArrId addObject: area.area_id];
         }
     
         [_areaPickerView reloadAllComponents];
@@ -320,6 +365,8 @@
         
         [_areaBtn setTitle:_proTimeStr forState:UIControlStateNormal];
         _areaPickerView.hidden = YES;
+        //刷新值
+        [self getListWithId:self.cId cityName:@"" provinceId:@""cityId:@"" countryId:[_areaArrId objectAtIndex:row]];
     }
     
     
@@ -365,16 +412,23 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return _listArr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChooseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chooseCell"];
-    
-    cell.addressLab.text = @"郑州市中原区146号";
+    WHorganization *model = _listArr[indexPath.row];
+    cell.addressLab.text = model.name;
     
    return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_delegate institutions:_listArr[indexPath.row]];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 -(void)provinceBtnAction
 {
     NSLog(@"点击了省");
