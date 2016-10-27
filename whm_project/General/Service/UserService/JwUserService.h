@@ -94,6 +94,7 @@ success:(void (^)())success failure:(void (^)(NSError *error))failure;
 -(void)save_user_realtionWithUid:(NSString *)uid
                               id:(NSString * )ids
                             name:(NSString *)name
+                          avatar:(NSString *)avatar
                              sex:(NSString *)sex
                         birthday:(NSString *)birthday
                         relation:(NSString *)relation

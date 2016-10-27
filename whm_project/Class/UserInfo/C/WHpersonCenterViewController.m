@@ -16,6 +16,10 @@
 
 #import "WHsetupTableViewController.h"
 
+//
+#import "JGProgressHelper.h"
+
+
 
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIView * headview;
@@ -83,7 +87,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self dataBase];
+    //
     self.navigationItem.title = @"我的";
     
     self.scolw.delegate = self;
@@ -355,6 +360,18 @@
     [self.myBut12 addTarget:self action:@selector(whsetAction:) forControlEvents:(UIControlEventTouchUpInside)];
     
 }
+
+//数据处理获取用户信息
+-(void)dataBase
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    
+    
+    
+}
+
+
+
 //设置事件
 -(void)whsetAction:(UIButton *)sender
 {
