@@ -8,6 +8,7 @@
 
 #import "JwHomeController.h"
 #import "JwUserService.h"
+#import "JwAreass.h"
 
 @interface JwHomeController ()
 
@@ -23,10 +24,14 @@
 //    //测试
 //    [self.userService get_all_areaWithsuccess:^(NSArray *areas) {
 //        
-//        NSLog(@"%@", areas);
+//        for (JwAreass *area in areas) {
+//            NSLog(@"%@", area.area_name);
+//        }
+//        
 //    } failure:^(NSError *error) {
 //        NSLog(@"%@", error);
 //    }];
+    
     
 }
 
