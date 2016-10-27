@@ -48,8 +48,21 @@
     // 索引
     [self createIndexList];
     
-  
+    //数据
+    [self setupData];
     
+}
+
+- (void)setupData{
+    
+    [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
+        
+        NSLog(@"====%@",lists);
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 
 #pragma mark -- 布局
@@ -145,20 +158,6 @@
         nibsRegistered = YES;
     }
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
-    //cell.model =  [[WHget_user_realtion alloc]init];
-    
-     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
-         
-         NSLog(@"====%@",lists);
-         cell.model = lists[indexPath.row];
-         
-         
-     } failure:^(NSError *error) {
-         
-     }];
-    
-   // cell.lblName.text =
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
