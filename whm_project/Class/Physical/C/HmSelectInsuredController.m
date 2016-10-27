@@ -90,7 +90,12 @@
     
     // 添加 (右上角)
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"test_add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewAction:)];
+    
+    
 }
+
+
+
 
 #pragma mark -- Private
 -(void)addNewAction:(UIBarButtonItem *)sender

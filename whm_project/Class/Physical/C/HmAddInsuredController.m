@@ -89,8 +89,8 @@
     UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(picTapAction)];
     self.phoMyimage.userInteractionEnabled = YES;
     [self.phoMyimage addGestureRecognizer:picTap];
-    //self.phoMyimage.layer.masksToBounds = YES;
-   // self.phoMyimage.layer.cornerRadius = 55;
+     self.phoMyimage.layer.masksToBounds = YES;
+     self.phoMyimage.layer.cornerRadius = 55;
     
     
     
@@ -290,6 +290,8 @@
                
         [hud hide:YES];
         [JGProgressHelper showSuccess:@"保存成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+        
            } failure:^(NSError *error) {
                
                [JGProgressHelper showError:@"保存失败"];
