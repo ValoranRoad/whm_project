@@ -14,6 +14,8 @@
 #import "CMIndexBar.h"
 #import "HmAddInsuredController.h"
 #import "MacroUtility.h"
+#import "WHget_user_realtion.h"
+
 
 #define kCellIdentifierOfInsured @"kCellIdentifierOfInsuredCell"
 #define kCellIdentifierOfCollection @"kCellIdentifierOfCollectionCell"
@@ -33,6 +35,9 @@
 // 组
 @property (nonatomic, strong) NSArray *arrayOfGroup;
 
+//数据
+@property(nonatomic,strong)NSMutableArray * dataArry;
+
 @end
 
 @implementation HmSelectInsuredController
@@ -50,16 +55,7 @@
     [self createIndexList];
     
 
-    [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
-        
-        NSLog(@"====%@",lists);
-      
-        
-        
-    } failure:^(NSError *error) {
-        
-    }];
-
+   
 
     //数据
     [self setupData];
@@ -71,7 +67,19 @@
     
     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
         
+        self.dataArry = [NSMutableArray array];
+        //self.dataArry = lists;
+       // NSDictionary * d = lists [0];
+        
+        NSLog(@"===%ld",lists.count);
         DLog(@"%@",lists);
+        self.dataArry = [NSMutableArray arrayWithArray:lists];
+//        for (NSDictionary * d in lists) {
+//            WHget_user_realtion * r = [[WHget_user_realtion alloc]init];
+//            [r setValuesForKeysWithDictionary:d];
+//            [self.dataArry addObject:r];
+//        }
+//         [self.tableV reloadData];
         
     } failure:^(NSError *error) {
         
@@ -160,7 +168,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataArry.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,19 +181,9 @@
     }
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
 
-//    cell.model =  [[WHget_user_realtion alloc]init];
-//    
-//     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
-//         
-//         NSLog(@"====%@",lists);
-//         cell.model = lists[indexPath.row];
-//         
-//         
-//     } failure:^(NSError *error) {
-//         
-//     }];
+     //cell.lblName.text =;
     
-   // cell.lblName.text =
+    cell.model = self.dataArry[indexPath.row];
     
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
