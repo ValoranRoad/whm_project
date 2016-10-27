@@ -48,6 +48,8 @@
     // 索引
     [self createIndexList];
     
+  
+    
 }
 
 #pragma mark -- 布局
@@ -90,7 +92,12 @@
     
     // 添加 (右上角)
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"test_add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewAction:)];
+    
+    
 }
+
+
+
 
 #pragma mark -- Private
 -(void)addNewAction:(UIBarButtonItem *)sender
@@ -138,6 +145,20 @@
         nibsRegistered = YES;
     }
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
+    //cell.model =  [[WHget_user_realtion alloc]init];
+    
+     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
+         
+         NSLog(@"====%@",lists);
+         cell.model = lists[indexPath.row];
+         
+         
+     } failure:^(NSError *error) {
+         
+     }];
+    
+   // cell.lblName.text =
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

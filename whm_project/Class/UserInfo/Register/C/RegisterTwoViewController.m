@@ -10,13 +10,17 @@
 #import "registerTwoTableViewCell.h"
 #import "ChooseCompleteViewController.h"
 #import "InsuranceViewController.h"
+#import "CompleteTypeViewController.h"
+
+
 
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
-@interface RegisterTwoViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface RegisterTwoViewController ()<UITableViewDelegate,UITableViewDataSource,completeTypeDelegate>
 
 
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic,strong)NSString *compName;
+@property (nonatomic,strong)NSString *compId;
 
 @end
 
@@ -92,12 +96,21 @@
     if (indexPath.row == 0)
     {
         cell.myImage.image = [UIImage imageNamed:@"leixing"];
-        [cell.clickBtn setTitle:@"请选择公司类型" forState:UIControlStateNormal];
         cell.clickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         cell.clickBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
         cell.arrowImge.image = [UIImage imageNamed:@"tjzh-2@3x"];
         [cell.clickBtn addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
         cell.clickBtn.tag = 101;
+        
+        if (_compName == nil)
+        {
+            [cell.clickBtn setTitle:@"请选择公司类型" forState:UIControlStateNormal];
+        }
+        else
+        {
+             [cell.clickBtn setTitle:_compName forState:UIControlStateNormal];
+        }
+     
     }
     else if (indexPath.row == 1)
     {
@@ -142,15 +155,30 @@
 {
     if (sender.tag == 101)
     {
-        ChooseCompleteViewController *chooseVC = [[ChooseCompleteViewController alloc]init];
-        [self.navigationController pushViewController:chooseVC animated:YES];
+        NSLog(@"点击了公司类型");
+        CompleteTypeViewController *compVC = [[CompleteTypeViewController alloc]init];
+        compVC.delegate = self;
+        [self.navigationController pushViewController:compVC animated:YES];
     }
     if (sender.tag == 102)
     {
         InsuranceViewController *insuranceVC = [[InsuranceViewController alloc]init];
         [self.navigationController pushViewController:insuranceVC animated:YES];
     }
+    if (sender.tag == 103)
+    {
+        ChooseCompleteViewController *chooseVC = [[ChooseCompleteViewController alloc]init];
+        [self.navigationController pushViewController:chooseVC animated:YES];
+    }
 }
+
+-(void)completeName:(NSString *)cName completeId:(NSString *)cId
+{
+    self.compName = cName;
+    self.compId = cId;
+    [self.tableView reloadData];
+}
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

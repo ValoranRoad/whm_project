@@ -138,6 +138,7 @@
             [hud hide:YES];
             [JGProgressHelper  showSuccess:@"登录成功"];
             WHpersonCenterViewController * myself = [[WHpersonCenterViewController alloc]init];
+            
             [self.navigationController pushViewController:myself animated:NO];
             
             NSLog(@"%@", user.name);

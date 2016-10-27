@@ -94,6 +94,7 @@ success:(void (^)())success failure:(void (^)(NSError *error))failure;
 -(void)save_user_realtionWithUid:(NSString *)uid
                               id:(NSString * )ids
                             name:(NSString *)name
+                          avatar:(NSString *)avatar
                              sex:(NSString *)sex
                         birthday:(NSString *)birthday
                         relation:(NSString *)relation
@@ -109,7 +110,9 @@ success:(void (^)())success failure:(void (^)(NSError *error))failure;
                   success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 //获取地区
+
 -(void)get_all_areaWithsuccess:(void (^)(NSArray *areas))success failure:(void (^)(NSError *error))failure;
+
 
 
 

@@ -299,6 +299,7 @@
 -(void)save_user_realtionWithUid:(NSString *)uid
                               id:(NSString *)ids
                             name:(NSString *)name
+                          avatar:(NSString *)avatar
                              sex:(NSString *)sex
                         birthday:(NSString *)birthday
                         relation:(NSString *)relation
@@ -310,6 +311,7 @@
     NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                               @"id":ids,
                               @"name":name,
+                              @"avatar":avatar,
                               @"sex":sex,
                               @"birthday":birthday,
                               @"relation":relation,
@@ -360,6 +362,9 @@
 //获取地区
 -(void)get_all_areaWithsuccess:(void (^)(NSArray *areas))success failure:(void (^)(NSError *error))failure
 {
+
+  
+
    
     NSMutableDictionary * param = [@{} mutableCopy];
     
@@ -380,6 +385,5 @@
     }];
     
 }
-
 
 @end

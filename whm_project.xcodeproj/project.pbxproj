@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E414C661DC1D2E6005A335A /* CompleteTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E414C651DC1D2E6005A335A /* CompleteTypeViewController.m */; };
 		961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */; };
 		961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358AE1DB5C29F00F5107F /* HmSelectInsuredCell.m */; };
 		961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358AF1DB5C29F00F5107F /* HmSelectInsuredCell.xib */; };
@@ -51,6 +52,7 @@
 		9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */; };
 		9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */; };
 		9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */; };
+		9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */; };
 		C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */ = {isa = PBXBuildFile; fileRef = C807B9A61DC060B800D3C700 /* JwAreass.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
@@ -146,6 +148,8 @@
 /* Begin PBXFileReference section */
 		0C271B4569C77C5A6821CB87 /* libPods-whm_project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-whm_project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.debug.xcconfig"; sourceTree = "<group>"; };
+		8E414C641DC1D2E6005A335A /* CompleteTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteTypeViewController.h; sourceTree = "<group>"; };
+		8E414C651DC1D2E6005A335A /* CompleteTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteTypeViewController.m; sourceTree = "<group>"; };
 		961358AA1DB5C29800F5107F /* HmSelectInsuredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectInsuredController.h; sourceTree = "<group>"; };
 		961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectInsuredController.m; sourceTree = "<group>"; };
 		961358AD1DB5C29F00F5107F /* HmSelectInsuredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectInsuredCell.h; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 		9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHhospital.m; sourceTree = "<group>"; };
 		9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_product_detail.h; sourceTree = "<group>"; };
 		9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_product_detail.m; sourceTree = "<group>"; };
+		9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrelationTableViewController.h; sourceTree = "<group>"; };
+		9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrelationTableViewController.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C807B9A51DC060B800D3C700 /* JwAreass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwAreass.h; sourceTree = "<group>"; };
 		C807B9A61DC060B800D3C700 /* JwAreass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwAreass.m; sourceTree = "<group>"; };
@@ -542,6 +548,8 @@
 				9615F8161DC04F89001081FD /* HmAddInsuredController.h */,
 				9615F8171DC04F89001081FD /* HmAddInsuredController.m */,
 				9615F8181DC04F89001081FD /* HmAddInsuredController.xib */,
+				9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */,
+				9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1014,6 +1022,8 @@
 				C8C10CA51DB9C06F00A5FB9A /* InsuranceViewController.m */,
 				C8C10CA61DB9C06F00A5FB9A /* RegisterTwoViewController.h */,
 				C8C10CA71DB9C06F00A5FB9A /* RegisterTwoViewController.m */,
+				8E414C641DC1D2E6005A335A /* CompleteTypeViewController.h */,
+				8E414C651DC1D2E6005A335A /* CompleteTypeViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1253,6 +1263,7 @@
 				9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */,
+				9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */,
 				9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */,
 				9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
@@ -1260,6 +1271,7 @@
 				9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
+				8E414C661DC1D2E6005A335A /* CompleteTypeViewController.m in Sources */,
 				C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */,
 				C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */,
 				9615F80E1DC04715001081FD /* HmDetailsCell.m in Sources */,

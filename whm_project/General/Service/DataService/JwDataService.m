@@ -270,6 +270,7 @@
         
         if (success) {
             success(user_realtions);
+            NSLog(@"%@",user_realtions);
         }
     } failure:^(NSError *error) {
         if (failure) {
