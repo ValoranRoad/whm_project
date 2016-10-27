@@ -4,81 +4,93 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "whm_project/General/Service/UserService/JwUserService.m"
-            timestampString = "499159018.272455"
+            filePath = "whm_project/General/Service/DataService/JwDataService.m"
+            timestampString = "499246241.353903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
-            landmarkName = "-get_all_areaWithsuccess:failure:"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-get_hot_companyWithsuccess:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "whm_project/General/Service/DataService/JwDataService.m"
+            timestampString = "499246267.78521"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-get_hot_companyWithsuccess:failure:"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__49-[JwUserService get_all_areaWithsuccess:failure:]_block_invoke"
+                  symbolName = "-[JwDataService get_hot_companyWithsuccess:failure:]"
                   moduleName = "whm_project"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/UserService/JwUserService.m"
-                  timestampString = "499159387.32414"
+                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/DataService/JwDataService.m"
+                  timestampString = "499246280.730093"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "380"
-                  endingLineNumber = "380"
-                  offsetFromSymbolStart = "177">
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "278">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.206"
+                  symbolName = "__52-[JwDataService get_hot_companyWithsuccess:failure:]_block_invoke"
                   moduleName = "whm_project"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/UserService/JwUserService.m"
-                  timestampString = "499159387.32582"
+                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/DataService/JwDataService.m"
+                  timestampString = "499246280.731996"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "380"
-                  endingLineNumber = "380"
-                  offsetFromSymbolStart = "42">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.207"
-                  moduleName = "whm_project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/UserService/JwUserService.m"
-                  timestampString = "499159387.327284"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "380"
-                  endingLineNumber = "380"
-                  offsetFromSymbolStart = "29">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__49-[JwUserService get_all_areaWithsuccess:failure:]_block_invoke.209"
-                  moduleName = "whm_project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/UserService/JwUserService.m"
-                  timestampString = "499159387.329018"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "380"
-                  endingLineNumber = "380"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "whm_project/General/Service/DataService/JwDataService.m"
+            timestampString = "499246330.496666"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-get_hot_companyWithsuccess:failure:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

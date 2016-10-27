@@ -8,6 +8,10 @@
 
 #import "ChooseCompleteViewController.h"
 #import "ChooseTableViewCell.h"
+#import "JGProgressHelper.h"
+#import "JwAreass.h"
+#import "JwDataService.h"
+
 
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 #define kScreenH [[UIScreen mainScreen] bounds].size.height
@@ -32,9 +36,18 @@
 @property (nonatomic,strong)UIImageView *cityImage;
 @property (nonatomic,strong)UIImageView *areaImage;
 
-@property (nonatomic,strong) NSArray  *proTimeList;
-@property (nonatomic,strong)NSArray *cityArr;
-@property (nonatomic,strong)NSArray *areaArr;
+
+
+
+
+@property (nonatomic,strong)NSMutableArray *allArr;//全部数据
+@property (nonatomic,strong) NSMutableArray  *proTimeList;//全部省
+
+@property (nonatomic,strong)NSMutableArray  *cityAllArr;//城市的全部数据(包括id什么的)
+@property (nonatomic,strong)NSMutableArray *cityArr;//省内的城市
+
+@property (nonatomic,strong)NSMutableArray  *areaAllArr;//区的全部数据(包括id)
+@property (nonatomic,strong)NSMutableArray  *areaArr;//全部区
 
 @property (nonatomic,strong)UIPickerView *pickerView ;
 
@@ -42,6 +55,12 @@
 @property (nonatomic,strong)UIPickerView *cityPickerView;
 
 @property (nonatomic,strong)UIPickerView *areaPickerView;
+
+
+
+
+
+
 @end
 
 @implementation ChooseCompleteViewController
@@ -49,36 +68,56 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-    
+    _allArr = [NSMutableArray array];
+    _cityAllArr = [NSMutableArray array];
+    _areaAllArr = [NSMutableArray array];
+
 
     
     [self getData];
-    _proTimeList = [[NSArray alloc]initWithObjects:@"河南省",@"河北省",@"浙江省",@"北京",@"天津",@"重庆",@"四川省",@"新疆省",@"黑龙江省",@"安徽省",nil];
+    
+ 
+   
+    _proTimeList = [NSMutableArray array];
 
-    _cityArr = [[NSArray alloc]initWithObjects:@"郑州",@"厦门",@"哈尔滨",@"南阳",@"信阳",nil];
-    _areaArr = [[NSArray alloc]initWithObjects:@"金水区",@"中原区",nil];
-    [self creatTable];
-    [self creatUI];
+    _cityArr = [NSMutableArray array];
+    _areaArr = [NSMutableArray array];
+   
 }
 
 -(void)getData
 {
-//    [self.userService registWithName:self.nameText.text mobile:self.telText.text captcha:self.CodeText.text pwd:self.pwdText.text type:@"0" company_id:@"" org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
-//        [hud hide:YES];
-//        [JGProgressHelper showSuccess:@"普通用户注册成功"];
-//        
-//    } failure:^(NSError *error) {
-//        
-//        [JGProgressHelper showError:@"注册失败"];
-//    }];
+    id hud = nil;
+    hud = [JGProgressHelper showProgressInView:self.view];
    [self.userService get_all_areaWithsuccess:^(NSArray *areas) {
-       
-       
+       [hud hide:YES];
+       //取出省
+       for (JwAreass *area in areas)
+       {
+           [_proTimeList addObject:area.area_name];
+           
+           //处理空数组
+           if (area.child.count == 0)
+           {
+               [self creatTable];
+               [self creatUI];
+
+               return ;
+           }
+           else
+           {
+               [_allArr addObject:area.child];
+           }
+          
+           
+       }
    } failure:^(NSError *error) {
        
-       
+       [hud hide:YES];
+       [JGProgressHelper showError:nil inView:self.view];
    }];
     
+     NSLog(@"%@",_allArr);
 }
 
 -(void)creatUI
@@ -119,7 +158,7 @@
     
     self.provinceBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.provinceBtn.frame = CGRectMake(5, 3, CGRectGetWidth(_provinceView.frame) - 10, 30- 3 - 3);
-    [self.provinceBtn setTitle:@"河南省" forState:UIControlStateNormal];
+    [self.provinceBtn setTitle:_proTimeList[0] forState:UIControlStateNormal];
     self.provinceBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.provinceBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.provinceBtn addTarget:self action:@selector(provinceBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -130,7 +169,7 @@
     
     self.cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.cityBtn.frame = CGRectMake(5, 3, CGRectGetWidth(_provinceView.frame) - 10, 30- 3 - 3);
-    [self.cityBtn setTitle:@"中原区" forState:UIControlStateNormal];
+    [self.cityBtn setTitle:@"请选择" forState:UIControlStateNormal];
     self.cityBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.cityBtn addTarget:self action:@selector(cityBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [self.cityBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -141,7 +180,7 @@
     
     self.areaBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.areaBtn.frame = CGRectMake(5, 3, CGRectGetWidth(_provinceView.frame) - 10, 30- 3 - 3);
-    [self.areaBtn setTitle:@"中原" forState:UIControlStateNormal];
+    [self.areaBtn setTitle:@"请选择" forState:UIControlStateNormal];
     [self.areaBtn addTarget:self action:@selector(areaBtnAction) forControlEvents:UIControlEventTouchUpInside];
     self.areaBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.areaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -244,6 +283,19 @@
         
         [_provinceBtn setTitle:_proTimeStr forState:UIControlStateNormal];
         _pickerView.hidden = YES;
+        
+          //取出对应的区
+        _cityAllArr = _allArr[row];
+        [_areaAllArr removeAllObjects];
+        [_cityArr removeAllObjects];
+        for (JwAreass *city in _cityAllArr) {
+           
+            [_cityArr addObject:city.area_name];
+            [_areaAllArr addObject:city.child];
+        }
+        [_cityPickerView reloadAllComponents];
+        
+
     }
     else if (pickerView == _cityPickerView)
     {
@@ -251,6 +303,16 @@
         
         [_cityBtn setTitle:_proTimeStr forState:UIControlStateNormal];
         _cityPickerView.hidden = YES;
+        
+        NSArray *arr = _areaAllArr[row];
+        [_areaArr removeAllObjects];
+        for (JwAreass *area in arr) {
+            [_areaArr addObject: area.area_name];
+        }
+    
+        [_areaPickerView reloadAllComponents];
+        
+        
     }
     else
     {
