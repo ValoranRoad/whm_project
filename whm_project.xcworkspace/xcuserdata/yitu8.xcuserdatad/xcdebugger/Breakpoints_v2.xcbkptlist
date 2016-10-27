@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "whm_project/General/Service/DataService/JwDataService.m"
-            timestampString = "499246241.353903"
+            timestampString = "499247921.34803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "whm_project/General/Service/DataService/JwDataService.m"
-            timestampString = "499246267.78521"
+            timestampString = "499247921.34803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-get_hot_companyWithsuccess:failure:"
             landmarkType = "7">
             <Locations>
@@ -52,7 +52,7 @@
                   moduleName = "whm_project"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/DataService/JwDataService.m"
-                  timestampString = "499246542.507382"
+                  timestampString = "499247922.413503"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "87"
@@ -67,7 +67,7 @@
                   moduleName = "whm_project"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yitu8/whm_project/whm_project/General/Service/DataService/JwDataService.m"
-                  timestampString = "499246542.508666"
+                  timestampString = "499247922.415276"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "87"
@@ -84,13 +84,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "whm_project/General/Service/DataService/JwDataService.m"
-            timestampString = "499246330.496666"
+            timestampString = "499247921.34803"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
             endingLineNumber = "84"
             landmarkName = "-get_hot_companyWithsuccess:failure:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "whm_project/Class/UserInfo/Register/C/InsuranceViewController.m"
+            timestampString = "499247466.100483"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-getData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "whm_project/General/Service/DataService/JwDataService.m"
+            timestampString = "499247921.34803"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-get_hot_companyWithsuccess:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "whm_project/Class/UserInfo/Register/C/InsuranceViewController.m"
+            timestampString = "499247485.404229"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-getData"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[InsuranceViewController getData]"
+                  moduleName = "whm_project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yitu8/whm_project/whm_project/Class/UserInfo/Register/C/InsuranceViewController.m"
+                  timestampString = "499247922.428932"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "135">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[InsuranceViewController getData]_block_invoke"
+                  moduleName = "whm_project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yitu8/whm_project/whm_project/Class/UserInfo/Register/C/InsuranceViewController.m"
+                  timestampString = "499247922.430528"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "39">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
