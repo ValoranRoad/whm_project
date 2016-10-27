@@ -78,9 +78,9 @@ success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError 
 
 
 
-//获取用户关系成员列表
+//获取用户关系成员接口列表
 -(void)get_user_realtionWithUid:(NSString *)uid
-                        success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
+                        success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure;
 
 
 //获取关系人详情

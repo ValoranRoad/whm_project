@@ -364,7 +364,7 @@
 //数据处理获取用户信息
 -(void)dataBase
 {
-    id hud = [JGProgressHelper showProgressInView:self.view];
+    //id hud = [JGProgressHelper showProgressInView:self.view];
     
     
     

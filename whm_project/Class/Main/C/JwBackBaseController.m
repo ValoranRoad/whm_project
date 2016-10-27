@@ -38,7 +38,7 @@
 }
 
 #pragma mark -- Getter
--(JwDataService *)backService
+-(JwDataService *)dataService
 {
     _dataService = [[JwDataService alloc] init];
     return _dataService;

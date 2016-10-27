@@ -78,7 +78,7 @@
   
     
 }
-//获取热门公司里边没有参数??
+//获取热门公司
 -(void)get_hot_companyWithsuccess:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{} mutableCopy];
@@ -270,6 +270,7 @@
         
         if (success) {
             success(user_realtions);
+            NSLog(@"%@",user_realtions);
         }
     } failure:^(NSError *error) {
         if (failure) {
