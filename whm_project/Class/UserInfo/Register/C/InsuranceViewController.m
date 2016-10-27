@@ -10,9 +10,9 @@
 #import "insuranceCollectionViewCell.h"
 #import "completeTableViewCell.h"
 #import "CMIndexBar.h"
-
-
-
+#import "JwDataService.h"
+#import "WHhotcompany.h"
+#import "JGProgressHelper.h"
 
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 @interface InsuranceViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,CMIndexBarDelegate>
@@ -37,6 +37,8 @@
 
 // 组头
 @property (nonatomic, strong) NSArray *groupsTitle;
+@property (nonatomic, strong) NSMutableArray *hotNameArr;
+
 
 // 每组内容
 @property (nonatomic, strong) NSArray *contentsRow;
@@ -53,10 +55,34 @@
     
     _groupsTitle = [NSArray array];
     _contentsRow = [NSArray array];
+    _hotNameArr = [NSMutableArray array];
 
     [self shuju];
     [self createList];
+    [self getData];
 }
+
+
+-(void)getData
+{
+    id hud = nil;
+    hud = [JGProgressHelper showProgressInView:self.view];
+    
+    [self.dataService get_hot_companyWithsuccess:^(NSArray *lists) {
+        [hud hide:YES];
+        for (WHhotcompany *model in lists)
+        {
+            [_hotNameArr addObject:model.name];
+            
+        }
+    } failure:^(NSError *error) {
+        
+        [hud hide:YES];
+        [JGProgressHelper showError:nil inView:self.view];
+    }];
+}
+
+
 
 #pragma mark - 创建索引
 - (void)createList
@@ -87,8 +113,7 @@
 {
     self.groupsTitle = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"];
     self.contentsRow = @[@"日本",@"韩国",@"美国",@"南非",@"英国",@"加拿大"];
-  
-    
+
 }
 -(void)setUI
 {
@@ -107,11 +132,12 @@
     [self.headView addSubview:self.collectionView];
     
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headView.frame), kScreenW, CGRectGetHeight(self.view.frame) - CGRectGetHeight(_headView.frame)) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, CGRectGetHeight(self.view.frame)) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:_tableView];
     [self.tableView registerClass:[completeTableViewCell class] forCellReuseIdentifier:@"completeCell"];
+    self.tableView.tableHeaderView = _headView;
  
          
     
