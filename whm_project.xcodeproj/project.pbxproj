@@ -52,6 +52,7 @@
 		9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */; };
 		9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */; };
 		9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */; };
+		9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */; };
 		C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */ = {isa = PBXBuildFile; fileRef = C807B9A61DC060B800D3C700 /* JwAreass.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
@@ -227,6 +228,8 @@
 		9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHhospital.m; sourceTree = "<group>"; };
 		9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_product_detail.h; sourceTree = "<group>"; };
 		9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_product_detail.m; sourceTree = "<group>"; };
+		9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrelationTableViewController.h; sourceTree = "<group>"; };
+		9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrelationTableViewController.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C807B9A51DC060B800D3C700 /* JwAreass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwAreass.h; sourceTree = "<group>"; };
 		C807B9A61DC060B800D3C700 /* JwAreass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwAreass.m; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				9615F8161DC04F89001081FD /* HmAddInsuredController.h */,
 				9615F8171DC04F89001081FD /* HmAddInsuredController.m */,
 				9615F8181DC04F89001081FD /* HmAddInsuredController.xib */,
+				9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */,
+				9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1258,6 +1263,7 @@
 				9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */,
+				9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */,
 				9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */,
 				9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,

@@ -19,5 +19,7 @@
 @property(nonatomic,strong)NSString * relation;
 @property(nonatomic,strong)NSString * relation_name;
 @property(nonatomic,strong)NSString *type;
+@property(nonatomic,strong)NSString * year_out;
+@property(nonatomic,strong)NSString * avatar;
 
 @end
