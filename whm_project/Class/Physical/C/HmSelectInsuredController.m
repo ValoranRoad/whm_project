@@ -13,6 +13,7 @@
 #import "UIColor+Hex.h"
 #import "CMIndexBar.h"
 #import "HmAddInsuredController.h"
+#import "MacroUtility.h"
 
 #define kCellIdentifierOfInsured @"kCellIdentifierOfInsuredCell"
 #define kCellIdentifierOfCollection @"kCellIdentifierOfCollectionCell"
@@ -57,7 +58,7 @@
     
     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
         
-        NSLog(@"====%@",lists);
+        DLog(@"%@",lists);
         
     } failure:^(NSError *error) {
         
