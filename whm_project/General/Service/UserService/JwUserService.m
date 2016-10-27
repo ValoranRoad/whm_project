@@ -10,6 +10,7 @@
 #import "JwUserCenter.h"
 #import "JwUser.h"
 #import "JwAreass.h"
+#import "MacroUtility.h"
 
 @implementation JwUserService
 
@@ -28,6 +29,9 @@
         [JwUserCenter sharedCenter].user = user;
         [JwUserCenter sharedCenter].isLogined = YES;
         [[JwUserCenter sharedCenter] save];
+        
+        //DLog(@"%@", data);
+        //DLog(@"%@", [JwUserCenter sharedCenter].key);
         
         if (success) {
             success(user);

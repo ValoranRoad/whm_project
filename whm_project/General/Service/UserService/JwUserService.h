@@ -79,7 +79,7 @@
                     point:(NSString *)point
                   address:(NSString *)address
                        jb:(NSString *)job
-success:(void (^)())success failure:(void (^)(NSError *error))failure;
+                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 //修改手机号
 -(void)update_mobileWithUid:(NSString *)uid
