@@ -138,6 +138,7 @@
         nibsRegistered = YES;
     }
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
+//    cell.model = ...
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
