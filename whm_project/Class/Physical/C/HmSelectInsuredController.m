@@ -143,7 +143,20 @@
         nibsRegistered = YES;
     }
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
-//    cell.model = ...
+    //cell.model =  [[WHget_user_realtion alloc]init];
+    
+     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
+         
+         NSLog(@"====%@",lists);
+        // cell.model =  lists[indexPath.row];
+         //cell.lblName.text = lists[indexPath.row]
+         
+     } failure:^(NSError *error) {
+         
+     }];
+    
+   // cell.lblName.text =
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
