@@ -48,6 +48,7 @@
     // 索引
     [self createIndexList];
     
+<<<<<<< HEAD
     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
         
         NSLog(@"====%@",lists);
@@ -58,7 +59,23 @@
         
     }];
 
+=======
+    //数据
+    [self setupData];
+>>>>>>> ad16f76416d1755058d0e4691765e38c88628f2e
     
+}
+
+- (void)setupData{
+    
+    [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
+        
+        NSLog(@"====%@",lists);
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 
 #pragma mark -- 布局
@@ -154,6 +171,7 @@
         nibsRegistered = YES;
     }
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
+<<<<<<< HEAD
     //cell.model =  [[WHget_user_realtion alloc]init];
     
 //     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
@@ -168,6 +186,8 @@
     
    // cell.lblName.text =
     
+=======
+>>>>>>> ad16f76416d1755058d0e4691765e38c88628f2e
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
