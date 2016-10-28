@@ -16,7 +16,7 @@
 
 @interface HmHotCompanyCell ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property (nonatomic, strong) UICollectionView *collectionV;
+
 
 @end
 
@@ -65,7 +65,17 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    if (self.hotCompanyArr.count <= 0) {
+        return 0;
+    }
+    else if (self.hotCompanyArr.count >0 && self.hotCompanyArr.count <=6)
+    {
+        return self.hotCompanyArr.count;
+    }
+    else
+    {
+        return 6;
+    }
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -78,6 +88,7 @@
     }
     HmCompanyCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HmCompanyCollectionCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
+    cell.model = self.hotCompanyArr[indexPath.row];
     return cell;
 }
 

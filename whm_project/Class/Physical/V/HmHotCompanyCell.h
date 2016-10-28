@@ -11,4 +11,7 @@
 
 @interface HmHotCompanyCell : UITableViewCell
 
+@property (nonatomic, strong) UICollectionView *collectionV;
+@property (nonatomic, strong) NSMutableArray *hotCompanyArr;
+
 @end

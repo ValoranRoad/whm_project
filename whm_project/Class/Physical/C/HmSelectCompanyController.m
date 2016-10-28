@@ -36,6 +36,8 @@
 
 @property(nonatomic,strong)NSMutableArray * hotArry;
 
+@property (nonatomic, strong) HmHotCompanyCell *cell;
+
 
 @end
 
@@ -92,6 +94,7 @@
         self.hotArry = [NSMutableArray arrayWithArray:lists];
         NSLog(@"==%@",self.hotArry);
         
+        [self.cell.collectionV reloadData];
         [self.tableV reloadData];
         
     } failure:^(NSError *error) {
@@ -158,13 +161,12 @@
 {
     if (indexPath.section == 0) {
         // 热门公司
-        HmHotCompanyCell *cell = [tableView dequeueReusableCellWithIdentifier:HmCompanyCollecteI];
-        if (cell == nil) {
-            cell = [[HmHotCompanyCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:HmCompanyCollecteI];
-            
+        _cell = [tableView dequeueReusableCellWithIdentifier:HmCompanyCollecteI];
+        if (_cell == nil) {
+            _cell = [[HmHotCompanyCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:HmCompanyCollecteI];
         }
-        //cell.model =self.hotArry[indexPath.row];
-        return cell;
+        _cell.hotCompanyArr = self.hotArry;
+        return _cell;
     }
     else
     {
