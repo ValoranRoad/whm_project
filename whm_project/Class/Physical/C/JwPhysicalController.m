@@ -29,9 +29,20 @@
 @property (nonatomic, assign) BOOL isOpen;
 @property (nonatomic, assign) NSInteger selectedSection;
 
+@property (nonatomic, strong) WHget_user_realtion *firstUser;
+
 @end
 
 @implementation JwPhysicalController
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // 刷新第一行数据
+    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -72,6 +83,9 @@
 -(void)addNewSafeAction:(UIBarButtonItem *)sender
 {
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
+    [VC returnInsured:^(WHget_user_realtion *user) {
+        self.firstUser = user;
+    }];
     [self.navigationController pushViewController:VC animated:YES];
 }
 
@@ -121,6 +135,9 @@
         }
         HmPhysicalMainPageCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalMainCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (self.firstUser) {
+            cell.model = self.firstUser;
+        }
         return cell;
 
     }

@@ -8,6 +8,7 @@
 
 #import "HmSelectInsuredCell.h"
 #import <UIImageView+WebCache.h>
+
 @implementation HmSelectInsuredCell
 
 - (void)awakeFromNib {
