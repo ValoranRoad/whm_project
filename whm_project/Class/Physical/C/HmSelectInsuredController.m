@@ -15,6 +15,7 @@
 #import "HmAddInsuredController.h"
 #import "MacroUtility.h"
 #import "WHget_user_realtion.h"
+#import <UIImageView+WebCache.h>
 
 
 #define kCellIdentifierOfInsured @"kCellIdentifierOfInsuredCell"
@@ -78,13 +79,9 @@
         
         NSLog(@"===%ld",lists.count);
         DLog(@"%@",lists);
-        self.dataArry = [NSMutableArray arrayWithArray:lists];
-//        for (NSDictionary * d in lists) {
-//            WHget_user_realtion * r = [[WHget_user_realtion alloc]init];
-//            [r setValuesForKeysWithDictionary:d];
-//            [self.dataArry addObject:r];
-//        }
-//         [self.tableV reloadData];
+               for (WHget_user_realtion * model in lists) {
+            [self.dataArry addObject:model];
+        }
         
     } failure:^(NSError *error) {
         
@@ -173,7 +170,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArry.count;
+    return 10;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -189,8 +186,14 @@
 
      //cell.lblName.text =;
     
-    cell.model = self.dataArry[indexPath.row];
-    
+    WHget_user_realtion * model = self.dataArry[indexPath.row];
+    cell.lblName.text = model.name;
+    cell.imgHead.contentMode = UIViewContentModeScaleAspectFit;//图片自适应
+    [cell.imgHead sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+    cell.lblDate.text = model.birthday;
+    cell.lblYearCost.text = model.yearly_income;
+    cell.lblPay.text = model.year_out;
+    cell.lblOwe.text = model.debt;
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
