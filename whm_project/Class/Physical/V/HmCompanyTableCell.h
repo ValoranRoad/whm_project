@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JwCompanys.h"
 
 @interface HmCompanyTableCell : UITableViewCell
+
+@property(nonatomic,strong) JwCompanys * model;
+
+//标题
+@property (weak, nonatomic) IBOutlet UILabel *nameLaber;
+
+//头像
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
 
 @end

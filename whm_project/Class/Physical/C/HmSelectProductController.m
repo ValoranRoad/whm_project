@@ -10,6 +10,7 @@
 #import "HmSelectProductCell.h"
 #import "MacroUtility.h"
 
+
 #define HmSelectProductCellIdentifier @"HmSelectProductCellIdentifier"
 
 @interface HmSelectProductController ()<UITableViewDelegate,UITableViewDataSource>
@@ -87,6 +88,7 @@
         for (NSString *str in self.selectedArray) {
             if ([str isEqualToString:[NSString stringWithFormat:@"%ld",(long)indexPath.row]]) {
                 [self.selectedArray removeObject:str];
+               
                 break;
             }
         }
@@ -96,6 +98,8 @@
         cell.imgSelect.image = [UIImage imageNamed:@"product_selected"];
         [self.selectedArray addObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
     }
+    
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
