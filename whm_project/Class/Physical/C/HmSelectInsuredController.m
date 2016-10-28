@@ -80,7 +80,7 @@
     } failure:^(NSError *error) {
         [hud hide:YES];
         // 失败
-        [JGProgressHelper showError:@""];
+        [JGProgressHelper showError:@"失败"];
     }];
 }
 
@@ -157,7 +157,7 @@
 #pragma mark -- TableView Delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.arrayOfGroup.count;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -176,10 +176,15 @@
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
 
     cell.model = self.dataArry[indexPath.row];
-    
+    //cell.imgHead sd_setImageWithURL:[NSURL URLWithString:]
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+//选中数据
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

@@ -14,6 +14,7 @@
 #import "HmDetailsCell.h"
 #import "HmSelectInsuredController.h"
 #import "HmFujiaCell.h"
+#import "HmSelectCompanyController.h"
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -206,6 +207,11 @@
             DLog(@"点击要展开的cell的组数:%ld, 行数:%ld", indexPath.section,indexPath.row);
             cell.imgListDown.image = [UIImage imageNamed:@"p_listUp"];
             self.isOpen = YES;
+            
+            //选择公司
+            HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
+            [self.navigationController pushViewController:company animated:YES];
+            
         }
         else
         {

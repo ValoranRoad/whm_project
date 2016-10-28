@@ -7,7 +7,7 @@
 //
 
 #import "HmSelectInsuredCell.h"
-
+#import <UIImageView+WebCache.h>
 @implementation HmSelectInsuredCell
 
 - (void)awakeFromNib {
@@ -25,7 +25,7 @@
 {
     _model = model;
     
-//    self.imgHead.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.avatar]]];
+//   self.imgHead.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.avatar]]];
     self.lblName.text = model.name;
     if ([model.sex isEqualToString:@"1"]) {
         // 男
@@ -36,9 +36,23 @@
         // 女
         self.imgSex.image = [UIImage imageNamed:@"test_famale"];
     }
-    self.lblDate.text = model.birthday;
+    
+    //时间戳处理
+    
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:model.birthday.doubleValue];
+  
+  
+    NSString * s1 = [NSString stringWithFormat:@"%@",confromTimesp];
+    
+    
+    self.lblDate.text = [s1 substringToIndex:11];
     self.lblYearCost.text = model.yearly_income;
     self.lblOwe.text = model.debt;
+    self.imgHead.layer.cornerRadius = 25;
+    self.imgHead.layer.masksToBounds = YES;
+    
+    [self.imgHead sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+    
 //    self.lblPay.text = model.yearly_out;
     // 关系
     NSInteger stateM = [model.relation integerValue];

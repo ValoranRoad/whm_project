@@ -13,6 +13,10 @@
 #import "UIColor+Hex.h"
 #import "HmHotCompanyCell.h"
 #import "CMIndexBar.h"
+#import "JGProgressHelper.h"
+#import "NSString+PinYin.h"
+
+
 
 #define HmCompanyTabelCellIdentifier @"HmCompanyTabelCellIdentifier"
 #define HmCompanyCollecteI @"HmCompanyCollecteIdentifier"
@@ -27,22 +31,76 @@
 
 // 组数组
 @property (nonatomic, strong) NSArray *arrayOfGroups;
+//数据
+@property(nonatomic,strong)NSMutableArray * dataArry;
+
+@property(nonatomic,strong)NSMutableArray * hotArry;
+
 
 @end
 
 @implementation HmSelectCompanyController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // 请求数据
+    [self requestData];
+    
+    [self hotData ];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.arrayOfGroups = [NSArray arrayWithObjects:@"A", @"B", @"C", nil];
+    self.arrayOfGroups = [NSArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z", nil];
     // 布局
     [self setupUI];
     
     // 索引
     [self createIndexList];
 }
+// 请求数据
+-(void)requestData
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    NSString * s1  = @"1";
+    NSString * s2 = [s1 stringByAppendingString:@",2"];
+    NSLog(@"%@",s2);
+    
+    [self.dataService get_CompanysWithType:s2 success:^(NSArray *lists) {
+        [hud  hide:YES];
+        self.dataArry = [NSMutableArray arrayWithArray:lists];
+        [self.tableV reloadData];
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@"失败"];
+        
+    }];
+    
+}
 
+//热门公司数据请求
+-(void)hotData
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [hud  hide:YES];
+    [self.dataService get_hot_companyWithsuccess:^(NSArray *lists) {
+       
+        self.hotArry = [NSMutableArray arrayWithArray:lists];
+        NSLog(@"==%@",self.hotArry);
+        
+        [self.tableV reloadData];
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        
+    }];
+    
+    
+}
 #pragma mark -- 布局
 -(void)setupUI
 {
@@ -62,6 +120,10 @@
         return;
     }
     [_tableV scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+//    [_tableV scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    
+
 }
 
 #pragma mark -- Private
@@ -71,7 +133,7 @@
     indexBar.textColor = [UIColor colorWithHex:0x666666];
     indexBar.textFont = [UIFont systemFontOfSize:11];
     indexBar.delegate = self;
-    [indexBar setIndexes:@[@"A", @"B", @"C", @"D", @"E", @"F", @"G"]];
+    [indexBar setIndexes:@[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"]];
     [self.view addSubview:indexBar];
 }
 
@@ -88,7 +150,7 @@
     }
     else
     {
-        return 10;
+        return self.dataArry.count;
     }
 }
 
@@ -99,7 +161,9 @@
         HmHotCompanyCell *cell = [tableView dequeueReusableCellWithIdentifier:HmCompanyCollecteI];
         if (cell == nil) {
             cell = [[HmHotCompanyCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:HmCompanyCollecteI];
+            
         }
+        //cell.model =self.hotArry[indexPath.row];
         return cell;
     }
     else
@@ -111,6 +175,7 @@
             nibsRegistered = YES;
         }
         HmCompanyTableCell *cell = [tableView dequeueReusableCellWithIdentifier:HmCompanyTabelCellIdentifier];
+        cell.model = self.dataArry[indexPath.row];
         return cell;
     }
 }
