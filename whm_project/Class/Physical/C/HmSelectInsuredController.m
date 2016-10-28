@@ -15,6 +15,7 @@
 #import "HmAddInsuredController.h"
 #import "MacroUtility.h"
 #import "WHget_user_realtion.h"
+#import "JGProgressHelper.h"
 
 
 #define kCellIdentifierOfInsured @"kCellIdentifierOfInsuredCell"
@@ -42,6 +43,15 @@
 
 @implementation HmSelectInsuredController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // 请求数据
+    [self requestData];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -53,43 +63,25 @@
     
     // 索引
     [self createIndexList];
-    
-
-
-   
-
-    //数据
-    [self setupData];
-
-
-    //数据
-    [self setupData];
 
     
 }
 
-- (void)setupData{
-    
+// 请求数据
+-(void)requestData
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
-        
-        self.dataArry = [NSMutableArray array];
-        //self.dataArry = lists;
-       // NSDictionary * d = lists [0];
-        
-        NSLog(@"===%ld",lists.count);
-        DLog(@"%@",lists);
+        [hud hide:YES];
+        // 成功
+        NSLog(@"hahah");
         self.dataArry = [NSMutableArray arrayWithArray:lists];
-//        for (NSDictionary * d in lists) {
-//            WHget_user_realtion * r = [[WHget_user_realtion alloc]init];
-//            [r setValuesForKeysWithDictionary:d];
-//            [self.dataArry addObject:r];
-//        }
-//         [self.tableV reloadData];
-        
+        [self.tableV reloadData];
     } failure:^(NSError *error) {
-        
+        [hud hide:YES];
+        // 失败
+        [JGProgressHelper showError:@""];
     }];
-
 }
 
 #pragma mark -- 布局
@@ -135,9 +127,6 @@
     
     
 }
-
-
-
 
 #pragma mark -- Private
 -(void)addNewAction:(UIBarButtonItem *)sender
@@ -186,9 +175,6 @@
     }
     HmSelectInsuredCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifierOfInsured];
 
-
-     //cell.lblName.text =;
-    
     cell.model = self.dataArry[indexPath.row];
     
 
