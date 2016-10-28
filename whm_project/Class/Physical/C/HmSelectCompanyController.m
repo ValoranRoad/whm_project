@@ -55,7 +55,7 @@
     // Do any additional setup after loading the view.
     self.arrayOfGroups = [NSArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z", nil];
     // 布局
-    [self setupUI];
+    
     
     // 索引
     [self createIndexList];
@@ -92,7 +92,8 @@
         self.hotArry = [NSMutableArray arrayWithArray:lists];
         NSLog(@"==%@",self.hotArry);
         
-        [self.tableV reloadData];
+        //数据加载完之后再布局
+       [self setupUI];
         
     } failure:^(NSError *error) {
         [hud hide:YES];
@@ -159,11 +160,15 @@
     if (indexPath.section == 0) {
         // 热门公司
         HmHotCompanyCell *cell = [tableView dequeueReusableCellWithIdentifier:HmCompanyCollecteI];
+       
+        
+        //这里没放到这个页面不知道会不会出现别的问题
         if (cell == nil) {
+           
             cell = [[HmHotCompanyCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:HmCompanyCollecteI];
-            
+            cell.ArrModel = self.hotArry;
         }
-        //cell.model =self.hotArry[indexPath.row];
+        
         return cell;
     }
     else

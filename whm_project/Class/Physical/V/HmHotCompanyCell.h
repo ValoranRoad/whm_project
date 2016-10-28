@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "HmCompanyCollectionCell.h"
 
+#import "JwCompanys.h"
+
 @interface HmHotCompanyCell : UITableViewCell
+
+
+@property(nonatomic,strong) NSArray *ArrModel;
 
 @end

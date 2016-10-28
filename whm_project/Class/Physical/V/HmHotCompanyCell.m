@@ -78,6 +78,7 @@
     }
     HmCompanyCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HmCompanyCollectionCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
+    cell.model = self.ArrModel[indexPath.row];
     return cell;
 }
 
