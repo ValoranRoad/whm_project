@@ -41,11 +41,13 @@
         [hud hide:YES];
         self.dataArry = [NSMutableArray arrayWithArray:getdetals];
         NSLog(@"%@",self.dataArry);
-      //  NSString * s1 = [self.dataArry[0]objectForKey:@"message"];
-        WHgetmessageDetall * model = self.dataArry[0];
+        
+    
+        
+       //NSString * s1 =  self.dataArry[0].message;
+       // WHgetmessageDetall * model = self.dataArry[0];
        // NSString * s1 = model.message;
         
-       // NSLog(@"%@",s1);
         
         
         

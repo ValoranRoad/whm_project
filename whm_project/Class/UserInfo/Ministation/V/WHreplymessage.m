@@ -66,7 +66,7 @@
     //
     
     self.delBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.delBut.frame = CGRectMake(CGRectGetMinX(self.timeLaber.frame), CGRectGetMinY(self.replyLaber.frame), 30, 30);
+    self.delBut.frame = CGRectMake(CGRectGetMinX(self.timeLaber.frame), CGRectGetMinY(self.replyLaber.frame), 60, 30);
     [self.delBut setTitle:@"删除" forState:(UIControlStateNormal)];
     [self addSubview:_delBut];
     
