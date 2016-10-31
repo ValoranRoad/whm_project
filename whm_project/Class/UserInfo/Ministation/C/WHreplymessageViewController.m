@@ -7,10 +7,14 @@
 //
 
 #import "WHreplymessageViewController.h"
-
+#import "WHgetmessageDetall.h"
 #import "WHreplymessage.h"
 #import "JGProgressHelper.h"
-#import "WHgetmessageDetall.h"
+
+
+
+
+#import "MacroUtility.h"
 
 
 @interface WHreplymessageViewController ()
@@ -43,6 +47,7 @@
         [hud hide:YES];
         self.dataArry = [NSMutableArray arrayWithArray:getdetals];
         NSLog(@"%@",self.dataArry);
+
         for (WHgetmessageDetall * model in self.dataArry) {
             NSLog(@"%@",model);
         }
@@ -50,6 +55,13 @@
         
        // NSLog(@"%@",s1);
       
+
+       //NSString * s1 =  self.dataArry[0].message;
+       // WHgetmessageDetall * model = self.dataArry[0];
+       // NSString * s1 = model.message;
+        
+        
+
         
         
     } failure:^(NSError *error) {

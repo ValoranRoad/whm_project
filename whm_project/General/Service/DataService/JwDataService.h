@@ -112,7 +112,7 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 //留言详情接口
 -(void)getmessagedetailWithId:(NSString *)ids
                         uid:(NSString * )uid
-  success:(void (^)(NSArray * getdetals))success failure:(void (^)(NSError *error))failure;
+  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
 @end

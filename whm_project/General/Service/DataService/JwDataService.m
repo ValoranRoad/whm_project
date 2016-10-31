@@ -369,34 +369,10 @@
 
     
 }
-//留言详情接口
-//-(void)get_all_areaWithsuccess:(void (^)(NSArray *areas))success failure:(void (^)(NSError *error))failure
-//{
-//    
-//    
-//    
-//    
-//    NSMutableDictionary * param = [@{} mutableCopy];
-//    
-//    param = [[self filterParam:param interface:@"kb/get_all_area"] mutableCopy];
-//    
-//    [self.httpManager POST:param withPoint:@"kb/get_all_area" success:^(id data) {
-//        
-//        NSArray *infos = data[@"data"];
-//        NSArray *areas = [JwAreass arrayOfModelsFromDictionaries:infos error:nil];
-//        if (success) {
-//            success(areas);
-//        }
-//        
-//    } failure:^(NSError *error) {
-//        if (failure) {
-//            failure(error);
-//        }
-//    }];
-//    
-//}
 
--(void)getmessagedetailWithId:(NSString *)ids uid:(NSString *)uid success:(void (^)(NSArray *mesdetals ))success failure:(void (^)(NSError *error))failure
+
+
+-(void)getmessagedetailWithId:(NSString *)ids uid:(NSString *)uid success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
 {
     NSDictionary * param = [@{@"id":ids,
                               @"uid":[JwUserCenter sharedCenter].uid,
