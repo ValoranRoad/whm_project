@@ -20,7 +20,7 @@
 @class WHget_relation_detail;
 @class WHgetmessage;
 @class WHgetrec;
-
+@class WHgetmessageDetall;
 
 
 
@@ -106,7 +106,13 @@ success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError 
 
 //推荐险种列表
 -(void)getrecWithAgent_uid:(NSString *)agent_uid
+                       uid:(NSString *)uid
 success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure;
+
+//留言详情接口
+-(void)getmessagedetailWithId:(NSString *)id
+                        uid:(NSString * )uid
+  success:(void (^)(WHgetmessageDetall * userInfo))success failure:(void (^)(NSError *error))failure;
 
 
 @end
