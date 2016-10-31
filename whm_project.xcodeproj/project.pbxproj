@@ -62,6 +62,7 @@
 		9FC53A3A1DC5D515008340B0 /* WHrecommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */; };
 		9FC53A3D1DC5D547008340B0 /* WHrecommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */; };
 		9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */; };
+		9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */; };
 		9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */; };
 		C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */ = {isa = PBXBuildFile; fileRef = C807B9A61DC060B800D3C700 /* JwAreass.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
@@ -258,6 +259,8 @@
 		9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrecommentTableViewCell.m; sourceTree = "<group>"; };
 		9FC53A3E1DC5FB78008340B0 /* WHgetrec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetrec.h; sourceTree = "<group>"; };
 		9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetrec.m; sourceTree = "<group>"; };
+		9FE2CD1E1DC6ED570062D2D0 /* WHgetmessageDetall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetmessageDetall.h; sourceTree = "<group>"; };
+		9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetmessageDetall.m; sourceTree = "<group>"; };
 		9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrelationTableViewController.h; sourceTree = "<group>"; };
 		9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrelationTableViewController.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
@@ -843,6 +846,8 @@
 				9F0F28B91DC46506007118BD /* WHgetmessage.m */,
 				9FC53A3E1DC5FB78008340B0 /* WHgetrec.h */,
 				9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */,
+				9FE2CD1E1DC6ED570062D2D0 /* WHgetmessageDetall.h */,
+				9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1416,6 +1421,7 @@
 				C86353C81DB4669A00ED8B16 /* JwUserCenter.m in Sources */,
 				C86354371DB473A600ED8B16 /* IQBarButtonItem.m in Sources */,
 				961358C81DB6259600F5107F /* HmSelectProductCell.m in Sources */,
+				9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */,
 				C8C10CB31DB9C06F00A5FB9A /* ForgetPwdViewController.m in Sources */,
 				C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */,
 				C8C10CB81DB9C06F00A5FB9A /* JwUserInfoController.m in Sources */,

@@ -10,4 +10,5 @@
 #import "JwBackBaseController.h"
 
 @interface WHreplymessageViewController : JwBackBaseController
+@property(nonatomic,strong)NSString * IDS;
 @end

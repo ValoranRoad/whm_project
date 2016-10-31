@@ -11,7 +11,7 @@
 #import "MacroUtility.h"
 #import "UIColor+Hex.h"
 #import "JGProgressHelper.h"
-#import "WHreplymessage.h"
+#import "WHreplymessageViewController.h"
 
 
 @interface WHmyMessageTableViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -60,7 +60,7 @@
 #pragma mark -- 布局
 -(void)setupUI
 {
-    self.title = @"选择产品";
+    self.title = @"我的留言";
     
     self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
     _tableV.delegate = self;
@@ -123,8 +123,9 @@
     NSLog(@"%@",self.ID);
     
 
-//    WHreplymessage * replymes =[[WHreplymessage alloc]init];
-//    [self.navigationController pushViewController:replymes  animated:NO];
+   WHreplymessageViewController * replymes =[[WHreplymessageViewController  alloc]init];
+    replymes.IDS = self.ID;
+   [self.navigationController pushViewController:replymes  animated:NO];
   
     
 }

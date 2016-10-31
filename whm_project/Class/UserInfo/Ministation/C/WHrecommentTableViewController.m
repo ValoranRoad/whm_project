@@ -47,10 +47,10 @@
 -(void)requestData
 {
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getrecWithAgent_uid:@"" success:^(NSArray *lists) {
+    [self.dataService getrecWithAgent_uid:@"" uid:(@"") success:^(NSArray *lists) {
         [hud hide:YES];
         self.dataArry = [NSMutableArray arrayWithArray:lists];
-        
+        [self.tableV reloadData];
         
     } failure:^(NSError * error) {
         [hud hide:YES];
@@ -88,20 +88,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    //return self.dataArry.count;
-    return 10;
+    return self.dataArry.count;
+  
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   WHrecommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.myImage.image = [UIImage imageNamed:@"test_head"];
-    cell.titLaber.text = @"泰康人寿组合附加保险公司";
-    cell.yearLaber.text = @"投保年龄:0-66周岁";
-    cell.statuLaber.text = @"产品类型:两全保险";
-    cell.timeLaber.text = @"2016-09-01 09:10:20";
-    //cell.model = self.dataArry[indexPath.row];
+//    cell.myImage.image = [UIImage imageNamed:@"test_head"];
+//    cell.titLaber.text = @"泰康人寿组合附加保险公司";
+//    cell.yearLaber.text = @"投保年龄:0-66周岁";
+//    cell.statuLaber.text = @"产品类型:两全保险";
+//    cell.timeLaber.text = @"2016-09-01 09:10:20";
+    cell.model = self.dataArry[indexPath.row];
     
     return cell;
 }
