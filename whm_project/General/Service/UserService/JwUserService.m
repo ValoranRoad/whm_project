@@ -390,4 +390,28 @@
     
 }
 
+//保存个人介绍
+
+-(void)save_introduceWithUid:(NSString *)uid
+                   introduce:(NSString *)introduce
+                     success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"introduce":introduce,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/save_introduce"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/save_introduce" success:^(id data) {
+        
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
+
+
 @end

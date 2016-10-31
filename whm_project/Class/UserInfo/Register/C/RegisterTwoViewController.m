@@ -12,7 +12,7 @@
 #import "InsuranceViewController.h"
 #import "CompleteTypeViewController.h"
 #import "WHorganization.h"
-
+#import "JGProgressHelper.h"
 
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 @interface RegisterTwoViewController ()<UITableViewDelegate,UITableViewDataSource,completeTypeDelegate,completeDelegate,completeInsDelegate>
@@ -75,8 +75,27 @@
     
     
 }
+//提交注册代理人
 -(void)registerBtnAction
 {
+    if (self.compName != 0 && self.institutionsName != 0) {
+        
+    
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.userService registWithName:self.name mobile:self.mobile captcha:self.captcha pwd:self.pwd type:@"1" company_id:@"" org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
+        [hud hide:YES];
+        [JGProgressHelper showSuccess:@"代理人用户注册成功"];
+        
+    } failure:^(NSError *error) {
+        
+        [JGProgressHelper showError:@"注册失败"];
+    }];
+
+    }
+    else
+    {
+        [JGProgressHelper showError:@"有未填写项,请填写"];
+    }
     
 }
 
