@@ -370,7 +370,7 @@
     
 }
 //留言详情接口
--(void)getmessagedetailWithId:(NSString *)ids uid:(NSString *)uid success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+-(void)getmessagedetailWithId:(NSString *)ids uid:(NSString *)uid success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
 {
     NSDictionary * param = [@{@"id":ids,
                               @"uid":[JwUserCenter sharedCenter].uid,
