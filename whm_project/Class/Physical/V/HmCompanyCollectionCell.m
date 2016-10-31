@@ -15,6 +15,7 @@
 -(void)setModel:(WHhotcompany *)model
 {
     _model = model;
+    
     [self.Myheadimage sd_setImageWithURL:[NSURL URLWithString:model.logo]];
     self.MytitLaber.text = model.short_name ;
 }

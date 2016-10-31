@@ -66,9 +66,22 @@
             [JGProgressHelper showError:@"有未填写项,请填写"];
         }
     }else{
+        
+        if (self.nameText.text.length != 0 && self.telText.text.length != 0 && self.CodeText.text.length != 0 && self.pwdText.text !=0 && self.comforPwdText.text.length != 0) {
+            
         //顾问注册进入下一步
         RegisterTwoViewController * regTwo = [[RegisterTwoViewController alloc]init];
+        regTwo .name = self.nameText.text;
+        regTwo .mobile = self.telText.text;
+        regTwo .captcha = self.CodeText.text;
+        regTwo . pwd = self.pwdText.text;
+        
         [self.navigationController pushViewController:regTwo animated:YES];
+        }
+        else
+        {
+            [JGProgressHelper showError:@"有未填写项,请填写"];
+        }
         
     }
     

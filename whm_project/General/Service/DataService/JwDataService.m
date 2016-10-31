@@ -17,6 +17,8 @@
 #import "WHget_product_detail.h"
 #import "WHget_user_realtion.h"
 #import "WHget_relation_detail.h"
+#import "WHgetmessage.h"
+#import "WHgetrec.h"
 
 
 #import "JwUserCenter.h"
@@ -307,7 +309,65 @@
     
     
 }
+//获取留言列表
+-(void)getmessageWithRes_uid:(NSString *)res_uid
+                         uid:(NSString *)uid
+                           p:(NSString *)p
+                    pagesize:(NSString *)pagesize
+                     success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"res_uid":[JwUserCenter sharedCenter].uid,
+                              @"uid":[JwUserCenter sharedCenter].uid,
+                              @"p":p,
+                              @"pagesize":pagesize,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_messages"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_messages" success:^(id data) {
+        NSArray * infos = data[@"data"];
+        NSArray * getmessages = [WHgetmessage arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(getmessages);
+            //NSLog(@"%@",getmessages);
+        }
+        
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+    
+    
 
+}
+
+//获取推荐险种列表
+-(void)getrecWithAgent_uid:(NSString *)agent_uid
+                   success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
+{
+      NSMutableDictionary *param = [@{@"agent_uid": [JwUserCenter sharedCenter].uid,
+                                      @"token":[JwUserCenter sharedCenter].key} mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_rec"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/get_rec" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *getrecs = [WHgetrec arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(getrecs);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+    
+}
 
 
 @end

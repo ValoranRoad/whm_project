@@ -48,10 +48,20 @@
 		9F0EE58C1DBB52EB00B68F76 /* WHorganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE58B1DBB52EB00B68F76 /* WHorganization.m */; };
 		9F0EE58F1DBB547C00B68F76 /* WHhotcompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE58E1DBB547C00B68F76 /* WHhotcompany.m */; };
 		9F0EE5921DBB568000B68F76 /* WHgetproduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE5911DBB568000B68F76 /* WHgetproduct.m */; };
+		9F0F28BA1DC46506007118BD /* WHgetmessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F28B91DC46506007118BD /* WHgetmessage.m */; };
+		9F0F28BD1DC47DF2007118BD /* WHreplymessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F28BC1DC47DF2007118BD /* WHreplymessageViewController.m */; };
+		9F0F28C01DC47E03007118BD /* WHreplymessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F28BF1DC47E03007118BD /* WHreplymessage.m */; };
+		9F0F28C31DC491B7007118BD /* WHintroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F28C21DC491B7007118BD /* WHintroduceViewController.m */; };
+		9F99E7181DC34F9F00DC1265 /* WHminiStationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */; };
+		9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71A1DC3592C00DC1265 /* WHmyMessageTableViewController.m */; };
+		9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71D1DC3597700DC1265 /* WHmyMessageTableViewCell.m */; };
 		9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */; };
 		9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */; };
 		9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */; };
 		9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */; };
+		9FC53A3A1DC5D515008340B0 /* WHrecommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */; };
+		9FC53A3D1DC5D547008340B0 /* WHrecommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */; };
+		9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */; };
 		9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */; };
 		C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */ = {isa = PBXBuildFile; fileRef = C807B9A61DC060B800D3C700 /* JwAreass.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
@@ -220,6 +230,20 @@
 		9F0EE58E1DBB547C00B68F76 /* WHhotcompany.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHhotcompany.m; sourceTree = "<group>"; };
 		9F0EE5901DBB568000B68F76 /* WHgetproduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetproduct.h; sourceTree = "<group>"; };
 		9F0EE5911DBB568000B68F76 /* WHgetproduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetproduct.m; sourceTree = "<group>"; };
+		9F0F28B81DC46506007118BD /* WHgetmessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetmessage.h; sourceTree = "<group>"; };
+		9F0F28B91DC46506007118BD /* WHgetmessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetmessage.m; sourceTree = "<group>"; };
+		9F0F28BB1DC47DF2007118BD /* WHreplymessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHreplymessageViewController.h; sourceTree = "<group>"; };
+		9F0F28BC1DC47DF2007118BD /* WHreplymessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHreplymessageViewController.m; sourceTree = "<group>"; };
+		9F0F28BE1DC47E03007118BD /* WHreplymessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHreplymessage.h; sourceTree = "<group>"; };
+		9F0F28BF1DC47E03007118BD /* WHreplymessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHreplymessage.m; sourceTree = "<group>"; };
+		9F0F28C11DC491B7007118BD /* WHintroduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHintroduceViewController.h; sourceTree = "<group>"; };
+		9F0F28C21DC491B7007118BD /* WHintroduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHintroduceViewController.m; sourceTree = "<group>"; };
+		9F99E7161DC34F9F00DC1265 /* WHminiStationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHminiStationTableViewController.h; sourceTree = "<group>"; };
+		9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHminiStationTableViewController.m; sourceTree = "<group>"; };
+		9F99E7191DC3592C00DC1265 /* WHmyMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmyMessageTableViewController.h; sourceTree = "<group>"; };
+		9F99E71A1DC3592C00DC1265 /* WHmyMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmyMessageTableViewController.m; sourceTree = "<group>"; };
+		9F99E71C1DC3597700DC1265 /* WHmyMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmyMessageTableViewCell.h; sourceTree = "<group>"; };
+		9F99E71D1DC3597700DC1265 /* WHmyMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmyMessageTableViewCell.m; sourceTree = "<group>"; };
 		9FBAA04C1DBC88CB00C288E3 /* WHgetuseinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetuseinfo.h; sourceTree = "<group>"; };
 		9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetuseinfo.m; sourceTree = "<group>"; };
 		9FBAA04F1DBC9D5100C288E3 /* WHcompanyDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHcompanyDetail.h; sourceTree = "<group>"; };
@@ -228,6 +252,12 @@
 		9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHhospital.m; sourceTree = "<group>"; };
 		9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_product_detail.h; sourceTree = "<group>"; };
 		9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_product_detail.m; sourceTree = "<group>"; };
+		9FC53A381DC5D515008340B0 /* WHrecommentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrecommentTableViewController.h; sourceTree = "<group>"; };
+		9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrecommentTableViewController.m; sourceTree = "<group>"; };
+		9FC53A3B1DC5D547008340B0 /* WHrecommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrecommentTableViewCell.h; sourceTree = "<group>"; };
+		9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrecommentTableViewCell.m; sourceTree = "<group>"; };
+		9FC53A3E1DC5FB78008340B0 /* WHgetrec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetrec.h; sourceTree = "<group>"; };
+		9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetrec.m; sourceTree = "<group>"; };
 		9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrelationTableViewController.h; sourceTree = "<group>"; };
 		9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrelationTableViewController.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
@@ -445,6 +475,45 @@
 				9615F80B1DC04715001081FD /* HmPhysicalMainPageCell.h */,
 				9615F80C1DC04715001081FD /* HmPhysicalMainPageCell.m */,
 				9615F80D1DC04715001081FD /* HmPhysicalMainPageCell.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		9F99E7131DC34F8000DC1265 /* Ministation */ = {
+			isa = PBXGroup;
+			children = (
+				9F99E7141DC34F8000DC1265 /* C */,
+				9F99E7151DC34F8000DC1265 /* V */,
+			);
+			path = Ministation;
+			sourceTree = "<group>";
+		};
+		9F99E7141DC34F8000DC1265 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				9F99E7161DC34F9F00DC1265 /* WHminiStationTableViewController.h */,
+				9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */,
+				9F99E7191DC3592C00DC1265 /* WHmyMessageTableViewController.h */,
+				9F99E71A1DC3592C00DC1265 /* WHmyMessageTableViewController.m */,
+				9F0F28BB1DC47DF2007118BD /* WHreplymessageViewController.h */,
+				9F0F28BC1DC47DF2007118BD /* WHreplymessageViewController.m */,
+				9F0F28C11DC491B7007118BD /* WHintroduceViewController.h */,
+				9F0F28C21DC491B7007118BD /* WHintroduceViewController.m */,
+				9FC53A381DC5D515008340B0 /* WHrecommentTableViewController.h */,
+				9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		9F99E7151DC34F8000DC1265 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				9F99E71C1DC3597700DC1265 /* WHmyMessageTableViewCell.h */,
+				9F99E71D1DC3597700DC1265 /* WHmyMessageTableViewCell.m */,
+				9F0F28BE1DC47E03007118BD /* WHreplymessage.h */,
+				9F0F28BF1DC47E03007118BD /* WHreplymessage.m */,
+				9FC53A3B1DC5D547008340B0 /* WHrecommentTableViewCell.h */,
+				9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -770,6 +839,10 @@
 				9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */,
 				9F0101D41DBF1F3C00AF13C9 /* WHget_pro_rate.h */,
 				9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */,
+				9F0F28B81DC46506007118BD /* WHgetmessage.h */,
+				9F0F28B91DC46506007118BD /* WHgetmessage.m */,
+				9FC53A3E1DC5FB78008340B0 /* WHgetrec.h */,
+				9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -960,6 +1033,7 @@
 		C8C10C8A1DB9C06F00A5FB9A /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				9F99E7131DC34F8000DC1265 /* Ministation */,
 				C8C10CA01DB9C06F00A5FB9A /* Register */,
 				C8C10C8B1DB9C06F00A5FB9A /* C */,
 				C8C10CB11DB9C06F00A5FB9A /* V */,
@@ -1257,6 +1331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */,
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
@@ -1269,6 +1344,7 @@
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
 				9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */,
 				9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */,
+				9F0F28BA1DC46506007118BD /* WHgetmessage.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
 				8E414C661DC1D2E6005A335A /* CompleteTypeViewController.m in Sources */,
@@ -1276,6 +1352,7 @@
 				C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */,
 				9615F80E1DC04715001081FD /* HmDetailsCell.m in Sources */,
 				C863543A1DB473A600ED8B16 /* IQToolbar.m in Sources */,
+				9F0F28C01DC47E03007118BD /* WHreplymessage.m in Sources */,
 				C86354331DB473A500ED8B16 /* IQUIWindow+Hierarchy.m in Sources */,
 				9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */,
 				C86354621DB473B300ED8B16 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
@@ -1286,6 +1363,7 @@
 				C8C10CBD1DB9C06F00A5FB9A /* ChooseCompleteViewController.m in Sources */,
 				9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
+				9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */,
 				9615F8191DC04F89001081FD /* HmAddInsuredController.m in Sources */,
 				9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */,
 				961358CC1DB6263300F5107F /* HmSelectCompanyController.m in Sources */,
@@ -1303,6 +1381,7 @@
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,
 				C86353C91DB4669A00ED8B16 /* JwDataService.m in Sources */,
+				9FC53A3A1DC5D515008340B0 /* WHrecommentTableViewController.m in Sources */,
 				961358C41DB6258900F5107F /* HmSelectProductController.m in Sources */,
 				961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */,
 				9F0EE5921DBB568000B68F76 /* WHgetproduct.m in Sources */,
@@ -1319,6 +1398,7 @@
 				9F056EE21DBA1A960069A085 /* WHaccountTableViewCell.m in Sources */,
 				C8C10CBE1DB9C06F00A5FB9A /* InsuranceViewController.m in Sources */,
 				9F0A20BE1DBDB972004C5F67 /* WHsavesetupTableViewController.m in Sources */,
+				9FC53A3D1DC5D547008340B0 /* WHrecommentTableViewCell.m in Sources */,
 				C8C10CB61DB9C06F00A5FB9A /* JwRegistController.m in Sources */,
 				C86354051DB4674100ED8B16 /* JwModelBase.m in Sources */,
 				9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */,
@@ -1344,6 +1424,7 @@
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
 				C8C10CC11DB9C06F00A5FB9A /* completeTableViewCell.m in Sources */,
 				961358D91DB645DF00F5107F /* HmHotCompanyCell.m in Sources */,
+				9F99E7181DC34F9F00DC1265 /* WHminiStationTableViewController.m in Sources */,
 				961358B51DB5D12600F5107F /* HmSelectInsuredCollectionCell.m in Sources */,
 				C86353D31DB4670700ED8B16 /* NSString+Email.m in Sources */,
 				9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */,
@@ -1351,10 +1432,13 @@
 				C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */,
 				C8C10CBF1DB9C06F00A5FB9A /* RegisterTwoViewController.m in Sources */,
 				9F0EE58F1DBB547C00B68F76 /* WHhotcompany.m in Sources */,
+				9F0F28C31DC491B7007118BD /* WHintroduceViewController.m in Sources */,
 				C86353CB1DB4669A00ED8B16 /* JwServiceBase.m in Sources */,
 				C8C10CC61DB9C0AD00A5FB9A /* ForgetPwdView.m in Sources */,
 				9615F8101DC04715001081FD /* HmFujiaCell.m in Sources */,
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
+				9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */,
+				9F0F28BD1DC47DF2007118BD /* WHreplymessageViewController.m in Sources */,
 				C86354A71DB4D3AB00ED8B16 /* JwMenuBaseController.m in Sources */,
 				C86354611DB473B300ED8B16 /* UIActionSheet+LBXAlertAction.m in Sources */,
 			);

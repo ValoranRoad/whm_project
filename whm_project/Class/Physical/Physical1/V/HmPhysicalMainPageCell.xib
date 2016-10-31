@@ -130,6 +130,16 @@
                     <constraint firstItem="hV6-5u-5r8" firstAttribute="leading" secondItem="hNi-Au-5Og" secondAttribute="trailing" constant="2" id="zPi-xw-pcq"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgHead" destination="8hC-2k-SdJ" id="2O1-QX-iHq"/>
+                <outlet property="imgSex" destination="hV6-5u-5r8" id="Jyh-D7-Pi1"/>
+                <outlet property="lblDate" destination="eaT-Tq-YmK" id="1hp-Fl-aBH"/>
+                <outlet property="lblMaritalStatus" destination="IZ5-tC-esn" id="0an-HT-aED"/>
+                <outlet property="lblName" destination="hNi-Au-5Og" id="NCm-Xt-uU4"/>
+                <outlet property="lblOwe" destination="AoL-RK-TiB" id="TkJ-9e-4zf"/>
+                <outlet property="lblPay" destination="HUd-KV-F0G" id="5so-uP-d6H"/>
+                <outlet property="lblYearCost" destination="e3Q-MK-P5B" id="l24-FB-qGN"/>
+            </connections>
             <point key="canvasLocation" x="12" y="-4"/>
         </tableViewCell>
     </objects>

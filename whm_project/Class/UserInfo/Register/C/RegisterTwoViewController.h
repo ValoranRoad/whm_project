@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "JwBackBaseController.h"
 
-@interface RegisterTwoViewController : UIViewController
+@interface RegisterTwoViewController : JwBackBaseController
+@property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString * mobile;
+@property(nonatomic,strong)NSString * captcha;
+@property(nonatomic,strong)NSString * pwd;
 
 @end

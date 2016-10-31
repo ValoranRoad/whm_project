@@ -7,7 +7,10 @@
 //
 
 #import "JwBackBaseController.h"
+#import "WHget_user_realtion.h"
 
 @interface HmSelectInsuredController : JwBackBaseController
+
+-(void)returnInsured:(void(^)(WHget_user_realtion *user))block;
 
 @end

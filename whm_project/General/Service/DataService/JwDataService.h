@@ -18,8 +18,15 @@
 @class WHget_product_detail;
 @class WHget_user_realtion;
 @class WHget_relation_detail;
+@class WHgetmessage;
+@class WHgetrec;
+
+
+
 
 @interface JwDataService : JwServiceBase
+
+
 
 //获取公司列表
 - (void)get_CompanysWithType:(NSString *)type
@@ -90,9 +97,16 @@ success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError 
 
 
 
+//获取留言列表
+-(void)getmessageWithRes_uid :(NSString *)res_uid
+                          uid:(NSString *)uid
+                            p:(NSString *)p
+                    pagesize :(NSString *)pagesize
+  success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure;
 
-
-
+//推荐险种列表
+-(void)getrecWithAgent_uid:(NSString *)agent_uid
+success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure;
 
 
 @end

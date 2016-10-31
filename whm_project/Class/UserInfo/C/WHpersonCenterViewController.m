@@ -19,7 +19,10 @@
 //
 #import "JGProgressHelper.h"
 
-
+//微站
+#import "WHminiStationTableViewController.h"
+//
+#import <UIImageView+WebCache.h>
 
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIView * headview;
@@ -79,6 +82,7 @@
 @property(nonatomic,strong)UIView * myView5;
 @property(nonatomic,strong)UIView * myView6;
 
+@property(nonatomic,strong)NSMutableArray * dateArry;
 
 @end
 
@@ -358,19 +362,37 @@
     [self.myBut11 addTarget:self action:@selector(updatePwd:) forControlEvents:(UIControlEventTouchUpInside)];
     //
     [self.myBut12 addTarget:self action:@selector(whsetAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    //微站
+    [self.myBut9 addTarget:self action:@selector(miniStation:) forControlEvents:(UIControlEventTouchUpInside)];
     
 }
 
 //数据处理获取用户信息
 -(void)dataBase
 {
-    //id hud = [JGProgressHelper showProgressInView:self.view];
-    
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_user_infoWithUid:@"" success:^(WHgetuseinfo *userInfo) {
+        self.dateArry = [NSMutableArray arrayWithArray:userInfo];
+        [hud hide:YES];
+        
+        //self.myImage sd_setImageWithURL:[NSURL URLWithString:self.dateArr]]
+        NSLog(@"===%@",userInfo);
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
     
     
 }
 
-
+//微站事件
+-(void)miniStation:(UIButton *)sender
+{
+    WHminiStationTableViewController * station = [[WHminiStationTableViewController alloc]init];
+    [self.navigationController pushViewController:station animated:NO];
+}
 
 //设置事件
 -(void)whsetAction:(UIButton *)sender

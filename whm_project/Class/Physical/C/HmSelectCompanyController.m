@@ -36,6 +36,8 @@
 
 @property(nonatomic,strong)NSMutableArray * hotArry;
 
+@property (nonatomic, strong) HmHotCompanyCell *cell;
+
 
 @end
 
@@ -53,9 +55,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.arrayOfGroups = [NSArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z", nil];
+    self.arrayOfGroups = [NSArray arrayWithObjects:@"热",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z", nil];
     // 布局
-    
+    [self setupUI];
     
     // 索引
     [self createIndexList];
@@ -92,8 +94,8 @@
         self.hotArry = [NSMutableArray arrayWithArray:lists];
         NSLog(@"==%@",self.hotArry);
         
-        //数据加载完之后再布局
-       [self setupUI];
+        [self.cell.collectionV reloadData];
+        [self.tableV reloadData];
         
     } failure:^(NSError *error) {
         [hud hide:YES];
@@ -134,7 +136,7 @@
     indexBar.textColor = [UIColor colorWithHex:0x666666];
     indexBar.textFont = [UIFont systemFontOfSize:11];
     indexBar.delegate = self;
-    [indexBar setIndexes:@[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"]];
+    [indexBar setIndexes:@[@"热",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"]];
     [self.view addSubview:indexBar];
 }
 
@@ -159,17 +161,12 @@
 {
     if (indexPath.section == 0) {
         // 热门公司
-        HmHotCompanyCell *cell = [tableView dequeueReusableCellWithIdentifier:HmCompanyCollecteI];
-       
-        
-        //这里没放到这个页面不知道会不会出现别的问题
-        if (cell == nil) {
-           
-            cell = [[HmHotCompanyCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:HmCompanyCollecteI];
-            cell.ArrModel = self.hotArry;
+        _cell = [tableView dequeueReusableCellWithIdentifier:HmCompanyCollecteI];
+        if (_cell == nil) {
+            _cell = [[HmHotCompanyCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:HmCompanyCollecteI];
         }
-        
-        return cell;
+        _cell.hotCompanyArr = self.hotArry;
+        return _cell;
     }
     else
     {

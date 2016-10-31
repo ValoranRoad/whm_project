@@ -114,7 +114,10 @@
 -(void)get_all_areaWithsuccess:(void (^)(NSArray *areas))success failure:(void (^)(NSError *error))failure;
 
 
-
+//保存个人介绍
+-(void)save_introduceWithUid:(NSString *)uid
+                   introduce:(NSString *)introduce
+ success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 
 

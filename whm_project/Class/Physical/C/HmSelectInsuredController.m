@@ -14,7 +14,6 @@
 #import "CMIndexBar.h"
 #import "HmAddInsuredController.h"
 #import "MacroUtility.h"
-#import "WHget_user_realtion.h"
 #import "JGProgressHelper.h"
 
 
@@ -29,6 +28,8 @@
 {
     CMIndexBar *indexBar;
 }
+
+@property (nonatomic, strong) void(^selectUser)(WHget_user_realtion *user);
 
 @property (nonatomic, strong) UITableView *tableV;
 @property (nonatomic, strong) UICollectionView *collectionV;
@@ -184,7 +185,11 @@
 //选中数据
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    DLog(@"你点击了第%ld组的第%ld行", indexPath.section,indexPath.row);
+    if (self.selectUser) {
+        self.selectUser(self.dataArry[indexPath.row]);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -234,6 +239,12 @@
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
     
+}
+
+#pragma mark -- block
+-(void)returnInsured:(void (^)(WHget_user_realtion *))block
+{
+    self.selectUser = block;
 }
 
 - (void)didReceiveMemoryWarning {
