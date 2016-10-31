@@ -12,17 +12,17 @@
 @end
 
 @interface WHgetmessageDetall : JwModelBase
-@property(nonatomic,strong)NSString * id;
-@property(nonatomic,strong)NSString * req_uid;
-@property(nonatomic,strong)NSString * res_uid;
-@property(nonatomic,strong)NSString * message_id;
+@property(nonatomic,strong)NSString <Optional>* id;
+@property(nonatomic,strong)NSString <Optional>* req_uid;
+@property(nonatomic,strong)NSString <Optional>* res_uid;
+@property(nonatomic,strong)NSString <Optional>* message_id;
 @property(nonatomic,strong)NSString<Optional> * read;
-@property(nonatomic,strong)NSString * replay_status;
-@property(nonatomic,strong)NSString * create_time;
+@property(nonatomic,strong)NSString <Optional>* replay_status;
+@property(nonatomic,strong)NSString <Optional>* create_time;
 @property(nonatomic,strong)NSString<Optional> *ip;
-@property(nonatomic,strong)NSString * city_name;
-@property(nonatomic,strong)NSString * req_name;
-@property(nonatomic,strong)NSString * message;
+@property(nonatomic,strong)NSString <Optional>* city_name;
+@property(nonatomic,strong)NSString <Optional>* req_name;
+@property(nonatomic,strong)NSString <Optional>* message;
 @property(nonatomic,strong)NSArray <WHgetmessageDetall,Optional>*reply ;
 
 @end
