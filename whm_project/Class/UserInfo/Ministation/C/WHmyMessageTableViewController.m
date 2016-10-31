@@ -42,7 +42,7 @@
 -(void)requestData
 {
   id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getmessageWithRes_uid:@"85" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
+    [self.dataService getmessageWithRes_uid:@"85" uid :@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
         [hud hide:YES];
         self.dataArry =[ NSMutableArray arrayWithArray:lists];
         
@@ -89,19 +89,19 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
     //return self.dataArry.count;
-    return 10;
+    return self.dataArry.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WHmyMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-   // cell.model = self.dataArry[indexPath.row];
-    cell.titLaber.text = @"你好吗傻逼傻逼大傻逼";
-    cell.nameLaber.text = @"傻逼";
-    cell.addressLaber.text = @"郑州市";
-    cell.statuLaber.text = @"未回复";
-    cell.timeLaber.text = @"2016/10/29";
+    cell.model = self.dataArry[indexPath.row];
+//    cell.titLaber.text = @"你好吗傻逼傻逼大傻逼";
+//    cell.nameLaber.text = @"傻逼";
+//    cell.addressLaber.text = @"郑州市";
+//    cell.statuLaber.text = @"未回复";
+    //cell.timeLaber.text = @"2016/10/29";
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,8 +115,8 @@
    
         
 
-    WHreplymessage * replymes =[[WHreplymessage alloc]init];
-    [self.navigationController pushViewController:replymes  animated:NO];
+//    WHreplymessage * replymes =[[WHreplymessage alloc]init];
+//    [self.navigationController pushViewController:replymes  animated:NO];
   
     
 }

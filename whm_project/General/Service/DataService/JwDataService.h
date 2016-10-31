@@ -99,6 +99,7 @@ success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError 
 
 //获取留言列表
 -(void)getmessageWithRes_uid :(NSString *)res_uid
+                          uid:(NSString *)uid
                             p:(NSString *)p
                     pagesize :(NSString *)pagesize
   success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure;
