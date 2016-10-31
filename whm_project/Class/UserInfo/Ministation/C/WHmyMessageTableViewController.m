@@ -118,7 +118,8 @@
 {
     NSLog(@"qq");
     
-    self.ID = [self.dataArry[indexPath.row]objectForKey:@"id"];
+    WHgetmessage *model = self.dataArry[indexPath.row];
+    self.ID = model.id;
     NSLog(@"%@",self.ID);
     
 
