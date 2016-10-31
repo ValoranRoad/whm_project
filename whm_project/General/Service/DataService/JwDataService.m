@@ -316,7 +316,7 @@
                     pagesize:(NSString *)pagesize
                      success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
 {
-    NSDictionary * param = [@{@"res_uid":res_uid,
+    NSDictionary * param = [@{@"res_uid":[JwUserCenter sharedCenter].uid,
                               @"uid":[JwUserCenter sharedCenter].uid,
                               @"p":p,
                               @"pagesize":pagesize,

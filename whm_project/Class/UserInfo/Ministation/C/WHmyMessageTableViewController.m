@@ -19,6 +19,8 @@
 @property(nonatomic,strong)WHmyMessageTableViewCell * cell;
 
 @property(nonatomic,strong)NSMutableArray * dataArry;
+@property(nonatomic,strong)NSString * ID;
+
 @end
 
 @implementation WHmyMessageTableViewController
@@ -42,7 +44,7 @@
 -(void)requestData
 {
   id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getmessageWithRes_uid:@"85" uid :@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
+    [self.dataService getmessageWithRes_uid:@"" uid :@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
         [hud hide:YES];
         self.dataArry =[ NSMutableArray arrayWithArray:lists];
         
@@ -102,6 +104,8 @@
 //    cell.addressLaber.text = @"郑州市";
 //    cell.statuLaber.text = @"未回复";
     //cell.timeLaber.text = @"2016/10/29";
+    
+
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,8 +116,11 @@
 //选中数据
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-        
+    NSLog(@"qq");
+    
+    self.ID = [self.dataArry[indexPath.row]objectForKey:@"id"];
+    NSLog(@"%@",self.ID);
+    
 
 //    WHreplymessage * replymes =[[WHreplymessage alloc]init];
 //    [self.navigationController pushViewController:replymes  animated:NO];

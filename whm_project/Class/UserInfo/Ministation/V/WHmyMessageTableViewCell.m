@@ -93,8 +93,7 @@
     NSString * s2 = [NSString stringWithFormat:@"%@",confromTimesp];
     
 
-    
-    
+        
     self.addressLaber.text = [s1 stringByAppendingString:model.city_name];
      NSString * s3 = [s2 stringByAppendingString: model.create_time];
     
