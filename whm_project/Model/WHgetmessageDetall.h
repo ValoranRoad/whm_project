@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
-//@protocol WHgetmessageDetall<NSObject>
-//@end
+@protocol WHgetmessageDetall<NSObject>
+@end
 
 @interface WHgetmessageDetall : JwModelBase
 @property(nonatomic,strong)NSString * id;
@@ -23,6 +23,6 @@
 @property(nonatomic,strong)NSString * city_name;
 @property(nonatomic,strong)NSString * req_name;
 @property(nonatomic,strong)NSString * message;
-@property(nonatomic,assign)NSArray <Optional>*reply ;
+@property(nonatomic,strong)NSArray <WHgetmessageDetall,Optional>*reply ;
 
 @end

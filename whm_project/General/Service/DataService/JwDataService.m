@@ -370,21 +370,28 @@
     
 }
 //留言详情接口
--(void)getmessagedetailWithId:(NSString *)id
-                          uid:(NSString *)uid
-success:(void (^)(WHgetmessageDetall * userInfo))success failure:(void (^)(NSError *))failure
+-(void)getmessagedetailWithId:(NSString *)ids uid:(NSString *)uid success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = [@{@"id":id,
-                                     @"uid":[JwUserCenter sharedCenter].uid,
-                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    NSDictionary * param = [@{@"id":ids,
+                              @"uid":[JwUserCenter sharedCenter].uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
     param = [[self filterParam:param interface:@"kbj/get_message_detail"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_message_detail" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *mesdetals = [WHgetmessageDetall  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(mesdetals);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+
     
-//    [self.httpManager POST:param withPoint:@"kbj/get_message_detail" success:^(id data) {
-//        
-//        
-//    } failure:^(NSError *error) {
-//        
-//    }];
     
 }
 

@@ -110,9 +110,9 @@ success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError 
 success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure;
 
 //留言详情接口
--(void)getmessagedetailWithId:(NSString *)id
+-(void)getmessagedetailWithId:(NSString *)ids
                         uid:(NSString * )uid
-  success:(void (^)(WHgetmessageDetall * userInfo))success failure:(void (^)(NSError *error))failure;
+  success:(void (^)(NSArray * getdetals))success failure:(void (^)(NSError *error))failure;
 
 
 @end
