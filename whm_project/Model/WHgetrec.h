@@ -10,14 +10,15 @@
 #import "JwModelBase.h"
 @interface WHgetrec : JwModelBase
 @property(nonatomic,strong)NSString * id;
-@property(nonatomic,strong)NSString * name;
-@property(nonatomic,strong)NSString * short_name;
+@property(nonatomic,strong)NSString <Optional> * name;
+@property(nonatomic,strong)NSString <Optional>* short_name;
 @property(nonatomic,strong)NSString <Optional>* img;
-@property(nonatomic,strong)NSString * small_img;
-@property(nonatomic,strong)NSString * limit_age;
-@property(nonatomic,strong)NSString * prod_type_code;
+@property(nonatomic,strong)NSString <Optional>*small_img;
+@property(nonatomic,strong)NSString <Optional>*limit_age;
+@property(nonatomic,strong)NSString <Optional>* prod_type_code;
 @property(nonatomic,strong)NSString <Optional> *prod_type_code_name;
-@property(nonatomic,strong)NSString * logo;
-
+@property(nonatomic,strong)NSString <Optional>* logo;
+@property(nonatomic,strong)NSString <Optional>* update_time;
+@property(nonatomic,strong)NSString <Optional>* is_main;
 
 @end

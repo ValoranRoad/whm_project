@@ -21,6 +21,7 @@
 
 //微站
 #import "WHminiStationTableViewController.h"
+#import "WHgetuseinfo.h"
 //
 #import <UIImageView+WebCache.h>
 
@@ -84,17 +85,29 @@
 
 @property(nonatomic,strong)NSMutableArray * dateArry;
 
+@property(nonatomic,strong)NSString * headimage;
+
 @end
 
 @implementation WHpersonCenterViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self dataBase];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self dataBase];
-    //
+       //
     self.navigationItem.title = @"我的";
     
+ [self setUI];
+}
+
+-(void)setUI
+{
     self.scolw.delegate = self;
     self.scolw = [[UIScrollView alloc]init];
     self.scolw.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
@@ -102,7 +115,7 @@
     
     self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*1.2);
     [self.view addSubview:_scolw];
-
+    
     self.image= [[UIImageView alloc]init];
     self.image.frame = CGRectMake(0,0 , CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.24);
     self.image.image = [UIImage imageNamed:@"Hm_black.png"];
@@ -113,7 +126,8 @@
     
     self.myImage = [[UIImageView alloc]init];
     self.myImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.42, 10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18);
-    self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
+     self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
+   // [self.myImage sd_setImageWithURL:[NSURL URLWithString:self.headimage]];
     self.myImage.layer.masksToBounds = YES;
     self.myImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.18/2;
     
@@ -160,15 +174,7 @@
     self.renzhengLaber.font = [UIFont systemFontOfSize:11.0];
     [self.scolw addSubview:_renzhengLaber];
     
-    
-    //
-    [self setUI];
-    
-}
 
--(void)setUI
-{
-    
     
     self.myBut1 = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.myBut1.frame = CGRectMake(20, CGRectGetMaxY(self.baojianLaber.frame)+50, CGRectGetWidth([UIScreen mainScreen].bounds)*0.15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.15);
@@ -371,20 +377,30 @@
 -(void)dataBase
 {
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService get_user_infoWithUid:@"" success:^(WHgetuseinfo *userInfo) {
-        self.dateArry = [NSMutableArray arrayWithArray:userInfo];
+    [self.dataService get_user_infoWithUid:@"" success:^( NSArray * infos) {
         [hud hide:YES];
-        
-        //self.myImage sd_setImageWithURL:[NSURL URLWithString:self.dateArr]]
-        NSLog(@"===%@",userInfo);
-        
+        self.dateArry = [NSMutableArray arrayWithArray:infos];
+        for (WHgetuseinfo * model  in self.dateArry) {
+            NSLog(@"====%@",model.avatar);
+            //self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
+//            if (model.avatar.length == 0) {
+//                self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
+//            }
+//            
+//            [self.myImage sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+            
+            self.headimage = model.avatar;
+      }
         
         
     } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
         
     }];
     
-    
+   
+
 }
 
 //微站事件
