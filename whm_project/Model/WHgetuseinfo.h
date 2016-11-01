@@ -9,37 +9,49 @@
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
 @interface WHgetuseinfo : JwModelBase
-@property(nonatomic,strong)NSString * id ;
-@property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString<Optional> * id ;
+@property(nonatomic,strong)NSString<Optional> * name;
 @property(nonatomic,strong)NSString<Optional> * email;
-@property(nonatomic,strong)NSString * password;
-@property(nonatomic,strong)NSString * mobile ;
+@property(nonatomic,strong)NSString<Optional> * password;
+@property(nonatomic,strong)NSString<Optional> * mobile ;
 @property(nonatomic,strong)NSString<Optional> * contact_way;
 @property(nonatomic,strong)NSString<Optional> * reg_ip;
 @property(nonatomic,strong)NSString<Optional> * reg_time;
 @property(nonatomic,strong)NSString<Optional> * last_login;
 @property(nonatomic,strong)NSString<Optional> * last_ip;
-@property(nonatomic,strong)NSString * avatar;
-@property(nonatomic,strong)NSString * nickname;
-@property(nonatomic,strong)NSString * id_number;
-@property(nonatomic,strong)NSString * sex;
-@property(nonatomic,strong)NSString * birthday;
+@property(nonatomic,strong)NSString<Optional> * avatar;
+@property(nonatomic,strong)NSString<Optional> * nickname;
+@property(nonatomic,strong)NSString<Optional> * id_number;
+@property(nonatomic,strong)NSString<Optional> * sex;
+@property(nonatomic,strong)NSString<Optional> * birthday;
 @property(nonatomic,strong)NSString<Optional> *star_signs;
-@property(nonatomic,strong)NSString * city;
-@property(nonatomic,strong)NSString * province ;
-@property(nonatomic,strong)NSString * country;
-@property(nonatomic,strong)NSString * area_info;
-@property(nonatomic,strong)NSString * address;
-@property(nonatomic,strong)NSString * openid;
-@property(nonatomic,strong)NSString * unionid;
-@property(nonatomic,strong)NSString * headimgurl;
-@property(nonatomic,strong)NSString * introduce;
-@property(nonatomic,strong)NSString * type;
-@property(nonatomic,strong)NSString * age;
-@property(nonatomic,strong)NSString * status;
-@property(nonatomic,strong)NSString * status_name;
-@property(nonatomic,strong)NSString * company;
-
+@property(nonatomic,strong)NSString<Optional> * city;
+@property(nonatomic,strong)NSString<Optional> * province ;
+@property(nonatomic,strong)NSString<Optional> * country;
+@property(nonatomic,strong)NSString<Optional> * area_info;
+@property(nonatomic,strong)NSString<Optional> * address;
+@property(nonatomic,strong)NSString<Optional> * openid;
+@property(nonatomic,strong)NSString<Optional> * unionid;
+@property(nonatomic,strong)NSString<Optional> * headimgurl;
+@property(nonatomic,strong)NSString<Optional> * introduce;
+@property(nonatomic,strong)NSString<Optional> * type;
+@property(nonatomic,strong)NSString<Optional> * age;
+@property(nonatomic,strong)NSString<Optional> * status;
+@property(nonatomic,strong)NSString<Optional> * status_name;
+@property(nonatomic,strong)NSString<Optional> * company;
+@property (nonatomic, strong) NSString<Optional> *animal_signs;
+@property (nonatomic, strong) NSString<Optional> *city_name;
+@property (nonatomic, strong) NSString<Optional> *country_name;
+@property (nonatomic, strong) NSString<Optional> *groupid;
+@property (nonatomic, strong) NSString<Optional> *hire;
+@property (nonatomic, strong) NSString<Optional> *is_follow;
+@property (nonatomic, strong) NSString<Optional> *org_name;
+@property (nonatomic, strong) NSString<Optional> *province_name;
+@property (nonatomic, strong) NSString<Optional> *qq;
+@property (nonatomic, strong) NSString<Optional> *specialize_in;
+@property (nonatomic, strong) NSString<Optional> *uid;
+@property (nonatomic, strong) NSString<Optional> *wechat;
+@property (nonatomic, strong) NSString<Optional> *work_time;
 
 
 
