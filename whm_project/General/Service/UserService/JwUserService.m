@@ -468,5 +468,27 @@
     
 }
 
+//保存荣誉接口
+-(void)savehonorWithUid:(NSString *)uid
+                    img:(NSString *)img
+                success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"img":img,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/save_honor"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/save_honor" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
+
 
 @end

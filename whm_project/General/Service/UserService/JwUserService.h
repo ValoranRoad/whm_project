@@ -142,7 +142,9 @@ success:(void(^)())success failure:(void(^)(NSError *error))failure;
     
 
 
-
+//保存荣誉接口
+-(void)savehonorWithUid:(NSString *)uid img:(NSString *)img
+                success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
 
 @end
