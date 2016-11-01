@@ -152,7 +152,6 @@
         
         NSArray *infos = data[@"data"];
         NSArray *userinfos = [WHgetuseinfo arrayOfModelsFromDictionaries:infos error:nil];
-        NSLog(@"%@",userinfos);
         if (success) {
             success(userinfos);
         }
