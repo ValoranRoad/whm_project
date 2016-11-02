@@ -10,7 +10,7 @@
 #import "PicUpdateCollectionViewCell.h"
 #import "AddPicCollectionViewCell.h"
 #import "JwUserService.h"
-
+#import "JGProgressHelper.h"
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 #define kScreenH [[UIScreen mainScreen] bounds].size.height
 #define IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ? YES : NO)
@@ -43,11 +43,16 @@
     [self setUI];
     
 }
+-(void)getData
+{
+    self.userService 
+}
 
 -(void)setUI
 {
     [self.view addSubview:self.collectionView];
 }
+
 
 -(UICollectionView *)collectionView
 {
@@ -255,16 +260,25 @@
     NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!!!存储路径%@", fullPath);
     UIImage *saveImage = [[UIImage alloc]initWithContentsOfFile:fullPath];
     NSLog(@"%@", saveImage);
-//    [self.picArr addObject:saveImage];
   
     //1 //UIImage转换为NSData
-//    self.drivingLicenseData = UIImageJPEGRepresentation(saveImage, 1.0);
+    NSData *picData = UIImageJPEGRepresentation(saveImage, 1.0);
 //    //设置头像图片显示
-//    self.dirAddVC.licenseImage.image = saveImage;
+    NSString *picDataStr = [picData base64Encoding];
     
     //上传图片
     
-    
+    [self.userService savehonorWithUid:@"" img:picDataStr success:^{
+        
+        //刷新collectview
+        [_collectionView reloadData];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"上传成功" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        [alert show];
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
     
     
     
