@@ -45,7 +45,8 @@
 }
 -(void)getData
 {
-    self.userService 
+    
+    
 }
 
 -(void)setUI
