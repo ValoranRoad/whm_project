@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		8E414C661DC1D2E6005A335A /* CompleteTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E414C651DC1D2E6005A335A /* CompleteTypeViewController.m */; };
+		8E86DBD11DC9804B00C14635 /* PicUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E86DBD01DC9804B00C14635 /* PicUpdateViewController.m */; };
+		8E86DBD71DC9806D00C14635 /* PicUpdateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E86DBD31DC9806D00C14635 /* PicUpdateCollectionViewCell.m */; };
+		8E86DBD81DC9806D00C14635 /* AddPicCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E86DBD51DC9806D00C14635 /* AddPicCollectionViewCell.m */; };
+		8E86DBD91DC9806D00C14635 /* addimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E86DBD61DC9806D00C14635 /* addimage.png */; };
+		8E86DBDE1DC980BE00C14635 /* car.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E86DBDA1DC980BE00C14635 /* car.jpg */; };
+		8E86DBDF1DC980BE00C14635 /* Cardid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E86DBDB1DC980BE00C14635 /* Cardid.jpg */; };
+		8E86DBE01DC980BE00C14635 /* insur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E86DBDC1DC980BE00C14635 /* insur.jpg */; };
+		8E86DBE11DC980BE00C14635 /* licence.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E86DBDD1DC980BE00C14635 /* licence.jpg */; };
 		961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */; };
 		961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961358AE1DB5C29F00F5107F /* HmSelectInsuredCell.m */; };
 		961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 961358AF1DB5C29F00F5107F /* HmSelectInsuredCell.xib */; };
@@ -161,6 +169,17 @@
 		20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.debug.xcconfig"; sourceTree = "<group>"; };
 		8E414C641DC1D2E6005A335A /* CompleteTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteTypeViewController.h; sourceTree = "<group>"; };
 		8E414C651DC1D2E6005A335A /* CompleteTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteTypeViewController.m; sourceTree = "<group>"; };
+		8E86DBCF1DC9804B00C14635 /* PicUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicUpdateViewController.h; sourceTree = "<group>"; };
+		8E86DBD01DC9804B00C14635 /* PicUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicUpdateViewController.m; sourceTree = "<group>"; };
+		8E86DBD21DC9806D00C14635 /* PicUpdateCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicUpdateCollectionViewCell.h; sourceTree = "<group>"; };
+		8E86DBD31DC9806D00C14635 /* PicUpdateCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicUpdateCollectionViewCell.m; sourceTree = "<group>"; };
+		8E86DBD41DC9806D00C14635 /* AddPicCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPicCollectionViewCell.h; sourceTree = "<group>"; };
+		8E86DBD51DC9806D00C14635 /* AddPicCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPicCollectionViewCell.m; sourceTree = "<group>"; };
+		8E86DBD61DC9806D00C14635 /* addimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addimage.png; sourceTree = "<group>"; };
+		8E86DBDA1DC980BE00C14635 /* car.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = car.jpg; sourceTree = "<group>"; };
+		8E86DBDB1DC980BE00C14635 /* Cardid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cardid.jpg; sourceTree = "<group>"; };
+		8E86DBDC1DC980BE00C14635 /* insur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = insur.jpg; sourceTree = "<group>"; };
+		8E86DBDD1DC980BE00C14635 /* licence.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = licence.jpg; sourceTree = "<group>"; };
 		961358AA1DB5C29800F5107F /* HmSelectInsuredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectInsuredController.h; sourceTree = "<group>"; };
 		961358AB1DB5C29800F5107F /* HmSelectInsuredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectInsuredController.m; sourceTree = "<group>"; };
 		961358AD1DB5C29F00F5107F /* HmSelectInsuredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectInsuredCell.h; sourceTree = "<group>"; };
@@ -494,6 +513,8 @@
 		9F99E7141DC34F8000DC1265 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				8E86DBCF1DC9804B00C14635 /* PicUpdateViewController.h */,
+				8E86DBD01DC9804B00C14635 /* PicUpdateViewController.m */,
 				9F99E7161DC34F9F00DC1265 /* WHminiStationTableViewController.h */,
 				9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */,
 				9F99E7191DC3592C00DC1265 /* WHmyMessageTableViewController.h */,
@@ -511,6 +532,15 @@
 		9F99E7151DC34F8000DC1265 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				8E86DBD21DC9806D00C14635 /* PicUpdateCollectionViewCell.h */,
+				8E86DBD31DC9806D00C14635 /* PicUpdateCollectionViewCell.m */,
+				8E86DBD41DC9806D00C14635 /* AddPicCollectionViewCell.h */,
+				8E86DBD51DC9806D00C14635 /* AddPicCollectionViewCell.m */,
+				8E86DBD61DC9806D00C14635 /* addimage.png */,
+				8E86DBDA1DC980BE00C14635 /* car.jpg */,
+				8E86DBDB1DC980BE00C14635 /* Cardid.jpg */,
+				8E86DBDC1DC980BE00C14635 /* insur.jpg */,
+				8E86DBDD1DC980BE00C14635 /* licence.jpg */,
 				9F99E71C1DC3597700DC1265 /* WHmyMessageTableViewCell.h */,
 				9F99E71D1DC3597700DC1265 /* WHmyMessageTableViewCell.m */,
 				9F0F28BE1DC47E03007118BD /* WHreplymessage.h */,
@@ -1252,15 +1282,20 @@
 				9615F8131DC04715001081FD /* HmPhysicalGroupCell.xib in Resources */,
 				9615F80F1DC04715001081FD /* HmDetailsCell.xib in Resources */,
 				961358D61DB6280000F5107F /* HmCompanyCollectionCell.xib in Resources */,
+				8E86DBD91DC9806D00C14635 /* addimage.png in Resources */,
 				961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */,
+				8E86DBDE1DC980BE00C14635 /* car.jpg in Resources */,
 				9615F8111DC04715001081FD /* HmFujiaCell.xib in Resources */,
 				C8C10CB71DB9C06F00A5FB9A /* JwRegistController.xib in Resources */,
 				9615F81A1DC04F89001081FD /* HmAddInsuredController.xib in Resources */,
 				961358B61DB5D12600F5107F /* HmSelectInsuredCollectionCell.xib in Resources */,
 				961358C91DB6259600F5107F /* HmSelectProductCell.xib in Resources */,
+				8E86DBE11DC980BE00C14635 /* licence.jpg in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
+				8E86DBE01DC980BE00C14635 /* insur.jpg in Resources */,
 				9615F8151DC04715001081FD /* HmPhysicalMainPageCell.xib in Resources */,
 				C86353901DB4661C00ED8B16 /* Assets.xcassets in Resources */,
+				8E86DBDF1DC980BE00C14635 /* Cardid.jpg in Resources */,
 				C86354651DB473B300ED8B16 /* LICENSE in Resources */,
 				961358D11DB6268600F5107F /* HmCompanyTableCell.xib in Resources */,
 				C863543C1DB473A600ED8B16 /* IQKeyboardManager.bundle in Resources */,
@@ -1415,9 +1450,11 @@
 				C8C10CBB1DB9C06F00A5FB9A /* WHrestPwdViewController.m in Sources */,
 				C86353E61DB4672700ED8B16 /* UIColor+AddColor.m in Sources */,
 				C86354A91DB4D3AB00ED8B16 /* JwTabBarController.m in Sources */,
+				8E86DBD81DC9806D00C14635 /* AddPicCollectionViewCell.m in Sources */,
 				C86354361DB473A600ED8B16 /* IQTextView.m in Sources */,
 				961358B91DB606DE00F5107F /* CMIndexBar.m in Sources */,
 				9F0A20BB1DBDAC64004C5F67 /* WHsetupTableViewController.m in Sources */,
+				8E86DBD11DC9804B00C14635 /* PicUpdateViewController.m in Sources */,
 				C86353C81DB4669A00ED8B16 /* JwUserCenter.m in Sources */,
 				C86354371DB473A600ED8B16 /* IQBarButtonItem.m in Sources */,
 				961358C81DB6259600F5107F /* HmSelectProductCell.m in Sources */,
@@ -1446,6 +1483,7 @@
 				9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */,
 				9F0F28BD1DC47DF2007118BD /* WHreplymessageViewController.m in Sources */,
 				C86354A71DB4D3AB00ED8B16 /* JwMenuBaseController.m in Sources */,
+				8E86DBD71DC9806D00C14635 /* PicUpdateCollectionViewCell.m in Sources */,
 				C86354611DB473B300ED8B16 /* UIActionSheet+LBXAlertAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
