@@ -9,6 +9,7 @@
 #import "PicUpdateViewController.h"
 #import "PicUpdateCollectionViewCell.h"
 #import "AddPicCollectionViewCell.h"
+#import "JwUserService.h"
 
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 #define kScreenH [[UIScreen mainScreen] bounds].size.height
@@ -260,6 +261,13 @@
 //    self.drivingLicenseData = UIImageJPEGRepresentation(saveImage, 1.0);
 //    //设置头像图片显示
 //    self.dirAddVC.licenseImage.image = saveImage;
+    
+    //上传图片
+    
+    
+    
+    
+    
 }
 #pragma mark - 调用uiactionsheet iOS7使用
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
