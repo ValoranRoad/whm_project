@@ -11,8 +11,12 @@
 #import "WHmyMessageTableViewController.h"
 #import "WHintroduceViewController.h"
 #import "WHrecommentTableViewController.h"
+
+#import "PicUpdateViewController.h"
+
 #import "WHlookForViewController.h"
 #import "WHpreviewTableViewController.h"
+
 
 
 #define kScreenWitdh [UIScreen mainScreen].bounds.size.width
@@ -153,6 +157,11 @@
         WHrecommentTableViewController * comment = [[WHrecommentTableViewController alloc]init];
         [self.navigationController pushViewController:comment animated:NO];
     }
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        PicUpdateViewController *picVC = [[PicUpdateViewController alloc]init];
+        [self.navigationController pushViewController:picVC animated:YES];
+    }
+    
 }
 
 /*
