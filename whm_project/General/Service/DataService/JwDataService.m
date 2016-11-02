@@ -21,6 +21,7 @@
 #import "WHgetrec.h"
 #import "WHgetmessageDetall.h"
 #import "WHgetintroduce.h"
+#import "WHgethonor.h"
 
 #import "JwUserCenter.h"
 #import "JwUser.h"
@@ -422,6 +423,33 @@
     
     
 }
+
+
+//获取荣誉
+-(void)gethonorWithUid:(NSString *)uid
+               success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_honor"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/get_honor" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *honors= [WHgethonor arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(honors);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+}
+
 
 
 @end

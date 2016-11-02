@@ -64,6 +64,7 @@
 		9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */; };
 		9F13C23F1DC89E5F00D5FD56 /* WHpreviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C23E1DC89E5F00D5FD56 /* WHpreviewTableViewController.m */; };
 		9F14C1771DC97E38003A9D13 /* WHprevTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */; };
+		9F14C17A1DC987E3003A9D13 /* WHgethonor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1791DC987E3003A9D13 /* WHgethonor.m */; };
 		9F99E7181DC34F9F00DC1265 /* WHminiStationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */; };
 		9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71A1DC3592C00DC1265 /* WHmyMessageTableViewController.m */; };
 		9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71D1DC3597700DC1265 /* WHmyMessageTableViewCell.m */; };
@@ -270,6 +271,8 @@
 		9F13C23E1DC89E5F00D5FD56 /* WHpreviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpreviewTableViewController.m; sourceTree = "<group>"; };
 		9F14C1751DC97E38003A9D13 /* WHprevTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHprevTableViewCell.h; sourceTree = "<group>"; };
 		9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHprevTableViewCell.m; sourceTree = "<group>"; };
+		9F14C1781DC987E3003A9D13 /* WHgethonor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgethonor.h; sourceTree = "<group>"; };
+		9F14C1791DC987E3003A9D13 /* WHgethonor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgethonor.m; sourceTree = "<group>"; };
 		9F99E7161DC34F9F00DC1265 /* WHminiStationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHminiStationTableViewController.h; sourceTree = "<group>"; };
 		9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHminiStationTableViewController.m; sourceTree = "<group>"; };
 		9F99E7191DC3592C00DC1265 /* WHmyMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmyMessageTableViewController.h; sourceTree = "<group>"; };
@@ -898,6 +901,8 @@
 				9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */,
 				9F13C2321DC8489F00D5FD56 /* WHgetintroduce.h */,
 				9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */,
+				9F14C1781DC987E3003A9D13 /* WHgethonor.h */,
+				9F14C1791DC987E3003A9D13 /* WHgethonor.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1481,6 +1486,7 @@
 				8E86DBD11DC9804B00C14635 /* PicUpdateViewController.m in Sources */,
 				C86353C81DB4669A00ED8B16 /* JwUserCenter.m in Sources */,
 				C86354371DB473A600ED8B16 /* IQBarButtonItem.m in Sources */,
+				9F14C17A1DC987E3003A9D13 /* WHgethonor.m in Sources */,
 				961358C81DB6259600F5107F /* HmSelectProductCell.m in Sources */,
 				9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */,
 				C8C10CB31DB9C06F00A5FB9A /* ForgetPwdViewController.m in Sources */,
