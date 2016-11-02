@@ -11,6 +11,9 @@
 #import "AddPicCollectionViewCell.h"
 #import "JwUserService.h"
 #import "JGProgressHelper.h"
+#import "WHgethonor.h"
+#import <UIImageView+WebCache.h>
+
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 #define kScreenH [[UIScreen mainScreen] bounds].size.height
 #define IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ? YES : NO)
@@ -37,16 +40,28 @@
     
    
     
-    self.picArr = [NSMutableArray arrayWithObjects:@"car.jpg",@"Cardid.jpg",@"insur.jpg",@"licence.jpg", nil];
+    self.picArr = [NSMutableArray array];
     
-    
+    [self getData];
     [self setUI];
-    
 }
 -(void)getData
 {
-    
-    
+    id hud = nil;
+    hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService gethonorWithUid:@"" success:^(NSArray *lists) {
+        [hud hide:YES];
+        for (WHgethonor *model in lists) {
+            [self.picArr addObject:model.img1];
+        }
+        
+        [_collectionView reloadData];
+        
+    } failure:^(NSError *error) {
+        
+        [hud hide:YES];
+        [JGProgressHelper showError:nil inView:self.view];
+    }];
 }
 
 -(void)setUI
@@ -111,11 +126,13 @@
 {
     if (indexPath.row < self.picArr.count)
     {
+        NSString *pic = self.picArr[indexPath.row];
+        
         static NSString *identify = @"cell";
         PicUpdateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
         [cell sizeToFit];
         
-        cell.picImage.image = [UIImage imageNamed:self.picArr[indexPath.row]];
+        [cell.picImage sd_setImageWithURL:[NSURL URLWithString:pic] placeholderImage:[UIImage imageNamed:@"addimage.png"]];
         return cell;
     }
     else
@@ -269,16 +286,21 @@
     
     //上传图片
     
+    id hud = nil;
+    hud = [JGProgressHelper showProgressInView:self.view];
     [self.userService savehonorWithUid:@"" img:picDataStr success:^{
+        [hud hide:YES];
+        //刷新collectview , 刷新请求的数据
         
-        //刷新collectview
-        [_collectionView reloadData];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"上传成功" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alert show];
+        //上传成功重新请求数据,并在请求数据中刷新界面
+       [self getData];
         
     } failure:^(NSError *error) {
         
-        
+        [hud hide:YES];
+        [JGProgressHelper showError:nil inView:self.view];
     }];
     
     
