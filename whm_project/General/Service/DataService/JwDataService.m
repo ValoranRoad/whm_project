@@ -20,7 +20,7 @@
 #import "WHgetmessage.h"
 #import "WHgetrec.h"
 #import "WHgetmessageDetall.h"
-
+#import "WHgetintroduce.h"
 
 #import "JwUserCenter.h"
 #import "JwUser.h"
@@ -141,7 +141,7 @@
 
 //获取用户信息
 -(void)get_user_infoWithUid:(NSString *)uid
-                    success:(void (^)(WHgetuseinfo *userInfo))success failure:(void (^)(NSError * error))failure
+                    success:(void (^)(NSArray * lists))success failure:(void (^)(NSError * error))failure
 {
     NSMutableDictionary *param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                                     @"token":[JwUserCenter sharedCenter].key}
@@ -151,8 +151,7 @@
     [self.httpManager POST:param withPoint:@"kbj/get_user_info" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        WHgetuseinfo *userinfos = [[WHgetuseinfo alloc] initWithDictionary:[infos firstObject] error:nil];
-        
+        NSArray *userinfos = [WHgetuseinfo arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
             success(userinfos);
         }
@@ -346,10 +345,14 @@
 //获取推荐险种列表
 -(void)getrecWithAgent_uid:(NSString *)agent_uid
                        uid:(NSString *)uid
+                         p:(NSString *)p
+                  pagesize:(NSString *)pagesize
                    success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
 {
       NSMutableDictionary *param = [@{@"agent_uid": [JwUserCenter sharedCenter].uid,
                                       @"uid":[JwUserCenter sharedCenter].uid,
+                                      @"p":p,
+                                      @"pagesize":pagesize,
                                       @"token":[JwUserCenter sharedCenter].key} mutableCopy];
     param = [[self filterParam:param interface:@"kbj/get_rec"] mutableCopy];
     
@@ -371,7 +374,7 @@
 }
 
 
-
+//留言详情
 -(void)getmessagedetailWithId:(NSString *)ids uid:(NSString *)uid success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
 {
     NSDictionary * param = [@{@"id":ids,
@@ -392,12 +395,33 @@
         }
     }];
 
+    
+}
+
+//获取个人介绍内容
+-(void)getintroduceWithUid:(NSString *)uid success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_introduce"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_introduce" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *introduces = [WHgetintroduce  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(introduces);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
 
     
     
 }
-
-
 
 
 @end

@@ -47,7 +47,7 @@
 -(void)requestData
 {
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getrecWithAgent_uid:@"" uid:(@"") success:^(NSArray *lists) {
+    [self.dataService getrecWithAgent_uid:@"" uid:(@"") p:(@"1") pagesize:(@"10") success:^(NSArray *lists) {
         [hud hide:YES];
         self.dataArry = [NSMutableArray arrayWithArray:lists];
         [self.tableV reloadData];

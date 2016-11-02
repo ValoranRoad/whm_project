@@ -47,14 +47,26 @@
     return _mainImage;
     
 }
-
+//
+-(UILabel *)ageLaber
+{
+    if (_ageLaber == nil) {
+        self.ageLaber = [[UILabel alloc]init];
+        self.ageLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5, 60, 20);
+        self.ageLaber.text = @"投保年龄:";
+        self.ageLaber.textColor = [UIColor grayColor];
+        self.ageLaber.font = [UIFont systemFontOfSize:13.0];
+        [self.contentView addSubview:_ageLaber];
+    }
+    return _ageLaber;
+}
 //
 
 -(UILabel *)yearLaber
 {
     if (_yearLaber == nil) {
         self.yearLaber = [[UILabel alloc]init];
-        self.yearLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5, kScreenW * 0.3, 20);
+        self.yearLaber.frame = CGRectMake(CGRectGetMaxX(self.ageLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5, kScreenW * 0.2, 20);
         self.yearLaber.font = [UIFont systemFontOfSize:13.0];
         self.yearLaber.textColor = [UIColor grayColor];
         [self.contentView addSubview:_yearLaber];
@@ -84,9 +96,10 @@
 {
     if (_timeLaber == nil) {
         self.timeLaber = [[UILabel alloc]init];
-        self.timeLaber.frame = CGRectMake(CGRectGetMinX(self.yearLaber.frame), CGRectGetMaxY(self.yearLaber.frame)+5, kScreenW * 0.4, CGRectGetHeight(self.yearLaber.frame));
+        self.timeLaber.frame = CGRectMake(CGRectGetMinX(self.ageLaber.frame), CGRectGetMaxY(self.yearLaber.frame)+5, kScreenW * 0.4, CGRectGetHeight(self.yearLaber.frame));
         self.timeLaber.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:_timeLaber];
+        self.timeLaber.textColor = [UIColor grayColor];
     }
     
     return _timeLaber;
@@ -98,9 +111,32 @@
     [self.myImage sd_setImageWithURL:[NSURL URLWithString:model.logo]];
     self.titLaber.text = model.name;
     self.yearLaber.text = model.limit_age;
-    self.statuLaber.text = model.prod_type_code_name;
+    
+    NSString * staLaber = @"产品类型:";
+    self.statuLaber.text = [staLaber stringByAppendingString: model.prod_type_code_name];
+    
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:model.update_time.doubleValue];
     
     
+    NSString * s2 = [NSString stringWithFormat:@"%@",confromTimesp];
+    
+   self.timeLaber.text = [s2 substringToIndex:11];
+    
+    NSInteger stateM = [model.is_main integerValue];
+    switch (stateM) {
+        case 1:
+            self.mainImage.image =[UIImage imageNamed:@"p_zhu"];
+            break;
+            case 2:
+            self.mainImage.image = [UIImage imageNamed:@"p_huangfu"];
+            break;
+            case 3:
+            self.mainImage.image = [UIImage imageNamed:@"p_group"];
+            break;
+
+        default:
+            break;
+    }
     
 }
 

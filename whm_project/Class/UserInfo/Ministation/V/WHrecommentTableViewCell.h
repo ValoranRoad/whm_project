@@ -16,7 +16,9 @@
 @property(nonatomic,strong)UILabel * statuLaber;
 @property(nonatomic,strong)UILabel * timeLaber;
 @property(nonatomic,strong)UIImageView * mainImage;
+@property(nonatomic,strong)UILabel * ageLaber;
 
 @property(nonatomic,strong)WHgetrec * model;
+
 
 @end

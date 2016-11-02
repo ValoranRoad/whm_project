@@ -19,9 +19,9 @@
 @property(nonatomic,strong)UILabel * repTitLaber;//内容回复
 @property(nonatomic,strong)UIButton * delBut;
 @property(nonatomic,strong)UILabel * contentLaber;
-@property(nonatomic,strong)UITextView * myTextView;
+@property(nonatomic,strong)UITextField * myTextView;
 @property(nonatomic,strong)UIButton * repBut;
+@property(nonatomic,strong)UILabel * repDetText;
 
-//
 
 @end

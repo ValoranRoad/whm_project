@@ -8,10 +8,12 @@
 
 #import "WHintroduceViewController.h"
 #import "JGProgressHelper.h"
-
+#import "WHgetintroduce.h"
 
 @interface WHintroduceViewController ()<UITextViewDelegate>
 @property(nonatomic,strong)UITextView * Mytextview;
+@property(nonatomic,strong)NSMutableArray * dataArry;
+
 
 @end
 
@@ -20,6 +22,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self setData];
+}
+
+//数据请求
+-(void)setData
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService getintroduceWithUid:@"" success:^(NSArray *lists) {
+        [hud hide:YES];
+        self.dataArry = [NSMutableArray arrayWithArray:lists];
+        for (WHgetintroduce * model in self.dataArry) {
+          //  NSLog(@"====%@",model.introduce);
+            self.Mytextview.text = model.introduce;
+        }
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+    
+    
+    
+    
 }
 
 -(void)setUI
@@ -37,7 +67,9 @@
     
     [self.view addSubview:_Mytextview];
     
-    self.navigationItem .rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(right:)];
+   // self.navigationItem .rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(right:)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"eduit"] style:(UIBarButtonItemStylePlain) target:self action:@selector(right:)];
     
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tap1.cancelsTouchesInView = NO;
@@ -46,7 +78,7 @@
     self.navigationItem.title = @"个人介绍";
    // self.Mytextview.backgroundColor = [UIColor grayColor];
     
-    
+  
     
 
 }

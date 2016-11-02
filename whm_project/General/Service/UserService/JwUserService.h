@@ -121,15 +121,30 @@
 
 
 
+//删除留言回复
+
+-(void)delmessageWithId:(NSString * )ids
+                    uid:(NSString *)uid
+                success:(void(^)())success failure:(void(^)(NSError *error))failure;
 
 
 
 
+//保存留言
+-(void)savemessageWithReq_uid:(NSString *)req_uid
+                      res_uid:(NSString *)res_uid
+                          uid:(NSString *)uid
+                      message:(NSString *)message
+                   message_id:(NSString *)message_id
+                    city_name:(NSString *)city_name
+                     req_name:(NSString *)req_name
+success:(void(^)())success failure:(void(^)(NSError *error))failure;
+    
 
 
-
-
-
+//保存荣誉接口
+-(void)savehonorWithUid:(NSString *)uid img:(NSString *)img
+                success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
 
 @end

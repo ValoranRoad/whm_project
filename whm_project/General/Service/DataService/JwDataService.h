@@ -21,7 +21,7 @@
 @class WHgetmessage;
 @class WHgetrec;
 @class WHgetmessageDetall;
-
+@class WHgetintroduce;
 
 
 @interface JwDataService : JwServiceBase
@@ -58,7 +58,7 @@ success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))fail
 
 //获取用户信息
 -(void)get_user_infoWithUid:(NSString *)uid
-                    success:(void (^)(WHgetuseinfo *userInfo))success failure:(void (^)(NSError * error))failure;
+                    success:(void (^)(NSArray * lists))success failure:(void (^)(NSError * error))failure;
 
 
 //公司详情列表
@@ -107,6 +107,8 @@ success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError 
 //推荐险种列表
 -(void)getrecWithAgent_uid:(NSString *)agent_uid
                        uid:(NSString *)uid
+                         p:(NSString *)p
+                  pagesize:(NSString *)pagesize
 success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure;
 
 //留言详情接口
@@ -114,5 +116,9 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
                         uid:(NSString * )uid
   success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
+//获取个人介绍
+-(void)getintroduceWithUid:(NSString *)uid
+
+ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 @end
