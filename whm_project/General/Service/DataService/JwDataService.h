@@ -22,7 +22,7 @@
 @class WHgetrec;
 @class WHgetmessageDetall;
 @class WHgetintroduce;
-
+@class WHgethonor;
 
 @interface JwDataService : JwServiceBase
 
@@ -120,5 +120,11 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 -(void)getintroduceWithUid:(NSString *)uid
 
  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//荣誉列表
+-(void)gethonorWithUid:(NSString * )uid
+               success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
 
 @end

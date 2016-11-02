@@ -92,7 +92,7 @@
     //
     self.sexImage = [[UIImageView alloc]init];
     self.sexImage.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+3, CGRectGetMinY(self.nameLaber.frame)+3, 20, 20);
-    self.sexImage.image = [UIImage imageNamed:@"test_famale"];
+    self.sexImage.image = [UIImage imageNamed:@"test_male"];
     [self.headView addSubview:_sexImage];
     
     //
@@ -104,13 +104,15 @@
     [self.headView addSubview:_yearLaber];
     //
     self.companyLaber = [[UILabel alloc]init];
-    self.companyLaber.frame = CGRectMake(CGRectGetMinX(self.nameLaber.frame), kScreenWitdh * 0.4, CGRectGetWidth(self.nameLaber.frame), 20);
-    self.companyLaber.text = @"新华人寿  经理  从业5年 全国";
-    self.companyLaber.font = [UIFont systemFontOfSize:13.0];
+    self.companyLaber.frame = CGRectMake(CGRectGetMinX(self.nameLaber.frame),CGRectGetMaxY(self.nameLaber.frame)+5,  kScreenWitdh * 0.4, 20);
+    self.companyLaber.text = @"新华人寿 经理 从业5年 全国";
+    self.companyLaber.font = [UIFont systemFontOfSize:11.0];
     self.companyLaber.textColor = [UIColor grayColor];
     [self.headView addSubview:_companyLaber];
     //
-   
+    self.messBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    //self.messBut.frame = CGRectMake(CGRectGetMaxX(<#CGRect rect#>), <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    
     
     
     
@@ -163,7 +165,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    WHprevTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"nihao";
+    cell.textLabel.text = @"";
     
     return cell;
 }
