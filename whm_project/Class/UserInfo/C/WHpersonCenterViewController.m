@@ -84,8 +84,9 @@
 @property(nonatomic,strong)UIView * myView6;
 
 @property(nonatomic,strong)NSMutableArray * dateArry;
+//
+@property(nonatomic,strong)UILabel * companyLaber;
 
-@property(nonatomic,strong)NSString * headimage;
 
 @end
 
@@ -127,7 +128,7 @@
     
     self.myImage = [[UIImageView alloc]init];
     self.myImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.42, 10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18);
-     self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
+     //self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
    // [self.myImage sd_setImageWithURL:[NSURL URLWithString:self.headimage]];
     self.myImage.layer.masksToBounds = YES;
     self.myImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.18/2;
@@ -143,11 +144,17 @@
     
     self.nameLaber = [[UILabel alloc]init];
     
-    self.nameLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.30, CGRectGetMaxY(self.myImage.frame)+15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.6, 20);
-    self.nameLaber.text = @"孙一心( 康泰人寿 ) >";
+    self.nameLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.30, CGRectGetMaxY(self.myImage.frame)+15, CGRectGetWidth([UIScreen mainScreen].bounds)*0.17, 20);
+   // self.nameLaber.text = @"孙一心( 康泰人寿 ) >";
     self.nameLaber.textColor = [UIColor whiteColor];
-    self.nameLaber.font = [UIFont systemFontOfSize:17.0];
+    self.nameLaber.font = [UIFont systemFontOfSize:16.0];
     [self.scolw addSubview:_nameLaber];
+    //
+    self.companyLaber = [[UILabel alloc]init];
+    self.companyLaber.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame), CGRectGetMinY(self.nameLaber.frame), CGRectGetWidth([UIScreen mainScreen].bounds)*0.30, 20);
+    self.companyLaber.textColor = [UIColor whiteColor];
+    self.companyLaber.font =[UIFont systemFontOfSize:16.0];
+    [self.scolw addSubview:_companyLaber];
     
     //
     self.baojianImage = [[UIImageView alloc]init];
@@ -384,13 +391,19 @@
         for (WHgetuseinfo * model  in self.dateArry) {
             NSLog(@"====%@",model.avatar);
             //self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
-//            if (model.avatar.length == 0) {
-//                self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
-//            }
-//            
-//            [self.myImage sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+            if (model.avatar.length == 0) {
+                self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
+            }
             
-            self.headimage = model.avatar;
+            [self.myImage sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+            
+            self.nameLaber.text = model.name;
+            NSString * s1 = @"(";
+            NSString * s2 = @")>";
+            
+            NSString * s3 =[s1 stringByAppendingString:model.company];
+            self.companyLaber.text = [s3 stringByAppendingString:s2];
+           
       }
         
         

@@ -11,6 +11,8 @@
 #import "WHmyMessageTableViewController.h"
 #import "WHintroduceViewController.h"
 #import "WHrecommentTableViewController.h"
+#import "WHlookForViewController.h"
+#import "WHpreviewTableViewController.h"
 
 
 #define kScreenWitdh [UIScreen mainScreen].bounds.size.width
@@ -37,6 +39,8 @@
     _tableV.backgroundColor = [UIColor colorWithHex: 0xF5F7F9];
     [self.view addSubview:_tableV];
     
+    //右键预览
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"预览" style:(UIBarButtonItemStylePlain) target:self action:@selector(LookAction:)];
 
 
 }
@@ -51,6 +55,15 @@
     
     return 24;
 }
+//预览
+-(void)LookAction:(UIBarButtonItem *)sender
+{
+    NSLog(@"kkk");
+    WHpreviewTableViewController * lookfor = [[WHpreviewTableViewController alloc]init];
+    [self.navigationController pushViewController:lookfor animated:NO];
+}
+
+
 
 //高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
