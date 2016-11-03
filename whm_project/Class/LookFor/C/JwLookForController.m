@@ -8,6 +8,8 @@
 
 #import "JwLookForController.h"
 #import "UIColor+Hex.h"
+#import "WHgetprofirst.h"
+#import "JGProgressHelper.h"
 
 @interface JwLookForController ()<UIScrollViewDelegate>
 
@@ -26,13 +28,35 @@
 @property(nonatomic,strong)UITextField * myText4;
 @property(nonatomic,strong)UIButton * serchBut;
 
-
+@property(nonatomic,strong)NSMutableArray * dataArry;
 
 
 
 @end
 
 @implementation JwLookForController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    
+    [self quartData];
+}
+-(void)quartData
+{
+    [self.dataService getprofirstWithUid:@"" success:^(NSArray *lists) {
+        
+        for (WHgetprofirst * model in lists) {
+            NSLog(@"##########%@",model.period);
+        }
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -229,7 +253,7 @@
     //
     self.serchBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.serchBut.frame = CGRectMake(30, CGRectGetMaxY(lineView4.frame)+20, CGRectGetWidth([UIScreen mainScreen].bounds)-60, 50);
-    self.serchBut.backgroundColor = [UIColor redColor];
+    self.serchBut.backgroundColor = [UIColor colorWithHex:0xFF4545];
     self.serchBut.layer.cornerRadius = 25;
     [self.serchBut setTitle:@"高级搜索" forState:(UIControlStateNormal)];
     [self.serchBut setTintColor:[UIColor whiteColor]];
