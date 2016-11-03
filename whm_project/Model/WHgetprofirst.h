@@ -8,15 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
+#import "JwRela.h"
+#import "JwPeriod.h"
 
 @protocol WHgetprofirst  <NSObject>
+
 @end
+
 @interface WHgetprofirst : JwModelBase
-@property(nonatomic,strong)NSArray <WHgetprofirst ,Optional>* period;
 
-@property(nonatomic,strong)NSArray <WHgetprofirst ,Optional>* pay_period;
-
-@property(nonatomic,strong)NSArray <WHgetprofirst ,Optional>* rela;
+@property(nonatomic,strong)NSArray <JwPeriod ,Optional>* period;
+@property(nonatomic,strong)NSArray <JwPeriod ,Optional>* pay_period;
+@property(nonatomic,strong)NSArray <JwRela ,Optional>* rela;
 
 
 

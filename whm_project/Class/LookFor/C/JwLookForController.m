@@ -45,18 +45,12 @@
 }
 -(void)quartData
 {
-    [self.dataService getprofirstWithUid:@"" success:^(NSArray *lists) {
+    [self.dataService getprofirstWithUid:nil success:^(WHgetprofirst *profirst) {
         
-        for (WHgetprofirst * model in lists) {
-            NSLog(@"##########%@",model.period);
-        }
-        
-        
+        DLog(@"%@", profirst);
     } failure:^(NSError *error) {
         
     }];
-    
-    
 }
 
 - (void)viewDidLoad {
