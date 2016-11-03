@@ -25,7 +25,7 @@
 #import "WHmicro.h"
 #import "WHgetprofirst.h"
 
-
+#import "MacroUtility.h"
 #import "JwUserCenter.h"
 #import "JwUser.h"
 
@@ -482,18 +482,18 @@
 }
 
 //找险种搜索首页数据
--(void)getprofirstWithUid:(NSString *)uid success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+-(void)getprofirstWithUid:(NSString * )uid success:(void (^)(WHgetprofirst *profirst))success failure:(void (^)(NSError *error))failure
 {
     NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_pro_first"] mutableCopy];
     
     [self.httpManager POST:param withPoint:@"kb/get_pro_first" success:^(id data) {
         
-        NSArray *infos = data[@"data"];
-        NSArray * pros = [WHgetprofirst arrayOfModelsFromDictionaries:infos error:nil];
+        NSDictionary *info = data[@"data"];
+        WHgetprofirst *pro = [[WHgetprofirst alloc] initWithDictionary:info error:nil];
         
         if (success) {
-            success(pros);
+            success(pro);
         }
     } failure:^(NSError *error) {
         if (failure) {

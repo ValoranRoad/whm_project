@@ -136,8 +136,8 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 
 
 //找险种搜索首页数据
--(void)getprofirstWithUid :(NSString * ) uid
-                   success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+-(void)getprofirstWithUid:(NSString * )uid
+                   success:(void (^)(WHgetprofirst *profirst))success failure:(void (^)(NSError *error))failure;
 
 
 
