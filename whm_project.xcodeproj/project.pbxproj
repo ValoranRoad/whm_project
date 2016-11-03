@@ -65,6 +65,7 @@
 		9F13C23F1DC89E5F00D5FD56 /* WHpreviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C23E1DC89E5F00D5FD56 /* WHpreviewTableViewController.m */; };
 		9F14C1771DC97E38003A9D13 /* WHprevTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */; };
 		9F14C17A1DC987E3003A9D13 /* WHgethonor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1791DC987E3003A9D13 /* WHgethonor.m */; };
+		9F14C17D1DC9DCDA003A9D13 /* WHmicro.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */; };
 		9F99E7181DC34F9F00DC1265 /* WHminiStationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */; };
 		9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71A1DC3592C00DC1265 /* WHmyMessageTableViewController.m */; };
 		9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71D1DC3597700DC1265 /* WHmyMessageTableViewCell.m */; };
@@ -76,6 +77,7 @@
 		9FC53A3D1DC5D547008340B0 /* WHrecommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */; };
 		9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */; };
 		9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */; };
+		9FE6B5AF1DCAE8870049FC8B /* WHgetprofirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */; };
 		9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */; };
 		C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */ = {isa = PBXBuildFile; fileRef = C807B9A61DC060B800D3C700 /* JwAreass.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
@@ -273,6 +275,8 @@
 		9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHprevTableViewCell.m; sourceTree = "<group>"; };
 		9F14C1781DC987E3003A9D13 /* WHgethonor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgethonor.h; sourceTree = "<group>"; };
 		9F14C1791DC987E3003A9D13 /* WHgethonor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgethonor.m; sourceTree = "<group>"; };
+		9F14C17B1DC9DCDA003A9D13 /* WHmicro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmicro.h; sourceTree = "<group>"; };
+		9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmicro.m; sourceTree = "<group>"; };
 		9F99E7161DC34F9F00DC1265 /* WHminiStationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHminiStationTableViewController.h; sourceTree = "<group>"; };
 		9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHminiStationTableViewController.m; sourceTree = "<group>"; };
 		9F99E7191DC3592C00DC1265 /* WHmyMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmyMessageTableViewController.h; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 		9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetrec.m; sourceTree = "<group>"; };
 		9FE2CD1E1DC6ED570062D2D0 /* WHgetmessageDetall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetmessageDetall.h; sourceTree = "<group>"; };
 		9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetmessageDetall.m; sourceTree = "<group>"; };
+		9FE6B5AD1DCAE8870049FC8B /* WHgetprofirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetprofirst.h; sourceTree = "<group>"; };
+		9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetprofirst.m; sourceTree = "<group>"; };
 		9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrelationTableViewController.h; sourceTree = "<group>"; };
 		9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrelationTableViewController.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
@@ -903,6 +909,10 @@
 				9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */,
 				9F14C1781DC987E3003A9D13 /* WHgethonor.h */,
 				9F14C1791DC987E3003A9D13 /* WHgethonor.m */,
+				9F14C17B1DC9DCDA003A9D13 /* WHmicro.h */,
+				9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */,
+				9FE6B5AD1DCAE8870049FC8B /* WHgetprofirst.h */,
+				9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1430,6 +1440,7 @@
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
 				9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */,
 				9615F8191DC04F89001081FD /* HmAddInsuredController.m in Sources */,
+				9FE6B5AF1DCAE8870049FC8B /* WHgetprofirst.m in Sources */,
 				9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */,
 				961358CC1DB6263300F5107F /* HmSelectCompanyController.m in Sources */,
 				961358B01DB5C29F00F5107F /* HmSelectInsuredCell.m in Sources */,
@@ -1457,6 +1468,7 @@
 				C84EAA0D1DB76A980098C2A1 /* UIImage+Color.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
 				9F0A20C71DBDEAA2004C5F67 /* WHtelephoneNumViewController.m in Sources */,
+				9F14C17D1DC9DCDA003A9D13 /* WHmicro.m in Sources */,
 				961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */,
 				C86353D41DB4670700ED8B16 /* UIColor+Hex.m in Sources */,
 				C8C10CC01DB9C06F00A5FB9A /* ChooseTableViewCell.m in Sources */,
