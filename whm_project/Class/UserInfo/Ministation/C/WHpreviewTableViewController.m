@@ -10,7 +10,8 @@
 #import "MacroUtility.h"
 #import "UIColor+Hex.h"
 #import "WHprevTableViewCell.h"
-
+#import "JGProgressHelper.h"
+#import "WHmicro.h"
 
 @interface WHpreviewTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableV;
@@ -19,9 +20,6 @@
 @property(nonatomic,strong)UIImageView * sexImage;
 @property(nonatomic,strong)UILabel * yearLaber;
 @property(nonatomic,strong)UILabel * companyLaber;
-//@property(nonatomic,strong)UILabel * profesLaber;
-//@property(nonatomic,strong)UILabel * worktimeLaber;
-//@property(nonatomic,strong)UILabel * cityLaber;
 @property(nonatomic,strong)UIButton * messBut;
 @property(nonatomic,strong)UIButton * telBut;
 @property(nonatomic,strong)UIView * lineView1;
@@ -39,6 +37,9 @@
 @property(nonatomic,strong)UILabel * kehuLaber;
 @property(nonatomic,strong)UIView * headView;
 @property(nonatomic,strong)UIView * lineView2;
+@property(nonatomic,strong)NSMutableArray * daraArry;
+
+//基本信息
 
 
 @end
@@ -63,7 +64,7 @@
 -(void)setupUI
 {
     self.title = @"微站";
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, kScreenHeight* 0.32, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
     _tableV.delegate = self;
     _tableV.dataSource = self;
     _tableV.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -71,7 +72,7 @@
     [self.view addSubview:_tableV];
     self.tableV.tableHeaderView = self.headView ;
     self.headView = [[UIView alloc]init];
-    self.headView.frame = CGRectMake(0, 0, kScreenWitdh, kScreenHeight *0.5);
+    self.headView.frame = CGRectMake(0, 0, kScreenWitdh, kScreenHeight *0.3);
     [self.view addSubview:_headView];
     [self.tableV registerClass:[WHprevTableViewCell class] forCellReuseIdentifier:@"cell"];
     
@@ -83,7 +84,7 @@
     self.headImage.layer.cornerRadius = kScreenWitdh *0.1;
     self.headImage.image = [UIImage imageNamed:@"test_head"];
     [self.headView addSubview:_headImage];
-    self.headView.backgroundColor = [UIColor redColor];
+   // self.headView.backgroundColor = [UIColor redColor];
     //
     self.nameLaber = [[UILabel alloc]init];
     self.nameLaber.frame = CGRectMake(CGRectGetMaxX(self.headImage.frame)+5, CGRectGetMinY(self.headImage.frame), kScreenWitdh* 0.15, kScreenWitdh * 0.1);
@@ -140,7 +141,7 @@
     self.baojianLaber = [[UILabel alloc]init];
     self.baojianLaber.frame = CGRectMake(CGRectGetMaxX(self.baojianImage.frame)+2, CGRectGetMinY(self.baojianImage.frame), CGRectGetWidth(self.baojianImage.frame)*2.5, CGRectGetHeight(self.baojianImage.frame));
     self.baojianLaber.text = @"保监认证";
-    self.baojianLaber.textColor = [UIColor whiteColor];
+    //self.baojianLaber.textColor = [UIColor whiteColor];
     self.baojianLaber.font = [UIFont systemFontOfSize:11.0];
     [self.headView addSubview:_baojianLaber];
     //
@@ -151,7 +152,7 @@
     //
     self.renzhengLaber = [[UILabel alloc]init];
     self.renzhengLaber.frame = CGRectMake(CGRectGetMaxX(self.renzhengImage.frame)+2, CGRectGetMinY(self.renzhengImage.frame), CGRectGetWidth(self.baojianLaber.frame)*1.2, CGRectGetHeight(self.baojianLaber.frame));
-    self.renzhengLaber.textColor = [UIColor whiteColor];
+    //self.renzhengLaber.textColor = [UIColor whiteColor];
     self.renzhengLaber.text = @"快保家认证";
     self.renzhengLaber.font = [UIFont systemFontOfSize:11.0];
     [self.headView addSubview:_renzhengLaber];
@@ -162,12 +163,12 @@
     
     //产品类型咨询等设计
     self.numchanpin = [[UILabel alloc]init];
-    self.numchanpin.frame = CGRectMake(CGRectGetMidX(self.baojianLaber.frame), CGRectGetMaxY(self.lineView2.frame)+5, kScreenWitdh*0.2, 30);
+    self.numchanpin.frame = CGRectMake(CGRectGetMinX(self.baojianLaber.frame), CGRectGetMaxY(self.lineView2.frame)+5, kScreenWitdh*0.2, 30);
     self.numchanpin.text = @"152";
     self.numchanpin.textColor = [UIColor greenColor];
     [self.headView addSubview:_numchanpin];
     self.chanpinLaber = [[UILabel alloc]init];
-    self.chanpinLaber.frame = CGRectMake(CGRectGetMinX(self.numchanpin.frame), CGRectGetMaxY(self.numchanpin.frame)+3, 20, 20);
+    self.chanpinLaber.frame = CGRectMake(CGRectGetMinX(self.numchanpin.frame), CGRectGetMaxY(self.numchanpin.frame)+3, 60, 20);
     self.chanpinLaber.font = [UIFont systemFontOfSize:11.0];
     self.chanpinLaber.text = @"产品";
     self.chanpinLaber.textColor = [UIColor grayColor];
@@ -204,7 +205,7 @@
     //
     self.numkehuLaber = [[UILabel alloc]init];
     self.numkehuLaber.frame = CGRectMake(CGRectGetMaxX(self.numbaodanLaber.frame)+5, CGRectGetMinY(self.numbaodanLaber.frame), CGRectGetWidth(self.numbaodanLaber.frame), CGRectGetHeight(self.numbaodanLaber.frame));
-    self.numkehuLaber.textColor = [UIColor redColor];
+    self.numkehuLaber.textColor = [UIColor blueColor];
     self.numkehuLaber.text = @"300";
     [self.headView addSubview:_numkehuLaber];
     
@@ -217,19 +218,29 @@
     [self.headView addSubview:_kehuLaber];
     
     
-    
-    
-    
-    
-    
-    
-    
 
 }
+
 
 // 请求数据
 -(void)requestData
 {
+    id  hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService getMicroWithAgent_uid:@"" uid:@"" success:^(NSArray *lists) {
+        [hud hide:YES];
+        
+        self.daraArry = [NSMutableArray array];
+        for (WHmicro * model in lists) {
+            NSLog(@"ooooo%@",model.agent_info);
+        }
+        
+        [self.tableV reloadData];
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper  showError:@""];
+        
+    }];
     
 }
 
@@ -245,6 +256,46 @@
 {
     
 }
+//
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+     NSString * s1 = @"基本信息";
+        return s1;
+    }
+    if (section == 1) {
+        NSString * s1 = @"个人介绍";
+        return s1;
+    }
+    if (section == 2) {
+        NSString * s1 = @"个人荣誉";
+        return s1;
+    }
+    if (section == 3) {
+        NSString * s1 = @"推荐险种";
+        return s1;
+    }
+    if (section == 4) {
+        NSString * s1 = @"我要留言";
+        return s1;
+    }
+    if (section == 5) {
+        NSString * s1 = @"保险咨询";
+        return s1;
+    }
+    if (section == 6) {
+        NSString * s1 = @"保险方案";
+        return s1;
+    }
+
+    
+    else
+    {
+        return nil;
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -273,19 +324,97 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 1;
+    return 7;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return 2;
+    
+    if (section == 0) {
+        return 7;
+    }
+    if (section == 1) {
+        return 1;
+    }
+    if (section == 2) {
+        return 1;
+    }
+    if (section == 3) {
+        return 1;
+    }
+        
+    else
+    {
+    return 1;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   WHprevTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    cell.textLabel.text = @"";
+
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"formCell" ];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:(UITableViewCellStyleValue1) reuseIdentifier:@"formCell"];
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            cell.textLabel.text = @"执行区域";
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.detailTextLabel.text = @"全国";
+        }
+        if (indexPath.section == 0 && indexPath.row == 1) {
+            cell.textLabel.text = @"所属区域";
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+             cell.detailTextLabel.text = @"全国";
+        }
+        if (indexPath.section == 0 && indexPath.row == 2) {
+            cell.textLabel.text = @"所属公司";
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.detailTextLabel.text = @"全国";
+        }
+        if (indexPath.section == 0 && indexPath.row == 3) {
+            cell.textLabel.text = @"所在机构";
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.detailTextLabel.text = @"全国";
+        }
+        if (indexPath.section == 0 && indexPath.row == 4) {
+            cell.textLabel.text = @"机构地址";
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.detailTextLabel.text = @"全国";
+        }
+        
+        if (indexPath.section == 0 && indexPath.row == 5) {
+            cell.textLabel.text = @"资格证书号码";
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.detailTextLabel.text = @"全国";
+        }
+
+        if (indexPath.section == 0 && indexPath.row == 6) {
+            cell.textLabel.text = @"执业证编号";
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.textLabel.font = [UIFont systemFontOfSize:13.0];
+            cell.detailTextLabel.text = @"全国";
+        }
+
+    }
     
     return cell;
 }

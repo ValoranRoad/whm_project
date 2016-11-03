@@ -490,5 +490,27 @@
 
 }
 
+//删除荣誉
+-(void)delhonorWithId:(NSString *)ids
+                  uid:(NSString *)uid success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"id":ids,
+                                     @"uid":[JwUserCenter sharedCenter].uid,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/del_honor"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/del_honor" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+}
+
 
 @end

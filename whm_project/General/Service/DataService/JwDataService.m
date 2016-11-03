@@ -22,6 +22,7 @@
 #import "WHgetmessageDetall.h"
 #import "WHgetintroduce.h"
 #import "WHgethonor.h"
+#import "WHmicro.h"
 
 #import "JwUserCenter.h"
 #import "JwUser.h"
@@ -450,6 +451,33 @@
     
 }
 
+//获取代理人个人微站
+-(void)getMicroWithAgent_uid:(NSString *)agent_uid
+                         uid:(NSString *)uid
+                     success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"agent_uid":[JwUserCenter sharedCenter].uid,
+                                     @"uid":[JwUserCenter sharedCenter].uid,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/micro"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/micro" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray * micros = [WHmicro arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(micros);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+}
 
 
 @end

@@ -23,6 +23,7 @@
 @class WHgetmessageDetall;
 @class WHgetintroduce;
 @class WHgethonor;
+@class WHmicro;
 
 @interface JwDataService : JwServiceBase
 
@@ -124,6 +125,14 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 //荣誉列表
 -(void)gethonorWithUid:(NSString * )uid
                success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+
+//代理人个人微站
+-(void)getMicroWithAgent_uid:(NSString *)agent_uid uid:(NSString *)uid
+                     success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
 
 
 

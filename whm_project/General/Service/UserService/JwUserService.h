@@ -147,4 +147,10 @@ success:(void(^)())success failure:(void(^)(NSError *error))failure;
                 success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
 
+//删除荣誉
+-(void)delhonorWithId:(NSString * )ids uid:(NSString * )uid
+
+              success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
+
 @end
