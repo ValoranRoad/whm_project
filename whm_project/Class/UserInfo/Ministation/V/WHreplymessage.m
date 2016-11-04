@@ -43,13 +43,13 @@
     
     //
     self.addressLaber = [[UILabel alloc]init];
-    self.addressLaber.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+10, CGRectGetMinY(self.nameLaber.frame), kScreenW * 0.2, CGRectGetHeight(self.nameLaber.frame));
+    self.addressLaber.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+10, CGRectGetMinY(self.nameLaber.frame), kScreenW * 0.3, CGRectGetHeight(self.nameLaber.frame));
     self.addressLaber.font = [UIFont systemFontOfSize:15.0];
     self.addressLaber.textColor = [UIColor grayColor];
     [self addSubview:_addressLaber];
     //
     self.timeLaber = [[UILabel alloc]init];
-    self.timeLaber.frame = CGRectMake(kScreenW * 0.75, CGRectGetMinY(self.addressLaber.frame), kScreenW* 0.2, CGRectGetHeight(self.addressLaber.frame));
+    self.timeLaber.frame = CGRectMake(kScreenW * 0.55, CGRectGetMinY(self.addressLaber.frame), kScreenW* 0.3, CGRectGetHeight(self.addressLaber.frame));
     self.timeLaber.font = [UIFont systemFontOfSize:15.0];
     self.timeLaber.textColor = [UIColor grayColor];
     [self addSubview:_timeLaber];
@@ -98,7 +98,7 @@
     //
     
     self.repTitLaber = [[UILabel alloc]init];
-    self.repTitLaber.frame = CGRectMake(10, CGRectGetMaxY(self.contentLaber.frame)+10, kScreenW*0.2, 30);
+    self.repTitLaber.frame = CGRectMake(10, CGRectGetMaxY(self.contentLaber.frame)+10, kScreenW*0.5, 30);
     self.repTitLaber.text = @"内容回复";
     [self addSubview:_repTitLaber];
     //

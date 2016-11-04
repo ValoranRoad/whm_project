@@ -52,10 +52,18 @@
 
 -(void)get_productWithCompany_id:(NSString *)company_id
                          keyword:(NSString *)keyword
-                   special_attri:(NSString *)special_attri
-                  prod_type_code:(NSString *)prod_type_code
-                       ins_type :(NSString *)ins_type
-                          is_hot:(NSString *)is_hot
+                             sex:(NSString *)sex
+            characters_insurance:(NSString *)characters_insurance
+                          period:(NSString *)period
+                         cate_id:(NSString *)cate_id
+                      pay_period:(NSString *)pay_period
+                            rate:(NSString *)rate
+                         insured:(NSString *)insured
+                        birthday:(NSString *)birthday
+                   yearly_income:(NSString *)yearly_income
+                            debt:(NSString *)debt
+                         rela_id:(NSString *)rela_id
+                               p:(NSString *)p
                         pagesize:(NSString *)pagesize
 success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
