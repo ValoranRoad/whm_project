@@ -15,6 +15,8 @@
 @property(nonatomic,strong)NSMutableArray * duryArry;
 @property (nonatomic, strong) UITableView *tableV;
 @property(nonatomic,strong)WHpecTableViewCell * cell;
+@property(nonatomic,strong)NSString * Name;
+
 @end
 
 @implementation WHpelicyTableViewController
@@ -54,8 +56,17 @@
     [self setupUI];
     
     [self.tableV registerClass:[WHpecTableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left :)];
 }
-
+-(void)left:(UIBarButtonItem *)sender
+{
+    if (self.Name != nil) {
+        self.mblock2 (self.Name);
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 #pragma mark -- 布局
 -(void)setupUI
 {
@@ -98,6 +109,13 @@
     return 60;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JwPeriod * per = self.duryArry[indexPath.row];
+    self.Name = per.name;
+    //NSLog(@"%@",per.name);
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

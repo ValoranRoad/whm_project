@@ -70,6 +70,8 @@
 {
     [super viewWillAppear:YES];
     
+    
+
     [self quartData];
       [self UI];
 }
@@ -91,10 +93,19 @@
     
     // 布局
     [self setupView];
+    
+    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
    
 
     
 }
+
+-(void)left:(UIBarButtonItem *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
 #pragma mark -- 布局
 -(void)setupView
 {
@@ -482,8 +493,7 @@
     self.myText3.userInteractionEnabled = YES;
     //设置手指数 单指
     
-    tapGesture.numberOfTouchesRequired=1;
-    
+    tapGesture.numberOfTouchesRequired = 1;
     [self.myText3 addGestureRecognizer:tapGesture];
     
 
@@ -695,6 +705,14 @@
 
     NSLog(@"ssss");
     WHpelicyTableViewController * pelic = [[WHpelicyTableViewController alloc]init];
+   pelic.mblock2 = ^(NSString * s1)
+    {
+       
+        self.myText3.text = s1;
+        
+    };
+
+    
     [self.navigationController pushViewController:pelic animated:YES];
 }
 
@@ -703,6 +721,13 @@
     
     NSLog(@"ssss");
     WHpayTableViewController * pay = [[WHpayTableViewController alloc]init];
+    pay.mblock2 = ^(NSString * s1)
+    {
+        
+        self.myText4.text = s1;
+        
+    };
+
     [self.navigationController pushViewController:pay animated:YES];
     
 }

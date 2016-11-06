@@ -15,7 +15,8 @@
 @interface WHpayTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableV;
 @property (nonatomic, strong) WHpayTableViewCell * cell;
-@property (nonatomic ,strong) NSMutableArray * dataArry;
+@property (nonatomic,strong) NSMutableArray * dataArry;
+@property (nonatomic,strong) NSString * Style;
 
 @end
 
@@ -58,7 +59,20 @@
     
     [self.tableV registerClass:[WHpayTableViewCell class] forCellReuseIdentifier:@"cell"];
 
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left :)];
+
 }
+
+-(void)left:(UIBarButtonItem *)sender
+{
+    if (self.Style != nil) {
+        self.mblock2 (self.Style);
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 #pragma mark -- 布局
 -(void)setupUI
 {
@@ -101,6 +115,11 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JwPeriod  * rela = self.dataArry[indexPath.row];
+    self.Style = rela.name;
+}
 
 /*
 // Override to support conditional editing of the table view.

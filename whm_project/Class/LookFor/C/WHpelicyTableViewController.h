@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "JwBackBaseController.h"
+
+typedef void(^myblock2)(NSString  *s2);
 @interface WHpelicyTableViewController : JwBackBaseController
 
+@property(nonatomic,copy)myblock2  mblock2;
 @end
