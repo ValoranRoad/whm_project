@@ -12,7 +12,6 @@
 #import "JwPeriod.h"
 
 @protocol WHgetprofirst  <NSObject>
-
 @end
 
 @interface WHgetprofirst : JwModelBase
