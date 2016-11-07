@@ -24,6 +24,8 @@
 #import "WHgethonor.h"
 #import "WHmicro.h"
 #import "WHgetprofirst.h"
+#import "WHgetappcate.h"
+
 
 #import "MacroUtility.h"
 #import "JwUserCenter.h"
@@ -523,6 +525,29 @@
     
 }
 
+//找险种高级搜索分类
+-(void)getappcateWithsuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_app_cate"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_app_cate" success:^(id data) {
+        NSArray *infos = data[@"data"];
+        NSArray *appcates = [WHgetappcate arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success (appcates);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+    
+
+    
+    
+}
 
 
 @end

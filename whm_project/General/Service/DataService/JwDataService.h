@@ -25,6 +25,7 @@
 @class WHgethonor;
 @class WHmicro;
 @class WHgetprofirst;
+@class WHgetappcate;
 
 
 @interface JwDataService : JwServiceBase
@@ -146,6 +147,10 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 //找险种搜索首页数据
 -(void)getprofirstWithUid:(NSString * )uid
                    success:(void (^)(WHgetprofirst *profirst))success failure:(void (^)(NSError *error))failure;
+
+//找险种高级搜索分类
+
+-(void)getappcateWithsuccess:(void(^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
 
