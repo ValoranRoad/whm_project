@@ -239,7 +239,7 @@
     }else{
 
         sheet = [[UIActionSheet alloc]initWithTitle:@"获取图片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"相册", nil];
-        [sheet showInView:self];
+        [sheet showInView:self.view];
     }
 
 

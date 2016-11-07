@@ -15,7 +15,7 @@
 #import "WHpayTableViewController.h"
 #import "WHhistoryTableViewController.h"
 
-
+#import "JwRela.h"
 
 
 @interface JwLookForController ()<UIScrollViewDelegate>
@@ -70,18 +70,17 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    
-    
 
     [self quartData];
-      [self UI];
+    [self UI];
     [self setupUI];
 }
 -(void)quartData
 {
     [self.dataService getprofirstWithUid:nil success:^(WHgetprofirst *profirst) {
         
-        DLog(@"%@", profirst.rela);
+        JwRela *rela = [profirst.rela firstObject];
+        DLog(@"%@", rela.yearly_income);
     } failure:^(NSError *error) {
         
     }];

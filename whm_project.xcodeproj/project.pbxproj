@@ -1323,7 +1323,7 @@
 				TargetAttributes = {
 					C863537F1DB4661C00ED8B16 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = MNRRAJV8LF;
+						DevelopmentTeam = 2LBCQNBX4S;
 						ProvisioningStyle = Automatic;
 					};
 					C86353981DB4661C00ED8B16 = {
@@ -1728,7 +1728,7 @@
 			baseConfigurationReference = 20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MNRRAJV8LF;
+				DEVELOPMENT_TEAM = 2LBCQNBX4S;
 				INFOPLIST_FILE = whm_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "chenJw.whm-project";
@@ -1741,7 +1741,7 @@
 			baseConfigurationReference = AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MNRRAJV8LF;
+				DEVELOPMENT_TEAM = 2LBCQNBX4S;
 				INFOPLIST_FILE = whm_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "chenJw.whm-project";
