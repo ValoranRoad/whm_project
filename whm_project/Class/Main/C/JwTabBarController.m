@@ -97,6 +97,7 @@
     JwLookForController *lookfor = [[JwLookForController alloc] init];
     JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
     lookfor.title = lookforVC.title = @"找险";
+    
     [self presentViewController:lookforVC animated:YES completion:nil];
 }
 

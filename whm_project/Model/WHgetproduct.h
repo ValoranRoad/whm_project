@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
 @interface WHgetproduct : JwModelBase
-@property(nonatomic,strong)NSString * id;
-@property(nonatomic,strong)NSString * name;
-@property(nonatomic,strong)NSString * company_id;
-@property(nonatomic,strong)NSString * limit_age;
-@property(nonatomic,strong)NSString * prod_type_code;
-@property(nonatomic,strong)NSString * ins_type;
-@property(nonatomic,strong)NSString * is_has_rate;
-@property(nonatomic,strong)NSString * is_main;
-@property(nonatomic,strong)NSString * pro_type_code_name;
-@property(nonatomic,strong)NSString * ins_type_name;
+@property(nonatomic,strong)NSString<Optional> * id;
+@property(nonatomic,strong)NSString<Optional> * name;
+@property(nonatomic,strong)NSString<Optional> * short_name;
+@property(nonatomic,strong)NSString<Optional> * company_id;
+@property(nonatomic,strong)NSString<Optional> * limit_age;
+@property(nonatomic,strong)NSString<Optional> * ins_type;
+@property(nonatomic,strong)NSString<Optional> * is_main;
+@property(nonatomic,strong)NSString<Optional> * img;
+@property(nonatomic,strong)NSString<Optional> * small_img;
+@property(nonatomic,strong)NSString<Optional> * logo;
 
 @end

@@ -38,7 +38,7 @@
 {
     if (_addressLaber == nil) {
         self.addressLaber = [[UILabel alloc]init];
-        self.addressLaber.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+10, CGRectGetMinY(self.nameLaber.frame), kScreenW * 0.2, CGRectGetHeight(self.nameLaber.frame));
+        self.addressLaber.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+10, CGRectGetMinY(self.nameLaber.frame), kScreenW * 0.3, CGRectGetHeight(self.nameLaber.frame));
         self.addressLaber.font = [UIFont systemFontOfSize:15.0];
         [self.contentView addSubview:_addressLaber];
         self.addressLaber.textColor = [UIColor grayColor];
@@ -52,7 +52,7 @@
 {
     if (_statuLaber == nil) {
         self.statuLaber = [[UILabel alloc]init];
-        self.statuLaber.frame = CGRectMake(CGRectGetMaxX(self.addressLaber.frame)+10, CGRectGetMinY(self.addressLaber.frame), kScreenW* 0.13, CGRectGetHeight(self.addressLaber.frame));
+        self.statuLaber.frame = CGRectMake(CGRectGetMaxX(self.addressLaber.frame)+10, CGRectGetMinY(self.addressLaber.frame), kScreenW* 0.15, CGRectGetHeight(self.addressLaber.frame));
         self.statuLaber.font = [UIFont systemFontOfSize:14.0];
         [self.contentView addSubview:_statuLaber];
         //self.statuLaber.textColor = [UIColor grayColor];
