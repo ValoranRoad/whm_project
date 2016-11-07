@@ -120,15 +120,16 @@
     
     // 搜索View searchView;
     self.searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 100)];
-    _searchView.backgroundColor =  [UIColor colorWithHex:0x4367FF];
+//    _searchView.backgroundColor =  [UIColor colorWithHex:0x4367FF];
+    _searchView.layer.contents = (__bridge id _Nullable)[UIImage imageNamed:@"xianzhong.png"].CGImage;
     //_searchView.backgroundColor = [ui]
     
     [self.bigScrollV addSubview:_searchView];
     //
-    self.image= [[UIImageView alloc]init];
-    self.image.frame = CGRectMake(0,0 , CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.24);
-    self.image.image = [UIImage imageNamed:@"xianzhong.png"];
-    [self.bigScrollV addSubview:_image];
+//    self.image= [[UIImageView alloc]init];
+//    self.image.frame = CGRectMake(0,0 , CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.24);
+//    self.image.image = [UIImage imageNamed:@"xianzhong.png"];
+//    [self.bigScrollV addSubview:_image];
     //
     self.searText = [[UITextField alloc]init];
     self.searText.frame = CGRectMake(20, CGRectGetHeight([UIScreen mainScreen].bounds)*0.07, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 46);
@@ -158,7 +159,7 @@
     _btnConditions.frame = CGRectMake(0, CGRectGetMaxY(_searchView.frame), kScreenWitdh * 0.5, 54);
     [_btnConditions setTitle:@"筛选条件" forState:UIControlStateNormal];
     [_btnConditions setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_btnConditions setBackgroundColor:[UIColor blueColor]];
+    [_btnConditions setBackgroundImage:[UIImage imageNamed:@"xianzhong"] forState:UIControlStateNormal];
     [_btnConditions addTarget:self action:@selector(btnConditionsAction:) forControlEvents:UIControlEventTouchUpInside];
     _btnConditions.titleLabel.font = [UIFont systemFontOfSize:15];
     [_bigScrollV addSubview:_btnConditions];
@@ -170,7 +171,7 @@
     self.btnEssentialMSG = [UIButton buttonWithType:UIButtonTypeCustom];
     _btnEssentialMSG.frame = CGRectMake(CGRectGetMaxX(_btnConditions.frame), CGRectGetMinY(_btnConditions.frame), CGRectGetWidth(_btnConditions.frame), CGRectGetHeight(_btnConditions.frame));
     [_btnEssentialMSG setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_btnEssentialMSG setBackgroundColor:[UIColor blueColor]];
+    [_btnEssentialMSG setBackgroundImage:[UIImage imageNamed:@"xianzhong"] forState:UIControlStateNormal];
     [_btnEssentialMSG addTarget:self action:@selector(btnEssentialMSGAction:) forControlEvents:UIControlEventTouchUpInside];
     [_btnEssentialMSG setTitle:@"基本信息" forState:UIControlStateNormal];
     _btnEssentialMSG.titleLabel.font = [UIFont systemFontOfSize:15];
