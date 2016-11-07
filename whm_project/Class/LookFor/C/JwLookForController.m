@@ -81,7 +81,7 @@
 {
     [self.dataService getprofirstWithUid:nil success:^(WHgetprofirst *profirst) {
         
-        DLog(@"%@", profirst);
+        DLog(@"%@", profirst.rela);
     } failure:^(NSError *error) {
         
     }];
@@ -215,14 +215,14 @@
 {
     _horScrollV.contentOffset = CGPointMake(0, 0);
     UILabel * lab = [[UILabel alloc]init];
-    lab.frame = CGRectMake(30, CGRectGetHeight([UIScreen mainScreen].bounds)*0.1, 60, 20);
+    lab.frame = CGRectMake(30, CGRectGetHeight([UIScreen mainScreen].bounds)*0.07, 60, 20);
     lab.text = @"筛选条件";
     lab.font = [UIFont systemFontOfSize:13.0];
     lab.textColor =[UIColor grayColor];
     [self.conditionScrollV addSubview:lab];
     //
     UIImageView * myImage1 = [[UIImageView alloc]init];
-    myImage1.frame = CGRectMake(CGRectGetMinX(lab.frame), CGRectGetMaxY(lab.frame)+20, 20, 20);
+    myImage1.frame = CGRectMake(CGRectGetMinX(lab.frame), CGRectGetMaxY(lab.frame)+10, 20, 20);
     myImage1.image = [UIImage imageNamed:@"shoujin"];
     [self.conditionScrollV addSubview:myImage1];
     //
@@ -248,7 +248,7 @@
     [self.conditionScrollV addSubview:_myText1];
     
     UIView * lineView1 = [[UIView alloc]init];
-    lineView1.frame = CGRectMake(20, CGRectGetMaxY(_myText1.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
+    lineView1.frame = CGRectMake(20, CGRectGetMaxY(_myText1.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView1.backgroundColor = [UIColor grayColor];
     [self.conditionScrollV addSubview:lineView1];
     
@@ -282,7 +282,7 @@
     [self.conditionScrollV addSubview:_myText2];
     
     UIView * lineView2 = [[UIView alloc]init];
-    lineView2.frame = CGRectMake(20, CGRectGetMaxY(_myText2.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
+    lineView2.frame = CGRectMake(20, CGRectGetMaxY(_myText2.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView2.backgroundColor = [UIColor grayColor];
     [self.conditionScrollV addSubview:lineView2];
     
@@ -330,7 +330,7 @@
     
     
     UIView * lineView3 = [[UIView alloc]init];
-    lineView3.frame = CGRectMake(20, CGRectGetMaxY(_myText3.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
+    lineView3.frame = CGRectMake(20, CGRectGetMaxY(_myText3.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView3.backgroundColor = [UIColor grayColor];
     [self.conditionScrollV addSubview:lineView3];
     //
@@ -374,7 +374,7 @@
     
     
     UIView * lineView4 = [[UIView alloc]init];
-    lineView4.frame = CGRectMake(20, CGRectGetMaxY(_myText4.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
+    lineView4.frame = CGRectMake(20, CGRectGetMaxY(_myText4.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView4.backgroundColor = [UIColor grayColor];
     [self.conditionScrollV addSubview:lineView4];
     
@@ -395,14 +395,14 @@
 - (void)setupUI
 {
     self.basImg = [[UIImageView alloc]init];
-    self.basImg.frame = CGRectMake(kScreenWitdh*0.4, CGRectGetHeight([UIScreen mainScreen].bounds)*0.1, 60, 60);
+    self.basImg.frame = CGRectMake(kScreenWitdh*0.4, CGRectGetHeight([UIScreen mainScreen].bounds)*0.07, 60, 60);
     self.basImg.image = [UIImage imageNamed:@"test_head"];
     self.basImg.layer.masksToBounds = YES;
     self.basImg.layer.cornerRadius = 30;
     [self.essentialScrollV addSubview:_basImg];
     //
     UIImageView * myImage1 = [[UIImageView alloc]init];
-    myImage1.frame = CGRectMake(30, CGRectGetMaxY(self.basImg.frame)+40, 20, 20);
+    myImage1.frame = CGRectMake(30, CGRectGetMaxY(self.basImg.frame)+20, 20, 20);
     myImage1.image = [UIImage imageNamed:@"test_sex"];
     [self.essentialScrollV addSubview:myImage1];
     //
@@ -429,7 +429,7 @@
     [self.essentialScrollV addSubview:_basText1];
     
     UIView * lineView1 = [[UIView alloc]init];
-    lineView1.frame = CGRectMake(20, CGRectGetMaxY(_basText1.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
+    lineView1.frame = CGRectMake(20, CGRectGetMaxY(_basText1.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView1.backgroundColor = [UIColor grayColor];
     [self.essentialScrollV addSubview:lineView1];
     //
@@ -460,7 +460,7 @@
     [self.essentialScrollV addSubview:_basText2];
     //
     UIView * lineView2 = [[UIView alloc]init];
-    lineView2.frame = CGRectMake(20, CGRectGetMaxY(_basText2.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
+    lineView2.frame = CGRectMake(20, CGRectGetMaxY(_basText2.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView2.backgroundColor = [UIColor grayColor];
     [self.essentialScrollV addSubview:lineView2];
     //
@@ -491,7 +491,7 @@
     //
     [self.essentialScrollV addSubview:_basText3];
     UIView * lineView3 = [[UIView alloc]init];
-    lineView3.frame = CGRectMake(20, CGRectGetMaxY(_basText3.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
+    lineView3.frame = CGRectMake(20, CGRectGetMaxY(_basText3.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView3.backgroundColor = [UIColor grayColor];
     [self.essentialScrollV addSubview:lineView3];
     
@@ -521,7 +521,7 @@
     //
     [self.essentialScrollV addSubview:_basText4];
     UIView * lineView4 = [[UIView alloc]init];
-    lineView4.frame = CGRectMake(20, CGRectGetMaxY(_basText4.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
+    lineView4.frame = CGRectMake(20, CGRectGetMaxY(_basText4.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView4.backgroundColor = [UIColor grayColor];
     [self.essentialScrollV addSubview:lineView4];
 }

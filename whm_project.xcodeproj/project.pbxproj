@@ -60,6 +60,7 @@
 		9F0F28BD1DC47DF2007118BD /* WHreplymessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F28BC1DC47DF2007118BD /* WHreplymessageViewController.m */; };
 		9F0F28C01DC47E03007118BD /* WHreplymessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F28BF1DC47E03007118BD /* WHreplymessage.m */; };
 		9F0F28C31DC491B7007118BD /* WHintroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F28C21DC491B7007118BD /* WHintroduceViewController.m */; };
+		9F10738F1DD02B5200725A84 /* WHpowSearTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F10738E1DD02B5200725A84 /* WHpowSearTableViewController.m */; };
 		9F13C2341DC8489F00D5FD56 /* WHgetintroduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */; };
 		9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */; };
 		9F13C23F1DC89E5F00D5FD56 /* WHpreviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C23E1DC89E5F00D5FD56 /* WHpreviewTableViewController.m */; };
@@ -274,6 +275,8 @@
 		9F0F28BF1DC47E03007118BD /* WHreplymessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHreplymessage.m; sourceTree = "<group>"; };
 		9F0F28C11DC491B7007118BD /* WHintroduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHintroduceViewController.h; sourceTree = "<group>"; };
 		9F0F28C21DC491B7007118BD /* WHintroduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHintroduceViewController.m; sourceTree = "<group>"; };
+		9F10738D1DD02B5200725A84 /* WHpowSearTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpowSearTableViewController.h; sourceTree = "<group>"; };
+		9F10738E1DD02B5200725A84 /* WHpowSearTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpowSearTableViewController.m; sourceTree = "<group>"; };
 		9F13C2321DC8489F00D5FD56 /* WHgetintroduce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetintroduce.h; sourceTree = "<group>"; };
 		9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetintroduce.m; sourceTree = "<group>"; };
 		9F13C2351DC88F0800D5FD56 /* WHlookForViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHlookForViewController.h; sourceTree = "<group>"; };
@@ -677,6 +680,8 @@
 				9F63ED3F1DCB6CDB00404AE7 /* WHhistoryTableViewController.m */,
 				9F63ED441DCB851C00404AE7 /* WHgetproducedetalViewController.h */,
 				9F63ED451DCB851C00404AE7 /* WHgetproducedetalViewController.m */,
+				9F10738D1DD02B5200725A84 /* WHpowSearTableViewController.h */,
+				9F10738E1DD02B5200725A84 /* WHpowSearTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1539,6 +1544,7 @@
 				C86353CA1DB4669A00ED8B16 /* JwHttpManager.m in Sources */,
 				C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */,
 				C8C10CC31DB9C06F00A5FB9A /* registerTwoTableViewCell.m in Sources */,
+				9F10738F1DD02B5200725A84 /* WHpowSearTableViewController.m in Sources */,
 				C8C10CBB1DB9C06F00A5FB9A /* WHrestPwdViewController.m in Sources */,
 				C86353E61DB4672700ED8B16 /* UIColor+AddColor.m in Sources */,
 				C86354A91DB4D3AB00ED8B16 /* JwTabBarController.m in Sources */,
