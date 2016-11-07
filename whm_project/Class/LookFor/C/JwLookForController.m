@@ -81,6 +81,7 @@
         
         JwRela *rela = [profirst.rela firstObject];
         DLog(@"%@", rela.yearly_income);
+        
     } failure:^(NSError *error) {
         
     }];
