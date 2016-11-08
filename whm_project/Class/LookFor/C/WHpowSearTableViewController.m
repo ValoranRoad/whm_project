@@ -10,9 +10,11 @@
 #import "JGProgressHelper.h"
 #import "MacroUtility.h"
 #import "JSDropDownMenu.h"
+#import "WHpowTwoTableViewCell.h"
+#import "WHgetappcate.h"
 
 
-@interface WHpowSearTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,JSDropDownMenuDataSource,JSDropDownMenuDelegate>
+@interface WHpowSearTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,JSDropDownMenuDataSource,JSDropDownMenuDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
     NSMutableArray *_data1;
     NSMutableArray *_data2;
@@ -40,6 +42,14 @@
 
 @property(nonatomic,strong)UILabel * oneLaber;
 
+@property(nonatomic,strong)WHpowTwoTableViewCell * cell1;
+
+
+
+@property(nonatomic,strong)NSMutableArray * homeArry;
+
+@property(nonatomic,strong)NSString * sID;
+
 @end
 
 @implementation WHpowSearTableViewController
@@ -48,6 +58,8 @@
 {
     [super viewWillAppear:YES];
     [self quartData];
+    
+
 }
 
 
@@ -55,18 +67,59 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+
     // 布局
     [self setupUI];
+    
+//    UICollectionViewFlowLayout *flowlayOut = [[UICollectionViewFlowLayout alloc]init];
+//    flowlayOut.itemSize = CGSizeMake(80, 80);
+//    
+//    flowlayOut.minimumInteritemSpacing = 10;
+//    
+//    flowlayOut.minimumLineSpacing = 10 ;
+//    flowlayOut.scrollDirection = UICollectionViewScrollDirectionVertical ;
+//    
+//    flowlayOut.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+//    
+//    UICollectionView *collectView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 40, CGRectGetWidth([UIScreen mainScreen].bounds), 200) collectionViewLayout:flowlayOut];
+//    [self.view addSubview:collectView];
+//    //背景设置为白色
+//    collectView.backgroundColor = [UIColor whiteColor];
+//    
+//    collectView.delegate = self;
+//    collectView.dataSource = self;
+//    [collectView registerClass:[WHmypowTwoCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+//
 
 }
+
+
 
 #pragma mark--数据请求
 -(void)quartData
 {
+    self.homeArry = [NSMutableArray array];
+
     id hud = [JGProgressHelper showProgressInView:self.view];
     [self.dataService getappcateWithsuccess:^(NSArray *lists) {
         [hud hide:YES];
         self.dataArry = [NSMutableArray arrayWithArray:lists];
+        for (WHgetappcate * model in self.dataArry) {
+            // NSLog(@"%@",model.id);
+            if ([model.p_id  isEqualToString:@"1"]) {
+                
+                NSLog(@"%@",model.name);
+                [self.homeArry addObject:model.name];
+                
+                NSLog(@"%ld",self.homeArry.count);
+                
+            }
+        }
+       
+        
+        
         NSLog(@"%@",self.dataArry);
         
     } failure:^(NSError *error) {
@@ -139,7 +192,10 @@
     [self.view addSubview:menu];
 
     
+    //
     
+    
+
 
     
 }
@@ -245,12 +301,19 @@
 
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
     
-    if (indexPath.column == 0) {
+    if (indexPath.column == 0 && indexPath.row == 1) {
         
-        
+        self.sID = @"1";
+        NSLog(@"888");
         _currentData1Index = indexPath.row;
         
-    } else if(indexPath.column == 1){
+    }else if (indexPath.column == 0 && indexPath.row == 2)
+    {
+        self.sID = @"2";
+         _currentData1Index = indexPath.row;
+    }
+    
+    else if(indexPath.column == 1){
         
         _currentData2Index = indexPath.row;
         

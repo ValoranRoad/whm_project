@@ -109,7 +109,7 @@
         
         self.basText3.text = rela.yearly_income;
         
-        self.basText4.text = rela.yearly_out;
+        self.basText4.text = rela.debt;
 
         
     } failure:^(NSError *error) {

@@ -87,6 +87,7 @@
 		9FC53A3A1DC5D515008340B0 /* WHrecommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */; };
 		9FC53A3D1DC5D547008340B0 /* WHrecommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */; };
 		9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */; };
+		9FDF0C601DD15E8100892CAA /* WHpowTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF0C5F1DD15E8100892CAA /* WHpowTwoTableViewCell.m */; };
 		9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */; };
 		9FE6B5AF1DCAE8870049FC8B /* WHgetprofirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */; };
 		9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */; };
@@ -331,6 +332,8 @@
 		9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrecommentTableViewCell.m; sourceTree = "<group>"; };
 		9FC53A3E1DC5FB78008340B0 /* WHgetrec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetrec.h; sourceTree = "<group>"; };
 		9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetrec.m; sourceTree = "<group>"; };
+		9FDF0C5E1DD15E8100892CAA /* WHpowTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHpowTwoTableViewCell.h; path = whm_project/Model/WHpowTwoTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		9FDF0C5F1DD15E8100892CAA /* WHpowTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHpowTwoTableViewCell.m; path = whm_project/Model/WHpowTwoTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		9FE2CD1E1DC6ED570062D2D0 /* WHgetmessageDetall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetmessageDetall.h; sourceTree = "<group>"; };
 		9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetmessageDetall.m; sourceTree = "<group>"; };
 		9FE6B5AD1DCAE8870049FC8B /* WHgetprofirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetprofirst.h; sourceTree = "<group>"; };
@@ -714,6 +717,8 @@
 				9F63ED3C1DCB639D00404AE7 /* WHpayTableViewCell.m */,
 				9F63ED411DCB6E5300404AE7 /* WHhistoryTableViewCell.h */,
 				9F63ED421DCB6E5300404AE7 /* WHhistoryTableViewCell.m */,
+				9FDF0C5E1DD15E8100892CAA /* WHpowTwoTableViewCell.h */,
+				9FDF0C5F1DD15E8100892CAA /* WHpowTwoTableViewCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1586,6 +1591,7 @@
 				C83D06711DCB2AB40028A681 /* JwPeriod.m in Sources */,
 				C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */,
 				C8C10CB81DB9C06F00A5FB9A /* JwUserInfoController.m in Sources */,
+				9FDF0C601DD15E8100892CAA /* WHpowTwoTableViewCell.m in Sources */,
 				C86354321DB473A500ED8B16 /* IQUIViewController+Additions.m in Sources */,
 				C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */,
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
