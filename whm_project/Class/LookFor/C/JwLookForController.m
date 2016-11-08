@@ -14,6 +14,8 @@
 #import "WHpelicyTableViewController.h"
 #import "WHpayTableViewController.h"
 #import "WHhistoryTableViewController.h"
+#import <UIImageView+WebCache.h>
+#import "WHpowSearTableViewController.h"
 
 #import "JwRela.h"
 
@@ -63,6 +65,7 @@
 @property(nonatomic,strong)UIButton * searchBut;
 
 
+
 @end
 
 @implementation JwLookForController
@@ -77,12 +80,40 @@
 }
 -(void)quartData
 {
+    
+    id hud = [JGProgressHelper showProgressInView:self.view];
     [self.dataService getprofirstWithUid:nil success:^(WHgetprofirst *profirst) {
         
+        [hud hide:YES];
         JwRela *rela = [profirst.rela firstObject];
         DLog(@"%@", rela.yearly_income);
+        if (rela.avatar.length != 0) {
+            [self.basImg sd_setImageWithURL:[NSURL URLWithString:rela.avatar]];
+
+        }
+        else
+        {
+        self.basImg.image = [UIImage imageNamed:@"test_head"];
+        }
+        if ([rela.sex integerValue] == 1) {
+            self.basText1.text = @"男";
+        }
+        if ([rela.sex integerValue] == 2) {
+            self.basText1.text = @"女";
+        }
+        NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:rela.birthday.doubleValue];
+
+        NSString * s2 = [NSString stringWithFormat:@"%@",confromTimesp];
+        
+        self.basText2.text = [s2 substringToIndex:11];
+        
+        self.basText3.text = rela.yearly_income;
+        
+        self.basText4.text = rela.debt;
+
         
     } failure:^(NSError *error) {
+        [hud hide:YES];
         
     }];
 }
@@ -384,6 +415,7 @@
     self.serchBut.backgroundColor = [UIColor colorWithHex:0xFF4545];
     self.serchBut.layer.cornerRadius = 25;
     [self.serchBut setTitle:@"高级搜索" forState:(UIControlStateNormal)];
+    [self.serchBut addTarget:self action:@selector(powSearch:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.serchBut setTintColor:[UIColor whiteColor]];
     [self.conditionScrollV addSubview:_serchBut];
     
@@ -392,11 +424,17 @@
 
 }
 
+-(void)powSearch:(UIButton *)sender
+{
+    WHpowSearTableViewController * powsearch = [[WHpowSearTableViewController alloc]init];
+    [self.navigationController pushViewController:powsearch animated:YES];
+}
+
 - (void)setupUI
 {
     self.basImg = [[UIImageView alloc]init];
     self.basImg.frame = CGRectMake(kScreenWitdh*0.4, CGRectGetHeight([UIScreen mainScreen].bounds)*0.07, 60, 60);
-    self.basImg.image = [UIImage imageNamed:@"test_head"];
+  
     self.basImg.layer.masksToBounds = YES;
     self.basImg.layer.cornerRadius = 30;
     [self.essentialScrollV addSubview:_basImg];
