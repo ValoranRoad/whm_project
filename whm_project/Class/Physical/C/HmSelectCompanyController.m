@@ -15,6 +15,8 @@
 #import "CMIndexBar.h"
 #import "JGProgressHelper.h"
 #import "NSString+PinYin.h"
+#import "WHproductSearchTableViewController.h"
+#import "JwCompanys.h"
 
 
 
@@ -211,6 +213,17 @@
     [headView addSubview:lbl];
     
     return headView;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JwCompanys * model = self.dataArry[indexPath.row];
+   // NSLog(@"%@",model.id);
+   
+    WHproductSearchTableViewController * produceSearch = [[WHproductSearchTableViewController alloc]init];
+    produceSearch.company_id = model.id;
+    
+    [self.navigationController pushViewController:produceSearch animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -26,6 +26,8 @@
 @class WHmicro;
 @class WHgetprofirst;
 @class WHgetappcate;
+@class WHgetproperiod;
+@class WHgetcharacters;
 
 
 @interface JwDataService : JwServiceBase
@@ -152,6 +154,14 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 
 -(void)getappcateWithsuccess:(void(^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
+
+//保障期间
+-(void)getproperiodWithsuccess:(void(^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+
+//险种特色保障
+-(void)getcharactersWithsuccess:(void(^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
 
