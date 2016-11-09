@@ -63,6 +63,10 @@
 @protocol JSDropDownMenuDelegate <NSObject>
 @optional
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath;
+/**Jw
+ * 点击菜单的代理方法
+ */
+- (void)menu:(JSDropDownMenu *)menu didSelectMenuAtIndex:(NSInteger)index;
 @end
 
 #pragma mark - interface
@@ -74,6 +78,8 @@
 @property (nonatomic, strong) UIColor *indicatorColor;
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIColor *separatorColor;
+
+@property (nonatomic, strong) UIView *backGroundView;
 /**
  *  the width of menu will be set to screen width defaultly
  *

@@ -221,7 +221,10 @@
         return  self.data4[indexPath.row];
     }
     return appcate.name;
-    
+}
+
+- (void)menu:(JSDropDownMenu *)menu didSelectMenuAtIndex:(NSInteger)index{
+    NSLog(@"%ld", (long)index);
 }
 
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
