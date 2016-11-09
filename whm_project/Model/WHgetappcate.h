@@ -10,7 +10,9 @@
 
 #import "JwModelBase.h"
 @interface WHgetappcate : JwModelBase
-@property(nonatomic,strong)NSString <Optional> * id;
-@property(nonatomic,strong)NSString <Optional> * name;
-@property(nonatomic,strong)NSString <Optional> * p_id;
+
+@property(nonatomic, assign)NSInteger id;
+@property(nonatomic, strong)NSString <Optional> * name;
+@property(nonatomic, assign)NSInteger p_id;
+
 @end

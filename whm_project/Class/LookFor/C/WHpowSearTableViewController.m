@@ -14,109 +14,71 @@
 #import "WHgetappcate.h"
 
 
-@interface WHpowSearTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,JSDropDownMenuDataSource,JSDropDownMenuDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface WHpowSearTableViewController ()<UISearchBarDelegate, JSDropDownMenuDataSource, JSDropDownMenuDelegate>
 {
-    NSMutableArray *_data1;
-    NSMutableArray *_data2;
-    NSMutableArray *_data3;
-    NSMutableArray *_data4;
-    
-    
-    NSInteger _currentData1Index;
-    NSInteger _currentData2Index;
-    NSInteger _currentData3Index;
-    NSInteger _currentData4Index;
-    
-    NSInteger _currentData1SelectedIndex;
     JSDropDownMenu *menu;
-
 }
 
 @property (nonatomic, strong) UITableView *tableV;
-
-@property(nonatomic,strong)UIButton * searBut;
-
-@property(nonatomic,strong)NSMutableArray * dataArry;
-
-@property(nonatomic,strong)UILabel * AllstyLaber;
-
-@property(nonatomic,strong)UILabel * oneLaber;
-
-@property(nonatomic,strong)WHpowTwoTableViewCell * cell1;
-
-
-
-@property(nonatomic,strong)NSMutableArray * homeArry;
-
-@property(nonatomic,strong)NSString * sID;
-
+@property (nonatomic, strong) UIButton * searBut;
+//菜单数据
+@property (nonatomic, strong) NSArray *menus;
+//所有数据
+@property (nonatomic, strong) NSMutableArray *allArr;
+//分类数据
+@property (nonatomic, strong) NSMutableArray *wholes;
+@property (nonatomic, strong) NSMutableArray *secures;
+@property (nonatomic, strong) NSMutableArray *categorys;
+//选中指定
+@property (nonatomic, assign) NSInteger currentWhole;
+@property (nonatomic, assign) NSInteger currentSecure;
+@property (nonatomic, assign) NSInteger currentCategory;
 @end
 
 @implementation WHpowSearTableViewController
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self quartData];
-    
-
 }
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-       // 布局
     [self setupUI];
-    
-
 }
 
-
-
-#pragma mark--数据请求
--(void)quartData
-{
-    self.homeArry = [NSMutableArray array];
-
+-(void)quartData{
+    
+    self.allArr = [NSMutableArray array];
+    self.wholes = [NSMutableArray array];
+    
+    WHgetappcate *a = [[WHgetappcate alloc] init];
+    a.id = -1;
+    a.name = @"全部";
+    a.p_id = -1;
+    [self.wholes addObject:a];
+    
     id hud = [JGProgressHelper showProgressInView:self.view];
     [self.dataService getappcateWithsuccess:^(NSArray *lists) {
         [hud hide:YES];
-        self.dataArry = [NSMutableArray arrayWithArray:lists];
-        for (WHgetappcate * model in self.dataArry) {
-            // NSLog(@"%@",model.id);
-            if ([model.p_id  isEqualToString:@"1"]) {
-                
-                NSLog(@"%@",model.name);
-                [self.homeArry addObject:model.name];
-                
-               // NSLog(@"%ld",self.homeArry.count);
-                
+        
+        [self.allArr addObjectsFromArray:lists];
+        for (WHgetappcate *appcate in self.allArr) {
+            if (appcate.p_id == 0) {
+                [self.wholes addObject:appcate];
             }
         }
-       
-        
-        
-        NSLog(@"%@",self.dataArry);
+        NSLog(@"%@", self.wholes);
         
     } failure:^(NSError *error) {
         [hud hide:YES];
         [JGProgressHelper showError:@""];
         
     }];
-    
-    
 }
 
-#pragma mark -- 布局
--(void)setupUI
-{
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
-    _tableV.delegate = self;
-    _tableV.dataSource = self;
-    _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:_tableV];
-    //
+-(void)setupUI{
+    
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh , 35)];//allocate titleView
     UIColor *color =  self.navigationController.navigationBar.barTintColor;
     
@@ -140,25 +102,11 @@
     [self.searBut setTintColor:[UIColor whiteColor]];
     [titleView addSubview:_searBut];
     
-    
-    
     //Set to titleView
     [self.navigationItem.titleView sizeToFit];
     self.navigationItem.titleView = titleView;
-//
-    // 指定默认选中
-    _currentData1Index = 1;
-    _currentData1SelectedIndex = 1;
     
-    NSArray *food = @[@"全部美食", @"火锅", @"川菜", @"西餐", @"自助餐"];
-    NSArray *travel = @[@"全部旅游", @"周边游", @"景点门票", @"国内游", @"境外游"];
-    
-   _data1 = [NSMutableArray arrayWithObjects:@{@"title":@"美食", @"data":food}, @{@"title":@"旅游", @"data":travel}, nil];
-    _data2 = [NSMutableArray arrayWithObjects:@"智能排序", @"离我最近", @"评价最高", @"最新发布", @"人气最高", @"价格最低", @"价格最高", nil];
-    _data3 = [NSMutableArray arrayWithObjects:@"不限人数", @"单人餐", @"双人餐", @"3~4人餐", nil];
-    
-    _data4 = [NSMutableArray arrayWithObjects:@"你好",@"我好",@"大家好", nil];
-    
+    self.menus = @[@"全部", @"险种", @"类别", @"筛选"];
     
     menu = [[JSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 0) andHeight:45];
     menu.indicatorColor = [UIColor colorWithRed:175.0f/255.0f green:175.0f/255.0f blue:175.0f/255.0f alpha:1.0];
@@ -168,13 +116,6 @@
     menu.delegate = self;
     
     [self.view addSubview:menu];
-
-    
-    //
-    
-    
-
-
     
 }
 
@@ -182,111 +123,85 @@
     
     return 4;
 }
-
+/**
+ * 是否需要显示为UICollectionView 默认为否
+ */
 -(BOOL)displayByCollectionViewInColumn:(NSInteger)column{
     
-    if (column==2) {
-        
-        return YES;
-    }
-    
     return NO;
 }
-
+/**
+ * 表视图显示时，是否需要两个表显示
+ */
 -(BOOL)haveRightTableViewInColumn:(NSInteger)column{
-    
-    if (column==0) {
-        return YES;
-    }
+
     return NO;
 }
-
+/**
+ * 表视图显示时，左边表显示比例
+ */
 -(CGFloat)widthRatioOfLeftColumn:(NSInteger)column{
-    
-    if (column==0) {
-        return 0.3;
-    }
     
     return 1;
 }
-
+/**
+ * 返回当前菜单左边表选中行
+ */
 -(NSInteger)currentLeftSelectedRow:(NSInteger)column{
     
-    if (column==0) {
+    if (column == 0) {
         
-        return _currentData1Index;
+        return self.currentWhole;
+    }else if (column == 1){
         
+        return self.currentSecure;
+    }else if (column == 2){
+        
+        return self.currentCategory;
+    }else{
+        
+        return 0;
     }
-    if (column==1) {
-        
-        return _currentData2Index;
-    }
-    
-    return 0;
+
 }
 
 - (NSInteger)menu:(JSDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column leftOrRight:(NSInteger)leftOrRight leftRow:(NSInteger)leftRow{
-    
-    if (column==0) {
-        if (leftOrRight==0) {
-            
-            return _data1.count;
-        } else{
-            
-            NSDictionary *menuDic = [_data1 objectAtIndex:leftRow];
-            return [[menuDic objectForKey:@"data"] count];
-        }
-    } else if (column==1){
+    if (column == 0) {
         
-        return _data2.count;
+        return self.wholes.count;
+    }else if (column == 1){
         
-    } else if (column==2){
+        return self.secures.count;
+    }else if (column == 2){
         
-        return _data3.count;
+        return self.categorys.count;
+    }else{
+        
+        return 0;
     }
-    else if (column==3){
-        
-        return _data4.count;
-    }
-    
-    
-    return 0;
 }
 
 - (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column{
     
-    switch (column) {
-        case 0: return [[_data1[_currentData1Index] objectForKey:@"data"] objectAtIndex:_currentData1SelectedIndex];
-            break;
-        case 1: return _data2[_currentData2Index];
-            break;
-        case 2: return _data3[_currentData3Index];
-            break;
-        default:
-            return nil;
-            break;
-    }
+    return self.menus[column];
 }
 
 - (NSString *)menu:(JSDropDownMenu *)menu titleForRowAtIndexPath:(JSIndexPath *)indexPath {
     
-    if (indexPath.column==0) {
-        if (indexPath.leftOrRight==0) {
-            NSDictionary *menuDic = [_data1 objectAtIndex:indexPath.row];
-            return [menuDic objectForKey:@"title"];
-        } else{
-            NSInteger leftRow = indexPath.leftRow;
-            NSDictionary *menuDic = [_data1 objectAtIndex:leftRow];
-            return [[menuDic objectForKey:@"data"] objectAtIndex:indexPath.row];
-        }
-    } else if (indexPath.column==1) {
+    WHgetappcate *appcate;
+    if (indexPath.column == 0) {
         
-        return _data2[indexPath.row];
+        appcate = self.wholes[indexPath.row];
+    }else if (indexPath.column == 1){
         
-    } else {
+        appcate = self.secures[indexPath.row];
+    }else if (indexPath.column == 2){
         
-        return _data3[indexPath.row];
+        appcate = self.categorys[indexPath.row];
+    }else{
+        
     }
+    return appcate.name;
     
 }
 
@@ -294,20 +209,51 @@
     
     if (indexPath.column == 0) {
         
-        if(indexPath.leftOrRight==0){
+        self.currentWhole = indexPath.row;
+        self.secures = [NSMutableArray array];
+        self.currentSecure = 0;
+        WHgetappcate *cate = self.wholes[indexPath.row];
+        if (cate.p_id != -1) {
             
-            _currentData1Index = indexPath.row;
+            WHgetappcate *a = [[WHgetappcate alloc] init];
+            a.id = -1;
+            a.name = @"险种";
+            a.p_id = -1;
+            [self.secures addObject:a];
             
-            return;
+            for (WHgetappcate *appcate in self.allArr) {
+                if (appcate.p_id == cate.id) {
+                    [self.secures addObject:appcate];
+                }
+            }
+        }
+    }else if (indexPath.column == 1){
+        
+        self.currentSecure = indexPath.row;
+        self.categorys = [NSMutableArray array];
+        self.currentCategory = 0;
+        WHgetappcate *cate = self.secures[indexPath.row];
+        if (cate.p_id != -1) {
+            
+            WHgetappcate *a = [[WHgetappcate alloc] init];
+            a.id = -1;
+            a.name = @"类别";
+            a.p_id = -1;
+            [self.categorys addObject:a];
+            
+            for (WHgetappcate *appcate in self.allArr) {
+                if (appcate.p_id == cate.id) {
+                    [self.categorys addObject:appcate];
+                }
+            }
         }
         
-    } else if(indexPath.column == 1){
+    }else if (indexPath.column == 2){
+        self.currentCategory = indexPath.row;
         
-        _currentData2Index = indexPath.row;
         
-    } else{
+    }else{
         
-        _currentData3Index = indexPath.row;
     }
 }
 
@@ -316,69 +262,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
