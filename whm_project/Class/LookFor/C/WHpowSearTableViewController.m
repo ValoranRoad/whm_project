@@ -33,6 +33,10 @@
 @property (nonatomic, assign) NSInteger currentWhole;
 @property (nonatomic, assign) NSInteger currentSecure;
 @property (nonatomic, assign) NSInteger currentCategory;
+//筛选数据
+@property (nonatomic, strong) NSMutableArray * data4;
+@property (nonatomic, assign) NSInteger currentDate4;
+
 @end
 
 @implementation WHpowSearTableViewController
@@ -106,6 +110,8 @@
     [self.navigationItem.titleView sizeToFit];
     self.navigationItem.titleView = titleView;
     
+    _data4 = [NSMutableArray arrayWithObjects:@"性别",@"年龄",@"出行计划",@"特色保障",@"保险品牌", nil];
+    
     self.menus = @[@"全部", @"险种", @"类别", @"筛选"];
     
     menu = [[JSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 0) andHeight:45];
@@ -141,8 +147,12 @@
  * 表视图显示时，左边表显示比例
  */
 -(CGFloat)widthRatioOfLeftColumn:(NSInteger)column{
+    if (column == 3) {
+        return 0.3;
+    }
     
     return 1;
+    
 }
 /**
  * 返回当前菜单左边表选中行
@@ -158,7 +168,13 @@
     }else if (column == 2){
         
         return self.currentCategory;
-    }else{
+    
+    }
+    else if (column == 3)
+    {
+        return _currentDate4 ;
+    }
+    else{
         
         return 0;
     }
@@ -175,10 +191,12 @@
     }else if (column == 2){
         
         return self.categorys.count;
-    }else{
-        
-        return 0;
+    }else if (column == 3)
+    {
+        return _data4.count;
     }
+    
+        return 0;
 }
 
 - (NSString *)menu:(JSDropDownMenu *)menu titleForColumn:(NSInteger)column{
@@ -200,6 +218,7 @@
         appcate = self.categorys[indexPath.row];
     }else{
         
+        return  self.data4[indexPath.row];
     }
     return appcate.name;
 }
@@ -255,7 +274,18 @@
         self.currentCategory = indexPath.row;
         
         
-    }else{
+    }
+    else if (indexPath.column == 3)
+    {
+        //NSLog(@"是是是");
+        if (indexPath.leftOrRight == 0) {
+            NSLog(@"hhhh");
+            self.currentDate4 = indexPath.row;
+            return;
+        }
+        
+    }
+    else{
         
     }
 }

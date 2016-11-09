@@ -25,6 +25,9 @@
 #import "WHmicro.h"
 #import "WHgetprofirst.h"
 #import "WHgetappcate.h"
+#import "WHgetproperiod.h"
+#import "WHgetcharacters.h"
+
 
 
 #import "MacroUtility.h"
@@ -547,6 +550,47 @@
 
     
     
+}
+//保障期间
+-(void)getproperiodWithsuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_pro_period"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_pro_period" success:^(id data) {
+        NSArray *infos = data[@"data"];
+        NSArray *periods = [WHgetproperiod arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success (periods);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+
+}
+
+//险种特色保障
+-(void)getcharactersWithsuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_characters"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_characters" success:^(id data) {
+        NSArray *infos = data[@"data"];
+        NSArray *characters  = [WHgetcharacters arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success (characters);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+
 }
 
 

@@ -9,6 +9,9 @@
 #import "JwFindController.h"
 
 @interface JwFindController ()
+@property(nonatomic,strong)UIView * myview;
+@property(nonatomic,strong)UIView * backview;
+@property(nonatomic,strong)UIImageView * myImg1;
 
 @end
 
