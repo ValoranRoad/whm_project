@@ -175,7 +175,7 @@
 @property (nonatomic, assign) BOOL show;
 @property (nonatomic, assign) NSInteger numOfMenu;
 @property (nonatomic, assign) CGPoint origin;
-@property (nonatomic, strong) UIView *backGroundView;
+
 @property (nonatomic, strong) UIView *bottomShadow;
 @property (nonatomic, strong) UITableView *leftTableView;
 @property (nonatomic, strong) UITableView *rightTableView;
@@ -415,6 +415,7 @@
 
 #pragma mark - gesture handle
 - (void)menuTapped:(UITapGestureRecognizer *)paramSender {
+
     CGPoint touchPoint = [paramSender locationInView:self];
     //calculate index
     NSInteger tapIndex = touchPoint.x / (self.frame.size.width / _numOfMenu);
@@ -449,7 +450,10 @@
             
             [(CALayer *)self.bgLayers[tapIndex] setBackgroundColor:BackColor.CGColor];
         } else {
-            
+            //jw
+            if ([self.delegate respondsToSelector:@selector(menu:didSelectMenuAtIndex:)]) {
+                [self.delegate menu:self didSelectMenuAtIndex:tapIndex];
+            }
             _currentSelectedMenudIndex = tapIndex;
             
             [_collectionView reloadData];
@@ -491,6 +495,10 @@
             
             [(CALayer *)self.bgLayers[tapIndex] setBackgroundColor:BackColor.CGColor];
         } else {
+            //jw
+            if ([self.delegate respondsToSelector:@selector(menu:didSelectMenuAtIndex:)]) {
+                [self.delegate menu:self didSelectMenuAtIndex:tapIndex];
+            }
             
             _hadSelected = NO;
             
@@ -538,6 +546,7 @@
 
 - (void)backgroundTapped:(UITapGestureRecognizer *)paramSender
 {
+    NSLog(@"backgroundTapped");
     BOOL displayByCollectionView = NO;
     
     if ([_dataSource respondsToSelector:@selector(displayByCollectionViewInColumn:)]) {
