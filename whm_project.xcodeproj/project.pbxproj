@@ -91,6 +91,7 @@
 		9FCB4DF41DD2BEA40094184A /* WHprosearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF31DD2BEA40094184A /* WHprosearchTableViewCell.m */; };
 		9FCB4DF71DD301800094184A /* WHgetproperiod.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF61DD301800094184A /* WHgetproperiod.m */; };
 		9FCB4DFA1DD3030A0094184A /* WHgetcharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF91DD3030A0094184A /* WHgetcharacters.m */; };
+		9FCB4DFD1DD31D970094184A /* WHresultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DFC1DD31D970094184A /* WHresultViewController.m */; };
 		9FDF0C601DD15E8100892CAA /* WHpowTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF0C5F1DD15E8100892CAA /* WHpowTwoTableViewCell.m */; };
 		9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */; };
 		9FE6B5AF1DCAE8870049FC8B /* WHgetprofirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */; };
@@ -344,6 +345,8 @@
 		9FCB4DF61DD301800094184A /* WHgetproperiod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetproperiod.m; sourceTree = "<group>"; };
 		9FCB4DF81DD3030A0094184A /* WHgetcharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetcharacters.h; sourceTree = "<group>"; };
 		9FCB4DF91DD3030A0094184A /* WHgetcharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetcharacters.m; sourceTree = "<group>"; };
+		9FCB4DFB1DD31D970094184A /* WHresultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHresultViewController.h; sourceTree = "<group>"; };
+		9FCB4DFC1DD31D970094184A /* WHresultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHresultViewController.m; sourceTree = "<group>"; };
 		9FDF0C5E1DD15E8100892CAA /* WHpowTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHpowTwoTableViewCell.h; path = whm_project/Model/WHpowTwoTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		9FDF0C5F1DD15E8100892CAA /* WHpowTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHpowTwoTableViewCell.m; path = whm_project/Model/WHpowTwoTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		9FE2CD1E1DC6ED570062D2D0 /* WHgetmessageDetall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetmessageDetall.h; sourceTree = "<group>"; };
@@ -765,6 +768,8 @@
 				9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */,
 				9FCB4DEF1DD2BCC30094184A /* WHproductSearchTableViewController.h */,
 				9FCB4DF01DD2BCC30094184A /* WHproductSearchTableViewController.m */,
+				9FCB4DFB1DD31D970094184A /* WHresultViewController.h */,
+				9FCB4DFC1DD31D970094184A /* WHresultViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1558,6 +1563,7 @@
 				9F63ED3D1DCB639D00404AE7 /* WHpayTableViewCell.m in Sources */,
 				9FCB4DF11DD2BCC30094184A /* WHproductSearchTableViewController.m in Sources */,
 				9615F8141DC04715001081FD /* HmPhysicalMainPageCell.m in Sources */,
+				9FCB4DFD1DD31D970094184A /* WHresultViewController.m in Sources */,
 				9F13C23F1DC89E5F00D5FD56 /* WHpreviewTableViewController.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,

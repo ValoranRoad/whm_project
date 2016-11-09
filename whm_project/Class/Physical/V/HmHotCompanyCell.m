@@ -9,6 +9,8 @@
 #import "HmHotCompanyCell.h"
 #import "UIColor+Hex.h"
 #import "MacroUtility.h"
+#import "WHproductSearchTableViewController.h"
+#import "WHhotcompany.h"
 
 #define HmCompanyCollectionCellIdentifier @"HmCompanyCollectionCellIdentifier"
 #define HmCompanyW (kScreenWitdh - 3) / 3
@@ -90,6 +92,18 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.model = self.hotCompanyArr[indexPath.row];
     return cell;
+}
+
+//选择热门公司事件
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    WHhotcompany * model = self.hotCompanyArr[indexPath.row];
+//    WHproductSearchTableViewController * search = [[WHproductSearchTableViewController alloc]init];
+    if (model.id != nil) {
+        self.mblock2(model.id);
+    }
+
+    
 }
 
 - (void)awakeFromNib {

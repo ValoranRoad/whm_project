@@ -39,7 +39,10 @@
 @property(nonatomic,strong)NSMutableArray * hotArry;
 
 @property (nonatomic, strong) HmHotCompanyCell *cell;
-
+//
+@property (nonatomic,strong)NSMutableArray *firstArr;
+//
+@property (nonatomic,strong)NSMutableDictionary * dic;
 
 @end
 
@@ -58,6 +61,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.arrayOfGroups = [NSArray arrayWithObjects:@"热",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z", nil];
+     _firstArr =[NSMutableArray array];
     // 布局
     [self setupUI];
     
@@ -71,13 +75,19 @@
     NSString * s1  = @"1";
     NSString * s2 = [s1 stringByAppendingString:@",2"];
     NSLog(@"%@",s2);
-    
+    for (NSString * str in _arrayOfGroups){
     [self.dataService get_CompanysWithType:s2 success:^(NSArray *lists) {
         [hud  hide:YES];
         self.dataArry = [NSMutableArray arrayWithArray:lists];
         [self.tableV reloadData];
         
-        
+        if (self.dataArry.count != 0) {
+            NSDictionary * smallDic = @{str : self.dataArry};
+            [self.dic addEntriesFromDictionary:smallDic];
+            [_firstArr addObject:str];
+
+        }
+        [self createIndexList];
     } failure:^(NSError *error) {
         [hud hide:YES];
         [JGProgressHelper showError:@"失败"];
@@ -86,6 +96,7 @@
     
 }
 
+}
 //热门公司数据请求
 -(void)hotData
 {
@@ -137,6 +148,8 @@
     indexBar = [[CMIndexBar alloc] initWithFrame:CGRectMake(kScreenWitdh - 12, 0, 12, self.tableV.frame.size.height)];
     indexBar.textColor = [UIColor colorWithHex:0x666666];
     indexBar.textFont = [UIFont systemFontOfSize:11];
+    
+    [indexBar setIndexes:_firstArr];
     indexBar.delegate = self;
     [indexBar setIndexes:@[@"热",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"]];
     [self.view addSubview:indexBar];
@@ -198,7 +211,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"A";
+    return @"热";
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -209,7 +222,7 @@
     UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(6, 5, kScreenWitdh - 6 * 2, 20)];
     lbl.textAlignment = NSTextAlignmentLeft;
     lbl.textColor = [UIColor colorWithHex:0x666666];
-    lbl.text = @"B";
+    lbl.text = @"A";
     [headView addSubview:lbl];
     
     return headView;
@@ -217,6 +230,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    if (indexPath.section == 0) {
+//        WHhotcompany * model = self.hotArry[indexPath.row];
+//        NSLog(@"%@",model.id);
+//    }
+    
     JwCompanys * model = self.dataArry[indexPath.row];
    // NSLog(@"%@",model.id);
    
@@ -225,6 +243,8 @@
     
     [self.navigationController pushViewController:produceSearch animated:YES];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
