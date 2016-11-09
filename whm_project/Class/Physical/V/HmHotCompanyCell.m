@@ -10,7 +10,7 @@
 #import "UIColor+Hex.h"
 #import "MacroUtility.h"
 #import "WHproductSearchTableViewController.h"
-#import "WHhotcompany.h"
+
 
 #define HmCompanyCollectionCellIdentifier @"HmCompanyCollectionCellIdentifier"
 #define HmCompanyW (kScreenWitdh - 3) / 3
@@ -18,7 +18,7 @@
 
 @interface HmHotCompanyCell ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
-
+@property (nonatomic, strong) void(^blockPush)(WHhotcompany *selectCompany);
 
 @end
 
@@ -98,12 +98,16 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     WHhotcompany * model = self.hotCompanyArr[indexPath.row];
-//    WHproductSearchTableViewController * search = [[WHproductSearchTableViewController alloc]init];
-    if (model.id != nil) {
-        self.mblock2(model.id);
+    
+    if (self.blockPush) {
+        self.blockPush(model);
     }
 
-    
+}
+
+-(void)hotCompanyPushToNext:(void (^)(WHhotcompany *))block
+{
+    self.blockPush = block;
 }
 
 - (void)awakeFromNib {

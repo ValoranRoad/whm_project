@@ -180,6 +180,13 @@
         if (_cell == nil) {
             _cell = [[HmHotCompanyCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:HmCompanyCollecteI];
         }
+        
+        [_cell hotCompanyPushToNext:^(WHhotcompany *selectCompany) {
+            WHproductSearchTableViewController *VC = [[WHproductSearchTableViewController alloc] init];
+            VC.company_id = selectCompany.id;
+            [self.navigationController pushViewController:VC animated:YES];
+        }];
+        
         _cell.hotCompanyArr = self.hotArry;
         return _cell;
     }
