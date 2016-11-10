@@ -10,4 +10,7 @@
 
 @interface HmDetailsCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *headImg;
+@property (weak, nonatomic) IBOutlet UILabel *myLaber;
+@property (weak, nonatomic) IBOutlet UILabel *selectLaber;
 @end

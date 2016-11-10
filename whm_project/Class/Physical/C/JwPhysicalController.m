@@ -15,6 +15,7 @@
 #import "HmSelectInsuredController.h"
 #import "HmFujiaCell.h"
 #import "HmSelectCompanyController.h"
+#import "WHresultViewController.h"
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -30,6 +31,8 @@
 @property (nonatomic, assign) NSInteger selectedSection;
 
 @property (nonatomic, strong) WHget_user_realtion *firstUser;
+@property(nonatomic,strong)UIButton * addBut;
+
 
 @end
 
@@ -40,6 +43,9 @@
     
     // 刷新第一行数据
     [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    self.tabBarController.tabBar.hidden=YES;
+    NSLog(@"%@",self.name);
+    
 }
 
 
@@ -49,8 +55,17 @@
     
     // 布局
     [self setupUI];
+    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
+
     
 }
+-(void)left:(UIBarButtonItem *)sender
+{
+    self.tabBarController.tabBar.hidden=NO;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 
 #pragma mark -- 布局
 -(void)setupUI
@@ -63,8 +78,8 @@
     _tableVB.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableVB];
     
-    // 底部  开始体检 按钮
-    UIView *bottomV = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_tableVB.frame), CGRectGetWidth(_tableVB.frame), 44)];
+       // 底部  开始体检 按钮
+    UIView *bottomV = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_tableVB.frame)-44, CGRectGetWidth(_tableVB.frame), 44)];
     bottomV.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bottomV];
     
@@ -76,7 +91,37 @@
     btnStart.layer.cornerRadius = 15;
     [bottomV addSubview:btnStart];
     
+    [btnStart addTarget:self action:@selector(btnStart:) forControlEvents:(UIControlEventTouchUpInside)];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"test_add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewSafeAction:)];
+    
+    //
+    self.addBut = [ UIButton buttonWithType:(UIButtonTypeSystem)];
+    self.addBut.frame = CGRectMake(kScreenWitdh * 0.80, CGRectGetMinY(btnStart.frame)-30, 40, 40);
+    [bottomV addSubview:_addBut];
+    //self.addBut .backgroundColor = [UIColor redColor];
+    [self.addBut setBackgroundImage:[UIImage imageNamed:@"p_addGroup"] forState:(UIControlStateNormal)];
+    [self.addBut addTarget:self action:@selector(addButAtion:) forControlEvents:(UIControlEventTouchUpInside)];
+    self.addBut.layer.cornerRadius = 20;
+  
+    
+}
+
+//开始体检事件
+-(void)btnStart:(UIButton *)sender
+{
+    NSLog(@"开始体检");
+    WHresultViewController * result = [[WHresultViewController alloc]init];
+    [self.navigationController pushViewController:result animated:YES];
+}
+
+#pragma mark --添加事件
+-(void)addButAtion:(UIButton *)sender
+{
+    //选择公司
+    HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
+    [self.navigationController pushViewController:company animated:YES];
+
 }
 
 #pragma mark -- Private
@@ -92,7 +137,7 @@
 #pragma mark -- Table View Delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3 + 1;
+    return 3 + 1 - 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -136,7 +181,9 @@
         HmPhysicalMainPageCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalMainCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.firstUser) {
-            cell.model = self.firstUser;
+           cell.model = self.firstUser;
+            //cell.lblName.text = self.name;
+           
         }
         return cell;
 
@@ -148,6 +195,7 @@
                 // 展开cell
                 if (indexPath.row == 0) {
                     // 组头
+                                      
                 }
                 else
                 {
@@ -158,8 +206,31 @@
                             UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmDetailsCell class]) bundle:nil];
                             [tableView registerNib:nib forCellReuseIdentifier:kHmPhysicalDetailsCellIdentifier];
                             nibsRegistered = YES;
+                            
                         }
                         HmDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier];
+                        if (indexPath.row == 1) {
+                            cell.myLaber.text = @"投保年龄";
+                            cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
+                        }
+                        if (indexPath.row == 2) {
+                            cell.myLaber.text = @"缴费方式";
+                            cell.headImg.image = [UIImage imageNamed:@"p_payType"];
+                        }
+                        if (indexPath.row == 3) {
+                            cell.myLaber.text = @"保险期间";
+                            cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
+                        }
+                        
+                        if (indexPath.row == 4) {
+                            cell.myLaber.text = @"保额(元)";
+                            cell.headImg.image = [UIImage imageNamed:@"test_money"];
+                        }
+                        
+
+
+                        
+                        
                         return cell;
                     }
                     else
@@ -172,6 +243,7 @@
                             nibsRegistered = YES;
                         }
                         HmFujiaCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalFujiaCellIdentifier];
+                        
                         return cell;
                     }
                 }
@@ -191,6 +263,9 @@
         HmPhysicalGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalGroupCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.btnDelete.tag = indexPath.section;
+        if (![self.name isEqualToString:@""]) {
+            cell.lblName.text = self.name;
+        }
         return cell;
 
     }
@@ -214,6 +289,7 @@
     if (self.isOpen && indexPath.section != self.selectedSection) {
         // 有一项已经展开
         HmPhysicalGroupCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
+        
         DLog(@"关闭Cell(上次展开的cell)组数:%ld,行数:%d", self.selectedSection,0);
         cell.imgListDown.image = [UIImage imageNamed:@"p_listDown"];
     }
@@ -225,9 +301,6 @@
             cell.imgListDown.image = [UIImage imageNamed:@"p_listUp"];
             self.isOpen = YES;
             
-            //选择公司
-            HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
-            [self.navigationController pushViewController:company animated:YES];
             
         }
         else

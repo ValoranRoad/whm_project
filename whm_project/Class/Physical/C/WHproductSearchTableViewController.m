@@ -11,11 +11,16 @@
 #import "MacroUtility.h"
 #import "WHprosearchTableViewCell.h"
 #import "WHgetproduct.h"
+#import "JwPhysicalController.h"
 @interface WHproductSearchTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 @property (nonatomic, strong) UITableView *tableV;
-@property(nonatomic,strong)UIButton * searBut;
 @property(nonatomic,strong)WHprosearchTableViewCell * cell;
 @property(nonatomic,strong)NSMutableArray * dataArry;
+@property(nonatomic,strong)NSString * keyWord;
+@property(nonatomic,strong)NSString * ids;
+@property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString * is_main;
+
 @end
 
 @implementation WHproductSearchTableViewController
@@ -26,6 +31,7 @@
     
     // 布局
     [self setupUI];
+    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
 }
@@ -37,6 +43,15 @@
     
     [self quartData];
     
+}
+-(void)left:(UIBarButtonItem *)sender
+{
+    JwPhysicalController * phy = [[JwPhysicalController alloc]init];
+    phy.name = self.name;
+    phy.ids = self.ids;
+    phy.is_main = self.is_main;
+    
+    [self.navigationController pushViewController:phy animated:YES];
 }
 //数据请求
 -(void)quartData
@@ -61,6 +76,7 @@
                                            [hud hide:YES];
                                            self.dataArry = [NSMutableArray arrayWithArray:lists];
                                            
+                                           [self.tableV reloadData];
         
     } failure:^(NSError *error) {
         [hud hide:YES];
@@ -101,11 +117,7 @@
     
     searchBar.placeholder = @"请输入关键词";
     [titleView addSubview:searchBar];
-    self.searBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.searBut.frame = CGRectMake(kScreenWitdh * 0.71, 0, kScreenWitdh*0.2, 35);
-    [self.searBut setTitle:@"搜索" forState:(UIControlStateNormal)];
-    [self.searBut setTintColor:[UIColor whiteColor]];
-    [titleView addSubview:_searBut];
+    
     
     
     //Set to titleView
@@ -115,6 +127,55 @@
 
     
 }
+
+//选中事件返回
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WHgetproduct * model = self.dataArry[indexPath.row];
+    self.name = model.name;
+    self.ids = model.id;
+    self.is_main = model.is_main;
+    
+}
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+  
+     NSLog(@"%@",searchBar.text);
+     id hud = [JGProgressHelper showProgressInView:self.view];
+     [self.dataService get_productWithCompany_id:@"" keyword:searchBar.text  sex:@"" characters_insurance:@"" period:@"" cate_id:@"" pay_period:@"" rate:@"" insured:@"" birthday:@"" yearly_income:@"" debt:@"" rela_id:@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
+         [hud hide:YES];
+         
+         self.dataArry = [NSMutableArray arrayWithArray:lists];
+         [self.tableV reloadData];
+
+        
+     } failure:^(NSError *error) {
+         [hud hide:YES];
+         [JGProgressHelper showError:@""];
+         
+     }];
+    
+    
+}
+////搜索结果显示实现
+//-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+//{
+//
+//    _htSearchView  = [[UIView alloc]init];
+//    _htSearchView .frame = CGRectMake(0, 100, 320, 400);
+//    _htSearchView.backgroundColor = [UIColor colorWithRed:37/255 green:34/255  blue:34/255 alpha:0.8];
+//    
+//    [self.view addSubview:_htSearchView];
+//    
+//    [searchBar resignFirstResponder];
+//    
+//    [self.htSearchView addSubview:self.arry[0]];
+//    
+//    return YES;
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -136,6 +197,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   WHprosearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
+    //cell.model = self.arry[indexPath.row];
   
     cell.model = self.dataArry[indexPath.row];
     
