@@ -12,11 +12,13 @@
 #import "JSDropDownMenu.h"
 #import "WHpowTwoTableViewCell.h"
 #import "WHgetappcate.h"
-
+#import "UIView+Extension.h"
+#import "UIColor+Hex.h"
 
 @interface WHpowSearTableViewController ()<UISearchBarDelegate, JSDropDownMenuDataSource, JSDropDownMenuDelegate>
 {
     JSDropDownMenu *menu;
+    NSMutableArray *_data4;
 }
 
 @property (nonatomic, strong) UITableView *tableV;
@@ -29,13 +31,21 @@
 @property (nonatomic, strong) NSMutableArray *wholes;
 @property (nonatomic, strong) NSMutableArray *secures;
 @property (nonatomic, strong) NSMutableArray *categorys;
+
 //选中指定
 @property (nonatomic, assign) NSInteger currentWhole;
 @property (nonatomic, assign) NSInteger currentSecure;
 @property (nonatomic, assign) NSInteger currentCategory;
-//筛选数据
-@property (nonatomic, strong) NSMutableArray * data4;
-@property (nonatomic, assign) NSInteger currentDate4;
+@property (nonatomic, assign) NSInteger currentScreen;
+
+//筛选数组
+@property (nonatomic, strong) NSMutableArray *currentSelects;
+
+@property (nonatomic, strong) JSIndexPath *path0;
+@property (nonatomic, strong) JSIndexPath *path1;
+@property (nonatomic, strong) JSIndexPath *path2;
+@property (nonatomic, strong) JSIndexPath *path3;
+@property (nonatomic, strong) JSIndexPath *path4;
 
 @end
 
@@ -49,6 +59,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    
+    self.currentSelects = [NSMutableArray array];
+    self.path0 = [JSIndexPath indexPathWithCol:-1 leftOrRight:-1 leftRow:-1 row:-1];
+    self.path1 = [JSIndexPath indexPathWithCol:-1 leftOrRight:-1 leftRow:-1 row:-1];
+    self.path2 = [JSIndexPath indexPathWithCol:-1 leftOrRight:-1 leftRow:-1 row:-1];
+    self.path3 = [JSIndexPath indexPathWithCol:-1 leftOrRight:-1 leftRow:-1 row:-1];
+    self.path4 = [JSIndexPath indexPathWithCol:-1 leftOrRight:-1 leftRow:-1 row:-1];
 }
 
 -(void)quartData{
@@ -93,7 +110,7 @@
     searchBar.delegate = self;
     searchBar.frame = CGRectMake(0, 0, kScreenWitdh* 0.7, 35);
     searchBar.backgroundColor = color;
-    // searchBar.layer.cornerRadius = 18;
+    //searchBar.layer.cornerRadius = 18;
     searchBar.layer.masksToBounds = YES;
     [searchBar.layer setBorderWidth:8];
     [searchBar.layer setBorderColor:[UIColor whiteColor].CGColor];  //设置边框为白色
@@ -110,8 +127,14 @@
     [self.navigationItem.titleView sizeToFit];
     self.navigationItem.titleView = titleView;
     
-    _data4 = [NSMutableArray arrayWithObjects:@"性别",@"年龄",@"出行计划",@"特色保障",@"保险品牌", nil];
+    NSArray *sex = @[@"男", @"女"];
+    NSMutableArray *ages = [NSMutableArray array];
+    for (int i=0; i<=80; i++) {
+        [ages addObject:[NSString stringWithFormat:@"%.2d", i]];
+    }
     
+    _data4 = [NSMutableArray arrayWithObjects:@{@"title":@"性别", @"data":sex}, @{@"title":@"年龄", @"data":ages}, @{@"title":@"出行计划", @"data":sex}, @{@"title":@"特色保障", @"data":sex}, @{@"title":@"保险品牌", @"data":sex}, nil];
+
     self.menus = @[@"全部", @"险种", @"类别", @"筛选"];
     
     menu = [[JSDropDownMenu alloc] initWithOrigin:CGPointMake(0, 0) andHeight:45];
@@ -120,7 +143,10 @@
     menu.textColor = [UIColor colorWithRed:83.f/255.0f green:83.f/255.0f blue:83.f/255.0f alpha:1.0f];
     menu.dataSource = self;
     menu.delegate = self;
-    
+    menu.jwspecMneuIndex = self.menus.count - 1;
+    menu.screenBActionBlock =^(){
+        NSLog(@"点击筛选");
+    };
     [self.view addSubview:menu];
     
 }
@@ -140,7 +166,9 @@
  * 表视图显示时，是否需要两个表显示
  */
 -(BOOL)haveRightTableViewInColumn:(NSInteger)column{
-
+    if (column == 3) {
+        return YES;
+    }
     return NO;
 }
 /**
@@ -148,11 +176,9 @@
  */
 -(CGFloat)widthRatioOfLeftColumn:(NSInteger)column{
     if (column == 3) {
-        return 0.3;
+        return 0.4;
     }
-    
     return 1;
-    
 }
 /**
  * 返回当前菜单左边表选中行
@@ -168,11 +194,10 @@
     }else if (column == 2){
         
         return self.currentCategory;
-    
     }
     else if (column == 3)
     {
-        return _currentDate4 ;
+        return self.currentScreen;
     }
     else{
         
@@ -191,9 +216,17 @@
     }else if (column == 2){
         
         return self.categorys.count;
-    }else if (column == 3)
-    {
-        return _data4.count;
+    }else if (column == 3){
+        
+        if (leftOrRight==0) {
+            
+            return _data4.count;
+        } else{
+            
+            NSDictionary *menuDic = [_data4 objectAtIndex:leftRow];
+            return [[menuDic objectForKey:@"data"] count];
+        }
+
     }
     
         return 0;
@@ -218,16 +251,54 @@
         appcate = self.categorys[indexPath.row];
     }else{
         
-        return  self.data4[indexPath.row];
+        if (indexPath.leftOrRight==0) {
+            NSDictionary *menuDic = [_data4 objectAtIndex:indexPath.row];
+            return [menuDic objectForKey:@"title"];
+        } else{
+            NSInteger leftRow = indexPath.leftRow;
+            NSDictionary *menuDic = [_data4 objectAtIndex:leftRow];
+            return [[menuDic objectForKey:@"data"] objectAtIndex:indexPath.row];
+        }
     }
     return appcate.name;
 }
 
+- (void)sendSelects{
+     menu.jwSelects = self.currentSelects;
+}
+
 - (void)menu:(JSDropDownMenu *)menu didSelectMenuAtIndex:(NSInteger)index{
-    NSLog(@"%ld", (long)index);
+    if (index == 3) {
+        [self menusetupBackView:NO];
+    }else{
+        [self menusetupBackView:YES];
+    }
+}
+-(void)menusetupBackView:(BOOL)isHid{
+    //menu.backGroundView.alpha = 1;
+    menu.screenB.hidden = isHid;
 }
 
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
+    
+    NSLog(@"%ld, %ld, %ld, %ld", (long)indexPath.column, (long)indexPath.leftOrRight, (long)indexPath.leftRow, (long)indexPath.row);
+    
+    if (indexPath.leftOrRight == 1) {
+        if (indexPath.leftRow == 0) {
+            _path0 = indexPath;
+        }else if (indexPath.leftRow == 1){
+            _path1 = indexPath;
+        }else if (indexPath.leftRow == 2){
+            _path2 = indexPath;
+        }else if (indexPath.leftRow == 3){
+            _path3 = indexPath;
+        }else if (indexPath.leftRow == 4){
+            _path4 = indexPath;
+        }
+        NSArray *selects = @[_path0, _path1, _path2, _path3, _path4];
+        self.currentSelects = [NSMutableArray arrayWithArray:selects];
+    }
+    [self sendSelects];
     
     if (indexPath.column == 0) {
         
@@ -273,17 +344,11 @@
     }else if (indexPath.column == 2){
         self.currentCategory = indexPath.row;
         
-        
     }
-    else if (indexPath.column == 3)
-    {
-        //NSLog(@"是是是");
+    else if (indexPath.column == 3){
         if (indexPath.leftOrRight == 0) {
-            NSLog(@"hhhh");
-            self.currentDate4 = indexPath.row;
-            return;
+            self.currentScreen = indexPath.leftRow;
         }
-        
     }
     else{
         

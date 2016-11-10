@@ -80,6 +80,11 @@
 @property (nonatomic, strong) UIColor *separatorColor;
 
 @property (nonatomic, strong) UIView *backGroundView;
+@property (nonatomic, assign) NSInteger jwspecMneuIndex;
+//筛选数组
+@property (nonatomic, strong) NSMutableArray *jwSelects;
+@property (nonatomic, strong) UIButton *screenB;
+@property (nonatomic, copy) void(^screenBActionBlock)();
 /**
  *  the width of menu will be set to screen width defaultly
  *
