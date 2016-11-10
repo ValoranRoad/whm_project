@@ -9,5 +9,8 @@
 #import "JwMenuBaseController.h"
 
 @interface JwPhysicalController : JwMenuBaseController
+@property(nonatomic,strong)NSString * ids;
+@property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString * is_main;
 
 @end

@@ -15,6 +15,7 @@
 #import "HmSelectInsuredController.h"
 #import "HmFujiaCell.h"
 #import "HmSelectCompanyController.h"
+#import "WHresultViewController.h"
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -43,6 +44,8 @@
     // 刷新第一行数据
     [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     self.tabBarController.tabBar.hidden=YES;
+    NSLog(@"%@",self.name);
+    
 }
 
 
@@ -108,6 +111,8 @@
 -(void)btnStart:(UIButton *)sender
 {
     NSLog(@"开始体检");
+    WHresultViewController * result = [[WHresultViewController alloc]init];
+    [self.navigationController pushViewController:result animated:YES];
 }
 
 #pragma mark --添加事件
@@ -177,6 +182,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.firstUser) {
            cell.model = self.firstUser;
+            //cell.lblName.text = self.name;
            
         }
         return cell;
@@ -189,7 +195,7 @@
                 // 展开cell
                 if (indexPath.row == 0) {
                     // 组头
-                
+                                      
                 }
                 else
                 {

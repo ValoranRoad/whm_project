@@ -11,11 +11,16 @@
 #import "MacroUtility.h"
 #import "WHprosearchTableViewCell.h"
 #import "WHgetproduct.h"
+#import "JwPhysicalController.h"
 @interface WHproductSearchTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 @property (nonatomic, strong) UITableView *tableV;
 @property(nonatomic,strong)WHprosearchTableViewCell * cell;
 @property(nonatomic,strong)NSMutableArray * dataArry;
 @property(nonatomic,strong)NSString * keyWord;
+@property(nonatomic,strong)NSString * ids;
+@property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString * is_main;
+
 @end
 
 @implementation WHproductSearchTableViewController
@@ -26,6 +31,7 @@
     
     // 布局
     [self setupUI];
+    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
 }
@@ -37,6 +43,15 @@
     
     [self quartData];
     
+}
+-(void)left:(UIBarButtonItem *)sender
+{
+    JwPhysicalController * phy = [[JwPhysicalController alloc]init];
+    phy.name = self.name;
+    phy.ids = self.ids;
+    phy.is_main = self.is_main;
+    
+    [self.navigationController pushViewController:phy animated:YES];
 }
 //数据请求
 -(void)quartData
@@ -110,6 +125,16 @@
     self.navigationItem.titleView = titleView;
     
 
+    
+}
+
+//选中事件返回
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WHgetproduct * model = self.dataArry[indexPath.row];
+    self.name = model.name;
+    self.ids = model.id;
+    self.is_main = model.is_main;
     
 }
 

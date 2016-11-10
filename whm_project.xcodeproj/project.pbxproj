@@ -87,6 +87,7 @@
 		9FC53A3A1DC5D515008340B0 /* WHrecommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */; };
 		9FC53A3D1DC5D547008340B0 /* WHrecommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */; };
 		9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */; };
+		9FC9FBAC1DD455BB00EFB066 /* WHrate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9FBAB1DD455BB00EFB066 /* WHrate.m */; };
 		9FCB4DF11DD2BCC30094184A /* WHproductSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF01DD2BCC30094184A /* WHproductSearchTableViewController.m */; };
 		9FCB4DF41DD2BEA40094184A /* WHprosearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF31DD2BEA40094184A /* WHprosearchTableViewCell.m */; };
 		9FCB4DF71DD301800094184A /* WHgetproperiod.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF61DD301800094184A /* WHgetproperiod.m */; };
@@ -337,6 +338,8 @@
 		9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrecommentTableViewCell.m; sourceTree = "<group>"; };
 		9FC53A3E1DC5FB78008340B0 /* WHgetrec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetrec.h; sourceTree = "<group>"; };
 		9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetrec.m; sourceTree = "<group>"; };
+		9FC9FBAA1DD455BB00EFB066 /* WHrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrate.h; sourceTree = "<group>"; };
+		9FC9FBAB1DD455BB00EFB066 /* WHrate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrate.m; sourceTree = "<group>"; };
 		9FCB4DEF1DD2BCC30094184A /* WHproductSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHproductSearchTableViewController.h; sourceTree = "<group>"; };
 		9FCB4DF01DD2BCC30094184A /* WHproductSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHproductSearchTableViewController.m; sourceTree = "<group>"; };
 		9FCB4DF21DD2BEA40094184A /* WHprosearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHprosearchTableViewCell.h; path = whm_project/Class/Physical/C/WHprosearchTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -1014,6 +1017,8 @@
 				9FCB4DF61DD301800094184A /* WHgetproperiod.m */,
 				9FCB4DF81DD3030A0094184A /* WHgetcharacters.h */,
 				9FCB4DF91DD3030A0094184A /* WHgetcharacters.m */,
+				9FC9FBAA1DD455BB00EFB066 /* WHrate.h */,
+				9FC9FBAB1DD455BB00EFB066 /* WHrate.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1518,6 +1523,7 @@
 				9FCB4DF41DD2BEA40094184A /* WHprosearchTableViewCell.m in Sources */,
 				9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */,
 				9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */,
+				9FC9FBAC1DD455BB00EFB066 /* WHrate.m in Sources */,
 				9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */,
 				9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,

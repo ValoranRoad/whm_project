@@ -22,7 +22,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setUI ];
+    
+    
+}
+
+//ui设计
+-(void)setUI
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
