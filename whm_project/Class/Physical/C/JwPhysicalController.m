@@ -176,7 +176,8 @@
         HmPhysicalMainPageCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalMainCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (self.firstUser) {
-            cell.model = self.firstUser;
+           cell.model = self.firstUser;
+           
         }
         return cell;
 
@@ -188,6 +189,7 @@
                 // 展开cell
                 if (indexPath.row == 0) {
                     // 组头
+                
                 }
                 else
                 {
@@ -201,6 +203,27 @@
                             
                         }
                         HmDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier];
+                        if (indexPath.row == 1) {
+                            cell.myLaber.text = @"投保年龄";
+                            cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
+                        }
+                        if (indexPath.row == 2) {
+                            cell.myLaber.text = @"缴费方式";
+                            cell.headImg.image = [UIImage imageNamed:@"p_payType"];
+                        }
+                        if (indexPath.row == 3) {
+                            cell.myLaber.text = @"保险期间";
+                            cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
+                        }
+                        
+                        if (indexPath.row == 4) {
+                            cell.myLaber.text = @"保额(元)";
+                            cell.headImg.image = [UIImage imageNamed:@"test_money"];
+                        }
+                        
+
+
+                        
                         
                         return cell;
                     }
@@ -257,6 +280,7 @@
     if (self.isOpen && indexPath.section != self.selectedSection) {
         // 有一项已经展开
         HmPhysicalGroupCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
+        
         DLog(@"关闭Cell(上次展开的cell)组数:%ld,行数:%d", self.selectedSection,0);
         cell.imgListDown.image = [UIImage imageNamed:@"p_listDown"];
     }
