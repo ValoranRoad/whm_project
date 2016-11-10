@@ -263,6 +263,9 @@
         HmPhysicalGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalGroupCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.btnDelete.tag = indexPath.section;
+        if (![self.name isEqualToString:@""]) {
+            cell.lblName.text = self.name;
+        }
         return cell;
 
     }
