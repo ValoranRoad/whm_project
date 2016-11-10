@@ -36,6 +36,15 @@
 //筛选数据
 @property (nonatomic, strong) NSMutableArray * data4;
 @property (nonatomic, assign) NSInteger currentDate4;
+//保障期间(出行计划)
+@property(nonatomic,strong)NSMutableArray * proArry;
+
+//特色保障
+@property(nonatomic,strong)NSMutableArray * charactArry;
+
+//保险品牌(也就是公司)
+
+@property(nonatomic,strong)NSMutableArray * companArry;
 
 @end
 
@@ -74,6 +83,40 @@
         }
         NSLog(@"%@", self.wholes);
         
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+    
+    //保障期间数据(也就是出行计划)
+    
+    [self.dataService getproperiodWithsuccess:^(NSArray *lists) {
+        [hud hide:YES];
+        
+        self.proArry = [NSMutableArray arrayWithArray:lists];
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper  showError:@""];
+        
+    }];
+    //特色保障
+    [self.dataService getcharactersWithsuccess:^(NSArray *lists) {
+        [hud hide:YES];
+        self.charactArry = [NSMutableArray arrayWithArray:lists];
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+    
+    //保险品牌(也就是公司)
+    [self.dataService get_CompanysWithType:@"1,2" success:^(NSArray *lists) {
+        [hud hide:YES];
+        self.companArry = [NSMutableArray arrayWithArray:lists];
     } failure:^(NSError *error) {
         [hud hide:YES];
         [JGProgressHelper showError:@""];
