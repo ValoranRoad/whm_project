@@ -28,7 +28,7 @@
 @class WHgetappcate;
 @class WHgetproperiod;
 @class WHgetcharacters;
-
+@class WHget_pro_rate;
 
 @interface JwDataService : JwServiceBase
 
@@ -162,6 +162,13 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 
 //险种特色保障
 -(void)getcharactersWithsuccess:(void(^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//体检险种费率数据结构
+-(void)getprorateWithPid:(NSString *)pid
+                     uid:(NSString *)uid
+                  gender:(NSString *)gender
+ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
 

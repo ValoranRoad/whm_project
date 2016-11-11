@@ -27,6 +27,7 @@
 #import "WHgetappcate.h"
 #import "WHgetproperiod.h"
 #import "WHgetcharacters.h"
+#import "WHget_pro_rate.h"
 
 
 
@@ -592,6 +593,30 @@
     }];
 
 }
+//体检险种费率数据结构
+-(void)getprorateWithPid:(NSString *)pid
+                     uid:(NSString *)uid
+                  gender:(NSString *)gender
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"pid":pid,
+                                     @"uid":[JwUserCenter sharedCenter].uid,
+                                     @"gender":gender,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+      param = [[self filterParam:param interface:@"kbj/get_pro_rate"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_pro_rate" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *rates = [WHget_pro_rate  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(rates);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 
+}
 
 @end

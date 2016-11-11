@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
-#import "WHrate.h"
+#import "WHmongorate.h"
 
 @protocol  WHget_pro_rate <NSObject>
 @end
@@ -19,7 +19,7 @@
 @property(nonatomic,strong)NSString <Optional> * is_main;
 @property(nonatomic,strong)NSString <Optional> * insured;
 @property(nonatomic,strong)NSString <Optional> * pid;
-@property(nonatomic,strong)NSArray <WHrate ,Optional> * rate;
+@property(nonatomic,strong)NSArray <WHmongorate ,Optional> * mongo_rate;
 
 
 

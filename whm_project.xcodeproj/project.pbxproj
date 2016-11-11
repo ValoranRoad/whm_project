@@ -48,6 +48,8 @@
 		9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDB1DB9FF7F0069A085 /* ASBirthSelectSheet.m */; };
 		9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */; };
 		9F056EE21DBA1A960069A085 /* WHaccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */; };
+		9F07DE591DD566EF00B292C2 /* WHmongorate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F07DE581DD566EF00B292C2 /* WHmongorate.m */; };
+		9F07DE5C1DD56CC900B292C2 /* WHageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F07DE5B1DD56CC900B292C2 /* WHageTableViewController.m */; };
 		9F0A20BB1DBDAC64004C5F67 /* WHsetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */; };
 		9F0A20BE1DBDB972004C5F67 /* WHsavesetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20BD1DBDB972004C5F67 /* WHsavesetupTableViewController.m */; };
 		9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */; };
@@ -261,6 +263,10 @@
 		9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaddressDetalViewController.m; sourceTree = "<group>"; };
 		9F056EE01DBA1A960069A085 /* WHaccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHaccountTableViewCell.h; sourceTree = "<group>"; };
 		9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaccountTableViewCell.m; sourceTree = "<group>"; };
+		9F07DE571DD566EF00B292C2 /* WHmongorate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmongorate.h; sourceTree = "<group>"; };
+		9F07DE581DD566EF00B292C2 /* WHmongorate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmongorate.m; sourceTree = "<group>"; };
+		9F07DE5A1DD56CC900B292C2 /* WHageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHageTableViewController.h; sourceTree = "<group>"; };
+		9F07DE5B1DD56CC900B292C2 /* WHageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHageTableViewController.m; sourceTree = "<group>"; };
 		9F0A20B91DBDAC64004C5F67 /* WHsetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsetupTableViewController.h; sourceTree = "<group>"; };
 		9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsetupTableViewController.m; sourceTree = "<group>"; };
 		9F0A20BC1DBDB972004C5F67 /* WHsavesetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsavesetupTableViewController.h; sourceTree = "<group>"; };
@@ -773,6 +779,8 @@
 				9FCB4DF01DD2BCC30094184A /* WHproductSearchTableViewController.m */,
 				9FCB4DFB1DD31D970094184A /* WHresultViewController.h */,
 				9FCB4DFC1DD31D970094184A /* WHresultViewController.m */,
+				9F07DE5A1DD56CC900B292C2 /* WHageTableViewController.h */,
+				9F07DE5B1DD56CC900B292C2 /* WHageTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1019,6 +1027,8 @@
 				9FCB4DF91DD3030A0094184A /* WHgetcharacters.m */,
 				9FC9FBAA1DD455BB00EFB066 /* WHrate.h */,
 				9FC9FBAB1DD455BB00EFB066 /* WHrate.m */,
+				9F07DE571DD566EF00B292C2 /* WHmongorate.h */,
+				9F07DE581DD566EF00B292C2 /* WHmongorate.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1513,6 +1523,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F07DE5C1DD56CC900B292C2 /* WHageTableViewController.m in Sources */,
 				9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */,
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
@@ -1650,6 +1661,7 @@
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
 				9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */,
 				9F0F28BD1DC47DF2007118BD /* WHreplymessageViewController.m in Sources */,
+				9F07DE591DD566EF00B292C2 /* WHmongorate.m in Sources */,
 				C86354A71DB4D3AB00ED8B16 /* JwMenuBaseController.m in Sources */,
 				8E86DBD71DC9806D00C14635 /* PicUpdateCollectionViewCell.m in Sources */,
 				C86354611DB473B300ED8B16 /* UIActionSheet+LBXAlertAction.m in Sources */,

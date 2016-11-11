@@ -16,6 +16,8 @@
 #import "HmFujiaCell.h"
 #import "HmSelectCompanyController.h"
 #import "WHresultViewController.h"
+#import "WHageTableViewController.h"
+
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -294,13 +296,30 @@
         cell.imgListDown.image = [UIImage imageNamed:@"p_listDown"];
     }
     HmPhysicalGroupCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        NSLog(@"kkk");
+        WHageTableViewController * age = [[WHageTableViewController alloc]init];
+        [self.navigationController pushViewController:age animated:YES];
+    }
+    
+    if (indexPath.section == 1 && indexPath.row == 2) {
+        NSLog(@"22");
+    }
+    if (indexPath.section == 1 && indexPath.row == 3) {
+        NSLog(@"33");
+    }
+    if (indexPath.section == 1 && indexPath.row == 4) {
+        NSLog(@"44");
+    }
+
+    
+    
     if (indexPath.section != 0 && indexPath.row == 0) {
         if ([cell.imgListDown.image isEqual:[UIImage imageNamed:@"p_listDown"]]) {
             // 向下  改为向上
             DLog(@"点击要展开的cell的组数:%ld, 行数:%ld", indexPath.section,indexPath.row);
             cell.imgListDown.image = [UIImage imageNamed:@"p_listUp"];
             self.isOpen = YES;
-            
             
         }
         else
@@ -314,6 +333,7 @@
         [tableView reloadData];
     }
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
