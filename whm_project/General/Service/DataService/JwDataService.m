@@ -607,7 +607,7 @@
     [self.httpManager POST:param withPoint:@"kbj/get_pro_rate" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        NSArray *rates = [WHget_pro_rate  arrayOfModelsFromDictionaries:infos error:nil];
+        NSArray *rates = [WHget_pro_rate arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
             success(rates);
         }

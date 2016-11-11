@@ -61,11 +61,11 @@
     [self.dataService getprorateWithPid:@"465" uid:@"" gender:@"1" success:^(NSArray * lists) {
         [hud hide:YES];
         
-        for (WHget_pro_rate *model in lists) {
-            NSLog(@"%@",model.mongo_rate);
-            for (WHrate * rate in model.mongo_rate) {
-                NSLog(@"%@",rate.age);
-            }
+        WHget_pro_rate *pro = [lists firstObject];
+        WHmongorate *mon = [pro.mongo_rate firstObject];
+        NSArray *ages = mon.rate;
+        for (WHrate *rate in ages) {
+            NSLog(@"%@", rate.age);
         }
         
         [self.tableV reloadData];
@@ -85,12 +85,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return 0;
 }
 
