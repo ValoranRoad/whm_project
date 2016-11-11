@@ -14,6 +14,9 @@
 #import "WHgetappcate.h"
 #import "UIView+Extension.h"
 #import "UIColor+Hex.h"
+#import "WHgetproperiod.h"
+#import "WHgetcharacters.h"
+#import "JwCompanys.h"
 
 @interface WHpowSearTableViewController ()<UISearchBarDelegate, JSDropDownMenuDataSource, JSDropDownMenuDelegate>
 {
@@ -47,12 +50,7 @@
 @property (nonatomic, strong) JSIndexPath *path3;
 @property (nonatomic, strong) JSIndexPath *path4;
 
-//保障期间(出行计划)
-@property(nonatomic,strong)NSMutableArray * proArry;
-//特色保障
-@property(nonatomic,strong)NSMutableArray * charactArry;
-//保险品牌(也就是公司)
-@property(nonatomic,strong)NSMutableArray * companArry;
+
 
 @end
 
@@ -79,7 +77,7 @@
     
     self.allArr = [NSMutableArray array];
     self.wholes = [NSMutableArray array];
-    
+       
     WHgetappcate *a = [[WHgetappcate alloc] init];
     a.id = -1;
     a.name = @"全部";
@@ -104,39 +102,6 @@
         
     }];
     
-    //保障期间数据(也就是出行计划)
-    
-    [self.dataService getproperiodWithsuccess:^(NSArray *lists) {
-        [hud hide:YES];
-        
-        self.proArry = [NSMutableArray arrayWithArray:lists];
-        
-        
-    } failure:^(NSError *error) {
-        [hud hide:YES];
-        [JGProgressHelper  showError:@""];
-        
-    }];
-    //特色保障
-    [self.dataService getcharactersWithsuccess:^(NSArray *lists) {
-        [hud hide:YES];
-        self.charactArry = [NSMutableArray arrayWithArray:lists];
-        
-    } failure:^(NSError *error) {
-        [hud hide:YES];
-        [JGProgressHelper showError:@""];
-        
-    }];
-    
-    //保险品牌(也就是公司)
-    [self.dataService get_CompanysWithType:@"1,2" success:^(NSArray *lists) {
-        [hud hide:YES];
-        self.companArry = [NSMutableArray arrayWithArray:lists];
-    } failure:^(NSError *error) {
-        [hud hide:YES];
-        [JGProgressHelper showError:@""];
-        
-    }];
 }
 
 -(void)setupUI{
@@ -174,7 +139,60 @@
         [ages addObject:[NSString stringWithFormat:@"%.2d", i]];
     }
     
-    _data4 = [NSMutableArray arrayWithObjects:@{@"title":@"性别", @"data":sex}, @{@"title":@"年龄", @"data":ages}, @{@"title":@"出行计划", @"data":sex}, @{@"title":@"特色保障", @"data":sex}, @{@"title":@"保险品牌", @"data":sex}, nil];
+    //出行计划
+    
+    NSMutableArray * arr1 = [NSMutableArray array];
+    NSMutableArray * arr2 = [NSMutableArray array];
+    NSMutableArray * arr3 = [NSMutableArray array];
+     id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService getproperiodWithsuccess:^(NSArray *lists) {
+        [hud hide:YES];
+        for (WHgetproperiod * model in lists) {
+            [arr1  addObject:model.name];
+           // NSLog(@"%@",self.proArry);
+            
+        }
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+               [JGProgressHelper  showError:@""];
+        
+    }];
+
+    //特色保障
+    [self.dataService getcharactersWithsuccess:^(NSArray *lists) {
+        [hud hide:YES];
+        for (WHgetcharacters * model in lists) {
+            [arr2 addObject:model.name];
+        }
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+    
+    //保险品牌(也就是公司)
+    [self.dataService get_CompanysWithType:@"1,2" success:^(NSArray *lists) {
+        [hud hide:YES];
+        for (JwCompanys * model in lists) {
+            [arr3 addObject:model.name];
+        }
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+
+    
+    
+    //
+    
+   
+    _data4 = [NSMutableArray arrayWithObjects:@{@"title":@"性别", @"data":sex}, @{@"title":@"年龄", @"data":ages}, @{@"title":@"出行计划", @"data":arr1}, @{@"title":@"特色保障", @"data":arr2}, @{@"title":@"保险品牌", @"data":arr3}, nil];
 
     self.menus = @[@"全部", @"险种", @"类别", @"筛选"];
     

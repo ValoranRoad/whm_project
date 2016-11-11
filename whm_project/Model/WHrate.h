@@ -16,7 +16,7 @@
 @property(nonatomic,strong)NSString <Optional> * period;
 @property(nonatomic,strong)NSString <Optional> * age;
 @property(nonatomic,strong)NSString <Optional> * gender;
-@property(nonatomic,strong)NSMutableArray * pay_period;
+//@property(nonatomic,strong)NSMutableArray * pay_period;
 
 
 @end
