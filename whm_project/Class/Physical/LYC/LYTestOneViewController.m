@@ -24,6 +24,7 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
     [super viewWillAppear:YES];
     
     [self requartDate];
+    
 }
 
 //数据请求
@@ -42,7 +43,8 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
                                       pros:paramStr
                                    success:^(NSArray *lists) {
         self.dateArry = [NSMutableArray arrayWithArray:lists];
-        
+                                       NSLog(@"%@",self.dateArry);
+                                       
         [self.tableView reloadData];
         
     } failure:^(NSError *error) {

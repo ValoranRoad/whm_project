@@ -22,6 +22,7 @@
 #import "LYTestOneViewController.h"
 #import "LYTestTwoViewController.h"
 #import "LYTestThreeViewController.h"
+#import "JGProgressHelper.h"
 //
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
@@ -127,8 +128,14 @@
 -(void)btnStart:(UIButton *)sender
 {
 //    NSLog(@"开始体检");
-
-    LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+    
+    
+    if (self.ids != nil) {
+    
+    if ( self.rela_id  != nil) {
+        
+       
+  LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
      oneVC.rela_id = self.rela_id;
      oneVC.pro_id = self.ids;
      oneVC.is_main_must = self.is_main;
@@ -138,7 +145,17 @@
     
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
     [self presentViewController:collectVC animated:YES completion:nil];
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请选择被保人"];
+    }
 
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请选择保险险种"];
+    }
 }
 
 #pragma mark --添加事件
@@ -241,6 +258,7 @@
                         if (indexPath.row == 1) {
                             cell.myLaber.text = @"投保年龄";
                             cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
+                            cell.selectLaber.text = @"";
                         }
                         if (indexPath.row == 3) {
                             cell.myLaber.text = @"缴费方式";
@@ -250,11 +268,15 @@
                         if (indexPath.row == 2) {
                             cell.myLaber.text = @"保险期间";
                             cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
+                            cell.selectLaber.text = @"";
+
                         }
                         
                         if (indexPath.row == 4) {
                             cell.myLaber.text = @"保额(元)";
                             cell.headImg.image = [UIImage imageNamed:@"test_money"];
+                            cell.selectLaber.text = @"";
+
                         }
                         
 
@@ -295,6 +317,7 @@
         cell.btnDelete.tag = indexPath.section;
         if (![self.name isEqualToString:@""]) {
             cell.lblName.text = self.name;
+        
         }
         return cell;
 
@@ -327,12 +350,18 @@
     if (indexPath.section == 1 && indexPath.row == 1) {
         NSLog(@"kkk");
         WHageTableViewController * age = [[WHageTableViewController alloc]init];
+        HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
         age.mblock2 = ^(NSString * s1)
         {
             
             self.age = s1;
             
             NSLog(@"==%@",self.age);
+           
+            cell.selectLaber.text = s1;
+
+            
             
         };
 
@@ -342,11 +371,14 @@
     if (indexPath.section == 1 && indexPath.row == 2) {
         NSLog(@"22");
         WHperiodTableViewController * period = [[WHperiodTableViewController alloc]init];
+         HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         period.mblock2 = ^(NSString * s1)
         {
             
             self.period = s1;
             
+            cell.selectLaber.text = s1;
+
             NSLog(@"==%@",self.period);
             
         };
@@ -367,6 +399,8 @@
             _userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
             
             NSLog(@"输入的数据 = %@",_userNameTextField.text);
+            HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            cell.selectLaber.text = _userNameTextField.text;
             
         }]];
         //增加取消按钮；
