@@ -22,7 +22,16 @@
 #import "WHgetmessageDetall.h"
 #import "WHgetintroduce.h"
 #import "WHgethonor.h"
+#import "WHmicro.h"
+#import "WHgetprofirst.h"
+#import "WHgetappcate.h"
+#import "WHgetproperiod.h"
+#import "WHgetcharacters.h"
+#import "WHget_pro_rate.h"
 
+
+
+#import "MacroUtility.h"
 #import "JwUserCenter.h"
 #import "JwUser.h"
 
@@ -108,20 +117,37 @@
 //获取险种列表
 -(void)get_productWithCompany_id:(NSString *)company_id
                          keyword:(NSString *)keyword
-                   special_attri:(NSString *)special_attri
-                  prod_type_code:(NSString *)prod_type_code
-                        ins_type:(NSString *)ins_type
-                          is_hot:(NSString *)is_hot
+                             sex:(NSString *)sex
+            characters_insurance:(NSString *)characters_insurance
+                          period:(NSString *)period
+                         cate_id:(NSString *)cate_id
+                      pay_period:(NSString *)pay_period
+                            rate:(NSString *)rate
+                         insured:(NSString *)insured
+                        birthday:(NSString *)birthday
+                   yearly_income:(NSString *)yearly_income
+                            debt:(NSString *)debt
+                         rela_id:(NSString *)rela_id
+                               p:(NSString *)p
                         pagesize:(NSString *)pagesize
-                         success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
+                         success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"company_id":company_id,
                                      @"keyword":keyword ,
-                                     @"special_attri":special_attri,
-                                     @"prod_type_code":prod_type_code ,
-                                     @"ins_type":ins_type ,
-                                     @"is_hot":is_hot,
-                                     @"pagesize":pagesize}mutableCopy];
+                                     @"sex":sex,
+                                     @"characters_insurance":characters_insurance,
+                                     @"period":period,
+                                     @"cate_id":cate_id,
+                                     @"pay_period":pay_period,
+                                     @"rate":rate,
+                                     @"insured":insured,
+                                     @"birthday":birthday,
+                                     @"yearly_income":yearly_income,
+                                     @"debt":debt,
+                                     @"rela_id":rela_id,
+                                     @"p":p,
+                                     @"pagesize":pagesize
+                                     }mutableCopy];
      param = [[self filterParam:param interface:@"kb/get_product"] mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_product" success:^(id data) {
         
@@ -450,6 +476,147 @@
     
 }
 
+//获取代理人个人微站
+-(void)getMicroWithAgent_uid:(NSString *)agent_uid
+                         uid:(NSString *)uid
+                     success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"agent_uid":[JwUserCenter sharedCenter].uid,
+                                     @"uid":[JwUserCenter sharedCenter].uid,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/micro"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/micro" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray * micros = [WHmicro arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(micros);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
 
+    
+}
+
+//找险种搜索首页数据
+-(void)getprofirstWithUid:(NSString * )uid success:(void (^)(WHgetprofirst *profirst))success failure:(void (^)(NSError *error))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_pro_first"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kb/get_pro_first" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        WHgetprofirst *pro = [[WHgetprofirst alloc] initWithDictionary:[infos firstObject] error:nil];
+        
+        if (success) {
+            success(pro);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+    
+    
+}
+
+//找险种高级搜索分类
+-(void)getappcateWithsuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_app_cate"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_app_cate" success:^(id data) {
+        NSArray *infos = data[@"data"];
+        NSArray *appcates = [WHgetappcate arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success (appcates);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+    
+
+    
+    
+}
+//保障期间
+-(void)getproperiodWithsuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_pro_period"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_pro_period" success:^(id data) {
+        NSArray *infos = data[@"data"];
+        NSArray *periods = [WHgetproperiod arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success (periods);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+
+}
+
+//险种特色保障
+-(void)getcharactersWithsuccess:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{} mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_characters"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_characters" success:^(id data) {
+        NSArray *infos = data[@"data"];
+        NSArray *characters  = [WHgetcharacters arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success (characters);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+        
+    }];
+
+}
+//体检险种费率数据结构
+-(void)getprorateWithPid:(NSString *)pid
+                     uid:(NSString *)uid
+                  gender:(NSString *)gender
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"pid":pid,
+                                     @"uid":[JwUserCenter sharedCenter].uid,
+                                     @"gender":gender,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+      param = [[self filterParam:param interface:@"kbj/get_pro_rate"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_pro_rate" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *rates = [WHget_pro_rate arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(rates);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
 
 @end

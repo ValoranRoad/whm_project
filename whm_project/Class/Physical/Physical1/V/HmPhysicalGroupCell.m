@@ -27,6 +27,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // 初始化
+        
+       
     }
     return self;
 }

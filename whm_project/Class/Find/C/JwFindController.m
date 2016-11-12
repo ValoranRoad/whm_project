@@ -9,6 +9,9 @@
 #import "JwFindController.h"
 
 @interface JwFindController ()
+@property(nonatomic,strong)UIView * myview;
+@property(nonatomic,strong)UIView * backview;
+@property(nonatomic,strong)UIImageView * myImg1;
 
 @end
 
@@ -17,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -57,7 +57,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.arrayOfGroup = [NSArray arrayWithObjects:@"A",@"B",@"C", nil];
+    self.arrayOfGroup = [NSArray arrayWithObjects:@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z", nil];
     
     // 布局
     [self setupUI];
@@ -142,7 +142,7 @@
     indexBar.textColor = [UIColor colorWithHex:0x666666];
     indexBar.textFont = [UIFont systemFontOfSize:11];
     indexBar.delegate = self;
-    [indexBar setIndexes:@[@"A", @"B", @"C", @"D", @"E", @"F", @"G"]];
+    [indexBar setIndexes:@[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"]];
     [self.view addSubview:indexBar];
 }
 

@@ -23,6 +23,12 @@
 @class WHgetmessageDetall;
 @class WHgetintroduce;
 @class WHgethonor;
+@class WHmicro;
+@class WHgetprofirst;
+@class WHgetappcate;
+@class WHgetproperiod;
+@class WHgetcharacters;
+@class WHget_pro_rate;
 
 @interface JwDataService : JwServiceBase
 
@@ -49,10 +55,18 @@
 
 -(void)get_productWithCompany_id:(NSString *)company_id
                          keyword:(NSString *)keyword
-                   special_attri:(NSString *)special_attri
-                  prod_type_code:(NSString *)prod_type_code
-                       ins_type :(NSString *)ins_type
-                          is_hot:(NSString *)is_hot
+                             sex:(NSString *)sex
+            characters_insurance:(NSString *)characters_insurance
+                          period:(NSString *)period
+                         cate_id:(NSString *)cate_id
+                      pay_period:(NSString *)pay_period
+                            rate:(NSString *)rate
+                         insured:(NSString *)insured
+                        birthday:(NSString *)birthday
+                   yearly_income:(NSString *)yearly_income
+                            debt:(NSString *)debt
+                         rela_id:(NSString *)rela_id
+                               p:(NSString *)p
                         pagesize:(NSString *)pagesize
 success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
@@ -124,6 +138,37 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 //荣誉列表
 -(void)gethonorWithUid:(NSString * )uid
                success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+
+//代理人个人微站
+-(void)getMicroWithAgent_uid:(NSString *)agent_uid uid:(NSString *)uid
+                     success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//找险种搜索首页数据
+-(void)getprofirstWithUid:(NSString * )uid
+                   success:(void (^)(WHgetprofirst *profirst))success failure:(void (^)(NSError *error))failure;
+
+//找险种高级搜索分类
+
+-(void)getappcateWithsuccess:(void(^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//保障期间
+-(void)getproperiodWithsuccess:(void(^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+
+//险种特色保障
+-(void)getcharactersWithsuccess:(void(^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//体检险种费率数据结构
+-(void)getprorateWithPid:(NSString *)pid
+                     uid:(NSString *)uid
+                  gender:(NSString *)gender
+ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
 

@@ -66,7 +66,7 @@
 {
     if (_yearLaber == nil) {
         self.yearLaber = [[UILabel alloc]init];
-        self.yearLaber.frame = CGRectMake(CGRectGetMaxX(self.ageLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5, kScreenW * 0.2, 20);
+        self.yearLaber.frame = CGRectMake(CGRectGetMaxX(self.ageLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5, kScreenW * 0.1, 20);
         self.yearLaber.font = [UIFont systemFontOfSize:13.0];
         self.yearLaber.textColor = [UIColor grayColor];
         [self.contentView addSubview:_yearLaber];
@@ -112,7 +112,7 @@
     self.titLaber.text = model.name;
     self.yearLaber.text = model.limit_age;
     
-    NSString * staLaber = @"产品类型:";
+    NSString * staLaber = @"";
     self.statuLaber.text = [staLaber stringByAppendingString: model.prod_type_code_name];
     
     NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:model.update_time.doubleValue];

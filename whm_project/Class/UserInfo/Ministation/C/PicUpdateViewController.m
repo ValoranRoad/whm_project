@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) UIButton * button;
 @property (nonatomic,strong)NSMutableArray *picArr;
+@property (nonatomic,strong) NSMutableArray * idsArry;
+@property(nonatomic,strong)NSString * strID;
 
 
 @end
@@ -39,6 +41,7 @@
     [super viewDidLoad];
     
    
+    self.title = @"我的荣誉";
     
     self.picArr = [NSMutableArray array];
     
@@ -51,8 +54,11 @@
     hud = [JGProgressHelper showProgressInView:self.view];
     [self.dataService gethonorWithUid:@"" success:^(NSArray *lists) {
         [hud hide:YES];
+        
+        self.idsArry = [NSMutableArray arrayWithArray:lists];
         for (WHgethonor *model in lists) {
             [self.picArr addObject:model.img1];
+//            [self.idsArry addObject:model.id];
         }
         
         [_collectionView reloadData];
@@ -154,10 +160,36 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    WHgethonor * model = self.idsArry[indexPath.row];
+   self.strID = model.id;
+   // NSLog(@"%@",s1);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你确定要删除该图片吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    //  alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+    [alert show];
+
   
     
 }
+
+//删除图片事件
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+       id hud = [JGProgressHelper showProgressInView:self.view];
+       [self.userService delhonorWithId:self.strID uid:@"" success:^{
+           [hud hide:YES];
+           [ JGProgressHelper showSuccess:@"删除图片成功"];
+           
+       } failure:^(NSError *error) {
+           [hud hide:YES];
+           [JGProgressHelper showError:@"删除失败"];
+       }];
+        
+    }
+    
+}
+
+
 -(void)addBtnAction
 {
     
@@ -207,7 +239,7 @@
     }else{
 
         sheet = [[UIActionSheet alloc]initWithTitle:@"获取图片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"相册", nil];
-        [sheet showInView:self];
+        [sheet showInView:self.view];
     }
 
 

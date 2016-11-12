@@ -70,16 +70,16 @@
    success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 
-//保存认证信息
--(void)save_verifyWithUid:(NSString *)uid
-                  company:(NSString *)company
-                     name:(NSString *)name
-               cardnumber:(NSString *)cardnumber
-       organizationnumber:(NSString *)organizationnumber
-                    point:(NSString *)point
-                  address:(NSString *)address
-                       jb:(NSString *)job
-                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
+////保存认证信息
+//-(void)save_verifyWithUid:(NSString *)uid
+//                  company:(NSString *)company
+//                     name:(NSString *)name
+//               cardnumber:(NSString *)cardnumber
+//       organizationnumber:(NSString *)organizationnumber
+//                    point:(NSString *)point
+//                  address:(NSString *)address
+//                       jb:(NSString *)job
+//                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 //修改手机号
 -(void)update_mobileWithUid:(NSString *)uid
@@ -145,6 +145,12 @@ success:(void(^)())success failure:(void(^)(NSError *error))failure;
 //保存荣誉接口
 -(void)savehonorWithUid:(NSString *)uid img:(NSString *)img
                 success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
+
+//删除荣誉
+-(void)delhonorWithId:(NSString * )ids uid:(NSString * )uid
+
+              success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
 
 @end
