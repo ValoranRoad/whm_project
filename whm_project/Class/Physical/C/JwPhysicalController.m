@@ -17,6 +17,7 @@
 #import "HmSelectCompanyController.h"
 #import "WHresultViewController.h"
 #import "WHageTableViewController.h"
+#import "WHperiodTableViewController.h"
 
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
@@ -34,6 +35,11 @@
 
 @property (nonatomic, strong) WHget_user_realtion *firstUser;
 @property(nonatomic,strong)UIButton * addBut;
+@property(nonatomic,strong)NSString * age;
+
+@property(nonatomic,strong)NSString * period;
+
+@property(nonatomic,strong)UITextField *userNameTextField;
 
 
 @end
@@ -215,11 +221,11 @@
                             cell.myLaber.text = @"投保年龄";
                             cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
                         }
-                        if (indexPath.row == 2) {
+                        if (indexPath.row == 3) {
                             cell.myLaber.text = @"缴费方式";
                             cell.headImg.image = [UIImage imageNamed:@"p_payType"];
                         }
-                        if (indexPath.row == 3) {
+                        if (indexPath.row == 2) {
                             cell.myLaber.text = @"保险期间";
                             cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
                         }
@@ -299,17 +305,57 @@
     if (indexPath.section == 1 && indexPath.row == 1) {
         NSLog(@"kkk");
         WHageTableViewController * age = [[WHageTableViewController alloc]init];
+        age.mblock2 = ^(NSString * s1)
+        {
+            
+            self.age = s1;
+            
+            NSLog(@"==%@",self.age);
+            
+        };
+
         [self.navigationController pushViewController:age animated:YES];
     }
     
     if (indexPath.section == 1 && indexPath.row == 2) {
         NSLog(@"22");
+        WHperiodTableViewController * period = [[WHperiodTableViewController alloc]init];
+        period.mblock2 = ^(NSString * s1)
+        {
+            
+            self.period = s1;
+            
+            NSLog(@"==%@",self.period);
+            
+        };
+        
+        
+        [self.navigationController pushViewController:period animated:YES];
+
     }
     if (indexPath.section == 1 && indexPath.row == 3) {
         NSLog(@"33");
     }
     if (indexPath.section == 1 && indexPath.row == 4) {
         NSLog(@"44");
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入投保金额" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //获取第1个输入框；
+            _userNameTextField = alertController.textFields.firstObject;
+            _userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
+            
+            NSLog(@"输入的数据 = %@",_userNameTextField.text);
+            
+        }]];
+        //增加取消按钮；
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+        
+        //定义第一个输入框；
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"请输入保额";
+        }];
+        [self presentViewController:alertController animated:true completion:nil];
+        
     }
 
     
