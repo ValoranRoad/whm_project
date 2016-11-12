@@ -29,6 +29,7 @@
 @class WHgetproperiod;
 @class WHgetcharacters;
 @class WHget_pro_rate;
+@class WHgetreport;
 
 @interface JwDataService : JwServiceBase
 
@@ -170,6 +171,12 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
                   gender:(NSString *)gender
  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
+
+//体检保存
+-(void)getsavepolictWithUid:(NSString *)uid
+                    rela_id:(NSString *)rela_id
+                       pros:(NSString *)pros
+success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
 @end

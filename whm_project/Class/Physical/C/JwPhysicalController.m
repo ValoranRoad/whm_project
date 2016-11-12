@@ -15,10 +15,14 @@
 #import "HmSelectInsuredController.h"
 #import "HmFujiaCell.h"
 #import "HmSelectCompanyController.h"
-#import "WHresultViewController.h"
 #import "WHageTableViewController.h"
 #import "WHperiodTableViewController.h"
-
+//
+#import "JSCollectViewController.h"
+#import "LYTestOneViewController.h"
+#import "LYTestTwoViewController.h"
+#import "LYTestThreeViewController.h"
+//
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -40,6 +44,10 @@
 @property(nonatomic,strong)NSString * period;
 
 @property(nonatomic,strong)UITextField *userNameTextField;
+
+@property(nonatomic,strong)NSString * rela_id; //被保人ID
+
+
 
 
 @end
@@ -118,9 +126,19 @@
 //开始体检事件
 -(void)btnStart:(UIButton *)sender
 {
-    NSLog(@"开始体检");
-    WHresultViewController * result = [[WHresultViewController alloc]init];
-    [self.navigationController pushViewController:result animated:YES];
+//    NSLog(@"开始体检");
+
+    LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+     oneVC.rela_id = self.rela_id;
+     oneVC.pro_id = self.ids;
+     oneVC.is_main_must = self.is_main;
+    
+    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+    LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
+    
+    JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+    [self presentViewController:collectVC animated:YES completion:nil];
+
 }
 
 #pragma mark --添加事件
@@ -191,6 +209,9 @@
         if (self.firstUser) {
            cell.model = self.firstUser;
             //cell.lblName.text = self.name;
+            self.rela_id = self.firstUser.id;
+            NSLog(@"%@",self.rela_id);
+            
            
         }
         return cell;
@@ -224,6 +245,7 @@
                         if (indexPath.row == 3) {
                             cell.myLaber.text = @"缴费方式";
                             cell.headImg.image = [UIImage imageNamed:@"p_payType"];
+                            cell.selectLaber.text = @"10年交";
                         }
                         if (indexPath.row == 2) {
                             cell.myLaber.text = @"保险期间";
