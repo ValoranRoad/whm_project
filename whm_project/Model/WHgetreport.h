@@ -19,7 +19,7 @@
 @interface WHgetreport : JwModelBase
 @property(nonatomic,strong)NSArray <WHrela,Optional> * rela;
 
-@property(nonatomic,strong)NSArray <WHtotalrate,Optional> * total_rate;
+@property(nonatomic,strong)WHtotalrate<Optional>* total_rate;
 
 @property(nonatomic,strong)NSArray <WHpros,Optional> * pros;
 

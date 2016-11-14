@@ -44,25 +44,15 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
     [self.dataService getsavepolictWithUid:@""
                                    rela_id:self.rela_id
                                       pros:paramStr
-                                   success:^(NSArray *lists)
-    {
-//        self.dateArry = [NSMutableArray arrayWithArray:lists];
-//                                   //    NSLog(@"%@",self.dateArry);
-//                                       for (WHpros * pro in self.dateArry) {
-//                                           
-//                                           NSLog(@"%@",pro);
-//                                       }
-        
-    self.dateArry = [NSMutableArray array];
-        WHgetreport * report = [lists firstObject];
-        WHpros * pros = [report.pros firstObject];
-        [self.dateArry addObject: pros];
-        NSLog(@"%@",self.dateArry);
-//
-        
+                                   success:^(NSArray *lists){
                                        
-        [self.tableView reloadData];
-        
+                                       NSLog(@"%@", lists);
+//                                       self.dateArry = [NSMutableArray array];
+//                                       WHgetreport * report = [lists firstObject];
+//                                       WHpros * pros = [report.pros firstObject];
+//                                       [self.dateArry addObject: pros];
+//                                       NSLog(@"%@",self.dateArry);
+//                                       [self.tableView reloadData];
     } failure:^(NSError *error) {
         
     }];
