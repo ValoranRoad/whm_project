@@ -16,6 +16,6 @@ typedef enum : NSUInteger {
     
 } ErrorCode;
 
-#define kServiceBaseURL @"http://www.kuaibao365.com/api/"
+#define kServiceBaseURL @"https://www.kuaibao365.com/api/"
 
 #endif /* JwServiceDefine_h */

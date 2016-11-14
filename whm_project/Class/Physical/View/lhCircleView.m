@@ -176,11 +176,8 @@ static const CGFloat backStrokeWidth = 1;
         
         self.contentLabel.text = [NSString stringWithFormat:@"%.2f",progress*100];
         CGFloat myProgress =progress * 100;
-        if ( myProgress>= 60 && myProgress <70) {
+        if ( myProgress>= 60 && myProgress <80) {
             twoLabel.text = @"— 合格 —";
-        }else if(myProgress >= 70 && myProgress <80)
-        {
-            twoLabel.text = @"— 中等 —";
         }else if(myProgress >= 80 && myProgress <90)
         {
             twoLabel.text = @"— 良好 —";

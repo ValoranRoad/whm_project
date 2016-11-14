@@ -132,7 +132,7 @@
     
     if (self.ids != nil) {
     
-    if ( self.rela_id  != nil) {
+    if (self.rela_id  != nil) {
         
        
   LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];

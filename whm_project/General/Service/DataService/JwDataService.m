@@ -633,9 +633,9 @@
     [self.httpManager POST:param withPoint:@"kbj/save_policy" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        NSArray *saves = [WHgetreport arrayOfModelsFromDictionaries:infos error:nil];
+        NSArray *reps = [WHgetreport arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
-            success(saves);
+            success(reps);
         }
     } failure:^(NSError *error) {
         if (failure) {
