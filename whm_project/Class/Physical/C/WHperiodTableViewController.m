@@ -1,27 +1,27 @@
 //
-//  WHageTableViewController.m
+//  WHperiodTableViewController.m
 //  whm_project
 //
 //  Created by 王义国 on 16/11/11.
 //  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "WHageTableViewController.h"
+#import "WHperiodTableViewController.h"
 #import "JGProgressHelper.h"
 #import "MacroUtility.h"
 #import "WHget_pro_rate.h"
 #import "WHrate.h"
 #import "WHageTableViewCell.h"
-
-@interface WHageTableViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) UITableView *tableV;
+@interface WHperiodTableViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic, strong) UITableView *tableV;
 @property(nonatomic,strong)NSMutableArray * dataArry;
-@property(nonatomic, strong)WHageTableViewCell * cell;
-@property(nonatomic, strong)NSString * Sage;
+@property(nonatomic,strong)WHageTableViewCell * cell;
+@property(nonatomic,strong)NSString * Speriod;
 @property(nonatomic, strong)NSMutableArray * arr1;
+
 @end
 
-@implementation WHageTableViewController
+@implementation WHperiodTableViewController
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -32,23 +32,24 @@
     
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // 布局
     [self setupUI];
     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
-
+    
+    [self.tableV registerClass:[WHageTableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 -(void)left:(UIBarButtonItem *)sender
 {
-    if (self.Sage != nil) {
-        self.mblock2 (self.Sage);
+    
+    if (self.Speriod != nil) {
+        self.mblock2 (self.Speriod);
     }
     [self.navigationController popViewControllerAnimated:YES];
-
 }
-
 #pragma mark -- 布局
 -(void)setupUI
 {
@@ -59,10 +60,7 @@
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableV];
     
-    [self.tableV registerClass:[WHageTableViewCell class] forCellReuseIdentifier:@"cell"];
-
 }
-
 //数据请求
 -(void)quartData
 {
@@ -70,14 +68,13 @@
     [self.dataService getprorateWithPid:@"465" uid:@"" gender:@"1" success:^(NSArray * lists) {
         [hud hide:YES];
         
-        
         self.dataArry = [NSMutableArray array];
         WHget_pro_rate * pro = [lists firstObject];
         WHmongorate * mon = [pro.mongo_rate firstObject];
-        NSArray * ages = mon.rate;
-        for (WHrate * rate in ages) {
-            //NSLog(@"%@",rate.age);
-            [self.dataArry addObject:rate.age];
+        NSArray * periods = mon.rate;
+        for (WHrate * rate in periods) {
+           
+            [self.dataArry addObject:rate.period];
         }
         self.arr1 =[NSMutableArray array];
         for (int i = 0 ;i<self.dataArry.count;i++) {
@@ -85,26 +82,19 @@
                 [_arr1 addObject:[self.dataArry  objectAtIndex:i]];
                 NSLog(@"%@",_arr1);
             }
-            
-            WHget_pro_rate *pro = [lists firstObject];
-            WHmongorate *mon = [pro.mongo_rate firstObject];
-            NSArray *ages = mon.rate;
-            for (WHrate *rate in ages) {
-                NSLog(@"%@", rate.age);
-                
-            }
         }
+
         
         [self.tableV reloadData];
     } failure:^(NSError *error) {
         [hud hide:YES];
         [JGProgressHelper showError:@""];
         
-        
     }];
     
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -113,32 +103,31 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arr1.count;;
+#warning Incomplete implementation, return the number of rows
+    return self.arr1.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WHageTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    WHageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    
+    // Configure the cell...
     cell.ageLaber.text = self.arr1[indexPath.row];
-    
-
     
     return cell;
 }
-
 -(CGFloat )tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.Sage = self.arr1[indexPath.row];
+    self.Speriod = self.arr1[indexPath.row];
 }
 
 

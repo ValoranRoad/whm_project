@@ -15,9 +15,15 @@
 #import "HmSelectInsuredController.h"
 #import "HmFujiaCell.h"
 #import "HmSelectCompanyController.h"
-#import "WHresultViewController.h"
 #import "WHageTableViewController.h"
-
+#import "WHperiodTableViewController.h"
+//
+#import "JSCollectViewController.h"
+#import "LYTestOneViewController.h"
+#import "LYTestTwoViewController.h"
+#import "LYTestThreeViewController.h"
+#import "JGProgressHelper.h"
+//
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -34,6 +40,15 @@
 
 @property (nonatomic, strong) WHget_user_realtion *firstUser;
 @property(nonatomic,strong)UIButton * addBut;
+@property(nonatomic,strong)NSString * age;
+
+@property(nonatomic,strong)NSString * period;
+
+@property(nonatomic,strong)UITextField *userNameTextField;
+
+@property(nonatomic,strong)NSString * rela_id; //被保人ID
+
+
 
 
 @end
@@ -112,9 +127,35 @@
 //开始体检事件
 -(void)btnStart:(UIButton *)sender
 {
-    NSLog(@"开始体检");
-    WHresultViewController * result = [[WHresultViewController alloc]init];
-    [self.navigationController pushViewController:result animated:YES];
+//    NSLog(@"开始体检");
+    
+    
+    if (self.ids != nil) {
+    
+    if (self.rela_id  != nil) {
+        
+       
+  LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+     oneVC.rela_id = self.rela_id;
+     oneVC.pro_id = self.ids;
+     oneVC.is_main_must = self.is_main;
+    
+    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+    LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
+    
+    JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+    [self presentViewController:collectVC animated:YES completion:nil];
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请选择被保人"];
+    }
+
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请选择保险险种"];
+    }
 }
 
 #pragma mark --添加事件
@@ -185,6 +226,9 @@
         if (self.firstUser) {
            cell.model = self.firstUser;
             //cell.lblName.text = self.name;
+            self.rela_id = self.firstUser.id;
+            NSLog(@"%@",self.rela_id);
+            
            
         }
         return cell;
@@ -214,19 +258,25 @@
                         if (indexPath.row == 1) {
                             cell.myLaber.text = @"投保年龄";
                             cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
-                        }
-                        if (indexPath.row == 2) {
-                            cell.myLaber.text = @"缴费方式";
-                            cell.headImg.image = [UIImage imageNamed:@"p_payType"];
+                            cell.selectLaber.text = @"";
                         }
                         if (indexPath.row == 3) {
+                            cell.myLaber.text = @"缴费方式";
+                            cell.headImg.image = [UIImage imageNamed:@"p_payType"];
+                            cell.selectLaber.text = @"10年交";
+                        }
+                        if (indexPath.row == 2) {
                             cell.myLaber.text = @"保险期间";
                             cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
+                            cell.selectLaber.text = @"";
+
                         }
                         
                         if (indexPath.row == 4) {
                             cell.myLaber.text = @"保额(元)";
                             cell.headImg.image = [UIImage imageNamed:@"test_money"];
+                            cell.selectLaber.text = @"";
+
                         }
                         
 
@@ -267,6 +317,7 @@
         cell.btnDelete.tag = indexPath.section;
         if (![self.name isEqualToString:@""]) {
             cell.lblName.text = self.name;
+        
         }
         return cell;
 
@@ -299,17 +350,68 @@
     if (indexPath.section == 1 && indexPath.row == 1) {
         NSLog(@"kkk");
         WHageTableViewController * age = [[WHageTableViewController alloc]init];
+        HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+        age.mblock2 = ^(NSString * s1)
+        {
+            
+            self.age = s1;
+            
+            NSLog(@"==%@",self.age);
+           
+            cell.selectLaber.text = s1;
+
+            
+            
+        };
+
         [self.navigationController pushViewController:age animated:YES];
     }
     
     if (indexPath.section == 1 && indexPath.row == 2) {
         NSLog(@"22");
+        WHperiodTableViewController * period = [[WHperiodTableViewController alloc]init];
+         HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        period.mblock2 = ^(NSString * s1)
+        {
+            
+            self.period = s1;
+            
+            cell.selectLaber.text = s1;
+
+            NSLog(@"==%@",self.period);
+            
+        };
+        
+        
+        [self.navigationController pushViewController:period animated:YES];
+
     }
     if (indexPath.section == 1 && indexPath.row == 3) {
         NSLog(@"33");
     }
     if (indexPath.section == 1 && indexPath.row == 4) {
         NSLog(@"44");
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入投保金额" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //获取第1个输入框；
+            _userNameTextField = alertController.textFields.firstObject;
+            _userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
+            
+            NSLog(@"输入的数据 = %@",_userNameTextField.text);
+            HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            cell.selectLaber.text = _userNameTextField.text;
+            
+        }]];
+        //增加取消按钮；
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+        
+        //定义第一个输入框；
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"请输入保额";
+        }];
+        [self presentViewController:alertController animated:true completion:nil];
+        
     }
 
     

@@ -28,6 +28,7 @@
 #import "WHgetproperiod.h"
 #import "WHgetcharacters.h"
 #import "WHget_pro_rate.h"
+#import "WHgetreport.h"
 
 
 
@@ -619,4 +620,28 @@
 
 }
 
+//体检保存
+-(void)getsavepolictWithUid:(NSString *)uid
+                    rela_id:(NSString *)rela_id
+                       pros:(NSString *)pros success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = @{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"rela_id":rela_id,
+                                     @"pros":pros,
+                                     @"token":[JwUserCenter sharedCenter].key}.mutableCopy;
+    param = [[self filterParam:param interface:@"kbj/save_policy"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/save_policy" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *reps = [WHgetreport arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(reps);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
 @end

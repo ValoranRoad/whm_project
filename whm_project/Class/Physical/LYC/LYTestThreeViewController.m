@@ -1,37 +1,22 @@
 //
-//  WHresultViewController.m
-//  whm_project
+//  LYTestThreeViewController.m
+//  MYPage
 //
-//  Created by 王义国 on 16/11/9.
-//  Copyright © 2016年 chenJw. All rights reserved.
+//  Created by 赵良育 on 2016/11/10.
+//  Copyright © 2016年 赵良育. All rights reserved.
 //
 
-#import "WHresultViewController.h"
+#import "LYTestThreeViewController.h"
 
-@interface WHresultViewController ()
-@property(nonatomic,strong)UIImageView * headImage;
-@property(nonatomic,strong)UIView * headView;
-@property(nonatomic,strong)UILabel * scoreLaber;
-@property(nonatomic,strong)UILabel * resultLaber;
-
-
+@interface LYTestThreeViewController ()
 
 @end
 
-@implementation WHresultViewController
+@implementation LYTestThreeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setUI ];
-    
-    
-}
-
-//ui设计
--(void)setUI
-{
-    
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
