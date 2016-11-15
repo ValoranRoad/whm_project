@@ -66,6 +66,7 @@
 		9F1073941DD08CEC00725A84 /* ico_make.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F1073911DD08CEC00725A84 /* ico_make.png */; };
 		9F1073951DD08CEC00725A84 /* JSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1073931DD08CEC00725A84 /* JSDropDownMenu.m */; };
 		9F1073981DD0995700725A84 /* WHgetappcate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1073971DD0995700725A84 /* WHgetappcate.m */; };
+		9F116FE41DD9B70800C3D8E6 /* WHscore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F116FE31DD9B70800C3D8E6 /* WHscore.m */; };
 		9F13C2341DC8489F00D5FD56 /* WHgetintroduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */; };
 		9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */; };
 		9F13C23F1DC89E5F00D5FD56 /* WHpreviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C23E1DC89E5F00D5FD56 /* WHpreviewTableViewController.m */; };
@@ -120,6 +121,7 @@
 		9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */; };
 		9FE6B5AF1DCAE8870049FC8B /* WHgetprofirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */; };
 		9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */; };
+		9FF981CB1DDAA9E6008C9E20 /* CustomProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF981CA1DDAA9E6008C9E20 /* CustomProgress.m */; };
 		C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */ = {isa = PBXBuildFile; fileRef = C807B9A61DC060B800D3C700 /* JwAreass.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
@@ -319,6 +321,8 @@
 		9F1073931DD08CEC00725A84 /* JSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropDownMenu.m; sourceTree = "<group>"; };
 		9F1073961DD0995700725A84 /* WHgetappcate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetappcate.h; sourceTree = "<group>"; };
 		9F1073971DD0995700725A84 /* WHgetappcate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetappcate.m; sourceTree = "<group>"; };
+		9F116FE21DD9B70800C3D8E6 /* WHscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHscore.h; sourceTree = "<group>"; };
+		9F116FE31DD9B70800C3D8E6 /* WHscore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHscore.m; sourceTree = "<group>"; };
 		9F13C2321DC8489F00D5FD56 /* WHgetintroduce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetintroduce.h; sourceTree = "<group>"; };
 		9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetintroduce.m; sourceTree = "<group>"; };
 		9F13C2351DC88F0800D5FD56 /* WHlookForViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHlookForViewController.h; sourceTree = "<group>"; };
@@ -422,6 +426,8 @@
 		9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetprofirst.m; sourceTree = "<group>"; };
 		9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrelationTableViewController.h; sourceTree = "<group>"; };
 		9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrelationTableViewController.m; sourceTree = "<group>"; };
+		9FF981C91DDAA9E1008C9E20 /* CustomProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProgress.h; sourceTree = "<group>"; };
+		9FF981CA1DDAA9E6008C9E20 /* CustomProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProgress.m; sourceTree = "<group>"; };
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C807B9A51DC060B800D3C700 /* JwAreass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwAreass.h; sourceTree = "<group>"; };
 		C807B9A61DC060B800D3C700 /* JwAreass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwAreass.m; sourceTree = "<group>"; };
@@ -688,6 +694,8 @@
 		9F35CE6C1DD6AD40003F0C78 /* LYC */ = {
 			isa = PBXGroup;
 			children = (
+				9FF981C91DDAA9E1008C9E20 /* CustomProgress.h */,
+				9FF981CA1DDAA9E6008C9E20 /* CustomProgress.m */,
 				9F35CE6D1DD6AD4A003F0C78 /* LYTestOneViewController.h */,
 				9F35CE6E1DD6AD50003F0C78 /* LYTestOneViewController.m */,
 				9F35CE701DD6AD55003F0C78 /* LYTestOneViewController.xib */,
@@ -1148,6 +1156,8 @@
 				9F35CE861DD6BF8B003F0C78 /* WHcov.m */,
 				9F35CE881DD6C097003F0C78 /* WHrela.h */,
 				9F35CE891DD6C097003F0C78 /* WHrela.m */,
+				9F116FE21DD9B70800C3D8E6 /* WHscore.h */,
+				9F116FE31DD9B70800C3D8E6 /* WHscore.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1660,6 +1670,7 @@
 				9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */,
 				9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */,
 				9FC9FBAC1DD455BB00EFB066 /* WHrate.m in Sources */,
+				9F116FE41DD9B70800C3D8E6 /* WHscore.m in Sources */,
 				9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */,
 				9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
@@ -1801,6 +1812,7 @@
 				9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */,
 				9F0F28BD1DC47DF2007118BD /* WHreplymessageViewController.m in Sources */,
 				9F07DE591DD566EF00B292C2 /* WHmongorate.m in Sources */,
+				9FF981CB1DDAA9E6008C9E20 /* CustomProgress.m in Sources */,
 				C86354A71DB4D3AB00ED8B16 /* JwMenuBaseController.m in Sources */,
 				8E86DBD71DC9806D00C14635 /* PicUpdateCollectionViewCell.m in Sources */,
 				9F35CE871DD6BF8B003F0C78 /* WHcov.m in Sources */,

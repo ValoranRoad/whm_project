@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LYTestOneTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *moneyLaber;
+
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
+@property (weak, nonatomic) IBOutlet UILabel *nameTitLaber;
+@property (weak, nonatomic) IBOutlet UILabel *ageLaber;
 
 @end

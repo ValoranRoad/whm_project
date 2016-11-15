@@ -48,6 +48,14 @@
 
 @property(nonatomic,strong)NSString * rela_id; //被保人ID
 
+@property(nonatomic,strong)NSString * rate;
+
+@property(nonatomic,strong)NSString * pay_period;
+
+@property(nonatomic,strong)NSString * payout;
+
+
+
 
 
 
@@ -127,18 +135,36 @@
 //开始体检事件
 -(void)btnStart:(UIButton *)sender
 {
-//    NSLog(@"开始体检");
     
+    /*
+    LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+    oneVC.rela_id = self.rela_id;
+    oneVC.pro_id = self.ids;
+    oneVC.is_main_must = self.is_main;
+    oneVC.period = self.period;
+    oneVC.rate = self.rate;
     
+    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+    LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
+    
+    JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+    [self presentViewController:collectVC animated:YES completion:nil];
+
+    //    NSLog(@"开始体检");
+     */
+    
+   
     if (self.ids != nil) {
     
-    if (self.rela_id  != nil) {
+    if (self.rela_id  != nil && self.period != nil && self.rate != nil) {
         
        
   LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
      oneVC.rela_id = self.rela_id;
      oneVC.pro_id = self.ids;
      oneVC.is_main_must = self.is_main;
+        oneVC.period = self.period;
+        oneVC.rate = self.rate;
     
     LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
     LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
@@ -156,6 +182,7 @@
     {
         [JGProgressHelper showError:@"请选择保险险种"];
     }
+    
 }
 
 #pragma mark --添加事件
@@ -401,6 +428,7 @@
             NSLog(@"输入的数据 = %@",_userNameTextField.text);
             HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             cell.selectLaber.text = _userNameTextField.text;
+            self.rate = _userNameTextField.text;
             
         }]];
         //增加取消按钮；

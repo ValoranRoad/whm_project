@@ -7,9 +7,9 @@
 //
 
 #import "LYTestTwoViewController.h"
-
+#import "MacroUtility.h"
+#import "UIColor+Hex.h"
 @interface LYTestTwoViewController ()
-
 @end
 
 @implementation LYTestTwoViewController
@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor = [UIColor colorWithHex: 0xF5F7F9];
+
+   
+    
 }
 
 - (void)didReceiveMemoryWarning {

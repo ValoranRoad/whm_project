@@ -11,11 +11,28 @@
 #import "LYTestTwoTableViewCell.h"
 #import "WHpros.h"
 #import "WHgetreport.h"
+#import "WHscore.h"
+#import "WHcov.h"
+#import "WHrela.h"
+#import <UIImageView+WebCache.h>
+
 
 @interface LYTestOneViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property(nonatomic,strong)NSMutableArray * dateArry;
+@property(nonatomic,strong)NSString * score;
+@property(nonatomic,strong)NSString * level;
+@property(nonatomic,strong)NSString * Strate;
+
+@property(nonatomic,strong)NSString * StrCov;
+
+@property(nonatomic,strong)NSString * strName;
+
+@property(nonatomic,strong)NSString * headImg;
+
+@property(nonatomic,strong)NSString * Strage;
+
 
 @end
 static NSString * const TestCellIdentifer = @"TestCell";
@@ -26,7 +43,7 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
 {
     [super viewWillAppear:YES];
     
-    [self requartDate];
+   [self requartDate];
     
 }
 
@@ -34,25 +51,51 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
 -(void)requartDate
 {
     NSLog(@"%@",self.rela_id);
-    NSDictionary * infoDic = @{@"pro_id":self.pro_id,@"main_id":@"0",@"is_main_must":self.is_main_must, @"insured_amount":@"100000",@"pay_period":@"10年交",@"period":@"至70岁"};
+    NSDictionary * infoDic = @{@"pro_id":@"8088",@"main_id":@"0",@"is_main_must":self.is_main_must, @"insured_amount":self.rate,@"pay_period":@"10年交",@"period":self.period};
      NSError * error = nil;
     
+   // NSArray * array = [NSArray array];
+    NSArray * array  = @[infoDic];
     
-    
-    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:infoDic options:NSJSONWritingPrettyPrinted error:&error];
+   NSData * jsonData = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:&error];
     NSString * paramStr = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+     self.dateArry = [NSMutableArray array];
     [self.dataService getsavepolictWithUid:@""
                                    rela_id:self.rela_id
                                       pros:paramStr
                                    success:^(NSArray *lists){
                                        
                                        NSLog(@"%@", lists);
-//                                       self.dateArry = [NSMutableArray array];
-//                                       WHgetreport * report = [lists firstObject];
-//                                       WHpros * pros = [report.pros firstObject];
-//                                       [self.dateArry addObject: pros];
-//                                       NSLog(@"%@",self.dateArry);
-//                                       [self.tableView reloadData];
+                                      
+                                       WHgetreport * report = [lists firstObject];
+                                      
+                                       //self.dateArry = [NSMutableArray arrayWithArray:pro];
+                                       
+                                       [self.dateArry addObjectsFromArray:report.pros];
+                                      // NSLog(@"==%ld",self.dateArry.count);
+                                       //score获取
+//                                    NSLog(@"===%@",report.score.rate);                                                             NSLog(@"===%@",report.score.score);
+//                                     NSLog(@"%@",report.score.level);
+                                       self.score = report.score.score;
+                                       self.level = report.score.level;
+                                       self.Strate = report.score.rate;
+                                       //获取cov数据
+                                       self.StrCov = report.cov.des;
+                                       NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+                                       [ud setValue:[NSString stringWithFormat:@"%@",self.StrCov] forKey:@"one"];
+                                       NSLog(@"==%@",self.StrCov);
+                                       //姓名的获取
+                                       for (WHrela * rela in report.rela) {
+                                           NSLog(@"%@",rela.name);
+                                           self.strName = rela.name;
+                                           self.Strage = rela.birthday;
+                                           self.headImg = rela.avatar;
+                                       }
+                                       
+                                       
+                                       
+                                       [self.tableView reloadData];
+                                       
     } failure:^(NSError *error) {
         
     }];
@@ -78,7 +121,7 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return self.dateArry.count+1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -89,11 +132,18 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
     if (indexPath.section == 0) {
         LYTestOneTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:TestCellIdentifer forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.moneyLaber.text = self.Strate;
+        cell.nameTitLaber.text = self.strName;
+        [cell.headImage sd_setImageWithURL:[NSURL URLWithString:self.headImg]];
+       
+        cell.ageLaber.text = self.Strage;
+        
         return cell;
     }else
     {
         LYTestTwoTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:TestTwoCellIdentifer forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.model = self.dateArry[indexPath.section -1];
         return cell;
     }
 
