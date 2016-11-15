@@ -35,8 +35,12 @@
     CustomProgress * custompro5;
     NSTimer * timer5;
     int present5;
-  
 }
+/**
+ *  🐶ss    👇
+ */
+@property(nonatomic,strong)CustomProgress * custompro;
+@property(nonatomic,strong)CustomProgress * custompro1;
 @property(nonatomic,strong)UIWebView * scw;
 @property(nonatomic,strong)UILabel * titLaber;
 @property(nonatomic,strong)NSString * s1 ;
@@ -72,25 +76,26 @@
 {
     self.view.backgroundColor = [UIColor colorWithHex: 0xF5F7F9];
     
-    custompro = [[CustomProgress alloc] initWithFrame:CGRectMake(10, 10, kScreenWitdh *0.4, 50)];
+    _custompro = [[CustomProgress alloc] initWithFrame:CGRectMake(10, 10, kScreenWitdh *0.4, 50)];
     
-    custompro.maxValue = 20;
+    _custompro.maxValue = 20;
     //设置背景色
-    custompro.bgimg.backgroundColor =[UIColor whiteColor];
-    custompro.leftimg.backgroundColor =[UIColor colorWithRed:202/255.0 green:237/255.0 blue:234/255.0 alpha:1];
+    _custompro.bgimg.backgroundColor =[UIColor whiteColor];
+    _custompro.leftimg.backgroundColor =[UIColor colorWithRed:202/255.0 green:237/255.0 blue:234/255.0 alpha:1];
     
-    custompro.presentlab.textColor = [UIColor blackColor];
-    [self.view addSubview:custompro];
+    _custompro.presentlab.textColor = [UIColor blackColor];
+    [self.view addSubview:_custompro];
     [self timer];
     //试图2
-    custompro1 = [[CustomProgress alloc] initWithFrame:CGRectMake(kScreenWitdh *0.5, 10, kScreenWitdh *0.4, 50)];
+    _custompro1 = [[CustomProgress alloc] initWithFrame:CGRectMake(kScreenWitdh *0.5, 10, kScreenWitdh *0.4, 50)];
     
-    custompro1.maxValue = 10;
+    _custompro1.maxValue = 10;
     //设置背景色
-    custompro1.bgimg.backgroundColor =[UIColor whiteColor];
-    custompro1.leftimg.backgroundColor =[UIColor colorWithRed:249/255.0 green:242/255.0 blue:206/255.0 alpha:1];;
-    custompro1.presentlab.textColor = [UIColor blackColor];
-    [self.view addSubview:custompro1];
+    _custompro1.bgimg.backgroundColor =[UIColor whiteColor];
+    _custompro1.leftimg.backgroundColor =[UIColor redColor];
+    //[UIColor colorWithRed:249/255.0 green:242/255.0 blue:206/255.0 alpha:1];;
+   _custompro1.presentlab.textColor = [UIColor blackColor];
+    [self.view addSubview:_custompro1];
     [self timer1];
     //试图3
     custompro2 = [[CustomProgress alloc] initWithFrame:CGRectMake(10, 80, kScreenWitdh *0.4, 50)];
@@ -100,7 +105,7 @@
     custompro2.leftimg.backgroundColor = [UIColor colorWithRed:202/255.0 green:237/255.0 blue:234/255.0 alpha:1];;
     custompro2.presentlab.textColor = [UIColor blackColor];
     [self.view addSubview:custompro2];
-    [self timer2];
+//    [self timer2];
     //试图4
     custompro3 = [[CustomProgress alloc] initWithFrame:CGRectMake(kScreenWitdh *0.5, 80, kScreenWitdh *0.4, 50)];
     
@@ -110,7 +115,7 @@
     custompro3.leftimg.backgroundColor =[UIColor colorWithRed:249/255.0 green:242/255.0 blue:206/255.0 alpha:1];;
     custompro3.presentlab.textColor = [UIColor blackColor];
     [self.view addSubview:custompro3];
-    [self timer3];
+//    [self timer3];
     //试图5
      custompro4 = [[CustomProgress alloc] initWithFrame:CGRectMake(10, 150, kScreenWitdh *0.4, 50)];
     custompro4.maxValue = 25;
@@ -119,7 +124,7 @@
     custompro4.leftimg.backgroundColor =[UIColor colorWithRed:249/255.0 green:242/255.0 blue:206/255.0 alpha:1];;
     custompro4.presentlab.textColor = [UIColor blackColor];
     [self.view addSubview:custompro4];
-    [self timer4];
+//    [self timer4];
     //试图6
     custompro5 = [[CustomProgress alloc] initWithFrame:CGRectMake(kScreenWitdh *0.5, 150, kScreenWitdh *0.4, 50)];
     custompro5.maxValue = 7;
@@ -127,7 +132,7 @@
     custompro5.leftimg.backgroundColor =[UIColor colorWithRed:249/255.0 green:242/255.0 blue:206/255.0 alpha:1];;
     custompro5.presentlab.textColor = [UIColor blackColor];
     [self.view addSubview:custompro5];
-    [self timer5];
+//    [self timer5];
 
     //界面设计
     self.titLaber = [[UILabel alloc]init];
@@ -171,7 +176,7 @@
     
     if (present<=20) {
         
-        [custompro setPresent:2];
+        [_custompro setPresent:6 title:@"保障是否全面" labelText:@"12分"];
         
     }
     
@@ -181,8 +186,8 @@
     
     if (present1<=10) {
         
-        [custompro1 setPresent1:8];
-        
+        [_custompro1 setPresent:8 title:@"保费是否合理" labelText:@"8分"];
+
     }
     
 }

@@ -23,7 +23,7 @@
 @property(nonatomic)float maxValue1;
 @property(nonatomic,strong)UILabel * mylaber1;
 @property(nonatomic,strong)UIImageView * Img2;
--(void)setPresent:(int)present;
+-(void)setPresent:(int)present title:(NSString *)title labelText:(NSString *)labelText;
 -(void)setPresent1:(int)present1;
 -(void)setPresent2:(int)present2;
 -(void)setPresent3:(int)present3;
