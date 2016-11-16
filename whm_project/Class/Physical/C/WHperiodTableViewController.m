@@ -69,13 +69,19 @@
         [hud hide:YES];
         
         self.dataArry = [NSMutableArray array];
+        //NSMutableArray * arry2 = [NSMutableArray array];
+    
+        
         WHget_pro_rate * pro = [lists firstObject];
         WHmongorate * mon = [pro.mongo_rate firstObject];
         NSArray * periods = mon.rate;
-        for (WHrate * rate in periods) {
+               for (WHrate * rate in periods) {
            
             [self.dataArry addObject:rate.period];
-        }
+                   
+                   NSLog(@"+++%@",rate.pay_period);
+                   
+               }
         self.arr1 =[NSMutableArray array];
         for (int i = 0 ;i<self.dataArry.count;i++) {
             if ([_arr1 containsObject:[self.dataArry  objectAtIndex:i]] == NO) {

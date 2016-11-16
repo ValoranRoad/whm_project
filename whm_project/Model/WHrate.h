@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
-
+#import "WHpay_period.h"
 @protocol WHrate  <NSObject>
 @end
 
@@ -16,7 +16,7 @@
 @property(nonatomic,strong)NSString <Optional> * period;
 @property(nonatomic,strong)NSString <Optional> * age;
 @property(nonatomic,strong)NSString <Optional> * gender;
-//@property(nonatomic,strong)NSMutableArray * pay_period;
+@property(nonatomic,strong)WHpay_period <Optional> * pay_period;
 
 
 @end

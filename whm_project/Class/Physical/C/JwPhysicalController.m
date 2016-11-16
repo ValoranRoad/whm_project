@@ -153,6 +153,7 @@
     //    NSLog(@"开始体检");
      */
     
+    
    
     if (self.ids != nil) {
     
@@ -167,6 +168,13 @@
         oneVC.rate = self.rate;
     
     LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+        
+       twoVC.rela_id = self.rela_id;
+       twoVC.pro_id = self.ids;
+       twoVC.is_main_must = self.is_main;
+       twoVC.period = self.period;
+       twoVC.rate = self.rate;
+
     LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
     
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
@@ -182,7 +190,7 @@
     {
         [JGProgressHelper showError:@"请选择保险险种"];
     }
-    
+
 }
 
 #pragma mark --添加事件

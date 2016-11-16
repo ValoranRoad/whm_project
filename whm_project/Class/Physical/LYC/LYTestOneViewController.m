@@ -33,6 +33,8 @@
 
 @property(nonatomic,strong)NSString * Strage;
 
+@property(nonatomic,strong)NSMutableArray * secondArry;
+
 
 @end
 static NSString * const TestCellIdentifer = @"TestCell";
@@ -60,6 +62,7 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:&error];
     NSString * paramStr = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
      self.dateArry = [NSMutableArray array];
+     self.secondArry = [NSMutableArray array];
     [self.dataService getsavepolictWithUid:@""
                                    rela_id:self.rela_id
                                       pros:paramStr
@@ -72,10 +75,7 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
                                        //self.dateArry = [NSMutableArray arrayWithArray:pro];
                                        
                                        [self.dateArry addObjectsFromArray:report.pros];
-                                      // NSLog(@"==%ld",self.dateArry.count);
-                                       //score获取
-//                                    NSLog(@"===%@",report.score.rate);                                                             NSLog(@"===%@",report.score.score);
-//                                     NSLog(@"%@",report.score.level);
+                                   
                                        self.score = report.score.score;
                                        self.level = report.score.level;
                                        self.Strate = report.score.rate;
@@ -92,6 +92,14 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
                                            self.headImg = rela.avatar;
                                        }
                                        
+                                       //第二个界面数据的获取
+//                                       [self.secondArry addObjectsFromArray:report.second];
+//                                       NSLog(@"==%@",self.secondArry);
+                                       for (WHsecond * second in report.second) {
+                                          // NSLog(@"%@",second.interests);
+                                           [self.secondArry addObject:second.interests];
+                                           NSLog(@"====%@",self.secondArry);
+                                       }
                                        
                                        
                                        [self.tableView reloadData];

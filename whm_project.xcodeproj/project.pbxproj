@@ -73,6 +73,11 @@
 		9F14C1771DC97E38003A9D13 /* WHprevTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */; };
 		9F14C17A1DC987E3003A9D13 /* WHgethonor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1791DC987E3003A9D13 /* WHgethonor.m */; };
 		9F14C17D1DC9DCDA003A9D13 /* WHmicro.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */; };
+		9F21CFA61DDBECD40089BADB /* WHtestwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F21CFA51DDBECD40089BADB /* WHtestwoTableViewCell.m */; };
+		9F21CFA91DDC09480089BADB /* WHsecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F21CFA81DDC09480089BADB /* WHsecond.m */; };
+		9F21CFAC1DDC09E20089BADB /* WHinterests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F21CFAB1DDC09E20089BADB /* WHinterests.m */; };
+		9F21CFAF1DDC4F070089BADB /* WHpay_period.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F21CFAE1DDC4F070089BADB /* WHpay_period.m */; };
+		9F21CFB21DDC50FC0089BADB /* WHpay_periodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F21CFB11DDC50FC0089BADB /* WHpay_periodTableViewController.m */; };
 		9F35CE471DD6A3F9003F0C78 /* WHageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE461DD6A3F9003F0C78 /* WHageTableViewCell.m */; };
 		9F35CE4A1DD6A462003F0C78 /* WHperiodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE491DD6A462003F0C78 /* WHperiodTableViewController.m */; };
 		9F35CE521DD6AC4B003F0C78 /* JSCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE511DD6AC4B003F0C78 /* JSCollectViewController.m */; };
@@ -335,6 +340,16 @@
 		9F14C1791DC987E3003A9D13 /* WHgethonor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgethonor.m; sourceTree = "<group>"; };
 		9F14C17B1DC9DCDA003A9D13 /* WHmicro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmicro.h; sourceTree = "<group>"; };
 		9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmicro.m; sourceTree = "<group>"; };
+		9F21CFA41DDBECD40089BADB /* WHtestwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHtestwoTableViewCell.h; sourceTree = "<group>"; };
+		9F21CFA51DDBECD40089BADB /* WHtestwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHtestwoTableViewCell.m; sourceTree = "<group>"; };
+		9F21CFA71DDC09480089BADB /* WHsecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsecond.h; sourceTree = "<group>"; };
+		9F21CFA81DDC09480089BADB /* WHsecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsecond.m; sourceTree = "<group>"; };
+		9F21CFAA1DDC09E20089BADB /* WHinterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHinterests.h; sourceTree = "<group>"; };
+		9F21CFAB1DDC09E20089BADB /* WHinterests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHinterests.m; sourceTree = "<group>"; };
+		9F21CFAD1DDC4F070089BADB /* WHpay_period.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpay_period.h; sourceTree = "<group>"; };
+		9F21CFAE1DDC4F070089BADB /* WHpay_period.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpay_period.m; sourceTree = "<group>"; };
+		9F21CFB01DDC50FC0089BADB /* WHpay_periodTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpay_periodTableViewController.h; sourceTree = "<group>"; };
+		9F21CFB11DDC50FC0089BADB /* WHpay_periodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpay_periodTableViewController.m; sourceTree = "<group>"; };
 		9F35CE451DD6A3F9003F0C78 /* WHageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHageTableViewCell.h; sourceTree = "<group>"; };
 		9F35CE461DD6A3F9003F0C78 /* WHageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHageTableViewCell.m; sourceTree = "<group>"; };
 		9F35CE481DD6A45B003F0C78 /* WHperiodTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHperiodTableViewController.h; sourceTree = "<group>"; };
@@ -687,6 +702,8 @@
 				9F35CE5F1DD6AC6C003F0C78 /* LYTitleView.m */,
 				9F35CE601DD6AC6C003F0C78 /* NSTimer+LHBlockSupport.h */,
 				9F35CE611DD6AC6C003F0C78 /* NSTimer+LHBlockSupport.m */,
+				9F21CFA41DDBECD40089BADB /* WHtestwoTableViewCell.h */,
+				9F21CFA51DDBECD40089BADB /* WHtestwoTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -896,6 +913,8 @@
 				9F07DE5B1DD56CC900B292C2 /* WHageTableViewController.m */,
 				9F35CE481DD6A45B003F0C78 /* WHperiodTableViewController.h */,
 				9F35CE491DD6A462003F0C78 /* WHperiodTableViewController.m */,
+				9F21CFB01DDC50FC0089BADB /* WHpay_periodTableViewController.h */,
+				9F21CFB11DDC50FC0089BADB /* WHpay_periodTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1158,6 +1177,12 @@
 				9F35CE891DD6C097003F0C78 /* WHrela.m */,
 				9F116FE21DD9B70800C3D8E6 /* WHscore.h */,
 				9F116FE31DD9B70800C3D8E6 /* WHscore.m */,
+				9F21CFA71DDC09480089BADB /* WHsecond.h */,
+				9F21CFA81DDC09480089BADB /* WHsecond.m */,
+				9F21CFAA1DDC09E20089BADB /* WHinterests.h */,
+				9F21CFAB1DDC09E20089BADB /* WHinterests.m */,
+				9F21CFAD1DDC4F070089BADB /* WHpay_period.h */,
+				9F21CFAE1DDC4F070089BADB /* WHpay_period.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1659,6 +1684,7 @@
 			files = (
 				9F07DE5C1DD56CC900B292C2 /* WHageTableViewController.m in Sources */,
 				9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */,
+				9F21CFA91DDC09480089BADB /* WHsecond.m in Sources */,
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				C863543B1DB473A600ED8B16 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				9F35CE681DD6AC6C003F0C78 /* LYTitleView.m in Sources */,
@@ -1676,6 +1702,7 @@
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
 				9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */,
 				9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */,
+				9F21CFAF1DDC4F070089BADB /* WHpay_period.m in Sources */,
 				9F0F28BA1DC46506007118BD /* WHgetmessage.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				9F35CE8A1DD6C097003F0C78 /* WHrela.m in Sources */,
@@ -1713,6 +1740,7 @@
 				C8C10CB91DB9C06F00A5FB9A /* WHaccountDetaTableViewController.m in Sources */,
 				961358D01DB6268600F5107F /* HmCompanyTableCell.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
+				9F21CFB21DDC50FC0089BADB /* WHpay_periodTableViewController.m in Sources */,
 				C8C10C711DB9BE2B00A5FB9A /* JwCompanys.m in Sources */,
 				9F056ED01DB9E7410069A085 /* WHinsuranceNameViewController.m in Sources */,
 				C86353851DB4661C00ED8B16 /* main.m in Sources */,
@@ -1739,6 +1767,7 @@
 				C83D066E1DCB29BF0028A681 /* JwRela.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
 				9F0A20C71DBDEAA2004C5F67 /* WHtelephoneNumViewController.m in Sources */,
+				9F21CFAC1DDC09E20089BADB /* WHinterests.m in Sources */,
 				9F14C17D1DC9DCDA003A9D13 /* WHmicro.m in Sources */,
 				9F35CE691DD6AC6C003F0C78 /* NSTimer+LHBlockSupport.m in Sources */,
 				961358D51DB6280000F5107F /* HmCompanyCollectionCell.m in Sources */,
@@ -1755,6 +1784,7 @@
 				9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */,
 				9F13C2341DC8489F00D5FD56 /* WHgetintroduce.m in Sources */,
 				C8C10CB41DB9C06F00A5FB9A /* JwLoginController.m in Sources */,
+				9F21CFA61DDBECD40089BADB /* WHtestwoTableViewCell.m in Sources */,
 				C86354641DB473B300ED8B16 /* LBXAlertAction.m in Sources */,
 				9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */,
 				C86353CA1DB4669A00ED8B16 /* JwHttpManager.m in Sources */,
