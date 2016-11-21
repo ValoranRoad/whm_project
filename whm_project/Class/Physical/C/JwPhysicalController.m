@@ -24,6 +24,8 @@
 #import "LYTestThreeViewController.h"
 #import "JGProgressHelper.h"
 //
+#import "JwUserCenter.h"
+#import "JwLoginController.h"
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -71,6 +73,8 @@
     self.tabBarController.tabBar.hidden=YES;
     NSLog(@"%@",self.name);
     
+    
+    
 }
 
 
@@ -78,8 +82,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // 布局
+//    // 布局
+//    if ([JwUserCenter sharedCenter].uid != nil) {
+//         [self setupUI];
+//    }
+//    else
+//    {
+//        [JGProgressHelper showError:@"请登录账号"];
+//        JwLoginController * login = [[JwLoginController alloc]init];
+//        [self.navigationController pushViewController:login animated:YES];
+//    }
     [self setupUI];
+
     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
@@ -205,11 +219,18 @@
 #pragma mark -- Private
 -(void)addNewSafeAction:(UIBarButtonItem *)sender
 {
+    if ([JwUserCenter sharedCenter].uid == nil) {
+        [JGProgressHelper showError:@"请登录账号"];
+        JwLoginController * loging = [[JwLoginController alloc]init];
+        [self.navigationController pushViewController:loging animated:YES];
+    }else
+    {
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
     }];
     [self.navigationController pushViewController:VC animated:YES];
+    }
 }
 
 #pragma mark -- Table View Delegate

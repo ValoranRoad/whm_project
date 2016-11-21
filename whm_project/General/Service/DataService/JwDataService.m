@@ -35,8 +35,7 @@
 #import "MacroUtility.h"
 #import "JwUserCenter.h"
 #import "JwUser.h"
-
-
+#import "JGProgressHelper.h"
 @implementation JwDataService
 
 //获取公司列表
@@ -171,6 +170,11 @@
 -(void)get_user_infoWithUid:(NSString *)uid
                     success:(void (^)(NSArray * lists))success failure:(void (^)(NSError * error))failure
 {
+    if ([JwUserCenter sharedCenter].uid == nil) {
+        [JGProgressHelper showError:@"请登录账号"];
+    }
+    else
+    {
     NSMutableDictionary *param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                                     @"token":[JwUserCenter sharedCenter].key}
                                   mutableCopy];
@@ -189,7 +193,7 @@
         }
     }];
 
-    
+    }
     
 }
 //公司详情
@@ -288,6 +292,9 @@
 -(void)get_user_realtionWithUid:(NSString *)uid
                         success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 {
+    if ([JwUserCenter sharedCenter].uid != nil) {
+        
+    
     NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                                      @"token":[JwUserCenter sharedCenter].key}
                                    mutableCopy];
@@ -308,7 +315,11 @@
         }
     }];
     
-    
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请登录账号"];
+    }
     
     
 }
@@ -508,6 +519,9 @@
 //找险种搜索首页数据
 -(void)getprofirstWithUid:(NSString * )uid success:(void (^)(WHgetprofirst *profirst))success failure:(void (^)(NSError *error))failure
 {
+    if ([JwUserCenter sharedCenter].uid != nil) {
+        
+    
     NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid} mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_pro_first"] mutableCopy];
     
@@ -526,7 +540,12 @@
     }];
 
     
-    
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请登录账号"];
+    }
+
     
 }
 
