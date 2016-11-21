@@ -11,8 +11,7 @@
 #import "MacroUtility.h"
 #import "WHageTableViewCell.h"
 
-@interface WHpay_periodTableViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+@interface WHpay_periodTableViewController ()
 @end
 
 @implementation WHpay_periodTableViewController

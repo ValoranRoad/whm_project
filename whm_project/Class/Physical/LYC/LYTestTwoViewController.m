@@ -227,26 +227,6 @@
     
 }
 
-////webview数据处理
-//
-//-(void)loadWithURLString:(NSString *)urlStr
-//{
-//    NSString  * content = [self.s1 stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-//    NSString * contentTwo = [content stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
-//    
-//    NSString *str1 = [NSString stringWithFormat:@"<head><style> img{max-width: %fpx;max-height:330px;\n width:expression(document.body.clientWidth>%f?\"%fpx\":\"auto\";\n height:expression(document.body.clientWidth>330?\"330px\":\"auto\");\n overflow:hidden;\n} \n</style></head>",kScreenWitdh-16,kScreenWitdh-16,kScreenWitdh-16];
-//    //
-//    
-//    
-//    NSString *str2 = @"</body><html>";
-//    
-//    NSString * html = [NSString stringWithFormat:@"%@%@%@",str1,contentTwo,str2];
-//    //self.scw = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//    
-//    NSLog(@"00%@",contentTwo);
-//    
-//   
-//}
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

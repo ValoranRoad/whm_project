@@ -9,7 +9,8 @@
 #import "JwUserInfoController.h"
 #import "JwNavigationController.h"
 #import "JwLoginController.h"
-
+#import "JwUserCenter.h"
+#import "WHpersonCenterViewController.h"
 @interface JwUserInfoController ()
 
 @end
@@ -19,6 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if ([JwUserCenter sharedCenter].uid != nil) {
+        WHpersonCenterViewController * person = [[WHpersonCenterViewController alloc]init];
+        [self.navigationController pushViewController:person animated:YES];
+        
+    }
+    else
+    {
+    JwLoginController *loginVC = [[JwLoginController alloc] init];
+    [self.navigationController pushViewController:loginVC animated:YES];
+    }
+
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

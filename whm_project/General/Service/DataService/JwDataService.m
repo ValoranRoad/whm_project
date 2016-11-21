@@ -195,7 +195,7 @@
 //公司详情
 -(void)get_company_detailWithCom_id:(NSString *)com_id
                                 uid:(NSString *)uid
-                            success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError *))failure
+                            success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"com_id":com_id,
                                      @"uid":[JwUserCenter sharedCenter].uid}
@@ -205,7 +205,7 @@
     [self.httpManager POST:param withPoint:@"kb/get_company_detail" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        WHcompanyDetail *companydetals = [[WHcompanyDetail  alloc]initWithDictionary:[infos firstObject] error:nil];
+       NSArray *companydetals = [WHcompanyDetail  arrayOfModelsFromDictionaries:infos error:nil];
       if (success) {
             success(companydetals);
         }

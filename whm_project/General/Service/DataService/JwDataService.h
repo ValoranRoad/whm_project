@@ -79,7 +79,7 @@ success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))fail
 //公司详情列表
 -(void)get_company_detailWithCom_id:(NSString * )com_id
                                 uid:(NSString *)uid
-success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError *error))failure;
+success:(void (^)(NSArray * list))success failure:(void (^)(NSError *error))failure;
 
 //医院列表
 -(void)get_hospitalWithCom_id:(NSString *)com_id
