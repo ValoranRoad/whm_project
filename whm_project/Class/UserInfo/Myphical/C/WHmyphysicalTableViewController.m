@@ -13,6 +13,7 @@
 #import "JGProgressHelper.h"
 #import "HmAddInsuredController.h"
 #import "WHget_user_realtion.h"
+#import "WHslipListTableViewController.h"
 
 #define kCellIdentifierOfInsured @"kCellIdentifierOfInsuredCell"
 
@@ -21,7 +22,7 @@
     CMIndexBar *indexBar;
 }
 @property (nonatomic ,strong) UITableView *tableV;
-@property (nonatomic ,strong)HmSelectInsuredCell * cell;
+@property (nonatomic ,strong) HmSelectInsuredCell * cell;
 @property (nonatomic ,strong)NSMutableArray * dataArry;
 
 @end
@@ -117,6 +118,8 @@
 {
     WHget_user_realtion  * model = self.dataArry[indexPath.row];
     NSLog(@"%@",model.id);
+    WHslipListTableViewController * sliplist = [[WHslipListTableViewController alloc]init];
+    [self.navigationController pushViewController:sliplist animated:YES];
     
 }
 

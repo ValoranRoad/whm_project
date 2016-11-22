@@ -16,5 +16,6 @@ typedef void(^myblock2)(NSString  *s2);
 
 @property(nonatomic,copy)myblock2  mblock2;
 
+@property(nonatomic,strong)NSString * ID;
 
 @end

@@ -35,8 +35,8 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    JwLoginController *loginVC = [[JwLoginController alloc] init];
-    [self.navigationController pushViewController:loginVC animated:YES];
+//    JwLoginController *loginVC = [[JwLoginController alloc] init];
+//    [self.navigationController pushViewController:loginVC animated:YES];
     
 }
 

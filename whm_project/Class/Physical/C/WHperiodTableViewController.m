@@ -65,7 +65,7 @@
 -(void)quartData
 {
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getprorateWithPid:@"465" uid:@"" gender:@"1" success:^(NSArray * lists) {
+    [self.dataService getprorateWithPid:self.ID uid:@"" gender:@"1" success:^(NSArray * lists) {
         [hud hide:YES];
         
         self.dataArry = [NSMutableArray array];

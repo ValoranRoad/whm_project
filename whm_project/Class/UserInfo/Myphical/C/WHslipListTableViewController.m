@@ -9,6 +9,7 @@
 #import "WHslipListTableViewController.h"
 #import "JGProgressHelper.h"
 #import "MacroUtility.h"
+#import "WHslipListTableViewCell.h"
 
 @interface WHslipListTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -22,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -53,29 +55,47 @@
     _tableV.dataSource = self;
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableV];
+    [self.tableV registerClass:[WHslipListTableViewCell class] forCellReuseIdentifier:@"cell"];
 
 }
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return 0;
+    return 10;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+   WHslipListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     // Configure the cell...
+    [cell.selectBut setBackgroundImage:[UIImage imageNamed:@"Jw_voal"] forState:(UIControlStateNormal)];
+    
+    cell.insured.text = @"¥1001";
+    cell.rate.text = @"¥2515";
+    cell.scoreLaber.text = @"47分";
+    cell.titLaber.text = @"个人人身意外伤害保险";
+    cell.img1.image = [UIImage imageNamed:@"del"];
+    cell.img2.image = [UIImage imageNamed:@"wanshan"];
+    cell.img3.image = [UIImage imageNamed:@"chakan"];
+    [cell.delBut setTitle:@"删除" forState:(UIControlStateNormal)];
+    [cell.pefBut setTitle:@"完善保单" forState:(UIControlStateNormal)];
+    [cell.lookBut setTitle:@"查看报告" forState:(UIControlStateNormal)];
     
     return cell;
 }
-*/
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 120;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

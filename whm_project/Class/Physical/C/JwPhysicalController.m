@@ -420,7 +420,7 @@
             
             
         };
-
+        age.ID = self.ids;
         [self.navigationController pushViewController:age animated:YES];
     }
     
@@ -439,7 +439,7 @@
             
         };
         
-        
+        period.ID = self.ids;
         [self.navigationController pushViewController:period animated:YES];
 
     }
