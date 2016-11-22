@@ -24,6 +24,8 @@
 #import "LYTestThreeViewController.h"
 #import "JGProgressHelper.h"
 //
+#import "JwUserCenter.h"
+#import "JwLoginController.h"
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -48,6 +50,14 @@
 
 @property(nonatomic,strong)NSString * rela_id; //被保人ID
 
+@property(nonatomic,strong)NSString * rate;
+
+@property(nonatomic,strong)NSString * pay_period;
+
+@property(nonatomic,strong)NSString * payout;
+
+
+
 
 
 
@@ -63,6 +73,8 @@
     self.tabBarController.tabBar.hidden=YES;
     NSLog(@"%@",self.name);
     
+    
+    
 }
 
 
@@ -70,8 +82,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // 布局
+//    // 布局
+//    if ([JwUserCenter sharedCenter].uid != nil) {
+//         [self setupUI];
+//    }
+//    else
+//    {
+//        [JGProgressHelper showError:@"请登录账号"];
+//        JwLoginController * login = [[JwLoginController alloc]init];
+//        [self.navigationController pushViewController:login animated:YES];
+//    }
     [self setupUI];
+
     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
@@ -127,20 +149,46 @@
 //开始体检事件
 -(void)btnStart:(UIButton *)sender
 {
-//    NSLog(@"开始体检");
+    
+    /*
+    LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+    oneVC.rela_id = self.rela_id;
+    oneVC.pro_id = self.ids;
+    oneVC.is_main_must = self.is_main;
+    oneVC.period = self.period;
+    oneVC.rate = self.rate;
+    
+    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+    LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
+    
+    JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+    [self presentViewController:collectVC animated:YES completion:nil];
+
+    //    NSLog(@"开始体检");
+     */
     
     
+   
     if (self.ids != nil) {
     
-    if (self.rela_id  != nil) {
+    if (self.rela_id  != nil && self.period != nil && self.rate != nil) {
         
        
   LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
      oneVC.rela_id = self.rela_id;
      oneVC.pro_id = self.ids;
      oneVC.is_main_must = self.is_main;
+        oneVC.period = self.period;
+        oneVC.rate = self.rate;
     
     LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+        
+       twoVC.rela_id = self.rela_id;
+       twoVC.pro_id = self.ids;
+       twoVC.is_main_must = self.is_main;
+       twoVC.period = self.period;
+       twoVC.rate = self.rate;
+
     LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
     
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
@@ -156,6 +204,7 @@
     {
         [JGProgressHelper showError:@"请选择保险险种"];
     }
+
 }
 
 #pragma mark --添加事件
@@ -170,11 +219,18 @@
 #pragma mark -- Private
 -(void)addNewSafeAction:(UIBarButtonItem *)sender
 {
+    if ([JwUserCenter sharedCenter].uid == nil) {
+        [JGProgressHelper showError:@"请登录账号"];
+        JwLoginController * loging = [[JwLoginController alloc]init];
+        [self.navigationController pushViewController:loging animated:YES];
+    }else
+    {
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
     }];
     [self.navigationController pushViewController:VC animated:YES];
+    }
 }
 
 #pragma mark -- Table View Delegate
@@ -401,6 +457,7 @@
             NSLog(@"输入的数据 = %@",_userNameTextField.text);
             HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             cell.selectLaber.text = _userNameTextField.text;
+            self.rate = _userNameTextField.text;
             
         }]];
         //增加取消按钮；

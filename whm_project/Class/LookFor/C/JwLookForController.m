@@ -18,7 +18,8 @@
 #import "WHpowSearTableViewController.h"
 
 #import "JwRela.h"
-
+#import "JwUserCenter.h"
+#import "JwLoginController.h"
 
 @interface JwLookForController ()<UIScrollViewDelegate>
 
@@ -75,8 +76,19 @@
     [super viewWillAppear:YES];
 
     [self quartData];
-    [self UI];
-    [self setupUI];
+    
+    
+    if ([JwUserCenter sharedCenter].uid != nil) {
+        [self UI];
+        [self setupUI];
+    
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请登录账号"];
+        JwLoginController * login = [[JwLoginController alloc]init];
+        [self.navigationController pushViewController:login animated:YES];
+    }
 }
 -(void)quartData
 {
@@ -116,6 +128,7 @@
         [hud hide:YES];
         
     }];
+ 
 }
 
 - (void)viewDidLoad {
@@ -125,6 +138,7 @@
     self.view.backgroundColor = [UIColor colorWithHex: 0xF5F7F9];
     
     // 布局
+    
     [self setupView];
     
     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];

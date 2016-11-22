@@ -390,6 +390,7 @@
     UIImageView *seleView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 64, 24)];
     seleView.image = [UIImage imageNamed:@"xzfwcx-2"];
     
+    
 //    for (id obj in cell.subviews) {
 //        if ([obj isKindOfClass:[UIImageView class]])
 //        {

@@ -13,6 +13,7 @@
 #import "CompleteTypeViewController.h"
 #import "WHorganization.h"
 #import "JGProgressHelper.h"
+#import "JwLoginController.h"
 
 #define kScreenW [[UIScreen mainScreen] bounds].size.width
 @interface RegisterTwoViewController ()<UITableViewDelegate,UITableViewDataSource,completeTypeDelegate,completeDelegate,completeInsDelegate>
@@ -82,9 +83,11 @@
         
     
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.userService registWithName:self.name mobile:self.mobile captcha:self.captcha pwd:self.pwd type:@"1" company_id:@"" org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
+    [self.userService registWithName:self.name mobile:self.mobile captcha:self.captcha pwd:self.pwd type:@"1" company_id:self.compId  org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
         [hud hide:YES];
         [JGProgressHelper showSuccess:@"代理人用户注册成功"];
+        JwLoginController  * login = [[JwLoginController alloc]init];
+        [self.navigationController pushViewController:login animated:YES];
         
     } failure:^(NSError *error) {
         

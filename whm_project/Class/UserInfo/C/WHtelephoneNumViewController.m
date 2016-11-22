@@ -72,7 +72,7 @@
     //
     if (self.tel.telText.text.length != 0) {
         id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.userService sendsmsWithMobile:self.tel.telText.text check_mobile:@"" success:^{
+        [self.userService sendsmsWithMobile:self.tel.telText.text  type:@"1" check_mobile:@"1" success:^{
             
             
             [hud hide:YES];

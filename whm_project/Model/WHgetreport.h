@@ -11,6 +11,10 @@
 #import "WHrela.h"
 #import "WHpros.h"
 #import "WHtotalrate.h"
+#import "WHscore.h"
+#import "WHcov.h"
+#import "WHsecond.h"
+
 
 @protocol  WHgetreport <NSObject>
 
@@ -22,6 +26,13 @@
 @property(nonatomic,strong)WHtotalrate<Optional>* total_rate;
 
 @property(nonatomic,strong)NSArray <WHpros,Optional> * pros;
+
+@property(nonatomic,strong)WHscore <Optional>* score;
+
+@property(nonatomic,strong)WHcov <Optional>* cov;
+
+@property(nonatomic,strong)NSArray <WHsecond ,Optional> * second;
+
 
 
 @end

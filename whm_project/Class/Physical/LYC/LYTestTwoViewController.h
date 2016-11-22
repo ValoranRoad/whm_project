@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYTestTwoViewController : UIViewController
+#import "JwBackBaseController.h"
+@interface LYTestTwoViewController :JwBackBaseController
+@property(nonatomic,strong)NSString * rela_id;
+@property(nonatomic,strong)NSString * pro_id;
+@property(nonatomic,strong)NSString * is_main_must;
+
+@property(nonatomic,strong)NSString * rate; //保费
+@property(nonatomic,strong)NSString * period; //保障期间
+@property(nonatomic,strong)NSString * pay_period;//缴费期间
+@property(nonatomic,strong)NSString * insured_amount;//保额
+@property(nonatomic,strong)NSString * payout;
 
 @end
