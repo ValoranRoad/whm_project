@@ -15,10 +15,17 @@
 #import "HmSelectInsuredController.h"
 #import "HmFujiaCell.h"
 #import "HmSelectCompanyController.h"
-#import "WHresultViewController.h"
 #import "WHageTableViewController.h"
 #import "WHperiodTableViewController.h"
-
+//
+#import "JSCollectViewController.h"
+#import "LYTestOneViewController.h"
+#import "LYTestTwoViewController.h"
+#import "LYTestThreeViewController.h"
+#import "JGProgressHelper.h"
+//
+#import "JwUserCenter.h"
+#import "JwLoginController.h"
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -41,6 +48,18 @@
 
 @property(nonatomic,strong)UITextField *userNameTextField;
 
+@property(nonatomic,strong)NSString * rela_id; //被保人ID
+
+@property(nonatomic,strong)NSString * rate;
+
+@property(nonatomic,strong)NSString * pay_period;
+
+@property(nonatomic,strong)NSString * payout;
+
+
+
+
+
 
 @end
 
@@ -54,6 +73,8 @@
     self.tabBarController.tabBar.hidden=YES;
     NSLog(@"%@",self.name);
     
+    
+    
 }
 
 
@@ -61,8 +82,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // 布局
+//    // 布局
+//    if ([JwUserCenter sharedCenter].uid != nil) {
+//         [self setupUI];
+//    }
+//    else
+//    {
+//        [JGProgressHelper showError:@"请登录账号"];
+//        JwLoginController * login = [[JwLoginController alloc]init];
+//        [self.navigationController pushViewController:login animated:YES];
+//    }
     [self setupUI];
+
     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
@@ -118,9 +149,62 @@
 //开始体检事件
 -(void)btnStart:(UIButton *)sender
 {
-    NSLog(@"开始体检");
-    WHresultViewController * result = [[WHresultViewController alloc]init];
-    [self.navigationController pushViewController:result animated:YES];
+    
+    /*
+    LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+    oneVC.rela_id = self.rela_id;
+    oneVC.pro_id = self.ids;
+    oneVC.is_main_must = self.is_main;
+    oneVC.period = self.period;
+    oneVC.rate = self.rate;
+    
+    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+    LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
+    
+    JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+    [self presentViewController:collectVC animated:YES completion:nil];
+
+    //    NSLog(@"开始体检");
+     */
+    
+    
+   
+    if (self.ids != nil) {
+    
+    if (self.rela_id  != nil && self.period != nil && self.rate != nil) {
+        
+       
+  LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+     oneVC.rela_id = self.rela_id;
+     oneVC.pro_id = self.ids;
+     oneVC.is_main_must = self.is_main;
+        oneVC.period = self.period;
+        oneVC.rate = self.rate;
+    
+    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+        
+       twoVC.rela_id = self.rela_id;
+       twoVC.pro_id = self.ids;
+       twoVC.is_main_must = self.is_main;
+       twoVC.period = self.period;
+       twoVC.rate = self.rate;
+
+    LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
+    
+    JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+    [self presentViewController:collectVC animated:YES completion:nil];
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请选择被保人"];
+    }
+
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请选择保险险种"];
+    }
+
 }
 
 #pragma mark --添加事件
@@ -135,11 +219,18 @@
 #pragma mark -- Private
 -(void)addNewSafeAction:(UIBarButtonItem *)sender
 {
+    if ([JwUserCenter sharedCenter].uid == nil) {
+        [JGProgressHelper showError:@"请登录账号"];
+        JwLoginController * loging = [[JwLoginController alloc]init];
+        [self.navigationController pushViewController:loging animated:YES];
+    }else
+    {
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
     }];
     [self.navigationController pushViewController:VC animated:YES];
+    }
 }
 
 #pragma mark -- Table View Delegate
@@ -191,6 +282,9 @@
         if (self.firstUser) {
            cell.model = self.firstUser;
             //cell.lblName.text = self.name;
+            self.rela_id = self.firstUser.id;
+            NSLog(@"%@",self.rela_id);
+            
            
         }
         return cell;
@@ -220,19 +314,25 @@
                         if (indexPath.row == 1) {
                             cell.myLaber.text = @"投保年龄";
                             cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
+                            cell.selectLaber.text = @"";
                         }
                         if (indexPath.row == 3) {
                             cell.myLaber.text = @"缴费方式";
                             cell.headImg.image = [UIImage imageNamed:@"p_payType"];
+                            cell.selectLaber.text = @"10年交";
                         }
                         if (indexPath.row == 2) {
                             cell.myLaber.text = @"保险期间";
                             cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
+                            cell.selectLaber.text = @"";
+
                         }
                         
                         if (indexPath.row == 4) {
                             cell.myLaber.text = @"保额(元)";
                             cell.headImg.image = [UIImage imageNamed:@"test_money"];
+                            cell.selectLaber.text = @"";
+
                         }
                         
 
@@ -273,6 +373,7 @@
         cell.btnDelete.tag = indexPath.section;
         if (![self.name isEqualToString:@""]) {
             cell.lblName.text = self.name;
+        
         }
         return cell;
 
@@ -305,12 +406,18 @@
     if (indexPath.section == 1 && indexPath.row == 1) {
         NSLog(@"kkk");
         WHageTableViewController * age = [[WHageTableViewController alloc]init];
+        HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
         age.mblock2 = ^(NSString * s1)
         {
             
             self.age = s1;
             
             NSLog(@"==%@",self.age);
+           
+            cell.selectLaber.text = s1;
+
+            
             
         };
 
@@ -320,11 +427,14 @@
     if (indexPath.section == 1 && indexPath.row == 2) {
         NSLog(@"22");
         WHperiodTableViewController * period = [[WHperiodTableViewController alloc]init];
+         HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         period.mblock2 = ^(NSString * s1)
         {
             
             self.period = s1;
             
+            cell.selectLaber.text = s1;
+
             NSLog(@"==%@",self.period);
             
         };
@@ -345,6 +455,9 @@
             _userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
             
             NSLog(@"输入的数据 = %@",_userNameTextField.text);
+            HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            cell.selectLaber.text = _userNameTextField.text;
+            self.rate = _userNameTextField.text;
             
         }]];
         //增加取消按钮；

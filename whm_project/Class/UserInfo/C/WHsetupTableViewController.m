@@ -14,7 +14,7 @@
 #import "WHaccountDetaTableViewController.h"
 #import "WHsavesetupTableViewController.h"
 #import "JGProgressHelper.h"
-
+#import "JwLoginController.h"
 
 @interface WHsetupTableViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
@@ -164,6 +164,9 @@
         [self.userService logoutWithSuccess:^{
             [hud hide:YES];
             [JGProgressHelper  showSuccess:@"退出成功"];
+            JwLoginController * login = [[JwLoginController alloc]init];
+            [self.navigationController pushViewController:login animated:YES];
+            
         } failure:^(NSError *error) {
             [hud hide:YES];
             [JGProgressHelper showError:nil];

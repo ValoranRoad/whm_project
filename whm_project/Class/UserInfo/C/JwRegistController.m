@@ -22,6 +22,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *pwdText;
 @property (weak, nonatomic) IBOutlet UITextField *comforPwdText;
 @property (weak, nonatomic) IBOutlet UIButton *protlBut;
+@property (weak, nonatomic) IBOutlet UIButton *codeButtion;
+
+@property(nonatomic,strong)NSTimer * countDownTime;
+@property(nonatomic,assign)NSInteger secondsCountDowm;
+
 
 @end
 
@@ -87,6 +92,12 @@
     
     
 }
+//注册协议
+
+- (IBAction)registPro:(id)sender {
+    
+    
+}
  //验证码事件发送
 - (IBAction)codeButAction:(id)sender {
    
@@ -95,7 +106,7 @@
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
     dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
     dispatch_source_set_event_handler(_timer, ^{
-        if(timeout< 0){ //倒计时结束，关闭
+        if(timeout<= 0){ //倒计时结束，关闭
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置

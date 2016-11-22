@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *clearB;
 @property (weak, nonatomic) IBOutlet UIButton *eyeB;
 
+@property (weak, nonatomic) IBOutlet UIButton *loginBut;
 
 @end
 
@@ -46,8 +47,16 @@
     self.title = @"登录";
     [self setupView];
     
+//    if (self.mobTF.text.length == 0) {
+//        self.loginBut.userInteractionEnabled = NO;
+//    }
+//    else
+//    {
+//        self.loginBut.userInteractionEnabled = YES;
+//    }
     self.mobTF.text = @"13213011251";
     self.pwdTF.text = @"wyg511688";
+
 }
 
 - (void)setupView{
@@ -145,7 +154,7 @@
             
         } failure:^(NSError *error) {
             [hud hide:YES];
-            [JGProgressHelper showError:nil];
+            [JGProgressHelper showError:@"你输入的账号或密码有误请核查"];
         }];
         
     }else{

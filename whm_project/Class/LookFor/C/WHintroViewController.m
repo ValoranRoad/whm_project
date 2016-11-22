@@ -1,37 +1,30 @@
 //
-//  WHresultViewController.m
+//  WHintroViewController.m
 //  whm_project
 //
-//  Created by 王义国 on 16/11/9.
+//  Created by 王义国 on 16/11/17.
 //  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "WHresultViewController.h"
+#import "WHintroViewController.h"
 
-@interface WHresultViewController ()
-@property(nonatomic,strong)UIImageView * headImage;
-@property(nonatomic,strong)UIView * headView;
-@property(nonatomic,strong)UILabel * scoreLaber;
-@property(nonatomic,strong)UILabel * resultLaber;
-
-
+@interface WHintroViewController ()
 
 @end
 
-@implementation WHresultViewController
+@implementation WHintroViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self setUI ];
-    
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
     
 }
 
-//ui设计
--(void)setUI
-{
-    
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor grayColor];
 }
 
 - (void)didReceiveMemoryWarning {

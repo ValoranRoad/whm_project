@@ -29,6 +29,8 @@
 @class WHgetproperiod;
 @class WHgetcharacters;
 @class WHget_pro_rate;
+@class WHgetreport;
+@class WHgetpolicys;
 
 @interface JwDataService : JwServiceBase
 
@@ -78,7 +80,7 @@ success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))fail
 //公司详情列表
 -(void)get_company_detailWithCom_id:(NSString * )com_id
                                 uid:(NSString *)uid
-success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError *error))failure;
+success:(void (^)(NSArray * list))success failure:(void (^)(NSError *error))failure;
 
 //医院列表
 -(void)get_hospitalWithCom_id:(NSString *)com_id
@@ -169,6 +171,18 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
                      uid:(NSString *)uid
                   gender:(NSString *)gender
  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//体检保存
+-(void)getsavepolictWithUid:(NSString *)uid
+                    rela_id:(NSString *)rela_id
+                       pros:(NSString *)pros
+success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//保单列表
+-(void)getpolicysWithUid:(NSString * )uid
+                 rela_id:(NSString *)rela_id
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
 
