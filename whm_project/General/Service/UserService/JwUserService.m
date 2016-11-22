@@ -149,10 +149,12 @@
 
 //发送短信
 -(void)sendsmsWithMobile:(NSString *)mobile
+                    type:(NSString *)type
             check_mobile:(NSString *)check_mobile
                  success:(void (^)())success failure:(void (^)(NSError *))failure{
     
     NSMutableDictionary * param = [@{@"mobile":mobile,
+                                     @"type":type,
                                      @"check_mobile":check_mobile
                                      } mutableCopy];
     param = [[self filterParam:param interface:@"kb/send_sms"]mutableCopy];

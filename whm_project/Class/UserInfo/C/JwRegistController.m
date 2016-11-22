@@ -11,6 +11,8 @@
 #import "JGProgressHelper.h"
 
 #import "RegisterTwoViewController.h"
+#include "JwLoginController.h"
+
 @interface JwRegistController ()
 
 
@@ -59,6 +61,8 @@
                 [self.userService registWithName:self.nameText.text mobile:self.telText.text captcha:self.CodeText.text pwd:self.pwdText.text type:@"0" company_id:@"" org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
                     [hud hide:YES];
                     [JGProgressHelper showSuccess:@"普通用户注册成功"];
+                    JwLoginController * login = [[JwLoginController alloc]init];
+                    [self.navigationController pushViewController:login animated:YES];
                     
                 } failure:^(NSError *error) {
                     
@@ -111,7 +115,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
                 //[self.rv.yzhBut setTitle:@"发送验证码" forState:UIControlStateNormal];
-                self.CodeBut.userInteractionEnabled = YES;
+                self.codeButtion.userInteractionEnabled = YES;
             });
         }else{
             int seconds = timeout % 60;
@@ -125,7 +129,7 @@
                 self.timeLaber.text = [NSString stringWithFormat:@"%@s后重发",strTime];
                 NSLog(@"%@",self.timeLaber.text);
                 [UIView commitAnimations];
-                self.CodeBut.userInteractionEnabled = NO;
+                self.codeButtion.userInteractionEnabled = NO;
             });
             timeout--;
         }
@@ -135,7 +139,7 @@
     //
     if (self.telText.text.length != 0) {
         id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.userService sendsmsWithMobile:self.telText.text check_mobile:@"1" success:^{
+        [self.userService sendsmsWithMobile:self.telText.text type:@"1" check_mobile:@"1" success:^{
             
             
             [hud hide:YES];

@@ -47,6 +47,7 @@
 
 //发送短信
 -(void)sendsmsWithMobile:(NSString *)mobile
+                    type:(NSString *)type
             check_mobile:(NSString *)check_mobile
                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
