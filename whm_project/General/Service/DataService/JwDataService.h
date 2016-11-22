@@ -30,6 +30,7 @@
 @class WHgetcharacters;
 @class WHget_pro_rate;
 @class WHgetreport;
+@class WHgetpolicys;
 
 @interface JwDataService : JwServiceBase
 
@@ -177,6 +178,12 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
                     rela_id:(NSString *)rela_id
                        pros:(NSString *)pros
 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//保单列表
+-(void)getpolicysWithUid:(NSString * )uid
+                 rela_id:(NSString *)rela_id
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
 
 
 @end

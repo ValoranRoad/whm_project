@@ -29,7 +29,7 @@
 #import "WHgetcharacters.h"
 #import "WHget_pro_rate.h"
 #import "WHgetreport.h"
-
+#import "WHgetpolicys.h"
 
 
 #import "MacroUtility.h"
@@ -663,4 +663,29 @@
     }];
 
 }
+//保单列表
+-(void)getpolicysWithUid:(NSString *)uid
+                 rela_id:(NSString *)rela_id
+                 success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"rela_id":rela_id,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_policys"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_policys" success:^(id data) {
+        NSArray * infos = data[@"data"];
+        NSArray * policysList = [WHgetpolicys arrayOfModelsFromDictionaries:infos error:nil];
+        if (success ) {
+            success(policysList);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+
+
+
 @end
