@@ -292,6 +292,7 @@
 
         imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(fabs(image.size.width - newSize.width) / 2, 0, newSize.width, newSize.height));
 
+        /////
     }
     return [UIImage imageWithCGImage:imageRef];
 }
