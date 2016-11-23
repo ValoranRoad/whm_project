@@ -41,6 +41,8 @@
 		9615F8151DC04715001081FD /* HmPhysicalMainPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9615F80D1DC04715001081FD /* HmPhysicalMainPageCell.xib */; };
 		9615F8191DC04F89001081FD /* HmAddInsuredController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9615F8171DC04F89001081FD /* HmAddInsuredController.m */; };
 		9615F81A1DC04F89001081FD /* HmAddInsuredController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9615F8181DC04F89001081FD /* HmAddInsuredController.xib */; };
+		961746AE1DE538A400AEE19A /* HmMultistageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746AD1DE538A400AEE19A /* HmMultistageTableView.m */; };
+		961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */; };
 		9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */; };
 		9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */; };
 		9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */; };
@@ -326,6 +328,10 @@
 		9615F8161DC04F89001081FD /* HmAddInsuredController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmAddInsuredController.h; sourceTree = "<group>"; };
 		9615F8171DC04F89001081FD /* HmAddInsuredController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmAddInsuredController.m; sourceTree = "<group>"; };
 		9615F8181DC04F89001081FD /* HmAddInsuredController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HmAddInsuredController.xib; sourceTree = "<group>"; };
+		961746AC1DE538A400AEE19A /* HmMultistageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmMultistageTableView.h; sourceTree = "<group>"; };
+		961746AD1DE538A400AEE19A /* HmMultistageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmMultistageTableView.m; sourceTree = "<group>"; };
+		961746AF1DE53EE700AEE19A /* HmPhySicalMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmPhySicalMainView.h; sourceTree = "<group>"; };
+		961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhySicalMainView.m; sourceTree = "<group>"; };
 		9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_user_realtion.h; sourceTree = "<group>"; };
 		9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_user_realtion.m; sourceTree = "<group>"; };
 		9F0101D11DBF1F2B00AF13C9 /* WHget_relation_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_relation_detail.h; sourceTree = "<group>"; };
@@ -811,6 +817,8 @@
 				9615F80B1DC04715001081FD /* HmPhysicalMainPageCell.h */,
 				9615F80C1DC04715001081FD /* HmPhysicalMainPageCell.m */,
 				9615F80D1DC04715001081FD /* HmPhysicalMainPageCell.xib */,
+				961746AF1DE53EE700AEE19A /* HmPhySicalMainView.h */,
+				961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1265,6 +1273,8 @@
 		C8343DE91DB5B6ED00999301 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				961746AC1DE538A400AEE19A /* HmMultistageTableView.h */,
+				961746AD1DE538A400AEE19A /* HmMultistageTableView.m */,
 				C8343DF61DB5B77800999301 /* JwPhysicalController.h */,
 				C8343DF71DB5B77800999301 /* JwPhysicalController.m */,
 				961358C21DB6258900F5107F /* HmSelectProductController.h */,
@@ -2146,6 +2156,7 @@
 				C8C10CB91DB9C06F00A5FB9A /* WHaccountDetaTableViewController.m in Sources */,
 				9FDAE5BD1DDF0136000F91DF /* ZFHorizontalBar.m in Sources */,
 				961358D01DB6268600F5107F /* HmCompanyTableCell.m in Sources */,
+				961746AE1DE538A400AEE19A /* HmMultistageTableView.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				9F21CFB21DDC50FC0089BADB /* WHpay_periodTableViewController.m in Sources */,
 				C8C10C711DB9BE2B00A5FB9A /* JwCompanys.m in Sources */,
@@ -2200,6 +2211,7 @@
 				9F13C2341DC8489F00D5FD56 /* WHgetintroduce.m in Sources */,
 				C8C10CB41DB9C06F00A5FB9A /* JwLoginController.m in Sources */,
 				9FCA056F1DDD4BD600B6B805 /* WHcoverageViewController.m in Sources */,
+				961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */,
 				9F21CFA61DDBECD40089BADB /* WHtestwoTableViewCell.m in Sources */,
 				C86354641DB473B300ED8B16 /* LBXAlertAction.m in Sources */,
 				9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */,

@@ -26,9 +26,13 @@
 //
 #import "JwUserCenter.h"
 #import "JwLoginController.h"
+
+#import "HmMultistageTableView.h"
+
 //数据
 #import "WHget_pro_rate.h"
 #import "WHrate.h"
+
 
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
@@ -36,10 +40,10 @@
 #define kHmPhysicalDetailsCellIdentifier @"kHmPhysicalDetailsCellIdentifier"
 #define kHmPhysicalFujiaCellIdentifier @"kHmPhysicalFujiaCellIdentifier"
 
-@interface JwPhysicalController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource>
 
 // 大TableView
-@property (nonatomic, strong) UITableView *tableVB;
+@property (nonatomic, strong) HmMultistageTableView *tableVB;
 
 @property (nonatomic, assign) BOOL isOpen;
 @property (nonatomic, assign) NSInteger selectedSection;
@@ -60,7 +64,16 @@
 
 @property(nonatomic,strong)NSString * payout;
 
+// zhaoHm
+// 判断是否选人
+@property (nonatomic, assign) BOOL isSelectPersonName;
+// 组arr
+@property (nonatomic, strong) NSMutableArray *groupMutableArr;
+// content arr
+@property (nonatomic, strong) NSMutableArray *contentMutableArr;
+
 @property(nonatomic,strong)NSMutableArray * dataArry;
+
 
 @property(nonatomic, strong)NSMutableArray * arr1;
 @property(nonatomic, strong)NSMutableArray * arr2;
@@ -77,7 +90,7 @@
     [super viewWillAppear:animated];
     
     // 刷新第一行数据
-    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     self.tabBarController.tabBar.hidden=YES;
     NSLog(@"%@",self.name);
     [self requartData];
@@ -161,6 +174,8 @@
 //        [self.navigationController pushViewController:login animated:YES];
 //    }
     [self setupUI];
+    
+    self.isSelectPersonName = NO;
 
     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
@@ -178,11 +193,10 @@
 -(void)setupUI
 {
     self.view.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];
-    self.tableVB = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44) style:UITableViewStylePlain];
+    self.tableVB = [[HmMultistageTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44)];
     _tableVB.delegate = self;
     _tableVB.dataSource = self;
     _tableVB.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];
-    _tableVB.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableVB];
     
        // 底部  开始体检 按钮
@@ -301,38 +315,110 @@
     }
 }
 
-#pragma mark -- Table View Delegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 3 + 1 - 2;
+#pragma mark -- HmMultistageTableView DataSource
+// 返回组数
+- (NSInteger)numberOfSectionsInTableView:(HmMultistageTableView *)mTableView {
+    return 5;
 }
+
+// 返回组内行数
+- (NSInteger)mTableView:(HmMultistageTableView *)mTableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+
+#pragma mark -- HmMultistageTableView Delegate
+- (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 90;
+    }else {
+        return 44;
+    }
+}
+
+- (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 66;
+}
+
+- (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForAtomAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
+
+// 返回组头(两种)
+- (UIView *)mTableView:(HmMultistageTableView *)mTableView viewForHeaderAtSection:(NSInteger)section {
+    if (self.isSelectPersonName) {
+        // 有人
+        if (section == 0) {
+            // 第一行
+            UIView *bgV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 90)];
+            
+            return bgV;
+        }
+    }
+    // 没人
+    UIView *groupV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 44)];
+    return groupV;
+}
+
+- (void)mTableView:(HmMultistageTableView *)mTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"didSelectRow ----%ld  didSelectSection ----%ld",(long)indexPath.row,(long)indexPath.section);
+}
+
+#pragma mark -- Header Open Or Close
+- (void)mTableView:(HmMultistageTableView *)mTableView willOpenHeaderAtSection:(NSInteger)section {
+    NSLog(@"Oper Header ----%ld",(long)section);
+}
+
+- (void)mTableView:(HmMultistageTableView *)mTableView willCloseHeaderAtSection:(NSInteger)section {
+    NSLog(@"Close Header ----%ld",(long)section);
+}
+
+#pragma mark -- Row Open Or Close
+- (void)mTableView:(HmMultistageTableView *)mTableView willOpenRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Open Row ----%ld",(long)indexPath.row);
+}
+
+- (void)mTableView:(HmMultistageTableView *)mTableView willCloseRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Close Row ----%ld",(long)indexPath.row);
+}
+
+#pragma mark -- Table View Delegate
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    if (self.isSelectPersonName) {
+//        // 有人
+//        return self.groupMutableArr.count + 1;
+//    }else {
+//        // 没人
+//        return self.groupMutableArr.count;
+//    }
+////    return 3 + 1 - 2;
+//}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 1;
-    }
-    else
-    {
-        if (section == self.selectedSection && self.selectedSection != 0) {
-            // 点击的是同一个section且非第一次
-            if (self.isOpen) {
-                // 展开
-                return 8;
-            }
-            else
-            {
-                // 收缩
-                return 1;
-            }
-        }
-        else
-        {
-            // 点击的不是同一个section
+    if (self.isSelectPersonName) {
+        // 有人
+        if (section == 0) {
             return 1;
         }
     }
-//    return 1;
+    if (section == self.selectedSection && self.selectedSection != 0) {
+        // 点击的是同一个section且非第一次
+        if (self.isOpen) {
+            // 展开
+            return self.contentMutableArr.count;
+        }
+        else
+        {
+            // 收缩
+            return 1;
+        }
+    }
+    else
+    {
+        // 点击的不是同一个section
+        return 1;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -575,6 +661,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -- GETTER
+-(NSMutableArray *)groupMutableArr {
+    if (_groupMutableArr == nil) {
+        _groupMutableArr = [NSMutableArray array];
+    }
+    return _groupMutableArr;
+}
+
+- (NSMutableArray *)contentMutableArr {
+    if (_contentMutableArr == nil) {
+        _contentMutableArr = [NSMutableArray array];
+    }
+    return _contentMutableArr;
 }
 
 /*
