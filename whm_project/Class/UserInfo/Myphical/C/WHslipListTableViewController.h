@@ -10,5 +10,6 @@
 #import "JwBackBaseController.h"
 
 @interface WHslipListTableViewController : JwBackBaseController
+@property(nonatomic,strong)NSString * rela_id;
 
 @end

@@ -49,7 +49,6 @@
     [self.dataService get_user_realtionWithUid:@"" success:^(NSArray *lists) {
         [hud hide:YES];
         // 成功
-        NSLog(@"hahah");
         self.dataArry = [NSMutableArray arrayWithArray:lists];
         [self.tableV reloadData];
     } failure:^(NSError *error) {
@@ -119,6 +118,7 @@
     WHget_user_realtion  * model = self.dataArry[indexPath.row];
     NSLog(@"%@",model.id);
     WHslipListTableViewController * sliplist = [[WHslipListTableViewController alloc]init];
+    sliplist.rela_id = model.id;
     [self.navigationController pushViewController:sliplist animated:YES];
     
 }

@@ -33,6 +33,7 @@
 @property(nonatomic,strong)NSString <Optional> * create_time;
 @property(nonatomic,strong)NSString <Optional> * type_name;
 @property(nonatomic,strong)NSString <Optional> * rela_name;
+@property(nonatomic,strong)NSString <Optional> * pro_name;
 
 
 @end
