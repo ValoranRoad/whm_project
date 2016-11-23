@@ -95,4 +95,6 @@
  */
 - (void)reloadData;
 
+- (void)mRegisterNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier;
+
 @end

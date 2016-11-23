@@ -28,6 +28,7 @@
 #import "JwLoginController.h"
 
 #import "HmMultistageTableView.h"
+#import "HmPhysicalGroupView.h"
 
 //数据
 #import "WHget_pro_rate.h"
@@ -315,21 +316,45 @@
 #pragma mark -- HmMultistageTableView DataSource
 // 返回组数
 - (NSInteger)numberOfSectionsInTableView:(HmMultistageTableView *)mTableView {
+//    return self.groupMutableArr.count;
     return 5;
 }
 
 // 返回组内行数
 - (NSInteger)mTableView:(HmMultistageTableView *)mTableView numberOfRowsInSection:(NSInteger)section {
+    if (self.isSelectPersonName) {
+        // 有人
+        if (section == 0) {
+            return 0;
+        }
+    }
+//    return self.contentMutableArr.count;
     return 3;
+}
+
+// cell
+- (UITableViewCell *)mTableView:(HmMultistageTableView *)mTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 投保年龄cell
+    BOOL nibsRegistered = NO;
+    if (!nibsRegistered) {
+        UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmDetailsCell class]) bundle:nil];
+        [mTableView mRegisterNib:nib forCellReuseIdentifier:kHmPhysicalDetailsCellIdentifier];
+        nibsRegistered = YES;
+    }
+    HmDetailsCell *cell = [mTableView dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier];
+    cell.myLaber.text = @"haha";
+    return cell;
 }
 
 #pragma mark -- HmMultistageTableView Delegate
 - (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return 90;
-    }else {
-        return 44;
+    if (self.isSelectPersonName) {
+        // 有人
+        if (section == 0) {
+            return 90;
+        }
     }
+    return 44;
 }
 
 - (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -352,7 +377,7 @@
         }
     }
     // 没人
-    UIView *groupV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 44)];
+    HmPhysicalGroupView *groupV = [[HmPhysicalGroupView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 44)];
     return groupV;
 }
 

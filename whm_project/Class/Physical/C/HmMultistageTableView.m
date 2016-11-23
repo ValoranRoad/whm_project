@@ -78,6 +78,10 @@ static const CGFloat kDefultHeightForAtom = 44.0f;
     [self.tableV reloadData];
 }
 
+- (void)mRegisterNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier {
+    [self.tableV registerNib:nib forCellReuseIdentifier:identifier];
+}
+
 #pragma mark -- Private Methods
 
 /**
@@ -109,6 +113,8 @@ static const CGFloat kDefultHeightForAtom = 44.0f;
         }
     }
 }
+
+
 
 #pragma mark -- Private Operation For Header Open & Close
 
