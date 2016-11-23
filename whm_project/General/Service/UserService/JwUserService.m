@@ -514,5 +514,62 @@
     
 }
 
+//保存完善的保单信息
+
+-(void)updatePolicyWithId:(NSString *)ids
+                      uid:(NSString *)uid
+                    sn_no:(NSString *)sn_no
+               start_date:(NSString *)start_date
+                   holder:(NSString *)holder
+              beneficiary:(NSString *)beneficiary
+                  success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"id":ids,
+                                     @"uid":[JwUserCenter sharedCenter].uid,
+                                     @"sn_no":sn_no,
+                                     @"start_date":start_date,
+                                     @"holder":holder ,
+                                     @"beneficiary":beneficiary,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/update_only_policy"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/update_only_policy" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+}
+
+//删除保单
+-(void)delpolicyWithPolicy_id:(NSString *)policy_id
+                          uid:(NSString *)uid
+                      success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"policy_id":policy_id,
+                                     @"uid":[JwUserCenter sharedCenter].uid,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/del_policy"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/del_policy" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+}
+
+
 
 @end

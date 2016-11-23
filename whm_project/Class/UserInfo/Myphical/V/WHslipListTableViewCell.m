@@ -87,7 +87,7 @@
 {
     if (_scoreLaber  == nil) {
         self.scoreLaber = [[UILabel alloc]init];
-        self.scoreLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.75, CGRectGetMaxY(self.titLaber.frame)+5, kScreenWitdh * 0.20, 30);
+        self.scoreLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.80, CGRectGetMaxY(self.titLaber.frame), kScreenWitdh * 0.15, 30);
         self.scoreLaber.textColor = [UIColor redColor];
         self.scoreLaber.font = [UIFont systemFontOfSize:15.0];
         [self.contentView addSubview:_scoreLaber];
@@ -101,7 +101,7 @@
     if (_lineView1 == nil) {
         self.lineView1 = [[UIView alloc]init];
         self.lineView1.frame = CGRectMake(0, CGRectGetMaxY(self.baoeLaber.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds), 1);
-        self.lineView1.backgroundColor = [UIColor grayColor];
+       // self.lineView1.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_lineView1];
     }
     return _lineView1;
@@ -179,6 +179,36 @@
     return _lookBut;
 }
 
+-(UIView *)lineView2
+{
+    if (_lineView2 == nil) {
+        self.lineView2 = [[UIView alloc]init];
+        self.lineView2.frame = CGRectMake(0, CGRectGetMaxY(self.delBut.frame)+8, kScreenWitdh , 1);
+        [self.contentView addSubview:_lineView2];
+        
+    }
+    return _lineView2;
+}
+
+-(UIView *)line3
+{
+    if (_line3 == nil) {
+        self.line3 = [[UIView alloc]init];
+        self.line3.frame = CGRectMake(kScreenWitdh *0.32 , CGRectGetMinY(self.lineView1.frame), 1, 38);
+        [self.contentView addSubview:_line3];
+    }
+    return _line3;
+}
+
+-(UIView *)line4
+{
+    if (_line4 == nil) {
+        self.line4 = [[UIView alloc]init];
+        self.line4.frame = CGRectMake(kScreenWitdh *0.63 , CGRectGetMinY(self.lineView1.frame), 1, 38);
+        [self.contentView addSubview:_line4];
+    }
+    return _line4;
+}
 
 
 - (void)awakeFromNib {

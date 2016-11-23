@@ -24,5 +24,7 @@
 @property(nonatomic,strong)UIButton * lookBut;
 @property(nonatomic,strong)UIView * lineView1;
 @property(nonatomic,strong)UIView * lineView2;
+@property(nonatomic,strong)UIView * line3;
+@property(nonatomic,strong)UIView * line4;
 
 @end

@@ -116,7 +116,7 @@
         }
     });
     
-    
+     dispatch_resume(_timer);
     //
     if (self.fp.telText.text.length != 0) {
         id hud = [JGProgressHelper showProgressInView:self.view];

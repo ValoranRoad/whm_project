@@ -101,10 +101,13 @@
         NSArray * periods = mon.rate;
         for (WHrate * rate in periods) {
             
+            //保险期间
             [self.dataArry addObject:rate.period];
+            //年龄
             [self.ageArry addObject:rate.age];
             
-            NSLog(@"+++%@",rate.pay_period);
+           NSLog(@"=====%@",rate.pay_period);
+            
             
         }
         //保险期间
