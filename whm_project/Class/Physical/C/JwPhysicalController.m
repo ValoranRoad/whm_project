@@ -26,7 +26,14 @@
 //
 #import "JwUserCenter.h"
 #import "JwLoginController.h"
+
 #import "HmMultistageTableView.h"
+
+//数据
+#import "WHget_pro_rate.h"
+#import "WHrate.h"
+
+
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
@@ -65,8 +72,14 @@
 // content arr
 @property (nonatomic, strong) NSMutableArray *contentMutableArr;
 
+@property(nonatomic,strong)NSMutableArray * dataArry;
 
 
+@property(nonatomic, strong)NSMutableArray * arr1;
+@property(nonatomic, strong)NSMutableArray * arr2;
+
+@property(nonatomic,strong)NSMutableArray * ageArry;
+//
 
 
 @end
@@ -80,11 +93,68 @@
 //    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     self.tabBarController.tabBar.hidden=YES;
     NSLog(@"%@",self.name);
-    
-    
+    [self requartData];
+   
     
 }
+//数据请求
+-(void)requartData
+{
+    
+    
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService getprorateWithPid:@"465" uid:@"" gender:@"1" success:^(NSArray * lists) {
+        [hud hide:YES];
+        
+        self.dataArry = [NSMutableArray array];
+        self.ageArry =  [NSMutableArray array];
+        
+        WHget_pro_rate * pro = [lists firstObject];
+        WHmongorate * mon = [pro.mongo_rate firstObject];
+        NSArray * periods = mon.rate;
+        for (WHrate * rate in periods) {
+            
+            [self.dataArry addObject:rate.period];
+            [self.ageArry addObject:rate.age];
+            
+            NSLog(@"+++%@",rate.pay_period);
+            
+        }
+        //保险期间
+        self.arr1 =[NSMutableArray array];
+        self.arr2 = [NSMutableArray array];
+        for (int i = 0 ;i<self.dataArry.count;i++) {
+            if ([_arr1 containsObject:[self.dataArry  objectAtIndex:i]] == NO) {
+                [_arr1 addObject:[self.dataArry  objectAtIndex:i]];
+                NSLog(@"%@",_arr1);
+            }
+        }
+        //年龄
+        for (int i = 0 ;i<self.dataArry.count;i++) {
+            if ([_arr2  containsObject:[self.dataArry  objectAtIndex:i]] == NO) {
+                [_arr2  addObject:[self.dataArry  objectAtIndex:i]];
+                NSLog(@"%@",_arr2 );
+            }
+            
+//            WHget_pro_rate *pro = [lists firstObject];
+//            WHmongorate *mon = [pro.mongo_rate firstObject];
+//            NSArray *ages = mon.rate;
+//            for (WHrate *rate in ages) {
+//                NSLog(@"%@", rate.age);
+//                
+//            }
+        }
 
+        
+        [self.tableVB reloadData];
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+    
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -400,7 +470,7 @@
                         if (indexPath.row == 3) {
                             cell.myLaber.text = @"缴费方式";
                             cell.headImg.image = [UIImage imageNamed:@"p_payType"];
-                            cell.selectLaber.text = @"10年交";
+                          //  cell.selectLaber.text = @"10年交";
                         }
                         if (indexPath.row == 2) {
                             cell.myLaber.text = @"保险期间";
@@ -501,7 +571,7 @@
             
             
         };
-
+        age.ID = self.ids;
         [self.navigationController pushViewController:age animated:YES];
     }
     
@@ -520,7 +590,7 @@
             
         };
         
-        
+        period.ID = self.ids;
         [self.navigationController pushViewController:period animated:YES];
 
     }

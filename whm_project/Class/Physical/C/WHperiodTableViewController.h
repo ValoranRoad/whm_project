@@ -12,5 +12,6 @@
 typedef void(^myblock2)(NSString  *s2);
 @interface WHperiodTableViewController : JwBackBaseController
 @property(nonatomic,copy)myblock2  mblock2;
+@property(nonatomic,strong)NSString * ID;
 
 @end
