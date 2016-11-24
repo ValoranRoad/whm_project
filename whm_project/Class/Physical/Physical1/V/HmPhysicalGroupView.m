@@ -46,4 +46,31 @@
     
 }
 
+- (void)setModel:(WHgetproduct *)model {
+    _model = model;
+    
+//    @property (nonatomic, strong) UIImageView *imgHeader;
+    NSInteger stateM = [model.is_main integerValue];
+    switch (stateM) {
+        case 1:
+            self.imgHeader.image =[UIImage imageNamed:@"p_zhu"];
+            break;
+        case 2:
+            self.imgHeader.image = [UIImage imageNamed:@"p_huangfu"];
+            break;
+        case 3:
+            self.imgHeader.image = [UIImage imageNamed:@"p_group"];
+            break;
+            
+        default:
+            break;
+    }
+    
+//    @property (nonatomic, strong) UILabel *lblName;
+    self.lblName.text = model.name;
+    
+
+
+}
+
 @end

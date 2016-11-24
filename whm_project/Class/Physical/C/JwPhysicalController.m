@@ -29,6 +29,7 @@
 
 #import "HmMultistageTableView.h"
 #import "HmPhysicalGroupView.h"
+#import "HmPhySicalMainView.h"
 
 //数据
 #import "WHget_pro_rate.h"
@@ -71,7 +72,9 @@
 // 组arr
 @property (nonatomic, strong) NSMutableArray *groupMutableArr;
 // content arr
-@property (nonatomic, strong) NSMutableArray *contentMutableArr;
+@property (nonatomic, strong) NSMutableDictionary *contentMutableDict;
+// 性别
+@property (nonatomic, strong) NSString *dataSex;
 
 @property(nonatomic,strong)NSMutableArray * dataArry;
 
@@ -94,21 +97,39 @@
 //    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     self.tabBarController.tabBar.hidden=YES;
     NSLog(@"%@",self.name);
-    [self requartData];
+    if (self.modelType) {
+        [self requartData];
+        [self.groupMutableArr addObject:_modelType];
+    }
    
     
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.modelType = nil;
+    self.dataSex = nil;
+}
+
 //数据请求
 -(void)requartData
 {
     
-    
+    NSString *gender;
+    if (self.dataSex) {
+        gender = self.dataSex;
+    }else {
+        gender = @"1";
+    }
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getprorateWithPid:@"465" uid:@"" gender:@"1" success:^(NSArray * lists) {
+    [self.dataService getprorateWithPid:@"472" uid:@"" gender:gender success:^(NSArray * lists) {
         [hud hide:YES];
         
         self.dataArry = [NSMutableArray array];
         self.ageArry =  [NSMutableArray array];
+        
+        [self.contentMutableDict setObject:lists forKey:self.modelType.id];
         
         WHget_pro_rate * pro = [lists firstObject];
         WHmongorate * mon = [pro.mongo_rate firstObject];
@@ -311,6 +332,10 @@
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
+        [self.groupMutableArr addObject:user];
+        self.isSelectPersonName = YES;
+        self.dataSex = user.sex;
+        [self.tableVB reloadData];
     }];
     [self.navigationController pushViewController:VC animated:YES];
     }
@@ -319,8 +344,8 @@
 #pragma mark -- HmMultistageTableView DataSource
 // 返回组数
 - (NSInteger)numberOfSectionsInTableView:(HmMultistageTableView *)mTableView {
-//    return self.groupMutableArr.count;
-    return 5;
+    return self.groupMutableArr.count;
+//    return 5;
 }
 
 // 返回组内行数
@@ -331,8 +356,8 @@
             return 0;
         }
     }
-//    return self.contentMutableArr.count;
-    return 3;
+    return self.contentMutableDict.count;
+//    return 3;
 }
 
 // cell
@@ -361,7 +386,7 @@
 }
 
 - (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 66;
+    return 44;
 }
 
 - (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForAtomAtIndexPath:(NSIndexPath *)indexPath {
@@ -374,13 +399,14 @@
         // 有人
         if (section == 0) {
             // 第一行
-            UIView *bgV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 90)];
-            
-            return bgV;
+            HmPhySicalMainView *mainV = [[HmPhySicalMainView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 90)];
+            mainV.model = self.groupMutableArr.firstObject;
+            return mainV;
         }
     }
     // 没人
     HmPhysicalGroupView *groupV = [[HmPhysicalGroupView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 44)];
+    groupV.model = self.groupMutableArr[section];
     return groupV;
 }
 
@@ -431,7 +457,7 @@
         // 点击的是同一个section且非第一次
         if (self.isOpen) {
             // 展开
-            return self.contentMutableArr.count;
+            return self.contentMutableDict.count;
         }
         else
         {
@@ -696,11 +722,11 @@
     return _groupMutableArr;
 }
 
-- (NSMutableArray *)contentMutableArr {
-    if (_contentMutableArr == nil) {
-        _contentMutableArr = [NSMutableArray array];
+- (NSMutableDictionary *)contentMutableDict {
+    if (_contentMutableDict == nil) {
+        _contentMutableDict = [NSMutableDictionary dictionary];
     }
-    return _contentMutableArr;
+    return _contentMutableDict;
 }
 
 /*

@@ -7,10 +7,12 @@
 //
 
 #import "JwMenuBaseController.h"
+#import "WHgetproduct.h"
 
 @interface JwPhysicalController : JwMenuBaseController
 @property(nonatomic,strong)NSString * ids;
 @property(nonatomic,strong)NSString * name;
 @property(nonatomic,strong)NSString * is_main;
+@property (nonatomic, strong) WHgetproduct *modelType;
 
 @end

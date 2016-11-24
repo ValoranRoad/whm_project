@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WHgetproduct.h"
 
 @interface HmPhysicalGroupView : UIView
+
+@property (nonatomic, strong) WHgetproduct *model;
 
 @property (nonatomic, strong) UIImageView *imgHeader;
 @property (nonatomic, strong) UILabel *lblName;

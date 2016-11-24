@@ -82,6 +82,10 @@ static const CGFloat kDefultHeightForAtom = 44.0f;
     [self.tableV registerNib:nib forCellReuseIdentifier:identifier];
 }
 
+- (UITableViewHeaderFooterView *)mDequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier {
+    return [self.tableV dequeueReusableHeaderFooterViewWithIdentifier:identifier];
+}
+
 #pragma mark -- Private Methods
 
 /**

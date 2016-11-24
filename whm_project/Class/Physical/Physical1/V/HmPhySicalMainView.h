@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WHget_user_realtion.h"
 
 @interface HmPhySicalMainView : UIView
+
+@property (nonatomic, strong) WHget_user_realtion *model;
 
 @property (nonatomic, strong) UIImageView *imgHead;
 
@@ -33,5 +36,6 @@
 
 @property (nonatomic, strong) UIImageView *imgOwn;
 @property (nonatomic, strong) UILabel *lblOwn;
+
 
 @end
