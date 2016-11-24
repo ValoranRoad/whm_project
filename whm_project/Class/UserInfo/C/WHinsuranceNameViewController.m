@@ -22,8 +22,8 @@
     
     self.myText = [[UITextField alloc]init];
     self.myText.frame = CGRectMake(0, 60, CGRectGetWidth([UIScreen mainScreen].bounds)  , 50);
-    self.myText.placeholder = @"请输入保险公司";
-    self.navigationItem.title = @"保险公司";
+    self.myText.placeholder = @"请输入你的姓名";
+    self.navigationItem.title = @"姓名";
     self.myText.borderStyle = UITextBorderStyleNone;
     
     self.myText.clearButtonMode = UITextFieldViewModeWhileEditing;

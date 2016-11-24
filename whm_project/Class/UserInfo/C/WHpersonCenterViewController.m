@@ -403,10 +403,19 @@
             self.nameLaber.text = model.name;
             NSString * s1 = @"(";
             NSString * s2 = @")>";
-            
+            if (model.company == nil) {
+                model.company  =  @"暂无公司";
+                NSString * s3 =[s1 stringByAppendingString:model.company];
+                self.companyLaber.text = [s3 stringByAppendingString:s2];
+                
+
+            }
+            else
+            {
             NSString * s3 =[s1 stringByAppendingString:model.company];
             self.companyLaber.text = [s3 stringByAppendingString:s2];
            
+            }
       }
         
         
