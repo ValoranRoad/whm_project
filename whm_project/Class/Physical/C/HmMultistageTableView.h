@@ -95,4 +95,8 @@
  */
 - (void)reloadData;
 
+- (void)mRegisterNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier;
+
+- (UITableViewHeaderFooterView *)mDequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;
+
 @end

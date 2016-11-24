@@ -43,6 +43,7 @@
 		9615F81A1DC04F89001081FD /* HmAddInsuredController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9615F8181DC04F89001081FD /* HmAddInsuredController.xib */; };
 		961746AE1DE538A400AEE19A /* HmMultistageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746AD1DE538A400AEE19A /* HmMultistageTableView.m */; };
 		961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */; };
+		961746B41DE57F7500AEE19A /* HmPhysicalGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */; };
 		9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */; };
 		9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */; };
 		9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */; };
@@ -332,6 +333,8 @@
 		961746AD1DE538A400AEE19A /* HmMultistageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmMultistageTableView.m; sourceTree = "<group>"; };
 		961746AF1DE53EE700AEE19A /* HmPhySicalMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmPhySicalMainView.h; sourceTree = "<group>"; };
 		961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhySicalMainView.m; sourceTree = "<group>"; };
+		961746B21DE57F7500AEE19A /* HmPhysicalGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmPhysicalGroupView.h; sourceTree = "<group>"; };
+		961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhysicalGroupView.m; sourceTree = "<group>"; };
 		9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_user_realtion.h; sourceTree = "<group>"; };
 		9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_user_realtion.m; sourceTree = "<group>"; };
 		9F0101D11DBF1F2B00AF13C9 /* WHget_relation_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_relation_detail.h; sourceTree = "<group>"; };
@@ -819,6 +822,8 @@
 				9615F80D1DC04715001081FD /* HmPhysicalMainPageCell.xib */,
 				961746AF1DE53EE700AEE19A /* HmPhySicalMainView.h */,
 				961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */,
+				961746B21DE57F7500AEE19A /* HmPhysicalGroupView.h */,
+				961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1938,7 +1943,7 @@
 				TargetAttributes = {
 					C863537F1DB4661C00ED8B16 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = MNRRAJV8LF;
+						DevelopmentTeam = KNWG2P7G76;
 						ProvisioningStyle = Automatic;
 					};
 					C86353981DB4661C00ED8B16 = {
@@ -2088,6 +2093,7 @@
 				9FCB4DFA1DD3030A0094184A /* WHgetcharacters.m in Sources */,
 				9FDAE5C21DDF0136000F91DF /* ZFPie.m in Sources */,
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
+				961746B41DE57F7500AEE19A /* HmPhysicalGroupView.m in Sources */,
 				9FA684681DE2DDD8003F70E3 /* WHmyphysicalTableViewController.m in Sources */,
 				9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */,
 				9FDAE5C81DDF0136000F91DF /* ZFWave.m in Sources */,
@@ -2434,7 +2440,7 @@
 			baseConfigurationReference = 20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MNRRAJV8LF;
+				DEVELOPMENT_TEAM = KNWG2P7G76;
 				INFOPLIST_FILE = whm_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "chenJw.whm-project";
@@ -2447,7 +2453,7 @@
 			baseConfigurationReference = AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MNRRAJV8LF;
+				DEVELOPMENT_TEAM = KNWG2P7G76;
 				INFOPLIST_FILE = whm_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "chenJw.whm-project";
