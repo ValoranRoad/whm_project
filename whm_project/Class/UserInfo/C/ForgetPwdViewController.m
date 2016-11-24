@@ -97,6 +97,7 @@
                 //设置界面的按钮显示 根据自己需求设置
                 //[self.rv.yzhBut setTitle:@"发送验证码" forState:UIControlStateNormal];
                 self.fp.codeBut.userInteractionEnabled = YES;
+                self.fp.timeLaber.text = @"60s";
             });
         }else{
             int seconds = timeout % 60;

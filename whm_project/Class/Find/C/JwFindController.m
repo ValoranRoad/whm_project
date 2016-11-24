@@ -17,6 +17,10 @@
 @property(nonatomic,strong)UIImageView * mapImg;
 @property(nonatomic,strong)UIImageView * cityImg;
 @property(nonatomic,strong)UIImageView * findImg;
+@property(nonatomic,strong)UILabel * nearLaber;
+@property(nonatomic,strong)UILabel * orgLaber;
+@property(nonatomic,strong)UILabel * hosLaber;
+@property(nonatomic,strong)UILabel * mesLaber;
 
 
 
@@ -46,34 +50,66 @@
     [self.myview addSubview:_logoImg];
     
     self.blackView = [[UIView alloc]init];
-    self.blackView.frame = CGRectMake(20, kScreenHeight * 0.3, kScreenWitdh - 40, kScreenHeight * 0.3);
+    self.blackView.frame = CGRectMake(20, kScreenHeight * 0.3, kScreenWitdh - 40, kScreenHeight * 0.4);
     self.blackView.backgroundColor = [UIColor whiteColor];
     [self.myview addSubview:_blackView];
     //
     self.moonImg = [[UIImageView alloc]init];
-    self.moonImg.frame = CGRectMake(30, 20, kScreenWitdh * 0.2, kScreenWitdh * 0.2);
+    self.moonImg.frame = CGRectMake(30, 20, kScreenWitdh * 0.15, kScreenWitdh * 0.15);
     self.moonImg.image = [UIImage imageNamed:@"Moon"];
     self.moonImg.layer.masksToBounds = YES;
-    self.moonImg.layer.cornerRadius = kScreenWitdh * 0.1;
-
+    self.moonImg.layer.cornerRadius = kScreenWitdh * 0.075;
+    
     [self.blackView addSubview:_moonImg];
+    self.nearLaber = [[UILabel alloc]init];
+    self.nearLaber.frame = CGRectMake(CGRectGetMinX(self.moonImg.frame), CGRectGetMaxY(self.moonImg.frame)+5, CGRectGetWidth(self.moonImg.frame)*1.2, 25);
+    self.nearLaber.text = @"附近代理人";
+    //self.nearLaber.textColor = [UIColor grayColor];
+    self.nearLaber.font = [UIFont systemFontOfSize:12.0];
+    [self.blackView addSubview:_nearLaber];
+    
+    
     //
     self.mapImg = [[UIImageView alloc]init];
     self.mapImg.frame = CGRectMake((kScreenWitdh - 40 )*0.4, CGRectGetMinY(self.moonImg.frame), CGRectGetWidth(self.moonImg.frame), CGRectGetHeight(self.moonImg.frame));
     self.mapImg.image = [UIImage imageNamed:@"Map"];
     self.mapImg.layer.masksToBounds = YES;
-    self.mapImg.layer.cornerRadius = kScreenWitdh * 0.1;
+    self.mapImg.layer.cornerRadius = kScreenWitdh * 0.075;
     [self.blackView addSubview:_mapImg];
+    self.orgLaber = [[UILabel alloc]init];
+    self.orgLaber.frame = CGRectMake(CGRectGetMinX(self.mapImg.frame)+3, CGRectGetMinY(self.nearLaber.frame), CGRectGetWidth(self.mapImg.frame), CGRectGetHeight(self.nearLaber.frame));
+    self.orgLaber.font = [UIFont systemFontOfSize:12.0];
+    self.orgLaber.text = @"分支机构";
+    [self.blackView addSubview:_orgLaber];
+    
     //
     self.cityImg = [[UIImageView alloc]init];
     self.cityImg.frame = CGRectMake((kScreenWitdh - 40 )*0.7,
-    CGRectGetMinY(self.moonImg.frame), CGRectGetWidth(self.moonImg.frame), CGRectGetHeight(self.moonImg.frame));
+                                    CGRectGetMinY(self.moonImg.frame), CGRectGetWidth(self.moonImg.frame), CGRectGetHeight(self.moonImg.frame));
     self.cityImg.image = [UIImage imageNamed:@"City"];
     self.cityImg.layer.masksToBounds = YES;
-    self.cityImg.layer.cornerRadius = kScreenWitdh * 0.1;
-
+    self.cityImg.layer.cornerRadius = kScreenWitdh * 0.075;
+    
     [self.blackView addSubview:_cityImg];
     
+    self.hosLaber = [[UILabel alloc]init];
+    self.hosLaber.frame = CGRectMake(CGRectGetMinX(self.cityImg.frame)+3, CGRectGetMinY(self.nearLaber.frame), CGRectGetWidth(self.cityImg.frame), CGRectGetHeight(self.nearLaber.frame));
+    self.hosLaber.font = [UIFont systemFontOfSize:12.0];
+    self.hosLaber.text = @"定点医院";
+    [self.blackView addSubview:_hosLaber];
+    //
+    self.findImg = [[UIImageView alloc]init];
+    self.findImg.frame = CGRectMake(CGRectGetMinX(self.moonImg.frame), kScreenHeight * 0.2, CGRectGetWidth(self.moonImg.frame), CGRectGetHeight(self.moonImg.frame));
+    self.findImg.image = [UIImage imageNamed:@"Finder"];
+    self.findImg.layer.masksToBounds = YES;
+    self.findImg.layer.cornerRadius = kScreenWitdh * 0.075;
+    
+    [self.blackView addSubview:_findImg];
+    self.mesLaber = [[UILabel alloc]init];
+    self.mesLaber.frame = CGRectMake(CGRectGetMinX(self.findImg.frame)+3, CGRectGetMaxY(self.findImg.frame)+5, CGRectGetWidth(self.findImg.frame), CGRectGetHeight(self.nearLaber.frame));
+    self.mesLaber.font = [UIFont systemFontOfSize:12.0];
+    self.mesLaber.text = @"信息批漏";
+    [self.blackView addSubview:_mesLaber];
     
 }
 
