@@ -617,7 +617,7 @@
 -(void)getprorateWithPid:(NSString *)pid
                      uid:(NSString *)uid
                   gender:(NSString *)gender
-                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
+                 success:(void (^)(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"pid":pid,
                                      @"uid":[JwUserCenter sharedCenter].uid,
@@ -627,9 +627,23 @@
     [self.httpManager POST:param withPoint:@"kbj/get_pro_rate" success:^(id data) {
         
         NSArray *infos = data[@"data"];
+        NSArray *bigArr = [infos.firstObject objectForKey:@"mongo_rate"];
+        NSArray *moreArr = [bigArr.firstObject objectForKey:@"rate"];
+        NSMutableArray *mutableArr_pay_period = [NSMutableArray array];
+        NSMutableArray *mutableArr_payOut = [NSMutableArray array];
+        for (NSDictionary *dic in moreArr) {
+            if ([[dic allKeys] containsObject:@"pay_period"]) {
+                [mutableArr_pay_period addObjectsFromArray:((NSDictionary *)[dic objectForKey:@"pay_period"]).allKeys];
+            }
+            if ([[dic allKeys] containsObject:@"payout"]) {
+                [mutableArr_payOut addObjectsFromArray:((NSDictionary *)[dic objectForKey:@"payout"]).allKeys];
+            }
+        }
+        NSSet *set = [NSSet setWithArray:mutableArr_pay_period];
+        NSSet *set1 = [NSSet setWithArray:mutableArr_payOut];
         NSArray *rates = [WHget_pro_rate arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
-            success(rates);
+            success(rates, [set allObjects], [set1 allObjects]);
         }
     } failure:^(NSError *error) {
         if (failure) {
