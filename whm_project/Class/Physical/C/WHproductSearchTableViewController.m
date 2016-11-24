@@ -138,6 +138,8 @@
     self.ids = model.id;
     self.is_main = model.is_main;
     phy.modelType = model;
+    phy.groupMutableArr = self.groupsArr;
+    phy.isSelectPersonName = self.isSelectP;
     [self.navigationController pushViewController:phy animated:YES];
 }
 

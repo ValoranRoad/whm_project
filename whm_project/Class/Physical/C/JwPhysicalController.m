@@ -66,11 +66,9 @@
 
 @property(nonatomic,strong)NSString * payout;
 
-// zhaoHm
-// 判断是否选人
-@property (nonatomic, assign) BOOL isSelectPersonName;
-// 组arr
-@property (nonatomic, strong) NSMutableArray *groupMutableArr;
+
+
+
 // content arr
 @property (nonatomic, strong) NSMutableDictionary *contentMutableDict;
 // 性别
@@ -99,7 +97,6 @@
     NSLog(@"%@",self.name);
     if (self.modelType) {
         [self requartData];
-        [self.groupMutableArr addObject:_modelType];
     }
    
     
@@ -123,12 +120,13 @@
         gender = @"1";
     }
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getprorateWithPid:@"472" uid:@"" gender:gender success:^(NSArray * lists) {
+    [self.dataService getprorateWithPid:self.modelType.id uid:@"" gender:gender success:^(NSArray * lists) {
         [hud hide:YES];
         
         self.dataArry = [NSMutableArray array];
         self.ageArry =  [NSMutableArray array];
         
+        [self.groupMutableArr addObject:_modelType];
         [self.contentMutableDict setObject:lists forKey:self.modelType.id];
         
         WHget_pro_rate * pro = [lists firstObject];
@@ -197,7 +195,8 @@
 //    }
     [self setupUI];
     
-    self.isSelectPersonName = NO;
+//    self.groupMutableArr = [NSMutableArray array];
+//    self.contentMutableDict = [NSMutableDictionary dictionary];
 
     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
@@ -316,6 +315,8 @@
 {
     //选择公司
     HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
+    company.groupArr = self.groupMutableArr;
+    company.isSelects = self.isSelectPersonName;
     [self.navigationController pushViewController:company animated:YES];
 
 }
@@ -332,7 +333,12 @@
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
-        [self.groupMutableArr addObject:user];
+        if (self.isSelectPersonName) {
+            // 选过人了
+            [self.groupMutableArr replaceObjectAtIndex:0 withObject:user];
+        }else {
+            [self.groupMutableArr insertObject:user atIndex:0];
+        }
         self.isSelectPersonName = YES;
         self.dataSex = user.sex;
         [self.tableVB reloadData];

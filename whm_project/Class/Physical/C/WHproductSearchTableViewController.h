@@ -12,4 +12,7 @@
 @interface WHproductSearchTableViewController : JwBackBaseController
 
 @property(nonatomic,strong)NSString * company_id;
+@property (nonatomic, strong) NSMutableArray *groupsArr;
+@property (nonatomic, assign) BOOL isSelectP;
+
 @end

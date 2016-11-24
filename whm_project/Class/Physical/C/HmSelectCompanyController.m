@@ -184,6 +184,8 @@
         [_cell hotCompanyPushToNext:^(WHhotcompany *selectCompany) {
             WHproductSearchTableViewController *VC = [[WHproductSearchTableViewController alloc] init];
             VC.company_id = selectCompany.id;
+            VC.groupsArr = self.groupArr;
+            VC.isSelectP = self.isSelects;
             [self.navigationController pushViewController:VC animated:YES];
         }];
         
@@ -247,7 +249,8 @@
    
     WHproductSearchTableViewController * produceSearch = [[WHproductSearchTableViewController alloc]init];
     produceSearch.company_id = model.id;
-    
+    produceSearch.groupsArr = self.groupArr;
+    produceSearch.isSelectP = self.isSelects;
     [self.navigationController pushViewController:produceSearch animated:YES];
 }
 
