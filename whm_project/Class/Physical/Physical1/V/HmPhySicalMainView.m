@@ -112,8 +112,9 @@
     
     self.imgPay.frame = CGRectMake(CGRectGetMinX(self.imgRelationship.frame), CGRectGetMinY(self.imgYearCost.frame), 20, 20);
     self.imgPay.image = [UIImage imageNamed:@"test_money"];
-    self.lblPay.frame = CGRectMake(CGRectGetMinX(self.lblRelationship.frame), CGRectGetMinY(self.lblRelationship.frame), CGRectGetWidth(self.lblRelationship.frame), CGRectGetHeight(self.lblRelationship.frame));
+    self.lblPay.frame = CGRectMake(CGRectGetMinX(self.lblRelationship.frame), CGRectGetMinY(self.lblYearCost.frame), CGRectGetWidth(self.lblRelationship.frame), CGRectGetHeight(self.lblRelationship.frame));
     self.lblPay.font = [UIFont systemFontOfSize:10.0];
+    //self.lblPay.backgroundColor = [UIColor redColor];
     self.imgOwn.frame = CGRectMake(CGRectGetMinX(self.imgDate.frame), CGRectGetMinY(self.imgPay.frame), 20, 20);
     self.imgOwn.image = [UIImage imageNamed:@"test_debts"];
     self.lblOwn.frame = CGRectMake(CGRectGetMinX(self.lblDate.frame), CGRectGetMinY(self.lblPay.frame), CGRectGetWidth(self.lblDate.frame), CGRectGetHeight(self.lblDate.frame));
@@ -169,11 +170,11 @@
     self.lblOwn.text = model.debt;
     self.imgHead.layer.cornerRadius = 25;
     self.imgHead.layer.masksToBounds = YES;
+    self.lblPay.text = model.year_out;
     
     [self.imgHead sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
     
-    //    self.lblPay.text = model.yearly_out;
-    // 关系
+        // 关系
     NSInteger stateM = [model.relation integerValue];
     switch (stateM) {
         case 0:

@@ -54,7 +54,7 @@
     
     [self.imgHead sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
     
-    //    self.lblPay.text = model.yearly_out;
+    //  self.lblPay.text = model.yearly_out;
     // 关系
     NSInteger stateM = [model.relation integerValue];
     switch (stateM) {

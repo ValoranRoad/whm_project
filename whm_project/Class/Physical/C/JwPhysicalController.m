@@ -320,9 +320,9 @@ typedef enum {
     
     
    
-    if (self.ids != nil) {
+//    if (self.ids != nil) {
     
-    if (self.rela_id  != nil && self.period != nil && self.rate != nil) {
+//    if (self.rela_id  != nil && self.period != nil && self.rate != nil) {
         
        
   LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
@@ -345,18 +345,18 @@ typedef enum {
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
     [self presentViewController:collectVC animated:YES completion:nil];
     }
-    else
-    {
-        [JGProgressHelper showError:@"请选择被保人"];
-    }
+//    else
+//    {
+//        [JGProgressHelper showError:@"请选择被保人"];
+//    }
 
-    }
-    else
-    {
-        [JGProgressHelper showError:@"请选择保险险种"];
-    }
+//    }
+//    else
+//    {
+//        [JGProgressHelper showError:@"请选择保险险种"];
+//    }
 
-}
+//}
 
 #pragma mark --添加事件
 -(void)addButAtion:(UIButton *)sender
@@ -410,7 +410,7 @@ typedef enum {
             return 0;
         }
     }
-    return ((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[section]).id]).count;
+    return ((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[section]).id]).count + 2;
 //    return 3;
 }
 
@@ -447,6 +447,7 @@ typedef enum {
         cell.myLaber.text = @"保障期间";
         cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"保障期间"]).firstObject;
     }
+    
     if (((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]).count == 4) {
         if (indexPath.row == 4) {
             // 给付方式
@@ -456,6 +457,15 @@ typedef enum {
         }
     }
     
+    if (indexPath.row == 3) {
+        cell.headImg.image = [UIImage imageNamed:@"test_money"];
+        cell.myLaber.text = @"保额";
+        
+      
+    }
+    if (indexPath.row == 5) {
+        cell.myLaber.text = @"保费";
+    }
     return cell;
 }
 
