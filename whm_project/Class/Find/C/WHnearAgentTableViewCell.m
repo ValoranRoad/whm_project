@@ -86,7 +86,7 @@
 {
     if (_mesBut == nil) {
         self.mesBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-        self.mesBut.frame = CGRectMake(kScreenWitdh * 0.65, CGRectGetMinY(self.telBut.frame), CGRectGetWidth(self.telBut.frame), CGRectGetHeight(self.telBut.frame));
+        self.mesBut.frame = CGRectMake(kScreenWitdh * 0.70, CGRectGetMinY(self.telBut.frame), CGRectGetWidth(self.telBut.frame), CGRectGetHeight(self.telBut.frame));
         [self.contentView addSubview:_mesBut];
     }
     return _mesBut;

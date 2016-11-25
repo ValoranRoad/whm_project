@@ -912,7 +912,9 @@ typedef enum {
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if ([self.contentName isEqualToString:@"投保年龄"]) {
+    
+        if ([self.contentName isEqualToString:@"投保年龄"]) {
+        
         NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row]);
         self.Strage = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row];
         

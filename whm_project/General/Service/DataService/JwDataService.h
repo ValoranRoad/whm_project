@@ -47,6 +47,7 @@
                          province:(NSString *)province
                              city:(NSString *)city
                            county:(NSString *)county
+                             
                           success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
 //热门公司列表

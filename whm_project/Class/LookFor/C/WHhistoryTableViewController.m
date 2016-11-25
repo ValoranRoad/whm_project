@@ -18,6 +18,7 @@
 @property(nonatomic,strong)WHhistoryTableViewCell * cell;
 @property(nonatomic,strong)NSMutableArray * dataArry;
 @property(nonatomic,strong)NSString * proID;
+@property(nonatomic,strong)NSString * keyWord;
 
 @end
 
@@ -101,11 +102,11 @@
     
     searchBar.placeholder = @"请输入关键词";
     [titleView addSubview:searchBar];
-    self.searBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.searBut.frame = CGRectMake(kScreenWitdh * 0.71, 0, kScreenWitdh*0.2, 35);
-    [self.searBut setTitle:@"搜索" forState:(UIControlStateNormal)];
-    [self.searBut setTintColor:[UIColor whiteColor]];
-    [titleView addSubview:_searBut];
+//    self.searBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
+//    self.searBut.frame = CGRectMake(kScreenWitdh * 0.71, 0, kScreenWitdh*0.2, 35);
+//    [self.searBut setTitle:@"搜索" forState:(UIControlStateNormal)];
+//    [self.searBut setTintColor:[UIColor whiteColor]];
+//    [titleView addSubview:_searBut];
     
     
     //Set to titleView
@@ -148,6 +149,26 @@
     WHgetproducedetalViewController * produce = [[WHgetproducedetalViewController alloc]init];
     produce .pro_id = self.proID;
     [self.navigationController pushViewController:produce animated:YES];
+    
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+    NSLog(@"%@",searchBar.text);
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_productWithCompany_id:@"" keyword:searchBar.text  sex:@"" characters_insurance:@"" period:@"" cate_id:@"" pay_period:@"" rate:@"" insured:@"" birthday:@"" yearly_income:@"" debt:@"" rela_id:@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
+        [hud hide:YES];
+        
+        self.dataArry = [NSMutableArray arrayWithArray:lists];
+        [self.tableV reloadData];
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+    
     
 }
 

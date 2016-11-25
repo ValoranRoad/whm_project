@@ -110,6 +110,8 @@
 		9F63ED401DCB6CDB00404AE7 /* WHhistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED3F1DCB6CDB00404AE7 /* WHhistoryTableViewController.m */; };
 		9F63ED431DCB6E5300404AE7 /* WHhistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED421DCB6E5300404AE7 /* WHhistoryTableViewCell.m */; };
 		9F63ED461DCB851C00404AE7 /* WHgetproducedetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED451DCB851C00404AE7 /* WHgetproducedetalViewController.m */; };
+		9F8B9F631DE80DDC00207808 /* WHorginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B9F621DE80DDC00207808 /* WHorginTableViewController.m */; };
+		9F8B9F661DE80DEB00207808 /* WHorginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B9F651DE80DEB00207808 /* WHorginTableViewCell.m */; };
 		9F99E7181DC34F9F00DC1265 /* WHminiStationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */; };
 		9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71A1DC3592C00DC1265 /* WHmyMessageTableViewController.m */; };
 		9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71D1DC3597700DC1265 /* WHmyMessageTableViewCell.m */; };
@@ -463,6 +465,10 @@
 		9F63ED421DCB6E5300404AE7 /* WHhistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHhistoryTableViewCell.m; path = whm_project/Class/LookFor/C/WHhistoryTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		9F63ED441DCB851C00404AE7 /* WHgetproducedetalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetproducedetalViewController.h; sourceTree = "<group>"; };
 		9F63ED451DCB851C00404AE7 /* WHgetproducedetalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetproducedetalViewController.m; sourceTree = "<group>"; };
+		9F8B9F611DE80DDC00207808 /* WHorginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorginTableViewController.h; sourceTree = "<group>"; };
+		9F8B9F621DE80DDC00207808 /* WHorginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorginTableViewController.m; sourceTree = "<group>"; };
+		9F8B9F641DE80DEB00207808 /* WHorginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHorginTableViewCell.h; path = whm_project/Class/Find/C/WHorginTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		9F8B9F651DE80DEB00207808 /* WHorginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHorginTableViewCell.m; path = whm_project/Class/Find/C/WHorginTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		9F99E7161DC34F9F00DC1265 /* WHminiStationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHminiStationTableViewController.h; sourceTree = "<group>"; };
 		9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHminiStationTableViewController.m; sourceTree = "<group>"; };
 		9F99E7191DC3592C00DC1265 /* WHmyMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmyMessageTableViewController.h; sourceTree = "<group>"; };
@@ -1172,6 +1178,8 @@
 				C8343DFD1DB5B79A00999301 /* JwFindController.m */,
 				9FF7CC431DE6CD850098193A /* WHnearAgentTableViewController.h */,
 				9FF7CC441DE6CD850098193A /* WHnearAgentTableViewController.m */,
+				9F8B9F611DE80DDC00207808 /* WHorginTableViewController.h */,
+				9F8B9F621DE80DDC00207808 /* WHorginTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1181,6 +1189,8 @@
 			children = (
 				9FF7CC461DE6CD980098193A /* WHnearAgentTableViewCell.h */,
 				9FF7CC471DE6CD980098193A /* WHnearAgentTableViewCell.m */,
+				9F8B9F641DE80DEB00207808 /* WHorginTableViewCell.h */,
+				9F8B9F651DE80DEB00207808 /* WHorginTableViewCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -2296,11 +2306,13 @@
 				9F35CE791DD6AD8E003F0C78 /* LYTestThreeViewController.m in Sources */,
 				C86353CB1DB4669A00ED8B16 /* JwServiceBase.m in Sources */,
 				C8C10CC61DB9C0AD00A5FB9A /* ForgetPwdView.m in Sources */,
+				9F8B9F631DE80DDC00207808 /* WHorginTableViewController.m in Sources */,
 				9615F8101DC04715001081FD /* HmFujiaCell.m in Sources */,
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
 				9F35CE631DD6AC6C003F0C78 /* lhCircleView.m in Sources */,
 				9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */,
 				9F0F28BD1DC47DF2007118BD /* WHreplymessageViewController.m in Sources */,
+				9F8B9F661DE80DEB00207808 /* WHorginTableViewCell.m in Sources */,
 				9FCA05691DDD469400B6B805 /* WHJSCollectViewController.m in Sources */,
 				9FDAE5C11DDF0136000F91DF /* ZFLineChart.m in Sources */,
 				9F07DE591DD566EF00B292C2 /* WHmongorate.m in Sources */,
