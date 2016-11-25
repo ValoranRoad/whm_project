@@ -72,6 +72,7 @@ typedef enum {
 @property(nonatomic,strong)NSString * pay_period;
 
 @property(nonatomic,strong)NSString * payout;
+@property(nonatomic,strong)NSString * Strage;
 
 
 
@@ -162,9 +163,9 @@ typedef enum {
             }
         }
         //年龄
-        for (int i = 0 ;i<self.dataArry.count;i++) {
-            if ([_arr2  containsObject:[self.dataArry  objectAtIndex:i]] == NO) {
-                [_arr2  addObject:[self.dataArry  objectAtIndex:i]];
+        for (int i = 0 ;i<self.ageArry.count;i++) {
+            if ([_arr2  containsObject:[self.ageArry  objectAtIndex:i]] == NO) {
+                [_arr2  addObject:[self.ageArry objectAtIndex:i]];
                 NSLog(@"%@",_arr2 );
             }
             
@@ -434,18 +435,23 @@ typedef enum {
         cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
         cell.myLaber.text = @"投保年龄";
         cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"投保年龄"]).firstObject;
+        cell.selectLaber.text = self.Strage;
+        
     }
     if (indexPath.row == 1) {
         // 缴费方式
         cell.headImg.image = [UIImage imageNamed:@"p_payType"];
         cell.myLaber.text = @"缴费方式";
         cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"缴费方式"]).firstObject;
+        cell.selectLaber.text = self.pay_period;
     }
     if (indexPath.row == 2) {
         // 保险期间
         cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
         cell.myLaber.text = @"保障期间";
         cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"保障期间"]).firstObject;
+        
+        cell.selectLaber.text = self.period;
     }
     
     if (((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]).count == 4) {
@@ -454,6 +460,7 @@ typedef enum {
             cell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
             cell.myLaber.text = @"给付方式";
             cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"给付方式"]).firstObject;
+            
         }
     }
     
@@ -894,6 +901,7 @@ typedef enum {
         return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row];
     }else if ([self.contentName isEqualToString:@"缴费方式"]) {
         return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row];
+       
     }else if ([self.contentName isEqualToString:@"保障期间"]) {
         return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row];
     }else if ([self.contentName isEqualToString:@"给付方式"]) {
@@ -906,13 +914,46 @@ typedef enum {
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if ([self.contentName isEqualToString:@"投保年龄"]) {
         NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row]);
+        self.Strage = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row];
+        
     }else if ([self.contentName isEqualToString:@"缴费方式"]) {
         NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row]);
+       
+          self.pay_period = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row];
+        
     }else if ([self.contentName isEqualToString:@"保障期间"]) {
         NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row]);
+       self.period = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row];
+      
+        
     }else if ([self.contentName isEqualToString:@"给付方式"]) {
         NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"])[row]);
-    }else {
+    }
+    else if ([self.contentName isEqualToString:@"保额"])
+    {
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入投保金额" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //获取第1个输入框；
+            _userNameTextField = alertController.textFields.firstObject;
+            _userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
+            
+            NSLog(@"输入的数据 = %@",_userNameTextField.text);
+          //  HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+           // cell.selectLaber.text = _userNameTextField.text;
+            self.rate = _userNameTextField.text;
+            
+        }]];
+        //增加取消按钮；
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+        
+        //定义第一个输入框；
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"请输入保额";
+        }];
+        [self presentViewController:alertController animated:true completion:nil];
+
+    }
+    else {
         
     }
 }
