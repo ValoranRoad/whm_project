@@ -8,16 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
-
+#import "WHagentinfo.h"
+#import "WHcount.h"
+#import "WHmicpro.h"
+#import "WHgethonor.h"
+#import "WHgetmessage.h"
 @protocol WHmicro <NSObject>
 @end
 
 @interface WHmicro : JwModelBase
-@property(nonatomic,strong) NSArray <WHmicro,Optional> * agent_info;
-@property(nonatomic,strong) NSDictionary <WHmicro,Optional> * count;
-@property(nonatomic,strong) NSArray <WHmicro,Optional> * honor;
-@property(nonatomic,strong) NSArray <WHmicro,Optional> * pro;
-@property(nonatomic,strong) NSArray <WHmicro,Optional> * message;
+@property(nonatomic,strong) NSArray <WHagentinfo,Optional> * agent_info;
+@property(nonatomic,strong) WHcount <Optional> * count;
+@property(nonatomic,strong) NSArray <WHmicpro,Optional> * pro;
+@property(nonatomic,strong) NSArray <WHgetmessage,Optional> * message;
+@property(nonatomic,strong)NSArray <WHgethonor ,Optional > * honor;
 
 
 
