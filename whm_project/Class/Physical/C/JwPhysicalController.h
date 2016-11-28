@@ -16,6 +16,10 @@
 @property (nonatomic, strong) WHgetproduct *modelType;
 // 组arr
 @property (nonatomic, strong) NSMutableArray *groupMutableArr;
+// content dict
+@property (nonatomic, strong) NSMutableDictionary *contentMutableDict;
+@property (nonatomic, strong) NSMutableDictionary *fuzhiDict;
+
 // 判断是否选人
 @property (nonatomic, assign) BOOL isSelectPersonName;
 

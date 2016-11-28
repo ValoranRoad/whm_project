@@ -44,6 +44,11 @@
 		961746AE1DE538A400AEE19A /* HmMultistageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746AD1DE538A400AEE19A /* HmMultistageTableView.m */; };
 		961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */; };
 		961746B41DE57F7500AEE19A /* HmPhysicalGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */; };
+		961DDBB41DE6FDE200ACF3EC /* HmMyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */; };
+		9678ACF21DEBE78800C91373 /* HMConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678ACF11DEBE78800C91373 /* HMConfirmView.m */; };
+		9678ACF41DEBF14C00C91373 /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 9678ACF31DEBF14C00C91373 /* check_no.png */; };
+		9678ACF61DEBF15700C91373 /* check_yse.png in Resources */ = {isa = PBXBuildFile; fileRef = 9678ACF51DEBF15700C91373 /* check_yse.png */; };
+		96BC4DF51DE80A56009E6D96 /* HmDetailsCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */; };
 		9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */; };
 		9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */; };
 		9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */; };
@@ -337,6 +342,14 @@
 		961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhySicalMainView.m; sourceTree = "<group>"; };
 		961746B21DE57F7500AEE19A /* HmPhysicalGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmPhysicalGroupView.h; sourceTree = "<group>"; };
 		961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhysicalGroupView.m; sourceTree = "<group>"; };
+		961DDBB21DE6FDE200ACF3EC /* HmMyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmMyModel.h; sourceTree = "<group>"; };
+		961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmMyModel.m; sourceTree = "<group>"; };
+		9678ACF01DEBE78800C91373 /* HMConfirmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMConfirmView.h; sourceTree = "<group>"; };
+		9678ACF11DEBE78800C91373 /* HMConfirmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMConfirmView.m; sourceTree = "<group>"; };
+		9678ACF31DEBF14C00C91373 /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
+		9678ACF51DEBF15700C91373 /* check_yse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_yse.png; sourceTree = "<group>"; };
+		96BC4DF31DE80A56009E6D96 /* HmDetailsCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmDetailsCodeCell.h; sourceTree = "<group>"; };
+		96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmDetailsCodeCell.m; sourceTree = "<group>"; };
 		9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_user_realtion.h; sourceTree = "<group>"; };
 		9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_user_realtion.m; sourceTree = "<group>"; };
 		9F0101D11DBF1F2B00AF13C9 /* WHget_relation_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_relation_detail.h; sourceTree = "<group>"; };
@@ -830,6 +843,12 @@
 				961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */,
 				961746B21DE57F7500AEE19A /* HmPhysicalGroupView.h */,
 				961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */,
+				96BC4DF31DE80A56009E6D96 /* HmDetailsCodeCell.h */,
+				96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */,
+				9678ACF01DEBE78800C91373 /* HMConfirmView.h */,
+				9678ACF11DEBE78800C91373 /* HMConfirmView.m */,
+				9678ACF31DEBF14C00C91373 /* check_no.png */,
+				9678ACF51DEBF15700C91373 /* check_yse.png */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1591,6 +1610,8 @@
 				9FF129661DE2874300029436 /* WHcount.m */,
 				9FA6846C1DE2EA71003F70E3 /* WHgetpolicys.h */,
 				9FA6846D1DE2EA71003F70E3 /* WHgetpolicys.m */,
+				961DDBB21DE6FDE200ACF3EC /* HmMyModel.h */,
+				961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1953,7 +1974,7 @@
 				TargetAttributes = {
 					C863537F1DB4661C00ED8B16 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = MNRRAJV8LF;
+						DevelopmentTeam = KNWG2P7G76;
 						ProvisioningStyle = Automatic;
 					};
 					C86353981DB4661C00ED8B16 = {
@@ -1998,6 +2019,7 @@
 				9F1073941DD08CEC00725A84 /* ico_make.png in Resources */,
 				9F35CE761DD6AD81003F0C78 /* LYTestTwoViewController.xib in Resources */,
 				9615F8131DC04715001081FD /* HmPhysicalGroupCell.xib in Resources */,
+				9678ACF41DEBF14C00C91373 /* check_no.png in Resources */,
 				9615F80F1DC04715001081FD /* HmDetailsCell.xib in Resources */,
 				961358D61DB6280000F5107F /* HmCompanyCollectionCell.xib in Resources */,
 				9F35CE671DD6AC6C003F0C78 /* LYTestTwoTableViewCell.xib in Resources */,
@@ -2012,6 +2034,7 @@
 				8E86DBE11DC980BE00C14635 /* licence.jpg in Resources */,
 				9F35CE651DD6AC6C003F0C78 /* LYTestOneTableViewCell.xib in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
+				9678ACF61DEBF15700C91373 /* check_yse.png in Resources */,
 				9F35CE711DD6AD55003F0C78 /* LYTestOneViewController.xib in Resources */,
 				8E86DBE01DC980BE00C14635 /* insur.jpg in Resources */,
 				9615F8151DC04715001081FD /* HmPhysicalMainPageCell.xib in Resources */,
@@ -2094,6 +2117,7 @@
 			files = (
 				9F07DE5C1DD56CC900B292C2 /* WHageTableViewController.m in Sources */,
 				9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */,
+				961DDBB41DE6FDE200ACF3EC /* HmMyModel.m in Sources */,
 				9F21CFA91DDC09480089BADB /* WHsecond.m in Sources */,
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				9FDAE5AC1DDF0136000F91DF /* NSString+Zirkfied.m in Sources */,
@@ -2261,6 +2285,7 @@
 				9F63ED261DCB573F00404AE7 /* WHpelicyTableViewController.m in Sources */,
 				C8C10CB31DB9C06F00A5FB9A /* ForgetPwdViewController.m in Sources */,
 				9F35CE7E1DD6BD23003F0C78 /* WHgetreport.m in Sources */,
+				9678ACF21DEBE78800C91373 /* HMConfirmView.m in Sources */,
 				C83D06711DCB2AB40028A681 /* JwPeriod.m in Sources */,
 				C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */,
 				C8C10CB81DB9C06F00A5FB9A /* JwUserInfoController.m in Sources */,
@@ -2304,6 +2329,7 @@
 				9FCA05691DDD469400B6B805 /* WHJSCollectViewController.m in Sources */,
 				9FDAE5C11DDF0136000F91DF /* ZFLineChart.m in Sources */,
 				9F07DE591DD566EF00B292C2 /* WHmongorate.m in Sources */,
+				96BC4DF51DE80A56009E6D96 /* HmDetailsCodeCell.m in Sources */,
 				9FF981CB1DDAA9E6008C9E20 /* CustomProgress.m in Sources */,
 				C86354A71DB4D3AB00ED8B16 /* JwMenuBaseController.m in Sources */,
 				9FDAE4B01DDEAA95000F91DF /* WHloveagentTableViewCell.m in Sources */,
@@ -2452,7 +2478,7 @@
 			baseConfigurationReference = 20CF759169BA3CE9D8062817 /* Pods-whm_project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MNRRAJV8LF;
+				DEVELOPMENT_TEAM = KNWG2P7G76;
 				INFOPLIST_FILE = whm_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "chenJw.whm-project";
@@ -2465,7 +2491,7 @@
 			baseConfigurationReference = AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MNRRAJV8LF;
+				DEVELOPMENT_TEAM = KNWG2P7G76;
 				INFOPLIST_FILE = whm_project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "chenJw.whm-project";

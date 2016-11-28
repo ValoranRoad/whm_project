@@ -53,6 +53,7 @@ static const CGFloat kDefultHeightForAtom = 44.0f;
 
 -(id)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
 {
+//    [self tableView:_tableV cellForRowAtIndexPath:indexPath];
     id cell = [self.tableV dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     return cell;
 }
@@ -74,7 +75,7 @@ static const CGFloat kDefultHeightForAtom = 44.0f;
 
 -(void)reloadData
 {
-    _openedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:-1];
+//    _openedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:-1];
     [self.tableV reloadData];
 }
 
@@ -84,6 +85,15 @@ static const CGFloat kDefultHeightForAtom = 44.0f;
 
 - (UITableViewHeaderFooterView *)mDequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier {
     return [self.tableV dequeueReusableHeaderFooterViewWithIdentifier:identifier];
+}
+
+- (void)mRegisterClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
+    [self.tableV registerClass:cellClass forCellReuseIdentifier:identifier];
+}
+
+- (void)reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
+    _openedIndexPath = [NSIndexPath indexPathForRow:-1 inSection:-1];
+    [self.tableV reloadRowsAtIndexPaths:indexPaths withRowAnimation:animation];
 }
 
 #pragma mark -- Private Methods

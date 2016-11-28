@@ -21,4 +21,10 @@
     // Configure the view for the selected state
 }
 
+- (void)setModel:(HmMyModel *)model {
+    _model = model;
+    
+    self.myLaber.text = model.nameS;
+}
+
 @end

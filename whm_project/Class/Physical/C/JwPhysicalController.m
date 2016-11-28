@@ -30,6 +30,8 @@
 #import "HmMultistageTableView.h"
 #import "HmPhysicalGroupView.h"
 #import "HmPhySicalMainView.h"
+#import "HmDetailsCodeCell.h"
+#import "HMConfirmView.h"
 
 //数据
 #import "WHget_pro_rate.h"
@@ -46,10 +48,10 @@ typedef enum {
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
-#define kHmPhysicalDetailsCellIdentifier @"kHmPhysicalDetailsCellIdentifier"
+#define kHmPhysicalDetailsCellIdentifier @"dddkHmPhysicalDetailsCellIdentifier"
 #define kHmPhysicalFujiaCellIdentifier @"kHmPhysicalFujiaCellIdentifier"
 
-@interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
+@interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,HMConfirmDelegate>
 
 // 大TableView
 @property (nonatomic, strong) HmMultistageTableView *tableVB;
@@ -76,8 +78,7 @@ typedef enum {
 
 
 
-// content arr
-@property (nonatomic, strong) NSMutableDictionary *contentMutableDict;
+
 // 性别
 @property (nonatomic, strong) NSString *dataSex;
 
@@ -86,6 +87,8 @@ typedef enum {
 @property (nonatomic, strong) UIToolbar *toolBar;
 @property (nonatomic, strong) NSString *contentName;
 @property (nonatomic, strong) NSIndexPath *myIndexPath;
+
+@property (nonatomic, strong) HMConfirmView *confir;
 
 
 @property(nonatomic, strong)NSMutableArray * arr1;
@@ -137,7 +140,12 @@ typedef enum {
         self.dataArry = [NSMutableArray array];
         self.ageArry =  [NSMutableArray array];
         
-        [self.groupMutableArr addObject:_modelType];
+        NSArray *keyArr = [self.contentMutableDict allKeys];
+        if ([keyArr containsObject:_modelType.id]) {
+            [JGProgressHelper showError:@"已经选过这个险种"];
+        } else {
+            [self.groupMutableArr addObject:_modelType];
+        }
         
         
         WHget_pro_rate * pro = [lists firstObject];
@@ -184,7 +192,17 @@ typedef enum {
         [pickerDict setObject:_arr1 forKey:@"保障期间"];
         [pickerDict setObject:_arr2 forKey:@"投保年龄"];
 
-        [self.contentMutableDict setObject:pickerDict forKey:self.modelType.id];
+        if (![self.contentMutableDict.allKeys containsObject:_modelType.id]) {
+            // 不存在
+            [self.contentMutableDict setObject:pickerDict forKey:self.modelType.id];
+            [self fuzhiAge:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"投保年龄"]).firstObject
+                Type:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"缴费方式"]).firstObject
+                Baozhang:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"保障期间"]).firstObject
+                Give:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"给付方式"]).firstObject
+                Key:_modelType.id
+             ];
+        }
+        
         
         [self.tableVB reloadData];
     } failure:^(NSError *error) {
@@ -192,8 +210,21 @@ typedef enum {
         [JGProgressHelper showError:@""];
         
     }];
-    
+}
 
+- (void)fuzhiAge:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give Key:(NSString *)key {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    if (((NSMutableDictionary *)[self.contentMutableDict objectForKey:key]).count == 3) {
+        [dict setObject:age forKey:@"投保年龄"];
+        [dict setObject:type forKey:@"缴费方式"];
+        [dict setObject:baozhang forKey:@"保障期间"];
+    }else {
+        [dict setObject:age forKey:@"投保年龄"];
+        [dict setObject:type forKey:@"缴费方式"];
+        [dict setObject:baozhang forKey:@"保障期间"];
+        [dict setObject:give forKey:@"给付方式"];
+    }
+    [self.fuzhiDict setObject:dict forKey:key];
 }
 
 - (void)viewDidLoad {
@@ -235,6 +266,7 @@ typedef enum {
     _tableVB.delegate = self;
     _tableVB.dataSource = self;
     _tableVB.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];
+    [_tableVB mRegisterClass:[HmDetailsCodeCell class] forCellReuseIdentifier:kHmPhysicalDetailsCellIdentifier];
     [self.view addSubview:_tableVB];
     
        // 底部  开始体检 按钮
@@ -264,43 +296,44 @@ typedef enum {
     self.addBut.layer.cornerRadius = 20;
   
     
-    self.pickerV = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 216 - 64, kScreenWitdh, 216)];
-    _pickerV.delegate = self;
-    _pickerV.dataSource = self;
-    _pickerV.backgroundColor = [UIColor greenColor];
+//    self.pickerV = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 216 - 64, kScreenWitdh, 216)];
+//    _pickerV.delegate = self;
+//    _pickerV.dataSource = self;
+//    _pickerV.backgroundColor = [UIColor greenColor];
+//    
+//    self.toolBar = [self setupToolBar];
     
-    self.toolBar = [self setupToolBar];
+    
 
     
 }
 
-- (UIToolbar *)setupToolBar {
-    UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"收起" style:UIBarButtonItemStylePlain target:self action:@selector(keyDownAction:)];
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, kScreenHeight - 216 - 39 - 64, kScreenWitdh, 39)];
-    toolBar.backgroundColor = [UIColor yellowColor];
-    toolBar.items = @[leftBarBtn,rightBarBtn];
-    return toolBar;
-}
+//- (UIToolbar *)setupToolBar {
+//    UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+//    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"收起" style:UIBarButtonItemStylePlain target:self action:@selector(keyDownAction:)];
+//    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, kScreenHeight - 216 - 39 - 64, kScreenWitdh, 39)];
+//    toolBar.backgroundColor = [UIColor yellowColor];
+//    toolBar.items = @[leftBarBtn,rightBarBtn];
+//    return toolBar;
+//}
 
-- (void)keyDownAction:(UIBarButtonItem *)sender {
-    [self removePickerVAndToolBar];
-}
+//- (void)keyDownAction:(UIBarButtonItem *)sender {
+//    [self removePickerVAndToolBar];
+//}
 
-- (void)showPickerViewAndToolBar {
-    [self.view addSubview:_toolBar];
-    [self.view addSubview:_pickerV];
-}
-
-- (void)removePickerVAndToolBar {
-    [_toolBar removeFromSuperview];
-    [_pickerV removeFromSuperview];
-}
+//- (void)showPickerViewAndToolBar {
+//    [self.view addSubview:_toolBar];
+//    [self.view addSubview:_pickerV];
+//}
+//
+//- (void)removePickerVAndToolBar {
+//    [_toolBar removeFromSuperview];
+//    [_pickerV removeFromSuperview];
+//}
 
 //开始体检事件
 -(void)btnStart:(UIButton *)sender
 {
-    
     /*
     LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
     oneVC.rela_id = self.rela_id;
@@ -361,10 +394,16 @@ typedef enum {
 #pragma mark --添加事件
 -(void)addButAtion:(UIButton *)sender
 {
+    if (!_isSelectPersonName) {
+        [JGProgressHelper showError:@"请先选择被保人"];
+        return;
+    }
     //选择公司
     HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
     company.groupArr = self.groupMutableArr;
     company.isSelects = self.isSelectPersonName;
+    company.contentDict = _contentMutableDict;
+    company.fuzhiDict = _fuzhiDict;
     [self.navigationController pushViewController:company animated:YES];
 
 }
@@ -376,8 +415,7 @@ typedef enum {
         [JGProgressHelper showError:@"请登录账号"];
         JwLoginController * loging = [[JwLoginController alloc]init];
         [self.navigationController pushViewController:loging animated:YES];
-    }else
-    {
+    } else{
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
@@ -417,46 +455,76 @@ typedef enum {
 // cell
 - (UITableViewCell *)mTableView:(HmMultistageTableView *)mTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 投保年龄cell
-    BOOL nibsRegistered = NO;
-    if (!nibsRegistered) {
-        UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmDetailsCell class]) bundle:nil];
-        [mTableView mRegisterNib:nib forCellReuseIdentifier:kHmPhysicalDetailsCellIdentifier];
-        nibsRegistered = YES;
+//    BOOL nibsRegistered = NO;
+//    if (!nibsRegistered) {
+//        UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmDetailsCell class]) bundle:nil];
+//        [mTableView mRegisterNib:nib forCellReuseIdentifier:kHmPhysicalDetailsCellIdentifier];
+//        nibsRegistered = YES;
+//    }
+//    HmDetailsCell *cell = [mTableView dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier];
+    
+    
+    
+    HmDetailsCodeCell *cell = [mTableView dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier];
+    if (cell == nil) {
+        cell = [[HmDetailsCodeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:kHmPhysicalDetailsCellIdentifier];
     }
-    HmDetailsCell *cell = [mTableView dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier];
-//    [pickerDict setObject:payoutArr forKey:@"给付方式"];
-//    [pickerDict setObject:pay_periodArr forKey:@"缴费方式"];
-//    [pickerDict setObject:_arr1 forKey:@"保障期间"];
-//    [pickerDict setObject:_arr2 forKey:@"投保年龄"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    @"给付方式"];
+//    @"缴费方式"];
+//    @"保障期间"];
+//    @"投保年龄"];
     // 赋值
+    NSString *key = ((WHgetproduct *)self.groupMutableArr[indexPath.section]).id;
+    [self setupDataForCellCode:cell IndexPath:indexPath Age:[[_fuzhiDict objectForKey:key] objectForKey:@"投保年龄"] Type:[[_fuzhiDict objectForKey:key] objectForKey:@"缴费方式"] Baozhang:[[_fuzhiDict objectForKey:key] objectForKey:@"保障期间"] Give:[[_fuzhiDict objectForKey:key] objectForKey:@"给付方式"]];
+    
+    NSLog(@"%@,%@",cell,cell.myLaber.text);
+    return cell;
+}
+
+- (void)fuzhiForCellDataAge:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give IndexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    if (((NSMutableDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]).count == 3) {
+        [dict setObject:age forKey:@"投保年龄"];
+        [dict setObject:type forKey:@"缴费方式"];
+        [dict setObject:baozhang forKey:@"保障期间"];
+    }else {
+        [dict setObject:age forKey:@"投保年龄"];
+        [dict setObject:type forKey:@"缴费方式"];
+        [dict setObject:baozhang forKey:@"保障期间"];
+        [dict setObject:give forKey:@"给付方式"];
+    }
+    NSLog(@"%ld",indexPath.section);
+    [self.fuzhiDict setObject:dict forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
+}
+
+- (void)setupDataForCellCode:(HmDetailsCodeCell *)cell IndexPath:(NSIndexPath *)indexPath Age:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give {
     if (indexPath.row == 0) {
         // 投保年两
         cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
         cell.myLaber.text = @"投保年龄";
-        cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"投保年龄"]).firstObject;
+        cell.selectLaber.text = age;
     }
     if (indexPath.row == 1) {
         // 缴费方式
         cell.headImg.image = [UIImage imageNamed:@"p_payType"];
         cell.myLaber.text = @"缴费方式";
-        cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"缴费方式"]).firstObject;
+        cell.selectLaber.text = type;
     }
     if (indexPath.row == 2) {
         // 保险期间
         cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
         cell.myLaber.text = @"保障期间";
-        cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"保障期间"]).firstObject;
+        cell.selectLaber.text = baozhang;
     }
     if (((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]).count == 4) {
-        if (indexPath.row == 4) {
+        if (indexPath.row == 3) {
             // 给付方式
             cell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
             cell.myLaber.text = @"给付方式";
-            cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"给付方式"]).firstObject;
+            cell.selectLaber.text = give;
         }
     }
-    
-    return cell;
 }
 
 #pragma mark -- HmMultistageTableView Delegate
@@ -475,7 +543,7 @@ typedef enum {
 }
 
 - (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForAtomAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return 44;
 }
 
 // 返回组头(两种)
@@ -497,36 +565,47 @@ typedef enum {
 
 - (void)mTableView:(HmMultistageTableView *)mTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"didSelectRow ----%ld  didSelectSection ----%ld",(long)indexPath.row,(long)indexPath.section);
-    HmDetailsCell *cell = [self.tableVB dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier forIndexPath:indexPath];
-    if (self.contentMutableDict.count != 3) {
+    HmDetailsCodeCell *cell = [self.tableVB dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier forIndexPath:indexPath];
+    NSLog(@"%@",cell);
+    NSLog(@"%@",cell.myLaber.text);
+    NSString *key = ((WHgetproduct *)self.groupMutableArr[indexPath.section]).id;
+    if (((NSDictionary *)[self.contentMutableDict objectForKey:key]).count != 3) {
         // 有给付方式
         if (indexPath.row == 0) {
             self.contentName = @"投保年龄";
-            [self showPickerViewAndToolBar];
+//            [self showPickerViewAndToolBar];
+            [self showAlertViewWithArr:[((NSDictionary *)[self.contentMutableDict objectForKey:key]) objectForKey:@"投保年龄"] Key:@"投保年龄"];
         }else if (indexPath.row == 1) {
             self.contentName = @"缴费方式";
-            [self showPickerViewAndToolBar];
+//            [self showPickerViewAndToolBar];
+            [self showAlertViewWithArr:[((NSDictionary *)[self.contentMutableDict objectForKey:key]) objectForKey:@"缴费方式"] Key:@"缴费方式"];
         }else if (indexPath.row == 2) {
             self.contentName = @"保障期间";
-            [self showPickerViewAndToolBar];
+//            [self showPickerViewAndToolBar];
+            [self showAlertViewWithArr:[((NSDictionary *)[self.contentMutableDict objectForKey:key]) objectForKey:@"保障期间"] Key:@"保障期间"];
         }else if (indexPath.row == 3) {
             self.contentName = @"给付方式";
-            [self showPickerViewAndToolBar];
+//            [self showPickerViewAndToolBar];
+            [self showAlertViewWithArr:[((NSDictionary *)[self.contentMutableDict objectForKey:key]) objectForKey:@"给付方式"] Key:@"给付方式"];
         }
     }else {
         if (indexPath.row == 0) {
             self.contentName = @"投保年龄";
-            [self showPickerViewAndToolBar];
+//            [self showPickerViewAndToolBar];
+            [self showAlertViewWithArr:[((NSDictionary *)[self.contentMutableDict objectForKey:key]) objectForKey:@"投保年龄"] Key:@"投保年龄"];
         }else if (indexPath.row == 1) {
             self.contentName = @"缴费方式";
-            [self showPickerViewAndToolBar];
+//            [self showPickerViewAndToolBar];
+            [self showAlertViewWithArr:[((NSDictionary *)[self.contentMutableDict objectForKey:key]) objectForKey:@"缴费方式"] Key:@"缴费方式"];
         }else if (indexPath.row == 2) {
             self.contentName = @"保障期间";
-            [self showPickerViewAndToolBar];
+//            [self showPickerViewAndToolBar];
+            [self showAlertViewWithArr:[((NSDictionary *)[self.contentMutableDict objectForKey:key]) objectForKey:@"保障期间"] Key:@"保障期间"];
         }
     }
     self.myIndexPath = indexPath;
     
+    [self.tableVB reloadData];
 //    if ([cell.myLaber.text isEqualToString:@"投保年龄"]) {
 //        [self showPickerViewAndToolBar];
 //    }else if ([cell.myLaber.text isEqualToString:@"缴费方式"]) {
@@ -538,7 +617,7 @@ typedef enum {
 //    }else {
 //        
 //    }
-    [self.pickerV reloadAllComponents];
+//    [self.pickerV reloadAllComponents];
 }
 
 #pragma mark -- Header Open Or Close
@@ -557,283 +636,6 @@ typedef enum {
 
 - (void)mTableView:(HmMultistageTableView *)mTableView willCloseRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Close Row ----%ld",(long)indexPath.row);
-}
-
-#pragma mark -- Table View Delegate
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    if (self.isSelectPersonName) {
-//        // 有人
-//        return self.groupMutableArr.count + 1;
-//    }else {
-//        // 没人
-//        return self.groupMutableArr.count;
-//    }
-////    return 3 + 1 - 2;
-//}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (self.isSelectPersonName) {
-        // 有人
-        if (section == 0) {
-            return 1;
-        }
-    }
-    if (section == self.selectedSection && self.selectedSection != 0) {
-        // 点击的是同一个section且非第一次
-        if (self.isOpen) {
-            // 展开
-            return self.contentMutableDict.count;
-        }
-        else
-        {
-            // 收缩
-            return 1;
-        }
-    }
-    else
-    {
-        // 点击的不是同一个section
-        return 1;
-    }
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        // HmPhysicalMainPageCell
-        BOOL nibsRegistered = NO;
-        if (!nibsRegistered) {
-            UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmPhysicalMainPageCell class]) bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:kHmPhysicalMainCellIdentifier];
-            nibsRegistered = YES;
-        }
-        HmPhysicalMainPageCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalMainCellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        if (self.firstUser) {
-           cell.model = self.firstUser;
-            //cell.lblName.text = self.name;
-            self.rela_id = self.firstUser.id;
-            NSLog(@"%@",self.rela_id);
-            
-           
-        }
-        return cell;
-
-    }
-    else
-    {
-        if (indexPath.section == self.selectedSection && self.selectedSection != 0) {
-            if (self.isOpen) {
-                // 展开cell
-                if (indexPath.row == 0) {
-                    // 组头
-                                      
-                }
-                else
-                {
-                    if (indexPath.row >= 1 && indexPath.row <= 4) {
-                        // 投保年龄cell
-                        BOOL nibsRegistered = NO;
-                        if (!nibsRegistered) {
-                            UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmDetailsCell class]) bundle:nil];
-                            [tableView registerNib:nib forCellReuseIdentifier:kHmPhysicalDetailsCellIdentifier];
-                            nibsRegistered = YES;
-                            
-                        }
-                        HmDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier];
-                        if (indexPath.row == 1) {
-                            cell.myLaber.text = @"投保年龄";
-                            cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
-                            cell.selectLaber.text = @"";
-                        }
-                        if (indexPath.row == 3) {
-                            cell.myLaber.text = @"缴费方式";
-                            cell.headImg.image = [UIImage imageNamed:@"p_payType"];
-                          //  cell.selectLaber.text = @"10年交";
-                        }
-                        if (indexPath.row == 2) {
-                            cell.myLaber.text = @"保险期间";
-                            cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
-                            cell.selectLaber.text = @"";
-
-                        }
-                        
-                        if (indexPath.row == 4) {
-                            cell.myLaber.text = @"保额(元)";
-                            cell.headImg.image = [UIImage imageNamed:@"test_money"];
-                            cell.selectLaber.text = @"";
-
-                        }
-                        
-
-
-                        
-                        
-                        return cell;
-                    }
-                    else
-                    {
-                        // 附
-                        BOOL nibsRegistered = NO;
-                        if (!nibsRegistered) {
-                            UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmFujiaCell class]) bundle:nil];
-                            [tableView registerNib:nib forCellReuseIdentifier:kHmPhysicalFujiaCellIdentifier];
-                            nibsRegistered = YES;
-                        }
-                        HmFujiaCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalFujiaCellIdentifier];
-                        
-                        return cell;
-                    }
-                }
-            }
-            else
-            {
-                // 收缩cell
-            }
-        }
-        // HmPhysicalGroupCell
-        BOOL nibsRegistered = NO;
-        if (!nibsRegistered) {
-            UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmPhysicalGroupCell class]) bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:kHmPhysicalGroupCellIdentifier];
-            nibsRegistered = YES;
-        }
-        HmPhysicalGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:kHmPhysicalGroupCellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.btnDelete.tag = indexPath.section;
-        if (![self.name isEqualToString:@""]) {
-            cell.lblName.text = self.name;
-        
-        }
-        return cell;
-
-    }
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        // HmPhysicalMainPageCell
-        return 90;
-    }
-    else
-    {
-        // HmPhysicalGroupCell
-        return 50;
-    }
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.isOpen && indexPath.section != self.selectedSection) {
-        // 有一项已经展开
-        HmPhysicalGroupCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
-        
-        DLog(@"关闭Cell(上次展开的cell)组数:%ld,行数:%d", self.selectedSection,0);
-        cell.imgListDown.image = [UIImage imageNamed:@"p_listDown"];
-    }
-    HmPhysicalGroupCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
-    if (indexPath.section == 1 && indexPath.row == 1) {
-        NSLog(@"kkk");
-        WHageTableViewController * age = [[WHageTableViewController alloc]init];
-        HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-
-        age.mblock2 = ^(NSString * s1)
-        {
-            
-            self.age = s1;
-            
-            NSLog(@"==%@",self.age);
-           
-            cell.selectLaber.text = s1;
-
-            
-            
-        };
-        age.ID = self.ids;
-        [self.navigationController pushViewController:age animated:YES];
-    }
-    
-    if (indexPath.section == 1 && indexPath.row == 2) {
-        NSLog(@"22");
-        WHperiodTableViewController * period = [[WHperiodTableViewController alloc]init];
-         HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        period.mblock2 = ^(NSString * s1)
-        {
-            
-            self.period = s1;
-            
-            cell.selectLaber.text = s1;
-
-            NSLog(@"==%@",self.period);
-            
-        };
-        
-        period.ID = self.ids;
-        [self.navigationController pushViewController:period animated:YES];
-
-    }
-    if (indexPath.section == 1 && indexPath.row == 3) {
-        NSLog(@"33");
-    }
-    if (indexPath.section == 1 && indexPath.row == 4) {
-        NSLog(@"44");
-        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入投保金额" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //获取第1个输入框；
-            _userNameTextField = alertController.textFields.firstObject;
-            _userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
-            
-            NSLog(@"输入的数据 = %@",_userNameTextField.text);
-            HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            cell.selectLaber.text = _userNameTextField.text;
-            self.rate = _userNameTextField.text;
-            
-        }]];
-        //增加取消按钮；
-        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-        
-        //定义第一个输入框；
-        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            textField.placeholder = @"请输入保额";
-        }];
-        [self presentViewController:alertController animated:true completion:nil];
-        
-    }
-
-    
-    
-    if (indexPath.section != 0 && indexPath.row == 0) {
-        if ([cell.imgListDown.image isEqual:[UIImage imageNamed:@"p_listDown"]]) {
-            // 向下  改为向上
-            DLog(@"点击要展开的cell的组数:%ld, 行数:%ld", indexPath.section,indexPath.row);
-            cell.imgListDown.image = [UIImage imageNamed:@"p_listUp"];
-            self.isOpen = YES;
-            
-        }
-        else
-        {
-            // 向上  改为向下
-            DLog(@"点击要收缩的cell的组数:%ld, 行数:%ld", indexPath.section,indexPath.row);
-            cell.imgListDown.image = [UIImage imageNamed:@"p_listDown"];
-            self.isOpen = NO;
-        }
-        self.selectedSection = indexPath.section;
-        [tableView reloadData];
-    }
-}
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 10;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -856,55 +658,104 @@ typedef enum {
     return _contentMutableDict;
 }
 
-#pragma mark -- Picker View Delegate
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+- (NSMutableDictionary *)fuzhiDict {
+    if (_fuzhiDict == nil) {
+        _fuzhiDict = [NSMutableDictionary dictionary];
+    }
+    return _fuzhiDict;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    //    [pickerDict setObject:payoutArr forKey:@"给付方式"];
-    //    [pickerDict setObject:pay_periodArr forKey:@"缴费方式"];
-    //    [pickerDict setObject:_arr1 forKey:@"保障期间"];
-    //    [pickerDict setObject:_arr2 forKey:@"投保年龄"];
-    if ([self.contentName isEqualToString:@"投保年龄"]) {
-        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"]).count;
-    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
-        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"]).count;
-    }else if ([self.contentName isEqualToString:@"保障期间"]) {
-        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"]).count;
-    }else if ([self.contentName isEqualToString:@"给付方式"]) {
-        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"]).count;
-    }else {
-        return 0;
-    }
+//#pragma mark -- Picker View Delegate
+//- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+//    return 1;
+//}
+//
+//- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+//    //    [pickerDict setObject:payoutArr forKey:@"给付方式"];
+//    //    [pickerDict setObject:pay_periodArr forKey:@"缴费方式"];
+//    //    [pickerDict setObject:_arr1 forKey:@"保障期间"];
+//    //    [pickerDict setObject:_arr2 forKey:@"投保年龄"];
+//    if ([self.contentName isEqualToString:@"投保年龄"]) {
+//        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"]).count;
+//    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
+//        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"]).count;
+//    }else if ([self.contentName isEqualToString:@"保障期间"]) {
+//        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"]).count;
+//    }else if ([self.contentName isEqualToString:@"给付方式"]) {
+//        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"]).count;
+//    }else {
+//        return 0;
+//    }
+//}
+//
+//- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+//    if ([self.contentName isEqualToString:@"投保年龄"]) {
+//        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row];
+//    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
+//        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row];
+//    }else if ([self.contentName isEqualToString:@"保障期间"]) {
+//        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row];
+//    }else if ([self.contentName isEqualToString:@"给付方式"]) {
+//        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"])[row];
+//    }else {
+//        return @"";
+//    }
+//}
+//
+//- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+//    HmDetailsCodeCell *cell = [self.tableVB dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier forIndexPath:_myIndexPath];
+//    NSLog(@"111%@%@",_contentName,cell.selectLaber.text);
+//    if ([self.contentName isEqualToString:@"投保年龄"]) {
+//        NSMutableDictionary *dic = [_fuzhiDict objectForKey:[NSString stringWithFormat:@"%ld",_myIndexPath.section]];
+//        [dic setValue:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row] forKey:@"投保年龄"];
+//        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row]);
+//    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
+//        NSMutableDictionary *dic = [_fuzhiDict objectForKey:[NSString stringWithFormat:@"%ld",_myIndexPath.section]];
+//        [dic setValue:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row] forKey:@"缴费方式"];
+//        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row]);
+//    }else if ([self.contentName isEqualToString:@"保障期间"]) {
+//        NSMutableDictionary *dic = [_fuzhiDict objectForKey:[NSString stringWithFormat:@"%ld",_myIndexPath.section]];
+//        [dic setValue:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row] forKey:@"保障期间"];
+//        
+//        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row]);
+//    }else if ([self.contentName isEqualToString:@"给付方式"]) {
+//        NSMutableDictionary *dic = [_fuzhiDict objectForKey:[NSString stringWithFormat:@"%ld",_myIndexPath.section]];
+//        [dic setValue:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"])[row] forKey:@"给付方式"];
+//        
+//        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"])[row]);
+//    }else {
+//        
+//    }
+////    [self.tableVB reloadRowsAtIndexPaths:@[_myIndexPath] withRowAnimation:(UITableViewRowAnimationNone)];
+//    
+//    [self fuzhiForCellDataAge:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"]).firstObject Type:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"]).firstObject Baozhang:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"]).firstObject Give:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"]).firstObject IndexPath:_myIndexPath];
+//    
+//    [self.tableVB reloadData];
+//    
+//    NSLog(@"%@",cell.myLaber.text);
+//}
+
+#pragma mark -- HMConfirmView Setting
+- (void)showAlertViewWithArr:(NSArray *)arr Key:(NSString *)key {
+    _confir = [[HMConfirmView alloc] initWithFrame:[self.navigationController.view superview].bounds];
+    _confir.itemArr = arr;
+    _confir.delegate = self;
+    _confir.key = key;
+    _confir.backgroundColor = [UIColor colorWithRed:0 / 255.0 green:0 / 255.0 blue:0 / 255.0 alpha:0.3];
+    [self.view addSubview:_confir];
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if ([self.contentName isEqualToString:@"投保年龄"]) {
-        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row];
-    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
-        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row];
-    }else if ([self.contentName isEqualToString:@"保障期间"]) {
-        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row];
-    }else if ([self.contentName isEqualToString:@"给付方式"]) {
-        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"])[row];
-    }else {
-        return @"";
-    }
+#pragma mark -- HMConfirmView Delegate
+- (void)confirmActionWithIndexOfArr:(NSInteger)index SelectName:(NSString *)name Key:(NSString *)key {
+//    [[_fuzhiDict objectForKey:[NSString stringWithFormat:@"%ld",_myIndexPath.section]] setObject:name forKey:key];
+    NSMutableDictionary *dict = [_fuzhiDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id];
+    [dict setObject:name forKey:key];
+    [self.tableVB reloadData];
+    [_confir removeFromSuperview];
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if ([self.contentName isEqualToString:@"投保年龄"]) {
-        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row]);
-    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
-        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row]);
-    }else if ([self.contentName isEqualToString:@"保障期间"]) {
-        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row]);
-    }else if ([self.contentName isEqualToString:@"给付方式"]) {
-        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"])[row]);
-    }else {
-        
-    }
+- (void)cancelActionWithNothing {
+    [_confir removeFromSuperview];
 }
 
 /*

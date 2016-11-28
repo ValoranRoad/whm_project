@@ -636,7 +636,8 @@
                 [mutableArr_pay_period addObjectsFromArray:((NSDictionary *)[dic objectForKey:@"pay_period"]).allKeys];
             }
             if ([[dic allKeys] containsObject:@"payout"]) {
-                [mutableArr_payOut addObjectsFromArray:((NSDictionary *)[dic objectForKey:@"payout"]).allKeys];
+//                [mutableArr_payOut addObjectsFromArray:[dic objectForKey:@"payout"]];
+                [mutableArr_payOut addObject:[dic objectForKey:@"payout"]];
             }
         }
         NSSet *set = [NSSet setWithArray:mutableArr_pay_period];

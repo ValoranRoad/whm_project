@@ -186,6 +186,8 @@
             VC.company_id = selectCompany.id;
             VC.groupsArr = self.groupArr;
             VC.isSelectP = self.isSelects;
+            VC.contentDic = self.contentDict;
+            VC.fuzhiDic = self.fuzhiDict;
             [self.navigationController pushViewController:VC animated:YES];
         }];
         
@@ -251,6 +253,8 @@
     produceSearch.company_id = model.id;
     produceSearch.groupsArr = self.groupArr;
     produceSearch.isSelectP = self.isSelects;
+    produceSearch.contentDic = self.contentDict;
+    produceSearch.fuzhiDic = self.fuzhiDict;
     [self.navigationController pushViewController:produceSearch animated:YES];
 }
 

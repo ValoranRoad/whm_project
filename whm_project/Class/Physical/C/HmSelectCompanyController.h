@@ -13,4 +13,7 @@
 @property (nonatomic, strong) NSMutableArray *groupArr;
 @property (nonatomic, assign) BOOL isSelects;
 
+@property (nonatomic, strong) NSMutableDictionary *contentDict;
+@property (nonatomic, strong) NSMutableDictionary *fuzhiDict;
+
 @end
