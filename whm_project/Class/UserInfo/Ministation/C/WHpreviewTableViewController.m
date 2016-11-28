@@ -2,7 +2,7 @@
 //  WHpreviewTableViewController.m
 //  whm_project
 //
-//  Created by 王义国 on 16/11/1.
+//  Created by 王义国 on 16/11/28.
 //  Copyright © 2016年 chenJw. All rights reserved.
 //
 
@@ -18,6 +18,8 @@
 #import "WHcount.h"
 #import "WHgetintroduce.h"
 #import "WHmessageListTableViewCell.h"
+#import "WHcounselTableViewCell.h"
+#import "WHnews.h"
 
 @interface WHpreviewTableViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UITextViewDelegate>
 @property (nonatomic, strong) UITableView *tableV;
@@ -63,29 +65,32 @@
 @property(nonatomic,strong)UITextView *Mytextview;
 @property(nonatomic,strong)WHmessageListTableViewCell * cell2;
 @property(nonatomic,strong)NSMutableArray * messArry;
-
+@property(nonatomic,strong)WHcounselTableViewCell * cell3;
 //基本信息
 @property(nonatomic,retain)UIScrollView*scolw;
 @property(nonatomic,retain)UIPageControl*page;
 @property(nonatomic,strong)NSMutableArray * ImgArry;
+//
+@property(nonatomic,strong)NSMutableArray * newsArry;
+@property(nonatomic,strong)NSString * tel;
 
 @end
 
 @implementation WHpreviewTableViewController
 
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
     //请求数据
-    [self requestData];
+    [self requestData1];
     [self setData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     [self setupUI];
+    [self setupUI];
 
+ 
 }
 //数据请求
 -(void)setData
@@ -115,7 +120,7 @@
 -(void)setupUI
 {
     self.title = @"微站";
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, kScreenHeight* 0.32, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, kScreenHeight* 0.32, kScreenWitdh, kScreenHeight*0.68 - 64) style:UITableViewStylePlain];
     _tableV.delegate = self;
     _tableV.dataSource = self;
     _tableV.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -127,16 +132,16 @@
     [self.view addSubview:_headView];
     [self.tableV registerClass:[WHprevTableViewCell class] forCellReuseIdentifier:@"cell1"];
     [self.tableV registerClass:[WHmessageListTableViewCell class] forCellReuseIdentifier:@"cell2"];
-    
+    [self.tableV registerClass:[WHcounselTableViewCell class] forCellReuseIdentifier:@"cell3"];
     //
     
     self.headImage = [[UIImageView alloc]init];
     self.headImage.frame = CGRectMake(10, 10, kScreenWitdh * 0.2, kScreenWitdh *0.2);
     self.headImage.layer.masksToBounds = YES;
     self.headImage.layer.cornerRadius = kScreenWitdh *0.1;
-   // self.headImage.image = [UIImage imageNamed:@"test_head"];
+    // self.headImage.image = [UIImage imageNamed:@"test_head"];
     [self.headView addSubview:_headImage];
-   // self.headView.backgroundColor = [UIColor redColor];
+    // self.headView.backgroundColor = [UIColor redColor];
     //
     self.nameLaber = [[UILabel alloc]init];
     self.nameLaber.frame = CGRectMake(CGRectGetMaxX(self.headImage.frame)+5, CGRectGetMinY(self.headImage.frame), kScreenWitdh* 0.15, kScreenWitdh * 0.1);
@@ -155,12 +160,12 @@
     self.yearLaber.frame = CGRectMake(CGRectGetMaxX(self.sexImage.frame)+3, CGRectGetMinY(self.sexImage.frame), kScreenWitdh * 0.1, 20);
     self.yearLaber.textColor = [UIColor grayColor];
     self.yearLaber.font = [UIFont systemFontOfSize:13.0];
-   // self.yearLaber.text = @"36岁";
+    // self.yearLaber.text = @"36岁";
     [self.headView addSubview:_yearLaber];
     //
     self.companyLaber = [[UILabel alloc]init];
     self.companyLaber.frame = CGRectMake(CGRectGetMinX(self.nameLaber.frame),CGRectGetMaxY(self.nameLaber.frame)+5,  kScreenWitdh * 0.4, 20);
-   // self.companyLaber.text = @"新华人寿 经理 从业5年 全国";
+    // self.companyLaber.text = @"新华人寿 经理 从业5年 全国";
     self.companyLaber.font = [UIFont systemFontOfSize:11.0];
     self.companyLaber.textColor = [UIColor grayColor];
     [self.headView addSubview:_companyLaber];
@@ -178,7 +183,7 @@
     self.telBut.layer.cornerRadius = 15.0;
     [self.headView addSubview:_telBut];
     [self.telBut addTarget:self action:@selector(telAction:) forControlEvents:(UIControlEventTouchUpInside)];
-   //
+    //
     self.lineView1 = [[UIView alloc]init];
     self.lineView1.frame = CGRectMake(0, CGRectGetMaxY(self.headImage.frame)+5, kScreenWitdh, 1);
     self.lineView1.backgroundColor = [UIColor grayColor];
@@ -229,7 +234,7 @@
     self.numzixunLaber = [[UILabel alloc]init];
     self.numzixunLaber.frame = CGRectMake(CGRectGetMaxX(self.numchanpin.frame)+5, CGRectGetMinY(self.numchanpin.frame),CGRectGetWidth(self.numchanpin.frame), CGRectGetHeight(self.numchanpin.frame));
     self.numzixunLaber.textColor = [UIColor blueColor];
-   // self.numzixunLaber.text = @"60";
+    // self.numzixunLaber.text = @"60";
     [self.headView addSubview:_numzixunLaber];
     //
     self.zixunLaber = [[UILabel alloc]init];
@@ -243,7 +248,7 @@
     self.numbaodanLaber = [[UILabel alloc]init];
     self.numbaodanLaber.frame = CGRectMake(CGRectGetMaxX(self.numzixunLaber.frame)+15, CGRectGetMinY(self.numzixunLaber.frame), CGRectGetWidth(self.numzixunLaber.frame), CGRectGetHeight(self.numzixunLaber.frame));
     self.numbaodanLaber.textColor = [UIColor blueColor];
-   // self.numbaodanLaber.text = @"250";
+    // self.numbaodanLaber.text = @"250";
     [self.headView addSubview:_numbaodanLaber];
     
     //
@@ -258,7 +263,7 @@
     self.numkehuLaber = [[UILabel alloc]init];
     self.numkehuLaber.frame = CGRectMake(CGRectGetMaxX(self.numbaodanLaber.frame)+10, CGRectGetMinY(self.numbaodanLaber.frame), CGRectGetWidth(self.numbaodanLaber.frame), CGRectGetHeight(self.numbaodanLaber.frame));
     self.numkehuLaber.textColor = [UIColor blueColor];
-  //  self.numkehuLaber.text = @"300";
+    //  self.numkehuLaber.text = @"300";
     [self.headView addSubview:_numkehuLaber];
     
     //
@@ -270,25 +275,27 @@
     [self.headView addSubview:_kehuLaber];
     
     
-
+    
 }
 
-
 // 请求数据
--(void)requestData
+-(void)requestData1
 {
     id  hud = [JGProgressHelper showProgressInView:self.view];
     [self.dataService getMicroWithAgent_uid:@"" uid:@"" success:^(NSArray *lists) {
         [hud hide:YES];
         
-       // self.daraArry = [NSMutableArray array];
+        // self.daraArry = [NSMutableArray array];
         self.mesArry = [NSMutableArray array];
         for (WHmicro * model in lists) {
-          //留言列表
+            //留言列表
             self.messArry = [NSMutableArray arrayWithArray:model.message];
-           //
+            //
             self.daraArry = [NSMutableArray arrayWithArray:model.pro];
             NSLog(@"oooo%ld",self.daraArry.count);
+            //新闻咨询
+            self.newsArry = [NSMutableArray arrayWithArray:model.news];
+            NSLog(@"lllll%ld",self.newsArry.count);
             //个人荣誉
             self.ImgArry = [NSMutableArray array];
             for (WHgethonor * Img in model.honor) {
@@ -301,6 +308,9 @@
                 NSLog(@"%@",info.name);
                 self.nameLaber.text = info.name;
                 self.yearLaber.text = info.age;
+                //电话号码
+                self.tel = info.mobile;
+                //
                 NSInteger  a = [info.sex integerValue];
                 if (a == 1) {
                     self.sexImage.image = [UIImage imageNamed:@"test_male"];
@@ -337,13 +347,13 @@
                 
             }
             //统计
-
-                self.numchanpin.text = model.count.pro_count;
-                self.numzixunLaber.text = model.count.news_count;
-                self.numbaodanLaber.text = model.count.message_count;
-                self.numkehuLaber.text = model.count.customer_count;
-       
-        
+            
+            self.numchanpin.text = model.count.pro_count;
+            self.numzixunLaber.text = model.count.news_count;
+            self.numbaodanLaber.text = model.count.message_count;
+            self.numkehuLaber.text = model.count.customer_count;
+            
+            
         }
         
         [self.tableV reloadData];
@@ -355,7 +365,6 @@
     }];
     
 }
-
 //信息事件
 -(void)messageAction:(UIButton *)sender
 {
@@ -366,13 +375,25 @@
 //电话事件
 -(void)telAction:(UIButton *)sender
 {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"你确定要拨打电话吗?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    //  alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+    [alert show];
     
 }
-//
+//根据被点击按钮的索引处理点击事件
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0 ) {
+        NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",self.tel];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        
+    }
+}
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-     NSString * s1 = @"基本信息";
+        NSString * s1 = @"基本信息";
         return s1;
     }
     if (section == 1) {
@@ -395,24 +416,17 @@
         NSString * s1 = @"保险咨询";
         return s1;
     }
-    if (section == 6) {
-        NSString * s1 = @"保险方案";
-        return s1;
-    }
-
+    //    if (section == 6) {
+    //        NSString * s1 = @"保险方案";
+    //        return s1;
+    //    }
+    
     
     else
     {
-        return nil;
+        return @"";
     }
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     /**
@@ -439,9 +453,12 @@
     if (indexPath.section == 4) {
         return 80;
     }
+    if (indexPath.section == 5) {
+        return 120;
+    }
     else
     {
-    return kScreenHeight * 0.081;
+        return kScreenHeight * 0.081;
     }
 }
 
@@ -452,17 +469,20 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return 7;
+    
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     
     if (section == 0) {
         return 7;
     }
     if (section == 1) {
+        return  1;
+    }
+    if (section == 4) {
         return self.messArry.count;
     }
     if (section == 2) {
@@ -471,16 +491,18 @@
     if (section == 3) {
         return self.daraArry.count;
     }
-        
+    if (section == 5) {
+        return  self.newsArry.count;
+    }
     else
     {
-    return 1;
+        return 1;
     }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"formCell" ];
     if (cell == nil) {
         
@@ -492,7 +514,7 @@
             cell.detailTextLabel.textColor = [UIColor grayColor];
             cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
             cell.textLabel.font = [UIFont systemFontOfSize:13.0];
-           // cell.detailTextLabel.text = self.service_area;
+            // cell.detailTextLabel.text = self.service_area;
             self.areaLaber = [[UILabel alloc]init];
             self.areaLaber.frame = CGRectMake(kScreenWitdh * 0.5, CGRectGetMidY(cell.textLabel.frame), kScreenWitdh * 0.4, kScreenHeight * 0.081);
             self.areaLaber.font = [UIFont systemFontOfSize:13.0];
@@ -567,7 +589,7 @@
             self.certificate_no.textColor = [UIColor grayColor];
             [cell.contentView addSubview:_certificate_no];
         }
-
+        
         if (indexPath.section == 0 && indexPath.row == 6) {
             cell.textLabel.text = @"执业证编号";
             cell.textLabel.textColor = [UIColor grayColor];
@@ -581,8 +603,8 @@
             self.exhibition_no.textColor = [UIColor grayColor];
             [cell.contentView addSubview:_exhibition_no];
         }
-
-  }
+        
+    }
     
     if (indexPath.section == 3) {
         WHprevTableViewCell * cell1 = [tableView dequeueReusableCellWithIdentifier:@"cell1"forIndexPath:indexPath ];
@@ -591,9 +613,9 @@
         cell1.titLaber.text = model.name;
         cell1.ageLaber.text = model.limit_age;
         cell1.styLaber.text = model.ptype_name;
-
         
-//        cell1.titLaber.text = model.name;
+        
+        //        cell1.titLaber.text = model.name;
     }
     if (indexPath.section == 2) {
         self.scolw = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 10, CGRectGetWidth(self.view.frame), 200)];
@@ -608,17 +630,17 @@
         self.page.numberOfPages = self.ImgArry.count;
         self.page.currentPageIndicatorTintColor = [UIColor redColor];
         [cell.contentView addSubview:_page];
-//        UIImageView * myImg = [[UIImageView alloc]init];
-//        myImg.frame = CGRectMake(0, 20, kScreenWitdh, 180);
+        //        UIImageView * myImg = [[UIImageView alloc]init];
+        //        myImg.frame = CGRectMake(0, 20, kScreenWitdh, 180);
         //myImg.image = [UIImage imageNamed:@"test_head"];
         for (int i = 0; i< self.ImgArry.count; i++) {
             NSString *imageName =[NSString stringWithFormat:@"%@",self.ImgArry[i]];
-           // UIImageView *imageview =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
+            // UIImageView *imageview =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
             UIImageView * imageview = [[UIImageView alloc]init];
             [imageview sd_setImageWithURL:[NSURL URLWithString:imageName]];
             imageview.frame =CGRectMake(CGRectGetWidth(self.scolw.frame)*i , 10, CGRectGetWidth(self.scolw.frame), 180);
             [self.scolw addSubview:imageview];
-
+            
         }
         
     }
@@ -635,7 +657,7 @@
         self.Mytextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;//自适应高度
         
         [cell.contentView addSubview:_Mytextview];
-
+        
     }
     if (indexPath.section == 4) {
         WHmessageListTableViewCell * cell2 = [tableView dequeueReusableCellWithIdentifier:@"cell2" forIndexPath:indexPath];
@@ -649,6 +671,23 @@
         cell2.timeLaber.text = [s1 substringToIndex:11];
     }
     
+    if (indexPath.section == 5) {
+        WHcounselTableViewCell * cell3 = [tableView dequeueReusableCellWithIdentifier:@"cell3" forIndexPath:indexPath];
+        WHnews * news = self.newsArry[indexPath.row];
+        [cell3.myImg sd_setImageWithURL:[NSURL URLWithString:news.thumbnail]];
+        cell3.myTit.text = news.title;
+        NSString * s2 = @"阅读";
+        cell3.readNum.text = [news.count stringByAppendingString:s2];
+        NSString * s4 = @"类型:";
+        if (news.soucre == nil) {
+            news.soucre =@"行业新闻";
+        }
+        cell3.styLaber.text = [s4 stringByAppendingString:news.soucre];
+        NSString * s5 = news.created_time;
+        cell3.timeLaber.text = [s5 substringToIndex:11];
+        
+    }
+    
     return cell;
 }
 
@@ -660,14 +699,11 @@
 }
 
 
-////选中事件
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == 0 && indexPath.row == 0) {
-//        
-//    }
-//
-//}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 /*
 // Override to support conditional editing of the table view.
