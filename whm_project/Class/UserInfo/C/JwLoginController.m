@@ -98,7 +98,6 @@
     JwRegistController *registVC = [[JwRegistController alloc] init];
     [self.navigationController pushViewController:registVC animated:YES];
 //    RegisterTwoViewController *regVC = [[RegisterTwoViewController alloc]init];
-//    
 //    [self.navigationController pushViewController:regVC animated:YES];
 }
 

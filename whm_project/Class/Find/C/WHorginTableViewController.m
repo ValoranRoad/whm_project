@@ -1,38 +1,42 @@
 //
-//  WHnearAgentTableViewController.m
+//  WHorginTableViewController.m
 //  whm_project
 //
-//  Created by 王义国 on 16/11/24.
+//  Created by 王义国 on 16/11/25.
 //  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "WHnearAgentTableViewController.h"
+#import "WHorginTableViewController.h"
 #import "MacroUtility.h"
-#import "WHnearAgentTableViewCell.h"
-@interface WHnearAgentTableViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "WHorginTableViewCell.h"
+
+
+
+@interface WHorginTableViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)WHorginTableViewCell * cell;
 @property(nonatomic,strong)UITableView * tableV;
-@property(nonatomic,strong)WHnearAgentTableViewController * cell;
-@property(nonatomic,strong)NSString * tel;
+
+
 @end
 
-@implementation WHnearAgentTableViewController
+@implementation WHorginTableViewController
+
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     
     [self quartDate];
 }
-
+//数据请求
+-(void)quartDate
+{
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setupUI];
 }
-//数据请求
--(void)quartDate
-{
-}
-
 //设计界面
 -(void)setupUI
 {
@@ -41,10 +45,11 @@
     _tableV.dataSource = self;
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableV];
-
-    [self.tableV registerClass:[WHnearAgentTableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    [self.tableV registerClass:[WHorginTableViewCell class] forCellReuseIdentifier:@"cell"];
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -64,51 +69,17 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WHnearAgentTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    WHorginTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-     [cell.telBut setBackgroundImage:[UIImage imageNamed:@"tel"] forState:(UIControlStateNormal)];
-    [cell.mesBut setBackgroundImage:[UIImage imageNamed:@"message"] forState:(UIControlStateNormal)];
-    cell.mesBut.tag = 100 + indexPath.row;
     
-    cell.telBut.tag = 100 + indexPath.row;
-    [cell.telBut addTarget:self action:@selector(telAction:) forControlEvents:(UIControlEventTouchUpInside)];
-    [cell.mesBut addTarget:self action:@selector(mesButAction:) forControlEvents:(UIControlEventTouchUpInside)];
-    
+    [cell.telBut setBackgroundImage:[UIImage imageNamed:@"tel"] forState:(UIControlStateNormal)];
     return cell;
 }
-
-//信息事件
--(void)mesButAction:(UIButton *)sender
-{
-    NSLog(@"message");
-}
-
-//电话事件
--(void)telAction:(UIButton *)sender
-{
-//    WHagent * model = self.peopArry[sender.tag - 100];
-//    self.tel = model.mobile;
-    UIAlertView *view = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你确定要拨打电话吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-    
-    [view show];
-    
-    
-}
-//根据被点击按钮的索引处理点击事件
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0 ) {
-        NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",self.tel];
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-        
-    }
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 100;
 }
+
 
 
 /*

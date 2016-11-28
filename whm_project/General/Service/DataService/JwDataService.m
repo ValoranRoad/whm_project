@@ -67,13 +67,15 @@
                          province:(NSString *)province
                              city:(NSString *)city
                            county:(NSString *)county
+
                           success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"com_id":com_id,
                                     @"city_name":city_name,
                                     @"province":province,
                                     @"city":city,
-                                    @"county":county}mutableCopy];
+                                    @"county":county 
+                                     }mutableCopy];
     param =[[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {
         NSArray *infos = data[@"data"];

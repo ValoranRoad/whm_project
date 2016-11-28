@@ -9,6 +9,8 @@
 #import "JwFindController.h"
 #import "MacroUtility.h"
 #import "UIColor+Hex.h"
+#import "WHorginTableViewController.h"
+#import "WHnearAgentTableViewController.h"
 @interface JwFindController ()
 @property(nonatomic,strong)UIView * myview;
 @property(nonatomic,strong)UIImageView *logoImg;
@@ -68,6 +70,12 @@
     self.nearLaber.font = [UIFont systemFontOfSize:12.0];
     [self.blackView addSubview:_nearLaber];
     
+    UITapGestureRecognizer *tapGesture =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable:)];
+    self.moonImg.userInteractionEnabled = YES;
+    tapGesture.numberOfTapsRequired = 1;
+    tapGesture.numberOfTouchesRequired = 1;
+    [self.moonImg addGestureRecognizer:tapGesture];
+    
     
     //
     self.mapImg = [[UIImageView alloc]init];
@@ -81,7 +89,13 @@
     self.orgLaber.font = [UIFont systemFontOfSize:12.0];
     self.orgLaber.text = @"分支机构";
     [self.blackView addSubview:_orgLaber];
-    
+    //
+    UITapGestureRecognizer *tapGesture1 =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable1:)];
+    self.mapImg.userInteractionEnabled = YES;
+    tapGesture1.numberOfTapsRequired = 1;
+    tapGesture1.numberOfTouchesRequired = 1;
+    [self.mapImg addGestureRecognizer:tapGesture1];
+
     //
     self.cityImg = [[UIImageView alloc]init];
     self.cityImg.frame = CGRectMake((kScreenWitdh - 40 )*0.7,
@@ -110,6 +124,21 @@
     self.mesLaber.font = [UIFont systemFontOfSize:12.0];
     self.mesLaber.text = @"信息批漏";
     [self.blackView addSubview:_mesLaber];
+    
+}
+//定义响应事件
+
+-(void)onClickUILable:(UITapGestureRecognizer *)sender{
+    
+    WHnearAgentTableViewController * near = [[WHnearAgentTableViewController alloc]init];
+    [self.navigationController pushViewController:near animated:YES];
+    
+    
+}
+-(void)onClickUILable1:(UITapGestureRecognizer *)sender{
+    
+    WHorginTableViewController * orgin = [[WHorginTableViewController alloc]init];
+    [self.navigationController pushViewController:orgin animated:YES];
     
 }
 
