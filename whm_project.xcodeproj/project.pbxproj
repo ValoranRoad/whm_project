@@ -48,6 +48,11 @@
 		9678ACF21DEBE78800C91373 /* HMConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678ACF11DEBE78800C91373 /* HMConfirmView.m */; };
 		9678ACF41DEBF14C00C91373 /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 9678ACF31DEBF14C00C91373 /* check_no.png */; };
 		9678ACF61DEBF15700C91373 /* check_yse.png in Resources */ = {isa = PBXBuildFile; fileRef = 9678ACF51DEBF15700C91373 /* check_yse.png */; };
+		9678ACFB1DEC268200C91373 /* WHcounselTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678ACF81DEC268200C91373 /* WHcounselTableViewCell.m */; };
+		9678ACFC1DEC268200C91373 /* WHmessageListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678ACFA1DEC268200C91373 /* WHmessageListTableViewCell.m */; };
+		9678AD021DEC297A00C91373 /* WHagentinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678AD011DEC297A00C91373 /* WHagentinfo.m */; };
+		9678AD071DEC29F000C91373 /* WHorginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678AD041DEC29F000C91373 /* WHorginTableViewCell.m */; };
+		9678AD081DEC29F000C91373 /* WHorginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678AD061DEC29F000C91373 /* WHorginTableViewController.m */; };
 		96BC4DF51DE80A56009E6D96 /* HmDetailsCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */; };
 		9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */; };
 		9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */; };
@@ -348,6 +353,16 @@
 		9678ACF11DEBE78800C91373 /* HMConfirmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMConfirmView.m; sourceTree = "<group>"; };
 		9678ACF31DEBF14C00C91373 /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
 		9678ACF51DEBF15700C91373 /* check_yse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_yse.png; sourceTree = "<group>"; };
+		9678ACF71DEC268200C91373 /* WHcounselTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHcounselTableViewCell.h; sourceTree = "<group>"; };
+		9678ACF81DEC268200C91373 /* WHcounselTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHcounselTableViewCell.m; sourceTree = "<group>"; };
+		9678ACF91DEC268200C91373 /* WHmessageListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmessageListTableViewCell.h; sourceTree = "<group>"; };
+		9678ACFA1DEC268200C91373 /* WHmessageListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmessageListTableViewCell.m; sourceTree = "<group>"; };
+		9678AD001DEC297A00C91373 /* WHagentinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHagentinfo.h; sourceTree = "<group>"; };
+		9678AD011DEC297A00C91373 /* WHagentinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHagentinfo.m; sourceTree = "<group>"; };
+		9678AD031DEC29F000C91373 /* WHorginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorginTableViewCell.h; sourceTree = "<group>"; };
+		9678AD041DEC29F000C91373 /* WHorginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorginTableViewCell.m; sourceTree = "<group>"; };
+		9678AD051DEC29F000C91373 /* WHorginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorginTableViewController.h; sourceTree = "<group>"; };
+		9678AD061DEC29F000C91373 /* WHorginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorginTableViewController.m; sourceTree = "<group>"; };
 		96BC4DF31DE80A56009E6D96 /* HmDetailsCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmDetailsCodeCell.h; sourceTree = "<group>"; };
 		96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmDetailsCodeCell.m; sourceTree = "<group>"; };
 		9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_user_realtion.h; sourceTree = "<group>"; };
@@ -948,6 +963,10 @@
 		9F99E7151DC34F8000DC1265 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				9678ACF71DEC268200C91373 /* WHcounselTableViewCell.h */,
+				9678ACF81DEC268200C91373 /* WHcounselTableViewCell.m */,
+				9678ACF91DEC268200C91373 /* WHmessageListTableViewCell.h */,
+				9678ACFA1DEC268200C91373 /* WHmessageListTableViewCell.m */,
 				8E86DBD21DC9806D00C14635 /* PicUpdateCollectionViewCell.h */,
 				8E86DBD31DC9806D00C14635 /* PicUpdateCollectionViewCell.m */,
 				8E86DBD41DC9806D00C14635 /* AddPicCollectionViewCell.h */,
@@ -1524,6 +1543,8 @@
 		C86353E81DB4674100ED8B16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9678AD001DEC297A00C91373 /* WHagentinfo.h */,
+				9678AD011DEC297A00C91373 /* WHagentinfo.m */,
 				C86353F91DB4674100ED8B16 /* JwModelBase.h */,
 				C86353FA1DB4674100ED8B16 /* JwModelBase.m */,
 				C807B9A51DC060B800D3C700 /* JwAreass.h */,
@@ -1815,6 +1836,10 @@
 		C8C10C8B1DB9C06F00A5FB9A /* C */ = {
 			isa = PBXGroup;
 			children = (
+				9678AD031DEC29F000C91373 /* WHorginTableViewCell.h */,
+				9678AD041DEC29F000C91373 /* WHorginTableViewCell.m */,
+				9678AD051DEC29F000C91373 /* WHorginTableViewController.h */,
+				9678AD061DEC29F000C91373 /* WHorginTableViewController.m */,
 				C8C10C8E1DB9C06F00A5FB9A /* ForgetPwdViewController.h */,
 				C8C10C8F1DB9C06F00A5FB9A /* ForgetPwdViewController.m */,
 				C8C10C901DB9C06F00A5FB9A /* JwLoginController.h */,
@@ -2143,12 +2168,14 @@
 				9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */,
 				9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */,
 				C86354731DB4780000ED8B16 /* JwUser.m in Sources */,
+				9678AD071DEC29F000C91373 /* WHorginTableViewCell.m in Sources */,
 				9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */,
 				9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */,
 				9F21CFAF1DDC4F070089BADB /* WHpay_period.m in Sources */,
 				9FDAE5C71DDF0136000F91DF /* ZFRadarChart.m in Sources */,
 				9F0F28BA1DC46506007118BD /* WHgetmessage.m in Sources */,
 				9FDAE5C61DDF0136000F91DF /* ZFRadar.m in Sources */,
+				9678AD081DEC29F000C91373 /* WHorginTableViewController.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				9FDAE5B91DDF0136000F91DF /* ZFCirqueChart.m in Sources */,
 				9F35CE8A1DD6C097003F0C78 /* WHrela.m in Sources */,
@@ -2183,6 +2210,7 @@
 				9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
 				9FDAE5B11DDF0136000F91DF /* ZFPopoverLabel.m in Sources */,
+				9678AD021DEC297A00C91373 /* WHagentinfo.m in Sources */,
 				9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */,
 				9F35CE6F1DD6AD50003F0C78 /* LYTestOneViewController.m in Sources */,
 				9615F8191DC04F89001081FD /* HmAddInsuredController.m in Sources */,
@@ -2287,6 +2315,7 @@
 				9F35CE7E1DD6BD23003F0C78 /* WHgetreport.m in Sources */,
 				9678ACF21DEBE78800C91373 /* HMConfirmView.m in Sources */,
 				C83D06711DCB2AB40028A681 /* JwPeriod.m in Sources */,
+				9678ACFB1DEC268200C91373 /* WHcounselTableViewCell.m in Sources */,
 				C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */,
 				C8C10CB81DB9C06F00A5FB9A /* JwUserInfoController.m in Sources */,
 				9FDAE5AF1DDF0136000F91DF /* UIView+Zirkfied.m in Sources */,
@@ -2332,6 +2361,7 @@
 				96BC4DF51DE80A56009E6D96 /* HmDetailsCodeCell.m in Sources */,
 				9FF981CB1DDAA9E6008C9E20 /* CustomProgress.m in Sources */,
 				C86354A71DB4D3AB00ED8B16 /* JwMenuBaseController.m in Sources */,
+				9678ACFC1DEC268200C91373 /* WHmessageListTableViewCell.m in Sources */,
 				9FDAE4B01DDEAA95000F91DF /* WHloveagentTableViewCell.m in Sources */,
 				9FA6846B1DE2E7DB003F70E3 /* WHslipListTableViewController.m in Sources */,
 				8E86DBD71DC9806D00C14635 /* PicUpdateCollectionViewCell.m in Sources */,

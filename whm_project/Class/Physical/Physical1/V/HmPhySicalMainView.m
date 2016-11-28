@@ -99,10 +99,11 @@
     
     self.lblRelationship.frame = CGRectMake(CGRectGetMaxX(self.imgRelationship.frame)+3, CGRectGetMinY(self.lblName.frame), kScreenWitdh * 0.15, CGRectGetHeight(self.imgRelationship.frame));
     _lblRelationship.font = [UIFont systemFontOfSize:11];
-    self.imgDate.frame = CGRectMake(CGRectGetMaxX(self.lblRelationship.frame)+5, CGRectGetMinY(self.lblName.frame), 20, 20);
+    
+    self.imgDate.frame = CGRectMake(CGRectGetMaxX(self.lblRelationship.frame), CGRectGetMinY(self.lblName.frame), 20, 20);
     self.imgDate.image = [UIImage imageNamed:@"test_date"];
     
-    self.lblDate.frame = CGRectMake(CGRectGetMaxX(self.imgDate.frame)+10, CGRectGetMinY(self.lblName.frame), kScreenWitdh * 0.3, CGRectGetHeight(self.lblName.frame));
+    self.lblDate.frame = CGRectMake(CGRectGetMaxX(self.imgDate.frame)+5, CGRectGetMinY(self.lblName.frame), kScreenWitdh * 0.3, CGRectGetHeight(self.lblName.frame));
     self.lblDate.font = [UIFont systemFontOfSize:11.0];
     
     self.imgYearCost.frame = CGRectMake(CGRectGetMinX(self.imgName.frame), CGRectGetMaxY(_layerLine.frame) + 3, 20, 20);
@@ -114,10 +115,13 @@
     self.imgPay.image = [UIImage imageNamed:@"test_money"];
     self.lblPay.frame = CGRectMake(CGRectGetMinX(self.lblRelationship.frame), CGRectGetMinY(self.lblYearCost.frame), CGRectGetWidth(self.lblRelationship.frame), CGRectGetHeight(self.lblRelationship.frame));
     self.lblPay.font = [UIFont systemFontOfSize:10.0];
+    
     //self.lblPay.backgroundColor = [UIColor redColor];
     self.imgOwn.frame = CGRectMake(CGRectGetMinX(self.imgDate.frame), CGRectGetMinY(self.imgPay.frame), 20, 20);
     self.imgOwn.image = [UIImage imageNamed:@"test_debts"];
     self.lblOwn.frame = CGRectMake(CGRectGetMinX(self.lblDate.frame), CGRectGetMinY(self.lblPay.frame), CGRectGetWidth(self.lblDate.frame), CGRectGetHeight(self.lblDate.frame));
+    _lblOwn.text = @"哈哈";
+    _lblPay.text = @"哈哈";
     _lblOwn.font = [UIFont systemFontOfSize:10];
     
     
