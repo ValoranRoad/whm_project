@@ -17,8 +17,12 @@
 #import "WHgetproperiod.h"
 #import "WHgetcharacters.h"
 #import "JwCompanys.h"
+#import "WHhistoryTableViewCell.h"
+#import "WHgetproducedetalViewController.h"
 
-@interface WHpowSearTableViewController ()<UISearchBarDelegate, JSDropDownMenuDataSource, JSDropDownMenuDelegate>
+
+
+@interface WHpowSearTableViewController ()<UISearchBarDelegate, JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     JSDropDownMenu *menu;
     NSMutableArray *_data4;
@@ -50,6 +54,8 @@
 @property (nonatomic, strong) JSIndexPath *path3;
 @property (nonatomic, strong) JSIndexPath *path4;
 
+@property(nonatomic,strong)WHhistoryTableViewCell * cell;
+@property(nonatomic,strong)NSMutableArray * dataArry;
 
 
 @end
@@ -105,7 +111,15 @@
 }
 
 -(void)setupUI{
+    //thableview设置
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
+    _tableV.delegate = self;
+    _tableV.dataSource = self;
+    _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:_tableV];
+    [self.tableV registerClass:[WHhistoryTableViewCell class] forCellReuseIdentifier:@"cell"];
     
+    //
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh , 35)];//allocate titleView
     UIColor *color =  self.navigationController.navigationBar.barTintColor;
     
@@ -205,8 +219,44 @@
     menu.jwspecMneuIndex = self.menus.count - 1;
     menu.screenBActionBlock =^(){
         NSLog(@"点击筛选");
+        
+       id hud = [JGProgressHelper showProgressInView:self.view];
+        [self.dataService get_productWithCompany_id:@""
+                                            keyword:@""
+                                                sex:@""
+                               characters_insurance:@""
+                                             period:@""
+                                            cate_id:@""
+                                         pay_period:@""
+                                               rate:@""
+                                            insured:@""
+                                           birthday:@""
+                                      yearly_income:@""
+                                               debt:@""
+                                            rela_id:@""
+                                                  p:@""
+                                           pagesize:@""
+                                            success:^(NSArray *lists) {
+                                                [hud hide:YES];
+                                                
+                                                self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                                [self.tableV reloadData];
+                                                
+            
+        } failure:^(NSError *error) {
+            [hud hide:YES];
+            
+        }];
+        
+
+        
+        
+        
+        
+        
     };
     [self.view addSubview:menu];
+    
     
 }
 
@@ -214,6 +264,19 @@
     
     return 4;
 }
+#pragma mark - Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.dataArry.count;
+}
+
+
+
 /**
  * 是否需要显示为UICollectionView 默认为否
  */
@@ -308,7 +371,8 @@
     }else if (indexPath.column == 2){
         
         appcate = self.categorys[indexPath.row];
-    }else{
+        
+          }else{
         
         if (indexPath.leftOrRight==0) {
             NSDictionary *menuDic = [_data4 objectAtIndex:indexPath.row];
@@ -319,6 +383,7 @@
             return [[menuDic objectForKey:@"data"] objectAtIndex:indexPath.row];
         }
     }
+  
     return appcate.name;
 }
 
@@ -413,6 +478,32 @@
         
     }
 }
+//数据
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    WHhistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    // Configure the cell...
+    cell.model = self.dataArry[indexPath.row];
+    
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+//数据选中
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WHgetproduct * model = self.dataArry[indexPath.row];
+//    NSLog(@"%@%@%@",model.id,model.name,model.logo);
+   WHgetproducedetalViewController * produce = [[WHgetproducedetalViewController alloc]init];
+    produce .pro_id = model.id;
+    [self.navigationController pushViewController:produce animated:YES];
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

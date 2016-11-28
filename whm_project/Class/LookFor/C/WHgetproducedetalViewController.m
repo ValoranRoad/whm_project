@@ -10,7 +10,15 @@
 #import "MacroUtility.h"
 #import "JGProgressHelper.h"
 #import "WHget_product_detail.h"
+#import "UIColor+Hex.h"
+#import "WHcompany.h"
 
+//分层界面设计
+#import "WHJSCollectViewController.h"
+#import "WHstatisViewController.h"
+#import "WHcoverageViewController.h"
+#import "WHintroViewController.h"
+#import "WHTitleView.h"
 
 @interface WHgetproducedetalViewController ()<UIScrollViewDelegate,UIWebViewDelegate>
 
@@ -61,6 +69,13 @@
 @property(nonatomic,strong)NSString * rule;
 
 @property(nonatomic,strong)NSString * pdf;
+
+@property(nonatomic,strong)NSString * com_id;
+
+@property(nonatomic,strong)NSString * compnyName;
+
+@property(nonatomic,strong)NSString * companyLogo;
+
 
 
 
@@ -122,12 +137,18 @@
         self.right  = userInfo.rights;
         self.pdf = userInfo.pdf_path;
       
+        self.com_id = userInfo.company.id;
+        self.companyLogo = userInfo.company.logo;
+        NSLog(@"%@",self.com_id);
+        self.compnyName = userInfo.company.name;
         
         self.staLaber.text = userInfo.sale_status_name;
      
         self.titLaber.text = userInfo.name;
         
-        self.compLaber.text = userInfo.company_short_name;
+        self.compLaber.text = userInfo.company_short_name;//公司险种名字
+    
+               
         
         NSInteger stateM = [userInfo.is_main integerValue];
         switch (stateM) {
@@ -146,12 +167,32 @@
         }
 
         [self dataHead];
+     
         
     } failure:^(NSError *error) {
         [hud hide:YES];
         [JGProgressHelper showError:@""];
         
     }];
+    
+}
+
+//定义响应事件
+
+-(void)onClickUILableAction:(UITapGestureRecognizer *)sender{
+   
+
+    NSLog(@"jjj");
+     WHstatisViewController * statisVC = [[WHstatisViewController alloc]init];
+     WHcoverageViewController * coverVC = [[WHcoverageViewController alloc]init];
+     coverVC.com_id = self.com_id;
+     WHintroViewController * introVC = [[WHintroViewController alloc]init];
+     WHJSCollectViewController * collectVC = [[WHJSCollectViewController  alloc]initWithAddVCARY:@[statisVC,coverVC,introVC] TitleS:@[@"统计",@"险种",@"简介"]];
+    [self presentViewController:collectVC animated:YES completion:nil];
+    
+    [collectVC.titleView titllaber:self.compnyName];
+    [collectVC.titleView getImageImg:self.companyLogo];
+    
     
 }
 //ad默认
@@ -166,12 +207,26 @@
 #pragma mark -- 布局
 -(void)setupUI
 {
-       self.title = @"产品详情";
+    self.title = @"产品详情";
     self.myView = [[UIView alloc]init];
     self.myView.frame = CGRectMake(20, 35, kScreenWitdh - 40, kScreenHeight * 0.15);
     self.myView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_myView];
     self.view.backgroundColor = [UIColor blueColor];
+   // self.myView .userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILableAction:)];
+    self.view.userInteractionEnabled = YES;
+    //设置手势点击数,双击：默认不设置 就是1 为单击事件
+    
+    
+    //设置手指数 单指
+    
+    tapGesture.numberOfTouchesRequired =1;
+    
+    // titleLabel添加手势识别
+    
+    [self.view addGestureRecognizer:tapGesture];
+    
     //
     self.mainImg = [[UIImageView alloc]init];
     self.mainImg.frame = CGRectMake(kScreenWitdh *0.1, 20, 30, 30);
@@ -187,7 +242,7 @@
     [self.myView addSubview:_titLaber];
     //
     self.prostatusLaber = [[UILabel alloc]init];
-    self.prostatusLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame)+5, CGRectGetMaxY(self.titLaber.frame), kScreenWitdh * 0.25, 20);
+    self.prostatusLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame)+5, CGRectGetMaxY(self.titLaber.frame), kScreenWitdh * 0.15, 20);
     self.prostatusLaber.text = @"产品状态|";
     self.prostatusLaber.textColor = [UIColor grayColor];
     self.prostatusLaber.font = [UIFont systemFontOfSize:13.0];
@@ -198,7 +253,8 @@
     self.staLaber.layer.cornerRadius = 10;
     self.staLaber.layer.masksToBounds = YES;
     //self.staLaber.text = self.sale_status;
-    self.staLaber.backgroundColor = [UIColor greenColor];
+    self.staLaber.backgroundColor = [UIColor colorWithHex:0x28D68E];
+    self.staLaber.textColor = [UIColor whiteColor];
     self.staLaber.font = [UIFont systemFontOfSize:13.0];
     [self.myView addSubview:_staLaber];
     
@@ -206,7 +262,8 @@
     self.compLaber.frame = CGRectMake(kScreenWitdh *0.65,  kScreenHeight * 0.15 -30, kScreenWitdh*0.2, 30);
     //self.compLaber.text = @"泰康人寿";
     self.compLaber.font = [UIFont systemFontOfSize:15.0];
-   // self.compLaber.backgroundColor = [UIColor greenColor];
+    //self.compLaber.backgroundColor = [UIColor greenColor];
+    
     [self.myView addSubview:_compLaber];
     //
     // 最大的UIScrollview bigScrollV;

@@ -162,6 +162,12 @@
                     <constraint firstItem="vib-0R-MMt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="znm-o3-kev"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="ageLaber" destination="Kra-wa-V8N" id="iU1-0T-zd2"/>
+                <outlet property="headImage" destination="xWA-wn-J8b" id="3CM-5e-QhI"/>
+                <outlet property="moneyLaber" destination="ddC-4L-foS" id="p1E-nr-sf6"/>
+                <outlet property="nameTitLaber" destination="shi-U5-CA2" id="ZZx-aw-dGv"/>
+            </connections>
             <point key="canvasLocation" x="17" y="-77.5"/>
         </tableViewCell>
     </objects>

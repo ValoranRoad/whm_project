@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HmMultistageTableView;
 
 @protocol HmTableViewDataSource <NSObject>
 
@@ -93,5 +94,9 @@
  * 重新加载数据
  */
 - (void)reloadData;
+
+- (void)mRegisterNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier;
+
+- (UITableViewHeaderFooterView *)mDequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;
 
 @end

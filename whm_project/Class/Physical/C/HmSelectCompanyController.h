@@ -10,4 +10,7 @@
 
 @interface HmSelectCompanyController : JwBackBaseController
 
+@property (nonatomic, strong) NSMutableArray *groupArr;
+@property (nonatomic, assign) BOOL isSelects;
+
 @end

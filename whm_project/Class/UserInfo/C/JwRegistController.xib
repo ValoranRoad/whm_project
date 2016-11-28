@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="CodeBut" destination="YTx-PV-Bge" id="cTe-I4-QU9"/>
                 <outlet property="CodeText" destination="ONd-Gm-5No" id="Too-ga-wOn"/>
+                <outlet property="codeButtion" destination="YTx-PV-Bge" id="sz8-bm-3kH"/>
                 <outlet property="comforPwdText" destination="Ryz-TH-hgl" id="XaJ-LA-YIh"/>
                 <outlet property="nameText" destination="ZYW-fs-D7h" id="aPK-wt-tEE"/>
                 <outlet property="protlBut" destination="Xbq-5L-8fS" id="du6-EY-1bb"/>
@@ -233,6 +234,9 @@
                             <state key="normal" title="《快保网注册协议》">
                                 <color key="titleColor" red="0.20784313730000001" green="0.2901960784" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="registPro:" destination="-1" eventType="touchUpInside" id="aUH-Qd-Ddn"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbq-5L-8fS">
                             <color key="backgroundColor" red="0.20784313730000001" green="0.2901960784" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>

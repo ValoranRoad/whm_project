@@ -214,7 +214,7 @@
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
             //
             self.sexLaber = [[UILabel alloc]init];
-            self.sexLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.65, CGRectGetMaxY(cell.textLabel.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.09, CGRectGetWidth([UIScreen mainScreen].bounds)*0.09);
+            self.sexLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.65, CGRectGetMaxY(cell.textLabel.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.05, CGRectGetWidth([UIScreen mainScreen].bounds)*0.05);
           //  self.sexLaber.text = @"男";
             [cell.contentView addSubview:_sexLaber];
             //
@@ -457,9 +457,13 @@
             if ([s1 isEqualToString:@"男"]) {
                 self.sexImage.image = [UIImage imageNamed:@"test_male"];
             }
+            if ([s1 isEqualToString:@"女"]) {
+                self.sexImage.image = [UIImage imageNamed:@"test_famale"];
+
+            }
             else
             {
-                self.sexImage.image = [UIImage imageNamed:@"test_famale"];
+                
             }
         };
         

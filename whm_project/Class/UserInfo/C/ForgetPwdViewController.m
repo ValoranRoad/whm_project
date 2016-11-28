@@ -97,6 +97,7 @@
                 //设置界面的按钮显示 根据自己需求设置
                 //[self.rv.yzhBut setTitle:@"发送验证码" forState:UIControlStateNormal];
                 self.fp.codeBut.userInteractionEnabled = YES;
+                self.fp.timeLaber.text = @"60s";
             });
         }else{
             int seconds = timeout % 60;
@@ -116,11 +117,11 @@
         }
     });
     
-    
+     dispatch_resume(_timer);
     //
     if (self.fp.telText.text.length != 0) {
         id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.userService sendsmsWithMobile:self.fp.telText.text check_mobile:@"3" success:^{
+        [self.userService sendsmsWithMobile:self.fp.telText.text type:@"3" check_mobile:@"0" success:^{
             
             
             [hud hide:YES];

@@ -22,6 +22,8 @@
 //微站
 #import "WHminiStationTableViewController.h"
 #import "WHgetuseinfo.h"
+//体检报告
+#import "WHmyphysicalTableViewController.h"
 //
 #import <UIImageView+WebCache.h>
 
@@ -378,7 +380,8 @@
     [self.myBut12 addTarget:self action:@selector(whsetAction:) forControlEvents:(UIControlEventTouchUpInside)];
     //微站
     [self.myBut9 addTarget:self action:@selector(miniStation:) forControlEvents:(UIControlEventTouchUpInside)];
-    
+    //体检报告
+    [self.myBut2 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
 //数据处理获取用户信息
@@ -400,10 +403,19 @@
             self.nameLaber.text = model.name;
             NSString * s1 = @"(";
             NSString * s2 = @")>";
-            
+            if (model.company == nil) {
+                model.company  =  @"暂无公司";
+                NSString * s3 =[s1 stringByAppendingString:model.company];
+                self.companyLaber.text = [s3 stringByAppendingString:s2];
+                
+
+            }
+            else
+            {
             NSString * s3 =[s1 stringByAppendingString:model.company];
             self.companyLaber.text = [s3 stringByAppendingString:s2];
            
+            }
       }
         
         
@@ -422,6 +434,13 @@
 {
     WHminiStationTableViewController * station = [[WHminiStationTableViewController alloc]init];
     [self.navigationController pushViewController:station animated:NO];
+}
+
+//体检事件
+-(void)physicalAction:(UIButton *)sender
+{
+    WHmyphysicalTableViewController * physic = [[WHmyphysicalTableViewController alloc]init];
+    [self.navigationController pushViewController:physic animated:YES];
 }
 
 //设置事件

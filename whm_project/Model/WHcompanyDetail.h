@@ -8,35 +8,37 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
+#import "WHhot_pro.h"
+#import "WHagent.h"
+#import "WHcount.h"
+
+@protocol WHcompanyDetail <NSObject>
+@end
 
 @interface WHcompanyDetail : JwModelBase
-@property(nonatomic,strong)NSString * id ;
-@property(nonatomic,strong)NSString * name;
-@property(nonatomic,strong)NSString * initial;
-@property(nonatomic,strong)NSString * pinyin;
-@property(nonatomic,strong)NSString <Optional> * descriptionJw;
-@property(nonatomic,strong)NSString * logo;
-@property(nonatomic,strong)NSString * add;
-@property(nonatomic,strong)NSString * tel;
-@property(nonatomic,strong)NSString * ctype;
-@property(nonatomic,strong)NSString * type;
-@property(nonatomic,strong)NSString * area;
-@property(nonatomic,strong)NSString * website;
-@property(nonatomic,strong)NSString * is_quoted;
-@property(nonatomic,strong)NSString * is_beadhouse;
-@property(nonatomic,strong)NSString * specialtoes;
-@property(nonatomic,strong)NSString * short_name ;
-@property(nonatomic,strong)NSString * shortest;
+@property(nonatomic,strong)NSString <Optional>* id ;
+@property(nonatomic,strong)NSString <Optional>* name;
+@property(nonatomic,strong)NSString <Optional>* initial;
+@property(nonatomic,strong)NSString <Optional>* pinyin;
+@property(nonatomic,strong)NSString <Optional>* descriptionJw;
+@property(nonatomic,strong)NSString <Optional>* logo;
+@property(nonatomic,strong)NSString <Optional>* add;
+@property(nonatomic,strong)NSString <Optional>* tel;
+@property(nonatomic,strong)NSString <Optional>* ctype;
+@property(nonatomic,strong)NSString <Optional>* type;
+@property(nonatomic,strong)NSString <Optional>* area;
+@property(nonatomic,strong)NSString <Optional>* website;
+@property(nonatomic,strong)NSString <Optional>* is_quoted;
+@property(nonatomic,strong)NSString <Optional>* is_beadhouse;
+@property(nonatomic,strong)NSString <Optional>* specialtoes;
+@property(nonatomic,strong)NSString <Optional>* short_name ;
+@property(nonatomic,strong)NSString <Optional>* shortest;
 @property(nonatomic,strong)NSString <Optional> * honor;
 @property(nonatomic,strong)NSString <Optional> *history;
 @property(nonatomic,strong)NSString * type_name;
-@property(nonatomic,assign)NSArray * hot_pro;
-@property(nonatomic,strong)NSDictionary * count;
-@property(nonatomic,assign)NSArray * ins_type;
-@property(nonatomic,assign)NSArray * sale_status;
-@property(nonatomic,assign)NSArray * year_app;
-@property(nonatomic,assign)NSArray * prod_type_code_app;
-
+@property(nonatomic,strong)NSArray <WHhot_pro ,Optional > *hot_pro;
+@property(nonatomic,strong)NSArray <WHagent, Optional> * agent;
+@property(nonatomic,strong)WHcount <Optional> * count;
 
 
 @end

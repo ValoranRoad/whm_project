@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
+
+@protocol  WHgetmessage<NSObject>
+
+
+@end
+
 @interface WHgetmessage : JwModelBase
 @property(nonatomic,strong)NSString<Optional> * id ;
 @property(nonatomic,strong)NSString<Optional> * req_uid;

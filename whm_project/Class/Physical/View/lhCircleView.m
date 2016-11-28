@@ -133,7 +133,7 @@ static const CGFloat backStrokeWidth = 1;
 
     UILabel * otherLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.contentLabel.frame), CGRectGetMinY(self.contentLabel.frame), 20, 21)];
     otherLabel.font = [UIFont systemFontOfSize:10];
-    otherLabel.text = @"%";
+    otherLabel.text = @"分";
     otherLabel.textColor = [UIColor colorWithRed:253/255.0 green:90/255.0 blue:86/255.0 alpha:1];
     [self addSubview:otherLabel];
     

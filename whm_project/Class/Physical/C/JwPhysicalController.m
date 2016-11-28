@@ -24,16 +24,35 @@
 #import "LYTestThreeViewController.h"
 #import "JGProgressHelper.h"
 //
+#import "JwUserCenter.h"
+#import "JwLoginController.h"
+
+#import "HmMultistageTableView.h"
+#import "HmPhysicalGroupView.h"
+#import "HmPhySicalMainView.h"
+
+//数据
+#import "WHget_pro_rate.h"
+#import "WHrate.h"
+
+
+typedef enum {
+    TYPE_AGE = 0,   // 年龄
+    TYPE_PERIOD,   // 保障期间
+    TYPE_PAY_PERIOD,   // 缴费期间
+    TYPE_PAY_OUT,   // 给付方式
+} CONTENT_ENUM_TYPE;
+
 
 #define kHmPhysicalGroupCellIdentifier @"kHmPhysicalGroupCellIdentifier"
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
 #define kHmPhysicalDetailsCellIdentifier @"kHmPhysicalDetailsCellIdentifier"
 #define kHmPhysicalFujiaCellIdentifier @"kHmPhysicalFujiaCellIdentifier"
 
-@interface JwPhysicalController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
 
 // 大TableView
-@property (nonatomic, strong) UITableView *tableVB;
+@property (nonatomic, strong) HmMultistageTableView *tableVB;
 
 @property (nonatomic, assign) BOOL isOpen;
 @property (nonatomic, assign) NSInteger selectedSection;
@@ -48,7 +67,33 @@
 
 @property(nonatomic,strong)NSString * rela_id; //被保人ID
 
+@property(nonatomic,strong)NSString * rate;
 
+@property(nonatomic,strong)NSString * pay_period;
+
+@property(nonatomic,strong)NSString * payout;
+@property(nonatomic,strong)NSString * Strage;
+
+
+
+
+// content arr
+@property (nonatomic, strong) NSMutableDictionary *contentMutableDict;
+// 性别
+@property (nonatomic, strong) NSString *dataSex;
+
+@property(nonatomic,strong)NSMutableArray * dataArry;
+@property (nonatomic, strong) UIPickerView *pickerV;
+@property (nonatomic, strong) UIToolbar *toolBar;
+@property (nonatomic, strong) NSString *contentName;
+@property (nonatomic, strong) NSIndexPath *myIndexPath;
+
+
+@property(nonatomic, strong)NSMutableArray * arr1;
+@property(nonatomic, strong)NSMutableArray * arr2;
+
+@property(nonatomic,strong)NSMutableArray * ageArry;
+//
 
 
 @end
@@ -59,19 +104,118 @@
     [super viewWillAppear:animated];
     
     // 刷新第一行数据
-    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     self.tabBarController.tabBar.hidden=YES;
     NSLog(@"%@",self.name);
-    
+    if (self.modelType) {
+        [self requartData];
+    }
+   
+    [self.tableVB reloadData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.modelType = nil;
+    self.dataSex = nil;
+}
+
+//数据请求
+-(void)requartData
+{
+    
+    NSString *gender;
+    if (self.dataSex) {
+        gender = self.dataSex;
+    }else {
+        gender = @"1";
+    }
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService getprorateWithPid:self.modelType.id uid:@"" gender:gender success:^(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr) {
+        [hud hide:YES];
+        
+        self.dataArry = [NSMutableArray array];
+        self.ageArry =  [NSMutableArray array];
+        
+        [self.groupMutableArr addObject:_modelType];
+        
+        
+        WHget_pro_rate * pro = [lists firstObject];
+        WHmongorate * mon = [pro.mongo_rate firstObject];
+        NSArray * periods = mon.rate;
+        NSDictionary *dict = periods.firstObject;
+        for (WHrate * rate in periods) {
+            
+            //保险期间
+            [self.dataArry addObject:rate.period];
+            //年龄
+            [self.ageArry addObject:rate.age];
+           NSLog(@"=====%@",rate.pay_period);
+        }
+        //保险期间
+        self.arr1 =[NSMutableArray array];
+        self.arr2 = [NSMutableArray array];
+        for (int i = 0 ;i<self.dataArry.count;i++) {
+            if ([_arr1 containsObject:[self.dataArry  objectAtIndex:i]] == NO) {
+                [_arr1 addObject:[self.dataArry  objectAtIndex:i]];
+                NSLog(@"%@",_arr1);
+            }
+        }
+        //年龄
+        for (int i = 0 ;i<self.ageArry.count;i++) {
+            if ([_arr2  containsObject:[self.ageArry  objectAtIndex:i]] == NO) {
+                [_arr2  addObject:[self.ageArry objectAtIndex:i]];
+                NSLog(@"%@",_arr2 );
+            }
+            
+//            WHget_pro_rate *pro = [lists firstObject];
+//            WHmongorate *mon = [pro.mongo_rate firstObject];
+//            NSArray *ages = mon.rate;
+//            for (WHrate *rate in ages) {
+//                NSLog(@"%@", rate.age);
+//                
+//            }
+        }
+        NSMutableDictionary *pickerDict = [NSMutableDictionary dictionary];
+        if (payoutArr.count != 0) {
+            [pickerDict setObject:payoutArr forKey:@"给付方式"];
+        }
+        [pickerDict setObject:pay_periodArr forKey:@"缴费方式"];
+        [pickerDict setObject:_arr1 forKey:@"保障期间"];
+        [pickerDict setObject:_arr2 forKey:@"投保年龄"];
+
+        [self.contentMutableDict setObject:pickerDict forKey:self.modelType.id];
+        
+        [self.tableVB reloadData];
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+    
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // 布局
+//    // 布局
+//    if ([JwUserCenter sharedCenter].uid != nil) {
+//         [self setupUI];
+//    }
+//    else
+//    {
+//        [JGProgressHelper showError:@"请登录账号"];
+//        JwLoginController * login = [[JwLoginController alloc]init];
+//        [self.navigationController pushViewController:login animated:YES];
+//    }
     [self setupUI];
+    
+//    self.groupMutableArr = [NSMutableArray array];
+//    self.contentMutableDict = [NSMutableDictionary dictionary];
+
     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
@@ -88,11 +232,10 @@
 -(void)setupUI
 {
     self.view.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];
-    self.tableVB = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44) style:UITableViewStylePlain];
+    self.tableVB = [[HmMultistageTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44)];
     _tableVB.delegate = self;
     _tableVB.dataSource = self;
     _tableVB.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];
-    _tableVB.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableVB];
     
        // 底部  开始体检 按钮
@@ -122,47 +265,107 @@
     self.addBut.layer.cornerRadius = 20;
   
     
+    self.pickerV = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 216 - 64, kScreenWitdh, 216)];
+    _pickerV.delegate = self;
+    _pickerV.dataSource = self;
+    _pickerV.backgroundColor = [UIColor greenColor];
+    
+    self.toolBar = [self setupToolBar];
+
+    
+}
+
+- (UIToolbar *)setupToolBar {
+    UIBarButtonItem *leftBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"收起" style:UIBarButtonItemStylePlain target:self action:@selector(keyDownAction:)];
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, kScreenHeight - 216 - 39 - 64, kScreenWitdh, 39)];
+    toolBar.backgroundColor = [UIColor yellowColor];
+    toolBar.items = @[leftBarBtn,rightBarBtn];
+    return toolBar;
+}
+
+- (void)keyDownAction:(UIBarButtonItem *)sender {
+    [self removePickerVAndToolBar];
+}
+
+- (void)showPickerViewAndToolBar {
+    [self.view addSubview:_toolBar];
+    [self.view addSubview:_pickerV];
+}
+
+- (void)removePickerVAndToolBar {
+    [_toolBar removeFromSuperview];
+    [_pickerV removeFromSuperview];
 }
 
 //开始体检事件
 -(void)btnStart:(UIButton *)sender
 {
-//    NSLog(@"开始体检");
     
-    
-    if (self.ids != nil) {
-    
-    if (self.rela_id  != nil) {
-        
-       
-  LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
-     oneVC.rela_id = self.rela_id;
-     oneVC.pro_id = self.ids;
-     oneVC.is_main_must = self.is_main;
+    /*
+    LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+    oneVC.rela_id = self.rela_id;
+    oneVC.pro_id = self.ids;
+    oneVC.is_main_must = self.is_main;
+    oneVC.period = self.period;
+    oneVC.rate = self.rate;
     
     LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
     LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
     
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
     [self presentViewController:collectVC animated:YES completion:nil];
-    }
-    else
-    {
-        [JGProgressHelper showError:@"请选择被保人"];
-    }
 
+    //    NSLog(@"开始体检");
+     */
+    
+    
+   
+//    if (self.ids != nil) {
+    
+//    if (self.rela_id  != nil && self.period != nil && self.rate != nil) {
+        
+       
+  LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
+     oneVC.rela_id = self.rela_id;
+     oneVC.pro_id = self.ids;
+     oneVC.is_main_must = self.is_main;
+        oneVC.period = self.period;
+        oneVC.rate = self.rate;
+    
+    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+        
+       twoVC.rela_id = self.rela_id;
+       twoVC.pro_id = self.ids;
+       twoVC.is_main_must = self.is_main;
+       twoVC.period = self.period;
+       twoVC.rate = self.rate;
+
+    LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
+    
+    JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+    [self presentViewController:collectVC animated:YES completion:nil];
     }
-    else
-    {
-        [JGProgressHelper showError:@"请选择保险险种"];
-    }
-}
+//    else
+//    {
+//        [JGProgressHelper showError:@"请选择被保人"];
+//    }
+
+//    }
+//    else
+//    {
+//        [JGProgressHelper showError:@"请选择保险险种"];
+//    }
+
+//}
 
 #pragma mark --添加事件
 -(void)addButAtion:(UIButton *)sender
 {
     //选择公司
     HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
+    company.groupArr = self.groupMutableArr;
+    company.isSelects = self.isSelectPersonName;
     [self.navigationController pushViewController:company animated:YES];
 
 }
@@ -170,45 +373,247 @@
 #pragma mark -- Private
 -(void)addNewSafeAction:(UIBarButtonItem *)sender
 {
+    if ([JwUserCenter sharedCenter].uid == nil) {
+        [JGProgressHelper showError:@"请登录账号"];
+        JwLoginController * loging = [[JwLoginController alloc]init];
+        [self.navigationController pushViewController:loging animated:YES];
+    }else
+    {
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
+        if (self.isSelectPersonName) {
+            // 选过人了
+            [self.groupMutableArr replaceObjectAtIndex:0 withObject:user];
+        }else {
+            [self.groupMutableArr insertObject:user atIndex:0];
+        }
+        self.isSelectPersonName = YES;
+        self.dataSex = user.sex;
+        [self.tableVB reloadData];
     }];
     [self.navigationController pushViewController:VC animated:YES];
+    }
+}
+
+#pragma mark -- HmMultistageTableView DataSource
+// 返回组数
+- (NSInteger)numberOfSectionsInTableView:(HmMultistageTableView *)mTableView {
+    return self.groupMutableArr.count;
+//    return 5;
+}
+
+// 返回组内行数
+- (NSInteger)mTableView:(HmMultistageTableView *)mTableView numberOfRowsInSection:(NSInteger)section {
+    if (self.isSelectPersonName) {
+        // 有人
+        if (section == 0) {
+            return 0;
+        }
+    }
+    return ((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[section]).id]).count + 2;
+//    return 3;
+}
+
+// cell
+- (UITableViewCell *)mTableView:(HmMultistageTableView *)mTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 投保年龄cell
+    BOOL nibsRegistered = NO;
+    if (!nibsRegistered) {
+        UINib *nib = [UINib nibWithNibName:NSStringFromClass([HmDetailsCell class]) bundle:nil];
+        [mTableView mRegisterNib:nib forCellReuseIdentifier:kHmPhysicalDetailsCellIdentifier];
+        nibsRegistered = YES;
+    }
+    HmDetailsCell *cell = [mTableView dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier];
+//    [pickerDict setObject:payoutArr forKey:@"给付方式"];
+//    [pickerDict setObject:pay_periodArr forKey:@"缴费方式"];
+//    [pickerDict setObject:_arr1 forKey:@"保障期间"];
+//    [pickerDict setObject:_arr2 forKey:@"投保年龄"];
+    // 赋值
+    if (indexPath.row == 0) {
+        // 投保年两
+        cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
+        cell.myLaber.text = @"投保年龄";
+        cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"投保年龄"]).firstObject;
+        cell.selectLaber.text = self.Strage;
+        
+    }
+    if (indexPath.row == 1) {
+        // 缴费方式
+        cell.headImg.image = [UIImage imageNamed:@"p_payType"];
+        cell.myLaber.text = @"缴费方式";
+        cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"缴费方式"]).firstObject;
+        cell.selectLaber.text = self.pay_period;
+    }
+    if (indexPath.row == 2) {
+        // 保险期间
+        cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
+        cell.myLaber.text = @"保障期间";
+        cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"保障期间"]).firstObject;
+        
+        cell.selectLaber.text = self.period;
+    }
+    
+    if (((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]).count == 4) {
+        if (indexPath.row == 4) {
+            // 给付方式
+            cell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            cell.myLaber.text = @"给付方式";
+            cell.selectLaber.text = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]) objectForKey:@"给付方式"]).firstObject;
+            
+        }
+    }
+    
+    if (indexPath.row == 3) {
+        cell.headImg.image = [UIImage imageNamed:@"test_money"];
+        cell.myLaber.text = @"保额";
+        
+      
+    }
+    if (indexPath.row == 5) {
+        cell.myLaber.text = @"保费";
+    }
+    return cell;
+}
+
+#pragma mark -- HmMultistageTableView Delegate
+- (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForHeaderInSection:(NSInteger)section {
+    if (self.isSelectPersonName) {
+        // 有人
+        if (section == 0) {
+            return 90;
+        }
+    }
+    return 44;
+}
+
+- (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+- (CGFloat)mTableView:(HmMultistageTableView *)mTableView heightForAtomAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
+
+// 返回组头(两种)
+- (UIView *)mTableView:(HmMultistageTableView *)mTableView viewForHeaderAtSection:(NSInteger)section {
+    if (self.isSelectPersonName) {
+        // 有人
+        if (section == 0) {
+            // 第一行
+            HmPhySicalMainView *mainV = [[HmPhySicalMainView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 90)];
+            mainV.model = self.groupMutableArr.firstObject;
+            return mainV;
+        }
+    }
+    // 没人
+    HmPhysicalGroupView *groupV = [[HmPhysicalGroupView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 44)];
+    groupV.model = self.groupMutableArr[section];
+    return groupV;
+}
+
+- (void)mTableView:(HmMultistageTableView *)mTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"didSelectRow ----%ld  didSelectSection ----%ld",(long)indexPath.row,(long)indexPath.section);
+    HmDetailsCell *cell = [self.tableVB dequeueReusableCellWithIdentifier:kHmPhysicalDetailsCellIdentifier forIndexPath:indexPath];
+    if (self.contentMutableDict.count != 3) {
+        // 有给付方式
+        if (indexPath.row == 0) {
+            self.contentName = @"投保年龄";
+            [self showPickerViewAndToolBar];
+        }else if (indexPath.row == 1) {
+            self.contentName = @"缴费方式";
+            [self showPickerViewAndToolBar];
+        }else if (indexPath.row == 2) {
+            self.contentName = @"保障期间";
+            [self showPickerViewAndToolBar];
+        }else if (indexPath.row == 3) {
+            self.contentName = @"给付方式";
+            [self showPickerViewAndToolBar];
+        }
+    }else {
+        if (indexPath.row == 0) {
+            self.contentName = @"投保年龄";
+            [self showPickerViewAndToolBar];
+        }else if (indexPath.row == 1) {
+            self.contentName = @"缴费方式";
+            [self showPickerViewAndToolBar];
+        }else if (indexPath.row == 2) {
+            self.contentName = @"保障期间";
+            [self showPickerViewAndToolBar];
+        }
+    }
+    self.myIndexPath = indexPath;
+    
+//    if ([cell.myLaber.text isEqualToString:@"投保年龄"]) {
+//        [self showPickerViewAndToolBar];
+//    }else if ([cell.myLaber.text isEqualToString:@"缴费方式"]) {
+//        [self showPickerViewAndToolBar];
+//    }else if ([cell.myLaber.text isEqualToString:@"保障期间"]) {
+//        [self showPickerViewAndToolBar];
+//    }else if ([cell.myLaber.text isEqualToString:@"给付方式"]) {
+//        [self showPickerViewAndToolBar];
+//    }else {
+//        
+//    }
+    [self.pickerV reloadAllComponents];
+}
+
+#pragma mark -- Header Open Or Close
+- (void)mTableView:(HmMultistageTableView *)mTableView willOpenHeaderAtSection:(NSInteger)section {
+    NSLog(@"Oper Header ----%ld",(long)section);
+}
+
+- (void)mTableView:(HmMultistageTableView *)mTableView willCloseHeaderAtSection:(NSInteger)section {
+    NSLog(@"Close Header ----%ld",(long)section);
+}
+
+#pragma mark -- Row Open Or Close
+- (void)mTableView:(HmMultistageTableView *)mTableView willOpenRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Open Row ----%ld",(long)indexPath.row);
+}
+
+- (void)mTableView:(HmMultistageTableView *)mTableView willCloseRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Close Row ----%ld",(long)indexPath.row);
 }
 
 #pragma mark -- Table View Delegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 3 + 1 - 2;
-}
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    if (self.isSelectPersonName) {
+//        // 有人
+//        return self.groupMutableArr.count + 1;
+//    }else {
+//        // 没人
+//        return self.groupMutableArr.count;
+//    }
+////    return 3 + 1 - 2;
+//}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 1;
-    }
-    else
-    {
-        if (section == self.selectedSection && self.selectedSection != 0) {
-            // 点击的是同一个section且非第一次
-            if (self.isOpen) {
-                // 展开
-                return 8;
-            }
-            else
-            {
-                // 收缩
-                return 1;
-            }
-        }
-        else
-        {
-            // 点击的不是同一个section
+    if (self.isSelectPersonName) {
+        // 有人
+        if (section == 0) {
             return 1;
         }
     }
-//    return 1;
+    if (section == self.selectedSection && self.selectedSection != 0) {
+        // 点击的是同一个section且非第一次
+        if (self.isOpen) {
+            // 展开
+            return self.contentMutableDict.count;
+        }
+        else
+        {
+            // 收缩
+            return 1;
+        }
+    }
+    else
+    {
+        // 点击的不是同一个section
+        return 1;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -263,7 +668,7 @@
                         if (indexPath.row == 3) {
                             cell.myLaber.text = @"缴费方式";
                             cell.headImg.image = [UIImage imageNamed:@"p_payType"];
-                            cell.selectLaber.text = @"10年交";
+                          //  cell.selectLaber.text = @"10年交";
                         }
                         if (indexPath.row == 2) {
                             cell.myLaber.text = @"保险期间";
@@ -364,7 +769,7 @@
             
             
         };
-
+        age.ID = self.ids;
         [self.navigationController pushViewController:age animated:YES];
     }
     
@@ -383,7 +788,7 @@
             
         };
         
-        
+        period.ID = self.ids;
         [self.navigationController pushViewController:period animated:YES];
 
     }
@@ -401,6 +806,7 @@
             NSLog(@"输入的数据 = %@",_userNameTextField.text);
             HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             cell.selectLaber.text = _userNameTextField.text;
+            self.rate = _userNameTextField.text;
             
         }]];
         //增加取消按钮；
@@ -450,6 +856,108 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -- GETTER
+-(NSMutableArray *)groupMutableArr {
+    if (_groupMutableArr == nil) {
+        _groupMutableArr = [NSMutableArray array];
+    }
+    return _groupMutableArr;
+}
+
+- (NSMutableDictionary *)contentMutableDict {
+    if (_contentMutableDict == nil) {
+        _contentMutableDict = [NSMutableDictionary dictionary];
+    }
+    return _contentMutableDict;
+}
+
+#pragma mark -- Picker View Delegate
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    //    [pickerDict setObject:payoutArr forKey:@"给付方式"];
+    //    [pickerDict setObject:pay_periodArr forKey:@"缴费方式"];
+    //    [pickerDict setObject:_arr1 forKey:@"保障期间"];
+    //    [pickerDict setObject:_arr2 forKey:@"投保年龄"];
+    if ([self.contentName isEqualToString:@"投保年龄"]) {
+        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"]).count;
+    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
+        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"]).count;
+    }else if ([self.contentName isEqualToString:@"保障期间"]) {
+        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"]).count;
+    }else if ([self.contentName isEqualToString:@"给付方式"]) {
+        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"]).count;
+    }else {
+        return 0;
+    }
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if ([self.contentName isEqualToString:@"投保年龄"]) {
+        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row];
+    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
+        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row];
+       
+    }else if ([self.contentName isEqualToString:@"保障期间"]) {
+        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row];
+    }else if ([self.contentName isEqualToString:@"给付方式"]) {
+        return ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"])[row];
+    }else {
+        return @"";
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+        if ([self.contentName isEqualToString:@"投保年龄"]) {
+        
+        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row]);
+        self.Strage = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"投保年龄"])[row];
+        
+    }else if ([self.contentName isEqualToString:@"缴费方式"]) {
+        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row]);
+       
+          self.pay_period = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"缴费方式"])[row];
+        
+    }else if ([self.contentName isEqualToString:@"保障期间"]) {
+        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row]);
+       self.period = ((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"保障期间"])[row];
+      
+        
+    }else if ([self.contentName isEqualToString:@"给付方式"]) {
+        NSLog(@"%@",((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id]) objectForKey:@"给付方式"])[row]);
+    }
+    else if ([self.contentName isEqualToString:@"保额"])
+    {
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入投保金额" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //获取第1个输入框；
+            _userNameTextField = alertController.textFields.firstObject;
+            _userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
+            
+            NSLog(@"输入的数据 = %@",_userNameTextField.text);
+          //  HmDetailsCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+           // cell.selectLaber.text = _userNameTextField.text;
+            self.rate = _userNameTextField.text;
+            
+        }]];
+        //增加取消按钮；
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+        
+        //定义第一个输入框；
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"请输入保额";
+        }];
+        [self presentViewController:alertController animated:true completion:nil];
+
+    }
+    else {
+        
+    }
 }
 
 /*

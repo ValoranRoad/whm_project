@@ -7,6 +7,9 @@
 //
 
 #import "WHlookForViewController.h"
+#import "JGProgressHelper.h"
+
+
 
 @interface WHlookForViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIImageView * headImage;
@@ -33,6 +36,8 @@
 @property(nonatomic,strong)UILabel * numkehuLaber;
 @property(nonatomic,strong)UILabel * kehuLaber;
 @property(nonatomic,strong)UIScrollView * scolw;
+//
+
 
 
 @end
@@ -59,6 +64,29 @@
 -(void)requestData
 {
 
+//    [self.dataService get_user_infoWithUid:@"" success:^(NSArray *lists) {
+//      //  self.mesArry = [NSMutableArray arrayWithArray:lists];
+//        for (WHgetuseinfo * model in lists) {
+//            
+//            if (model.avatar.length == 0) {
+//                self.headImage.image = [UIImage imageNamed:@"Hm_head.png"];
+//            }
+//            
+//            [self.headImage sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+//            self.nameLaber.text = model.name;
+//            self.yearLaber.text = model.age;
+//            self.area = model.area_info;
+//            self.address = model.address;
+//            self.company = model.company;
+//            
+//        }
+//        
+//        
+//    } failure:^(NSError *error) {
+//        
+//    }];
+    
+    
 }
 
 #pragma mark -- 布局

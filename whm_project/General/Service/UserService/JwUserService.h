@@ -47,6 +47,7 @@
 
 //发送短信
 -(void)sendsmsWithMobile:(NSString *)mobile
+                    type:(NSString *)type
             check_mobile:(NSString *)check_mobile
                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
@@ -148,9 +149,31 @@ success:(void(^)())success failure:(void(^)(NSError *error))failure;
 
 
 //删除荣誉
--(void)delhonorWithId:(NSString * )ids uid:(NSString * )uid
+-(void)delhonorWithId:(NSString * )ids
+                  uid:(NSString * )uid
 
               success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
+
+
+//保存完善的保单信息
+-(void)updatePolicyWithId:(NSString *)ids
+                      uid:(NSString *)uid
+                    sn_no:(NSString *)sn_no
+               start_date:(NSString *)start_date
+                holder:(NSString *)holder
+              beneficiary:(NSString *)beneficiary
+                  success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
+//删除保单
+-(void)delpolicyWithPolicy_id:(NSString *)policy_id
+                          uid:(NSString *)uid
+                      success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
+
+
+
+
 
 
 @end

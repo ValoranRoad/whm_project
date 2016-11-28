@@ -11,6 +11,8 @@
 #import "JGProgressHelper.h"
 
 #import "RegisterTwoViewController.h"
+#include "JwLoginController.h"
+
 @interface JwRegistController ()
 
 
@@ -22,6 +24,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *pwdText;
 @property (weak, nonatomic) IBOutlet UITextField *comforPwdText;
 @property (weak, nonatomic) IBOutlet UIButton *protlBut;
+@property (weak, nonatomic) IBOutlet UIButton *codeButtion;
+
+@property(nonatomic,strong)NSTimer * countDownTime;
+@property(nonatomic,assign)NSInteger secondsCountDowm;
+
 
 @end
 
@@ -54,6 +61,8 @@
                 [self.userService registWithName:self.nameText.text mobile:self.telText.text captcha:self.CodeText.text pwd:self.pwdText.text type:@"0" company_id:@"" org_id:@"" exhibition_no:@"" nickname:@"" work_time:@"" id_number:@"" profession:@"" specialize_in:@"" address:@"" success:^(JwUser *user) {
                     [hud hide:YES];
                     [JGProgressHelper showSuccess:@"普通用户注册成功"];
+                    JwLoginController * login = [[JwLoginController alloc]init];
+                    [self.navigationController pushViewController:login animated:YES];
                     
                 } failure:^(NSError *error) {
                     
@@ -87,6 +96,12 @@
     
     
 }
+//注册协议
+
+- (IBAction)registPro:(id)sender {
+    
+    
+}
  //验证码事件发送
 - (IBAction)codeButAction:(id)sender {
    
@@ -100,7 +115,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
                 //[self.rv.yzhBut setTitle:@"发送验证码" forState:UIControlStateNormal];
-                self.CodeBut.userInteractionEnabled = YES;
+                self.codeButtion.userInteractionEnabled = YES;
+                self.timeLaber.text = @"60s";
             });
         }else{
             int seconds = timeout % 60;
@@ -112,19 +128,19 @@
                 [UIView setAnimationDuration:1];
                 //[self.rg.codeBut setTitle:[NSString stringWithFormat:@"%@秒后重新发送",strTime] forState:UIControlStateNormal];
                 self.timeLaber.text = [NSString stringWithFormat:@"%@s后重发",strTime];
-                NSLog(@"%@",self.timeLaber.text);
+                NSLog(@"---%@---%d",self.timeLaber.text,seconds);
                 [UIView commitAnimations];
-                self.CodeBut.userInteractionEnabled = NO;
+                self.codeButtion.userInteractionEnabled = NO;
             });
             timeout--;
         }
     });
-    
+    dispatch_resume(_timer);
     
     //
     if (self.telText.text.length != 0) {
         id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.userService sendsmsWithMobile:self.telText.text check_mobile:@"1" success:^{
+        [self.userService sendsmsWithMobile:self.telText.text type:@"1" check_mobile:@"1" success:^{
             
             
             [hud hide:YES];

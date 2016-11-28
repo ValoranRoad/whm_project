@@ -29,14 +29,13 @@
 #import "WHgetcharacters.h"
 #import "WHget_pro_rate.h"
 #import "WHgetreport.h"
-
+#import "WHgetpolicys.h"
 
 
 #import "MacroUtility.h"
 #import "JwUserCenter.h"
 #import "JwUser.h"
-
-
+#import "JGProgressHelper.h"
 @implementation JwDataService
 
 //获取公司列表
@@ -68,13 +67,15 @@
                          province:(NSString *)province
                              city:(NSString *)city
                            county:(NSString *)county
+
                           success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"com_id":com_id,
                                     @"city_name":city_name,
                                     @"province":province,
                                     @"city":city,
-                                    @"county":county}mutableCopy];
+                                    @"county":county 
+                                     }mutableCopy];
     param =[[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {
         NSArray *infos = data[@"data"];
@@ -171,6 +172,11 @@
 -(void)get_user_infoWithUid:(NSString *)uid
                     success:(void (^)(NSArray * lists))success failure:(void (^)(NSError * error))failure
 {
+    if ([JwUserCenter sharedCenter].uid == nil) {
+        [JGProgressHelper showError:@"请登录账号"];
+    }
+    else
+    {
     NSMutableDictionary *param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                                     @"token":[JwUserCenter sharedCenter].key}
                                   mutableCopy];
@@ -189,13 +195,13 @@
         }
     }];
 
-    
+    }
     
 }
 //公司详情
 -(void)get_company_detailWithCom_id:(NSString *)com_id
                                 uid:(NSString *)uid
-                            success:(void (^)(WHcompanyDetail * userInfo))success failure:(void (^)(NSError *))failure
+                            success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"com_id":com_id,
                                      @"uid":[JwUserCenter sharedCenter].uid}
@@ -205,7 +211,7 @@
     [self.httpManager POST:param withPoint:@"kb/get_company_detail" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        WHcompanyDetail *companydetals = [[WHcompanyDetail  alloc]initWithDictionary:[infos firstObject] error:nil];
+       NSArray *companydetals = [WHcompanyDetail  arrayOfModelsFromDictionaries:infos error:nil];
       if (success) {
             success(companydetals);
         }
@@ -288,6 +294,9 @@
 -(void)get_user_realtionWithUid:(NSString *)uid
                         success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 {
+    if ([JwUserCenter sharedCenter].uid != nil) {
+        
+    
     NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                                      @"token":[JwUserCenter sharedCenter].key}
                                    mutableCopy];
@@ -308,7 +317,11 @@
         }
     }];
     
-    
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请登录账号"];
+    }
     
     
 }
@@ -508,6 +521,9 @@
 //找险种搜索首页数据
 -(void)getprofirstWithUid:(NSString * )uid success:(void (^)(WHgetprofirst *profirst))success failure:(void (^)(NSError *error))failure
 {
+    if ([JwUserCenter sharedCenter].uid != nil) {
+        
+    
     NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid} mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_pro_first"] mutableCopy];
     
@@ -526,7 +542,12 @@
     }];
 
     
-    
+    }
+    else
+    {
+        [JGProgressHelper showError:@"请登录账号"];
+    }
+
     
 }
 
@@ -598,7 +619,7 @@
 -(void)getprorateWithPid:(NSString *)pid
                      uid:(NSString *)uid
                   gender:(NSString *)gender
-                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *))failure
+                 success:(void (^)(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"pid":pid,
                                      @"uid":[JwUserCenter sharedCenter].uid,
@@ -608,9 +629,23 @@
     [self.httpManager POST:param withPoint:@"kbj/get_pro_rate" success:^(id data) {
         
         NSArray *infos = data[@"data"];
+        NSArray *bigArr = [infos.firstObject objectForKey:@"mongo_rate"];
+        NSArray *moreArr = [bigArr.firstObject objectForKey:@"rate"];
+        NSMutableArray *mutableArr_pay_period = [NSMutableArray array];
+        NSMutableArray *mutableArr_payOut = [NSMutableArray array];
+        for (NSDictionary *dic in moreArr) {
+            if ([[dic allKeys] containsObject:@"pay_period"]) {
+                [mutableArr_pay_period addObjectsFromArray:((NSDictionary *)[dic objectForKey:@"pay_period"]).allKeys];
+            }
+            if ([[dic allKeys] containsObject:@"payout"]) {
+                [mutableArr_payOut addObjectsFromArray:((NSDictionary *)[dic objectForKey:@"payout"]).allKeys];
+            }
+        }
+        NSSet *set = [NSSet setWithArray:mutableArr_pay_period];
+        NSSet *set1 = [NSSet setWithArray:mutableArr_payOut];
         NSArray *rates = [WHget_pro_rate arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
-            success(rates);
+            success(rates, [set allObjects], [set1 allObjects]);
         }
     } failure:^(NSError *error) {
         if (failure) {
@@ -625,10 +660,10 @@
                     rela_id:(NSString *)rela_id
                        pros:(NSString *)pros success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = @{@"uid":[JwUserCenter sharedCenter].uid,
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                                      @"rela_id":rela_id,
                                      @"pros":pros,
-                                     @"token":[JwUserCenter sharedCenter].key}.mutableCopy;
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
     param = [[self filterParam:param interface:@"kbj/save_policy"] mutableCopy];
     [self.httpManager POST:param withPoint:@"kbj/save_policy" success:^(id data) {
         
@@ -644,4 +679,29 @@
     }];
 
 }
+//保单列表
+-(void)getpolicysWithUid:(NSString *)uid
+                 rela_id:(NSString *)rela_id
+                 success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                                     @"rela_id":rela_id,
+                                     @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_policys"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_policys" success:^(id data) {
+        NSArray * infos = data[@"data"];
+        NSArray * policysList = [WHgetpolicys arrayOfModelsFromDictionaries:infos error:nil];
+        if (success ) {
+            success(policysList);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+
+
+
 @end

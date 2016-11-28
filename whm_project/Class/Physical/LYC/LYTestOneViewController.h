@@ -17,6 +17,6 @@
 @property(nonatomic,strong)NSString * period; //保障期间
 @property(nonatomic,strong)NSString * pay_period;//缴费期间
 @property(nonatomic,strong)NSString * insured_amount;//保额
-
+@property(nonatomic,strong)NSString * payout;
 
 @end

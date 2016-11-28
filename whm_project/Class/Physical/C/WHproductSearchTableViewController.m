@@ -46,12 +46,13 @@
 }
 -(void)left:(UIBarButtonItem *)sender
 {
-    JwPhysicalController * phy = [[JwPhysicalController alloc]init];
-    phy.name = self.name;
-    phy.ids = self.ids;
-    phy.is_main = self.is_main;
-    
-    [self.navigationController pushViewController:phy animated:YES];
+//    JwPhysicalController * phy = [[JwPhysicalController alloc]init];
+//    phy.name = self.name;
+//    phy.ids = self.ids;
+//    phy.is_main = self.is_main;
+//    
+//    [self.navigationController pushViewController:phy animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //数据请求
 -(void)quartData
@@ -131,11 +132,15 @@
 //选中事件返回
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    JwPhysicalController * phy = [[JwPhysicalController alloc]init];
     WHgetproduct * model = self.dataArry[indexPath.row];
     self.name = model.name;
     self.ids = model.id;
     self.is_main = model.is_main;
-    
+    phy.modelType = model;
+    phy.groupMutableArr = self.groupsArr;
+    phy.isSelectPersonName = self.isSelectP;
+    [self.navigationController pushViewController:phy animated:YES];
 }
 
 

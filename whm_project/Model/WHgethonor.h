@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "JwModelBase.h"
+
+@protocol WHgethonor <NSObject>
+
+
+@end
+
 @interface WHgethonor : JwModelBase
 
 @property(nonatomic,strong)NSString <Optional> * id;
