@@ -31,6 +31,7 @@
 @class WHget_pro_rate;
 @class WHgetreport;
 @class WHgetpolicys;
+@class WHgetnearagent;
 
 @interface JwDataService : JwServiceBase
 
@@ -185,6 +186,14 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                  rela_id:(NSString *)rela_id
                  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
-
+//附近代理人
+-(void)getnearagentWithLng:(NSString *)lng
+                       lat:(NSString *)lat
+                 city_name:(NSString *)city_name
+                  province:(NSString *)province
+                      city:(NSString *)city
+                    county:(NSString *)county
+                      type:(NSString *) type
+                   success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 @end

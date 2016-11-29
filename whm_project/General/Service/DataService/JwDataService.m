@@ -30,7 +30,7 @@
 #import "WHget_pro_rate.h"
 #import "WHgetreport.h"
 #import "WHgetpolicys.h"
-
+#import "WHgetnearagent.h"
 
 #import "MacroUtility.h"
 #import "JwUserCenter.h"
@@ -700,6 +700,41 @@
             failure(error);
         }
     }];
+}
+
+//附近代理人
+-(void)getnearagentWithLng:(NSString *)lng
+                       lat:(NSString *)lat
+                 city_name:(NSString *)city_name
+                  province:(NSString *)province
+                      city:(NSString *)city
+                    county:(NSString *)county
+                      type:(NSString *)type
+                   success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"lng":lng ,
+                              @"lat":lat ,
+                              @"city_name":city_name ,
+                              @"province":province ,
+                              @"city":city ,
+                              @"county":county,
+                              @"type":type}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_near_agent"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_message_detail" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *nearagents = [WHgetnearagent  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(nearagents);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
 }
 
 

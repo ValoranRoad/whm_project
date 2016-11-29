@@ -112,6 +112,9 @@
 		9F35CE841DD6BE1B003F0C78 /* WHpros.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE831DD6BE1B003F0C78 /* WHpros.m */; };
 		9F35CE871DD6BF8B003F0C78 /* WHcov.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE861DD6BF8B003F0C78 /* WHcov.m */; };
 		9F35CE8A1DD6C097003F0C78 /* WHrela.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE891DD6C097003F0C78 /* WHrela.m */; };
+		9F436C4C1DED0939000FBE94 /* WHnearagentdata.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F436C4B1DED0939000FBE94 /* WHnearagentdata.m */; };
+		9F436C4F1DED0964000FBE94 /* WHgetnearagent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F436C4E1DED0964000FBE94 /* WHgetnearagent.m */; };
+		9F436C521DED0EC3000FBE94 /* CityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F436C511DED0EC3000FBE94 /* CityTableViewCell.m */; };
 		9F63ED261DCB573F00404AE7 /* WHpelicyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED251DCB573F00404AE7 /* WHpelicyTableViewController.m */; };
 		9F63ED371DCB58C300404AE7 /* WHpecTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED361DCB58C300404AE7 /* WHpecTableViewCell.m */; };
 		9F63ED3A1DCB634F00404AE7 /* WHpayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED391DCB634F00404AE7 /* WHpayTableViewController.m */; };
@@ -360,10 +363,10 @@
 		9678ACFA1DEC268200C91373 /* WHmessageListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmessageListTableViewCell.m; sourceTree = "<group>"; };
 		9678AD001DEC297A00C91373 /* WHagentinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHagentinfo.h; sourceTree = "<group>"; };
 		9678AD011DEC297A00C91373 /* WHagentinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHagentinfo.m; sourceTree = "<group>"; };
-		9678AD031DEC29F000C91373 /* WHorginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorginTableViewCell.h; sourceTree = "<group>"; };
-		9678AD041DEC29F000C91373 /* WHorginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorginTableViewCell.m; sourceTree = "<group>"; };
-		9678AD051DEC29F000C91373 /* WHorginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorginTableViewController.h; sourceTree = "<group>"; };
-		9678AD061DEC29F000C91373 /* WHorginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorginTableViewController.m; sourceTree = "<group>"; };
+		9678AD031DEC29F000C91373 /* WHorginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHorginTableViewCell.h; path = ../../UserInfo/C/WHorginTableViewCell.h; sourceTree = "<group>"; };
+		9678AD041DEC29F000C91373 /* WHorginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHorginTableViewCell.m; path = ../../UserInfo/C/WHorginTableViewCell.m; sourceTree = "<group>"; };
+		9678AD051DEC29F000C91373 /* WHorginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHorginTableViewController.h; path = ../../UserInfo/C/WHorginTableViewController.h; sourceTree = "<group>"; };
+		9678AD061DEC29F000C91373 /* WHorginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHorginTableViewController.m; path = ../../UserInfo/C/WHorginTableViewController.m; sourceTree = "<group>"; };
 		96BC4DF31DE80A56009E6D96 /* HmDetailsCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmDetailsCodeCell.h; sourceTree = "<group>"; };
 		96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmDetailsCodeCell.m; sourceTree = "<group>"; };
 		9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_user_realtion.h; sourceTree = "<group>"; };
@@ -476,6 +479,12 @@
 		9F35CE861DD6BF8B003F0C78 /* WHcov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHcov.m; sourceTree = "<group>"; };
 		9F35CE881DD6C097003F0C78 /* WHrela.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrela.h; sourceTree = "<group>"; };
 		9F35CE891DD6C097003F0C78 /* WHrela.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrela.m; sourceTree = "<group>"; };
+		9F436C4A1DED0931000FBE94 /* WHnearagentdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHnearagentdata.h; sourceTree = "<group>"; };
+		9F436C4B1DED0939000FBE94 /* WHnearagentdata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHnearagentdata.m; sourceTree = "<group>"; };
+		9F436C4D1DED095E000FBE94 /* WHgetnearagent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetnearagent.h; sourceTree = "<group>"; };
+		9F436C4E1DED0964000FBE94 /* WHgetnearagent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetnearagent.m; sourceTree = "<group>"; };
+		9F436C501DED0EB6000FBE94 /* CityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityTableViewCell.h; path = ../../../../../selsctCity/selsctCity/CityTableViewCell.h; sourceTree = "<group>"; };
+		9F436C511DED0EC3000FBE94 /* CityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewCell.m; sourceTree = "<group>"; };
 		9F63ED241DCB573200404AE7 /* WHpelicyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpelicyTableViewController.h; sourceTree = "<group>"; };
 		9F63ED251DCB573F00404AE7 /* WHpelicyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpelicyTableViewController.m; sourceTree = "<group>"; };
 		9F63ED351DCB58C300404AE7 /* WHpecTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHpecTableViewCell.h; path = whm_project/Class/LookFor/C/WHpecTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -1213,6 +1222,12 @@
 				C8343DFD1DB5B79A00999301 /* JwFindController.m */,
 				9FF7CC431DE6CD850098193A /* WHnearAgentTableViewController.h */,
 				9FF7CC441DE6CD850098193A /* WHnearAgentTableViewController.m */,
+				9678AD051DEC29F000C91373 /* WHorginTableViewController.h */,
+				9678AD061DEC29F000C91373 /* WHorginTableViewController.m */,
+				9678AD031DEC29F000C91373 /* WHorginTableViewCell.h */,
+				9678AD041DEC29F000C91373 /* WHorginTableViewCell.m */,
+				9F436C501DED0EB6000FBE94 /* CityTableViewCell.h */,
+				9F436C511DED0EC3000FBE94 /* CityTableViewCell.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1546,6 +1561,10 @@
 		C86353E81DB4674100ED8B16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F436C4D1DED095E000FBE94 /* WHgetnearagent.h */,
+				9F436C4E1DED0964000FBE94 /* WHgetnearagent.m */,
+				9F436C4A1DED0931000FBE94 /* WHnearagentdata.h */,
+				9F436C4B1DED0939000FBE94 /* WHnearagentdata.m */,
 				9678AD001DEC297A00C91373 /* WHagentinfo.h */,
 				9678AD011DEC297A00C91373 /* WHagentinfo.m */,
 				C86353F91DB4674100ED8B16 /* JwModelBase.h */,
@@ -1841,10 +1860,6 @@
 		C8C10C8B1DB9C06F00A5FB9A /* C */ = {
 			isa = PBXGroup;
 			children = (
-				9678AD031DEC29F000C91373 /* WHorginTableViewCell.h */,
-				9678AD041DEC29F000C91373 /* WHorginTableViewCell.m */,
-				9678AD051DEC29F000C91373 /* WHorginTableViewController.h */,
-				9678AD061DEC29F000C91373 /* WHorginTableViewController.m */,
 				C8C10C8E1DB9C06F00A5FB9A /* ForgetPwdViewController.h */,
 				C8C10C8F1DB9C06F00A5FB9A /* ForgetPwdViewController.m */,
 				C8C10C901DB9C06F00A5FB9A /* JwLoginController.h */,
@@ -2159,6 +2174,7 @@
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				9FF7CC481DE6CD980098193A /* WHnearAgentTableViewCell.m in Sources */,
 				961746B41DE57F7500AEE19A /* HmPhysicalGroupView.m in Sources */,
+				9F436C521DED0EC3000FBE94 /* CityTableViewCell.m in Sources */,
 				9FA684681DE2DDD8003F70E3 /* WHmyphysicalTableViewController.m in Sources */,
 				9FE928371DEC3E5E00D1394F /* WHnews.m in Sources */,
 				9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */,
@@ -2296,6 +2312,7 @@
 				C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */,
 				C8C10CC31DB9C06F00A5FB9A /* registerTwoTableViewCell.m in Sources */,
 				9F10738F1DD02B5200725A84 /* WHpowSearTableViewController.m in Sources */,
+				9F436C4F1DED0964000FBE94 /* WHgetnearagent.m in Sources */,
 				C8C10CBB1DB9C06F00A5FB9A /* WHrestPwdViewController.m in Sources */,
 				9F35CE521DD6AC4B003F0C78 /* JSCollectViewController.m in Sources */,
 				C86353E61DB4672700ED8B16 /* UIColor+AddColor.m in Sources */,
@@ -2348,6 +2365,7 @@
 				9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */,
 				C86354A61DB4D3AB00ED8B16 /* JwBackBaseController.m in Sources */,
 				C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */,
+				9F436C4C1DED0939000FBE94 /* WHnearagentdata.m in Sources */,
 				9F35CE4A1DD6A462003F0C78 /* WHperiodTableViewController.m in Sources */,
 				C8C10CBF1DB9C06F00A5FB9A /* RegisterTwoViewController.m in Sources */,
 				9F0EE58F1DBB547C00B68F76 /* WHhotcompany.m in Sources */,
