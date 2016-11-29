@@ -125,7 +125,7 @@
         self.delBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
         self.delBut.frame = CGRectMake(CGRectGetMaxX(self.img1.frame), CGRectGetMinY(self.img1.frame), kScreenWitdh * 0.15, 20);
         [self.delBut setTintColor:[UIColor grayColor]];
-        self.delBut.font = [UIFont systemFontOfSize:14.0];
+        self.delBut.titleLabel.font = [UIFont systemFontOfSize:14.0];
 //        [self.delBut setTitle:@"删除" forState:(UIControlStateNormal)];
         [self.contentView addSubview:_delBut];
     }
@@ -149,7 +149,7 @@
         self.pefBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
         self.pefBut.frame = CGRectMake(CGRectGetMaxX(self.img2.frame)+3, CGRectGetMinY(self.img2.frame), CGRectGetWidth(self.delBut.frame), CGRectGetHeight(self.delBut.frame));
         [self.pefBut setTintColor:[UIColor grayColor]];
-        self.pefBut.font = [UIFont systemFontOfSize:14.0];
+        self.pefBut.titleLabel.font = [UIFont systemFontOfSize:14.0];
 //        [self.pefBut setTitle:@"完善保单" forState:(UIControlStateNormal)];
         [self.contentView addSubview:_pefBut];
     }

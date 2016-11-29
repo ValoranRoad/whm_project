@@ -248,7 +248,6 @@
 		C8C10CB51DB9C06F00A5FB9A /* JwLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C10C921DB9C06F00A5FB9A /* JwLoginController.xib */; };
 		C8C10CB61DB9C06F00A5FB9A /* JwRegistController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C10C941DB9C06F00A5FB9A /* JwRegistController.m */; };
 		C8C10CB71DB9C06F00A5FB9A /* JwRegistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8C10C951DB9C06F00A5FB9A /* JwRegistController.xib */; };
-		C8C10CB81DB9C06F00A5FB9A /* JwUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C10C971DB9C06F00A5FB9A /* JwUserInfoController.m */; };
 		C8C10CB91DB9C06F00A5FB9A /* WHaccountDetaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C10C991DB9C06F00A5FB9A /* WHaccountDetaTableViewController.m */; };
 		C8C10CBA1DB9C06F00A5FB9A /* WHpersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C10C9B1DB9C06F00A5FB9A /* WHpersonCenterViewController.m */; };
 		C8C10CBB1DB9C06F00A5FB9A /* WHrestPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C10C9D1DB9C06F00A5FB9A /* WHrestPwdViewController.m */; };
@@ -750,8 +749,6 @@
 		C8C10C931DB9C06F00A5FB9A /* JwRegistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwRegistController.h; sourceTree = "<group>"; };
 		C8C10C941DB9C06F00A5FB9A /* JwRegistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwRegistController.m; sourceTree = "<group>"; };
 		C8C10C951DB9C06F00A5FB9A /* JwRegistController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JwRegistController.xib; sourceTree = "<group>"; };
-		C8C10C961DB9C06F00A5FB9A /* JwUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwUserInfoController.h; sourceTree = "<group>"; };
-		C8C10C971DB9C06F00A5FB9A /* JwUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwUserInfoController.m; sourceTree = "<group>"; };
 		C8C10C981DB9C06F00A5FB9A /* WHaccountDetaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHaccountDetaTableViewController.h; sourceTree = "<group>"; };
 		C8C10C991DB9C06F00A5FB9A /* WHaccountDetaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaccountDetaTableViewController.m; sourceTree = "<group>"; };
 		C8C10C9A1DB9C06F00A5FB9A /* WHpersonCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpersonCenterViewController.h; sourceTree = "<group>"; };
@@ -1832,8 +1829,6 @@
 				C8C10C931DB9C06F00A5FB9A /* JwRegistController.h */,
 				C8C10C941DB9C06F00A5FB9A /* JwRegistController.m */,
 				C8C10C951DB9C06F00A5FB9A /* JwRegistController.xib */,
-				C8C10C961DB9C06F00A5FB9A /* JwUserInfoController.h */,
-				C8C10C971DB9C06F00A5FB9A /* JwUserInfoController.m */,
 				C8C10C981DB9C06F00A5FB9A /* WHaccountDetaTableViewController.h */,
 				C8C10C991DB9C06F00A5FB9A /* WHaccountDetaTableViewController.m */,
 				C8C10C9A1DB9C06F00A5FB9A /* WHpersonCenterViewController.h */,
@@ -2296,7 +2291,6 @@
 				9F35CE7E1DD6BD23003F0C78 /* WHgetreport.m in Sources */,
 				C83D06711DCB2AB40028A681 /* JwPeriod.m in Sources */,
 				C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */,
-				C8C10CB81DB9C06F00A5FB9A /* JwUserInfoController.m in Sources */,
 				9FDAE5AF1DDF0136000F91DF /* UIView+Zirkfied.m in Sources */,
 				9FDF0C601DD15E8100892CAA /* WHpowTwoTableViewCell.m in Sources */,
 				9FDAE5C91DDF0136000F91DF /* ZFWaveChart.m in Sources */,

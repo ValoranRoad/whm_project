@@ -15,9 +15,13 @@
 #import "JwPhysicalController.h"
 #import "JwLookForController.h"
 #import "JwFindController.h"
-#import "JwUserInfoController.h"
+
+#import "WHpersonCenterViewController.h"
+#import "JwLoginController.h"
+
 #import "UIImage+Color.h"
 #import "UIColor+Hex.h"
+#import "JwUserCenter.h"
 
 @interface JwTabBarController ()<UITabBarControllerDelegate>
 
@@ -29,18 +33,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.delegate = self;
+    [self setupControllers];
+    //用户登陆后的的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(isLoginAction:) name:kJwIsLogin object:nil];
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kJwIsLogin object:nil];
+}
+
+- (void)isLoginAction:(NSNotification *)not{
+    [self setupControllers];
+}
+
+- (void)setupControllers{
     
     JwHomeController *home = [[JwHomeController alloc] init];
     JwPhysicalController *physical = [[JwPhysicalController alloc] init];
     JwLookForController *lookfor = [[JwLookForController alloc] init];
     JwFindController *find = [[JwFindController alloc] init];
-    JwUserInfoController *user = [[JwUserInfoController alloc] init];
+    
+    WHpersonCenterViewController *center = [[WHpersonCenterViewController alloc] init];
+    JwLoginController *login = [[JwLoginController alloc] init];
     
     JwNavigationController *homeVC = [[JwNavigationController alloc] initWithRootViewController:home];
     JwNavigationController *physicalVC = [[JwNavigationController alloc] initWithRootViewController:physical];
     JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
     JwNavigationController *findVC = [[JwNavigationController alloc] initWithRootViewController:find];
-    JwNavigationController *userVC = [[JwNavigationController alloc] initWithRootViewController:user];
+    
+    JwNavigationController *centerVC = [[JwNavigationController alloc] initWithRootViewController:center];
+    JwNavigationController *loginVC = [[JwNavigationController alloc] initWithRootViewController:login];
     
     homeVC.tabBarItem.image = [[UIImage imageNamed:@"home"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     physicalVC.tabBarItem.image = [[UIImage imageNamed:@"physical"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
@@ -49,22 +71,33 @@
     
     
     findVC.tabBarItem.image = [[UIImage imageNamed:@"find"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
-    userVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    
+    centerVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    loginVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     
     homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"home_h"];
     physicalVC.tabBarItem.selectedImage = [UIImage imageNamed:@"physical_h"];
     lookforVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
     findVC.tabBarItem.selectedImage = [UIImage imageNamed:@"find_h"];
-    userVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
+    
+    centerVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
+    loginVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     
     home.title = homeVC.title = @"首页";
     physical.title = physicalVC.title = @"体检";
     lookfor.title = lookforVC.title = @"找险";
     find.title = findVC.title = @"发现";
-    user.title = userVC.title = @"我的";
+    
+    center.title = centerVC.title = @"我的";
+    login.title = loginVC.title = @"我的";
     
     [self setupView];
-    self.viewControllers = @[homeVC, physicalVC, lookforVC, findVC, userVC];
+    
+    if ([JwUserCenter sharedCenter].key == nil) {
+        self.viewControllers = @[homeVC, physicalVC, lookforVC, findVC, loginVC];
+    }else{
+        self.viewControllers = @[homeVC, physicalVC, lookforVC, findVC, centerVC];
+    }
 }
 
 - (void)setupView{

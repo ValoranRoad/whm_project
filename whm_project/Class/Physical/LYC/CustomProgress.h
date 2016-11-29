@@ -24,10 +24,7 @@
 @property(nonatomic,strong)UILabel * mylaber1;
 @property(nonatomic,strong)UIImageView * Img2;
 -(void)setPresent:(int)present title:(NSString *)title labelText:(NSString *)labelText;
--(void)setPresent1:(int)present1;
--(void)setPresent2:(int)present2;
--(void)setPresent3:(int)present3;
--(void)setPresent4:(int)present4;
--(void)setPresent5:(int)present5;
+
+
 
 @end

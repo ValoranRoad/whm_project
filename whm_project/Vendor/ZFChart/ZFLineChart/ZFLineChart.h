@@ -57,8 +57,8 @@
 /**
  *  用于编写点击x轴valueLabel后需要执行后续代码
  *
- *  @param groupIndex 点击的label在第几组
- *  @param labelIndex 点击的label在该组的下标
+ *  @param lineChart 点击的label在第几组
+ *  @param lineIndex 点击的label在该组的下标
  */
 - (void)lineChart:(ZFLineChart *)lineChart didSelectPopoverLabelAtLineIndex:(NSInteger)lineIndex circleIndex:(NSInteger)circleIndex popoverLabel:(ZFPopoverLabel *)popoverLabel;
 

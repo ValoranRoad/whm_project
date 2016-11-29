@@ -250,7 +250,7 @@ static const CGFloat kDefultHeightForAtom = 44.0f;
  */
 - (NSMutableArray *)buildWillCloseRowsWithRow:(NSInteger)row
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:self.openedIndexPath];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:(long)self.openedIndexPath];
     
     [self invoke_willCloseRowAtIndexPath:indexPath];
     

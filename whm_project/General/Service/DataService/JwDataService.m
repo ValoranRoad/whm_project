@@ -172,11 +172,6 @@
 -(void)get_user_infoWithUid:(NSString *)uid
                     success:(void (^)(NSArray * lists))success failure:(void (^)(NSError * error))failure
 {
-    if ([JwUserCenter sharedCenter].uid == nil) {
-        [JGProgressHelper showError:@"请登录账号"];
-    }
-    else
-    {
     NSMutableDictionary *param = [@{@"uid":[JwUserCenter sharedCenter].uid,
                                     @"token":[JwUserCenter sharedCenter].key}
                                   mutableCopy];
@@ -194,8 +189,6 @@
             failure(error);
         }
     }];
-
-    }
     
 }
 //公司详情

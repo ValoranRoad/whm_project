@@ -7,24 +7,18 @@
 //
 
 #import "WHpersonCenterViewController.h"
-
 #import "UIColor+Hex.h"
-
 #import "WHupdatePwdViewController.h"
-
 #import "WHaccountDetaTableViewController.h"
-
 #import "WHsetupTableViewController.h"
-
-//
 #import "JGProgressHelper.h"
-
+#import "JwUserCenter.h"
+#import "JwLoginController.h"
 //微站
 #import "WHminiStationTableViewController.h"
 #import "WHgetuseinfo.h"
 //体检报告
 #import "WHmyphysicalTableViewController.h"
-//
 #import <UIImageView+WebCache.h>
 
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
@@ -97,17 +91,14 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self dataBase];
-
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-       //
-    self.navigationItem.title = @"我的";
-    
- [self setUI];
+    [self setUI];
+    [self dataBase];
+
 }
 
 -(void)setUI
@@ -388,52 +379,51 @@
 -(void)dataBase
 {
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService get_user_infoWithUid:@"" success:^( NSArray * infos) {
+    if ([JwUserCenter sharedCenter].key == nil) {
         [hud hide:YES];
-        self.dateArry = [NSMutableArray arrayWithArray:infos];
-        for (WHgetuseinfo * model  in self.dateArry) {
-            NSLog(@"====%@",model.avatar);
-            //self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
-            if (model.avatar.length == 0) {
-                self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
-            }
+        [JGProgressHelper showError:@"请先登录"];
+    }else{
+        [self.dataService get_user_infoWithUid:@"" success:^( NSArray * infos) {
             
-            [self.myImage sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
-            
-            self.nameLaber.text = model.name;
-            NSString * s1 = @"(";
-            NSString * s2 = @")>";
-            if (model.company == nil) {
-                model.company  =  @"暂无公司";
-                NSString * s3 =[s1 stringByAppendingString:model.company];
-                self.companyLaber.text = [s3 stringByAppendingString:s2];
+            [hud hide:YES];
+            self.dateArry = [NSMutableArray arrayWithArray:infos];
+            for (WHgetuseinfo * model  in self.dateArry) {
                 
-
+                if (model.avatar.length == 0) {
+                    self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
+                }
+                
+                [self.myImage sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+                
+                self.nameLaber.text = model.name;
+                NSString * s1 = @"(";
+                NSString * s2 = @")>";
+                
+                if (model.company == nil) {
+                    model.company  =  @"暂无公司";
+                    NSString * s3 =[s1 stringByAppendingString:model.company];
+                    self.companyLaber.text = [s3 stringByAppendingString:s2];
+                }
+                else
+                {
+                    NSString * s3 =[s1 stringByAppendingString:model.company];
+                    self.companyLaber.text = [s3 stringByAppendingString:s2];
+                    
+                }
             }
-            else
-            {
-            NSString * s3 =[s1 stringByAppendingString:model.company];
-            self.companyLaber.text = [s3 stringByAppendingString:s2];
-           
-            }
-      }
-        
-        
-    } failure:^(NSError *error) {
-        [hud hide:YES];
-        [JGProgressHelper showError:@""];
-        
-    }];
-    
-   
-
+        } failure:^(NSError *error) {
+            [hud hide:YES];
+            [JGProgressHelper showError:@""];
+            
+        }];
+    }
 }
 
 //微站事件
 -(void)miniStation:(UIButton *)sender
 {
     WHminiStationTableViewController * station = [[WHminiStationTableViewController alloc]init];
-    [self.navigationController pushViewController:station animated:NO];
+    [self.navigationController pushViewController:station animated:YES];
 }
 
 //体检事件
@@ -447,14 +437,14 @@
 -(void)whsetAction:(UIButton *)sender
 {
     WHsetupTableViewController * setup = [[WHsetupTableViewController alloc]init];
-    [self.navigationController pushViewController:setup animated:NO];
+    [self.navigationController pushViewController:setup animated:YES];
 }
 
 //修改密码事件
 -(void)updatePwd:(UIButton *)sender
 {
     WHupdatePwdViewController * updatePwd = [[WHupdatePwdViewController alloc]init];
-    [self.navigationController pushViewController:updatePwd animated:NO];
+    [self.navigationController pushViewController:updatePwd animated:YES];
 }
 //账户详情点击事件
 -(void)onClickImage
@@ -470,14 +460,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

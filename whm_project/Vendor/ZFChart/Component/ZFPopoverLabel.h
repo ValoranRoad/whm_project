@@ -29,7 +29,7 @@ typedef enum{
 
 @interface ZFPopoverLabel : UIControl
 
-#warning message - 以下属性可在点击后根据自身需求改动
+//#warning message - 以下属性可在点击后根据自身需求改动
 
 /** 字体大小 */
 @property (nonatomic, strong) UIFont * font;
@@ -43,7 +43,7 @@ typedef enum{
 @property (nonatomic, assign) BOOL isAnimated;
 
 
-#warning message - 下列参数勿修改(Do not modify)
+//#warning message - 下列参数勿修改(Do not modify)
 
 /** 文本内容 */
 @property (nonatomic, copy) NSString * text;

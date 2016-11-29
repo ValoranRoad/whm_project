@@ -217,11 +217,12 @@
     menu.dataSource = self;
     menu.delegate = self;
     menu.jwspecMneuIndex = self.menus.count - 1;
+    Weak(self);
     menu.screenBActionBlock =^(){
         NSLog(@"点击筛选");
         
-       id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.dataService get_productWithCompany_id:@""
+       id hud = [JGProgressHelper showProgressInView:wself.view];
+        [wself.dataService get_productWithCompany_id:@""
                                             keyword:@""
                                                 sex:@""
                                characters_insurance:@""
@@ -239,8 +240,8 @@
                                             success:^(NSArray *lists) {
                                                 [hud hide:YES];
                                                 
-                                                self.dataArry = [NSMutableArray arrayWithArray:lists];
-                                                [self.tableV reloadData];
+                                                wself.dataArry = [NSMutableArray arrayWithArray:lists];
+                                                [wself.tableV reloadData];
                                                 
             
         } failure:^(NSError *error) {

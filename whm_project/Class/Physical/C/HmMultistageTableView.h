@@ -13,7 +13,7 @@
 
 @required
 
-- (NSInteger)mTableView:(HmMultistageTableView *)mTableView numberOfRowsInSection:(NSInteger)section;
+- (NSInteger)mTableView:( HmMultistageTableView *)mTableView numberOfRowsInSection:(NSInteger)section;
 
 - (UITableViewCell *)mTableView:(HmMultistageTableView *)mTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 

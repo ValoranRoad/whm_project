@@ -7,14 +7,17 @@
 //
 
 #import "WHsetupTableViewController.h"
-#define kScreenWitdh [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define WHhight CGRectGetHeight([UIScreen mainScreen].bounds)
 #import "UIColor+Hex.h"
 #import "WHaccountDetaTableViewController.h"
 #import "WHsavesetupTableViewController.h"
 #import "JGProgressHelper.h"
 #import "JwLoginController.h"
+#import "JwUserCenter.h"
+#import "MacroUtility.h"
+
+#define kScreenWitdh [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define WHhight CGRectGetHeight([UIScreen mainScreen].bounds)
 
 @interface WHsetupTableViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
@@ -151,7 +154,6 @@
         
    
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你确定要退出吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-      //  alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
         [alert show];
     }
     
@@ -159,13 +161,14 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        NSLog(@"22");
+
         id hud = [JGProgressHelper showProgressInView:self.view];
         [self.userService logoutWithSuccess:^{
             [hud hide:YES];
-            [JGProgressHelper  showSuccess:@"退出成功"];
-            JwLoginController * login = [[JwLoginController alloc]init];
-            [self.navigationController pushViewController:login animated:YES];
+            [JGProgressHelper showSuccess:@"退出成功"];
+            //发送登录失败的的通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kJwIsLogin object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
             
         } failure:^(NSError *error) {
             [hud hide:YES];
@@ -175,48 +178,6 @@
         
     }
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

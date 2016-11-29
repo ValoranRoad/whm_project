@@ -10,7 +10,7 @@
 
 @interface ZFCircle : UIControl
 
-#warning message - 以下属性可在点击后根据自身需求改动
+//#warning message - 以下属性可在点击后根据自身需求改动
 
 /** 圆的颜色 */
 @property (nonatomic, strong) UIColor * circleColor;
@@ -24,7 +24,7 @@
 @property (nonatomic, assign) CGFloat opacity;
 
 
-#warning message - 下列参数勿修改(Do not modify)
+//#warning message - 下列参数勿修改(Do not modify)
 
 /** self所在第几条线 */
 @property (nonatomic, assign) NSInteger lineIndex;

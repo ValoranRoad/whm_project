@@ -16,7 +16,7 @@
     UIScrollView *_MeScroolView;
 }
 -(instancetype)initWithAddVCARY:(NSArray *)VCS TitleS:(NSArray *)TitleS;
--(void)titlext:(NSString *)laber;
+
 @property(nonatomic,weak)WHTitleView * titleView;
 
 

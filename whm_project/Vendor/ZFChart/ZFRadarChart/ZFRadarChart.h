@@ -103,7 +103,7 @@
  *  用于编写点击item Label后需要执行后续代码
  *
  *  @param labelIndex   点击的label下标
- *  @param itemLabel    当前点击的itemLabel对象
+ *  @param radarChart    当前点击的itemLabel对象
  */
 - (void)radarChart:(ZFRadarChart *)radarChart didSelectItemLabelAtIndex:(NSInteger)labelIndex;
 
