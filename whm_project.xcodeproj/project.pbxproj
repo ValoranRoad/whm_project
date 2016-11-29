@@ -44,6 +44,15 @@
 		961746AE1DE538A400AEE19A /* HmMultistageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746AD1DE538A400AEE19A /* HmMultistageTableView.m */; };
 		961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */; };
 		961746B41DE57F7500AEE19A /* HmPhysicalGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */; };
+		961DDBB41DE6FDE200ACF3EC /* HmMyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */; };
+		9678ACF21DEBE78800C91373 /* HMConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678ACF11DEBE78800C91373 /* HMConfirmView.m */; };
+		9678ACF41DEBF14C00C91373 /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 9678ACF31DEBF14C00C91373 /* check_no.png */; };
+		9678ACF61DEBF15700C91373 /* check_yse.png in Resources */ = {isa = PBXBuildFile; fileRef = 9678ACF51DEBF15700C91373 /* check_yse.png */; };
+		9678ACFB1DEC268200C91373 /* WHcounselTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678ACF81DEC268200C91373 /* WHcounselTableViewCell.m */; };
+		9678ACFC1DEC268200C91373 /* WHmessageListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678ACFA1DEC268200C91373 /* WHmessageListTableViewCell.m */; };
+		9678AD021DEC297A00C91373 /* WHagentinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678AD011DEC297A00C91373 /* WHagentinfo.m */; };
+		9678AD081DEC29F000C91373 /* WHorginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678AD061DEC29F000C91373 /* WHorginTableViewController.m */; };
+		96BC4DF51DE80A56009E6D96 /* HmDetailsCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */; };
 		9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */; };
 		9F0101D31DBF1F3600AF13C9 /* WHget_relation_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D21DBF1F3600AF13C9 /* WHget_relation_detail.m */; };
 		9F0101D61DBF1F4100AF13C9 /* WHget_pro_rate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0101D51DBF1F4100AF13C9 /* WHget_pro_rate.m */; };
@@ -72,7 +81,6 @@
 		9F116FE41DD9B70800C3D8E6 /* WHscore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F116FE31DD9B70800C3D8E6 /* WHscore.m */; };
 		9F13C2341DC8489F00D5FD56 /* WHgetintroduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */; };
 		9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */; };
-		9F13C23F1DC89E5F00D5FD56 /* WHpreviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C23E1DC89E5F00D5FD56 /* WHpreviewTableViewController.m */; };
 		9F14C1771DC97E38003A9D13 /* WHprevTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */; };
 		9F14C17A1DC987E3003A9D13 /* WHgethonor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1791DC987E3003A9D13 /* WHgethonor.m */; };
 		9F14C17D1DC9DCDA003A9D13 /* WHmicro.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */; };
@@ -103,6 +111,8 @@
 		9F35CE841DD6BE1B003F0C78 /* WHpros.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE831DD6BE1B003F0C78 /* WHpros.m */; };
 		9F35CE871DD6BF8B003F0C78 /* WHcov.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE861DD6BF8B003F0C78 /* WHcov.m */; };
 		9F35CE8A1DD6C097003F0C78 /* WHrela.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE891DD6C097003F0C78 /* WHrela.m */; };
+		9F436C4C1DED0939000FBE94 /* WHnearagentdata.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F436C4B1DED0939000FBE94 /* WHnearagentdata.m */; };
+		9F436C4F1DED0964000FBE94 /* WHgetnearagent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F436C4E1DED0964000FBE94 /* WHgetnearagent.m */; };
 		9F63ED261DCB573F00404AE7 /* WHpelicyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED251DCB573F00404AE7 /* WHpelicyTableViewController.m */; };
 		9F63ED371DCB58C300404AE7 /* WHpecTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED361DCB58C300404AE7 /* WHpecTableViewCell.m */; };
 		9F63ED3A1DCB634F00404AE7 /* WHpayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED391DCB634F00404AE7 /* WHpayTableViewController.m */; };
@@ -110,8 +120,6 @@
 		9F63ED401DCB6CDB00404AE7 /* WHhistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED3F1DCB6CDB00404AE7 /* WHhistoryTableViewController.m */; };
 		9F63ED431DCB6E5300404AE7 /* WHhistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED421DCB6E5300404AE7 /* WHhistoryTableViewCell.m */; };
 		9F63ED461DCB851C00404AE7 /* WHgetproducedetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED451DCB851C00404AE7 /* WHgetproducedetalViewController.m */; };
-		9F8B9F631DE80DDC00207808 /* WHorginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B9F621DE80DDC00207808 /* WHorginTableViewController.m */; };
-		9F8B9F661DE80DEB00207808 /* WHorginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8B9F651DE80DEB00207808 /* WHorginTableViewCell.m */; };
 		9F99E7181DC34F9F00DC1265 /* WHminiStationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */; };
 		9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71A1DC3592C00DC1265 /* WHmyMessageTableViewController.m */; };
 		9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F99E71D1DC3597700DC1265 /* WHmyMessageTableViewCell.m */; };
@@ -119,7 +127,6 @@
 		9FA6846B1DE2E7DB003F70E3 /* WHslipListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6846A1DE2E7DB003F70E3 /* WHslipListTableViewController.m */; };
 		9FA6846E1DE2EA71003F70E3 /* WHgetpolicys.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6846D1DE2EA71003F70E3 /* WHgetpolicys.m */; };
 		9FA684711DE2F3BA003F70E3 /* WHslipListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA684701DE2F3BA003F70E3 /* WHslipListTableViewCell.m */; };
-		9FB98E781DE9647200FECD36 /* WHagentinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB98E771DE9647200FECD36 /* WHagentinfo.m */; };
 		9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */; };
 		9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */; };
 		9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */; };
@@ -140,9 +147,6 @@
 		9FCB4DF41DD2BEA40094184A /* WHprosearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF31DD2BEA40094184A /* WHprosearchTableViewCell.m */; };
 		9FCB4DF71DD301800094184A /* WHgetproperiod.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF61DD301800094184A /* WHgetproperiod.m */; };
 		9FCB4DFA1DD3030A0094184A /* WHgetcharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCB4DF91DD3030A0094184A /* WHgetcharacters.m */; };
-		9FCBFEC61DEA7CC1006C110A /* WHmicpro.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCBFEC51DEA7CC1006C110A /* WHmicpro.m */; };
-		9FCBFEC91DEAB069006C110A /* WHmessageListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCBFEC81DEAB069006C110A /* WHmessageListTableViewCell.m */; };
-		9FCBFECC1DEABF79006C110A /* WHcounselTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCBFECB1DEABF79006C110A /* WHcounselTableViewCell.m */; };
 		9FCE86491DE51DB700DA9DEB /* WHperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCE86481DE51DB700DA9DEB /* WHperView.m */; };
 		9FD875D71DE475CD00FE2F9E /* WHpesfporViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD875D61DE475CD00FE2F9E /* WHpesfporViewController.m */; };
 		9FDAE4AA1DDE89B1000F91DF /* WHcompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDAE4A91DDE89B1000F91DF /* WHcompany.m */; };
@@ -181,6 +185,8 @@
 		9FDF0C601DD15E8100892CAA /* WHpowTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF0C5F1DD15E8100892CAA /* WHpowTwoTableViewCell.m */; };
 		9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */; };
 		9FE6B5AF1DCAE8870049FC8B /* WHgetprofirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */; };
+		9FE928371DEC3E5E00D1394F /* WHnews.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE928361DEC3E5E00D1394F /* WHnews.m */; };
+		9FE928401DEC48B500D1394F /* WHpreviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE9283F1DEC48B500D1394F /* WHpreviewTableViewController.m */; };
 		9FECB3081DC08BCC0051421A /* WHrelationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */; };
 		9FF129641DE2867B00029436 /* WHyearapp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF129631DE2867B00029436 /* WHyearapp.m */; };
 		9FF129671DE2874300029436 /* WHcount.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF129661DE2874300029436 /* WHcount.m */; };
@@ -188,6 +194,8 @@
 		9FF7CC481DE6CD980098193A /* WHnearAgentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7CC471DE6CD980098193A /* WHnearAgentTableViewCell.m */; };
 		9FF981CB1DDAA9E6008C9E20 /* CustomProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF981CA1DDAA9E6008C9E20 /* CustomProgress.m */; };
 		C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */ = {isa = PBXBuildFile; fileRef = C807B9A61DC060B800D3C700 /* JwAreass.m */; };
+		C80DCBC11DED5F970056027D /* WHorginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C80DCBBE1DED5F970056027D /* WHorginTableViewCell.m */; };
+		C80DCBC21DED5F970056027D /* CityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C80DCBC01DED5F970056027D /* CityTableViewCell.m */; };
 		C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF41DB5B75500999301 /* JwHomeController.m */; };
 		C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DF71DB5B77800999301 /* JwPhysicalController.m */; };
 		C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8343DFA1DB5B78B00999301 /* JwLookForController.m */; };
@@ -342,6 +350,22 @@
 		961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhySicalMainView.m; sourceTree = "<group>"; };
 		961746B21DE57F7500AEE19A /* HmPhysicalGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmPhysicalGroupView.h; sourceTree = "<group>"; };
 		961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhysicalGroupView.m; sourceTree = "<group>"; };
+		961DDBB21DE6FDE200ACF3EC /* HmMyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmMyModel.h; sourceTree = "<group>"; };
+		961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmMyModel.m; sourceTree = "<group>"; };
+		9678ACF01DEBE78800C91373 /* HMConfirmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMConfirmView.h; sourceTree = "<group>"; };
+		9678ACF11DEBE78800C91373 /* HMConfirmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMConfirmView.m; sourceTree = "<group>"; };
+		9678ACF31DEBF14C00C91373 /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
+		9678ACF51DEBF15700C91373 /* check_yse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_yse.png; sourceTree = "<group>"; };
+		9678ACF71DEC268200C91373 /* WHcounselTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHcounselTableViewCell.h; sourceTree = "<group>"; };
+		9678ACF81DEC268200C91373 /* WHcounselTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHcounselTableViewCell.m; sourceTree = "<group>"; };
+		9678ACF91DEC268200C91373 /* WHmessageListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmessageListTableViewCell.h; sourceTree = "<group>"; };
+		9678ACFA1DEC268200C91373 /* WHmessageListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmessageListTableViewCell.m; sourceTree = "<group>"; };
+		9678AD001DEC297A00C91373 /* WHagentinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHagentinfo.h; sourceTree = "<group>"; };
+		9678AD011DEC297A00C91373 /* WHagentinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHagentinfo.m; sourceTree = "<group>"; };
+		9678AD051DEC29F000C91373 /* WHorginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHorginTableViewController.h; path = ../../UserInfo/C/WHorginTableViewController.h; sourceTree = "<group>"; };
+		9678AD061DEC29F000C91373 /* WHorginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHorginTableViewController.m; path = ../../UserInfo/C/WHorginTableViewController.m; sourceTree = "<group>"; };
+		96BC4DF31DE80A56009E6D96 /* HmDetailsCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmDetailsCodeCell.h; sourceTree = "<group>"; };
+		96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmDetailsCodeCell.m; sourceTree = "<group>"; };
 		9F0101CE1DBF1F1D00AF13C9 /* WHget_user_realtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_user_realtion.h; sourceTree = "<group>"; };
 		9F0101CF1DBF1F2300AF13C9 /* WHget_user_realtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_user_realtion.m; sourceTree = "<group>"; };
 		9F0101D11DBF1F2B00AF13C9 /* WHget_relation_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_relation_detail.h; sourceTree = "<group>"; };
@@ -397,8 +421,6 @@
 		9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetintroduce.m; sourceTree = "<group>"; };
 		9F13C2351DC88F0800D5FD56 /* WHlookForViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHlookForViewController.h; sourceTree = "<group>"; };
 		9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHlookForViewController.m; sourceTree = "<group>"; };
-		9F13C23D1DC89E5F00D5FD56 /* WHpreviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpreviewTableViewController.h; sourceTree = "<group>"; };
-		9F13C23E1DC89E5F00D5FD56 /* WHpreviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpreviewTableViewController.m; sourceTree = "<group>"; };
 		9F14C1751DC97E38003A9D13 /* WHprevTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHprevTableViewCell.h; sourceTree = "<group>"; };
 		9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHprevTableViewCell.m; sourceTree = "<group>"; };
 		9F14C1781DC987E3003A9D13 /* WHgethonor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgethonor.h; sourceTree = "<group>"; };
@@ -454,6 +476,10 @@
 		9F35CE861DD6BF8B003F0C78 /* WHcov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHcov.m; sourceTree = "<group>"; };
 		9F35CE881DD6C097003F0C78 /* WHrela.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrela.h; sourceTree = "<group>"; };
 		9F35CE891DD6C097003F0C78 /* WHrela.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrela.m; sourceTree = "<group>"; };
+		9F436C4A1DED0931000FBE94 /* WHnearagentdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHnearagentdata.h; sourceTree = "<group>"; };
+		9F436C4B1DED0939000FBE94 /* WHnearagentdata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHnearagentdata.m; sourceTree = "<group>"; };
+		9F436C4D1DED095E000FBE94 /* WHgetnearagent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetnearagent.h; sourceTree = "<group>"; };
+		9F436C4E1DED0964000FBE94 /* WHgetnearagent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetnearagent.m; sourceTree = "<group>"; };
 		9F63ED241DCB573200404AE7 /* WHpelicyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpelicyTableViewController.h; sourceTree = "<group>"; };
 		9F63ED251DCB573F00404AE7 /* WHpelicyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpelicyTableViewController.m; sourceTree = "<group>"; };
 		9F63ED351DCB58C300404AE7 /* WHpecTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHpecTableViewCell.h; path = whm_project/Class/LookFor/C/WHpecTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -468,10 +494,6 @@
 		9F63ED421DCB6E5300404AE7 /* WHhistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHhistoryTableViewCell.m; path = whm_project/Class/LookFor/C/WHhistoryTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		9F63ED441DCB851C00404AE7 /* WHgetproducedetalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetproducedetalViewController.h; sourceTree = "<group>"; };
 		9F63ED451DCB851C00404AE7 /* WHgetproducedetalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetproducedetalViewController.m; sourceTree = "<group>"; };
-		9F8B9F611DE80DDC00207808 /* WHorginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorginTableViewController.h; sourceTree = "<group>"; };
-		9F8B9F621DE80DDC00207808 /* WHorginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorginTableViewController.m; sourceTree = "<group>"; };
-		9F8B9F641DE80DEB00207808 /* WHorginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHorginTableViewCell.h; path = whm_project/Class/Find/C/WHorginTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		9F8B9F651DE80DEB00207808 /* WHorginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHorginTableViewCell.m; path = whm_project/Class/Find/C/WHorginTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		9F99E7161DC34F9F00DC1265 /* WHminiStationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHminiStationTableViewController.h; sourceTree = "<group>"; };
 		9F99E7171DC34F9F00DC1265 /* WHminiStationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHminiStationTableViewController.m; sourceTree = "<group>"; };
 		9F99E7191DC3592C00DC1265 /* WHmyMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmyMessageTableViewController.h; sourceTree = "<group>"; };
@@ -486,8 +508,6 @@
 		9FA6846D1DE2EA71003F70E3 /* WHgetpolicys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetpolicys.m; sourceTree = "<group>"; };
 		9FA6846F1DE2F3BA003F70E3 /* WHslipListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHslipListTableViewCell.h; sourceTree = "<group>"; };
 		9FA684701DE2F3BA003F70E3 /* WHslipListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHslipListTableViewCell.m; sourceTree = "<group>"; };
-		9FB98E761DE9647200FECD36 /* WHagentinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHagentinfo.h; sourceTree = "<group>"; };
-		9FB98E771DE9647200FECD36 /* WHagentinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHagentinfo.m; sourceTree = "<group>"; };
 		9FBAA04C1DBC88CB00C288E3 /* WHgetuseinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetuseinfo.h; sourceTree = "<group>"; };
 		9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetuseinfo.m; sourceTree = "<group>"; };
 		9FBAA04F1DBC9D5100C288E3 /* WHcompanyDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHcompanyDetail.h; sourceTree = "<group>"; };
@@ -528,12 +548,6 @@
 		9FCB4DF61DD301800094184A /* WHgetproperiod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetproperiod.m; sourceTree = "<group>"; };
 		9FCB4DF81DD3030A0094184A /* WHgetcharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetcharacters.h; sourceTree = "<group>"; };
 		9FCB4DF91DD3030A0094184A /* WHgetcharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetcharacters.m; sourceTree = "<group>"; };
-		9FCBFEC41DEA7CC1006C110A /* WHmicpro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmicpro.h; sourceTree = "<group>"; };
-		9FCBFEC51DEA7CC1006C110A /* WHmicpro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmicpro.m; sourceTree = "<group>"; };
-		9FCBFEC71DEAB069006C110A /* WHmessageListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmessageListTableViewCell.h; sourceTree = "<group>"; };
-		9FCBFEC81DEAB069006C110A /* WHmessageListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmessageListTableViewCell.m; sourceTree = "<group>"; };
-		9FCBFECA1DEABF79006C110A /* WHcounselTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHcounselTableViewCell.h; sourceTree = "<group>"; };
-		9FCBFECB1DEABF79006C110A /* WHcounselTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHcounselTableViewCell.m; sourceTree = "<group>"; };
 		9FCE86471DE51DB700DA9DEB /* WHperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHperView.h; sourceTree = "<group>"; };
 		9FCE86481DE51DB700DA9DEB /* WHperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHperView.m; sourceTree = "<group>"; };
 		9FD875D51DE475CD00FE2F9E /* WHpesfporViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpesfporViewController.h; sourceTree = "<group>"; };
@@ -612,6 +626,10 @@
 		9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetmessageDetall.m; sourceTree = "<group>"; };
 		9FE6B5AD1DCAE8870049FC8B /* WHgetprofirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetprofirst.h; sourceTree = "<group>"; };
 		9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetprofirst.m; sourceTree = "<group>"; };
+		9FE928351DEC3E5E00D1394F /* WHnews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHnews.h; sourceTree = "<group>"; };
+		9FE928361DEC3E5E00D1394F /* WHnews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHnews.m; sourceTree = "<group>"; };
+		9FE9283E1DEC48B500D1394F /* WHpreviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpreviewTableViewController.h; sourceTree = "<group>"; };
+		9FE9283F1DEC48B500D1394F /* WHpreviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpreviewTableViewController.m; sourceTree = "<group>"; };
 		9FECB3061DC08BCC0051421A /* WHrelationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrelationTableViewController.h; sourceTree = "<group>"; };
 		9FECB3071DC08BCC0051421A /* WHrelationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrelationTableViewController.m; sourceTree = "<group>"; };
 		9FF129621DE2867B00029436 /* WHyearapp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHyearapp.h; sourceTree = "<group>"; };
@@ -627,6 +645,10 @@
 		AD7B21F4A1BF30165B032F84 /* Pods-whm_project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whm_project.release.xcconfig"; path = "Pods/Target Support Files/Pods-whm_project/Pods-whm_project.release.xcconfig"; sourceTree = "<group>"; };
 		C807B9A51DC060B800D3C700 /* JwAreass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwAreass.h; sourceTree = "<group>"; };
 		C807B9A61DC060B800D3C700 /* JwAreass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwAreass.m; sourceTree = "<group>"; };
+		C80DCBBD1DED5F970056027D /* WHorginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorginTableViewCell.h; sourceTree = "<group>"; };
+		C80DCBBE1DED5F970056027D /* WHorginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorginTableViewCell.m; sourceTree = "<group>"; };
+		C80DCBBF1DED5F970056027D /* CityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewCell.h; sourceTree = "<group>"; };
+		C80DCBC01DED5F970056027D /* CityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewCell.m; sourceTree = "<group>"; };
 		C8343DF31DB5B75500999301 /* JwHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwHomeController.h; sourceTree = "<group>"; };
 		C8343DF41DB5B75500999301 /* JwHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JwHomeController.m; sourceTree = "<group>"; };
 		C8343DF61DB5B77800999301 /* JwPhysicalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JwPhysicalController.h; sourceTree = "<group>"; };
@@ -845,6 +867,12 @@
 				961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */,
 				961746B21DE57F7500AEE19A /* HmPhysicalGroupView.h */,
 				961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */,
+				96BC4DF31DE80A56009E6D96 /* HmDetailsCodeCell.h */,
+				96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */,
+				9678ACF01DEBE78800C91373 /* HMConfirmView.h */,
+				9678ACF11DEBE78800C91373 /* HMConfirmView.m */,
+				9678ACF31DEBF14C00C91373 /* check_no.png */,
+				9678ACF51DEBF15700C91373 /* check_yse.png */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -935,8 +963,8 @@
 				9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */,
 				9F13C2351DC88F0800D5FD56 /* WHlookForViewController.h */,
 				9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */,
-				9F13C23D1DC89E5F00D5FD56 /* WHpreviewTableViewController.h */,
-				9F13C23E1DC89E5F00D5FD56 /* WHpreviewTableViewController.m */,
+				9FE9283E1DEC48B500D1394F /* WHpreviewTableViewController.h */,
+				9FE9283F1DEC48B500D1394F /* WHpreviewTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -944,6 +972,10 @@
 		9F99E7151DC34F8000DC1265 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				9678ACF71DEC268200C91373 /* WHcounselTableViewCell.h */,
+				9678ACF81DEC268200C91373 /* WHcounselTableViewCell.m */,
+				9678ACF91DEC268200C91373 /* WHmessageListTableViewCell.h */,
+				9678ACFA1DEC268200C91373 /* WHmessageListTableViewCell.m */,
 				8E86DBD21DC9806D00C14635 /* PicUpdateCollectionViewCell.h */,
 				8E86DBD31DC9806D00C14635 /* PicUpdateCollectionViewCell.m */,
 				8E86DBD41DC9806D00C14635 /* AddPicCollectionViewCell.h */,
@@ -961,10 +993,6 @@
 				9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */,
 				9F14C1751DC97E38003A9D13 /* WHprevTableViewCell.h */,
 				9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */,
-				9FCBFEC71DEAB069006C110A /* WHmessageListTableViewCell.h */,
-				9FCBFEC81DEAB069006C110A /* WHmessageListTableViewCell.m */,
-				9FCBFECA1DEABF79006C110A /* WHcounselTableViewCell.h */,
-				9FCBFECB1DEABF79006C110A /* WHcounselTableViewCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1191,8 +1219,8 @@
 				C8343DFD1DB5B79A00999301 /* JwFindController.m */,
 				9FF7CC431DE6CD850098193A /* WHnearAgentTableViewController.h */,
 				9FF7CC441DE6CD850098193A /* WHnearAgentTableViewController.m */,
-				9F8B9F611DE80DDC00207808 /* WHorginTableViewController.h */,
-				9F8B9F621DE80DDC00207808 /* WHorginTableViewController.m */,
+				9678AD051DEC29F000C91373 /* WHorginTableViewController.h */,
+				9678AD061DEC29F000C91373 /* WHorginTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1200,10 +1228,12 @@
 		C8343DE11DB5B6ED00999301 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				C80DCBBD1DED5F970056027D /* WHorginTableViewCell.h */,
+				C80DCBBE1DED5F970056027D /* WHorginTableViewCell.m */,
+				C80DCBBF1DED5F970056027D /* CityTableViewCell.h */,
+				C80DCBC01DED5F970056027D /* CityTableViewCell.m */,
 				9FF7CC461DE6CD980098193A /* WHnearAgentTableViewCell.h */,
 				9FF7CC471DE6CD980098193A /* WHnearAgentTableViewCell.m */,
-				9F8B9F641DE80DEB00207808 /* WHorginTableViewCell.h */,
-				9F8B9F651DE80DEB00207808 /* WHorginTableViewCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1528,6 +1558,12 @@
 		C86353E81DB4674100ED8B16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F436C4D1DED095E000FBE94 /* WHgetnearagent.h */,
+				9F436C4E1DED0964000FBE94 /* WHgetnearagent.m */,
+				9F436C4A1DED0931000FBE94 /* WHnearagentdata.h */,
+				9F436C4B1DED0939000FBE94 /* WHnearagentdata.m */,
+				9678AD001DEC297A00C91373 /* WHagentinfo.h */,
+				9678AD011DEC297A00C91373 /* WHagentinfo.m */,
 				C86353F91DB4674100ED8B16 /* JwModelBase.h */,
 				C86353FA1DB4674100ED8B16 /* JwModelBase.m */,
 				C807B9A51DC060B800D3C700 /* JwAreass.h */,
@@ -1614,10 +1650,10 @@
 				9FF129661DE2874300029436 /* WHcount.m */,
 				9FA6846C1DE2EA71003F70E3 /* WHgetpolicys.h */,
 				9FA6846D1DE2EA71003F70E3 /* WHgetpolicys.m */,
-				9FB98E761DE9647200FECD36 /* WHagentinfo.h */,
-				9FB98E771DE9647200FECD36 /* WHagentinfo.m */,
-				9FCBFEC41DEA7CC1006C110A /* WHmicpro.h */,
-				9FCBFEC51DEA7CC1006C110A /* WHmicpro.m */,
+				961DDBB21DE6FDE200ACF3EC /* HmMyModel.h */,
+				961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */,
+				9FE928351DEC3E5E00D1394F /* WHnews.h */,
+				9FE928361DEC3E5E00D1394F /* WHnews.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2023,6 +2059,7 @@
 				9F1073941DD08CEC00725A84 /* ico_make.png in Resources */,
 				9F35CE761DD6AD81003F0C78 /* LYTestTwoViewController.xib in Resources */,
 				9615F8131DC04715001081FD /* HmPhysicalGroupCell.xib in Resources */,
+				9678ACF41DEBF14C00C91373 /* check_no.png in Resources */,
 				9615F80F1DC04715001081FD /* HmDetailsCell.xib in Resources */,
 				961358D61DB6280000F5107F /* HmCompanyCollectionCell.xib in Resources */,
 				9F35CE671DD6AC6C003F0C78 /* LYTestTwoTableViewCell.xib in Resources */,
@@ -2037,6 +2074,7 @@
 				8E86DBE11DC980BE00C14635 /* licence.jpg in Resources */,
 				9F35CE651DD6AC6C003F0C78 /* LYTestOneTableViewCell.xib in Resources */,
 				C86353931DB4661C00ED8B16 /* LaunchScreen.storyboard in Resources */,
+				9678ACF61DEBF15700C91373 /* check_yse.png in Resources */,
 				9F35CE711DD6AD55003F0C78 /* LYTestOneViewController.xib in Resources */,
 				8E86DBE01DC980BE00C14635 /* insur.jpg in Resources */,
 				9615F8151DC04715001081FD /* HmPhysicalMainPageCell.xib in Resources */,
@@ -2119,6 +2157,7 @@
 			files = (
 				9F07DE5C1DD56CC900B292C2 /* WHageTableViewController.m in Sources */,
 				9F99E71B1DC3592C00DC1265 /* WHmyMessageTableViewController.m in Sources */,
+				961DDBB41DE6FDE200ACF3EC /* HmMyModel.m in Sources */,
 				9F21CFA91DDC09480089BADB /* WHsecond.m in Sources */,
 				C86354301DB473A500ED8B16 /* IQUITextFieldView+Additions.m in Sources */,
 				9FDAE5AC1DDF0136000F91DF /* NSString+Zirkfied.m in Sources */,
@@ -2131,6 +2170,7 @@
 				9FF7CC481DE6CD980098193A /* WHnearAgentTableViewCell.m in Sources */,
 				961746B41DE57F7500AEE19A /* HmPhysicalGroupView.m in Sources */,
 				9FA684681DE2DDD8003F70E3 /* WHmyphysicalTableViewController.m in Sources */,
+				9FE928371DEC3E5E00D1394F /* WHnews.m in Sources */,
 				9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */,
 				9FDAE5C81DDF0136000F91DF /* ZFWave.m in Sources */,
 				C86354351DB473A600ED8B16 /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -2150,12 +2190,12 @@
 				9FDAE5C71DDF0136000F91DF /* ZFRadarChart.m in Sources */,
 				9F0F28BA1DC46506007118BD /* WHgetmessage.m in Sources */,
 				9FDAE5C61DDF0136000F91DF /* ZFRadar.m in Sources */,
+				9678AD081DEC29F000C91373 /* WHorginTableViewController.m in Sources */,
 				C86353881DB4661C00ED8B16 /* AppDelegate.m in Sources */,
 				9FDAE5B91DDF0136000F91DF /* ZFCirqueChart.m in Sources */,
 				9F35CE8A1DD6C097003F0C78 /* WHrela.m in Sources */,
 				C863542F1DB473A500ED8B16 /* IQUIScrollView+Additions.m in Sources */,
 				8E414C661DC1D2E6005A335A /* CompleteTypeViewController.m in Sources */,
-				9FB98E781DE9647200FECD36 /* WHagentinfo.m in Sources */,
 				9F35CE641DD6AC6C003F0C78 /* LYTestOneTableViewCell.m in Sources */,
 				9FCA056C1DDD4AF600B6B805 /* WHstatisViewController.m in Sources */,
 				9F63ED401DCB6CDB00404AE7 /* WHhistoryTableViewController.m in Sources */,
@@ -2181,10 +2221,12 @@
 				9FDAE5AD1DDF0136000F91DF /* UIBezierPath+Zirkfied.m in Sources */,
 				C8C10CBC1DB9C06F00A5FB9A /* WHupdatePwdViewController.m in Sources */,
 				C8C10CBD1DB9C06F00A5FB9A /* ChooseCompleteViewController.m in Sources */,
+				C80DCBC11DED5F970056027D /* WHorginTableViewCell.m in Sources */,
 				9FA6846E1DE2EA71003F70E3 /* WHgetpolicys.m in Sources */,
 				9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
 				9FDAE5B11DDF0136000F91DF /* ZFPopoverLabel.m in Sources */,
+				9678AD021DEC297A00C91373 /* WHagentinfo.m in Sources */,
 				9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */,
 				9F35CE6F1DD6AD50003F0C78 /* LYTestOneViewController.m in Sources */,
 				9615F8191DC04F89001081FD /* HmAddInsuredController.m in Sources */,
@@ -2210,7 +2252,6 @@
 				9F63ED3D1DCB639D00404AE7 /* WHpayTableViewCell.m in Sources */,
 				9FCB4DF11DD2BCC30094184A /* WHproductSearchTableViewController.m in Sources */,
 				9615F8141DC04715001081FD /* HmPhysicalMainPageCell.m in Sources */,
-				9F13C23F1DC89E5F00D5FD56 /* WHpreviewTableViewController.m in Sources */,
 				9FDAE5C01DDF0136000F91DF /* ZFLine.m in Sources */,
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,
@@ -2222,7 +2263,6 @@
 				9F35CE621DD6AC6C003F0C78 /* CALayer+HSBorderColor.m in Sources */,
 				9F35CE661DD6AC6C003F0C78 /* LYTestTwoTableViewCell.m in Sources */,
 				961358AC1DB5C29800F5107F /* HmSelectInsuredController.m in Sources */,
-				9FCBFEC61DEA7CC1006C110A /* WHmicpro.m in Sources */,
 				9F0EE5921DBB568000B68F76 /* WHgetproduct.m in Sources */,
 				9F63ED461DCB851C00404AE7 /* WHgetproducedetalViewController.m in Sources */,
 				C8343DFE1DB5B79A00999301 /* JwFindController.m in Sources */,
@@ -2266,17 +2306,18 @@
 				C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */,
 				C8C10CC31DB9C06F00A5FB9A /* registerTwoTableViewCell.m in Sources */,
 				9F10738F1DD02B5200725A84 /* WHpowSearTableViewController.m in Sources */,
+				9F436C4F1DED0964000FBE94 /* WHgetnearagent.m in Sources */,
 				C8C10CBB1DB9C06F00A5FB9A /* WHrestPwdViewController.m in Sources */,
 				9F35CE521DD6AC4B003F0C78 /* JSCollectViewController.m in Sources */,
 				C86353E61DB4672700ED8B16 /* UIColor+AddColor.m in Sources */,
 				C86354A91DB4D3AB00ED8B16 /* JwTabBarController.m in Sources */,
 				9F35CE841DD6BE1B003F0C78 /* WHpros.m in Sources */,
 				8E86DBD81DC9806D00C14635 /* AddPicCollectionViewCell.m in Sources */,
-				9FCBFECC1DEABF79006C110A /* WHcounselTableViewCell.m in Sources */,
 				C86354361DB473A600ED8B16 /* IQTextView.m in Sources */,
 				9F1073951DD08CEC00725A84 /* JSDropDownMenu.m in Sources */,
 				961358B91DB606DE00F5107F /* CMIndexBar.m in Sources */,
 				9F0A20BB1DBDAC64004C5F67 /* WHsetupTableViewController.m in Sources */,
+				9FE928401DEC48B500D1394F /* WHpreviewTableViewController.m in Sources */,
 				8E86DBD11DC9804B00C14635 /* PicUpdateViewController.m in Sources */,
 				9FDAE5B01DDF0136000F91DF /* ZFLabel.m in Sources */,
 				9FDAE5B41DDF0136000F91DF /* ZFConst.m in Sources */,
@@ -2289,7 +2330,9 @@
 				9F63ED261DCB573F00404AE7 /* WHpelicyTableViewController.m in Sources */,
 				C8C10CB31DB9C06F00A5FB9A /* ForgetPwdViewController.m in Sources */,
 				9F35CE7E1DD6BD23003F0C78 /* WHgetreport.m in Sources */,
+				9678ACF21DEBE78800C91373 /* HMConfirmView.m in Sources */,
 				C83D06711DCB2AB40028A681 /* JwPeriod.m in Sources */,
+				9678ACFB1DEC268200C91373 /* WHcounselTableViewCell.m in Sources */,
 				C8343DF51DB5B75500999301 /* JwHomeController.m in Sources */,
 				9FDAE5AF1DDF0136000F91DF /* UIView+Zirkfied.m in Sources */,
 				9FDF0C601DD15E8100892CAA /* WHpowTwoTableViewCell.m in Sources */,
@@ -2312,9 +2355,11 @@
 				9F99E7181DC34F9F00DC1265 /* WHminiStationTableViewController.m in Sources */,
 				961358B51DB5D12600F5107F /* HmSelectInsuredCollectionCell.m in Sources */,
 				C86353D31DB4670700ED8B16 /* NSString+Email.m in Sources */,
+				C80DCBC21DED5F970056027D /* CityTableViewCell.m in Sources */,
 				9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */,
 				C86354A61DB4D3AB00ED8B16 /* JwBackBaseController.m in Sources */,
 				C863547C1DB4969A00ED8B16 /* CreateMD5WithImage.m in Sources */,
+				9F436C4C1DED0939000FBE94 /* WHnearagentdata.m in Sources */,
 				9F35CE4A1DD6A462003F0C78 /* WHperiodTableViewController.m in Sources */,
 				C8C10CBF1DB9C06F00A5FB9A /* RegisterTwoViewController.m in Sources */,
 				9F0EE58F1DBB547C00B68F76 /* WHhotcompany.m in Sources */,
@@ -2323,19 +2368,18 @@
 				9F35CE791DD6AD8E003F0C78 /* LYTestThreeViewController.m in Sources */,
 				C86353CB1DB4669A00ED8B16 /* JwServiceBase.m in Sources */,
 				C8C10CC61DB9C0AD00A5FB9A /* ForgetPwdView.m in Sources */,
-				9F8B9F631DE80DDC00207808 /* WHorginTableViewController.m in Sources */,
 				9615F8101DC04715001081FD /* HmFujiaCell.m in Sources */,
 				C86353E71DB4672700ED8B16 /* NSString+Height.m in Sources */,
 				9F35CE631DD6AC6C003F0C78 /* lhCircleView.m in Sources */,
 				9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */,
 				9F0F28BD1DC47DF2007118BD /* WHreplymessageViewController.m in Sources */,
-				9F8B9F661DE80DEB00207808 /* WHorginTableViewCell.m in Sources */,
 				9FCA05691DDD469400B6B805 /* WHJSCollectViewController.m in Sources */,
 				9FDAE5C11DDF0136000F91DF /* ZFLineChart.m in Sources */,
 				9F07DE591DD566EF00B292C2 /* WHmongorate.m in Sources */,
+				96BC4DF51DE80A56009E6D96 /* HmDetailsCodeCell.m in Sources */,
 				9FF981CB1DDAA9E6008C9E20 /* CustomProgress.m in Sources */,
 				C86354A71DB4D3AB00ED8B16 /* JwMenuBaseController.m in Sources */,
-				9FCBFEC91DEAB069006C110A /* WHmessageListTableViewCell.m in Sources */,
+				9678ACFC1DEC268200C91373 /* WHmessageListTableViewCell.m in Sources */,
 				9FDAE4B01DDEAA95000F91DF /* WHloveagentTableViewCell.m in Sources */,
 				9FA6846B1DE2E7DB003F70E3 /* WHslipListTableViewController.m in Sources */,
 				8E86DBD71DC9806D00C14635 /* PicUpdateCollectionViewCell.m in Sources */,

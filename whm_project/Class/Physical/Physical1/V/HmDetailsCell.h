@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HmMyModel.h"
 
 @interface HmDetailsCell : UITableViewCell
 
+@property (nonatomic, strong) HmMyModel *model;
 @property (weak, nonatomic) IBOutlet UIImageView *headImg;
 @property (weak, nonatomic) IBOutlet UILabel *myLaber;
 @property (weak, nonatomic) IBOutlet UILabel *selectLaber;

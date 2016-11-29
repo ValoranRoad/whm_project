@@ -13,6 +13,7 @@
 #import "WHmicpro.h"
 #import "WHgethonor.h"
 #import "WHgetmessage.h"
+#import "WHnews.h"
 @protocol WHmicro <NSObject>
 @end
 
@@ -22,6 +23,7 @@
 @property(nonatomic,strong) NSArray <WHmicpro,Optional> * pro;
 @property(nonatomic,strong) NSArray <WHgetmessage,Optional> * message;
 @property(nonatomic,strong)NSArray <WHgethonor ,Optional > * honor;
+@property(nonatomic,strong) NSArray <WHnews , Optional> * news;
 
 
 

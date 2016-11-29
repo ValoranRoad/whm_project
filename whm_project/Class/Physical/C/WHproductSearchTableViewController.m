@@ -140,6 +140,8 @@
     phy.modelType = model;
     phy.groupMutableArr = self.groupsArr;
     phy.isSelectPersonName = self.isSelectP;
+    phy.contentMutableDict = self.contentDic;
+    phy.fuzhiDict = self.fuzhiDic;
     [self.navigationController pushViewController:phy animated:YES];
 }
 

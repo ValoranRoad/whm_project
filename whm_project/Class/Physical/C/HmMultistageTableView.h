@@ -99,4 +99,7 @@
 
 - (UITableViewHeaderFooterView *)mDequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;
 
+- (void)mRegisterClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
+
+- (void)reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
 @end
