@@ -25,7 +25,7 @@
 {
     if (_addressLaber == nil) {
         self.addressLaber = [[UILabel alloc]init];
-        self.addressLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5, kScreenWitdh * 0.7, 20);
+        self.addressLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+3, kScreenWitdh * 0.7, 20);
         self.addressLaber.textColor = [UIColor grayColor];
         self.addressLaber.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:_addressLaber];
@@ -37,7 +37,7 @@
 {
     if (_mapImg == nil) {
         self.mapImg = [[UIImageView alloc]init];
-        self.mapImg.frame = CGRectMake(CGRectGetMinX(self.addressLaber.frame), CGRectGetMaxY(self.addressLaber.frame)+5, 20, 20);
+        self.mapImg.frame = CGRectMake(CGRectGetMinX(self.addressLaber.frame), CGRectGetMaxY(self.addressLaber.frame)+2, 20, 20);
         self.mapImg.image = [UIImage imageNamed:@"maple"];
         [self.contentView addSubview:_mapImg];
     }
@@ -71,7 +71,7 @@
 {
     if (_telLaber == nil) {
         self.telLaber = [[UILabel alloc]init];
-        self.telLaber.frame = CGRectMake(CGRectGetMaxX(self.telImg.frame), CGRectGetMinY(self.telImg.frame), kScreenWitdh * 0.4, CGRectGetHeight(self.telImg.frame));
+        self.telLaber.frame = CGRectMake(CGRectGetMaxX(self.telImg.frame)+5, CGRectGetMinY(self.telImg.frame), kScreenWitdh * 0.4, CGRectGetHeight(self.telImg.frame));
         self.telLaber.textColor = [UIColor blueColor];
         self.telLaber.font = [UIFont systemFontOfSize:12.0];
         [self.contentView addSubview:_telLaber];

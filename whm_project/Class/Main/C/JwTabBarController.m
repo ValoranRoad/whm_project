@@ -22,8 +22,16 @@
 #import "UIImage+Color.h"
 #import "UIColor+Hex.h"
 #import "JwUserCenter.h"
+#define IS_IOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+#define IS_IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8)
+#import "CCLocationManager.h"
 
-@interface JwTabBarController ()<UITabBarControllerDelegate>
+
+@interface JwTabBarController ()<UITabBarControllerDelegate,CLLocationManagerDelegate>{
+    CLLocationManager *locationmanager;
+    
+}
+
 
 @end
 
@@ -36,8 +44,49 @@
     [self setupControllers];
     //用户登陆后的的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(isLoginAction:) name:kJwIsLogin object:nil];
+    
+    if (IS_IOS8) {
+        [UIApplication sharedApplication].idleTimerDisabled = TRUE;
+        locationmanager = [[CLLocationManager alloc] init];
+        [locationmanager requestAlwaysAuthorization];        //NSLocationAlwaysUsageDescription
+        [locationmanager requestWhenInUseAuthorization];     //NSLocationWhenInUseDescription
+        locationmanager.delegate = self;
+    }
+    
+    //获取经纬度
+    [self getLat];
+
 }
 
+-(void)getLat
+{
+    __block __weak JwTabBarController *wself = self;
+    
+    if (IS_IOS8) {
+        
+        [[CCLocationManager shareLocation] getLocationCoordinate:^(CLLocationCoordinate2D locationCorrrdinate) {
+            
+            NSLog(@"%f %f",locationCorrrdinate.latitude,locationCorrrdinate.longitude);
+            //nsuserdefaults
+            NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+            [ud setValue:[NSString stringWithFormat:@"%f",locationCorrrdinate.longitude] forKey:@"one"];
+            [ud setValue:[NSString stringWithFormat:@"%f",locationCorrrdinate.latitude] forKey:@"two"];
+            
+            
+            [wself setLabelText:[NSString stringWithFormat:@"%f %f",locationCorrrdinate.latitude,locationCorrrdinate.longitude]];
+            
+        }];
+    }
+    
+}
+-(void)setLabelText:(NSString *)text
+{
+    NSLog(@"text %@",text);
+   // NSString * s1  = text;
+    
+    
+    
+}
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kJwIsLogin object:nil];
 }

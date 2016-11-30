@@ -32,7 +32,8 @@
 @class WHgetreport;
 @class WHgetpolicys;
 @class WHgetnearagent;
-
+//
+@class WHmin;
 @interface JwDataService : JwServiceBase
 
 
@@ -195,5 +196,12 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                     county:(NSString *)county
                       type:(NSString *) type
                    success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//获取发现里边分支机构
+-(void)getorganizationWithLng:(NSString *)lng
+                          lat:(NSString *)lat
+                      success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
 
 @end

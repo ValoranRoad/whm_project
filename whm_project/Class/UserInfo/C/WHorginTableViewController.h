@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "JwBackBaseController.h"
+typedef void(^IWAreaPickerViewConfirmBlock)(NSString *areaStr);
+typedef void(^IWAreaPickerViewCancleBlock)();
+
 
 @interface WHorginTableViewController : JwBackBaseController
+
+@property (nonatomic,copy) NSDictionary *areaDict;
+//确认回调
+@property (nonatomic,copy) IWAreaPickerViewConfirmBlock areaPickerViewConfirmBlock;
+//失败回调
+@property (nonatomic,copy) IWAreaPickerViewCancleBlock areaPickerViewCancleBlock;
 @end

@@ -16,5 +16,8 @@
 @property(nonatomic,strong)UILabel * professLaber;
 @property(nonatomic,strong)UIButton * telBut;
 @property(nonatomic,strong)UIButton * mesBut;
+@property(nonatomic,strong)UILabel * companyLaber;
+@property(nonatomic,strong)UILabel * workLaber;
+@property(nonatomic,strong)UILabel * areaLaber;
 
 @end

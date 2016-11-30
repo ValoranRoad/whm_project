@@ -10,6 +10,8 @@
 #import "JwTabBarController.h"
 #import "IQKeyboardManager.h"
 
+
+
 @interface AppDelegate ()
 
 @end
@@ -26,10 +28,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     self.window.rootViewController = [[JwTabBarController alloc] init];
-    
     return YES;
 }
-
 /**
  *  键盘高度计算以及BarTool
  */

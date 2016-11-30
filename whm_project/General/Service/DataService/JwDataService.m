@@ -31,6 +31,8 @@
 #import "WHgetreport.h"
 #import "WHgetpolicys.h"
 #import "WHgetnearagent.h"
+//
+#import "WHmin.h"
 
 #import "MacroUtility.h"
 #import "JwUserCenter.h"
@@ -496,7 +498,7 @@
     [self.httpManager POST:param withPoint:@"kbj/micro" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        NSArray * micros = [WHmicro arrayOfModelsFromDictionaries:infos error:nil];
+        NSArray * micros = [WHmin arrayOfModelsFromDictionaries:infos error:nil];
         
         if (success) {
             success(micros);
@@ -713,7 +715,7 @@
                               @"county":county,
                               @"type":type}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_near_agent"]mutableCopy];
-    [self.httpManager POST:param withPoint:@"kbj/get_message_detail" success:^(id data) {
+    [self.httpManager POST:param withPoint:@"kb/get_near_agent" success:^(id data) {
         
         NSArray *infos = data[@"data"];
         NSArray *nearagents = [WHgetnearagent  arrayOfModelsFromDictionaries:infos error:nil];
@@ -729,7 +731,31 @@
     
     
 }
+//获取发现里边分支机构
+-(void)getorganizationWithLng:(NSString *)lng
+                          lat:(NSString *)lat
+                      success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"lng":lng ,
+                              @"lat":lat}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *getorgs = [WHorganization  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(getorgs);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 
+    
+    
+}
 
 
 

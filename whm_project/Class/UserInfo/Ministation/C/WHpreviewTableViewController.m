@@ -289,6 +289,7 @@
         self.mesArry = [NSMutableArray array];
         for (WHmicro * model in lists) {
             //留言列表
+            
             self.messArry = [NSMutableArray arrayWithArray:model.message];
             //
             self.daraArry = [NSMutableArray arrayWithArray:model.pro];

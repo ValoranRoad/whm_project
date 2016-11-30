@@ -80,7 +80,6 @@
 		9F1073981DD0995700725A84 /* WHgetappcate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1073971DD0995700725A84 /* WHgetappcate.m */; };
 		9F116FE41DD9B70800C3D8E6 /* WHscore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F116FE31DD9B70800C3D8E6 /* WHscore.m */; };
 		9F13C2341DC8489F00D5FD56 /* WHgetintroduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */; };
-		9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */; };
 		9F14C1771DC97E38003A9D13 /* WHprevTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */; };
 		9F14C17A1DC987E3003A9D13 /* WHgethonor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1791DC987E3003A9D13 /* WHgethonor.m */; };
 		9F14C17D1DC9DCDA003A9D13 /* WHmicro.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */; };
@@ -113,6 +112,8 @@
 		9F35CE8A1DD6C097003F0C78 /* WHrela.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F35CE891DD6C097003F0C78 /* WHrela.m */; };
 		9F436C4C1DED0939000FBE94 /* WHnearagentdata.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F436C4B1DED0939000FBE94 /* WHnearagentdata.m */; };
 		9F436C4F1DED0964000FBE94 /* WHgetnearagent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F436C4E1DED0964000FBE94 /* WHgetnearagent.m */; };
+		9F436CA11DED665D000FBE94 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F436CA01DED665D000FBE94 /* area.plist */; };
+		9F436CA91DED73F3000FBE94 /* CCLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F436CA81DED73F3000FBE94 /* CCLocationManager.m */; };
 		9F63ED261DCB573F00404AE7 /* WHpelicyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED251DCB573F00404AE7 /* WHpelicyTableViewController.m */; };
 		9F63ED371DCB58C300404AE7 /* WHpecTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED361DCB58C300404AE7 /* WHpecTableViewCell.m */; };
 		9F63ED3A1DCB634F00404AE7 /* WHpayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F63ED391DCB634F00404AE7 /* WHpayTableViewController.m */; };
@@ -183,6 +184,10 @@
 		9FDAE5C81DDF0136000F91DF /* ZFWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDAE5A91DDF0136000F91DF /* ZFWave.m */; };
 		9FDAE5C91DDF0136000F91DF /* ZFWaveChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDAE5AB1DDF0136000F91DF /* ZFWaveChart.m */; };
 		9FDF0C601DD15E8100892CAA /* WHpowTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF0C5F1DD15E8100892CAA /* WHpowTwoTableViewCell.m */; };
+		9FE0833F1DEE7F3900C2501E /* WHLookforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0833E1DEE7F3900C2501E /* WHLookforViewController.m */; };
+		9FE083421DEE834400C2501E /* WHmin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE083411DEE834400C2501E /* WHmin.m */; };
+		9FE083451DEE89D800C2501E /* WHgentinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE083441DEE89D800C2501E /* WHgentinfo.m */; };
+		9FE083481DEE97C300C2501E /* WHminpro.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE083471DEE97C300C2501E /* WHminpro.m */; };
 		9FE2CD201DC6ED570062D2D0 /* WHgetmessageDetall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */; };
 		9FE6B5AF1DCAE8870049FC8B /* WHgetprofirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE6B5AE1DCAE8870049FC8B /* WHgetprofirst.m */; };
 		9FE928371DEC3E5E00D1394F /* WHnews.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FE928361DEC3E5E00D1394F /* WHnews.m */; };
@@ -419,8 +424,6 @@
 		9F116FE31DD9B70800C3D8E6 /* WHscore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHscore.m; sourceTree = "<group>"; };
 		9F13C2321DC8489F00D5FD56 /* WHgetintroduce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetintroduce.h; sourceTree = "<group>"; };
 		9F13C2331DC8489F00D5FD56 /* WHgetintroduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetintroduce.m; sourceTree = "<group>"; };
-		9F13C2351DC88F0800D5FD56 /* WHlookForViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHlookForViewController.h; sourceTree = "<group>"; };
-		9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHlookForViewController.m; sourceTree = "<group>"; };
 		9F14C1751DC97E38003A9D13 /* WHprevTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHprevTableViewCell.h; sourceTree = "<group>"; };
 		9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHprevTableViewCell.m; sourceTree = "<group>"; };
 		9F14C1781DC987E3003A9D13 /* WHgethonor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgethonor.h; sourceTree = "<group>"; };
@@ -480,6 +483,9 @@
 		9F436C4B1DED0939000FBE94 /* WHnearagentdata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHnearagentdata.m; sourceTree = "<group>"; };
 		9F436C4D1DED095E000FBE94 /* WHgetnearagent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetnearagent.h; sourceTree = "<group>"; };
 		9F436C4E1DED0964000FBE94 /* WHgetnearagent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetnearagent.m; sourceTree = "<group>"; };
+		9F436CA01DED665D000FBE94 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
+		9F436CA71DED73F3000FBE94 /* CCLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocationManager.h; sourceTree = "<group>"; };
+		9F436CA81DED73F3000FBE94 /* CCLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocationManager.m; sourceTree = "<group>"; };
 		9F63ED241DCB573200404AE7 /* WHpelicyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHpelicyTableViewController.h; sourceTree = "<group>"; };
 		9F63ED251DCB573F00404AE7 /* WHpelicyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHpelicyTableViewController.m; sourceTree = "<group>"; };
 		9F63ED351DCB58C300404AE7 /* WHpecTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHpecTableViewCell.h; path = whm_project/Class/LookFor/C/WHpecTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -622,6 +628,14 @@
 		9FDAE5AB1DDF0136000F91DF /* ZFWaveChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFWaveChart.m; sourceTree = "<group>"; };
 		9FDF0C5E1DD15E8100892CAA /* WHpowTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WHpowTwoTableViewCell.h; path = whm_project/Model/WHpowTwoTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		9FDF0C5F1DD15E8100892CAA /* WHpowTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WHpowTwoTableViewCell.m; path = whm_project/Model/WHpowTwoTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		9FE0833D1DEE7F3900C2501E /* WHLookforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHLookforViewController.h; sourceTree = "<group>"; };
+		9FE0833E1DEE7F3900C2501E /* WHLookforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHLookforViewController.m; sourceTree = "<group>"; };
+		9FE083401DEE834400C2501E /* WHmin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmin.h; sourceTree = "<group>"; };
+		9FE083411DEE834400C2501E /* WHmin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmin.m; sourceTree = "<group>"; };
+		9FE083431DEE89D800C2501E /* WHgentinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgentinfo.h; sourceTree = "<group>"; };
+		9FE083441DEE89D800C2501E /* WHgentinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgentinfo.m; sourceTree = "<group>"; };
+		9FE083461DEE97C300C2501E /* WHminpro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHminpro.h; sourceTree = "<group>"; };
+		9FE083471DEE97C300C2501E /* WHminpro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHminpro.m; sourceTree = "<group>"; };
 		9FE2CD1E1DC6ED570062D2D0 /* WHgetmessageDetall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetmessageDetall.h; sourceTree = "<group>"; };
 		9FE2CD1F1DC6ED570062D2D0 /* WHgetmessageDetall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetmessageDetall.m; sourceTree = "<group>"; };
 		9FE6B5AD1DCAE8870049FC8B /* WHgetprofirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetprofirst.h; sourceTree = "<group>"; };
@@ -937,6 +951,15 @@
 			path = LYC;
 			sourceTree = "<group>";
 		};
+		9F436CA61DED73F3000FBE94 /* CCLocation */ = {
+			isa = PBXGroup;
+			children = (
+				9F436CA71DED73F3000FBE94 /* CCLocationManager.h */,
+				9F436CA81DED73F3000FBE94 /* CCLocationManager.m */,
+			);
+			path = CCLocation;
+			sourceTree = "<group>";
+		};
 		9F99E7131DC34F8000DC1265 /* Ministation */ = {
 			isa = PBXGroup;
 			children = (
@@ -961,10 +984,10 @@
 				9F0F28C21DC491B7007118BD /* WHintroduceViewController.m */,
 				9FC53A381DC5D515008340B0 /* WHrecommentTableViewController.h */,
 				9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */,
-				9F13C2351DC88F0800D5FD56 /* WHlookForViewController.h */,
-				9F13C2361DC88F0800D5FD56 /* WHlookForViewController.m */,
 				9FE9283E1DEC48B500D1394F /* WHpreviewTableViewController.h */,
 				9FE9283F1DEC48B500D1394F /* WHpreviewTableViewController.m */,
+				9FE0833D1DEE7F3900C2501E /* WHLookforViewController.h */,
+				9FE0833E1DEE7F3900C2501E /* WHLookforViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1215,6 +1238,7 @@
 		C8343DE01DB5B6ED00999301 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				9F436CA01DED665D000FBE94 /* area.plist */,
 				C8343DFC1DB5B79A00999301 /* JwFindController.h */,
 				C8343DFD1DB5B79A00999301 /* JwFindController.m */,
 				9FF7CC431DE6CD850098193A /* WHnearAgentTableViewController.h */,
@@ -1654,6 +1678,12 @@
 				961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */,
 				9FE928351DEC3E5E00D1394F /* WHnews.h */,
 				9FE928361DEC3E5E00D1394F /* WHnews.m */,
+				9FE083401DEE834400C2501E /* WHmin.h */,
+				9FE083411DEE834400C2501E /* WHmin.m */,
+				9FE083431DEE89D800C2501E /* WHgentinfo.h */,
+				9FE083441DEE89D800C2501E /* WHgentinfo.m */,
+				9FE083461DEE97C300C2501E /* WHminpro.h */,
+				9FE083471DEE97C300C2501E /* WHminpro.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1661,6 +1691,7 @@
 		C86354071DB4680300ED8B16 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9F436CA61DED73F3000FBE94 /* CCLocation */,
 				9FDAE5601DDF0136000F91DF /* ZFChart */,
 				C86354741DB4969A00ED8B16 /* md5 */,
 				C86354791DB4969A00ED8B16 /* NSString+PinYin */,
@@ -2065,6 +2096,7 @@
 				9F35CE671DD6AC6C003F0C78 /* LYTestTwoTableViewCell.xib in Resources */,
 				8E86DBD91DC9806D00C14635 /* addimage.png in Resources */,
 				961358B11DB5C29F00F5107F /* HmSelectInsuredCell.xib in Resources */,
+				9F436CA11DED665D000FBE94 /* area.plist in Resources */,
 				8E86DBDE1DC980BE00C14635 /* car.jpg in Resources */,
 				9615F8111DC04715001081FD /* HmFujiaCell.xib in Resources */,
 				C8C10CB71DB9C06F00A5FB9A /* JwRegistController.xib in Resources */,
@@ -2169,6 +2201,7 @@
 				C86354391DB473A600ED8B16 /* IQTitleBarButtonItem.m in Sources */,
 				9FF7CC481DE6CD980098193A /* WHnearAgentTableViewCell.m in Sources */,
 				961746B41DE57F7500AEE19A /* HmPhysicalGroupView.m in Sources */,
+				9FE0833F1DEE7F3900C2501E /* WHLookforViewController.m in Sources */,
 				9FA684681DE2DDD8003F70E3 /* WHmyphysicalTableViewController.m in Sources */,
 				9FE928371DEC3E5E00D1394F /* WHnews.m in Sources */,
 				9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */,
@@ -2242,6 +2275,7 @@
 				C8C10CB91DB9C06F00A5FB9A /* WHaccountDetaTableViewController.m in Sources */,
 				9FDAE5BD1DDF0136000F91DF /* ZFHorizontalBar.m in Sources */,
 				961358D01DB6268600F5107F /* HmCompanyTableCell.m in Sources */,
+				9FE083451DEE89D800C2501E /* WHgentinfo.m in Sources */,
 				961746AE1DE538A400AEE19A /* HmMultistageTableView.m in Sources */,
 				C86354381DB473A600ED8B16 /* IQPreviousNextView.m in Sources */,
 				9F21CFB21DDC50FC0089BADB /* WHpay_periodTableViewController.m in Sources */,
@@ -2269,6 +2303,7 @@
 				9FCB4DF71DD301800094184A /* WHgetproperiod.m in Sources */,
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
 				9FCA05721DDD4BF200B6B805 /* WHintroViewController.m in Sources */,
+				9F436CA91DED73F3000FBE94 /* CCLocationManager.m in Sources */,
 				9F14C1771DC97E38003A9D13 /* WHprevTableViewCell.m in Sources */,
 				C84EAA0D1DB76A980098C2A1 /* UIImage+Color.m in Sources */,
 				C83D066E1DCB29BF0028A681 /* JwRela.m in Sources */,
@@ -2299,13 +2334,13 @@
 				961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */,
 				9F21CFA61DDBECD40089BADB /* WHtestwoTableViewCell.m in Sources */,
 				C86354641DB473B300ED8B16 /* LBXAlertAction.m in Sources */,
-				9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */,
 				9FDAE5BB1DDF0136000F91DF /* ZFGenericChart.m in Sources */,
 				9FDAE5BE1DDF0136000F91DF /* ZFHorizontalBarChart.m in Sources */,
 				C86353CA1DB4669A00ED8B16 /* JwHttpManager.m in Sources */,
 				C807B9A71DC060B800D3C700 /* JwAreass.m in Sources */,
 				C8C10CC31DB9C06F00A5FB9A /* registerTwoTableViewCell.m in Sources */,
 				9F10738F1DD02B5200725A84 /* WHpowSearTableViewController.m in Sources */,
+				9FE083481DEE97C300C2501E /* WHminpro.m in Sources */,
 				9F436C4F1DED0964000FBE94 /* WHgetnearagent.m in Sources */,
 				C8C10CBB1DB9C06F00A5FB9A /* WHrestPwdViewController.m in Sources */,
 				9F35CE521DD6AC4B003F0C78 /* JSCollectViewController.m in Sources */,
@@ -2343,6 +2378,7 @@
 				9FDAE4AD1DDEA28B000F91DF /* WHagent.m in Sources */,
 				C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */,
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
+				9FE083421DEE834400C2501E /* WHmin.m in Sources */,
 				9FDAE5B51DDF0136000F91DF /* ZFMethod.m in Sources */,
 				9F35CE471DD6A3F9003F0C78 /* WHageTableViewCell.m in Sources */,
 				C8C10CC11DB9C06F00A5FB9A /* completeTableViewCell.m in Sources */,

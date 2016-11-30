@@ -12,6 +12,9 @@
 #import "CityTableViewCell.h"
 #import "JwAreass.h"
 #import "JGProgressHelper.h"
+#import "WHgetnearagent.h"
+#import "WHnearagentdata.h"
+#import <UIImageView+WebCache.h>
 
 @interface WHnearAgentTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView * tableV;
@@ -21,22 +24,34 @@
 @property (nonatomic,strong)UIView *cityChooseBackView;//弹出框
 @property (nonatomic,strong)UIButton *myAddressBtn;
 @property (nonatomic,strong)UIButton *myCategoryBtn;
+
+
 @property (nonatomic,strong)UILabel *titleLab;//上部标题
 @property (nonatomic,strong)UITableView *provinceTableView;//省
 @property (nonatomic,strong)UITableView *cityTableView;//市
 @property (nonatomic,strong)UITableView *areaTableView;//区
-@property (nonatomic,strong)NSMutableArray *provenceArr;//存放省的数组
+
+@property (nonatomic,strong)NSArray *provenceArr;//存放省的数组
 @property (nonatomic,strong)NSArray *cityArr;//存放市的数组
+@property(nonatomic,strong)NSArray * areaArr;
+
 @property (nonatomic,strong)UIImageView *arrowProImage;
+
 @property (nonatomic,strong)UIImageView *arrowCartogyImage;
-//采集
-@property (nonatomic,strong)NSMutableArray *allArr;//全部数据
-@property (nonatomic,strong) NSMutableArray  *proTimeList;//全部省
-@property (nonatomic,strong) NSMutableArray  *proTimeListId;//全部省
 
+//数据源
+@property(nonatomic,strong)NSMutableArray * dataArry;
 
-
-
+@property(nonatomic,strong)NSString * nearID;
+@property(nonatomic,strong)NSString * StrDist;
+@property(nonatomic,strong)NSMutableArray * imgArry;
+@property(nonatomic,strong)NSMutableArray * mobileArry;
+@property(nonatomic,strong)NSMutableArray * comArry;
+@property(nonatomic,strong)NSMutableArray * ageArry;
+@property(nonatomic,strong)NSMutableArray * sexArry;
+@property(nonatomic,strong)NSMutableArray * profeArry;
+@property(nonatomic,strong)NSMutableArray * workArry;
+@property(nonatomic,strong)NSMutableArray * servArry;
 
 @end
 
@@ -45,82 +60,166 @@
 {
     [super viewWillAppear:YES];
     
-   // [self quartDate];
+    self.dataArry = [NSMutableArray array];
+    self.ageArry = [NSMutableArray array];
+    self.profeArry = [NSMutableArray array];
+    self.imgArry = [NSMutableArray array];
+    self.mobileArry = [NSMutableArray array];
+    self.sexArry = [NSMutableArray array];
+    self.comArry = [NSMutableArray array];
+    self.workArry = [NSMutableArray array];
+    self.servArry = [NSMutableArray array];
+    [self quartDate];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _provenceArr = [NSMutableArray array];
-    _cityArr = [NSMutableArray array];
-    
+    _provenceArr = [NSArray array];
+    _cityArr = [NSArray array];
+    _areaArr = [NSArray array];
     
     self.view.backgroundColor = [UIColor grayColor];
     
-
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *plistPath = [bundle pathForResource:@"area" ofType:@"plist"];
+    self.areaDict = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    self.title = @"附近代理人";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ditudao"] style:(UIBarButtonItemStylePlain) target:self action:@selector(aa:)];
+  
     [self setupUI];
-    [self shuju];
+  
 }
+//右边点击事件
+-(void)aa:(UIBarButtonItem *)sender
+{
+    NSLog(@"lll");
+}
+
 //数据请求
 -(void)quartDate
 {
     
-    
-    
-    
-}
-//假数据
--(void)shuju
-{
-        id  hud = [JGProgressHelper showProgressInView:self.view];
-    [self.userService get_all_areaWithsuccess:^(NSArray *areas) {
-        [hud hide:YES];
-        //取出省
-        for (JwAreass * area in areas) {
-            
-            [self.provenceArr addObject:area.area_name];
-            [_proTimeListId addObject:area.area_id];
-//                for (JwAreass * a  in area.child) {
-//                [self.cityArr  addObject:a.area_name];
-//                [self.cityArrId addObject:a.area_id];
-//                    for (JwAreass * w in a.child) {
-//                        [self.areaArr addObject:w.area_name];
-//                        [self.areaArrId addObject:w.area_id];
-//                    }
-//                   
-//            }
-            
-            
-            if (area.child.count == 0)
-            {
-                
-                return ;
-            }
-            else
-            {
-                [_allArr addObject:area.child];
-            }
-
-        }
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+    NSString * stringOne = [ud valueForKey:@"one"];
+    NSString * stringTwo = [ud valueForKey:@"two"];
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService getnearagentWithLng:stringOne
+                                      lat:stringTwo
+                                city_name:@""
+                                 province:@""
+                                     city:@""
+                                   county:@""
+                                     type:@"agent" success:^(NSArray *lists) {
+                                         [hud hide:YES];
+                                       //  self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                       //  NSLog(@"%@",self.dataArry);
+                                         for (WHgetnearagent * near in lists) {
+                                            self.nearID = near.id;
+                                            self.StrDist = near.dist;
+                                             NSLog(@"oo%@",self.StrDist);
+                                             NSLog(@"ppp%@",near.data.name);
+                                             [self.dataArry addObject:near.data.name];
+                                             [self.ageArry addObject:near.data.age];
+                                             [self.imgArry addObject:near.data.avatar];
+                                             if (near.data.profession == nil) {
+                                                 near.data.profession = @"暂无";
+                                             }
+                                             [self.profeArry addObject:near.data.profession];
+                                             [self.sexArry addObject:near.data.sex];
+                                             if (near.data.com_name == nil) {
+                                                 near.data.com_name = @"暂无";
+                                             }
+                                             [self.comArry addObject:near.data.com_name];
+                                             [self.mobileArry addObject:near.data.mobile];
+                                             [self.workArry addObject:near.data.work_time];
+                                             [self.servArry addObject:near.data.service_area];
+                                             
+                                         }
+                                         
         
-        [self.provinceTableView reloadData];
+                                         [self.tableV reloadData];
     } failure:^(NSError *error) {
         [hud hide:YES];
+        [JGProgressHelper showError:@""];
         
     }];
     
-
-    //self.provenceArr = @[@"河南省",@"河北省",@"江苏省",@"浙江省",@"天津",@"内蒙古",@"新疆省",@"西藏省",@"云南省",@"广东省",@"山东省",@"陕西省",@"辽宁省",@"黑龙江省"];
-    //self.provenceArr = [NSArray arrayWithArray:_proTimeList];
-    self.cityArr = @[@"北京",@"郑州",@"杭州",@"合肥",@"武汉",@"深圳"];
     
     
 }
+
+- (void)setAreaDict:(NSDictionary *)areaDict
+{
+    _areaDict = areaDict;
+    [self selectedProvinceIndex:0 cityIndex:0];
+    
+}
+- (void)selectedProvinceIndex:(NSInteger)provinceIndex cityIndex:(NSInteger)cityIndex
+{
+    //取出省
+    NSArray *components = [_areaDict allKeys];
+    NSArray *sortedArray = [components sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        if ([obj1 integerValue] > [obj2 integerValue]) {
+            return NSOrderedDescending;
+        }
+        
+        if ([obj1 integerValue] < [obj2 integerValue]) {
+            return NSOrderedAscending;
+        }
+        
+        return NSOrderedSame;
+    }];
+    
+    NSMutableArray *provinceTmp = [NSMutableArray array];
+    for (int i = 0; i < sortedArray.count; i ++) {
+        NSString *index = sortedArray[i];
+        NSArray *tmp = [[_areaDict objectForKey:index] allKeys];
+        [provinceTmp addObject:tmp[0]];
+    }
+    
+    _provenceArr = [NSArray arrayWithArray:provinceTmp];
+    
+    //取出市
+    NSString *index = sortedArray[provinceIndex];
+    NSString *selected = _provenceArr[provinceIndex];
+    NSDictionary *dic = [NSDictionary dictionaryWithDictionary:[[_areaDict objectForKey:index] objectForKey:selected]];
+    NSArray *cityComponents = [dic allKeys];
+    NSArray *citySortedArray = [cityComponents sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        if ([obj1 integerValue] > [obj2 integerValue]) {
+            return NSOrderedDescending;
+        }
+        
+        if ([obj1 integerValue] < [obj2 integerValue]) {
+            return NSOrderedAscending;
+        }
+        
+        return NSOrderedSame;
+    }];
+    
+    NSMutableArray *cityTmp = [NSMutableArray array];
+    for (int i = 0; i < citySortedArray.count; i ++) {
+        NSString *index = citySortedArray[i];
+        NSArray *tmp = [[dic objectForKey:index] allKeys];
+        [cityTmp addObject:tmp[0]];
+    }
+    
+    _cityArr = [NSArray arrayWithArray:cityTmp];
+    
+    //    //取出区
+    NSDictionary *cityDic = [NSDictionary dictionaryWithDictionary:[dic objectForKey:citySortedArray[cityIndex]]];
+    NSArray *array = [[NSArray alloc] initWithArray:[cityDic allKeys]];
+    
+    NSString *selectedCity = array[0];
+    self.areaArr = [[NSArray alloc] initWithArray:cityDic[selectedCity]];
+}
+
+
 
 //设计界面
 -(void)setupUI
 {
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 35, kScreenWitdh, kScreenHeight - 64-35) style:UITableViewStylePlain];
     _tableV.delegate = self;
     _tableV.dataSource = self;
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -140,6 +239,10 @@
     //self.arrowProImage.backgroundColor = [UIColor redColor];
     self.arrowProImage.image = [UIImage imageNamed:@"arrowT.png"];
     [self.myAddressBtn addSubview:_arrowProImage];
+    
+    
+    
+    
     self.myCategoryBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.myCategoryBtn.frame = CGRectMake(CGRectGetMaxX(self.myAddressBtn.frame) + 1, 0,CGRectGetWidth(self.view.frame)/2-0.5, 30);
     [self.myCategoryBtn setTitle:@"类别" forState:UIControlStateNormal];
@@ -153,7 +256,11 @@
     //self.arrowProImage.backgroundColor = [UIColor redColor];
     self.arrowCartogyImage.image = [UIImage imageNamed:@"arrowT.png"];
     [self.myCategoryBtn addSubview:_arrowCartogyImage];
-    _cityChooseBackView = [[UIView alloc]initWithFrame:CGRectMake(0, 34, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 94)];
+    
+    
+    
+    
+    _cityChooseBackView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 94)];
     _cityChooseBackView.backgroundColor = [UIColor yellowColor];
     _cityChooseBackView.hidden = YES;
     [self.view addSubview:_cityChooseBackView];
@@ -194,6 +301,7 @@
     self.areaTableView.hidden = YES;
     
     [self.areaTableView registerClass:[CityTableViewCell class] forCellReuseIdentifier:@"ArealistCell"];
+    
 
 }
 #pragma mark 省市点击事件
@@ -234,13 +342,13 @@
     {
         return _cityArr.count;
     }
-//    else  if (tableView == _tableV) {
-//        return 10;
-//    }
+    else  if (tableView == _tableV) {
+        return self.dataArry.count;
+    }
 
     else
     {
-        return _provenceArr.count;
+        return _areaArr.count;
     }
    
 }
@@ -264,46 +372,70 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         return cell;
     }
+    else if (tableView == _tableV)
+    {
+        WHnearAgentTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        
+             [cell.telBut setBackgroundImage:[UIImage imageNamed:@"tel"] forState:(UIControlStateNormal)];
+            [cell.mesBut setBackgroundImage:[UIImage imageNamed:@"message"] forState:(UIControlStateNormal)];
+            cell.mesBut.tag = 100 + indexPath.row;
+        
+            cell.telBut.tag = 100 + indexPath.row;
+            [cell.telBut addTarget:self action:@selector(telAction:) forControlEvents:(UIControlEventTouchUpInside)];
+            [cell.mesBut addTarget:self action:@selector(mesButAction:) forControlEvents:(UIControlEventTouchUpInside)];
+           cell.nameLaber.text = self.dataArry[indexPath.row];
+           [cell.myImage sd_setImageWithURL:[NSURL URLWithString:self.imgArry[indexPath.row]]];
+        if ([self.sexArry[indexPath.row] isEqualToString: @"2"]) {
+            cell.sexImg.image = [UIImage imageNamed:@"test_famale"];
+        }else
+        {
+            cell.sexImg.image = [UIImage imageNamed:@"test_male"];
+        }
+        cell.ageLaber.text = self.ageArry[indexPath.row];
+        cell.professLaber.text = self.profeArry[indexPath.row];
+        cell.companyLaber.text = self.comArry[indexPath.row];
+        cell.workLaber.text = self.workArry[indexPath.row];
+        cell.areaLaber.text = self.servArry[indexPath.row];
+        
+        
+            return cell;
+
+    }
     else
     {
         CityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArealistCell" forIndexPath:indexPath];
-        cell.titLab.text = self.provenceArr[indexPath.row];
+        cell.titLab.text = self.areaArr[indexPath.row];
         cell.contentView.backgroundColor = [UIColor whiteColor];
         cell.accessoryType = UITableViewCellAccessoryNone;
         return cell;
     }
     
 
-//    
-//    WHnearAgentTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-//    
-//     [cell.telBut setBackgroundImage:[UIImage imageNamed:@"tel"] forState:(UIControlStateNormal)];
-//    [cell.mesBut setBackgroundImage:[UIImage imageNamed:@"message"] forState:(UIControlStateNormal)];
-//    cell.mesBut.tag = 100 + indexPath.row;
-//    
-//    cell.telBut.tag = 100 + indexPath.row;
-//    [cell.telBut addTarget:self action:@selector(telAction:) forControlEvents:(UIControlEventTouchUpInside)];
-//    [cell.mesBut addTarget:self action:@selector(mesButAction:) forControlEvents:(UIControlEventTouchUpInside)];
-//    
-//    return cell;
 }
 #pragma mark 点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    NSInteger myIntag;
     if (tableView == _provinceTableView)
     {
         self.cityTableView.hidden = NO;
         //这里面根据不同的省的id   改变_cityArr数组的数据，并刷新cityTableView
         //JwAreass * area = self.provenceArr[indexPath.row];
         
-        
+        [self selectedProvinceIndex:indexPath.row cityIndex:0];
+        myIntag = indexPath.row;
+
         
         
         [self.cityTableView reloadData];
     }
     else if(tableView ==_cityTableView)
     {
-        
+        NSInteger provinceIndex =  _provinceTableView.indexPathForSelectedRow.row;
+        [self selectedProvinceIndex:provinceIndex cityIndex:indexPath.row];
+        [self.areaTableView reloadData];
+
         
         self.areaTableView.hidden = NO;
         //这里要根据你取出市的id，重新请求数据，然后弹出区的tableview。
@@ -313,12 +445,11 @@
     {
         
         self.cityChooseBackView.hidden = YES;
-        [self.myAddressBtn setTitle:self.provenceArr[indexPath.row] forState:UIControlStateNormal];
+        [self.myAddressBtn setTitle:self.areaArr[indexPath.row] forState:UIControlStateNormal];
         
         //改变小箭头
         self.arrowProImage.image = [UIImage imageNamed:@"arrowT.png"];
         //这里要根据你取出区的id，重新请求数据，然后刷新下方的tableview
-        
         
         
     }
@@ -338,8 +469,7 @@
 //电话事件
 -(void)telAction:(UIButton *)sender
 {
-//    WHagent * model = self.peopArry[sender.tag - 100];
-//    self.tel = model.mobile;
+   self.tel = self.mobileArry[sender.tag - 100];
     UIAlertView *view = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你确定要拨打电话吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
     
     [view show];
@@ -359,6 +489,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView == _tableV) {
+        return 100;
+    }
     return 40;
 }
 

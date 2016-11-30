@@ -14,9 +14,10 @@
 
 #import "PicUpdateViewController.h"
 
-#import "WHlookForViewController.h"
 #import "WHpreviewTableViewController.h"
 
+//
+#import "WHLookforViewController.h"
 
 
 #define kScreenWitdh [UIScreen mainScreen].bounds.size.width
@@ -63,8 +64,10 @@
 -(void)LookAction:(UIBarButtonItem *)sender
 {
     NSLog(@"kkk");
-    WHpreviewTableViewController * lookfor = [[WHpreviewTableViewController alloc]init];
-    [self.navigationController pushViewController:lookfor animated:NO];
+   // WHpreviewTableViewController * lookfor = [[WHpreviewTableViewController alloc]init];
+   // [self.navigationController pushViewController:lookfor animated:NO];
+    WHLookforViewController * lookfor = [[WHLookforViewController alloc]init];
+    [self.navigationController pushViewController:lookfor animated:YES];
 }
 
 

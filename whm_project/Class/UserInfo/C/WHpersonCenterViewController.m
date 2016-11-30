@@ -373,6 +373,10 @@
     [self.myBut9 addTarget:self action:@selector(miniStation:) forControlEvents:(UIControlEventTouchUpInside)];
     //体检报告
     [self.myBut2 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    //我的家人
+    [self.myBut1 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    //我的保单
+    [self.myBut3 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
 //数据处理获取用户信息
