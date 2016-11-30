@@ -53,7 +53,7 @@ typedef enum {
 #define kHmPhysicalFujiaCellIdentifier @"kHmPhysicalFujiaCellIdentifier"
 #define kHmPhysicalBaoeCellIdentifier @"kHmPhysicalBaoeCellIdentifier"
 
-@interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,HMConfirmDelegate>
+@interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource,HMConfirmDelegate>
 
 // 大TableView
 @property (nonatomic, strong) HmMultistageTableView *tableVB;
@@ -153,7 +153,6 @@ typedef enum {
         WHget_pro_rate * pro = [lists firstObject];
         WHmongorate * mon = [pro.mongo_rate firstObject];
         NSArray * periods = mon.rate;
-        NSDictionary *dict = periods.firstObject;
         for (WHrate * rate in periods) {
             
             //保险期间

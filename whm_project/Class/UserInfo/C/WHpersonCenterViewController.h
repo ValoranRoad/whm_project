@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JwBackBaseController.h"
+#import "JwMenuBaseController.h"
 
-@interface WHpersonCenterViewController : JwBackBaseController
+@interface WHpersonCenterViewController : JwMenuBaseController
 @end

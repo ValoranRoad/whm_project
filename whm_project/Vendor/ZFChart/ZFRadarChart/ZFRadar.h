@@ -30,7 +30,7 @@
 @property (nonatomic, assign) BOOL isShowSeparate;
 
 
-#warning message - readonly(只读)
+//#warning message - readonly(只读)
 /** itemLabel中心点数组 */
 @property (nonatomic, strong, readonly) NSArray * itemLabelCenterArray;
 /** 雷达中点平均角度 */

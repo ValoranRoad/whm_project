@@ -12,11 +12,10 @@
 #import "JGProgressHelper.h"
 #import "JwUser.h"
 #import "ForgetPwdViewController.h"
-
 #import "WHpersonCenterViewController.h"
-
-
 #import "RegisterTwoViewController.h"
+#import "MacroUtility.h"
+
 @interface JwLoginController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mobV;
@@ -93,8 +92,6 @@
 //保险顾问注册
 - (IBAction)PropertBut:(id)sender {
     
-    NSLog(@"hhh");
-    
     JwRegistController *registVC = [[JwRegistController alloc] init];
     [self.navigationController pushViewController:registVC animated:YES];
 //    RegisterTwoViewController *regVC = [[RegisterTwoViewController alloc]init];
@@ -145,9 +142,9 @@
         [self.userService loginWithMobile:self.mobTF.text password:self.pwdTF.text success:^(JwUser *user) {
             [hud hide:YES];
             [JGProgressHelper  showSuccess:@"登录成功"];
-            WHpersonCenterViewController * myself = [[WHpersonCenterViewController alloc]init];
             
-            [self.navigationController pushViewController:myself animated:NO];
+            //发送登录成功的的通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kJwIsLogin object:nil];
             
             NSLog(@"%@", user.name);
             

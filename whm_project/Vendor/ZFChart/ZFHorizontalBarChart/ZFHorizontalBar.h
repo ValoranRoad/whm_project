@@ -10,7 +10,7 @@
 
 @interface ZFHorizontalBar : UIControl
 
-#warning message - 以下属性可在点击后根据自身需求改动
+//#warning message - 以下属性可在点击后根据自身需求改动
 
 /** bar颜色 */
 @property (nonatomic, strong) UIColor * barColor;
@@ -24,7 +24,7 @@
 @property (nonatomic, assign) CGFloat opacity;
 
 
-#warning message - 下列参数勿修改(Do not modify)
+//#warning message - 下列参数勿修改(Do not modify)
 
 /** 百分比小数 */
 @property (nonatomic, assign) CGFloat percent;
@@ -34,7 +34,7 @@
 @property (nonatomic, assign) NSInteger barIndex;
 
 
-#warning message - readonly(只读)
+//#warning message - readonly(只读)
 
 /** bar终点X值 */
 @property (nonatomic, assign, readonly) CGFloat endXPos;

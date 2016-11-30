@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WHTitleView : UIView
--(void)p_setProgressValue:(CGFloat)progress;
+
 -(void)titllaber:(NSString *)tle;
 -(void)getImageImg :(NSString *)image;
 @end

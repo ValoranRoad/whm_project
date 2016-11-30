@@ -55,5 +55,9 @@ NSLog(@"[%s:%d]: " format "\n", strrchr(__FILE__, '/') + 1, __LINE__, ## args);
  */
 #define HmInsuredBGGrayColor JwColorRGB(244, 244, 244)
 
+//Jw通知
+#define kJwIsLogin @"isLogin"
+
+
 
 #endif /* MacroUtility_h */
