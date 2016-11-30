@@ -32,6 +32,7 @@
 #import "HmPhySicalMainView.h"
 #import "HmDetailsCodeCell.h"
 #import "HMConfirmView.h"
+#import "HmBaoeCell.h"
 
 //数据
 #import "WHget_pro_rate.h"
@@ -50,6 +51,7 @@ typedef enum {
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
 #define kHmPhysicalDetailsCellIdentifier @"dddkHmPhysicalDetailsCellIdentifier"
 #define kHmPhysicalFujiaCellIdentifier @"kHmPhysicalFujiaCellIdentifier"
+#define kHmPhysicalBaoeCellIdentifier @"kHmPhysicalBaoeCellIdentifier"
 
 @interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource,HMConfirmDelegate>
 
@@ -447,7 +449,7 @@ typedef enum {
             return 0;
         }
     }
-    return ((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[section]).id]).count;
+    return ((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[section]).id]).count + 2;
 //    return 3;
 }
 
@@ -469,15 +471,26 @@ typedef enum {
         cell = [[HmDetailsCodeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:kHmPhysicalDetailsCellIdentifier];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    HmBaoeCell *baoeCell = [self setBaoeCell:mTableView];
 //    @"给付方式"];
 //    @"缴费方式"];
 //    @"保障期间"];
 //    @"投保年龄"];
     // 赋值
     NSString *key = ((WHgetproduct *)self.groupMutableArr[indexPath.section]).id;
-    [self setupDataForCellCode:cell IndexPath:indexPath Age:[[_fuzhiDict objectForKey:key] objectForKey:@"投保年龄"] Type:[[_fuzhiDict objectForKey:key] objectForKey:@"缴费方式"] Baozhang:[[_fuzhiDict objectForKey:key] objectForKey:@"保障期间"] Give:[[_fuzhiDict objectForKey:key] objectForKey:@"给付方式"]];
+    id result = [self setupDataForCellCode:cell IndexPath:indexPath Age:[[_fuzhiDict objectForKey:key] objectForKey:@"投保年龄"] Type:[[_fuzhiDict objectForKey:key] objectForKey:@"缴费方式"] Baozhang:[[_fuzhiDict objectForKey:key] objectForKey:@"保障期间"] Give:[[_fuzhiDict objectForKey:key] objectForKey:@"给付方式"] BaoE:baoeCell];
     
     NSLog(@"%@,%@",cell,cell.myLaber.text);
+    return result;
+}
+
+- (HmBaoeCell *)setBaoeCell:(HmMultistageTableView *)mTableView {
+    HmBaoeCell *cell = [mTableView dequeueReusableCellWithIdentifier:kHmPhysicalBaoeCellIdentifier];
+    if (cell == nil) {
+        cell = [[HmBaoeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:kHmPhysicalBaoeCellIdentifier];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -497,24 +510,25 @@ typedef enum {
     [self.fuzhiDict setObject:dict forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
 }
 
-- (void)setupDataForCellCode:(HmDetailsCodeCell *)cell IndexPath:(NSIndexPath *)indexPath Age:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give {
+- (id)setupDataForCellCode:(HmDetailsCodeCell *)cell IndexPath:(NSIndexPath *)indexPath Age:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give BaoE:(HmBaoeCell *)baoeCell {
     if (indexPath.row == 0) {
         // 投保年两
         cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
         cell.myLaber.text = @"投保年龄";
         cell.selectLaber.text = age;
-    }
-    if (indexPath.row == 1) {
+        return cell;
+    }else if (indexPath.row == 1) {
         // 缴费方式
         cell.headImg.image = [UIImage imageNamed:@"p_payType"];
         cell.myLaber.text = @"缴费方式";
         cell.selectLaber.text = type;
-    }
-    if (indexPath.row == 2) {
+        return cell;
+    }else if (indexPath.row == 2) {
         // 保险期间
         cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
         cell.myLaber.text = @"保障期间";
         cell.selectLaber.text = baozhang;
+        return cell;
     }
     if (((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]).count == 4) {
         if (indexPath.row == 3) {
@@ -522,6 +536,35 @@ typedef enum {
             cell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
             cell.myLaber.text = @"给付方式";
             cell.selectLaber.text = give;
+            return cell;
+        }else if (indexPath.row == 4) {
+            // 保额
+            baoeCell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            baoeCell.myLaber.text = @"保额";
+            baoeCell.selectLaber.enabled = YES;
+            baoeCell.selectLaber.placeholder = @"请输入保额";
+            return baoeCell;
+        }else {
+            // 保费
+            baoeCell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            baoeCell.myLaber.text = @"保费";
+            baoeCell.selectLaber.enabled = NO;
+            return baoeCell;
+        }
+    }else {
+        if (indexPath.row == 3) {
+            // 保额
+            baoeCell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            baoeCell.myLaber.text = @"保额";
+            baoeCell.selectLaber.enabled = YES;
+            baoeCell.selectLaber.placeholder = @"请输入保额";
+            return baoeCell;
+        }else {
+            // 保费
+            baoeCell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            baoeCell.myLaber.text = @"保费";
+            baoeCell.selectLaber.enabled = NO;
+            return baoeCell;
         }
     }
 }
@@ -752,6 +795,8 @@ typedef enum {
     [self.tableVB reloadData];
     [_confir removeFromSuperview];
 }
+
+
 
 - (void)cancelActionWithNothing {
     [_confir removeFromSuperview];
