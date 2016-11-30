@@ -48,7 +48,7 @@
 {
     if (_mapLaber ==  nil) {
         self.mapLaber = [[UILabel alloc]init];
-        self.mapLaber.frame = CGRectMake(CGRectGetMaxX(self.mapImg.frame)+5, CGRectGetMinY(self.mapImg.frame), kScreenWitdh * 0.15, CGRectGetHeight(self.mapImg.frame));
+        self.mapLaber.frame = CGRectMake(CGRectGetMaxX(self.mapImg.frame)+5, CGRectGetMinY(self.mapImg.frame), kScreenWitdh * 0.20, CGRectGetHeight(self.mapImg.frame));
         self.mapLaber.textColor = [UIColor greenColor];
         self.mapLaber.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:_mapLaber];

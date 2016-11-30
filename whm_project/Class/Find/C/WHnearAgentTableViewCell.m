@@ -17,9 +17,9 @@
 {
     if (_myImage == nil) {
         self.myImage = [[UIImageView alloc]init];
-        self.myImage.frame = CGRectMake(10, 10,kScreenWitdh * 0.2 , kScreenWitdh * 0.2);
+        self.myImage.frame = CGRectMake(10, 10,kScreenWitdh * 0.15 , kScreenWitdh * 0.15);
         self.myImage.layer.masksToBounds = YES;
-        self.myImage.layer.cornerRadius = kScreenWitdh * 0.1;
+        self.myImage.layer.cornerRadius = kScreenWitdh * 0.075;
         [self.contentView addSubview:_myImage];
     }
     return _myImage;
@@ -40,40 +40,18 @@
 {
     if (_sexImg == nil) {
         self.sexImg = [[UIImageView alloc]init];
-        self.sexImg.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+2, CGRectGetMinY(self.nameLaber.frame)+3, 20, 20);
+        self.sexImg.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+2, CGRectGetMinY(self.nameLaber.frame)+6, 20, 20);
         [self.contentView addSubview:_sexImg];
     }
     return _sexImg;
 }
 
--(UILabel*)ageLaber
-{
-    if (_ageLaber == nil) {
-        self.ageLaber = [[UILabel alloc]init];
-        self.ageLaber.frame = CGRectMake(CGRectGetMaxX(self.sexImg.frame)+5, CGRectGetMinY(self.sexImg.frame), 40, 20);
-        self.ageLaber.font = [UIFont systemFontOfSize:13.0];
-        self.ageLaber.textColor = [UIColor grayColor];
-        [self.contentView addSubview:_ageLaber];
-    }
-    return _ageLaber;
-}
 
--(UILabel *)professLaber
-{
-    if (_professLaber == nil) {
-        self.professLaber = [[UILabel alloc]init];
-        self.professLaber.frame = CGRectMake(CGRectGetMaxX(self.companyLaber.frame)+3, CGRectGetMaxY(self.nameLaber.frame)+10, kScreenWitdh * 0.15, 20);
-        self.professLaber.textColor = [UIColor grayColor];
-        self.professLaber.font = [UIFont systemFontOfSize:13.0];
-        [self.contentView addSubview:_professLaber];
-    }
-    return _professLaber;
-}
 -(UILabel *)companyLaber
 {
     if (_companyLaber == nil) {
         self.companyLaber = [[UILabel alloc]init];
-        self.companyLaber.frame = CGRectMake(CGRectGetMinX(self.nameLaber.frame), CGRectGetMaxY(self.nameLaber.frame)+10, kScreenWitdh * 0.15, 20);
+        self.companyLaber.frame = CGRectMake(CGRectGetMaxX(self.sexImg.frame)+5, CGRectGetMinY(self.sexImg.frame), kScreenWitdh * 0.15, 20);
         self.companyLaber.textColor = [UIColor grayColor];
         self.companyLaber.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:_companyLaber];
@@ -81,30 +59,65 @@
     return _companyLaber;
 }
 
--(UILabel *)workLaber
+
+-(UIImageView *)mapImg
 {
-    if (_workLaber == nil) {
-        self.workLaber = [[UILabel alloc]init];
-        self.workLaber.frame = CGRectMake(CGRectGetMaxX(self.professLaber.frame)+3, CGRectGetMinY(self.professLaber.frame), 20, 20);
-        self.workLaber.textColor = [UIColor grayColor];
-        self.workLaber.font = [UIFont systemFontOfSize:13.0];
-        [self.contentView addSubview:_workLaber];
+    if (_mapImg == nil) {
+        self.mapImg = [[UIImageView alloc]init];
+        self.mapImg.frame = CGRectMake(CGRectGetMinX(self.nameLaber.frame), CGRectGetMaxY(self.nameLaber.frame)+2, 20, 20);
+        self.mapImg.image = [UIImage imageNamed:@"maple"];
+        [self.contentView addSubview:_mapImg];
+
     }
-    return _workLaber;
+    return _mapImg;
+}
+-(UILabel *)mapLaber
+{
+    if (_mapLaber == nil) {
+        self.mapLaber = [[UILabel alloc]init];
+        self.mapLaber.frame = CGRectMake(CGRectGetMaxX(self.mapImg.frame)+5, CGRectGetMinY(self.mapImg.frame), kScreenWitdh * 0.20, CGRectGetHeight(self.mapImg.frame));
+        self.mapLaber.textColor = [UIColor greenColor];
+        self.mapLaber.font = [UIFont systemFontOfSize:13.0];
+        [self.contentView addSubview:_mapLaber];
+    }
+    return _mapLaber;
 }
 
--(UILabel *)areaLaber
+-(UIImageView *)telImg
 {
-    if (_areaLaber == nil) {
-        self.areaLaber = [[UILabel alloc]init];
-        self.areaLaber.frame = CGRectMake(CGRectGetMaxX(self.workLaber.frame)+3, CGRectGetMinY(self.workLaber.frame), kScreenWitdh * 0.1, CGRectGetHeight(self.workLaber.frame));
-        self.areaLaber.textColor = [UIColor grayColor];
-        self.areaLaber.font = [UIFont systemFontOfSize:13.0];
-        [self.contentView addSubview:_areaLaber];
+    if (_telImg == nil) {
+        self.telImg =  [[UIImageView alloc]init];
+        self.telImg.frame = CGRectMake(CGRectGetMaxX(self.mapLaber.frame)+10, CGRectGetMinY(self.mapImg.frame), CGRectGetWidth(self.mapImg.frame), CGRectGetHeight(self.mapImg.frame));
+        self.telImg.image = [UIImage imageNamed:@"tel"];
+        [self.contentView addSubview:_telImg];
     }
-    return _areaLaber;
+    return _telImg;
 }
 
+-(UILabel *)telLaber
+{
+    if (_telLaber == nil) {
+        self.telLaber = [[UILabel alloc]init];
+        self.telLaber.frame = CGRectMake(CGRectGetMaxX(self.telImg.frame)+5, CGRectGetMinY(self.telImg.frame), kScreenWitdh * 0.4, CGRectGetHeight(self.telImg.frame));
+        self.telLaber.textColor = [UIColor blueColor];
+        self.telLaber.font = [UIFont systemFontOfSize:12.0];
+        [self.contentView addSubview:_telLaber];
+    }
+    return _telLaber;
+}
+
+-(UILabel *)addressLaber
+{
+    if (_addressLaber == nil) {
+        self.addressLaber = [[UILabel alloc]init];
+        self.addressLaber.frame = CGRectMake(CGRectGetMinX(self.mapImg.frame), CGRectGetMaxY(self.mapImg.frame)+5, kScreenWitdh * 0.7, 20);
+        self.addressLaber.textColor = [UIColor grayColor];
+        self.addressLaber.font = [UIFont systemFontOfSize:13.0];
+        [self.contentView addSubview:_addressLaber];
+
+    }
+    return _addressLaber;
+}
 
 -(UIButton *)telBut
 {
@@ -117,15 +130,6 @@
     return _telBut;
 }
 
--(UIButton *)mesBut
-{
-    if (_mesBut == nil) {
-        self.mesBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-        self.mesBut.frame = CGRectMake(kScreenWitdh * 0.70, CGRectGetMinY(self.telBut.frame), CGRectGetWidth(self.telBut.frame), CGRectGetHeight(self.telBut.frame));
-        [self.contentView addSubview:_mesBut];
-    }
-    return _mesBut;
-}
 
 
 

@@ -12,12 +12,12 @@
 @property(nonatomic,strong)UIImageView * myImage;
 @property(nonatomic,strong)UILabel * nameLaber;
 @property(nonatomic,strong)UIImageView * sexImg;
-@property(nonatomic,strong)UILabel * ageLaber;
-@property(nonatomic,strong)UILabel * professLaber;
-@property(nonatomic,strong)UIButton * telBut;
-@property(nonatomic,strong)UIButton * mesBut;
 @property(nonatomic,strong)UILabel * companyLaber;
-@property(nonatomic,strong)UILabel * workLaber;
-@property(nonatomic,strong)UILabel * areaLaber;
+@property(nonatomic,strong)UILabel * addressLaber;
+@property(nonatomic,strong)UIImageView * mapImg;
+@property(nonatomic,strong)UILabel * mapLaber;
+@property(nonatomic,strong)UIImageView * telImg;
+@property(nonatomic,strong)UILabel * telLaber;
+@property(nonatomic,strong)UIButton * telBut;
 
 @end

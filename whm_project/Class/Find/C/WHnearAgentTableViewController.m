@@ -15,6 +15,7 @@
 #import "WHgetnearagent.h"
 #import "WHnearagentdata.h"
 #import <UIImageView+WebCache.h>
+#import "WHnearMapViewController.h"
 
 @interface WHnearAgentTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView * tableV;
@@ -47,12 +48,12 @@
 @property(nonatomic,strong)NSMutableArray * imgArry;
 @property(nonatomic,strong)NSMutableArray * mobileArry;
 @property(nonatomic,strong)NSMutableArray * comArry;
-@property(nonatomic,strong)NSMutableArray * ageArry;
 @property(nonatomic,strong)NSMutableArray * sexArry;
-@property(nonatomic,strong)NSMutableArray * profeArry;
-@property(nonatomic,strong)NSMutableArray * workArry;
-@property(nonatomic,strong)NSMutableArray * servArry;
+@property(nonatomic,strong)NSMutableArray * addressArry;
+@property(nonatomic,strong)NSMutableArray * distArry;
+@property(nonatomic,strong)NSMutableArray * telArry;
 
+@property(nonatomic,strong)NSString * s ;
 @end
 
 @implementation WHnearAgentTableViewController
@@ -61,14 +62,15 @@
     [super viewWillAppear:YES];
     
     self.dataArry = [NSMutableArray array];
-    self.ageArry = [NSMutableArray array];
-    self.profeArry = [NSMutableArray array];
     self.imgArry = [NSMutableArray array];
     self.mobileArry = [NSMutableArray array];
     self.sexArry = [NSMutableArray array];
     self.comArry = [NSMutableArray array];
-    self.workArry = [NSMutableArray array];
-    self.servArry = [NSMutableArray array];
+    self.addressArry = [NSMutableArray array];
+    self.distArry = [NSMutableArray array];
+    self.telArry = [NSMutableArray array];
+    
+    
     [self quartDate];
 }
 
@@ -117,24 +119,41 @@
                                          for (WHgetnearagent * near in lists) {
                                             self.nearID = near.id;
                                             self.StrDist = near.dist;
-                                             NSLog(@"oo%@",self.StrDist);
-                                             NSLog(@"ppp%@",near.data.name);
-                                             [self.dataArry addObject:near.data.name];
-                                             [self.ageArry addObject:near.data.age];
-                                             [self.imgArry addObject:near.data.avatar];
-                                             if (near.data.profession == nil) {
-                                                 near.data.profession = @"暂无";
+                                             //小数点处理
+                                             float  f = [near.dist floatValue];
+                                             int a = (int)f;
+                                            // NSLog(@"====%d",a);
+                                             if (a >= 1000) {
+                                                 int  b = a /1000;
+                                                // NSLog(@"LLL%d",b);
+                                                 NSString * s1 = [NSString stringWithFormat:@"%d",b];
+                                                 self.s = [s1 stringByAppendingString:@"KM"];
                                              }
-                                             [self.profeArry addObject:near.data.profession];
+                                             else
+                                             {
+                                                 NSString * s2  = [NSString stringWithFormat:@"%d",a];
+                                                 self.s = [s2 stringByAppendingString:@"M"];
+                                             }
+                                             [self.distArry addObject:self.s];//距离
+                                             
+                                             
+                                             
+                                            // NSLog(@"oo%@",self.StrDist);
+                                            // NSLog(@"ppp%@",near.data.name);
+                                             [self.dataArry addObject:near.data.name];
+            
+                                             [self.imgArry addObject:near.data.avatar];
                                              [self.sexArry addObject:near.data.sex];
                                              if (near.data.com_name == nil) {
-                                                 near.data.com_name = @"暂无";
+                                                 near.data.com_name = @"公司不详";
                                              }
                                              [self.comArry addObject:near.data.com_name];
                                              [self.mobileArry addObject:near.data.mobile];
-                                             [self.workArry addObject:near.data.work_time];
-                                             [self.servArry addObject:near.data.service_area];
-                                             
+                                             if (near.data.job_address == nil) {
+                                                 near.data.job_address = @"地址不详";
+                                             }
+                                             [self.addressArry addObject:near.data.job_address];
+                                             [self.telArry addObject:near.data.mobile];
                                          }
                                          
         
@@ -307,7 +326,6 @@
 #pragma mark 省市点击事件
 -(void)myaddressBtnAction
 {
-    //UIView *backView = [UIView alloc]initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
     _cityChooseBackView.hidden = NO;
     
     self.arrowProImage.image = [UIImage imageNamed:@"arrow.png"];
@@ -377,25 +395,32 @@
         WHnearAgentTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         
              [cell.telBut setBackgroundImage:[UIImage imageNamed:@"tel"] forState:(UIControlStateNormal)];
-            [cell.mesBut setBackgroundImage:[UIImage imageNamed:@"message"] forState:(UIControlStateNormal)];
-            cell.mesBut.tag = 100 + indexPath.row;
+        
         
             cell.telBut.tag = 100 + indexPath.row;
             [cell.telBut addTarget:self action:@selector(telAction:) forControlEvents:(UIControlEventTouchUpInside)];
-            [cell.mesBut addTarget:self action:@selector(mesButAction:) forControlEvents:(UIControlEventTouchUpInside)];
+        
            cell.nameLaber.text = self.dataArry[indexPath.row];
-           [cell.myImage sd_setImageWithURL:[NSURL URLWithString:self.imgArry[indexPath.row]]];
+        
+        if ([self.imgArry[indexPath.row ]isEqualToString:@"0"]) {
+            cell.myImage.image = [UIImage imageNamed:@"Jw_user"];
+        }else
+        {
+            [cell.myImage sd_setImageWithURL:[NSURL URLWithString:self.imgArry[indexPath.row]]];
+        }
+        
         if ([self.sexArry[indexPath.row] isEqualToString: @"2"]) {
             cell.sexImg.image = [UIImage imageNamed:@"test_famale"];
         }else
         {
             cell.sexImg.image = [UIImage imageNamed:@"test_male"];
         }
-        cell.ageLaber.text = self.ageArry[indexPath.row];
-        cell.professLaber.text = self.profeArry[indexPath.row];
-        cell.companyLaber.text = self.comArry[indexPath.row];
-        cell.workLaber.text = self.workArry[indexPath.row];
-        cell.areaLaber.text = self.servArry[indexPath.row];
+        cell.mapImg.image = [UIImage imageNamed:@"maple"];
+        cell.telImg.image = [UIImage imageNamed:@"tel"];
+        cell.addressLaber.text = self.addressArry[indexPath.row];
+        cell.telLaber.text = self.telArry[indexPath.row];
+        cell.companyLaber.text = self.comArry [indexPath.row];
+        cell.mapLaber.text = self.distArry[indexPath.row];
         
         
             return cell;
@@ -441,6 +466,11 @@
         //这里要根据你取出市的id，重新请求数据，然后弹出区的tableview。
         
     }
+    else if (tableView == _tableV)
+    {
+        WHnearMapViewController * map = [[WHnearMapViewController alloc]init];
+        [self.navigationController pushViewController:map animated:YES];
+    }
     else
     {
         
@@ -459,12 +489,6 @@
 
 
 
-
-//信息事件
--(void)mesButAction:(UIButton *)sender
-{
-    NSLog(@"message");
-}
 
 //电话事件
 -(void)telAction:(UIButton *)sender

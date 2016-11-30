@@ -9,10 +9,11 @@
 #import "AppDelegate.h"
 #import "JwTabBarController.h"
 #import "IQKeyboardManager.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
+BMKMapManager *_mapManager;
 
+@interface AppDelegate () <BMKLocationServiceDelegate>
 
-
-@interface AppDelegate ()
 
 @end
 
@@ -28,6 +29,19 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     self.window.rootViewController = [[JwTabBarController alloc] init];
+    // 要使用百度地图，请先启动BaiduMapManager
+    _mapManager = [[BMKMapManager alloc]init];
+    //CSZv39bjvYYwu3D2mO5xKwxc4fwDA01I
+    BOOL ret = [_mapManager start:@"CSZv39bjvYYwu3D2mO5xKwxc4fwDA01I" generalDelegate:self];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    } else {
+        NSLog(@"鉴权成功！");
+    }
+    self.locationService = [[BMKLocationService alloc] init];
+    //    self.locationService.delegate = self;
+    [self.locationService startUserLocationService];
+
     return YES;
 }
 /**

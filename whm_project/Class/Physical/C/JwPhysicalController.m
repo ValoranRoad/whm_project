@@ -172,8 +172,8 @@ typedef enum {
         }
         //年龄
         for (int i = 0 ;i<self.dataArry.count;i++) {
-            if ([_arr2  containsObject:[self.dataArry  objectAtIndex:i]] == NO) {
-                [_arr2  addObject:[self.dataArry  objectAtIndex:i]];
+            if ([_arr2  containsObject:[self.ageArry  objectAtIndex:i]] == NO) {
+                [_arr2  addObject:[self.ageArry  objectAtIndex:i]];
                 NSLog(@"%@",_arr2 );
             }
             
