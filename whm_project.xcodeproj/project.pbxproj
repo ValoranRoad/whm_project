@@ -45,6 +45,7 @@
 		961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B01DE53EE700AEE19A /* HmPhySicalMainView.m */; };
 		961746B41DE57F7500AEE19A /* HmPhysicalGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */; };
 		961DDBB41DE6FDE200ACF3EC /* HmMyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */; };
+		965D77821DEE6B780015F994 /* HmBaoeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D77811DEE6B780015F994 /* HmBaoeCell.m */; };
 		9678ACF21DEBE78800C91373 /* HMConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9678ACF11DEBE78800C91373 /* HMConfirmView.m */; };
 		9678ACF41DEBF14C00C91373 /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 9678ACF31DEBF14C00C91373 /* check_no.png */; };
 		9678ACF61DEBF15700C91373 /* check_yse.png in Resources */ = {isa = PBXBuildFile; fileRef = 9678ACF51DEBF15700C91373 /* check_yse.png */; };
@@ -349,6 +350,8 @@
 		961746B31DE57F7500AEE19A /* HmPhysicalGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmPhysicalGroupView.m; sourceTree = "<group>"; };
 		961DDBB21DE6FDE200ACF3EC /* HmMyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmMyModel.h; sourceTree = "<group>"; };
 		961DDBB31DE6FDE200ACF3EC /* HmMyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmMyModel.m; sourceTree = "<group>"; };
+		965D77801DEE6B780015F994 /* HmBaoeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmBaoeCell.h; sourceTree = "<group>"; };
+		965D77811DEE6B780015F994 /* HmBaoeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmBaoeCell.m; sourceTree = "<group>"; };
 		9678ACF01DEBE78800C91373 /* HMConfirmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMConfirmView.h; sourceTree = "<group>"; };
 		9678ACF11DEBE78800C91373 /* HMConfirmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMConfirmView.m; sourceTree = "<group>"; };
 		9678ACF31DEBF14C00C91373 /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
@@ -862,6 +865,8 @@
 				96BC4DF41DE80A56009E6D96 /* HmDetailsCodeCell.m */,
 				9678ACF01DEBE78800C91373 /* HMConfirmView.h */,
 				9678ACF11DEBE78800C91373 /* HMConfirmView.m */,
+				965D77801DEE6B780015F994 /* HmBaoeCell.h */,
+				965D77811DEE6B780015F994 /* HmBaoeCell.m */,
 				9678ACF31DEBF14C00C91373 /* check_no.png */,
 				9678ACF51DEBF15700C91373 /* check_yse.png */,
 			);
@@ -2283,6 +2288,7 @@
 				9FCA056F1DDD4BD600B6B805 /* WHcoverageViewController.m in Sources */,
 				961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */,
 				9F21CFA61DDBECD40089BADB /* WHtestwoTableViewCell.m in Sources */,
+				965D77821DEE6B780015F994 /* HmBaoeCell.m in Sources */,
 				C86354641DB473B300ED8B16 /* LBXAlertAction.m in Sources */,
 				9F13C2371DC88F0800D5FD56 /* WHlookForViewController.m in Sources */,
 				9FDAE5BB1DDF0136000F91DF /* ZFGenericChart.m in Sources */,
