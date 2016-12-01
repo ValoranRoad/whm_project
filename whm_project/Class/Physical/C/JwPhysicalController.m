@@ -109,7 +109,9 @@ typedef enum {
     
     // 刷新第一行数据
 //    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    self.tabBarController.tabBar.hidden=YES;
+    self.tabBarController.tabBar.hidden= NO;
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
     NSLog(@"%@",self.name);
     if (self.modelType) {
         [self requartData];
@@ -247,14 +249,14 @@ typedef enum {
 //    self.groupMutableArr = [NSMutableArray array];
 //    self.contentMutableDict = [NSMutableDictionary dictionary];
 
-    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
+//    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
 }
 -(void)left:(UIBarButtonItem *)sender
 {
-    self.tabBarController.tabBar.hidden=NO;
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    self.tabBarController.tabBar.hidden= NO;
+//    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -263,7 +265,7 @@ typedef enum {
 -(void)setupUI
 {
     self.view.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];
-    self.tableVB = [[HmMultistageTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44)];
+    self.tableVB = [[HmMultistageTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44 -15)];
     _tableVB.delegate = self;
     _tableVB.dataSource = self;
     _tableVB.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];

@@ -32,11 +32,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+   
     [self setUI];
+     self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 }
 
-
+-(void)left:(UIBarButtonItem *)sender
+{
+        self.tabBarController.tabBar.hidden= NO;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 -(void)setUI
 {
     

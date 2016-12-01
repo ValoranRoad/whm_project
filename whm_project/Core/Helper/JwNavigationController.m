@@ -47,6 +47,7 @@
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.viewControllers.count) {
         viewController.hidesBottomBarWhenPushed = YES;
+        
     }
     [super pushViewController:viewController animated:animated];
 }

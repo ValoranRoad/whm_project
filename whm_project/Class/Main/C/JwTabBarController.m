@@ -97,7 +97,44 @@
 
 - (void)setupControllers{
     
-   JwHomeController *home = [[JwHomeController alloc] init];
+    
+    JwPhysicalController *physical = [[JwPhysicalController alloc] init];
+    JwLookForController *lookfor = [[JwLookForController alloc] init];
+    JwFindController *find = [[JwFindController alloc] init];
+    JwLoginController *login = [[JwLoginController alloc] init];
+    WHpersonCenterViewController *center = [[WHpersonCenterViewController alloc] init];
+   
+    JwNavigationController *physicalVC = [[JwNavigationController alloc] initWithRootViewController:physical];
+    JwNavigationController *findVC = [[JwNavigationController alloc] initWithRootViewController:find];
+    JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
+    JwNavigationController *loginVC = [[JwNavigationController alloc] initWithRootViewController:login];
+    JwNavigationController *centerVC = [[JwNavigationController alloc] initWithRootViewController:center];
+    physicalVC.tabBarItem.image = [[UIImage imageNamed:@"physical"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    lookforVC.tabBarItem.image = [[UIImage imageNamed:@"lookfor"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    findVC.tabBarItem.image = [[UIImage imageNamed:@"find"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    centerVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    loginVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    lookforVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
+    findVC.tabBarItem.selectedImage = [UIImage imageNamed:@"find_h"];
+    findVC.tabBarItem.tag = 101;
+    loginVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
+     centerVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
+    physicalVC.tabBarItem.selectedImage = [UIImage imageNamed:@"physical_h"];
+    physical.title = physicalVC.title = @"体检";
+    lookfor.title = lookforVC.title = @"找险";
+    find.title = findVC.title = @"发现";
+    login.title = loginVC.title = @"我的";
+    center.title = centerVC.title = @"我的";
+    if ([JwUserCenter sharedCenter].key == nil) {
+    self.viewControllers = @[physicalVC, lookforVC, findVC, loginVC];
+    }
+    else
+    {
+        self.viewControllers = @[physicalVC, lookforVC, findVC, centerVC];
+    }
+    [self setupView];
+    /*
+    JwHomeController *home = [[JwHomeController alloc] init];
     JwPhysicalController *physical = [[JwPhysicalController alloc] init];
     JwLookForController *lookfor = [[JwLookForController alloc] init];
     JwFindController *find = [[JwFindController alloc] init];
@@ -132,7 +169,7 @@
     centerVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     loginVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     
-  home.title = homeVC.title = @"首页";
+   home.title = homeVC.title = @"首页";
     physical.title = physicalVC.title = @"体检";
     lookfor.title = lookforVC.title = @"找险";
     find.title = findVC.title = @"发现";
@@ -154,7 +191,7 @@
 //        self.viewControllers = @[ physicalVC, lookforVC, findVC, centerVC];
 //    }
 
-    
+    */
 }
 
 - (void)setupView{
@@ -184,9 +221,14 @@
     
     //中间按钮pop控制器
     DLog(@"中间点击事件");
+    JwFindController * lookfor = [[JwFindController alloc]init];
+    JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
+    lookfor.title = lookforVC.title = @"发现";
+    /*
     JwLookForController *lookfor = [[JwLookForController alloc] init];
     JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
     lookfor.title = lookforVC.title = @"找险";
+     */
     
     [self presentViewController:lookforVC animated:YES completion:nil];
 }
