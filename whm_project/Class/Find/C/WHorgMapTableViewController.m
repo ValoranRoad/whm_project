@@ -1,26 +1,23 @@
 //
-//  WHnearMapViewController.m
+//  WHorgMapTableViewController.m
 //  whm_project
 //
-//  Created by 王义国 on 16/11/30.
+//  Created by 王义国 on 16/12/1.
 //  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "WHnearMapViewController.h"
+#import "WHorgMapTableViewController.h"
 #import <BaiduMapAPI_Map/BMKMapView.h>
 #import <BaiduMapAPI_Map/BMKAnnotationView.h>
 #import <BaiduMapAPI_Location/BMKLocationService.h>
 #import <BaiduMapAPI_Utils/BMKGeometry.h>
 #import <BaiduMapAPI_Search/BMKGeocodeSearch.h>
-#import "WHmaphelp.h"
 #import <UIImageView+WebCache.h>
+#import "MacroUtility.h"
 #define SCREENW [UIScreen mainScreen].bounds.size.width
 #define SCREENH [UIScreen mainScreen].bounds.size.height
 
-
-//
-
-@interface WHnearMapViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>{
+@interface WHorgMapTableViewController ()<BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>{
     BMKMapView *_mapView;
     BMKLocationService *_locService;
     BMKGeoCodeSearch *_geoSearch;
@@ -28,22 +25,25 @@
 /** 用户当前位置*/
 @property(nonatomic,strong) BMKUserLocation *userLocation;
 @property(nonatomic,strong)UIView * myView;
-@property(nonatomic,strong)UIImageView * myImg;
-@property(nonatomic,strong)UIImageView* sexImg;
-@property(nonatomic,strong)UILabel * ageLaber;
-@property(nonatomic,strong)UILabel * nameLaber;
-@property(nonatomic,strong)UILabel * myLaber;
-@property(nonatomic,strong)UIButton * mesBut;
+@property(nonatomic,strong)UILabel * titLaber;
+@property(nonatomic,strong)UILabel * addressLaber ;
+@property(nonatomic,strong)UIImageView * mapImg;
+@property(nonatomic,strong)UILabel * mapLaber;
 @property(nonatomic,strong)UIButton * telBut;
 @property(nonatomic,strong)UIButton * rodeBut;
+
+
+
 @end
 
-@implementation WHnearMapViewController
+@implementation WHorgMapTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    
 }
+
 -(void)setUI
 {
     [self setupMapViewWithParam];
@@ -51,65 +51,36 @@
     self.title = @"位置";
     self.myView = [[UIView alloc]init];
     self.myView.frame = CGRectMake(0, SCREENH * 0.75, SCREENW, SCREENH * 0.25);
-   // self.myView.backgroundColor = [UIColor redColor];
+    // self.myView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_myView];
+    self.titLaber = [[UILabel alloc]init];
+    self.titLaber.frame =  CGRectMake(10, 10, kScreenWitdh * 0.65, 30);
+    self.titLaber.font = [UIFont systemFontOfSize:15.0];
+    [self.myView addSubview:_titLaber];
+    self.titLaber.text = self.p_Name;
     //
-    self.myImg = [[UIImageView alloc]init];
-    self.myImg.frame = CGRectMake(10, 10, SCREENW * 0.15,SCREENW * 0.15);
-    self.myImg.layer.masksToBounds = YES;
-    self.myImg.layer.cornerRadius = SCREENW * 0.075;
-    //self.myImg.image = [UIImage imageNamed:@"test_head"];
-    if (self.p_myImg.length == 0) {
-        self.myImg.image = [UIImage imageNamed:@"Jw_user"];
-    }else
-    {
-    [self.myImg sd_setImageWithURL:[NSURL URLWithString:self.p_myImg]];
-    }
+    self.addressLaber = [[UILabel alloc]init];
+    self.addressLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+3, kScreenWitdh * 0.7, 20);
+    self.addressLaber.textColor = [UIColor grayColor];
+    self.addressLaber.font = [UIFont systemFontOfSize:13.0];
+    [self.myView addSubview:_addressLaber];
+    self.addressLaber.text = self.p_Address;
     
-    [self.myView addSubview:_myImg];
     //
-    self.nameLaber = [[UILabel alloc]init];
-    self.nameLaber.frame = CGRectMake(CGRectGetMaxX(self.myImg.frame)+3, CGRectGetMinY(self.myImg.frame), SCREENW * 0.15, 30);
-    self.nameLaber.textColor = [UIColor grayColor];
-    self.nameLaber.font = [UIFont systemFontOfSize:15.0];
-    [self.myView addSubview:_nameLaber];
-    self.nameLaber.text = self.p_myName;
+    self.mapImg = [[UIImageView alloc]init];
+    self.mapImg.frame = CGRectMake(CGRectGetMinX(self.addressLaber.frame), CGRectGetMaxY(self.addressLaber.frame)+2, 20, 20);
+    self.mapImg.image = [UIImage imageNamed:@"maple"];
+    [self.myView addSubview:_mapImg];
     //
-    self.sexImg = [[UIImageView alloc]init];
-    self.sexImg.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+2, CGRectGetMinY(self.nameLaber.frame)+6, 20, 20);
-    [self.myView addSubview:_sexImg];
-    
-    //self.sexImg.image = [UIImage imageNamed:@"test_male"];
-    if ([self.p_mySex isEqualToString:@"2"]) {
-        self.sexImg.image = [UIImage imageNamed:@"test_famale"];
-    }
-    else
-    {
-        self.sexImg.image = [UIImage imageNamed:@"test_male"];
-    }
-    //
-    self.ageLaber = [[UILabel alloc]init];
-    self.ageLaber.frame = CGRectMake(CGRectGetMaxX(self.sexImg.frame)+3, CGRectGetMinY(self.sexImg.frame), SCREENW * 0.15, 20);
-    self.ageLaber.textColor = [UIColor grayColor];
-    self.ageLaber.font = [UIFont systemFontOfSize:13.0];
-    [self.myView addSubview:_ageLaber];
-    self.ageLaber.text = [self.p_myAge stringByAppendingString:@"岁"];
-    //
-    self.myLaber = [[UILabel alloc]init];
-    self.myLaber.frame = CGRectMake(CGRectGetMinX(self.nameLaber.frame), CGRectGetMaxY(self.nameLaber.frame)+5, SCREENW * 0.5, 20);
-    self.myLaber.textColor = [UIColor grayColor];
-    self.myLaber.font = [UIFont systemFontOfSize:13.0];
-    [self.myView addSubview:_myLaber];
-    //self.myLaber.text = @"新华人寿 经理 从业5年 全国";
-    self.myLaber.text = self.p_myPro;
-    //
-    self.mesBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.mesBut.frame = CGRectMake(SCREENW * 0.6, 10, SCREENW * 0.1, SCREENW * 0.1);
-    [self.mesBut setBackgroundImage:[UIImage imageNamed:@"message"] forState:(UIControlStateNormal)];
-    [self.myView addSubview:_mesBut];
+    self.mapLaber = [[UILabel alloc]init];
+    self.mapLaber.frame = CGRectMake(CGRectGetMaxX(self.mapImg.frame)+5, CGRectGetMinY(self.mapImg.frame), kScreenWitdh * 0.20, CGRectGetHeight(self.mapImg.frame));
+    self.mapLaber.textColor = [UIColor greenColor];
+    self.mapLaber.font = [UIFont systemFontOfSize:13.0];
+    [self.myView addSubview:_mapLaber];
+    self.mapLaber.text = self.p_mapLaber;
     //
     self.telBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.telBut.frame = CGRectMake(CGRectGetMaxX(self.mesBut.frame)+5, CGRectGetMinY(self.mesBut.frame), SCREENW * 0.1, CGRectGetHeight(self.mesBut.frame));
+    self.telBut.frame = CGRectMake(kScreenWitdh *0.7, CGRectGetMinY(self.titLaber.frame), SCREENW * 0.1, SCREENW * 0.1);
     [self.telBut setBackgroundImage:[UIImage imageNamed:@"tel"] forState:(UIControlStateNormal)];
     [self.myView addSubview:_telBut];
     [self.telBut addTarget:self action:@selector(telAction:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -119,8 +90,7 @@
     self.rodeBut.frame = CGRectMake(CGRectGetMaxX(self.telBut.frame)+5, CGRectGetMinY(self.telBut.frame), CGRectGetWidth(self.telBut.frame), CGRectGetHeight(self.telBut.frame));
     [self.rodeBut setBackgroundImage:[UIImage imageNamed:@"rideImg"] forState:(UIControlStateNormal)];
     [self.myView addSubview:_rodeBut];
-    
-    
+
     
 }
 #pragma mark - 设置百度地图
@@ -146,9 +116,6 @@
     userlocationStyle.isAccuracyCircleShow = NO;
 }
 
-
-
-
 #pragma mark - BMKLocationServiceDelegate 用户位置更新后，会调用此函数
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
     [_mapView updateLocationData:userLocation];// 动态更新我的位置数据
@@ -163,16 +130,10 @@
 #pragma mark 根据坐标返回反地理编码搜索结果
 -(void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
     BMKAddressComponent *addressComponent = result.addressDetail;
-   // self.city = addressComponent.city;
+    // self.city = addressComponent.city;
     NSString *title = [NSString stringWithFormat:@"%@%@%@%@", addressComponent.city, addressComponent.district, addressComponent.streetName, addressComponent.streetNumber];
     NSLog(@"%s -- %@", __func__, title);
 }
-
-//- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
-//    [_mapView updateLocationData:userLocation];// 动态更新我的位置数据
-//    self.userLocation = userLocation;
-//    [_mapView setCenterCoordinate:userLocation.location.coordinate];// 当前地图的中心点
-//}
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [_mapView viewWillDisappear];
@@ -188,10 +149,9 @@
     _locService.delegate = self;
     _geoSearch.delegate = self;
 }
-//电话事件
+
 -(void)telAction:(UIButton *)sender
 {
-  
     UIAlertView *view = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你确定要拨打电话吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
     
     [view show];
@@ -202,19 +162,55 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0 ) {
-        NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",self.p_myMobile];
+        NSMutableString * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",self.p_Mobile];
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
         
     }
 }
 
-#pragma mark -BMKMapViewDelegate
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
+
+
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

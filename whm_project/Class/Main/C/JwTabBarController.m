@@ -97,7 +97,7 @@
 
 - (void)setupControllers{
     
-    JwHomeController *home = [[JwHomeController alloc] init];
+   JwHomeController *home = [[JwHomeController alloc] init];
     JwPhysicalController *physical = [[JwPhysicalController alloc] init];
     JwLookForController *lookfor = [[JwLookForController alloc] init];
     JwFindController *find = [[JwFindController alloc] init];
@@ -113,7 +113,7 @@
     JwNavigationController *centerVC = [[JwNavigationController alloc] initWithRootViewController:center];
     JwNavigationController *loginVC = [[JwNavigationController alloc] initWithRootViewController:login];
     
-    homeVC.tabBarItem.image = [[UIImage imageNamed:@"home"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+   homeVC.tabBarItem.image = [[UIImage imageNamed:@"home"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     physicalVC.tabBarItem.image = [[UIImage imageNamed:@"physical"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     lookforVC.tabBarItem.image = [[UIImage imageNamed:@"lookfor"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     lookforVC.tabBarItem.tag = 101;
@@ -124,15 +124,15 @@
     centerVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     loginVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     
-    homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"home_h"];
+   homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"home_h"];
     physicalVC.tabBarItem.selectedImage = [UIImage imageNamed:@"physical_h"];
-    lookforVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
+   lookforVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
     findVC.tabBarItem.selectedImage = [UIImage imageNamed:@"find_h"];
     
     centerVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     loginVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     
-    home.title = homeVC.title = @"首页";
+  home.title = homeVC.title = @"首页";
     physical.title = physicalVC.title = @"体检";
     lookfor.title = lookforVC.title = @"找险";
     find.title = findVC.title = @"发现";
@@ -147,6 +147,14 @@
     }else{
         self.viewControllers = @[homeVC, physicalVC, lookforVC, findVC, centerVC];
     }
+    
+//    if ([JwUserCenter sharedCenter].key == nil) {
+//        self.viewControllers = @[ physicalVC, lookforVC, findVC, loginVC];
+//    }else{
+//        self.viewControllers = @[ physicalVC, lookforVC, findVC, centerVC];
+//    }
+
+    
 }
 
 - (void)setupView{

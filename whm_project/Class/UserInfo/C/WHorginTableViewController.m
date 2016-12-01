@@ -12,7 +12,8 @@
 #import "CityTableViewCell.h"
 #import "JGProgressHelper.h"
 #import "WHorganization.h"
-
+#import "WHorgMapTableViewController.h"
+#import "WHorgListTableViewController.h"
 
 @interface WHorginTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)WHorginTableViewCell * cell;
@@ -60,6 +61,8 @@
     id hud = [JGProgressHelper showProgressInView:self.view];
    [self.dataService getorganizationWithLng:stringOne
                                         lat:stringTwo
+                                   distance:@""
+                                        map:@"1"
                                     success:^(NSArray *lists) {
                                         [hud hide:YES];
                                         self.dataArry = [NSMutableArray arrayWithArray:lists];
@@ -92,7 +95,9 @@
 //右边点击事件
 -(void)aa:(UIBarButtonItem *)sender
 {
-    NSLog(@"lll");
+    //NSLog(@"lll");
+    WHorgListTableViewController * orgList = [[WHorgListTableViewController alloc]init];
+    [self.navigationController pushViewController:orgList animated:YES];
 }
 
 //设计界面
@@ -370,6 +375,17 @@
         self.areaTableView.hidden = NO;
         //这里要根据你取出市的id，重新请求数据，然后弹出区的tableview。
         
+    }
+    else if (tableView == _tableV)
+    {
+        WHorgMapTableViewController * orgMap = [[WHorgMapTableViewController alloc]init];
+        WHorganization * model = self.dataArry[indexPath.row];
+        orgMap.p_Name = model.name;
+        orgMap.p_Address = model.address;
+        orgMap.p_mapLaber = model.distance;
+        orgMap.p_Mobile = model.tel;
+        
+        [self.navigationController pushViewController:orgMap animated:YES];
     }
     else
     {

@@ -10,4 +10,10 @@
 #import "JwBackBaseController.h"
 @interface WHnearMapViewController : JwBackBaseController
 
+@property(nonatomic,strong)NSString * p_myImg;
+@property(nonatomic,strong)NSString * p_myName;
+@property(nonatomic,strong)NSString * p_mySex;
+@property(nonatomic,strong)NSString * p_myAge;
+@property(nonatomic,strong)NSString * p_myMobile;
+@property(nonatomic,strong)NSString * p_myPro;
 @end

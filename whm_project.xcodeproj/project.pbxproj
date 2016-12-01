@@ -84,6 +84,7 @@
 		9F14C1771DC97E38003A9D13 /* WHprevTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1761DC97E38003A9D13 /* WHprevTableViewCell.m */; };
 		9F14C17A1DC987E3003A9D13 /* WHgethonor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C1791DC987E3003A9D13 /* WHgethonor.m */; };
 		9F14C17D1DC9DCDA003A9D13 /* WHmicro.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */; };
+		9F1A73EC1DEF31F300D326E4 /* WHmaplistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1A73EB1DEF31F300D326E4 /* WHmaplistTableViewController.m */; };
 		9F21CFA61DDBECD40089BADB /* WHtestwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F21CFA51DDBECD40089BADB /* WHtestwoTableViewCell.m */; };
 		9F21CFA91DDC09480089BADB /* WHsecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F21CFA81DDC09480089BADB /* WHsecond.m */; };
 		9F21CFAC1DDC09E20089BADB /* WHinterests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F21CFAB1DDC09E20089BADB /* WHinterests.m */; };
@@ -129,6 +130,8 @@
 		9FA6846B1DE2E7DB003F70E3 /* WHslipListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6846A1DE2E7DB003F70E3 /* WHslipListTableViewController.m */; };
 		9FA6846E1DE2EA71003F70E3 /* WHgetpolicys.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6846D1DE2EA71003F70E3 /* WHgetpolicys.m */; };
 		9FA684711DE2F3BA003F70E3 /* WHslipListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA684701DE2F3BA003F70E3 /* WHslipListTableViewCell.m */; };
+		9FAE02661DF0163B000B7CC3 /* WHorgMapTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE02651DF0163B000B7CC3 /* WHorgMapTableViewController.m */; };
+		9FAE02691DF01CD0000B7CC3 /* WHorgListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FAE02681DF01CD0000B7CC3 /* WHorgListTableViewController.m */; };
 		9FBAA04E1DBC88CB00C288E3 /* WHgetuseinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */; };
 		9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */; };
 		9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */; };
@@ -452,6 +455,8 @@
 		9F14C1791DC987E3003A9D13 /* WHgethonor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgethonor.m; sourceTree = "<group>"; };
 		9F14C17B1DC9DCDA003A9D13 /* WHmicro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmicro.h; sourceTree = "<group>"; };
 		9F14C17C1DC9DCDA003A9D13 /* WHmicro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmicro.m; sourceTree = "<group>"; };
+		9F1A73EA1DEF31F300D326E4 /* WHmaplistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmaplistTableViewController.h; sourceTree = "<group>"; };
+		9F1A73EB1DEF31F300D326E4 /* WHmaplistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmaplistTableViewController.m; sourceTree = "<group>"; };
 		9F21CFA41DDBECD40089BADB /* WHtestwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHtestwoTableViewCell.h; sourceTree = "<group>"; };
 		9F21CFA51DDBECD40089BADB /* WHtestwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHtestwoTableViewCell.m; sourceTree = "<group>"; };
 		9F21CFA71DDC09480089BADB /* WHsecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsecond.h; sourceTree = "<group>"; };
@@ -536,6 +541,10 @@
 		9FA6846D1DE2EA71003F70E3 /* WHgetpolicys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetpolicys.m; sourceTree = "<group>"; };
 		9FA6846F1DE2F3BA003F70E3 /* WHslipListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHslipListTableViewCell.h; sourceTree = "<group>"; };
 		9FA684701DE2F3BA003F70E3 /* WHslipListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHslipListTableViewCell.m; sourceTree = "<group>"; };
+		9FAE02641DF0163B000B7CC3 /* WHorgMapTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorgMapTableViewController.h; sourceTree = "<group>"; };
+		9FAE02651DF0163B000B7CC3 /* WHorgMapTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorgMapTableViewController.m; sourceTree = "<group>"; };
+		9FAE02671DF01CD0000B7CC3 /* WHorgListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorgListTableViewController.h; sourceTree = "<group>"; };
+		9FAE02681DF01CD0000B7CC3 /* WHorgListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHorgListTableViewController.m; sourceTree = "<group>"; };
 		9FBAA04C1DBC88CB00C288E3 /* WHgetuseinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetuseinfo.h; sourceTree = "<group>"; };
 		9FBAA04D1DBC88CB00C288E3 /* WHgetuseinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetuseinfo.m; sourceTree = "<group>"; };
 		9FBAA04F1DBC9D5100C288E3 /* WHcompanyDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHcompanyDetail.h; sourceTree = "<group>"; };
@@ -1334,6 +1343,12 @@
 				9FE083731DEED80200C2501E /* WHnearMapViewController.m */,
 				9FE083751DEEDF7E00C2501E /* WHmaphelp.h */,
 				9FE083761DEEDF7E00C2501E /* WHmaphelp.m */,
+				9F1A73EA1DEF31F300D326E4 /* WHmaplistTableViewController.h */,
+				9F1A73EB1DEF31F300D326E4 /* WHmaplistTableViewController.m */,
+				9FAE02641DF0163B000B7CC3 /* WHorgMapTableViewController.h */,
+				9FAE02651DF0163B000B7CC3 /* WHorgMapTableViewController.m */,
+				9FAE02671DF01CD0000B7CC3 /* WHorgListTableViewController.h */,
+				9FAE02681DF01CD0000B7CC3 /* WHorgListTableViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -2325,6 +2340,7 @@
 				9FCA056C1DDD4AF600B6B805 /* WHstatisViewController.m in Sources */,
 				9F63ED401DCB6CDB00404AE7 /* WHhistoryTableViewController.m in Sources */,
 				9FDAE5B31DDF0136000F91DF /* ZFYAxisLine.m in Sources */,
+				9F1A73EC1DEF31F300D326E4 /* WHmaplistTableViewController.m in Sources */,
 				9F35CE741DD6AD7C003F0C78 /* LYTestTwoViewController.m in Sources */,
 				C8343DF81DB5B77800999301 /* JwPhysicalController.m in Sources */,
 				C8343DFB1DB5B78B00999301 /* JwLookForController.m in Sources */,
@@ -2383,6 +2399,7 @@
 				C863542E1DB473A500ED8B16 /* IQNSArray+Sort.m in Sources */,
 				C86353E41DB4672700ED8B16 /* JwNavigationController.m in Sources */,
 				9FDAE5BC1DDF0136000F91DF /* ZFHorizontalAxis.m in Sources */,
+				9FAE02661DF0163B000B7CC3 /* WHorgMapTableViewController.m in Sources */,
 				C86353C91DB4669A00ED8B16 /* JwDataService.m in Sources */,
 				9FC53A3A1DC5D515008340B0 /* WHrecommentTableViewController.m in Sources */,
 				961358C41DB6258900F5107F /* HmSelectProductController.m in Sources */,
@@ -2423,6 +2440,7 @@
 				9F0101D01DBF1F2300AF13C9 /* WHget_user_realtion.m in Sources */,
 				9F13C2341DC8489F00D5FD56 /* WHgetintroduce.m in Sources */,
 				C8C10CB41DB9C06F00A5FB9A /* JwLoginController.m in Sources */,
+				9FAE02691DF01CD0000B7CC3 /* WHorgListTableViewController.m in Sources */,
 				9FCA056F1DDD4BD600B6B805 /* WHcoverageViewController.m in Sources */,
 				961746B11DE53EE700AEE19A /* HmPhySicalMainView.m in Sources */,
 				9F21CFA61DDBECD40089BADB /* WHtestwoTableViewCell.m in Sources */,

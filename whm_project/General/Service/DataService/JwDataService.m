@@ -734,10 +734,14 @@
 //获取发现里边分支机构
 -(void)getorganizationWithLng:(NSString *)lng
                           lat:(NSString *)lat
+                     distance:(NSString *)distance
+                          map:(NSString *)map
                       success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSDictionary * param = [@{@"lng":lng ,
-                              @"lat":lat}mutableCopy];
+                              @"lat":lat,
+                              @"distance":@"100.00",
+                              @"map":map}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {
         

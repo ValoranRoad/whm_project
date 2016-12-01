@@ -201,6 +201,8 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
 //获取发现里边分支机构
 -(void)getorganizationWithLng:(NSString *)lng
                           lat:(NSString *)lat
+                     distance:(NSString *)distance
+                          map:(NSString *)map
                       success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 

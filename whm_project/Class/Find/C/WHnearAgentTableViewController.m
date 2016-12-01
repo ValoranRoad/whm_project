@@ -16,6 +16,7 @@
 #import "WHnearagentdata.h"
 #import <UIImageView+WebCache.h>
 #import "WHnearMapViewController.h"
+#import "WHmaplistTableViewController.h"
 
 @interface WHnearAgentTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView * tableV;
@@ -52,6 +53,9 @@
 @property(nonatomic,strong)NSMutableArray * addressArry;
 @property(nonatomic,strong)NSMutableArray * distArry;
 @property(nonatomic,strong)NSMutableArray * telArry;
+@property(nonatomic,strong)NSMutableArray * mtitArry;
+@property(nonatomic,strong)NSMutableArray * ageArry;
+
 
 @property(nonatomic,strong)NSString * s ;
 @end
@@ -69,6 +73,9 @@
     self.addressArry = [NSMutableArray array];
     self.distArry = [NSMutableArray array];
     self.telArry = [NSMutableArray array];
+    //
+    self.mtitArry = [NSMutableArray array];
+    self.ageArry = [NSMutableArray array];
     
     
     [self quartDate];
@@ -96,6 +103,8 @@
 -(void)aa:(UIBarButtonItem *)sender
 {
     NSLog(@"lll");
+    WHmaplistTableViewController * mapList = [[WHmaplistTableViewController alloc]init];
+    [self.navigationController pushViewController:mapList animated:YES];
 }
 
 //数据请求
@@ -154,6 +163,24 @@
                                              }
                                              [self.addressArry addObject:near.data.job_address];
                                              [self.telArry addObject:near.data.mobile];
+                                             
+                                             if (near.data.work_time == nil) {
+                                                 near.data.work_time = @"";
+                                             }
+                                             if (near.data.profession == nil) {
+                                                 near.data.profession = @"";
+                                             }
+                                             if (near.data.service_area == nil) {
+                                                 near.data.service_area = @"";
+                                             }
+                                             NSString * strLab = [near.data.com_name stringByAppendingString:near.data.profession];
+                                             NSString * strWork = [strLab stringByAppendingString:near.data.work_time];
+                                             NSString * strArea = [strWork stringByAppendingString:near.data.service_area];
+                                             [self.mtitArry addObject:strArea];
+                                             [self.ageArry addObject:near.data.age];
+                                             
+                                             
+                                             
                                          }
                                          
         
@@ -469,6 +496,13 @@
     else if (tableView == _tableV)
     {
         WHnearMapViewController * map = [[WHnearMapViewController alloc]init];
+        map.p_myImg = self.imgArry[indexPath.row];
+        map.p_myName = self.dataArry[indexPath.row];
+        map.p_mySex = self.sexArry[indexPath.row];
+        map.p_myPro = self.mtitArry[indexPath.row];
+        map.p_myMobile = self.mobileArry[indexPath.row];
+        map.p_myAge = self.ageArry[indexPath.row];
+        
         [self.navigationController pushViewController:map animated:YES];
     }
     else
