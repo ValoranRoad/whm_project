@@ -10,6 +10,8 @@
 #import "JwTabBarController.h"
 #import "IQKeyboardManager.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
+#import "WZGuideViewController.h"
+
 BMKMapManager *_mapManager;
 
 @interface AppDelegate () <BMKLocationServiceDelegate>
@@ -42,7 +44,21 @@ BMKMapManager *_mapManager;
     //    self.locationService.delegate = self;
     [self.locationService startUserLocationService];
 
-    return YES;
+    //引导页
+    //增加标识，用于判断是否是第一次启动应用...
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        
+    }
+    
+   
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [WZGuideViewController show];
+    }
+
+       return YES;
 }
 /**
  *  键盘高度计算以及BarTool
@@ -55,6 +71,7 @@ BMKMapManager *_mapManager;
     manager.enableAutoToolbar = NO;
     
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

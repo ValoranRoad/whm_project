@@ -67,6 +67,7 @@
 		9F0A20BE1DBDB972004C5F67 /* WHsavesetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20BD1DBDB972004C5F67 /* WHsavesetupTableViewController.m */; };
 		9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */; };
 		9F0A20C71DBDEAA2004C5F67 /* WHtelephoneNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20C61DBDEAA2004C5F67 /* WHtelephoneNumViewController.m */; };
+		9F0C8B7E1DF10E120076547B /* WZGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0C8B7D1DF10E120076547B /* WZGuideViewController.m */; };
 		9F0EE5831DBB293900B68F76 /* WHsexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE5821DBB293900B68F76 /* WHsexViewController.m */; };
 		9F0EE58C1DBB52EB00B68F76 /* WHorganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE58B1DBB52EB00B68F76 /* WHorganization.m */; };
 		9F0EE58F1DBB547C00B68F76 /* WHhotcompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0EE58E1DBB547C00B68F76 /* WHhotcompany.m */; };
@@ -422,6 +423,8 @@
 		9F0A20C31DBDDFC4004C5F67 /* WHupdateTelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHupdateTelView.m; sourceTree = "<group>"; };
 		9F0A20C51DBDEAA2004C5F67 /* WHtelephoneNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHtelephoneNumViewController.h; sourceTree = "<group>"; };
 		9F0A20C61DBDEAA2004C5F67 /* WHtelephoneNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHtelephoneNumViewController.m; sourceTree = "<group>"; };
+		9F0C8B7C1DF10E120076547B /* WZGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGuideViewController.h; sourceTree = "<group>"; };
+		9F0C8B7D1DF10E120076547B /* WZGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGuideViewController.m; sourceTree = "<group>"; };
 		9F0EE5811DBB293900B68F76 /* WHsexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHsexViewController.h; sourceTree = "<group>"; };
 		9F0EE5821DBB293900B68F76 /* WHsexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHsexViewController.m; sourceTree = "<group>"; };
 		9F0EE58A1DBB52EB00B68F76 /* WHorganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHorganization.h; sourceTree = "<group>"; };
@@ -968,6 +971,15 @@
 				9678ACF51DEBF15700C91373 /* check_yse.png */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		9F0C8B7B1DF10E120076547B /* classesguide */ = {
+			isa = PBXGroup;
+			children = (
+				9F0C8B7C1DF10E120076547B /* WZGuideViewController.h */,
+				9F0C8B7D1DF10E120076547B /* WZGuideViewController.m */,
+			);
+			path = classesguide;
 			sourceTree = "<group>";
 		};
 		9F1073901DD08CEC00725A84 /* JSDropDownMenu */ = {
@@ -1795,6 +1807,7 @@
 		C86354071DB4680300ED8B16 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9F0C8B7B1DF10E120076547B /* classesguide */,
 				9FE0834F1DEECCE900C2501E /* BaiduMapAPI */,
 				9F436CA61DED73F3000FBE94 /* CCLocation */,
 				9FDAE5601DDF0136000F91DF /* ZFChart */,
@@ -2418,6 +2431,7 @@
 				C84EAA0D1DB76A980098C2A1 /* UIImage+Color.m in Sources */,
 				C83D066E1DCB29BF0028A681 /* JwRela.m in Sources */,
 				C863547E1DB4969A00ED8B16 /* NSString+PinYin.m in Sources */,
+				9F0C8B7E1DF10E120076547B /* WZGuideViewController.m in Sources */,
 				9F0A20C71DBDEAA2004C5F67 /* WHtelephoneNumViewController.m in Sources */,
 				9F21CFAC1DDC09E20089BADB /* WHinterests.m in Sources */,
 				9F14C17D1DC9DCDA003A9D13 /* WHmicro.m in Sources */,
