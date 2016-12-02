@@ -152,7 +152,7 @@
 {
     [super viewDidLoad];
     
-    NSArray *imageNameArray = [NSArray arrayWithObjects:@"guide1", @"guide2", @"guide3",@"guode4", nil];
+    NSArray *imageNameArray = [NSArray arrayWithObjects:@"1136-1", @"1136-2", @"1136-3",@"1136-4", nil];
     
     
     _pageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];

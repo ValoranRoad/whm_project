@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "guide3.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Jw_clear.png",
       "scale" : "2x"
     },
     {
