@@ -307,7 +307,7 @@
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"576bac6d67e58e0b6b000a36"
                                       shareText:[NSString stringWithFormat:@"%@", @"产品详情"]
-                                     shareImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.url]]]
+                                     shareImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.companyLogo]]]
                                 shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToSina, UMShareToQQ, UMShareToQzone, UMShareToTencent]
                                        delegate:self];
     

@@ -34,8 +34,8 @@
 @class WHgetnearagent;
 @class WHgetfollowList;
 @class WHproductList;
-//
 @class WHmin;
+@class WHgetnewsdetail;
 @interface JwDataService : JwServiceBase
 
 
@@ -228,7 +228,9 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                     type:(NSString *)type
                  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
-
+//新闻详情接口
+-(void)getnewsdetailWithNews_id:(NSString *)news_id
+ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
 @end

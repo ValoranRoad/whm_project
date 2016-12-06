@@ -32,7 +32,7 @@
 #import "WHgetpolicys.h"
 #import "WHgetnearagent.h"
 #import "WHproductList.h"
-//
+#import "WHgetnewsdetail.h"
 #import "WHmin.h"
 #import "WHgetfollowList.h"
 
@@ -851,6 +851,30 @@
         NSArray *prodlists = [WHnews  arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
             success(prodlists);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+}
+
+//新闻详情接口
+-(void)getnewsdetailWithNews_id:(NSString *)news_id
+                        success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"news_id":news_id}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_news_detail"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_news_detail" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray * details = [WHgetnewsdetail arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(details);
         }
         
     } failure:^(NSError *error) {

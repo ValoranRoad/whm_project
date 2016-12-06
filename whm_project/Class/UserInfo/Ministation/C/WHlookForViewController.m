@@ -25,7 +25,8 @@
 #import "WHmin.h"
 #import "WHgentinfo.h"
 #import "UMSocial.h"
-#define BASE_REST_URL @"https://www.kuaibao365.com"
+#define BASE_REST_URL @"https://www.kuaibao365.com/index/agent"
+#import "WHnewsdetailViewController.h"
 @interface WHLookforViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UITextViewDelegate,UMSocialUIDelegate>
 @property (nonatomic, strong) UITableView *tableV;
 @property(nonatomic,strong)UIImageView * headImage;
@@ -87,6 +88,9 @@
 //阴影视图
 @property (nonatomic, copy) NSString *url;
 @property(nonatomic,assign)NSInteger  i ;
+@property(nonatomic,strong)NSString * agentID;
+@property(nonatomic,strong)NSString * imgUrl;
+@property(nonatomic,strong)NSString * sexUrl;
 
 @end
 
@@ -200,7 +204,7 @@
 {
       NSLog(@"ss");
     
-    self.url = [NSString stringWithFormat:@"%@/%@", BASE_REST_URL, @"468"];
+    self.url = [NSString stringWithFormat:@"%@/%@", BASE_REST_URL, self.agentID];
     
     [UMSocialData defaultData].extConfig.title = @"互联网+保险智能化云服务平台";
     
@@ -218,7 +222,7 @@
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:@"576bac6d67e58e0b6b000a36"
                                       shareText:[NSString stringWithFormat:@"%@", @"快保家"]
-                                     shareImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.url]]]
+                                     shareImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imgUrl]]]
                                 shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToSina, UMShareToQQ, UMShareToQzone, UMShareToTencent]
                                        delegate:self];
     
@@ -280,12 +284,15 @@
             //基本信息
             for (WHagentinfo * info in model.agent_info) {
                 NSLog(@"%@",info.name);
+                self.agentID = info.id;
                 self.nameLaber.text = info.name;
                 self.yearLaber.text = info.age;
                 //电话号码
                 self.tel = info.mobile;
                 //是否已经关注
                 self.isfollow = info.is_follow;
+                //
+                self.sexUrl = info.sex;
                 //
                 NSInteger  a = [info.sex integerValue];
                 if (a == 1) {
@@ -296,13 +303,13 @@
                     self.sexImage.image = [UIImage imageNamed:@"test_famale"];
                 }
                 if (info.avatar.length == 0) {
-                    self.headImage.image = [UIImage imageNamed:@"test_head"];
+                    self.headImage.image = [UIImage imageNamed:@"Jw_user"];
                 }
                 else
                 {
                     [self.headImage sd_setImageWithURL:[NSURL URLWithString:info.avatar]];
                 }
-                
+                self.imgUrl = info.avatar;//头像图标
                 NSString * s1 = info.cname;
                 NSString * s2 =[s1 stringByAppendingString:info.profession];
                 if (info.work_time == nil) {
@@ -394,7 +401,7 @@
     [self.headView addSubview:_companyLaber];
     //
     self.messBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.messBut.frame = CGRectMake(kScreenWitdh * 0.7, CGRectGetMidY(self.nameLaber.frame), 30, 30);
+    self.messBut.frame = CGRectMake(kScreenWitdh * 0.75, CGRectGetMidY(self.nameLaber.frame), 30, 30);
     [self.messBut setBackgroundImage:[UIImage imageNamed:@"message"] forState:(UIControlStateNormal)];
     self.messBut.layer.cornerRadius = 15.0;
     [self.headView addSubview:_messBut];
@@ -818,6 +825,25 @@
     self.page.currentPage = self.scolw.contentOffset.x / self.scolw.frame.size.width;
     
 }
+//选择
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 5) {
+        WHnews * news = self.newsArry[indexPath.row];
+        WHnewsdetailViewController * detal = [[WHnewsdetailViewController alloc]init];
+        detal.newsID = news.id;
+        detal.newsHeadimg = self.imgUrl;
+        detal.newsName = self.nameLaber.text;
+        detal.newsSeximg = self.sexUrl;
+        detal.newsYear = self.yearLaber.text;
+        detal.newsCompany = self.companyLaber.text;
+        detal.tel = self.tel;
+        [self.navigationController pushViewController:detal animated:YES];
+        
+        
+    }
+}
+
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     return NO;

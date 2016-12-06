@@ -61,6 +61,8 @@
 		9F056EDC1DB9FF7F0069A085 /* ASBirthSelectSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDB1DB9FF7F0069A085 /* ASBirthSelectSheet.m */; };
 		9F056EDF1DBA02E40069A085 /* WHaddressDetalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */; };
 		9F056EE21DBA1A960069A085 /* WHaccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */; };
+		9F0668191DF697B200655C0A /* WHnewsdetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0668181DF697B200655C0A /* WHnewsdetailViewController.m */; };
+		9F06681C1DF6A82F00655C0A /* WHgetnewsdetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F06681B1DF6A82F00655C0A /* WHgetnewsdetail.m */; };
 		9F07DE591DD566EF00B292C2 /* WHmongorate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F07DE581DD566EF00B292C2 /* WHmongorate.m */; };
 		9F07DE5C1DD56CC900B292C2 /* WHageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F07DE5B1DD56CC900B292C2 /* WHageTableViewController.m */; };
 		9F0A20BB1DBDAC64004C5F67 /* WHsetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A20BA1DBDAC64004C5F67 /* WHsetupTableViewController.m */; };
@@ -453,6 +455,10 @@
 		9F056EDE1DBA02E40069A085 /* WHaddressDetalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaddressDetalViewController.m; sourceTree = "<group>"; };
 		9F056EE01DBA1A960069A085 /* WHaccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHaccountTableViewCell.h; sourceTree = "<group>"; };
 		9F056EE11DBA1A960069A085 /* WHaccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHaccountTableViewCell.m; sourceTree = "<group>"; };
+		9F0668171DF697B200655C0A /* WHnewsdetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHnewsdetailViewController.h; sourceTree = "<group>"; };
+		9F0668181DF697B200655C0A /* WHnewsdetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHnewsdetailViewController.m; sourceTree = "<group>"; };
+		9F06681A1DF6A82F00655C0A /* WHgetnewsdetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHgetnewsdetail.h; sourceTree = "<group>"; };
+		9F06681B1DF6A82F00655C0A /* WHgetnewsdetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHgetnewsdetail.m; sourceTree = "<group>"; };
 		9F07DE571DD566EF00B292C2 /* WHmongorate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHmongorate.h; sourceTree = "<group>"; };
 		9F07DE581DD566EF00B292C2 /* WHmongorate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHmongorate.m; sourceTree = "<group>"; };
 		9F07DE5A1DD56CC900B292C2 /* WHageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHageTableViewController.h; sourceTree = "<group>"; };
@@ -1246,6 +1252,8 @@
 				9FE9283F1DEC48B500D1394F /* WHpreviewTableViewController.m */,
 				9FE0833D1DEE7F3900C2501E /* WHLookforViewController.h */,
 				9FE0833E1DEE7F3900C2501E /* WHLookforViewController.m */,
+				9F0668171DF697B200655C0A /* WHnewsdetailViewController.h */,
+				9F0668181DF697B200655C0A /* WHnewsdetailViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -2080,6 +2088,8 @@
 				9F0C8C191DF16C570076547B /* WHgetfollowList.m */,
 				9FC9D1A81DF5720500A59577 /* WHproductList.h */,
 				9FC9D1A91DF5720500A59577 /* WHproductList.m */,
+				9F06681A1DF6A82F00655C0A /* WHgetnewsdetail.h */,
+				9F06681B1DF6A82F00655C0A /* WHgetnewsdetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2838,6 +2848,7 @@
 				C86354631DB473B300ED8B16 /* UIAlertView+LBXAlertAction.m in Sources */,
 				C86353E51DB4672700ED8B16 /* UIBarButtonItem+Extension.m in Sources */,
 				9FE083421DEE834400C2501E /* WHmin.m in Sources */,
+				9F06681C1DF6A82F00655C0A /* WHgetnewsdetail.m in Sources */,
 				9FDAE5B51DDF0136000F91DF /* ZFMethod.m in Sources */,
 				9F35CE471DD6A3F9003F0C78 /* WHageTableViewCell.m in Sources */,
 				C8C10CC11DB9C06F00A5FB9A /* completeTableViewCell.m in Sources */,
@@ -2884,6 +2895,7 @@
 				9FA6846B1DE2E7DB003F70E3 /* WHslipListTableViewController.m in Sources */,
 				8E86DBD71DC9806D00C14635 /* PicUpdateCollectionViewCell.m in Sources */,
 				9F35CE871DD6BF8B003F0C78 /* WHcov.m in Sources */,
+				9F0668191DF697B200655C0A /* WHnewsdetailViewController.m in Sources */,
 				C86354611DB473B300ED8B16 /* UIActionSheet+LBXAlertAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

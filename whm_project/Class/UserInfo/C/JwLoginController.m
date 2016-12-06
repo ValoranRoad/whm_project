@@ -53,8 +53,8 @@
 //    {
 //        self.loginBut.userInteractionEnabled = YES;
 //    }
-    self.mobTF.text = @"13213011251";
-    self.pwdTF.text = @"wyg511688";
+//    self.mobTF.text = @"13213011251";
+//    self.pwdTF.text = @"wyg511688";
 
 }
 
