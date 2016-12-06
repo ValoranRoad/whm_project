@@ -79,7 +79,7 @@
 //设计界面
 -(void)setupUI
 {
-    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, kScreenWitdh, kScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, kScreenWitdh, kScreenHeight - 64 - 60) style:UITableViewStylePlain];
     _tableV.delegate = self;
     _tableV.dataSource = self;
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;

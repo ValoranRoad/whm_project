@@ -31,6 +31,6 @@
 @property(nonatomic,strong)NSString <Optional> * cname;
 @property(nonatomic,strong)NSString <Optional> * oname;
 @property(nonatomic,strong)NSString <Optional> * job_address;
-
+@property(nonatomic,strong)NSString <Optional> * is_follow;
 
 @end

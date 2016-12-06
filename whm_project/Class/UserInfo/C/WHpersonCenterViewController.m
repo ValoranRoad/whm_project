@@ -19,6 +19,9 @@
 #import "WHgetuseinfo.h"
 //体检报告
 #import "WHmyphysicalTableViewController.h"
+#import "WHmyfollowListViewController.h"
+#import "WHmycollectViewController.h"
+
 #import <UIImageView+WebCache.h>
 
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
@@ -377,6 +380,9 @@
     [self.myBut1 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
     //我的保单
     [self.myBut3 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.myBut8 addTarget:self action:@selector(myfollowAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    //我的收藏
+    [self.myBut7 addTarget:self action:@selector(mycollectAction:) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
 //数据处理获取用户信息
@@ -422,7 +428,13 @@
         }];
     }
 }
-
+//我的关注列表
+-(void)myfollowAction:(UIButton *)sender
+{
+    WHmyfollowListViewController * followList = [[WHmyfollowListViewController alloc]init];
+    [self.navigationController pushViewController:followList animated:YES];
+    
+}
 //微站事件
 -(void)miniStation:(UIButton *)sender
 {
@@ -457,6 +469,13 @@
     [self.navigationController pushViewController:account animated:YES];
     
     
+}
+
+//我的收藏事件
+-(void)mycollectAction:(UIButton *)sender
+{
+    WHmycollectViewController * mycollect = [[WHmycollectViewController alloc]init];
+    [self.navigationController pushViewController:mycollect animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

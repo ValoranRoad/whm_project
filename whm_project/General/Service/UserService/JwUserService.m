@@ -570,6 +570,124 @@
     
 }
 
+//获取关注接口
+-(void)getsaveFollowWithUid:(NSString *)uid
+                  agent_uid:(NSString *)agent_uid
+                    success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"agent_uid":agent_uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/save_follow"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/save_follow" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+      
+}
+
+//取消关注
+-(void)delfollowWithID:(NSString *)ids
+                   uid:(NSString *)uid
+               success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"id":ids,
+                              @"uid":[JwUserCenter sharedCenter].uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/del_follow"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/del_follow" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+
+    
+}
+//取消关注与关注
+-(void)followWithUid:(NSString *)uid
+           agent_uid:(NSString *)agent_uid
+             success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"agent_uid":[JwUserCenter sharedCenter].uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/follow"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/follow" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+}
+//收藏和取消收藏
+-(void)collectWithUid:(NSString *)uid
+              type_id:(NSString *)type_id
+                 type:(NSString *)type
+              success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"type_id":type_id,
+                              @"type":type,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/collect"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/collect" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+}
+
+//单个取消收藏接口
+-(void)delcollectWithUid:(NSString *)uid
+                 type_id:(NSString *)type_id
+                    type:(NSString *)type
+                success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"type_id":type_id,
+                              @"type":type,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/del_collecti"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/del_collecti" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
 
 
 @end

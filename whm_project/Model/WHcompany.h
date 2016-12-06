@@ -18,6 +18,7 @@
 @property(nonatomic,strong)NSString <Optional> * shortWh;
 @property(nonatomic,strong)NSString <Optional> * short_name;
 @property(nonatomic,strong)NSString <Optional> * logo;
-
+@property(nonatomic,strong)NSString <Optional> * initial;
+@property(nonatomic,strong)NSString <Optional> * create_time;
 
 @end

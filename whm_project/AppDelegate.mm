@@ -11,7 +11,12 @@
 #import "IQKeyboardManager.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 #import "WZGuideViewController.h"
-
+//
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialQQHandler.h"
+#import "UMSocialSinaHandler.h"
+#import "UMSocialSinaSSOHandler.h"
 BMKMapManager *_mapManager;
 
 @interface AppDelegate () <BMKLocationServiceDelegate>
@@ -20,6 +25,10 @@ BMKMapManager *_mapManager;
 @end
 
 @implementation AppDelegate
+static void uncaughtExceptionHandler(NSException *exception) {
+    
+    
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -54,12 +63,44 @@ BMKMapManager *_mapManager;
     
    
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
         [WZGuideViewController show];
     }
 
+    [self shareUmeng];
+    
        return YES;
 }
+//分享
+-(void)shareUmeng
+{
+    //设置友盟社会化组件appkey
+    [UMSocialData setAppKey:@"576bac6d67e58e0b6b000a36"];
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:@"wxff52ab613da7ab0c" appSecret:@"fcf5880a37638b5cf21f344d92220042" url:@"http://www.umeng.com/social"];
+    //设置手机QQ 的AppId，Appkey，和分享URL，需要#import "UMSocialQQHandler.h"
+    [UMSocialQQHandler setQQWithAppId:@"1105469472" appKey:@"t7lum7Vsb1K9bOvq" url:@"http://www.umeng.com/social"];
+    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 #import "UMSocialSinaSSOHandler.h"
+//    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"3921700954"
+//                                              secret:@"04b48b094faeb16683c32669824ebdad"
+//                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+//
+    
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+}
+/**
+ 这里处理新浪微博SSO授权之后跳转回来，和微信分享完成之后跳转回来
+ */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        //调用其他SDK，例如支付宝SDK等
+    }
+    return result;
+}
+
+
 /**
  *  键盘高度计算以及BarTool
  */
@@ -91,7 +132,7 @@ BMKMapManager *_mapManager;
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+ 
 }
 
 

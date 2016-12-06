@@ -19,8 +19,11 @@
 #import "WHcoverageViewController.h"
 #import "WHintroViewController.h"
 #import "WHTitleView.h"
+#import "YCXMenu.h"
+#import "UMSocial.h"
+#define BASE_REST_URL @"https://www.kuaibao365.com/product/details"
 
-@interface WHgetproducedetalViewController ()<UIScrollViewDelegate,UIWebViewDelegate>
+@interface WHgetproducedetalViewController ()<UIScrollViewDelegate,UIWebViewDelegate,UMSocialUIDelegate>
 
 @property(nonatomic,strong)UIScrollView * scrow;
 @property(nonatomic,strong)UIView * myView;
@@ -75,6 +78,11 @@
 @property(nonatomic,strong)NSString * compnyName;
 
 @property(nonatomic,strong)NSString * companyLogo;
+//
+@property (nonatomic , strong) NSMutableArray *items;
+@property (nonatomic, copy) NSString *url;
+
+@property(nonatomic,assign)NSInteger  i ;
 
 
 
@@ -82,11 +90,13 @@
 @end
 
 @implementation WHgetproducedetalViewController
+@synthesize items = _items;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.i = 1;
     // 布局
     [self setupUI];
      self.scw.delegate = self;
@@ -203,6 +213,120 @@
     self.s1 = self.s2;
     [self loadWithURLString:self.s1];
 }
+//Nagv确认事件
+-(void)ringAction:(UIBarButtonItem *)sender
+{
+    if (sender == self.navigationItem.rightBarButtonItem) {
+        [YCXMenu setTintColor:[UIColor colorWithHex:0x4367FF]];
+        [YCXMenu setSelectedColor:[UIColor redColor]];
+        if ([YCXMenu isShow]){
+            [YCXMenu dismissMenu];
+        } else {
+            [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 0, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+                //NSLog(@"%@",item);
+            }];
+        }
+    }
+    
+    
+}
+//
+- (NSMutableArray *)items {
+    if (!_items) {
+        YCXMenuItem *CollectItem = [YCXMenuItem menuItem:@"收藏" image:nil target:self action:@selector(collect:)];
+        CollectItem.foreColor = [UIColor whiteColor];
+        CollectItem.alignment = NSTextAlignmentRight;
+        CollectItem.image = [UIImage imageNamed:@"wh_collect"];
+        
+        YCXMenuItem *ShareItem = [YCXMenuItem menuItem:@"分享" image:nil target:self action:@selector(share:)];
+        ShareItem.foreColor = [UIColor whiteColor];
+        ShareItem.alignment = NSTextAlignmentRight;
+        ShareItem.image = [UIImage imageNamed:@"wh_share"];
+        _items = [@[CollectItem, ShareItem
+                    ] mutableCopy];
+        
+    }
+    return _items;
+    
+}
+
+//收藏
+-(void)collect:(UIButton *)sender
+{
+    self.i ++ ;
+    if (self.i % 2 == 0) {
+    
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.userService collectWithUid:@"" type_id:self.pro_id type:@"product" success:^{
+        [hud hide:YES];
+        [JGProgressHelper showSuccess:@"收藏成功"];
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@"收藏失败"];
+        
+    }];
+    }else
+    {
+        id hud = [JGProgressHelper showProgressInView:self.view];
+        [self.userService collectWithUid:@"" type_id:self.pro_id type:@"product" success:^{
+            [hud hide:YES];
+            [JGProgressHelper showSuccess:@"取消收藏成功"];
+            
+        } failure:^(NSError *error) {
+            [hud hide:YES];
+            [JGProgressHelper showError:@"取消收藏失败"];
+            
+        }];
+
+        
+    }
+    
+    
+}
+//分享
+-(void)share:(UIButton *)sender
+{
+    
+    self.url = [NSString stringWithFormat:@"%@/%@", BASE_REST_URL, self.pro_id];
+    
+    [UMSocialData defaultData].extConfig.title = @"互联网+保险智能化云服务平台";
+    
+    
+    [UMSocialData defaultData].extConfig.qqData.url = self.url;
+    [UMSocialData defaultData].extConfig.qzoneData.url = self.url;
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = self.url;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = self.url;
+    
+    //
+    NSString *shareText = [NSString stringWithFormat:@"%@, %@", @"产品详情", self.url];
+    [[UMSocialData defaultData].extConfig.sinaData setShareText:shareText];
+    [[UMSocialData defaultData].extConfig.tencentData setShareText:shareText];
+    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"576bac6d67e58e0b6b000a36"
+                                      shareText:[NSString stringWithFormat:@"%@", @"产品详情"]
+                                     shareImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.url]]]
+                                shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToSina, UMShareToQQ, UMShareToQzone, UMShareToTencent]
+                                       delegate:self];
+    
+
+    
+}
+
+- (void)setItems:(NSMutableArray *)items {
+    _items = items;
+}
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的平台名
+        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
+}
 
 #pragma mark -- 布局
 -(void)setupUI
@@ -213,6 +337,10 @@
     self.myView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_myView];
     self.view.backgroundColor = [UIColor blueColor];
+    //
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"wh_more"] style:UIBarButtonItemStylePlain target:self action:@selector(ringAction:)];
+
+    
    // self.myView .userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGesture =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILableAction:)];
     self.view.userInteractionEnabled = YES;

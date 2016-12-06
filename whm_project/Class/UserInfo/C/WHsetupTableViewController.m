@@ -14,6 +14,7 @@
 #import "JwLoginController.h"
 #import "JwUserCenter.h"
 #import "MacroUtility.h"
+#import "WHaboutsetViewController.h"
 
 #define kScreenWitdh [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -155,6 +156,10 @@
    
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你确定要退出吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alert show];
+    }
+    if (indexPath.row == 1  && indexPath.row == 1) {
+        WHaboutsetViewController * about = [[WHaboutsetViewController alloc]init];
+        [self.navigationController pushViewController:about animated:YES];
     }
     
 }

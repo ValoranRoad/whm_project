@@ -171,8 +171,32 @@ success:(void(^)())success failure:(void(^)(NSError *error))failure;
                       success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
 
+//获取关注接口
+-(void)getsaveFollowWithUid:(NSString * )uid agent_uid:(NSString * )agent_uid
+                    success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
 
+//取消关注
+-(void)delfollowWithID:(NSString * )ids
+                   uid:(NSString *)uid
+              success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
+//取消关注与关注
+-(void)followWithUid:(NSString *)uid
+           agent_uid:(NSString *)agent_uid
+             success:(void(^)())success failure:(void(^)(NSError * error))failure;
+//收藏和取消收藏
+-(void)collectWithUid:(NSString *)uid
+              type_id:(NSString *)type_id
+                 type:(NSString *)type
+  success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
+
+//单个取消收藏接口
+-(void)delcollectWithUid:(NSString *)uid
+                 type_id:(NSString *)type_id
+                    type:(NSString *)type
+                success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
 
 

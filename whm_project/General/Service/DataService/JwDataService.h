@@ -32,6 +32,8 @@
 @class WHgetreport;
 @class WHgetpolicys;
 @class WHgetnearagent;
+@class WHgetfollowList;
+@class WHproductList;
 //
 @class WHmin;
 @interface JwDataService : JwServiceBase
@@ -204,6 +206,29 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                      distance:(NSString *)distance
                           map:(NSString *)map
                       success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//关注列表
+-(void)getfollowWithUid:(NSString *)uid
+  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//收藏险种列表接口
+-(void)getcollectWithUid:(NSString *)uid
+                    type:(NSString *)type
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//收藏公司列表
+-(void)getcompanyWithUid:(NSString *)uid
+                    type:(NSString *)type
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//收藏新闻列表
+-(void)getnewsWithUid:(NSString *)uid
+                    type:(NSString *)type
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
 
 
 @end

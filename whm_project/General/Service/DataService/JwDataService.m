@@ -31,8 +31,10 @@
 #import "WHgetreport.h"
 #import "WHgetpolicys.h"
 #import "WHgetnearagent.h"
+#import "WHproductList.h"
 //
 #import "WHmin.h"
+#import "WHgetfollowList.h"
 
 #import "MacroUtility.h"
 #import "JwUserCenter.h"
@@ -761,6 +763,104 @@
     
 }
 
+//关注列表
+-(void)getfollowWithUid:(NSString *)uid
+                success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_follow"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_follow" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *folllises = [WHgetfollowList arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(folllises);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 
+}
+
+//收藏险种列表接口
+-(void)getcollectWithUid:(NSString *)uid
+                    type:(NSString *)type
+                 success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"type":type,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_collecti"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_collecti" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *prodlists = [WHproductList  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(prodlists);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+    
+}
+//收藏公司列表
+-(void)getcompanyWithUid:(NSString *)uid
+                    type:(NSString *)type success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"type":type,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_collecti"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_collecti" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *prodlists = [WHcompany  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(prodlists);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
+
+
+-(void)getnewsWithUid:(NSString *)uid
+                 type:(NSString *)type
+              success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"type":type,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_collecti"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_collecti" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *prodlists = [WHnews  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(prodlists);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+}
 
 @end

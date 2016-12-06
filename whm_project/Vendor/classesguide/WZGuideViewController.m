@@ -141,12 +141,12 @@
     [checkButton setSelected:!checkButton.selected];
 }
 
-- (void)pressEnterButton:(UIButton *)enterButton
-{
-    [self hideGuide];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
+//- (void)pressEnterButton:(UIButton *)enterButton
+//{
+//    [self hideGuide];
+//    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//}
 
 - (void)viewDidLoad
 {
@@ -158,37 +158,41 @@
     _pageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];
     self.pageScroll.pagingEnabled = YES;
     self.pageScroll.contentSize = CGSizeMake(self.view.frame.size.width * imageNameArray.count, self.view.frame.size.height);
+  
     [self.view addSubview:self.pageScroll];
     
     NSString *imgName = nil;
-    UIView *view;
+   UIImageView *Imgview;
     for (int i = 0; i < imageNameArray.count; i++) {
         imgName = [imageNameArray objectAtIndex:i];
-        view = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width * i), 0.f, self.view.frame.size.width, self.view.frame.size.height)];
-        view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:imgName]];
-        [self.pageScroll addSubview:view];
+        Imgview = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.width * i), 0.f, self.view.frame.size.width, self.view.frame.size.height)];
+        Imgview.image = [UIImage imageNamed:imgName];
+        [self.pageScroll addSubview:Imgview];
         
-        if (i == imageNameArray.count - 1) {            
-            UIButton *checkButton = [[UIButton alloc] initWithFrame:CGRectMake(80.f, 355.f, 15.f, 15.f)];
-            [checkButton setImage:[UIImage imageNamed:@"checkBox_selectCheck"] forState:UIControlStateSelected];
-            [checkButton setImage:[UIImage imageNamed:@"checkBox_blankCheck"] forState:UIControlStateNormal];
-            [checkButton addTarget:self action:@selector(pressCheckButton:) forControlEvents:UIControlEventTouchUpInside];
-            [checkButton setSelected:YES];
-            [view addSubview:checkButton];
+        
+        
+        if (i == imageNameArray.count - 1) {
             
-            UIButton *enterButton = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 175.f, 35.f)];
-            [enterButton setTitle:@"立即体验" forState:UIControlStateNormal];
-            [enterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [enterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-            [enterButton setCenter:CGPointMake(self.view.center.x, 417.f)];
-            [enterButton setBackgroundImage:[UIImage imageNamed:@"btn_nor"] forState:UIControlStateNormal];
-            [enterButton setBackgroundImage:[UIImage imageNamed:@"btn_press"] forState:UIControlStateHighlighted];
-            [enterButton addTarget:self action:@selector(pressEnterButton:) forControlEvents:UIControlEventTouchUpInside];
-            [view addSubview:enterButton];
+            UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable:)];
+            
+            Imgview.userInteractionEnabled = YES;
+            tapGesture.numberOfTouchesRequired=1;
+            [Imgview addGestureRecognizer:tapGesture ];
+
+
         }
     }
 }
 
+-(void)onClickUILable:(UITapGestureRecognizer *)sender{
+    
+      //相应代码
+    [self hideGuide];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

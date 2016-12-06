@@ -20,11 +20,13 @@
 #import "WHmessageListTableViewCell.h"
 #import "WHcounselTableViewCell.h"
 #import "WHnews.h"
-
+#import "YCXMenu.h"
 //
 #import "WHmin.h"
 #import "WHgentinfo.h"
-@interface WHLookforViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UITextViewDelegate>
+#import "UMSocial.h"
+#define BASE_REST_URL @"https://www.kuaibao365.com"
+@interface WHLookforViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UITextViewDelegate,UMSocialUIDelegate>
 @property (nonatomic, strong) UITableView *tableV;
 @property(nonatomic,strong)UIImageView * headImage;
 @property(nonatomic,strong)UILabel * nameLaber;
@@ -78,9 +80,20 @@
 @property(nonatomic,strong)NSString * tel;
 
 @property(nonatomic,strong)NSString * strIntru;
+//
+@property (nonatomic , strong) NSMutableArray *items;
+@property(nonatomic ,strong)NSString * isfollow;
+//
+//阴影视图
+@property (nonatomic, copy) NSString *url;
+@property(nonatomic,assign)NSInteger  i ;
+
 @end
 
 @implementation WHLookforViewController
+@synthesize items = _items;
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
@@ -94,7 +107,124 @@
     [super viewDidLoad];
     [self setupUI];
 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"wh_more"] style:UIBarButtonItemStylePlain target:self action:@selector(ringAction:)];
+    
+
 }
+-(void)ringAction:(UIBarButtonItem *)sender
+{
+    if (sender == self.navigationItem.rightBarButtonItem) {
+        [YCXMenu setTintColor:[UIColor colorWithHex:0x4367FF]];
+        [YCXMenu setSelectedColor:[UIColor redColor]];
+        if ([YCXMenu isShow]){
+            [YCXMenu dismissMenu];
+        } else {
+            [YCXMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width - 50, 0, 50, 0) menuItems:self.items selected:^(NSInteger index, YCXMenuItem *item) {
+                //NSLog(@"%@",item);
+            }];
+        }
+    }
+
+    
+}
+
+- (NSMutableArray *)items {
+    if (!_items) {
+        YCXMenuItem *CollectItem = [YCXMenuItem menuItem:@"关注" image:nil target:self action:@selector(collect:)];
+        CollectItem.foreColor = [UIColor whiteColor];
+        CollectItem.alignment = NSTextAlignmentRight;
+        CollectItem.image = [UIImage imageNamed:@"wh_attend"];
+        
+        YCXMenuItem *ShareItem = [YCXMenuItem menuItem:@"分享" image:nil target:self action:@selector(share:)];
+        ShareItem.foreColor = [UIColor whiteColor];
+        ShareItem.alignment = NSTextAlignmentRight;
+        ShareItem.image = [UIImage imageNamed:@"wh_share"];
+        _items = [@[CollectItem, ShareItem
+                    ] mutableCopy];
+
+    }
+    return _items;
+
+}
+
+- (void)setItems:(NSMutableArray *)items {
+    _items = items;
+}
+
+//关注
+-(void)collect:(UIButton *)sender
+{
+    
+    self.i ++;
+    if (self.i % 2 == 0) {
+        
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    if ([self.isfollow isEqualToString:@"1"]) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@"该代理人已经关注过"];
+        NSLog(@"==%@",self.isfollow);
+        
+    }
+    else
+    {
+        [self.userService getsaveFollowWithUid:@"" agent_uid:@"" success:^{
+            [hud hide: YES];
+            [JGProgressHelper showSuccess:@"关注成功"];
+           
+        } failure:^(NSError *error) {
+            [hud hide:YES];
+            [JGProgressHelper showError:@"关注失败"];
+        }];
+    }
+    }
+    else
+    {
+        id hud = [JGProgressHelper showProgressInView:self.view];
+        [self.userService followWithUid:@"" agent_uid:@"" success:^{
+            [hud hide:YES];
+            [JGProgressHelper showError:@"取消关注成功"];
+            
+        } failure:^(NSError *error) {
+            [hud hide:YES];
+            [JGProgressHelper showError:@"取消关注失败"];
+        }];
+
+    }
+        
+ 
+        
+}
+
+//分享
+-(void)share:(UIButton *)sender
+{
+      NSLog(@"ss");
+    
+    self.url = [NSString stringWithFormat:@"%@/%@", BASE_REST_URL, @"468"];
+    
+    [UMSocialData defaultData].extConfig.title = @"互联网+保险智能化云服务平台";
+    
+    
+    [UMSocialData defaultData].extConfig.qqData.url = self.url;
+    [UMSocialData defaultData].extConfig.qzoneData.url = self.url;
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = self.url;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = self.url;
+    
+    NSString *shareText = [NSString stringWithFormat:@"%@, %@", @"快保家", self.url];
+    [[UMSocialData defaultData].extConfig.sinaData setShareText:shareText];
+    [[UMSocialData defaultData].extConfig.tencentData setShareText:shareText];
+    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"576bac6d67e58e0b6b000a36"
+                                      shareText:[NSString stringWithFormat:@"%@", @"快保家"]
+                                     shareImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.url]]]
+                                shareToSnsNames:@[UMShareToWechatSession, UMShareToWechatTimeline, UMShareToSina, UMShareToQQ, UMShareToQzone, UMShareToTencent]
+                                       delegate:self];
+    
+
+}
+
 //数据请求
 -(void)setData
 {
@@ -154,6 +284,8 @@
                 self.yearLaber.text = info.age;
                 //电话号码
                 self.tel = info.mobile;
+                //是否已经关注
+                self.isfollow = info.is_follow;
                 //
                 NSInteger  a = [info.sex integerValue];
                 if (a == 1) {
