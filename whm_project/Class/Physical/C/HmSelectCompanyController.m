@@ -18,6 +18,7 @@
 #import "WHproductSearchTableViewController.h"
 #import "JwCompanys.h"
 
+#import "WHinstruTypeTableViewController.h"
 
 
 #define HmCompanyTabelCellIdentifier @"HmCompanyTabelCellIdentifier"
@@ -246,16 +247,38 @@
 //        NSLog(@"%@",model.id);
 //    }
     
-    JwCompanys * model = self.dataArry[indexPath.row];
-   // NSLog(@"%@",model.id);
-   
-    WHproductSearchTableViewController * produceSearch = [[WHproductSearchTableViewController alloc]init];
-    produceSearch.company_id = model.id;
-    produceSearch.groupsArr = self.groupArr;
-    produceSearch.isSelectP = self.isSelects;
-    produceSearch.contentDic = self.contentDict;
-    produceSearch.fuzhiDic = self.fuzhiDict;
-    [self.navigationController pushViewController:produceSearch animated:YES];
+//    JwCompanys * model = self.dataArry[indexPath.row];
+//   // NSLog(@"%@",model.id);
+//   
+//    WHproductSearchTableViewController * produceSearch = [[WHproductSearchTableViewController alloc]init];
+//    produceSearch.company_id = model.id;
+//    produceSearch.groupsArr = self.groupArr;
+//    produceSearch.isSelectP = self.isSelects;
+//    produceSearch.contentDic = self.contentDict;
+//    produceSearch.fuzhiDic = self.fuzhiDict;
+//    [self.navigationController pushViewController:produceSearch animated:YES];
+    
+    if ([self.addTend isEqualToString:@"1"]) {
+        
+        WHinstruTypeTableViewController * instru = [[WHinstruTypeTableViewController alloc]init];
+         JwCompanys * model = self.dataArry[indexPath.row];
+         instru.companyid = model.id;
+        [self.navigationController pushViewController:instru animated:YES];
+    }
+    else
+    {
+        JwCompanys * model = self.dataArry[indexPath.row];
+        // NSLog(@"%@",model.id);
+        
+        WHproductSearchTableViewController * produceSearch = [[WHproductSearchTableViewController alloc]init];
+        produceSearch.company_id = model.id;
+        produceSearch.groupsArr = self.groupArr;
+        produceSearch.isSelectP = self.isSelects;
+        produceSearch.contentDic = self.contentDict;
+        produceSearch.fuzhiDic = self.fuzhiDict;
+        [self.navigationController pushViewController:produceSearch animated:YES];
+
+    }
 }
 
 

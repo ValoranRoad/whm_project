@@ -11,6 +11,7 @@
 #import "MacroUtility.h"
 #import "UIColor+Hex.h"
 #import "JGProgressHelper.h"
+#import "HmSelectCompanyController.h"
 
 @interface WHrecommentTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -39,8 +40,16 @@
     
     // 布局
     [self setupUI];
+     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"test_add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewSafeAction:)];
 
    
+}
+
+-(void)addNewSafeAction:(UIBarButtonItem * )sender
+{
+      HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
+      company.addTend = @"1";
+     [self.navigationController pushViewController:company animated:YES];
 }
 
 // 请求数据

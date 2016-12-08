@@ -199,5 +199,10 @@ success:(void(^)())success failure:(void(^)(NSError *error))failure;
                 success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
 
+//保存推荐险种
+-(void)seaverecWithPids:(NSString *)pids
+                    uid:(NSString * )uid
+                success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
 
 @end

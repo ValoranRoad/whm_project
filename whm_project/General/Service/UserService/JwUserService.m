@@ -447,7 +447,7 @@
                      req_name:(NSString *)req_name
                       success:(void (^)())success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = [@{@"req_uid":req_uid,
+    NSMutableDictionary * param = [@{@"req_uid":[JwUserCenter sharedCenter].uid,
                                      @"res_uid":res_uid,
                                      @"uid":[JwUserCenter sharedCenter].uid,
                                      @"message":message,
@@ -688,6 +688,26 @@
     }];
 
 }
+//保存推荐险种
+-(void)seaverecWithPids:(NSString *)pids
+                    uid:(NSString *)uid success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"pids":pids,
+                              @"uid":[JwUserCenter sharedCenter].uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/save_rec"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/save_rec" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 
+    
+}
 
 @end

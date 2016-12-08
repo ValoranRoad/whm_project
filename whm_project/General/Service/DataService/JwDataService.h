@@ -87,15 +87,14 @@ success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))fail
                                 uid:(NSString *)uid
 success:(void (^)(NSArray * list))success failure:(void (^)(NSError *error))failure;
 
-//医院列表
--(void)get_hospitalWithCom_id:(NSString *)com_id
-                    city_name:(NSString *)city_name
-                     province:(NSString *)province
-                         city:(NSString *)city
-                       county:(NSString *)county
-                          lat:(NSString *)lat
-                          lng:(NSString *)lng
-                     distance:(NSString *)distance
+//医院列表第一次获取
+-(void)get_hospitalWithlat:(NSString *)lat
+                       lng:(NSString *)lng
+                  province:(NSString *)province
+                      city:(NSString *)city
+                    county:(NSString *)county
+                  distance:(NSString *)distance
+                       map:(NSString *)map
                       success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
 
@@ -231,6 +230,23 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
 //新闻详情接口
 -(void)getnewsdetailWithNews_id:(NSString *)news_id
  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//附近代理人刷新选择三级省市区
+-(void)getprovinceWithProvince:(NSString *)province
+                          city:(NSString *)city
+                        county:(NSString *)county
+                         type :(NSString *)type
+                      distance:(NSString *)distance
+                           map:(NSString *)map
+                       success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+//刷新分支机构代理人
+-(void)getorgProvinceWithProvince:(NSString * )province
+                          city:(NSString *)city
+                        county:(NSString *)county
+                      distance:(NSString *)distance
+                          map :(NSString *)map
+ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
 
 
 @end

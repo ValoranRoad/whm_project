@@ -1,23 +1,22 @@
 //
-//  WHorginTableViewController.m
+//  WHhospitalTableViewController.m
 //  whm_project
 //
-//  Created by 王义国 on 16/11/25.
+//  Created by 王义国 on 16/12/8.
 //  Copyright © 2016年 chenJw. All rights reserved.
 //
 
-#import "WHorginTableViewController.h"
+#import "WHhospitalTableViewController.h"
 #import "MacroUtility.h"
-#import "WHorginTableViewCell.h"
+#import "WHhospitalTableViewCell.h"
 #import "CityTableViewCell.h"
 #import "JGProgressHelper.h"
-#import "WHorganization.h"
-#import "WHorgMapTableViewController.h"
-#import "WHorgListTableViewController.h"
-
-@interface WHorginTableViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property(nonatomic,strong)WHorginTableViewCell * cell;
+#import "WHhospital.h"
+@interface WHhospitalTableViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)WHhospitalTableViewCell * cell;
 @property(nonatomic,strong)UITableView * tableV;
+@property(nonatomic,strong)NSString * tel;
+//导航栏数据
 //导航栏数据
 @property (nonatomic,strong)UIView *cityChooseBackView;//弹出框
 @property (nonatomic,strong)UIButton *myAddressBtn;
@@ -38,60 +37,26 @@
 @property (nonatomic,strong)UIImageView *arrowCartogyImage;
 //
 @property(nonatomic,strong)NSMutableArray * dataArry;
-@property(nonatomic,strong)NSString * tel ;
 //
 @property (nonatomic,strong)NSMutableArray *allArr;
 @property (nonatomic,strong)NSMutableArray *areaIdArr;
 
+
+
+
+
 @end
 
-@implementation WHorginTableViewController
-
-
+@implementation WHhospitalTableViewController
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:YES];
-    
-    self.dataArry = [NSMutableArray array];
+    [super viewWillAppear:animated];
+     self.dataArry = [NSMutableArray array];
     [self quartDate];
-}
-//数据请求
--(void)quartDate
-{
-    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
-    NSString * stringOne = [ud valueForKey:@"one"];
-    NSString * stringTwo = [ud valueForKey:@"two"];
-    id hud = [JGProgressHelper showProgressInView:self.view];
-   
-    /*
-    [self.dataService getorgProvinceWithProvince:@"" city:@"130200" county:@"" distance:@"" map:@"1" success:^(NSArray *lists) {
-        [hud hide:YES];
-        self.dataArry = [NSMutableArray arrayWithArray:lists];
-        [self.tableV reloadData];
 
-    } failure:^(NSError *error) {
-        
-    }];
-    */
-    
-    
-   [self.dataService getorganizationWithLng:stringOne
-                                        lat:stringTwo
-                                   distance:@""
-                                        map:@"1"
-                                    success:^(NSArray *lists) {
-                                        [hud hide:YES];
-                                        self.dataArry = [NSMutableArray arrayWithArray:lists];
-                                        [self.tableV reloadData];
-           
-                                        
-    } failure:^(NSError *error) {
-        [hud hide:YES];
-        [JGProgressHelper showError:@""];
-        
-    }];
-    
 }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _provenceArr = [NSMutableArray array];
@@ -100,11 +65,6 @@
     _allArr = [NSMutableArray array];
     
     self.view.backgroundColor = [UIColor grayColor];
-    
-  //  NSBundle *bundle = [NSBundle mainBundle];
-//    NSString *plistPath = [bundle pathForResource:@"area" ofType:@"plist"];
-//    self.areaDict = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-//    //
     NSString *addressPath = [[NSBundle mainBundle] pathForResource:@"arealist" ofType:@"plist"];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithContentsOfFile:addressPath];
     self.allArr = [dict objectForKey:@"arealist"];
@@ -113,13 +73,40 @@
     
     [self selectProvenceIndex:0 cityIndex:0];
     
-    self.title = @"分支机构";
+    self.title = @"定点医院";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ditudao"] style:(UIBarButtonItemStylePlain) target:self action:@selector(aa:)];
-
-    //[self setupUI];
+    
+    
     [self setPopUI];
 
+    
+
 }
+//数据请求处理
+-(void)quartDate
+{
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+    NSString * stringOne = [ud valueForKey:@"one"];
+    NSString * stringTwo = [ud valueForKey:@"two"];
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_hospitalWithlat:stringTwo
+                                      lng:stringOne
+                                 province:@""
+                                     city:@""
+                                   county:@""
+                                 distance:@"100.00"
+                                      map:@"1"
+                                  success:^(NSArray *lists) {
+        [hud hide:YES];
+        self.dataArry = [NSMutableArray arrayWithArray:lists];
+        [self.tableV reloadData];
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
+}
+
 #pragma mark 重新写的处理方法
 -(void)selectProvenceIndex:(NSInteger)provenceIndex cityIndex:(NSInteger)cityIndex
 {
@@ -154,14 +141,14 @@
 
 -(void)setPopUI
 {
-   
+    
     self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 35, kScreenWitdh, kScreenHeight - 64-35) style:UITableViewStylePlain];
     _tableV.delegate = self;
     _tableV.dataSource = self;
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableV];
     
-    [self.tableV registerClass:[WHorginTableViewCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableV registerClass:[WHhospitalTableViewCell class] forCellReuseIdentifier:@"cell"];
     //
     self.myAddressBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.myAddressBtn.frame = CGRectMake(0, 0,CGRectGetWidth(self.view.frame)/2-0.5, 30);
@@ -238,22 +225,18 @@
     
     [self.areaTableView registerClass:[CityTableViewCell class] forCellReuseIdentifier:@"ArealistCell"];
     
-
-
+    
+    
 }
 //右边点击事件
 -(void)aa:(UIBarButtonItem *)sender
 {
-    //NSLog(@"lll");
-    WHorgListTableViewController * orgList = [[WHorgListTableViewController alloc]init];
-    [self.navigationController pushViewController:orgList animated:YES];
+    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 #pragma mark 省市点击事件
 -(void)myaddressBtnAction
 {
@@ -262,7 +245,6 @@
     
     self.arrowProImage.image = [UIImage imageNamed:@"arrow.png"];
 }
-
 #pragma mark 类别点击事件
 -(void)myCategoryBtnAction
 {
@@ -270,16 +252,13 @@
     self.arrowCartogyImage.image = [UIImage imageNamed:@"arrow.png"];
 }
 
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
     if (tableView == _provinceTableView)
     {
         return _provenceArr.count;
@@ -295,11 +274,12 @@
     else
     {
         return _areaArr.count;
-
+        
+    }
 }
 
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _provinceTableView)
     {
         CityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProlistCell" forIndexPath:indexPath];
@@ -318,18 +298,19 @@
     }
     else if (tableView == _tableV)
     {
-        WHorginTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        WHhospitalTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        WHhospital * model = self.dataArry[indexPath.row];
+        cell.titLaber.text = model.name;
+        cell.addressLaber.text = model.address;
+        cell.mapLaber.text = model.distance;
+        cell.telLaber.text = model.tel;
         
         [cell.telBut setBackgroundImage:[UIImage imageNamed:@"tel"] forState:(UIControlStateNormal)];
         cell.mapImg.image = [UIImage imageNamed:@"maple"];
         cell.telBut.tag = 100 + indexPath.row;
         [cell.telBut addTarget:self action:@selector(telAction:) forControlEvents:(UIControlEventTouchUpInside)];
-         WHorganization * model = self.dataArry[indexPath.row];
-        cell.titLaber.text = model.name;
-        cell.addressLaber.text = model.address;
-        cell.mapLaber.text = model.distance;
-        cell.telImg.image = [UIImage imageNamed:@"tel"];
-        cell.telLaber.text = model.tel;
+               cell.telImg.image = [UIImage imageNamed:@"tel"];
+     
         return cell;
         
     }
@@ -343,9 +324,10 @@
         
         return cell;
     }
+
+    
     
 }
-#pragma mark 点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -356,7 +338,7 @@
         //这里面根据不同的省的id   改变_cityArr数组的数据，并刷新cityTableView
         //JwAreass * area = self.provenceArr[indexPath.row];
         
-      [self selectProvenceIndex:indexPath.row cityIndex:0];
+        [self selectProvenceIndex:indexPath.row cityIndex:0];
         myIntag = indexPath.row;
         [self.cityTableView reloadData];
     }
@@ -365,7 +347,7 @@
         NSInteger provinceIndex =  _provinceTableView.indexPathForSelectedRow.row;
         [self selectProvenceIndex:provinceIndex cityIndex:indexPath.row];
         [self.areaTableView reloadData];
-       
+        
         
         self.areaTableView.hidden = NO;
         //这里要根据你取出市的id，重新请求数据，然后弹出区的tableview。
@@ -373,14 +355,14 @@
     }
     else if (tableView == _tableV)
     {
-        WHorgMapTableViewController * orgMap = [[WHorgMapTableViewController alloc]init];
-        WHorganization * model = self.dataArry[indexPath.row];
-        orgMap.p_Name = model.name;
-        orgMap.p_Address = model.address;
-        orgMap.p_mapLaber = model.distance;
-        orgMap.p_Mobile = model.tel;
+      // WHhospitalTableViewCell * orgMap = [[WHhospitalTableViewCell alloc]init];
+//        WHorganization * model = self.dataArry[indexPath.row];
+//        orgMap.p_Name = model.name;
+//        orgMap.p_Address = model.address;
+//        orgMap.p_mapLaber = model.distance;
+//        orgMap.p_Mobile = model.tel;
         
-        [self.navigationController pushViewController:orgMap animated:YES];
+        //[self.navigationController pushViewController:orgMap animated:YES];
     }
     else
     {
@@ -391,9 +373,10 @@
         //改变小箭头
         self.arrowProImage.image = [UIImage imageNamed:@"arrowT.png"];
         //这里要根据你取出区的id，重新请求数据，然后刷新下方的tableview
-         id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.dataService getorgProvinceWithProvince:@"" city:@"" county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]] distance:@"" map:@"1" success:^(NSArray *lists) {
-             [hud hide:YES];
+        
+        id hud = [JGProgressHelper showProgressInView:self.view];
+        [self.dataService get_hospitalWithlat:@"" lng:@"" province:@"" city:@"" county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]] distance:@"100.00" map:@"1" success:^(NSArray *lists) {
+            [hud hide:YES];
             self.dataArry = [NSMutableArray arrayWithArray:lists];
             [self.tableV reloadData];
             
@@ -401,10 +384,8 @@
             [hud hide:YES];
             [JGProgressHelper showError:@""];
             
+            
         }];
-        
-
-        
         
     }
 }
@@ -412,13 +393,12 @@
 //电话事件
 -(void)telAction:(UIButton *)sender
 {
-   WHorganization * orgin = self.dataArry[sender.tag - 100];
-    self.tel = orgin.tel;
+    WHhospital * hospit = self.dataArry[sender.tag - 100];
+    self.tel = hospit.tel;
     UIAlertView *view = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"你确定要拨打电话吗？" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
     
     [view show];
-    
-    
+
 }
 //根据被点击按钮的索引处理点击事件
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -438,9 +418,6 @@
     }
     return 40;
 }
-
-
-
 
 
 /*
