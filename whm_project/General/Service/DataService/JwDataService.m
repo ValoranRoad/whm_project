@@ -223,23 +223,22 @@
 }
 
 //医院列表数据
--(void)get_hospitalWithCom_id:(NSString *)com_id
-                    city_name:(NSString *)city_name
-                     province:(NSString *)province
-                         city:(NSString *)city
-                       county:(NSString *)county
-                          lat:(NSString *)lat
-                          lng:(NSString *)lng
-                     distance:(NSString *)distance
-                      success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
+-(void)get_hospitalWithlat:(NSString *)lat
+                       lng:(NSString *)lng
+                  province:(NSString *)province
+                      city:(NSString *)city
+                    county:(NSString *)county
+                  distance:(NSString *)distance
+                       map:(NSString *)map
+                   success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = [@{@"com_id":com_id ,
-                                     @"city_name":city_name ,
-                                     @"province":province , @"city":city ,
-                                     @"county":county ,
-                                     @"lat":lat ,
-                                     @"lng":lng ,
-                                     @"distance":distance}
+    NSMutableDictionary * param = [@{@"lat":lat,
+                                     @"lng":lng,
+                                     @"province":province ,
+                                     @"city":city ,
+                                     @"county":county,
+                                     @"distance":distance,
+                                     @"map":map}
                                    mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_hospital"] mutableCopy];
     
@@ -886,5 +885,70 @@
 
     
 }
+
+//附近代理人刷新选择三级省市区
+-(void)getprovinceWithProvince:(NSString *)province
+                          city:(NSString *)city
+                        county:(NSString *)county
+                         type :(NSString *)type
+                      distance:(NSString *)distance
+                           map:(NSString *)map
+                       success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"province":province,
+                              @"city":city,
+                              @"county":county,
+                              @"type":type,
+                              @"distance":@"100.00",
+                              @"map":map}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_near_agent"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_near_agent" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *nearagents = [WHgetnearagent  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(nearagents);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
+
+//刷新分支机构三级
+-(void)getorgProvinceWithProvince:(NSString *)province
+                             city:(NSString *)city
+                           county:(NSString *)county
+                         distance:(NSString *)distance
+                              map:(NSString *)map
+                          success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"province":province ,
+                              @"city":city,
+                              @"county":county,
+                              @"distance":@"100.00",
+                              @"map":map}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *getorgs = [WHorganization  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(getorgs);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+
+}
+
 
 @end

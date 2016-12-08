@@ -26,7 +26,7 @@
 {
     if (_nameLaber == nil) {
         self.nameLaber = [[UILabel alloc]init];
-        self.nameLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5, kScreenW * 0.1, 20);
+        self.nameLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5, kScreenW * 0.2, 20);
         self.nameLaber.font = [UIFont systemFontOfSize:15.0];
         self.nameLaber.textColor = [UIColor grayColor];
         [self.contentView addSubview:_nameLaber];

@@ -11,6 +11,8 @@
 #import "UIColor+Hex.h"
 #import "WHorginTableViewController.h"
 #import "WHnearAgentTableViewController.h"
+#import "WHhospitalTableViewController.h"
+
 @interface JwFindController ()
 @property(nonatomic,strong)UIView * myview;
 @property(nonatomic,strong)UIImageView *logoImg;
@@ -118,6 +120,12 @@
     self.hosLaber.text = @"定点医院";
     [self.blackView addSubview:_hosLaber];
     //
+    UITapGestureRecognizer *tapGesture2 =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable2:)];
+    self.cityImg.userInteractionEnabled = YES;
+    tapGesture2.numberOfTapsRequired = 1;
+    tapGesture2.numberOfTouchesRequired = 1;
+    [self.cityImg addGestureRecognizer:tapGesture2];
+    //
     self.findImg = [[UIImageView alloc]init];
     self.findImg.frame = CGRectMake(CGRectGetMinX(self.moonImg.frame), kScreenHeight * 0.2, CGRectGetWidth(self.moonImg.frame), CGRectGetHeight(self.moonImg.frame));
     self.findImg.image = [UIImage imageNamed:@"Finder"];
@@ -145,6 +153,12 @@
     
     WHorginTableViewController * orgin = [[WHorginTableViewController alloc]init];
     [self.navigationController pushViewController:orgin animated:YES];
+    
+}
+-(void)onClickUILable2:(UITapGestureRecognizer *)sender{
+    
+    WHhospitalTableViewController * hospital = [[WHhospitalTableViewController alloc]init];
+    [self.navigationController pushViewController:hospital animated:YES];
     
 }
 

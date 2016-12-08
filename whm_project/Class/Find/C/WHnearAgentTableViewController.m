@@ -115,6 +115,7 @@
     NSString * stringOne = [ud valueForKey:@"one"];
     NSString * stringTwo = [ud valueForKey:@"two"];
     id hud = [JGProgressHelper showProgressInView:self.view];
+       
     [self.dataService getnearagentWithLng:stringOne
                                       lat:stringTwo
                                 city_name:@""

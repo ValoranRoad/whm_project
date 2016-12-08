@@ -137,11 +137,11 @@
     
     searchBar.placeholder = @"请输入关键词";
     [titleView addSubview:searchBar];
-    self.searBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.searBut.frame = CGRectMake(kScreenWitdh * 0.71, 0, kScreenWitdh*0.2, 35);
-    [self.searBut setTitle:@"搜索" forState:(UIControlStateNormal)];
-    [self.searBut setTintColor:[UIColor whiteColor]];
-    [titleView addSubview:_searBut];
+//    self.searBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
+//    self.searBut.frame = CGRectMake(kScreenWitdh * 0.71, 0, kScreenWitdh*0.2, 35);
+//    [self.searBut setTitle:@"搜索" forState:(UIControlStateNormal)];
+//    [self.searBut setTintColor:[UIColor whiteColor]];
+//    [titleView addSubview:_searBut];
     
     //Set to titleView
     [self.navigationItem.titleView sizeToFit];
@@ -221,6 +221,7 @@
     menu.screenBActionBlock =^(){
         NSLog(@"点击筛选");
         
+
        id hud = [JGProgressHelper showProgressInView:wself.view];
         [wself.dataService get_productWithCompany_id:@""
                                             keyword:@""
@@ -502,6 +503,24 @@
    WHgetproducedetalViewController * produce = [[WHgetproducedetalViewController alloc]init];
     produce .pro_id = model.id;
     [self.navigationController pushViewController:produce animated:YES];
+
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_productWithCompany_id:@"" keyword:searchBar.text  sex:@"" characters_insurance:@"" period:@"" cate_id:@"" pay_period:@"" rate:@"" insured:@"" birthday:@"" yearly_income:@"" debt:@"" rela_id:@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
+        [hud hide:YES];
+        
+        self.dataArry = [NSMutableArray arrayWithArray:lists];
+        [self.tableV reloadData];
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
 
 }
 

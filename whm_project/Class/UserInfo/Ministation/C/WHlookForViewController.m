@@ -21,6 +21,7 @@
 #import "WHcounselTableViewCell.h"
 #import "WHnews.h"
 #import "YCXMenu.h"
+#import "WHwantMessageViewController.h"
 //
 #import "WHmin.h"
 #import "WHgentinfo.h"
@@ -800,6 +801,14 @@
 -(void)messageAction:(UIButton *)sender
 {
     NSLog(@"mseeage");
+    WHwantMessageViewController * wantMes = [[WHwantMessageViewController alloc]init];
+    wantMes.res_uid = self.agentID;
+    wantMes.name = self.nameLaber.text;
+//    NSString * s1 = self.areaLaber.text ;
+    //wantMes.cityName = [s1 substringToIndex:2];
+    wantMes.cityName = self.areaLaber.text;
+    
+    [self.navigationController pushViewController:wantMes animated:YES];
 }
 //电话事件
 -(void)telAction:(UIButton *)sender
