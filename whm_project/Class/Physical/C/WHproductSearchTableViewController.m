@@ -124,14 +124,17 @@
 {
     JwPhysicalController * phy = [[JwPhysicalController alloc]init];
     WHgetproduct * model = self.dataArry[indexPath.row];
+    
     self.name = model.name;
     self.ids = model.id;
     self.is_main = model.is_main;
     phy.modelType = model;
+    
     phy.groupMutableArr = self.groupsArr;
     phy.isSelectPersonName = self.isSelectP;
     phy.contentMutableDict = self.contentDic;
     phy.fuzhiDict = self.fuzhiDic;
+    phy.selectProID = model.id;
  
     [self.navigationController pushViewController:phy animated:YES];
 }

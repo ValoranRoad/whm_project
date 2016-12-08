@@ -48,7 +48,7 @@
 //数据请求
 -(void)quretDate
 {
-    NSDictionary * infoDic = @{@"pro_id":@"8088",@"main_id":@"0",@"is_main_must":self.is_main_must, @"insured_amount":self.rate,@"pay_period":@"10年交",@"period":self.period};
+    NSDictionary * infoDic = @{@"pro_id":self.pro_id,@"main_id":@"0",@"is_main_must":@"0", @"insured_amount":self.insured_amount,@"rate":self.rate, @"pay_period":self.pay_period,@"period":self.period,@"payout":@"1"};
     NSError * error = nil;
     
     // NSArray * array = [NSArray array];

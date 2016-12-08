@@ -77,10 +77,11 @@ typedef enum {
 
 @property(nonatomic,strong)NSString * payout;
 
-
-
-
-
+@property(nonatomic,strong)NSString * insured_amount;
+//
+@property(nonatomic,strong)NSString  * selectRelaID;
+//@property(nonatomic,strong)NSString * selectProID;
+//
 // 性别
 @property (nonatomic, strong) NSString *dataSex;
 
@@ -362,27 +363,39 @@ typedef enum {
      */
     
     
-   
-    if (self.ids != nil) {
+    NSLog(@"jjhh%@",self.selectProID);
     
-    if (self.rela_id  != nil && self.period != nil && self.rate != nil) {
+    NSLog(@"%@ %@ %@  %@ %@" ,self.selectRelaID,self.rate,self.pay_period,self.insured_amount,self.period);
+    NSString *documentpath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    //读取文件路径
+    NSString *filepath = [NSString stringWithFormat:@"%@/用户ID.txt",documentpath];
+    
+    NSString *s = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"%@",s );
+    self.selectRelaID = s ;
+    if (self.selectRelaID != nil) {
+    
+    if (self.selectProID  != nil && self.pay_period != nil && self.rate != nil) {
         
        
   LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
-     oneVC.rela_id = self.rela_id;
-     oneVC.pro_id = self.ids;
-     oneVC.is_main_must = self.is_main;
-        oneVC.period = self.period;
-        oneVC.rate = self.rate;
-    
+        oneVC.rela_id = self.selectRelaID; //被保人ID
+        oneVC.pro_id = self.selectProID;//险种ID
+        //oneVC.is_main_must = self.is_main;
+        oneVC.pay_period = self.pay_period;//缴费期间
+        oneVC.rate = self.rate; //保费
+        oneVC.period = self.period; //保障期间
+        oneVC.payout = self.payout;
+        oneVC.insured_amount = self.insured_amount; //保额
     LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
-        
-       twoVC.rela_id = self.rela_id;
-       twoVC.pro_id = self.ids;
-       twoVC.is_main_must = self.is_main;
-       twoVC.period = self.period;
-       twoVC.rate = self.rate;
-
+        twoVC.rela_id = self.selectRelaID; //被保人ID
+        twoVC.pro_id = self.selectProID;//险种ID
+        //oneVC.is_main_must = self.is_main;
+        twoVC.pay_period = self.pay_period;//缴费期间
+        twoVC.rate = self.rate; //保费
+        twoVC.period = self.period; //保障期间
+        twoVC.payout = self.payout;
+        twoVC.insured_amount = self.insured_amount; //保额
     LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
     
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
@@ -429,6 +442,15 @@ typedef enum {
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
+        //self.selectRelaID  = user.id;
+        NSString *documentpath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        //新建文件沙盒
+        NSString *filepath = [NSString stringWithFormat:@"%@/用户ID.txt",documentpath];
+        NSString *loveContent = user.id;
+        [loveContent writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        NSString *ss = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"%@",ss );
+        
         if (self.isSelectPersonName) {
             // 选过人了
             [self.groupMutableArr replaceObjectAtIndex:0 withObject:user];
@@ -525,18 +547,22 @@ typedef enum {
         cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
         cell.myLaber.text = @"投保年龄";
         cell.selectLaber.text = age;
+        NSLog(@"吴豪%@",age);
         return cell;
     }else if (indexPath.row == 1) {
         // 缴费方式
         cell.headImg.image = [UIImage imageNamed:@"p_payType"];
         cell.myLaber.text = @"缴费方式";
         cell.selectLaber.text = type;
+        self.pay_period = type;
+        NSLog(@"ming%@",type);
         return cell;
     }else if (indexPath.row == 2) {
         // 保险期间
         cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
         cell.myLaber.text = @"保障期间";
         cell.selectLaber.text = baozhang;
+        self.period = baozhang;
         return cell;
     }
     if (((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]).count == 4) {
@@ -545,6 +571,7 @@ typedef enum {
             cell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
             cell.myLaber.text = @"给付方式";
             cell.selectLaber.text = give;
+            self.payout = give;
             return cell;
         }else if (indexPath.row == 4) {
             // 保额
@@ -554,6 +581,7 @@ typedef enum {
             baoeCell.selectLaber.placeholder = @"请输入保额";
             [baoeCell.selectLaber addTarget:self action:@selector(baoeSelectLaberAction:) forControlEvents:UIControlEventAllEditingEvents];
             baoeCell.selectLaber.text = baoeData;
+            self.insured_amount = baoeData;
             return baoeCell;
         }else {
             // 保费
@@ -561,6 +589,7 @@ typedef enum {
             baoeCell.myLaber.text = @"保费";
             baoeCell.selectLaber.enabled = NO;
             baoeCell.selectLaber.text = baofei;
+            self.rate = baofei;
             return baoeCell;
         }
     }else {
@@ -572,6 +601,7 @@ typedef enum {
             baoeCell.selectLaber.placeholder = @"请输入保额";
             [baoeCell.selectLaber addTarget:self action:@selector(baoeSelectLaberAction:) forControlEvents:UIControlEventAllEditingEvents];
             baoeCell.selectLaber.text = baoeData;
+            self.insured_amount = baoeData;
             return baoeCell;
         }else {
             // 保费
@@ -579,6 +609,7 @@ typedef enum {
             baoeCell.myLaber.text = @"保费";
             baoeCell.selectLaber.enabled = NO;
             baoeCell.selectLaber.text = baofei;
+            self.rate = baofei;
             return baoeCell;
         }
     }
