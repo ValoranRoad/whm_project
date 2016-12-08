@@ -590,10 +590,10 @@ typedef enum {
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [self requestForBaofeiData:textField];
+    [self requestForBaofeiData:textField.text];
 }
 
-- (void)requestForBaofeiData:(UITextField *)sender {
+- (void)requestForBaofeiData:(NSString *)sender {
 //    id hud = [JGProgressHelper showProgressInView:self.view];
     NSString *uid = ((WHget_user_realtion *)self.groupMutableArr.firstObject).id;
     NSString *pid = ((WHgetproduct *)self.groupMutableArr[self.openSection]).id;
@@ -606,8 +606,8 @@ typedef enum {
             // 1   保费= 保额(自己输入的值) * 基本保费(insured) / 基本保额(pay_period)
             NSMutableDictionary *dict = [_fuzhiDict objectForKey:((WHgetproduct *)self.groupMutableArr[self.openSection]).id];
             NSString *pay = [dict objectForKey:@"缴费方式"];
-            CGFloat baofei = [sender.text floatValue] * [mon.insured floatValue] / [[typeDict objectForKey:pay] floatValue];
-            [dict setObject:sender.text forKey:@"保额"];
+            CGFloat baofei = [sender floatValue] * [mon.insured floatValue] / [[typeDict objectForKey:pay] floatValue];
+            [dict setObject:sender forKey:@"保额"];
             [dict setObject:[NSString stringWithFormat:@"%ld",(long)baofei] forKey:@"保费"];
             [self.tableVB reloadData];
         }else {
@@ -842,6 +842,7 @@ typedef enum {
 //    [[_fuzhiDict objectForKey:[NSString stringWithFormat:@"%ld",_myIndexPath.section]] setObject:name forKey:key];
     NSMutableDictionary *dict = [_fuzhiDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id];
     [dict setObject:name forKey:key];
+    [self requestForBaofeiData:[dict objectForKey:@"保额"]];
     [self.tableVB reloadData];
     [_confir removeFromSuperview];
 }
