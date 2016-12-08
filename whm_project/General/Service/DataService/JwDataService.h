@@ -175,7 +175,7 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 -(void)getprorateWithPid:(NSString *)pid
                      uid:(NSString *)uid
                   gender:(NSString *)gender
- success:(void (^)(NSArray * lists, NSArray *pay_periodArr, NSArray *payoutArr))success failure:(void (^)(NSError *error))failure;
+ success:(void (^)(NSArray * lists, NSArray *pay_periodArr, NSArray *payoutArr, NSDictionary *typeDict))success failure:(void (^)(NSError *error))failure;
 
 
 //体检保存
