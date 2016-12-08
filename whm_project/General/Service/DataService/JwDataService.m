@@ -615,7 +615,7 @@
 -(void)getprorateWithPid:(NSString *)pid
                      uid:(NSString *)uid
                   gender:(NSString *)gender
-                 success:(void (^)(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr))success failure:(void (^)(NSError *))failure
+                 success:(void (^)(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr, NSDictionary *typeDict))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"pid":pid,
                                      @"uid":[JwUserCenter sharedCenter].uid,
@@ -629,20 +629,24 @@
         NSArray *moreArr = [bigArr.firstObject objectForKey:@"rate"];
         NSMutableArray *mutableArr_pay_period = [NSMutableArray array];
         NSMutableArray *mutableArr_payOut = [NSMutableArray array];
+        NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
         for (NSDictionary *dic in moreArr) {
             if ([[dic allKeys] containsObject:@"pay_period"]) {
                 [mutableArr_pay_period addObjectsFromArray:((NSDictionary *)[dic objectForKey:@"pay_period"]).allKeys];
+//                mutableDict = [NSMutableDictionary dictionaryWithDictionary:((NSDictionary *)[dic objectForKey:@"pay_period"])];
+                [mutableDict addEntriesFromDictionary:((NSDictionary *)[dic objectForKey:@"pay_period"])];
             }
             if ([[dic allKeys] containsObject:@"payout"]) {
 //                [mutableArr_payOut addObjectsFromArray:[dic objectForKey:@"payout"]];
                 [mutableArr_payOut addObject:[dic objectForKey:@"payout"]];
             }
         }
+        NSLog(@"%@",mutableDict);
         NSSet *set = [NSSet setWithArray:mutableArr_pay_period];
         NSSet *set1 = [NSSet setWithArray:mutableArr_payOut];
         NSArray *rates = [WHget_pro_rate arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
-            success(rates, [set allObjects], [set1 allObjects]);
+            success(rates, [set allObjects], [set1 allObjects], mutableDict);
         }
     } failure:^(NSError *error) {
         if (failure) {

@@ -17,4 +17,6 @@
 
 @interface WHpay_period : JwModelBase
 
+@property (nonatomic, strong) NSDictionary <Optional> *dict;
+
 @end
