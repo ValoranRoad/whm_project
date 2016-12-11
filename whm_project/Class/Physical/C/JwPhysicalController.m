@@ -102,6 +102,9 @@ typedef enum {
 
 @property (nonatomic, assign) NSInteger openSection;
 
+//
+@property(nonatomic,weak)JSCollectViewController * jsCollView;
+
 
 @end
 
@@ -389,7 +392,12 @@ typedef enum {
         oneVC.period = self.period; //保障期间
         oneVC.payout = self.payout;
         oneVC.insured_amount = self.insured_amount; //保额
-    
+        oneVC.mblock1 = ^(CGFloat s1)
+        {
+           // CGFloat  s2 =  s1 ;
+            
+            [self.jsCollView getprogressValue:s1];
+        };
         
     LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
         twoVC.rela_id = self.selectRelaID; //被保人ID
@@ -403,7 +411,9 @@ typedef enum {
     LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
     
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
-        [collectVC getprogressValue:50.f];
+        self.jsCollView = collectVC;
+       
+       // [collectVC getprogressValue:50.f];
     [self presentViewController:collectVC animated:YES completion:nil];
     }
     else

@@ -21,6 +21,10 @@
 
 #import "WHsexViewController.h"
 
+#import "WHgetuseinfo.h"
+#import "JGProgressHelper.h"
+#import "MacroUtility.h"
+#import <UIImageView+WebCache.h>
 
 #define kScreenWitdh [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -49,6 +53,17 @@
 @property (nonatomic, strong) NSData * picData;
 @property (nonatomic, strong)NSString *picStr;
 
+@property(nonatomic,strong)NSMutableArray * dataArry;
+
+@property(nonatomic,strong)UILabel * StrName;
+
+@property(nonatomic,strong)UILabel * StrBirth;
+
+@property(nonatomic,strong)UILabel * StrArea;
+
+@property(nonatomic,strong)UILabel * detalAddress;
+
+@property(nonatomic,strong)NSString * StrSex;
 
 
 @end
@@ -65,11 +80,48 @@
     _tableV.dataSource = self;
     _tableV.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_tableV];
+    [self requartDate];
     
    
 
 }
 
+-(void)requartDate
+{
+    self.dataArry = [NSMutableArray array];
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    
+    [self.dataService get_user_infoWithUid:@"" success:^(NSArray *lists) {
+        [hud hide:YES];
+        for (WHgetuseinfo * model in lists) {
+            NSLog(@"%@",model.name);
+            self.StrName.text = model.name;
+            [self.phoImage sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+            if ([model.sex isEqualToString:@"1"]) {
+                self.sexLaber.text = @"男";
+               // self.sexImage.image = [UIImage imageNamed:@"test_male"];
+
+            }else
+            {
+                self.sexLaber.text = @"女";
+                //self.sexImage.image = [UIImage imageNamed:@"test_famale"];
+
+            }
+            
+            
+            
+
+            self.StrBirth.text = model.birthday;
+            self.StrArea.text = model.area_info;
+            self.detalAddress.text = model.address;
+        }
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
 
 
 //
@@ -132,8 +184,33 @@
 //提交保存
 -(void)nextButAction:(UIBarButtonItem *)sender
 {
+    if ([self.sexLaber.text isEqualToString:@"男"]) {
+        self.StrSex = @"1";
+    }
+    if ([self.sexLaber.text isEqualToString:@"女"]) {
+        self.StrSex = @"2";
+    }
     
-    NSLog(@"tijiao");
+    //NSLog(@"tijiao");
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.userService save_userWithUid:@""
+                                avatar:self.picStr
+                                  name:self.StrName.text
+                                   sex:self.StrSex
+                              birthday:self.StrBirth.text
+                             area_info:self.StrArea.text
+                          area_info_id:@""
+                               address:self.detalAddress.text
+                               success:^{
+                                   [hud hide:YES];
+                                   [JGProgressHelper showSuccess:@"保存成功"];
+                                   
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@"保存失败"];
+        
+    }];
+    
     
 }
 - (void)didReceiveMemoryWarning {
@@ -181,7 +258,7 @@
             
             self.phoImage = [[UIImageView alloc]init];
             self.phoImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.75, CGRectGetMaxY(cell.textLabel.frame)+20, CGRectGetWidth([UIScreen mainScreen].bounds)*0.144, CGRectGetWidth([UIScreen mainScreen].bounds)*0.144);
-            self.phoImage.image = [UIImage imageNamed:@"test_head"];
+            //self.phoImage.image = [UIImage imageNamed:@"test_head"];
             self.phoImage.layer.masksToBounds = YES;
             self.phoImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.144/2;
             self.phoImage.userInteractionEnabled = YES;
@@ -197,10 +274,15 @@
             cell.textLabel.text = @"姓名";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             //cell.detailTextLabel.textColor = [UIColor grayColor];
-            cell.detailTextLabel.textColor = [UIColor grayColor];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
+//            cell.detailTextLabel.textColor = [UIColor grayColor];
+//            cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
             
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
+            self.StrName  = [[UILabel alloc]init];
+            self.StrName.frame = CGRectMake(kScreenWitdh * 0.75, CGRectGetMidY(cell.textLabel.frame), kScreenWitdh * 0.2, WHhight*0.081);
+            self.StrName.textColor = [UIColor grayColor];
+            self.StrName.font = [UIFont systemFontOfSize:15.0];
+            [cell.contentView addSubview:_StrName];
             
         }
 
@@ -214,15 +296,15 @@
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
             //
             self.sexLaber = [[UILabel alloc]init];
-            self.sexLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.65, CGRectGetMaxY(cell.textLabel.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.05, CGRectGetWidth([UIScreen mainScreen].bounds)*0.05);
+            self.sexLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.85, CGRectGetMidY(cell.textLabel.frame), kScreenWitdh * 0.1, WHhight * 0.081);
           //  self.sexLaber.text = @"男";
             [cell.contentView addSubview:_sexLaber];
             //
             
             self.sexImage = [[UIImageView alloc]init];
-            self.sexImage.frame = CGRectMake(CGRectGetMaxX(self.sexLaber.frame)+10, CGRectGetMinY(self.sexLaber.frame), CGRectGetWidth(self.sexLaber.frame), CGRectGetHeight(self.sexLaber.frame));
+            self.sexImage.frame = CGRectMake(CGRectGetMaxX(self.sexLaber.frame)+5, CGRectGetMaxY(cell.textLabel.frame), CGRectGetWidth(self.sexLaber.frame)/2, WHhight * 0.081/2);
          //   self.sexImage.image = [UIImage imageNamed:@"test_male"];
-            [cell.contentView addSubview:_sexImage];
+           // [cell.contentView addSubview:_sexImage];
             
         }
 
@@ -236,6 +318,11 @@
             
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
             
+            self.StrBirth = [[UILabel alloc]init];
+            self.StrBirth.frame = CGRectMake(kScreenWitdh * 0.65, CGRectGetMidY(cell.textLabel.frame), kScreenWitdh * 0.3, WHhight*0.081);
+            self.StrBirth.textColor = [UIColor grayColor];
+            self.StrBirth.font = [UIFont systemFontOfSize:15.0];
+            [cell.contentView addSubview:_StrBirth];
         }
 
         
@@ -258,7 +345,10 @@
             cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
             
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
-            
+            self.StrArea = [[UILabel alloc]init];
+            self.StrArea.frame = CGRectMake(kScreenWitdh * 0.5, CGRectGetMidY(cell.textLabel.frame), kScreenWitdh * 0.4, WHhight * 0.081);
+            self.StrArea.textColor = [UIColor grayColor];
+            [cell.contentView addSubview:_StrArea];
         }
 
         if (indexPath.row == 1 && indexPath.section == 2) {
@@ -269,6 +359,11 @@
             cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
             
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
+            self.detalAddress = [[UILabel alloc]init];
+            self.detalAddress.frame = CGRectMake(kScreenWitdh * 0.5, CGRectGetMidY(cell.textLabel.frame), kScreenWitdh * 0.45, WHhight * 0.081);
+            self.detalAddress.textColor = [UIColor grayColor];
+            self.detalAddress.font = [UIFont systemFontOfSize:15.0];
+            [cell.contentView addSubview:_detalAddress];
             
         }
 
@@ -404,7 +499,7 @@
         WHinsuranceNameViewController * insurance = [[WHinsuranceNameViewController alloc]init];
         insurance.mblock1 = ^(NSString * s1)
         {
-            cell.detailTextLabel.text = s1 ;
+            self.StrName.text = s1 ;
             
            
         };
@@ -421,7 +516,7 @@
         ASBirthSelectSheet *datesheet = [[ASBirthSelectSheet alloc] initWithFrame:self.view.bounds];
         datesheet.selectDate = cell.detailTextLabel.text;
         datesheet.GetSelectDate = ^(NSString *dateStr) {
-            cell.detailTextLabel.text = dateStr;
+            self.StrBirth.text = dateStr;
         };
         [self.view addSubview:datesheet];
         
@@ -436,7 +531,7 @@
     
        address.mblock1 = ^(NSString * s1)
         {
-            cell.detailTextLabel.text = s1 ;
+           self.detalAddress.text = s1 ;
         };
         
         [self.navigationController pushViewController:address animated:NO];
@@ -454,17 +549,17 @@
         {
             self.sexLaber.text = s1 ;
             
-            if ([s1 isEqualToString:@"男"]) {
-                self.sexImage.image = [UIImage imageNamed:@"test_male"];
-            }
-            if ([s1 isEqualToString:@"女"]) {
-                self.sexImage.image = [UIImage imageNamed:@"test_famale"];
-
-            }
-            else
-            {
-                
-            }
+//            if ([s1 isEqualToString:@"男"]) {
+//                self.sexImage.image = [UIImage imageNamed:@"test_male"];
+//            }
+//            if ([s1 isEqualToString:@"女"]) {
+//                self.sexImage.image = [UIImage imageNamed:@"test_famale"];
+//
+//            }
+//            else
+//            {
+//                
+//            }
         };
         
         [self.navigationController pushViewController:sex animated:NO];

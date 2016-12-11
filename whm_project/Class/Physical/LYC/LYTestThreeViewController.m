@@ -55,6 +55,8 @@
 @property(nonatomic,strong)NSString * hasnt;
 @property(nonatomic,strong)NSString * accident;
 @property(nonatomic,strong)NSString * disease;
+@property(nonatomic,strong)NSString * strleast;
+
 
 @end
 
@@ -78,13 +80,14 @@
 -(void)requartDate
 {
      NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
-    self.s1 = [ud valueForKey:@"three"];
+    self.strleast = [ud valueForKey:@"three"];
     
     self.hasnt = [ud valueForKey:@"hasnt"]; //缺少保障项目
     self.accident = [ud valueForKey:@"accident"];  //意外保险保额
     self.disease = [ud valueForKey:@"disease"]; //重大疾病
-    
-    
+    NSLog(@"%@",self.hasnt);
+     NSLog(@"%@",self.accident);
+     NSLog(@"%@",self.disease);
     NSLog(@"==%@",self.s1);
     [self loadWithURLString:self.s1];
 
@@ -102,7 +105,22 @@
     
     _custompro.presentlab.textColor = [UIColor blackColor];
     [self.view addSubview:_custompro];
+
     [self timer];
+    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable1:)];
+    _custompro.presentlab.userInteractionEnabled = YES;
+    tapGesture1.numberOfTapsRequired=1;
+    
+    //设置手指数 单指
+    
+    tapGesture1.numberOfTouchesRequired=1;
+    
+    // titleLabel添加手势识别
+    
+    [_custompro1.presentlab addGestureRecognizer:tapGesture1];
+    
+
+    
     //试图2
     _custompro1 = [[CustomProgress alloc] initWithFrame:CGRectMake(kScreenWitdh *0.5, 10, kScreenWitdh *0.4, 50)];
     
@@ -114,6 +132,20 @@
    _custompro1.presentlab.textColor = [UIColor blackColor];
     [self.view addSubview:_custompro1];
     [self timer1];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable:)];
+    _custompro1.presentlab.userInteractionEnabled = YES;
+    tapGesture.numberOfTapsRequired=1;
+    
+    //设置手指数 单指
+    
+    tapGesture.numberOfTouchesRequired=1;
+    
+    // titleLabel添加手势识别
+    
+    [_custompro1.presentlab addGestureRecognizer:tapGesture];
+    
+
+
     //试图3
     _custompro2 = [[CustomProgress alloc] initWithFrame:CGRectMake(10, 80, kScreenWitdh *0.4, 50)];
      _custompro2.maxValue = 40;
@@ -123,6 +155,19 @@
     _custompro2.presentlab.textColor = [UIColor blackColor];
     [self.view addSubview:_custompro2];
    [self timer2];
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable2:)];
+    _custompro2.presentlab.userInteractionEnabled = YES;
+    tapGesture2.numberOfTapsRequired=1;
+    
+    //设置手指数 单指
+    
+    tapGesture2.numberOfTouchesRequired=1;
+    
+    // titleLabel添加手势识别
+    
+    [_custompro2.presentlab addGestureRecognizer:tapGesture2];
+    
+    
     //试图4
     _custompro3 = [[CustomProgress alloc] initWithFrame:CGRectMake(kScreenWitdh *0.5, 80, kScreenWitdh *0.4, 50)];
     
@@ -133,6 +178,20 @@
     _custompro3.presentlab.textColor = [UIColor blackColor];
     [self.view addSubview:_custompro3];
     [self timer3];
+    UITapGestureRecognizer *tapGesture3 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable2:)];
+    _custompro3.presentlab.userInteractionEnabled = YES;
+    tapGesture3.numberOfTapsRequired=1;
+    
+    //设置手指数 单指
+    
+    tapGesture3.numberOfTouchesRequired=1;
+    
+    // titleLabel添加手势识别
+    
+    [_custompro3.presentlab addGestureRecognizer:tapGesture3];
+    
+
+    
     //试图5
      _custompro4 = [[CustomProgress alloc] initWithFrame:CGRectMake(10, 150, kScreenWitdh *0.4, 50)];
     _custompro4.maxValue = 25;
@@ -167,7 +226,30 @@
 
 }
 //
+-(void)onClickUILable:(UITapGestureRecognizer *)sender{
+    self.s1 = self.hasnt;
+    [self loadWithURLString:self.s1];
 
+    
+}
+-(void)onClickUILable1:(UITapGestureRecognizer *)sender{
+    self.s1 = self.strleast;
+    [self loadWithURLString:self.s1];
+    
+    
+}
+-(void)onClickUILable2:(UITapGestureRecognizer *)sender{
+    self.s1 = self.accident;
+    [self loadWithURLString:self.s1];
+    
+    
+}
+-(void)onClickUILable3:(UITapGestureRecognizer *)sender{
+    self.s1 = self.disease;
+    [self loadWithURLString:self.s1];
+    
+    
+}
 -(void)loadWithURLString:(NSString *)urlStr
 {
     NSString  * content = [self.s1 stringByReplacingOccurrencesOfString:@"+" withString:@" "];
@@ -193,6 +275,7 @@
     
     if (present<=20) {
         
+      
         [_custompro setPresent:6 title:@"保障是否全面" labelText:@"12分"];
         
     }
@@ -203,6 +286,7 @@
     
     if (present1<=10) {
         
+       
         [_custompro1 setPresent:8 title:@"保费是否合理" labelText:@"8分"];
 
     }

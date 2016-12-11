@@ -15,7 +15,6 @@
 #import "WHcov.h"
 #import "WHrela.h"
 #import <UIImageView+WebCache.h>
-#import "JwPhysicalController.h"
 
 @interface LYTestOneViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -48,12 +47,12 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
     [super viewWillAppear:YES];
     
    [self requartDate];
-    
-    JwPhysicalController * phy = [[JwPhysicalController alloc]init];
-    
+      
     
     
 }
+
+
 
 //数据请求
 -(void)requartDate
@@ -82,7 +81,12 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
                                        NSLog(@"?????%@",totrate.score);
                                        self.StrScore = totrate.score;
                                       // self.myValue = [self.StrScore doubleValue];
-                                      
+                                       //block传值
+                                       if (self.StrScore != nil) {
+                                           self.mblock1([self.StrScore doubleValue]);
+                                           NSLog(@"%@",self.StrScore);
+                                       }
+
                                        //self.dateArry = [NSMutableArray arrayWithArray:pro];
                                        
                                        [self.dateArry addObjectsFromArray:report.pros];
@@ -134,6 +138,9 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
     } failure:^(NSError *error) {
         
     }];
+    
+    
+    
     
 }
 
