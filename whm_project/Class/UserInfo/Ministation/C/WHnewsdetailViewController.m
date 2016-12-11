@@ -201,7 +201,7 @@
     self.lineView2 = [[UIView alloc]init];
     self.lineView2.frame = CGRectMake(0, kScreenHeight * 0.25-2, kScreenWitdh, 2);
     self.lineView2.backgroundColor = [UIColor colorWithHex:0xD9D9D9];
-    [self.headView addSubview:_lineView2];
+  //  [self.headView addSubview:_lineView2];
     //
     self.scw = [[UIWebView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.headView.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*0.7)];
     [self.view addSubview:_scw];

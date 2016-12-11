@@ -491,7 +491,7 @@
                          uid:(NSString *)uid
                      success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = [@{@"agent_uid":[JwUserCenter sharedCenter].uid,
+    NSMutableDictionary * param = [@{@"agent_uid":agent_uid,
                                      @"uid":[JwUserCenter sharedCenter].uid,
                                      @"token":[JwUserCenter sharedCenter].key}mutableCopy];
     param = [[self filterParam:param interface:@"kbj/micro"] mutableCopy];
@@ -944,6 +944,38 @@
             success(getorgs);
         }
         
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+
+}
+//获取高级搜索筛选
+-(void)powsearchProductWithcompany_id:(NSString *)company_id
+                              keyword:(NSString *)keyword
+                                  sex:(NSString *)sex
+                                  age:(NSString *)age
+                           characters:(NSString *)characters
+                               period:(NSString *)period
+                              cate_id:(NSString *)care_id
+                           pay_period:(NSString *)pay_period
+                                    p:(NSString *)p
+                             pagesize:(NSString *)pagesize
+                              success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"company_id":company_id ,@"keyword":keyword,@"sex":sex,@"age":age,@"characters":characters, @"period":period ,@"cate_id":care_id ,@"pay_period":pay_period,@"p":p ,@"pagesize":pagesize}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_product"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_product" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *products = [WHgetproduct arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(products);
+        }
     } failure:^(NSError *error) {
         if (failure) {
             failure(error);

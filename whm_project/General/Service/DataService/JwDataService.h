@@ -248,5 +248,19 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
+//获取高级搜索筛选
+-(void)powsearchProductWithcompany_id:(NSString *)company_id
+                              keyword:(NSString *)keyword
+                                  sex:(NSString *)sex
+                                  age:(NSString *)age
+                           characters:(NSString *)characters
+                               period:(NSString *)period
+                              cate_id:(NSString *)care_id
+                           pay_period:(NSString *)pay_period
+                                    p:(NSString *)p
+                             pagesize:(NSString *)pagesize
+                              success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
 
 @end

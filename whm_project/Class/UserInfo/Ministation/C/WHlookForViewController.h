@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "JwBackBaseController.h"
 @interface WHLookforViewController : JwBackBaseController
+@property(nonatomic,strong)NSString * StrAgentId;
+@property(nonatomic,strong)NSString * selectDiffent;
+
 
 @end

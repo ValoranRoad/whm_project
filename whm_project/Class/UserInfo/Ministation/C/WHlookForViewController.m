@@ -28,6 +28,8 @@
 #import "UMSocial.h"
 #define BASE_REST_URL @"https://www.kuaibao365.com/index/agent"
 #import "WHnewsdetailViewController.h"
+#import "JwUserCenter.h"
+
 @interface WHLookforViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UITextViewDelegate,UMSocialUIDelegate>
 @property (nonatomic, strong) UITableView *tableV;
 @property(nonatomic,strong)UIImageView * headImage;
@@ -92,6 +94,8 @@
 @property(nonatomic,strong)NSString * agentID;
 @property(nonatomic,strong)NSString * imgUrl;
 @property(nonatomic,strong)NSString * sexUrl;
+
+@property(nonatomic,strong)NSString * selAgentID;
 
 @end
 
@@ -258,8 +262,18 @@
 // 请求数据
 -(void)requestData1
 {
+    if ([self.selectDiffent isEqualToString:@"1"] ) {
+        self.selAgentID = self.StrAgentId;
+    }
+    else
+    {
+    self.selAgentID = [JwUserCenter sharedCenter].uid;
+    
+    }
+    
+    
     id  hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getMicroWithAgent_uid:@"" uid:@"" success:^(NSArray *lists) {
+    [self.dataService getMicroWithAgent_uid:self.selAgentID  uid:@"" success:^(NSArray *lists) {
         [hud hide:YES];
        // NSLog(@"%@",lists);
         

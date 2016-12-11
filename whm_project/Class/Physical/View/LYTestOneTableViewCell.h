@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameTitLaber;
 @property (weak, nonatomic) IBOutlet UILabel *ageLaber;
 
+
+
 @end

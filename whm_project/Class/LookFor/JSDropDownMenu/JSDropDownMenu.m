@@ -343,6 +343,7 @@
 
 - (void)screenBAction:(UIButton *)button{
     self.screenBActionBlock();
+  
 }
 
 #pragma mark - init support

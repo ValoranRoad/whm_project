@@ -121,16 +121,16 @@
      centerVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     physicalVC.tabBarItem.selectedImage = [UIImage imageNamed:@"physical_h"];
     physical.title = physicalVC.title = @"体检";
-    lookfor.title = lookforVC.title = @"找险";
+    lookfor.title = lookforVC.title = @"找险种";
     find.title = findVC.title = @"发现";
     login.title = loginVC.title = @"我的";
     center.title = centerVC.title = @"我的";
     if ([JwUserCenter sharedCenter].key == nil) {
-    self.viewControllers = @[physicalVC, lookforVC, findVC, loginVC];
+    self.viewControllers = @[lookforVC,physicalVC,  findVC, loginVC];
     }
     else
     {
-        self.viewControllers = @[physicalVC, lookforVC, findVC, centerVC];
+        self.viewControllers = @[lookforVC,physicalVC,  findVC, centerVC];
     }
     [self setupView];
     /*

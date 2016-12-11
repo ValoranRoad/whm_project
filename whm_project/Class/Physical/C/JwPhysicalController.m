@@ -372,6 +372,8 @@ typedef enum {
     
     NSString *s = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
     NSLog(@"%@",s );
+    
+    
     self.selectRelaID = s ;
     if (self.selectRelaID != nil) {
     
@@ -387,6 +389,8 @@ typedef enum {
         oneVC.period = self.period; //保障期间
         oneVC.payout = self.payout;
         oneVC.insured_amount = self.insured_amount; //保额
+    
+        
     LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
         twoVC.rela_id = self.selectRelaID; //被保人ID
         twoVC.pro_id = self.selectProID;//险种ID
@@ -399,11 +403,12 @@ typedef enum {
     LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
     
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+        [collectVC getprogressValue:50.f];
     [self presentViewController:collectVC animated:YES completion:nil];
     }
     else
     {
-        [JGProgressHelper showError:@"请选择被保人"];
+        [JGProgressHelper showError:@"请选择险种的信息"];
     }
 
     }

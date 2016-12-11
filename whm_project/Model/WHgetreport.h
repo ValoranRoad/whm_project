@@ -29,9 +29,17 @@
 
 @property(nonatomic,strong)WHscore <Optional>* score;
 
-@property(nonatomic,strong)WHcov <Optional>* cov;
+@property(nonatomic,strong)WHcov <Optional>* cov; //保障是否全面
 
 @property(nonatomic,strong)NSArray <WHsecond ,Optional> * second;
+
+@property(nonatomic,strong)WHcov <Optional> * hasnt; //缺少保障项目
+
+@property(nonatomic,strong)WHcov <Optional> * accident_insured;//意外保险保额
+
+@property(nonatomic,strong)WHcov <Optional> * disease_insured;//重大疾病保额
+
+
 
 
 

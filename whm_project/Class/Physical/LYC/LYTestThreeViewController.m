@@ -52,6 +52,10 @@
 @property(nonatomic,strong)UIWebView * scw;
 @property(nonatomic,strong)UILabel * titLaber;
 @property(nonatomic,strong)NSString * s1 ;
+@property(nonatomic,strong)NSString * hasnt;
+@property(nonatomic,strong)NSString * accident;
+@property(nonatomic,strong)NSString * disease;
+
 @end
 
 @implementation LYTestThreeViewController
@@ -74,7 +78,12 @@
 -(void)requartDate
 {
      NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
-    self.s1 = [ud valueForKey:@"one"];
+    self.s1 = [ud valueForKey:@"three"];
+    
+    self.hasnt = [ud valueForKey:@"hasnt"]; //缺少保障项目
+    self.accident = [ud valueForKey:@"accident"];  //意外保险保额
+    self.disease = [ud valueForKey:@"disease"]; //重大疾病
+    
     
     NSLog(@"==%@",self.s1);
     [self loadWithURLString:self.s1];

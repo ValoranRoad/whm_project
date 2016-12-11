@@ -17,6 +17,8 @@
 #import <UIImageView+WebCache.h>
 #import "WHnearMapViewController.h"
 #import "WHmaplistTableViewController.h"
+#import "WHLookforViewController.h"
+
 
 @interface WHnearAgentTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView * tableV;
@@ -56,6 +58,9 @@
 @property(nonatomic,strong)NSMutableArray * mtitArry;
 @property(nonatomic,strong)NSMutableArray * ageArry;
 
+@property(nonatomic,strong)NSMutableArray * agentIdArry;
+@property(nonatomic,strong)NSString * agentID;
+
 
 @property(nonatomic,strong)NSString * s ;
 @end
@@ -76,6 +81,7 @@
     //
     self.mtitArry = [NSMutableArray array];
     self.ageArry = [NSMutableArray array];
+    self.agentIdArry = [NSMutableArray array];
     
     
     [self quartDate];
@@ -129,6 +135,8 @@
                                          for (WHgetnearagent * near in lists) {
                                             self.nearID = near.id;
                                             self.StrDist = near.dist;
+                                             //代理人ID
+                                             [self.agentIdArry addObject:near.id];
                                              //小数点处理
                                              float  f = [near.dist floatValue];
                                              int a = (int)f;
@@ -449,7 +457,13 @@
         cell.telLaber.text = self.telArry[indexPath.row];
         cell.companyLaber.text = self.comArry [indexPath.row];
         cell.mapLaber.text = self.distArry[indexPath.row];
-        
+        UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable:)];
+        cell.myImage.userInteractionEnabled = YES;
+        tapGesture.numberOfTapsRequired = 1;
+        tapGesture.numberOfTouchesRequired = 1;
+        [cell.myImage addGestureRecognizer:tapGesture];
+       // cell.myImage.tag = 100 + indexPath.row;
+        self.agentID = self.agentIdArry[indexPath.row];
         
             return cell;
 
@@ -465,6 +479,18 @@
     
 
 }
+
+//图片点击事件
+-(void)onClickUILable:(UITapGestureRecognizer *)sender{
+   // NSLog(@"kk");
+    WHLookforViewController * look = [[WHLookforViewController alloc]init];
+    look.StrAgentId = self.agentID;
+    look.selectDiffent = @"1";
+    [self.navigationController pushViewController:look animated:YES];
+    
+    
+}
+
 #pragma mark 点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
