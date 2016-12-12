@@ -19,7 +19,8 @@
 #import "JwCompanys.h"
 #import "WHhistoryTableViewCell.h"
 #import "WHgetproducedetalViewController.h"
-
+//刷新数据
+#import "MJRefresh.h"
 
 
 @interface WHpowSearTableViewController ()<UISearchBarDelegate, JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -77,7 +78,8 @@
 @property(nonatomic,strong)NSString * ageLaber;
 @property(nonatomic,strong)NSString * complyId;
 @property(nonatomic,strong)NSMutableArray * compIdArry;
-
+//刷新定义页数
+@property(nonatomic,assign)NSInteger numindex;
 
 @end
 
@@ -86,7 +88,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self quartData];
-    [self data];
+    //[self data];
+    
+    [self setupRefresh];
 }
 
 - (void)viewDidLoad {
@@ -100,9 +104,32 @@
     self.path3 = [JSIndexPath indexPathWithCol:-1 leftOrRight:-1 leftRow:-1 row:-1];
     self.path4 = [JSIndexPath indexPathWithCol:-1 leftOrRight:-1 leftRow:-1 row:-1];
 }
--(void)data
+
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing )];
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self data];
+}
+//上拉加载
+-(void)footerRefreshing
 {
     
+    self.numindex ++ ;
+    [self data];
+}
+-(void)data
+{
+
     id hud = [JGProgressHelper showProgressInView:self.view];
     [self.dataService get_productWithCompany_id:@""
                                          keyword:@""
@@ -117,12 +144,14 @@
                                    yearly_income:@""
                                             debt:@""
                                          rela_id:@""
-                                               p:@"1"
-                                        pagesize:@"10"
+                                               p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                        pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 10]
                                          success:^(NSArray *lists) {
                                              [hud hide:YES];
                                              
                                              self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                             [self.tableV headerEndRefreshing];
+                                             [self.tableV footerEndRefreshing];
                                              [self.tableV reloadData];
                                              
                                              

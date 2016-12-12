@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JwBackBaseController.h"
 
-@interface WHintroViewController : UIViewController
+@interface WHintroViewController : JwBackBaseController
+@property(nonatomic,strong)NSString * company_id;
 
 @end

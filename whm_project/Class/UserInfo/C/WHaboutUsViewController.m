@@ -7,16 +7,30 @@
 //
 
 #import "WHaboutUsViewController.h"
+#import "MacroUtility.h"
 
-@interface WHaboutUsViewController ()
-
+@interface WHaboutUsViewController ()<UIWebViewDelegate>
+@property(nonatomic,strong)UIWebView * scw;
 @end
 
 @implementation WHaboutUsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setUp];
+}
+
+-(void)setUp
+{
+    self.title = @"关于我们";
+    self.scw = [[UIWebView alloc]init];
+    self.scw.frame = CGRectMake(0, 0, kScreenWitdh, kScreenHeight);
+    NSURL * url = [[NSBundle mainBundle]URLForResource:@"indexabout.html" withExtension:nil];
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+    [self.scw loadRequest:request];
+    [self.view addSubview:_scw];
+    
 }
 
 - (void)didReceiveMemoryWarning {

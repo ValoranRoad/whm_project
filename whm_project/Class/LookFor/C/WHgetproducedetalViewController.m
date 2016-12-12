@@ -21,6 +21,8 @@
 #import "WHTitleView.h"
 #import "YCXMenu.h"
 #import "UMSocial.h"
+#import "WHcompanyDetail.h"
+
 #define BASE_REST_URL @"https://www.kuaibao365.com/product/details"
 
 @interface WHgetproducedetalViewController ()<UIScrollViewDelegate,UIWebViewDelegate,UMSocialUIDelegate>
@@ -84,6 +86,7 @@
 
 @property(nonatomic,assign)NSInteger  i ;
 
+@property(nonatomic,strong)NSString * s11;
 
 
 
@@ -187,16 +190,16 @@
     
 }
 
+
 //定义响应事件
 
 -(void)onClickUILableAction:(UITapGestureRecognizer *)sender{
-   
-
-    NSLog(@"jjj");
+       NSLog(@"jjj");
      WHstatisViewController * statisVC = [[WHstatisViewController alloc]init];
      WHcoverageViewController * coverVC = [[WHcoverageViewController alloc]init];
      coverVC.com_id = self.com_id;
      WHintroViewController * introVC = [[WHintroViewController alloc]init];
+     introVC.company_id = self.com_id;
      WHJSCollectViewController * collectVC = [[WHJSCollectViewController  alloc]initWithAddVCARY:@[statisVC,coverVC,introVC] TitleS:@[@"统计",@"险种",@"简介"]];
     [self presentViewController:collectVC animated:YES completion:nil];
     
