@@ -117,8 +117,8 @@
                                    yearly_income:@""
                                             debt:@""
                                          rela_id:@""
-                                               p:@""
-                                        pagesize:@""
+                                               p:@"1"
+                                        pagesize:@"10"
                                          success:^(NSArray *lists) {
                                              [hud hide:YES];
                                              

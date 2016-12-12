@@ -709,5 +709,30 @@
 
     
 }
+//取消推荐险种接口
+-(void)delrecWithUid:(NSString *)uid
+                 pid:(NSString *)pid
+             success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"pid":pid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/del_rec"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/del_rec" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+}
+
+
 
 @end

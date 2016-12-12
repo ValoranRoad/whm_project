@@ -204,5 +204,10 @@ success:(void(^)())success failure:(void(^)(NSError *error))failure;
                     uid:(NSString * )uid
                 success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
+//取消推荐险种接口
+-(void)delrecWithUid:(NSString * )uid
+                 pid:(NSString *)pid
+             success:(void(^)())success failure:(void(^)(NSError * error))failure;
+
 
 @end

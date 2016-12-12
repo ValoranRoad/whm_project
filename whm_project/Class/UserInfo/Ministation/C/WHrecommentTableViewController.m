@@ -20,6 +20,8 @@
 @property (nonatomic, strong) UITableView *tableV;
 
 @property(nonatomic,strong)NSMutableArray * dataArry;
+@property(nonatomic,strong)NSString * recId;
+
 
 @end
 
@@ -119,6 +121,50 @@
     return 120;
 }
 
+//编辑删除事件
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+//制定编辑的样式
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}//删除事件
+-(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewRowAction *layTopRowAction1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+      WHgetrec * model = self.dataArry[indexPath.row];
+        self.recId  = model.id;
+        id hud = [JGProgressHelper showProgressInView:self.view];
+        [self.userService delrecWithUid:@""
+                                    pid:self.recId success:^{
+                                        [hud hide:YES];
+                                        [JGProgressHelper showSuccess:@"取消成功"];
+                                        [self.tableV reloadData];
+                                        
+        } failure:^(NSError *error) {
+            [hud hide:YES];
+            [JGProgressHelper showError:@"取消失败"];
+            
+        }];
+        
+        [self.dataArry removeObjectAtIndex:indexPath.row];
+        
+        NSArray * temp = [NSArray arrayWithObject:indexPath];
+        //更新ui
+        
+        [ tableView  deleteRowsAtIndexPaths:temp withRowAnimation:UITableViewRowAnimationLeft];
+        [tableView setEditing:NO animated:YES];
+        
+        
+    }];
+    
+    NSArray * arr = @[layTopRowAction1];
+    return arr;
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

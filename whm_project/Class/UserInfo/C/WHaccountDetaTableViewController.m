@@ -190,6 +190,10 @@
     if ([self.sexLaber.text isEqualToString:@"女"]) {
         self.StrSex = @"2";
     }
+    else
+    {
+        self.StrSex = @"0";
+    }
     
     //NSLog(@"tijiao");
     id hud = [JGProgressHelper showProgressInView:self.view];
