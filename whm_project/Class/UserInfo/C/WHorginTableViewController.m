@@ -155,6 +155,10 @@
 -(void)setPopUI
 {
    
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+    NSString * address = [ud stringForKey:@"address"];
+
+    
     self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 35, kScreenWitdh, kScreenHeight - 64-35) style:UITableViewStylePlain];
     _tableV.delegate = self;
     _tableV.dataSource = self;
@@ -165,7 +169,7 @@
     //
     self.myAddressBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.myAddressBtn.frame = CGRectMake(0, 0,CGRectGetWidth(self.view.frame)/2-0.5, 30);
-    [self.myAddressBtn setTitle:@"省市区" forState:UIControlStateNormal];
+    [self.myAddressBtn setTitle:[NSString stringWithFormat:@"%@",address] forState:UIControlStateNormal];
     [self.myAddressBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.myAddressBtn addTarget:self action:@selector(myaddressBtnAction) forControlEvents:UIControlEventTouchUpInside];
     self.myAddressBtn.backgroundColor = [UIColor whiteColor];

@@ -710,6 +710,8 @@
                       city:(NSString *)city
                     county:(NSString *)county
                       type:(NSString *)type
+                  distance:(NSString *)distance
+                       map:(NSString *)map
                    success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSDictionary * param = [@{@"lng":lng ,
@@ -718,7 +720,9 @@
                               @"province":province ,
                               @"city":city ,
                               @"county":county,
-                              @"type":type}mutableCopy];
+                              @"type":type,
+                              @"distance":@"10.00",
+                              @"map":map}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_near_agent"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_near_agent" success:^(id data) {
         
@@ -745,7 +749,7 @@
 {
     NSDictionary * param = [@{@"lng":lng ,
                               @"lat":lat,
-                              @"distance":@"100.00",
+                              @"distance":@"10.00",
                               @"map":map}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {
@@ -903,7 +907,7 @@
                               @"city":city,
                               @"county":county,
                               @"type":type,
-                              @"distance":@"100.00",
+                              @"distance":@"10.00",
                               @"map":map}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_near_agent"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_near_agent" success:^(id data) {
@@ -933,7 +937,7 @@
     NSDictionary * param = [@{@"province":province ,
                               @"city":city,
                               @"county":county,
-                              @"distance":@"100.00",
+                              @"distance":@"10.00",
                               @"map":map}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {

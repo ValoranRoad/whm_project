@@ -94,7 +94,7 @@
                                  province:@""
                                      city:@""
                                    county:@""
-                                 distance:@"100.00"
+                                 distance:@"10.00"
                                       map:@"1"
                                   success:^(NSArray *lists) {
         [hud hide:YES];
@@ -142,6 +142,10 @@
 -(void)setPopUI
 {
     
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+    NSString * address = [ud stringForKey:@"address"];
+
+    
     self.tableV = [[UITableView alloc] initWithFrame:CGRectMake(0, 35, kScreenWitdh, kScreenHeight - 64-35) style:UITableViewStylePlain];
     _tableV.delegate = self;
     _tableV.dataSource = self;
@@ -152,7 +156,7 @@
     //
     self.myAddressBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     self.myAddressBtn.frame = CGRectMake(0, 0,CGRectGetWidth(self.view.frame)/2-0.5, 30);
-    [self.myAddressBtn setTitle:@"省市区" forState:UIControlStateNormal];
+    [self.myAddressBtn setTitle:[NSString stringWithFormat:@"%@",address] forState:UIControlStateNormal];
     [self.myAddressBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.myAddressBtn addTarget:self action:@selector(myaddressBtnAction) forControlEvents:UIControlEventTouchUpInside];
     self.myAddressBtn.backgroundColor = [UIColor whiteColor];
@@ -375,7 +379,7 @@
         //这里要根据你取出区的id，重新请求数据，然后刷新下方的tableview
         
         id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.dataService get_hospitalWithlat:@"" lng:@"" province:@"" city:@"" county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]] distance:@"100.00" map:@"1" success:^(NSArray *lists) {
+        [self.dataService get_hospitalWithlat:@"" lng:@"" province:@"" city:@"" county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]] distance:@"10.00" map:@"1" success:^(NSArray *lists) {
             [hud hide:YES];
             self.dataArry = [NSMutableArray arrayWithArray:lists];
             [self.tableV reloadData];

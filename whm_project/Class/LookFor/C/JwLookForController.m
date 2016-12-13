@@ -20,8 +20,13 @@
 #import "JwRela.h"
 #import "JwUserCenter.h"
 #import "JwLoginController.h"
+//出生日期选择
+#import "ASBirthSelectSheet.h"
 
-@interface JwLookForController ()<UIScrollViewDelegate>
+@interface JwLookForController ()<UIScrollViewDelegate,UITextFieldDelegate,UIActionSheetDelegate>
+{
+      UIActionSheet *sheet;
+}
 
 // 最大的UIScrollview
 @property (nonatomic, strong) UIScrollView *bigScrollV;
@@ -255,6 +260,39 @@
     WHhistoryTableViewController * history = [[WHhistoryTableViewController alloc]init];
     [self.navigationController pushViewController:history animated:YES];
 }
+-(void)onClickUILable11:(UITapGestureRecognizer *)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入保费" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *userNameTextField = alertController.textFields.firstObject;
+        
+        NSLog(@"%@",userNameTextField.text);
+        self.myText1.text = userNameTextField.text;
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入保费";
+        
+    }];
+    [self presentViewController:alertController animated:true completion:nil];
+}
+-(void)onClickUILable12:(UITapGestureRecognizer *)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入保险金额" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *userNameTextField = alertController.textFields.firstObject;
+        
+        NSLog(@"%@",userNameTextField.text);
+        self.myText2.text = userNameTextField.text;
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入保额";
+        
+    }];
+    [self presentViewController:alertController animated:true completion:nil];
+}
+
 
 -(void)UI
 {
@@ -277,6 +315,19 @@
     Laber1.font = [UIFont systemFontOfSize:13.0];
     Laber1.text = @"首年保费";
     [self.conditionScrollV addSubview:Laber1];
+    //
+    
+    UITapGestureRecognizer *tapGesture11=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable11:)];
+    
+    Laber1.userInteractionEnabled=YES;
+    tapGesture11.numberOfTapsRequired =1;
+    
+    //设置手指数 单指
+    
+    tapGesture11.numberOfTouchesRequired=1;
+    [Laber1 addGestureRecognizer:tapGesture11];
+    //
+    
     self.myText1 = [[UITextField alloc]init];
     self.myText1.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.45, CGRectGetMinY(Laber1.frame), CGRectGetWidth([UIScreen mainScreen].bounds)*0.5, CGRectGetHeight(Laber1.frame));
     
@@ -310,6 +361,20 @@
     Laber2.font = [UIFont systemFontOfSize:13.0];
     Laber2.text = @"保险金额";
     [self.conditionScrollV addSubview:Laber2];
+    //
+    
+    UITapGestureRecognizer *tapGesture12=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable12:)];
+    
+    Laber2.userInteractionEnabled=YES;
+    tapGesture12.numberOfTapsRequired =1;
+    
+    //设置手指数 单指
+    
+    tapGesture12.numberOfTouchesRequired=1;
+    [Laber2 addGestureRecognizer:tapGesture12];
+    
+    
+    //
     
     self.myText2 = [[UITextField alloc]init];
     self.myText2.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.45, CGRectGetMinY(Laber2.frame), CGRectGetWidth([UIScreen mainScreen].bounds)*0.5, CGRectGetHeight(Laber2.frame));
@@ -433,7 +498,8 @@
     [self.serchBut setTintColor:[UIColor whiteColor]];
     [self.conditionScrollV addSubview:_serchBut];
     
-    
+    self.myText1.delegate = self;
+    self.myText2.delegate = self;
     
 
 }
@@ -464,6 +530,23 @@
     Laber1.font = [UIFont systemFontOfSize:13.0];
     Laber1.text = @"性别";
     [self.essentialScrollV addSubview:Laber1];
+    //
+    
+    UITapGestureRecognizer *tapGesture7=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable7:)];
+    
+    Laber1.userInteractionEnabled=YES;
+    tapGesture7.numberOfTapsRequired =1;
+    
+    //设置手指数 单指
+    
+    tapGesture7.numberOfTouchesRequired=1;
+    [Laber1 addGestureRecognizer:tapGesture7];
+    
+
+    
+    
+    
+    //
     
     self.basText1 = [[UITextField alloc]init];
     self.basText1.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.45, CGRectGetMinY(Laber1.frame), CGRectGetWidth([UIScreen mainScreen].bounds)*0.5, CGRectGetHeight(Laber1.frame));
@@ -496,6 +579,20 @@
     Laber2.font = [UIFont systemFontOfSize:13.0];
     Laber2.text = @"出生日期";
     [self.essentialScrollV addSubview:Laber2];
+    //
+    UITapGestureRecognizer *tapGesture6=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable6:)];
+    
+    Laber2.userInteractionEnabled=YES;
+    tapGesture6.numberOfTapsRequired =1;
+    
+    //设置手指数 单指
+    
+    tapGesture6.numberOfTouchesRequired=1;
+    [Laber2 addGestureRecognizer:tapGesture6];
+
+    
+    
+    //
     self.basText2 = [[UITextField alloc]init];
     self.basText2.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.45, CGRectGetMinY(Laber2.frame), CGRectGetWidth([UIScreen mainScreen].bounds)*0.5, CGRectGetHeight(Laber2.frame));
     
@@ -541,11 +638,27 @@
     self.basText3.keyboardType = UIKeyboardTypeNumberPad;
     img3.image = [UIImage imageNamed:@"p_arrowleft"];
     //
+    
+    UITapGestureRecognizer *tapGesture4=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable4:)];
+    
+     Laber3.userInteractionEnabled=YES;
+    tapGesture4.numberOfTapsRequired =1;
+    
+    //设置手指数 单指
+    
+    tapGesture4.numberOfTouchesRequired=1;
+    [Laber3 addGestureRecognizer:tapGesture4];
+    
+    
+    
+    
+    //
     [self.essentialScrollV addSubview:_basText3];
     UIView * lineView3 = [[UIView alloc]init];
     lineView3.frame = CGRectMake(20, CGRectGetMaxY(_basText3.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView3.backgroundColor = [UIColor grayColor];
     [self.essentialScrollV addSubview:lineView3];
+    
     
     //
     UIImageView * myImage4 = [[UIImageView alloc]init];
@@ -559,6 +672,22 @@
     Laber4.text = @"负债总额";
     [self.essentialScrollV addSubview:Laber4];
     
+    //
+    UITapGestureRecognizer *tapGesture5=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickUILable5:)];
+    
+    Laber4.userInteractionEnabled=YES;
+    tapGesture5.numberOfTapsRequired =1;
+    
+    //设置手指数 单指
+    
+    tapGesture5.numberOfTouchesRequired=1;
+    [Laber4 addGestureRecognizer:tapGesture5];
+    
+
+    
+    
+    
+    //
     self.basText4 = [[UITextField alloc]init];
     self.basText4.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.45, CGRectGetMinY(Laber4.frame), CGRectGetWidth([UIScreen mainScreen].bounds)*0.5, CGRectGetHeight(Laber4.frame));
     self.basText4.borderStyle = UITextBorderStyleNone;
@@ -576,7 +705,84 @@
     lineView4.frame = CGRectMake(20, CGRectGetMaxY(_basText4.frame), CGRectGetWidth([UIScreen mainScreen].bounds)-40, 1);
     lineView4.backgroundColor = [UIColor grayColor];
     [self.essentialScrollV addSubview:lineView4];
+    
+    self.basText2.delegate = self;
+    self.basText3.delegate = self;
+    self.basText4.delegate = self;
+    self.basText1.delegate = self;
+    
 }
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+  
+    return NO;
+}
+
+
+-(void)onClickUILable4:(UITapGestureRecognizer *)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入年收入" preferredStyle:UIAlertControllerStyleAlert];
+     [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+      UITextField *userNameTextField = alertController.textFields.firstObject;
+         
+         NSLog(@"%@",userNameTextField.text);
+         self.basText3.text = userNameTextField.text;
+     }]];
+     [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入年收入";
+       
+    }];
+    [self presentViewController:alertController animated:true completion:nil];
+}
+-(void)onClickUILable5:(UITapGestureRecognizer *)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入负债总额" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *userNameTextField = alertController.textFields.firstObject;
+        
+        NSLog(@"%@",userNameTextField.text);
+        self.basText4.text = userNameTextField.text;
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入负债总额";
+        
+    }];
+    [self presentViewController:alertController animated:true completion:nil];
+}
+
+-(void)onClickUILable6:(UITapGestureRecognizer *)sender
+{
+    ASBirthSelectSheet *datesheet = [[ASBirthSelectSheet alloc] initWithFrame:self.view.bounds];
+    //datesheet.selectDate = cell.detailTextLabel.text;
+    datesheet.GetSelectDate = ^(NSString *dateStr) {
+        self.basText2 .text = dateStr;
+    };
+    [self.view addSubview:datesheet];
+
+    
+    
+    
+}
+
+-(void)onClickUILable7:(UITapGestureRecognizer *)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入性别" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *userNameTextField = alertController.textFields.firstObject;
+        
+        NSLog(@"%@",userNameTextField.text);
+        self.basText1.text = userNameTextField.text;
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入性别";
+        
+    }];
+    [self presentViewController:alertController animated:true completion:nil];
+}
+
 
 #pragma mark -- Private
 // 点击方法

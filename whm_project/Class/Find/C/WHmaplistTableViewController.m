@@ -78,7 +78,10 @@
                                  province:@""
                                      city:@""
                                    county:@""
-                                     type:@"agent" success:^(NSArray *lists) {
+                                     type:@"agent"
+                                 distance:@"10.00"
+                                      map:@"1"
+                                  success:^(NSArray *lists) {
                                          [hud hide:YES];
                                          //  self.dataArry = [NSMutableArray arrayWithArray:lists];
                                          //  NSLog(@"%@",self.dataArry);

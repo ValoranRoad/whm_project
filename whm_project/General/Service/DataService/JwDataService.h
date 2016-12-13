@@ -196,6 +196,8 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                       city:(NSString *)city
                     county:(NSString *)county
                       type:(NSString *) type
+                  distance:(NSString *)distance
+                       map:(NSString *)map
                    success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
