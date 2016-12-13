@@ -15,30 +15,25 @@
 
 @interface LYTestThreeViewController ()<UIWebViewDelegate>
 {
-    CustomProgress * custompro;
     NSTimer * timer;
     int present;
-    CustomProgress * custompro1;
+
     NSTimer * timer1;
     int present1;
     
-    CustomProgress * custompro2;
     NSTimer * timer2;
     int present2;
-    CustomProgress * custompro3;
+
     NSTimer * timer3;
     int present3;
-    CustomProgress * custompro4;
+
     NSTimer * timer4;
     int present4;
-   
-    CustomProgress * custompro5;
+
     NSTimer * timer5;
     int present5;
 }
-/**
- *  🐶ss    👇
- */
+
 @property(nonatomic,strong)CustomProgress * custompro;
 @property(nonatomic,strong)CustomProgress * custompro1;
 @property(nonatomic,strong)CustomProgress * custompro2;
