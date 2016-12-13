@@ -12,6 +12,9 @@
 #import "UIColor+Hex.h"
 #import "JGProgressHelper.h"
 #import "WHreplymessageViewController.h"
+//刷新数据
+#import "MJRefresh.h"
+
 
 
 @interface WHmyMessageTableViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -20,6 +23,10 @@
 
 @property(nonatomic,strong)NSMutableArray * dataArry;
 @property(nonatomic,strong)NSString * ID;
+//刷新定义页数
+@property(nonatomic,assign)NSInteger numindex;
+
+
 
 @end
 
@@ -29,8 +36,31 @@
 {
     [super viewWillAppear:YES];
     //请求数据
-    [self requestData];
+    //[self requestData];
+    [self setupRefresh];
     
+}
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing )];
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self requestData];
+}
+//上拉加载
+-(void)footerRefreshing
+{
+    
+    self.numindex ++ ;
+    [self requestData];
 }
 
 - (void)viewDidLoad {
@@ -44,10 +74,15 @@
 -(void)requestData
 {
   id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getmessageWithRes_uid:@"" uid :@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
+    [self.dataService getmessageWithRes_uid:@""
+                                       uid :@""
+                                          p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                   pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 10]
+                                    success:^(NSArray *lists) {
         [hud hide:YES];
         self.dataArry =[ NSMutableArray arrayWithArray:lists];
-        
+                                        [self.tableV headerEndRefreshing];
+                                        [self.tableV footerEndRefreshing];
        // NSLog(@"%@",self.dataArry);
         [self.tableV reloadData];
         

@@ -23,4 +23,7 @@
 // 判断是否选人
 @property (nonatomic, assign) BOOL isSelectPersonName;
 
+@property(nonatomic,strong)NSString * selectProID;
+
+
 @end

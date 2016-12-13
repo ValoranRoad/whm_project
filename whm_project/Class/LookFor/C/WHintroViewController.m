@@ -7,8 +7,16 @@
 //
 
 #import "WHintroViewController.h"
+#import "WHcompanyDetail.h"
+#import "JGProgressHelper.h"
+#import "MacroUtility.h"
 
-@interface WHintroViewController ()
+
+@interface WHintroViewController ()<UIWebViewDelegate>
+@property(nonatomic,strong)UIWebView * scw;
+@property(nonatomic,strong)NSString * s1 ;
+
+
 
 @end
 
@@ -17,14 +25,65 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    [self requData];
+ 
+    
+}
+
+-(void)requData
+{
+     id hud = [JGProgressHelper showProgressInView:self.view];
+     [self.dataService get_company_detailWithCom_id:self.company_id uid:@"" success:^(NSArray *list) {
+         [hud hide:YES];
+         for (WHcompanyDetail * model in list) {
+             self.s1 = model.descriptionJw;
+             NSLog(@"pppppppp%@",self.s1);
+             
+            
+              //[self loadWithURLString:self.s1];
+             
+            
+             
+         }
+         [self loadWithURLString:self.s1];
+
+     } failure:^(NSError *error) {
+         
+     }];
+    
     
 }
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];
+     //self.view.backgroundColor = [UIColor grayColor];
+    self.scw.delegate = self;
+    
+    self.scw = [[UIWebView alloc]initWithFrame:CGRectMake(0, kScreenHeight * 0.5 ,kScreenWitdh, kScreenHeight )];
+    self.scw.backgroundColor = [UIColor redColor];
+    [self.view addSubview:_scw];
+
+    
+}
+
+-(void)loadWithURLString:(NSString *)urlStr
+{
+    NSString  * content = [self.s1 stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+    NSString * contentTwo = [content stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+    
+    NSString *str1 = [NSString stringWithFormat:@"<head><style> img{max-width: %fpx;max-height:330px;\n width:expression(document.body.clientWidth>%f?\"%fpx\":\"auto\";\n height:expression(document.body.clientWidth>330?\"330px\":\"auto\");\n overflow:hidden;\n} \n</style></head>",kScreenWitdh-16,kScreenWitdh-16,kScreenWitdh-16];
+    //
+    
+    
+    NSString *str2 = @"</body><html>";
+    
+    NSString * html = [NSString stringWithFormat:@"%@%@%@",str1,contentTwo,str2];
+    //self.scw = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    NSLog(@"00%@",contentTwo);
+    
+    [_scw loadHTMLString:html baseURL:nil];
 }
 
 - (void)didReceiveMemoryWarning {

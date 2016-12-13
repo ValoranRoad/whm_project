@@ -19,7 +19,11 @@
 #import "WHgetuseinfo.h"
 //体检报告
 #import "WHmyphysicalTableViewController.h"
+#import "WHmyfollowListViewController.h"
+#import "WHmycollectViewController.h"
+
 #import <UIImageView+WebCache.h>
+#import "WHaboutUsViewController.h"
 
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIView * headview;
@@ -108,7 +112,7 @@
     self.scolw.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
     
     
-    self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*1.2);
+    self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*1.2 *0.95);
     [self.view addSubview:_scolw];
     
     self.image= [[UIImageView alloc]init];
@@ -229,54 +233,54 @@
     self.myBut4 = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.myBut4.frame = CGRectMake(CGRectGetMinX(self.myBut1.frame), CGRectGetMaxY(self.myView1.frame)+20, CGRectGetWidth(self.myBut1.frame), CGRectGetHeight(self.myBut1.frame));
     [self.myBut4 setBackgroundImage:[UIImage imageNamed:@"kehu.png"] forState:(UIControlStateNormal)];
-    [self.scolw addSubview:_myBut4];
+   // [self.scolw addSubview:_myBut4];
     //
     self.myLaber4 = [[UILabel alloc]init];
     self.myLaber4.frame = CGRectMake(CGRectGetMinX(self.myLaber1.frame), CGRectGetMaxY(self.myBut4.frame)+10, CGRectGetWidth(self.myLaber1.frame), CGRectGetHeight(self.myLaber1.frame));
     self.myLaber4.text = @"我的.客户";
     self.myLaber4.font = [UIFont systemFontOfSize:13.0];
-    [self.scolw addSubview:_myLaber4];
+   // [self.scolw addSubview:_myLaber4];
     
     //
     self.myBut5 = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.myBut5.frame = CGRectMake(CGRectGetMinX(self.myBut2.frame), CGRectGetMinY(self.myBut4.frame), CGRectGetWidth(self.myBut4.frame), CGRectGetHeight(self.myBut4.frame));
     [self.myBut5 setBackgroundImage:[UIImage imageNamed:@"jihuashu.png"] forState:(UIControlStateNormal)];
     
-    [self.scolw addSubview:_myBut5];
+   // [self.scolw addSubview:_myBut5];
     
     //
     self.myLaber5 = [[UILabel alloc]init];
     self.myLaber5.frame = CGRectMake(CGRectGetMinX(self.myLaber2.frame)+3, CGRectGetMinY(self.myLaber4.frame), CGRectGetWidth(self.myLaber2.frame), CGRectGetHeight(self.myLaber2.frame));
     self.myLaber5.text = @"保险计划书";
     self.myLaber5.font = [UIFont systemFontOfSize:13.0];
-    [self.scolw addSubview:_myLaber5];
+   // [self.scolw addSubview:_myLaber5];
     
     //
     self.myBut6 = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.myBut6.frame = CGRectMake(CGRectGetMinX(self.myBut3.frame), CGRectGetMinY(self.myBut4.frame), CGRectGetWidth(self.myBut4.frame), CGRectGetHeight(self.myBut4.frame));
     [self.myBut6 setBackgroundImage:[UIImage imageNamed:@"biaoshu.png"] forState:(UIControlStateNormal)];
-    [self.scolw addSubview:_myBut6];
+   // [self.scolw addSubview:_myBut6];
     //
     self.myLaber6 = [[UILabel alloc]init];
     self.myLaber6.frame = CGRectMake(CGRectGetMinX(self.myLaber3.frame), CGRectGetMinY(self.myLaber5.frame), CGRectGetWidth(self.myLaber3.frame), CGRectGetHeight(self.myLaber3.frame));
     self.myLaber6.text = @"我的.标书";
     self.myLaber6.font = [UIFont systemFontOfSize:13.0];
-    [self.scolw addSubview:_myLaber6];
+   // [self.scolw addSubview:_myLaber6];
     
     //
     self.myView2 = [[UIView alloc]init];
     self.myView2.frame = CGRectMake(0, CGRectGetMaxY(self.myLaber4.frame)+10, CGRectGetWidth(self.myView1.frame), 1);
     self.myView2.backgroundColor = [UIColor colorWithRed:0.871 green:0.875 blue:0.878 alpha:1];
-    [self.scolw addSubview:_myView2];
+    //[self.scolw addSubview:_myView2];
     
     //
     self.myBut7 = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.myBut7.frame = CGRectMake(CGRectGetMinX(self.myBut4.frame), CGRectGetMaxY(self.myView2.frame)+20, CGRectGetWidth(self.myBut4.frame), CGRectGetHeight(self.myBut4.frame));
+    self.myBut7.frame = CGRectMake(CGRectGetMinX(self.myBut1.frame), CGRectGetMaxY(self.myView1.frame)+20, CGRectGetWidth(self.myBut1.frame), CGRectGetHeight(self.myBut1.frame));
     [self.myBut7 setBackgroundImage:[UIImage imageNamed:@"shoucang.png"] forState:(UIControlStateNormal)];
     [self.scolw addSubview:_myBut7];
     //
     self.myLaber7 = [[UILabel alloc]init];
-    self.myLaber7.frame = CGRectMake(CGRectGetMinX(self.myLaber4.frame), CGRectGetMaxY(self.myBut7.frame)+10, CGRectGetWidth(self.myLaber4.frame), CGRectGetHeight(self.myLaber4.frame));
+    self.myLaber7.frame = CGRectMake(CGRectGetMinX(self.myLaber1.frame), CGRectGetMaxY(self.myBut7.frame)+10, CGRectGetWidth(self.myLaber1.frame), CGRectGetHeight(self.myLaber4.frame));
     self.myLaber7.text = @"我的.收藏";
     self.myLaber7.font = [UIFont systemFontOfSize:13.0];
     [self.scolw addSubview:_myLaber7];
@@ -284,13 +288,13 @@
     //
     
     self.myBut8 = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.myBut8.frame = CGRectMake(CGRectGetMinX(self.myBut5.frame), CGRectGetMinY(self.myBut7.frame), CGRectGetWidth(self.myBut7.frame), CGRectGetHeight(self.myBut7.frame));
+    self.myBut8.frame = CGRectMake(CGRectGetMinX(self.myBut2.frame), CGRectGetMinY(self.myBut7.frame), CGRectGetWidth(self.myBut7.frame), CGRectGetHeight(self.myBut7.frame));
     
     [self.myBut8 setBackgroundImage:[UIImage imageNamed:@"guanzhu.png"] forState:(UIControlStateNormal)];
     [self.scolw addSubview:_myBut8];
     //
     self.myLaber8 = [[UILabel alloc]init];
-    self.myLaber8.frame = CGRectMake(CGRectGetMinX(self.myLaber5.frame)+7, CGRectGetMinY(self.myLaber7.frame), CGRectGetWidth(self.myLaber5.frame), CGRectGetHeight(self.myLaber5.frame));
+    self.myLaber8.frame = CGRectMake(CGRectGetMinX(self.myLaber2.frame)+7, CGRectGetMinY(self.myLaber7.frame), CGRectGetWidth(self.myLaber2.frame), CGRectGetHeight(self.myLaber2.frame));
     self.myLaber8.text = @"我的.关注";
     self.myLaber8.font = [UIFont systemFontOfSize:13.0];
     [self.scolw addSubview:_myLaber8];
@@ -373,6 +377,16 @@
     [self.myBut9 addTarget:self action:@selector(miniStation:) forControlEvents:(UIControlEventTouchUpInside)];
     //体检报告
     [self.myBut2 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    //我的家人
+    [self.myBut1 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    //我的保单
+    [self.myBut3 addTarget:self action:@selector(physicalAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.myBut8 addTarget:self action:@selector(myfollowAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    //我的收藏
+    [self.myBut7 addTarget:self action:@selector(mycollectAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    //关于我们
+    [self.myBut10 addTarget:self action:@selector(aboutUsAction:) forControlEvents:(UIControlEventTouchUpInside)];
+    
 }
 
 //数据处理获取用户信息
@@ -419,6 +433,20 @@
     }
 }
 
+//关于我们事件
+-(void)aboutUsAction:(UIButton *)sender
+{
+    WHaboutUsViewController * aboutUs = [[WHaboutUsViewController alloc]init];
+    [self.navigationController pushViewController:aboutUs animated:YES];
+}
+
+//我的关注列表
+-(void)myfollowAction:(UIButton *)sender
+{
+    WHmyfollowListViewController * followList = [[WHmyfollowListViewController alloc]init];
+    [self.navigationController pushViewController:followList animated:YES];
+    
+}
 //微站事件
 -(void)miniStation:(UIButton *)sender
 {
@@ -453,6 +481,13 @@
     [self.navigationController pushViewController:account animated:YES];
     
     
+}
+
+//我的收藏事件
+-(void)mycollectAction:(UIButton *)sender
+{
+    WHmycollectViewController * mycollect = [[WHmycollectViewController alloc]init];
+    [self.navigationController pushViewController:mycollect animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

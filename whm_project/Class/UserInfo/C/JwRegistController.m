@@ -12,6 +12,7 @@
 
 #import "RegisterTwoViewController.h"
 #include "JwLoginController.h"
+#import "WHregProtelViewController.h"
 
 @interface JwRegistController ()
 
@@ -38,6 +39,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"注册";
+
+      
     if ([self.strNew isEqualToString:@"new"]) {
         [self.protlBut setTitle:@"注册" forState:(UIControlStateNormal)];
     }else
@@ -45,6 +48,7 @@
         [self.protlBut setTitle:@"下一步" forState:(UIControlStateNormal)];
         
     }
+    
 }
 
 
@@ -78,6 +82,10 @@
         
         if (self.nameText.text.length != 0 && self.telText.text.length != 0 && self.CodeText.text.length != 0 && self.pwdText.text !=0 && self.comforPwdText.text.length != 0) {
             
+            if ([self.pwdText.text isEqualToString:self.comforPwdText.text]) {
+
+            
+            
         //顾问注册进入下一步
         RegisterTwoViewController * regTwo = [[RegisterTwoViewController alloc]init];
         regTwo .name = self.nameText.text;
@@ -86,7 +94,14 @@
         regTwo . pwd = self.pwdText.text;
         
         [self.navigationController pushViewController:regTwo animated:YES];
+                
+            }
+            else
+            {
+                [JGProgressHelper showError:@"两次输入密码不一致,请确认"];
+            }
         }
+            
         else
         {
             [JGProgressHelper showError:@"有未填写项,请填写"];
@@ -99,13 +114,25 @@
 //注册协议
 
 - (IBAction)registPro:(id)sender {
+    WHregProtelViewController * regpro = [[WHregProtelViewController alloc]init];
+    [self.navigationController pushViewController:regpro animated:YES];
     
+}
+
+-(BOOL)trueTelenum
+{
+    NSString * const MOBILE = @"^1(3|4|5|7|8)\\d{9}$";
     
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+    return [predicate evaluateWithObject:self];
+       
 }
  //验证码事件发送
 - (IBAction)codeButAction:(id)sender {
-   
-    __block int timeout=60; //倒计时时间
+    
+    
+    
+       __block int timeout=60; //倒计时时间
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
     dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行

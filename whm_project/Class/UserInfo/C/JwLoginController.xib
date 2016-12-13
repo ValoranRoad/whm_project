@@ -26,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jw_head" translatesAutoresizingMaskIntoConstraints="NO" id="Wgb-Hq-Ey6">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wh_head" translatesAutoresizingMaskIntoConstraints="NO" id="Wgb-Hq-Ey6">
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Wgb-Hq-Ey6" secondAttribute="height" multiplier="1:1" id="TWK-ng-wWO"/>
                     </constraints>
@@ -221,8 +221,8 @@
     <resources>
         <image name="Jw_clear" width="25" height="25"/>
         <image name="Jw_eye" width="25" height="25"/>
-        <image name="Jw_head" width="216" height="216"/>
         <image name="Jw_lock" width="60" height="60"/>
         <image name="Jw_mob" width="30" height="30"/>
+        <image name="Wh_head" width="433" height="433"/>
     </resources>
 </document>

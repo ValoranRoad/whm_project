@@ -31,7 +31,7 @@
     
     // 布局
     [self setupUI];
-    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
+   // self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
 }
@@ -43,16 +43,6 @@
     
     [self quartData];
     
-}
--(void)left:(UIBarButtonItem *)sender
-{
-//    JwPhysicalController * phy = [[JwPhysicalController alloc]init];
-//    phy.name = self.name;
-//    phy.ids = self.ids;
-//    phy.is_main = self.is_main;
-//    
-//    [self.navigationController pushViewController:phy animated:YES];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 //数据请求
 -(void)quartData
@@ -134,14 +124,18 @@
 {
     JwPhysicalController * phy = [[JwPhysicalController alloc]init];
     WHgetproduct * model = self.dataArry[indexPath.row];
+    
     self.name = model.name;
     self.ids = model.id;
     self.is_main = model.is_main;
     phy.modelType = model;
+    
     phy.groupMutableArr = self.groupsArr;
     phy.isSelectPersonName = self.isSelectP;
     phy.contentMutableDict = self.contentDic;
     phy.fuzhiDict = self.fuzhiDic;
+    phy.selectProID = model.id;
+ 
     [self.navigationController pushViewController:phy animated:YES];
 }
 
@@ -211,6 +205,7 @@
     
     return cell;
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

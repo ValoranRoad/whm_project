@@ -19,7 +19,8 @@
 #import "JwCompanys.h"
 #import "WHhistoryTableViewCell.h"
 #import "WHgetproducedetalViewController.h"
-
+//刷新数据
+#import "MJRefresh.h"
 
 
 @interface WHpowSearTableViewController ()<UISearchBarDelegate, JSDropDownMenuDataSource, JSDropDownMenuDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -44,6 +45,7 @@
 @property (nonatomic, assign) NSInteger currentSecure;
 @property (nonatomic, assign) NSInteger currentCategory;
 @property (nonatomic, assign) NSInteger currentScreen;
+@property(nonatomic,strong)NSString * cate_id;
 
 //筛选数组
 @property (nonatomic, strong) NSMutableArray *currentSelects;
@@ -57,6 +59,27 @@
 @property(nonatomic,strong)WHhistoryTableViewCell * cell;
 @property(nonatomic,strong)NSMutableArray * dataArry;
 
+@property(nonatomic,strong)NSMutableArray * arr1;
+@property(nonatomic,strong)NSMutableArray * arr2;
+@property(nonatomic,strong)NSMutableArray * arr3;
+
+@property(nonatomic,strong)NSString * plan;
+@property(nonatomic,strong)NSMutableArray * planIdArry;
+@property(nonatomic,strong)NSString * payperiod;
+@property(nonatomic,strong)NSMutableArray * payperiodIdArry;
+@property(nonatomic,strong)NSString * period;
+@property(nonatomic,strong)NSMutableArray * periodIdArry;
+@property(nonatomic,strong)NSString * charactId;
+@property(nonatomic,strong)NSMutableArray * charactArry;
+
+@property(nonatomic,strong)NSArray * sex;
+@property(nonatomic,strong)NSString * sexLaber;
+@property(nonatomic,strong)NSMutableArray * ages;
+@property(nonatomic,strong)NSString * ageLaber;
+@property(nonatomic,strong)NSString * complyId;
+@property(nonatomic,strong)NSMutableArray * compIdArry;
+//刷新定义页数
+@property(nonatomic,assign)NSInteger numindex;
 
 @end
 
@@ -65,6 +88,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self quartData];
+    //[self data];
+    
+    [self setupRefresh];
 }
 
 - (void)viewDidLoad {
@@ -79,7 +105,65 @@
     self.path4 = [JSIndexPath indexPathWithCol:-1 leftOrRight:-1 leftRow:-1 row:-1];
 }
 
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing )];
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self data];
+}
+//上拉加载
+-(void)footerRefreshing
+{
+    
+    self.numindex ++ ;
+    [self data];
+}
+-(void)data
+{
+
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_productWithCompany_id:@""
+                                         keyword:@""
+                                             sex:@""
+                            characters_insurance:@""
+                                          period:@""
+                                         cate_id:@""
+                                      pay_period:@""
+                                            rate:@""
+                                         insured:@""
+                                        birthday:@""
+                                   yearly_income:@""
+                                            debt:@""
+                                         rela_id:@""
+                                               p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                        pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 10]
+                                         success:^(NSArray *lists) {
+                                             [hud hide:YES];
+                                             
+                                             self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                             [self.tableV headerEndRefreshing];
+                                             [self.tableV footerEndRefreshing];
+                                             [self.tableV reloadData];
+                                             
+                                             
+                                         } failure:^(NSError *error) {
+                                             [hud hide:YES];
+                                             
+                                         }];
+
+}
+
 -(void)quartData{
+
     
     self.allArr = [NSMutableArray array];
     self.wholes = [NSMutableArray array];
@@ -137,32 +221,39 @@
     
     searchBar.placeholder = @"请输入关键词";
     [titleView addSubview:searchBar];
-    self.searBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.searBut.frame = CGRectMake(kScreenWitdh * 0.71, 0, kScreenWitdh*0.2, 35);
-    [self.searBut setTitle:@"搜索" forState:(UIControlStateNormal)];
-    [self.searBut setTintColor:[UIColor whiteColor]];
-    [titleView addSubview:_searBut];
+//    self.searBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
+//    self.searBut.frame = CGRectMake(kScreenWitdh * 0.71, 0, kScreenWitdh*0.2, 35);
+//    [self.searBut setTitle:@"搜索" forState:(UIControlStateNormal)];
+//    [self.searBut setTintColor:[UIColor whiteColor]];
+//    [titleView addSubview:_searBut];
     
     //Set to titleView
     [self.navigationItem.titleView sizeToFit];
     self.navigationItem.titleView = titleView;
     
-    NSArray *sex = @[@"男", @"女"];
-    NSMutableArray *ages = [NSMutableArray array];
+    _sex = @[@"男", @"女"];
+   _ages = [NSMutableArray array];
     for (int i=0; i<=80; i++) {
-        [ages addObject:[NSString stringWithFormat:@"%.2d", i]];
+        [_ages addObject:[NSString stringWithFormat:@"%.2d", i]];
     }
     
     //出行计划
     
-    NSMutableArray * arr1 = [NSMutableArray array];
-    NSMutableArray * arr2 = [NSMutableArray array];
-    NSMutableArray * arr3 = [NSMutableArray array];
+    _arr1 = [NSMutableArray array];
+    _arr2 = [NSMutableArray array];
+    _arr3 = [NSMutableArray array];
+    _planIdArry = [NSMutableArray array];
+    _payperiodIdArry = [NSMutableArray array];
+    _periodIdArry = [NSMutableArray array];
+    _charactArry = [NSMutableArray array];
+   
+    
      id hud = [JGProgressHelper showProgressInView:self.view];
     [self.dataService getproperiodWithsuccess:^(NSArray *lists) {
         [hud hide:YES];
         for (WHgetproperiod * model in lists) {
-            [arr1  addObject:model.name];
+            [_arr1  addObject:model.name];
+            [ self.planIdArry addObject:model.id];
            // NSLog(@"%@",self.proArry);
             
         }
@@ -178,7 +269,8 @@
     [self.dataService getcharactersWithsuccess:^(NSArray *lists) {
         [hud hide:YES];
         for (WHgetcharacters * model in lists) {
-            [arr2 addObject:model.name];
+            [_arr2 addObject:model.name];
+            [_charactArry addObject:model.id];
         }
         
         
@@ -188,11 +280,13 @@
         
     }];
     
+    _compIdArry = [NSMutableArray array];
     //保险品牌(也就是公司)
     [self.dataService get_CompanysWithType:@"1,2" success:^(NSArray *lists) {
         [hud hide:YES];
         for (JwCompanys * model in lists) {
-            [arr3 addObject:model.name];
+            [_arr3 addObject:model.name];
+            [_compIdArry addObject:model.id];
         }
         
     } failure:^(NSError *error) {
@@ -206,7 +300,7 @@
     //
     
    
-    _data4 = [NSMutableArray arrayWithObjects:@{@"title":@"性别", @"data":sex}, @{@"title":@"年龄", @"data":ages}, @{@"title":@"出行计划", @"data":arr1}, @{@"title":@"特色保障", @"data":arr2}, @{@"title":@"保险品牌", @"data":arr3}, nil];
+    _data4 = [NSMutableArray arrayWithObjects:@{@"title":@"性别", @"data":_sex}, @{@"title":@"年龄", @"data":_ages}, @{@"title":@"出行计划", @"data":_arr1}, @{@"title":@"特色保障", @"data":_arr2}, @{@"title":@"保险品牌", @"data":_arr3}, nil];
 
     self.menus = @[@"全部", @"险种", @"类别", @"筛选"];
     
@@ -220,42 +314,65 @@
     Weak(self);
     menu.screenBActionBlock =^(){
         NSLog(@"点击筛选");
-        
-       id hud = [JGProgressHelper showProgressInView:wself.view];
-        [wself.dataService get_productWithCompany_id:@""
-                                            keyword:@""
-                                                sex:@""
-                               characters_insurance:@""
-                                             period:@""
-                                            cate_id:@""
-                                         pay_period:@""
-                                               rate:@""
-                                            insured:@""
-                                           birthday:@""
-                                      yearly_income:@""
-                                               debt:@""
-                                            rela_id:@""
-                                                  p:@""
-                                           pagesize:@""
-                                            success:^(NSArray *lists) {
-                                                [hud hide:YES];
-                                                
-                                                wself.dataArry = [NSMutableArray arrayWithArray:lists];
-                                                [wself.tableV reloadData];
-                                                
+        if (wself.complyId != nil && wself.sexLaber != nil && wself.ageLaber != nil && wself.charactId != nil && wself.plan != nil) {
+        id hud = [JGProgressHelper showProgressInView:wself.view];
+        [wself.dataService powsearchProductWithcompany_id:wself.complyId
+                                                  keyword:@""
+                                                      sex:wself.sexLaber
+                                                      age:wself.ageLaber
+                                               characters:wself.charactId
+                                                   period:wself.plan
+                                                  cate_id:@""
+                                               pay_period:@""
+                                                        p:@"1"
+                                                 pagesize:@"10"
+                                                  success:^(NSArray *lists) {
+                                                      [hud hide:YES];
+            wself.dataArry = [NSMutableArray arrayWithArray:lists];
+                                                      
+            [wself.tableV reloadData];
             
         } failure:^(NSError *error) {
             [hud hide:YES];
-            
+            [JGProgressHelper showError:@""];
         }];
+        }
+        else
+        {
+            id hud = [JGProgressHelper showProgressInView:wself.view];
+            [wself.dataService get_productWithCompany_id:@""
+                                                keyword:@""
+                                                    sex:@""
+                                   characters_insurance:@""
+                                                 period:@""
+                                                cate_id:@""
+                                             pay_period:@""
+                                                   rate:@""
+                                                insured:@""
+                                               birthday:@""
+                                          yearly_income:@""
+                                                   debt:@""
+                                                rela_id:@""
+                                                      p:@""
+                                               pagesize:@""
+                                                success:^(NSArray *lists) {
+                                                    [hud hide:YES];
+                                                    
+                                                    wself.dataArry = [NSMutableArray arrayWithArray:lists];
+                                                    [wself.tableV reloadData];
+                                                    
+                                                    
+                                                } failure:^(NSError *error) {
+                                                    [hud hide:YES];
+                                                    
+                                                }];
+        }
         
-
-        
-        
-        
-        
+        //[wself menusetupBackView:YES];
         
     };
+    
+    
     [self.view addSubview:menu];
     
     
@@ -373,11 +490,13 @@
         
         appcate = self.categorys[indexPath.row];
         
+        
           }else{
         
         if (indexPath.leftOrRight==0) {
             NSDictionary *menuDic = [_data4 objectAtIndex:indexPath.row];
             return [menuDic objectForKey:@"title"];
+           
         } else{
             NSInteger leftRow = indexPath.leftRow;
             NSDictionary *menuDic = [_data4 objectAtIndex:leftRow];
@@ -390,6 +509,7 @@
 
 - (void)sendSelects{
      menu.jwSelects = self.currentSelects;
+    
 }
 
 - (void)menu:(JSDropDownMenu *)menu didSelectMenuAtIndex:(NSInteger)index{
@@ -407,6 +527,38 @@
 - (void)menu:(JSDropDownMenu *)menu didSelectRowAtIndexPath:(JSIndexPath *)indexPath {
     
     NSLog(@"%ld, %ld, %ld, %ld", (long)indexPath.column, (long)indexPath.leftOrRight, (long)indexPath.leftRow, (long)indexPath.row);
+    
+//    self.charactId = self.charactArry[(long)indexPath.row];//特色保障
+    //NSInteger a  = (long)indexPath.row;
+    
+    if (indexPath.leftRow == 3) {
+        self.charactId = self.charactArry[(long)indexPath.row];//特色保障
+        NSLog(@"%@",self.charactId);
+    }
+    if (indexPath.leftRow == 2) {
+        self.plan = self.planIdArry[(long)indexPath.row]; //计划
+        NSLog(@"%@",_plan);
+        
+    }
+    if (indexPath.leftRow == 0) {
+        NSString * s1 = self.sex[(long)indexPath.row];
+        if ([s1 isEqualToString:@"男"]) {
+            self.sexLaber = @"1";
+        }
+        if ([s1 isEqualToString:@"女"]) {
+            self.sexLaber = @"2";
+        }
+        NSLog(@"%@",self.sexLaber);
+    }
+    if (indexPath.leftRow == 4) {
+        self.complyId = self.compIdArry[(long)indexPath.row];
+        NSLog(@"%@",self.complyId);
+    }
+    
+    if (indexPath.leftRow == 1) {
+        self.ageLaber = self.ages[(long)indexPath.row];
+        NSLog(@"%@",self.ageLaber);
+    }
     
     if (indexPath.leftOrRight == 1) {
         if (indexPath.leftRow == 0) {
@@ -462,17 +614,56 @@
             for (WHgetappcate *appcate in self.allArr) {
                 if (appcate.p_id == cate.id) {
                     [self.categorys addObject:appcate];
+                    
                 }
             }
         }
         
     }else if (indexPath.column == 2){
         self.currentCategory = indexPath.row;
+        //NSLog(@"444%@",self.categorys[indexPath.row]);
+        WHgetappcate * app = self.categorys[indexPath.row];
+       // NSLog(@"%ld",app.id);
+        self.cate_id = [NSString stringWithFormat:@"%ld",app.id];
+      //  NSLog(@"%@",self.cate_id);//cate_id类别id
+        
+        id hud = [JGProgressHelper showProgressInView:self.view];
+        [self.dataService get_productWithCompany_id:@""
+                                             keyword:@""
+                                                 sex:@""
+                                characters_insurance:@""
+                                              period:@""
+                                             cate_id:self.cate_id
+                                          pay_period:@""
+                                                rate:@""
+                                             insured:@""
+                                            birthday:@""
+                                       yearly_income:@""
+                                                debt:@""
+                                             rela_id:@""
+                                                   p:@""
+                                            pagesize:@""
+                                             success:^(NSArray *lists) {
+                                                 [hud hide:YES];
+                                                 
+                                                 self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                                 [self.tableV reloadData];
+                                                 
+                                                 
+                                             } failure:^(NSError *error) {
+                                                 [hud hide:YES];
+                                                 
+                                             }];
+
         
     }
     else if (indexPath.column == 3){
+        
+        
         if (indexPath.leftOrRight == 0) {
             self.currentScreen = indexPath.leftRow;
+            //NSLog(@"%@",indexPath.leftRow);
+       
         }
     }
     else{
@@ -502,6 +693,24 @@
    WHgetproducedetalViewController * produce = [[WHgetproducedetalViewController alloc]init];
     produce .pro_id = model.id;
     [self.navigationController pushViewController:produce animated:YES];
+
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_productWithCompany_id:@"" keyword:searchBar.text  sex:@"" characters_insurance:@"" period:@"" cate_id:@"" pay_period:@"" rate:@"" insured:@"" birthday:@"" yearly_income:@"" debt:@"" rela_id:@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
+        [hud hide:YES];
+        
+        self.dataArry = [NSMutableArray arrayWithArray:lists];
+        [self.tableV reloadData];
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+        
+    }];
 
 }
 

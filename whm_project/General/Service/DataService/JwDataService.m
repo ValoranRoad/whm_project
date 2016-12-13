@@ -31,6 +31,10 @@
 #import "WHgetreport.h"
 #import "WHgetpolicys.h"
 #import "WHgetnearagent.h"
+#import "WHproductList.h"
+#import "WHgetnewsdetail.h"
+#import "WHmin.h"
+#import "WHgetfollowList.h"
 
 #import "MacroUtility.h"
 #import "JwUserCenter.h"
@@ -219,23 +223,22 @@
 }
 
 //医院列表数据
--(void)get_hospitalWithCom_id:(NSString *)com_id
-                    city_name:(NSString *)city_name
-                     province:(NSString *)province
-                         city:(NSString *)city
-                       county:(NSString *)county
-                          lat:(NSString *)lat
-                          lng:(NSString *)lng
-                     distance:(NSString *)distance
-                      success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *))failure
+-(void)get_hospitalWithlat:(NSString *)lat
+                       lng:(NSString *)lng
+                  province:(NSString *)province
+                      city:(NSString *)city
+                    county:(NSString *)county
+                  distance:(NSString *)distance
+                       map:(NSString *)map
+                   success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = [@{@"com_id":com_id ,
-                                     @"city_name":city_name ,
-                                     @"province":province , @"city":city ,
-                                     @"county":county ,
-                                     @"lat":lat ,
-                                     @"lng":lng ,
-                                     @"distance":distance}
+    NSMutableDictionary * param = [@{@"lat":lat,
+                                     @"lng":lng,
+                                     @"province":province ,
+                                     @"city":city ,
+                                     @"county":county,
+                                     @"distance":distance,
+                                     @"map":map}
                                    mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_hospital"] mutableCopy];
     
@@ -488,7 +491,7 @@
                          uid:(NSString *)uid
                      success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = [@{@"agent_uid":[JwUserCenter sharedCenter].uid,
+    NSMutableDictionary * param = [@{@"agent_uid":agent_uid,
                                      @"uid":[JwUserCenter sharedCenter].uid,
                                      @"token":[JwUserCenter sharedCenter].key}mutableCopy];
     param = [[self filterParam:param interface:@"kbj/micro"] mutableCopy];
@@ -496,7 +499,7 @@
     [self.httpManager POST:param withPoint:@"kbj/micro" success:^(id data) {
         
         NSArray *infos = data[@"data"];
-        NSArray * micros = [WHmicro arrayOfModelsFromDictionaries:infos error:nil];
+        NSArray * micros = [WHmin arrayOfModelsFromDictionaries:infos error:nil];
         
         if (success) {
             success(micros);
@@ -612,7 +615,7 @@
 -(void)getprorateWithPid:(NSString *)pid
                      uid:(NSString *)uid
                   gender:(NSString *)gender
-                 success:(void (^)(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr))success failure:(void (^)(NSError *))failure
+                 success:(void (^)(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr, NSDictionary *typeDict))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"pid":pid,
                                      @"uid":[JwUserCenter sharedCenter].uid,
@@ -626,20 +629,24 @@
         NSArray *moreArr = [bigArr.firstObject objectForKey:@"rate"];
         NSMutableArray *mutableArr_pay_period = [NSMutableArray array];
         NSMutableArray *mutableArr_payOut = [NSMutableArray array];
+        NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
         for (NSDictionary *dic in moreArr) {
             if ([[dic allKeys] containsObject:@"pay_period"]) {
                 [mutableArr_pay_period addObjectsFromArray:((NSDictionary *)[dic objectForKey:@"pay_period"]).allKeys];
+//                mutableDict = [NSMutableDictionary dictionaryWithDictionary:((NSDictionary *)[dic objectForKey:@"pay_period"])];
+                [mutableDict addEntriesFromDictionary:((NSDictionary *)[dic objectForKey:@"pay_period"])];
             }
             if ([[dic allKeys] containsObject:@"payout"]) {
 //                [mutableArr_payOut addObjectsFromArray:[dic objectForKey:@"payout"]];
                 [mutableArr_payOut addObject:[dic objectForKey:@"payout"]];
             }
         }
+        NSLog(@"%@",mutableDict);
         NSSet *set = [NSSet setWithArray:mutableArr_pay_period];
         NSSet *set1 = [NSSet setWithArray:mutableArr_payOut];
         NSArray *rates = [WHget_pro_rate arrayOfModelsFromDictionaries:infos error:nil];
         if (success) {
-            success(rates, [set allObjects], [set1 allObjects]);
+            success(rates, [set allObjects], [set1 allObjects], mutableDict);
         }
     } failure:^(NSError *error) {
         if (failure) {
@@ -713,7 +720,7 @@
                               @"county":county,
                               @"type":type}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_near_agent"]mutableCopy];
-    [self.httpManager POST:param withPoint:@"kbj/get_message_detail" success:^(id data) {
+    [self.httpManager POST:param withPoint:@"kb/get_near_agent" success:^(id data) {
         
         NSArray *infos = data[@"data"];
         NSArray *nearagents = [WHgetnearagent  arrayOfModelsFromDictionaries:infos error:nil];
@@ -729,8 +736,255 @@
     
     
 }
+//获取发现里边分支机构
+-(void)getorganizationWithLng:(NSString *)lng
+                          lat:(NSString *)lat
+                     distance:(NSString *)distance
+                          map:(NSString *)map
+                      success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"lng":lng ,
+                              @"lat":lat,
+                              @"distance":@"100.00",
+                              @"map":map}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *getorgs = [WHorganization  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(getorgs);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+    
+}
+
+//关注列表
+-(void)getfollowWithUid:(NSString *)uid
+                success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_follow"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_follow" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *folllises = [WHgetfollowList arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(folllises);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
+
+//收藏险种列表接口
+-(void)getcollectWithUid:(NSString *)uid
+                    type:(NSString *)type
+                 success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"type":type,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_collecti"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_collecti" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *prodlists = [WHproductList  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(prodlists);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+    
+    
+}
+//收藏公司列表
+-(void)getcompanyWithUid:(NSString *)uid
+                    type:(NSString *)type success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"type":type,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_collecti"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_collecti" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *prodlists = [WHcompany  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(prodlists);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
 
 
+-(void)getnewsWithUid:(NSString *)uid
+                 type:(NSString *)type
+              success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"type":type,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_collecti"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/get_collecti" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *prodlists = [WHnews  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(prodlists);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+}
+
+//新闻详情接口
+-(void)getnewsdetailWithNews_id:(NSString *)news_id
+                        success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"news_id":news_id}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_news_detail"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_news_detail" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray * details = [WHgetnewsdetail arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(details);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+
+    
+}
+
+//附近代理人刷新选择三级省市区
+-(void)getprovinceWithProvince:(NSString *)province
+                          city:(NSString *)city
+                        county:(NSString *)county
+                         type :(NSString *)type
+                      distance:(NSString *)distance
+                           map:(NSString *)map
+                       success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"province":province,
+                              @"city":city,
+                              @"county":county,
+                              @"type":type,
+                              @"distance":@"100.00",
+                              @"map":map}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_near_agent"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_near_agent" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *nearagents = [WHgetnearagent  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(nearagents);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
+
+//刷新分支机构三级
+-(void)getorgProvinceWithProvince:(NSString *)province
+                             city:(NSString *)city
+                           county:(NSString *)county
+                         distance:(NSString *)distance
+                              map:(NSString *)map
+                          success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"province":province ,
+                              @"city":city,
+                              @"county":county,
+                              @"distance":@"100.00",
+                              @"map":map}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *getorgs = [WHorganization  arrayOfModelsFromDictionaries:infos error:nil];
+        if (success) {
+            success(getorgs);
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+
+}
+//获取高级搜索筛选
+-(void)powsearchProductWithcompany_id:(NSString *)company_id
+                              keyword:(NSString *)keyword
+                                  sex:(NSString *)sex
+                                  age:(NSString *)age
+                           characters:(NSString *)characters
+                               period:(NSString *)period
+                              cate_id:(NSString *)care_id
+                           pay_period:(NSString *)pay_period
+                                    p:(NSString *)p
+                             pagesize:(NSString *)pagesize
+                              success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"company_id":company_id ,@"keyword":keyword,@"sex":sex,@"age":age,@"characters":characters, @"period":period ,@"cate_id":care_id ,@"pay_period":pay_period,@"p":p ,@"pagesize":pagesize}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_product"] mutableCopy];
+    [self.httpManager POST:param withPoint:@"kb/get_product" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *products = [WHgetproduct arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(products);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+
+}
 
 
 @end

@@ -17,5 +17,8 @@
 }
 - (instancetype)initWithAddVCARY:(NSArray*)VCS TitleS:(NSArray*)TitleS;
 
+-(void)getprogressValue:(CGFloat)myValue;
+
+@property(nonatomic,assign)CGFloat  StrMyvalue;
 
 @end

@@ -32,7 +32,10 @@
 @class WHgetreport;
 @class WHgetpolicys;
 @class WHgetnearagent;
-
+@class WHgetfollowList;
+@class WHproductList;
+@class WHmin;
+@class WHgetnewsdetail;
 @interface JwDataService : JwServiceBase
 
 
@@ -84,15 +87,14 @@ success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))fail
                                 uid:(NSString *)uid
 success:(void (^)(NSArray * list))success failure:(void (^)(NSError *error))failure;
 
-//医院列表
--(void)get_hospitalWithCom_id:(NSString *)com_id
-                    city_name:(NSString *)city_name
-                     province:(NSString *)province
-                         city:(NSString *)city
-                       county:(NSString *)county
-                          lat:(NSString *)lat
-                          lng:(NSString *)lng
-                     distance:(NSString *)distance
+//医院列表第一次获取
+-(void)get_hospitalWithlat:(NSString *)lat
+                       lng:(NSString *)lng
+                  province:(NSString *)province
+                      city:(NSString *)city
+                    county:(NSString *)county
+                  distance:(NSString *)distance
+                       map:(NSString *)map
                       success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
 
@@ -172,7 +174,7 @@ success:(void (^)(NSArray * lists ))success failure:(void (^)(NSError *))failure
 -(void)getprorateWithPid:(NSString *)pid
                      uid:(NSString *)uid
                   gender:(NSString *)gender
- success:(void (^)(NSArray * lists, NSArray *pay_periodArr, NSArray *payoutArr))success failure:(void (^)(NSError *error))failure;
+ success:(void (^)(NSArray * lists, NSArray *pay_periodArr, NSArray *payoutArr, NSDictionary *typeDict))success failure:(void (^)(NSError *error))failure;
 
 
 //体检保存
@@ -195,5 +197,72 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                     county:(NSString *)county
                       type:(NSString *) type
                    success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//获取发现里边分支机构
+-(void)getorganizationWithLng:(NSString *)lng
+                          lat:(NSString *)lat
+                     distance:(NSString *)distance
+                          map:(NSString *)map
+                      success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//关注列表
+-(void)getfollowWithUid:(NSString *)uid
+  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//收藏险种列表接口
+-(void)getcollectWithUid:(NSString *)uid
+                    type:(NSString *)type
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//收藏公司列表
+-(void)getcompanyWithUid:(NSString *)uid
+                    type:(NSString *)type
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//收藏新闻列表
+-(void)getnewsWithUid:(NSString *)uid
+                    type:(NSString *)type
+                 success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//新闻详情接口
+-(void)getnewsdetailWithNews_id:(NSString *)news_id
+ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+//附近代理人刷新选择三级省市区
+-(void)getprovinceWithProvince:(NSString *)province
+                          city:(NSString *)city
+                        county:(NSString *)county
+                         type :(NSString *)type
+                      distance:(NSString *)distance
+                           map:(NSString *)map
+                       success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+//刷新分支机构代理人
+-(void)getorgProvinceWithProvince:(NSString * )province
+                          city:(NSString *)city
+                        county:(NSString *)county
+                      distance:(NSString *)distance
+                          map :(NSString *)map
+ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+//获取高级搜索筛选
+-(void)powsearchProductWithcompany_id:(NSString *)company_id
+                              keyword:(NSString *)keyword
+                                  sex:(NSString *)sex
+                                  age:(NSString *)age
+                           characters:(NSString *)characters
+                               period:(NSString *)period
+                              cate_id:(NSString *)care_id
+                           pay_period:(NSString *)pay_period
+                                    p:(NSString *)p
+                             pagesize:(NSString *)pagesize
+                              success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
+
+
+
+
 
 @end

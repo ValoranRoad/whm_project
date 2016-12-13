@@ -32,6 +32,7 @@
 #import "HmPhySicalMainView.h"
 #import "HmDetailsCodeCell.h"
 #import "HMConfirmView.h"
+#import "HmBaoeCell.h"
 
 //数据
 #import "WHget_pro_rate.h"
@@ -50,8 +51,9 @@ typedef enum {
 #define kHmPhysicalMainCellIdentifier @"kHmPhysicalMainCellIdentifier"
 #define kHmPhysicalDetailsCellIdentifier @"dddkHmPhysicalDetailsCellIdentifier"
 #define kHmPhysicalFujiaCellIdentifier @"kHmPhysicalFujiaCellIdentifier"
+#define kHmPhysicalBaoeCellIdentifier @"kHmPhysicalBaoeCellIdentifier"
 
-@interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource,HMConfirmDelegate>
+@interface JwPhysicalController ()<HmTableViewDelegate,HmTableViewDataSource,HMConfirmDelegate,UITextFieldDelegate>
 
 // 大TableView
 @property (nonatomic, strong) HmMultistageTableView *tableVB;
@@ -75,10 +77,11 @@ typedef enum {
 
 @property(nonatomic,strong)NSString * payout;
 
-
-
-
-
+@property(nonatomic,strong)NSString * insured_amount;
+//
+@property(nonatomic,strong)NSString  * selectRelaID;
+//@property(nonatomic,strong)NSString * selectProID;
+//
 // 性别
 @property (nonatomic, strong) NSString *dataSex;
 
@@ -97,6 +100,11 @@ typedef enum {
 @property(nonatomic,strong)NSMutableArray * ageArry;
 //
 
+@property (nonatomic, assign) NSInteger openSection;
+
+//
+@property(nonatomic,weak)JSCollectViewController * jsCollView;
+
 
 @end
 
@@ -107,7 +115,9 @@ typedef enum {
     
     // 刷新第一行数据
 //    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    self.tabBarController.tabBar.hidden=YES;
+    self.tabBarController.tabBar.hidden= NO;
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
     NSLog(@"%@",self.name);
     if (self.modelType) {
         [self requartData];
@@ -134,7 +144,7 @@ typedef enum {
         gender = @"1";
     }
     id hud = [JGProgressHelper showProgressInView:self.view];
-    [self.dataService getprorateWithPid:self.modelType.id uid:@"" gender:gender success:^(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr) {
+    [self.dataService getprorateWithPid:self.modelType.id uid:@"" gender:gender success:^(NSArray * lists,NSArray *pay_periodArr, NSArray *payoutArr, NSDictionary *typeDict) {
         [hud hide:YES];
         
         self.dataArry = [NSMutableArray array];
@@ -170,8 +180,8 @@ typedef enum {
         }
         //年龄
         for (int i = 0 ;i<self.dataArry.count;i++) {
-            if ([_arr2  containsObject:[self.dataArry  objectAtIndex:i]] == NO) {
-                [_arr2  addObject:[self.dataArry  objectAtIndex:i]];
+            if ([_arr2  containsObject:[self.ageArry  objectAtIndex:i]] == NO) {
+                [_arr2  addObject:[self.ageArry  objectAtIndex:i]];
                 NSLog(@"%@",_arr2 );
             }
             
@@ -217,11 +227,15 @@ typedef enum {
         [dict setObject:age forKey:@"投保年龄"];
         [dict setObject:type forKey:@"缴费方式"];
         [dict setObject:baozhang forKey:@"保障期间"];
+        [dict setObject:@"" forKey:@"保额"];
+        [dict setObject:@"" forKey:@"保费"];
     }else {
         [dict setObject:age forKey:@"投保年龄"];
         [dict setObject:type forKey:@"缴费方式"];
         [dict setObject:baozhang forKey:@"保障期间"];
         [dict setObject:give forKey:@"给付方式"];
+        [dict setObject:@"" forKey:@"保额"];
+        [dict setObject:@"" forKey:@"保费"];
     }
     [self.fuzhiDict setObject:dict forKey:key];
 }
@@ -240,19 +254,20 @@ typedef enum {
 //        JwLoginController * login = [[JwLoginController alloc]init];
 //        [self.navigationController pushViewController:login animated:YES];
 //    }
+    self.openSection = -1;
     [self setupUI];
     
 //    self.groupMutableArr = [NSMutableArray array];
 //    self.contentMutableDict = [NSMutableDictionary dictionary];
 
-    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
+//    self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 
     
 }
 -(void)left:(UIBarButtonItem *)sender
 {
-    self.tabBarController.tabBar.hidden=NO;
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    self.tabBarController.tabBar.hidden= NO;
+//    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -261,7 +276,7 @@ typedef enum {
 -(void)setupUI
 {
     self.view.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];
-    self.tableVB = [[HmMultistageTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44)];
+    self.tableVB = [[HmMultistageTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, kScreenHeight - 64 - 44 -15)];
     _tableVB.delegate = self;
     _tableVB.dataSource = self;
     _tableVB.backgroundColor = [UIColor colorWithRed:244 / 255.0 green:244 / 255.0 blue:244 / 255.0 alpha:1];
@@ -351,35 +366,59 @@ typedef enum {
      */
     
     
-   
-    if (self.ids != nil) {
+    NSLog(@"jjhh%@",self.selectProID);
     
-    if (self.rela_id  != nil && self.period != nil && self.rate != nil) {
+    NSLog(@"%@ %@ %@  %@ %@" ,self.selectRelaID,self.rate,self.pay_period,self.insured_amount,self.period);
+    NSString *documentpath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    //读取文件路径
+    NSString *filepath = [NSString stringWithFormat:@"%@/用户ID.txt",documentpath];
+    
+    NSString *s = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"%@",s );
+    
+    
+    self.selectRelaID = s ;
+    if (self.selectRelaID != nil) {
+    
+    if (self.selectProID  != nil && self.pay_period != nil && self.rate != nil) {
         
        
   LYTestOneViewController * oneVC = [[LYTestOneViewController alloc]initWithNibName:@"LYTestOneViewController" bundle:nil];
-     oneVC.rela_id = self.rela_id;
-     oneVC.pro_id = self.ids;
-     oneVC.is_main_must = self.is_main;
-        oneVC.period = self.period;
-        oneVC.rate = self.rate;
-    
-    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+        oneVC.rela_id = self.selectRelaID; //被保人ID
+        oneVC.pro_id = self.selectProID;//险种ID
+        //oneVC.is_main_must = self.is_main;
+        oneVC.pay_period = self.pay_period;//缴费期间
+        oneVC.rate = self.rate; //保费
+        oneVC.period = self.period; //保障期间
+        oneVC.payout = self.payout;
+        oneVC.insured_amount = self.insured_amount; //保额
+        oneVC.mblock1 = ^(CGFloat s1)
+        {
+           // CGFloat  s2 =  s1 ;
+            
+            [self.jsCollView getprogressValue:s1];
+        };
         
-       twoVC.rela_id = self.rela_id;
-       twoVC.pro_id = self.ids;
-       twoVC.is_main_must = self.is_main;
-       twoVC.period = self.period;
-       twoVC.rate = self.rate;
-
+    LYTestTwoViewController * twoVC = [[LYTestTwoViewController alloc]initWithNibName:@"LYTestTwoViewController" bundle:nil];
+        twoVC.rela_id = self.selectRelaID; //被保人ID
+        twoVC.pro_id = self.selectProID;//险种ID
+        //oneVC.is_main_must = self.is_main;
+        twoVC.pay_period = self.pay_period;//缴费期间
+        twoVC.rate = self.rate; //保费
+        twoVC.period = self.period; //保障期间
+        twoVC.payout = self.payout;
+        twoVC.insured_amount = self.insured_amount; //保额
     LYTestThreeViewController * threeVC = [[LYTestThreeViewController alloc]initWithNibName:@"LYTestThreeViewController" bundle:nil];
     
     JSCollectViewController * collectVC = [[JSCollectViewController alloc]initWithAddVCARY:@[oneVC,twoVC,threeVC] TitleS:@[@"基本信息",@"保险利益",@"分析建议"]];
+        self.jsCollView = collectVC;
+       
+       // [collectVC getprogressValue:50.f];
     [self presentViewController:collectVC animated:YES completion:nil];
     }
     else
     {
-        [JGProgressHelper showError:@"请选择被保人"];
+        [JGProgressHelper showError:@"请选择险种的信息"];
     }
 
     }
@@ -418,6 +457,15 @@ typedef enum {
     HmSelectInsuredController *VC = [[HmSelectInsuredController alloc] init];
     [VC returnInsured:^(WHget_user_realtion *user) {
         self.firstUser = user;
+        //self.selectRelaID  = user.id;
+        NSString *documentpath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        //新建文件沙盒
+        NSString *filepath = [NSString stringWithFormat:@"%@/用户ID.txt",documentpath];
+        NSString *loveContent = user.id;
+        [loveContent writeToFile:filepath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        NSString *ss = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"%@",ss );
+        
         if (self.isSelectPersonName) {
             // 选过人了
             [self.groupMutableArr replaceObjectAtIndex:0 withObject:user];
@@ -447,7 +495,7 @@ typedef enum {
             return 0;
         }
     }
-    return ((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[section]).id]).count;
+    return ((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[section]).id]).count + 2;
 //    return 3;
 }
 
@@ -469,15 +517,26 @@ typedef enum {
         cell = [[HmDetailsCodeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:kHmPhysicalDetailsCellIdentifier];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    HmBaoeCell *baoeCell = [self setBaoeCell:mTableView];
 //    @"给付方式"];
 //    @"缴费方式"];
 //    @"保障期间"];
 //    @"投保年龄"];
     // 赋值
     NSString *key = ((WHgetproduct *)self.groupMutableArr[indexPath.section]).id;
-    [self setupDataForCellCode:cell IndexPath:indexPath Age:[[_fuzhiDict objectForKey:key] objectForKey:@"投保年龄"] Type:[[_fuzhiDict objectForKey:key] objectForKey:@"缴费方式"] Baozhang:[[_fuzhiDict objectForKey:key] objectForKey:@"保障期间"] Give:[[_fuzhiDict objectForKey:key] objectForKey:@"给付方式"]];
+    id result = [self setupDataForCellCode:cell IndexPath:indexPath Age:[[_fuzhiDict objectForKey:key] objectForKey:@"投保年龄"] Type:[[_fuzhiDict objectForKey:key] objectForKey:@"缴费方式"] Baozhang:[[_fuzhiDict objectForKey:key] objectForKey:@"保障期间"] Give:[[_fuzhiDict objectForKey:key] objectForKey:@"给付方式"] BaoE:baoeCell BaoEData:[[_fuzhiDict objectForKey:key] objectForKey:@"保额"] BaoFei:[[_fuzhiDict objectForKey:key] objectForKey:@"保费"]];
     
     NSLog(@"%@,%@",cell,cell.myLaber.text);
+    return result;
+}
+
+- (HmBaoeCell *)setBaoeCell:(HmMultistageTableView *)mTableView {
+    HmBaoeCell *cell = [mTableView dequeueReusableCellWithIdentifier:kHmPhysicalBaoeCellIdentifier];
+    if (cell == nil) {
+        cell = [[HmBaoeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:kHmPhysicalBaoeCellIdentifier];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -497,24 +556,29 @@ typedef enum {
     [self.fuzhiDict setObject:dict forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
 }
 
-- (void)setupDataForCellCode:(HmDetailsCodeCell *)cell IndexPath:(NSIndexPath *)indexPath Age:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give {
+- (id)setupDataForCellCode:(HmDetailsCodeCell *)cell IndexPath:(NSIndexPath *)indexPath Age:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give BaoE:(HmBaoeCell *)baoeCell BaoEData:(NSString *)baoeData BaoFei:(NSString *)baofei {
     if (indexPath.row == 0) {
         // 投保年两
         cell.headImg.image = [UIImage imageNamed:@"p_safeYear"];
         cell.myLaber.text = @"投保年龄";
         cell.selectLaber.text = age;
-    }
-    if (indexPath.row == 1) {
+        NSLog(@"吴豪%@",age);
+        return cell;
+    }else if (indexPath.row == 1) {
         // 缴费方式
         cell.headImg.image = [UIImage imageNamed:@"p_payType"];
         cell.myLaber.text = @"缴费方式";
         cell.selectLaber.text = type;
-    }
-    if (indexPath.row == 2) {
+        self.pay_period = type;
+        NSLog(@"ming%@",type);
+        return cell;
+    }else if (indexPath.row == 2) {
         // 保险期间
         cell.headImg.image = [UIImage imageNamed:@"p_dateDuration"];
         cell.myLaber.text = @"保障期间";
         cell.selectLaber.text = baozhang;
+        self.period = baozhang;
+        return cell;
     }
     if (((NSDictionary *)[self.contentMutableDict objectForKey:((WHgetproduct *)self.groupMutableArr[indexPath.section]).id]).count == 4) {
         if (indexPath.row == 3) {
@@ -522,8 +586,82 @@ typedef enum {
             cell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
             cell.myLaber.text = @"给付方式";
             cell.selectLaber.text = give;
+            self.payout = give;
+            return cell;
+        }else if (indexPath.row == 4) {
+            // 保额
+            baoeCell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            baoeCell.myLaber.text = @"保额";
+            baoeCell.selectLaber.enabled = YES;
+            baoeCell.selectLaber.placeholder = @"请输入保额";
+            [baoeCell.selectLaber addTarget:self action:@selector(baoeSelectLaberAction:) forControlEvents:UIControlEventAllEditingEvents];
+            baoeCell.selectLaber.text = baoeData;
+            self.insured_amount = baoeData;
+            return baoeCell;
+        }else {
+            // 保费
+            baoeCell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            baoeCell.myLaber.text = @"保费";
+            baoeCell.selectLaber.enabled = NO;
+            baoeCell.selectLaber.text = baofei;
+            self.rate = baofei;
+            return baoeCell;
+        }
+    }else {
+        if (indexPath.row == 3) {
+            // 保额
+            baoeCell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            baoeCell.myLaber.text = @"保额";
+            baoeCell.selectLaber.enabled = YES;
+            baoeCell.selectLaber.placeholder = @"请输入保额";
+            [baoeCell.selectLaber addTarget:self action:@selector(baoeSelectLaberAction:) forControlEvents:UIControlEventAllEditingEvents];
+            baoeCell.selectLaber.text = baoeData;
+            self.insured_amount = baoeData;
+            return baoeCell;
+        }else {
+            // 保费
+            baoeCell.headImg.image = [UIImage imageNamed:@"p_safePosition"];
+            baoeCell.myLaber.text = @"保费";
+            baoeCell.selectLaber.enabled = NO;
+            baoeCell.selectLaber.text = baofei;
+            self.rate = baofei;
+            return baoeCell;
         }
     }
+}
+
+- (void)baoeSelectLaberAction:(UITextField *)sender {
+    NSLog(@"sender.text:%@",sender.text);
+    sender.delegate = self;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self requestForBaofeiData:textField.text];
+}
+
+- (void)requestForBaofeiData:(NSString *)sender {
+//    id hud = [JGProgressHelper showProgressInView:self.view];
+    NSString *uid = ((WHget_user_realtion *)self.groupMutableArr.firstObject).id;
+    NSString *pid = ((WHgetproduct *)self.groupMutableArr[self.openSection]).id;
+    NSString *gender = ((WHget_user_realtion *)self.groupMutableArr.firstObject).sex;
+    [self.dataService getprorateWithPid:pid uid:uid gender:gender success:^(NSArray *lists, NSArray *pay_periodArr, NSArray *payoutArr, NSDictionary *typeDict) {
+        WHget_pro_rate * pro = [lists firstObject];
+        WHmongorate * mon = [pro.mongo_rate firstObject];
+//        NSArray * periods = mon.rate;
+        if ([mon.bee_type isEqualToString:@"1"]) {
+            // 1   保费= 保额(自己输入的值) * 基本保费(insured) / 基本保额(pay_period)
+            NSMutableDictionary *dict = [_fuzhiDict objectForKey:((WHgetproduct *)self.groupMutableArr[self.openSection]).id];
+            NSString *pay = [dict objectForKey:@"缴费方式"];
+            CGFloat baofei = [sender floatValue] * [mon.insured floatValue] / [[typeDict objectForKey:pay] floatValue];
+            [dict setObject:sender forKey:@"保额"];
+            [dict setObject:[NSString stringWithFormat:@"%ld",(long)baofei] forKey:@"保费"];
+            [self.tableVB reloadData];
+        }else {
+            
+        }
+    } failure:^(NSError *error) {
+        [JGProgressHelper showError:nil];
+    }];
 }
 
 #pragma mark -- HmMultistageTableView Delegate
@@ -622,6 +760,7 @@ typedef enum {
 #pragma mark -- Header Open Or Close
 - (void)mTableView:(HmMultistageTableView *)mTableView willOpenHeaderAtSection:(NSInteger)section {
     NSLog(@"Oper Header ----%ld",(long)section);
+    self.openSection = section;
 }
 
 - (void)mTableView:(HmMultistageTableView *)mTableView willCloseHeaderAtSection:(NSInteger)section {
@@ -749,9 +888,12 @@ typedef enum {
 //    [[_fuzhiDict objectForKey:[NSString stringWithFormat:@"%ld",_myIndexPath.section]] setObject:name forKey:key];
     NSMutableDictionary *dict = [_fuzhiDict objectForKey:((WHgetproduct *)self.groupMutableArr[_myIndexPath.section]).id];
     [dict setObject:name forKey:key];
+    [self requestForBaofeiData:[dict objectForKey:@"保额"]];
     [self.tableVB reloadData];
     [_confir removeFromSuperview];
 }
+
+
 
 - (void)cancelActionWithNothing {
     [_confir removeFromSuperview];

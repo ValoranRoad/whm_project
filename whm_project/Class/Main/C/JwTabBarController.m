@@ -22,8 +22,16 @@
 #import "UIImage+Color.h"
 #import "UIColor+Hex.h"
 #import "JwUserCenter.h"
+#define IS_IOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+#define IS_IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8)
+#import "CCLocationManager.h"
 
-@interface JwTabBarController ()<UITabBarControllerDelegate>
+
+@interface JwTabBarController ()<UITabBarControllerDelegate,CLLocationManagerDelegate>{
+    CLLocationManager *locationmanager;
+    
+}
+
 
 @end
 
@@ -36,8 +44,49 @@
     [self setupControllers];
     //用户登陆后的的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(isLoginAction:) name:kJwIsLogin object:nil];
+    
+    if (IS_IOS8) {
+        [UIApplication sharedApplication].idleTimerDisabled = TRUE;
+        locationmanager = [[CLLocationManager alloc] init];
+        [locationmanager requestAlwaysAuthorization];        //NSLocationAlwaysUsageDescription
+        [locationmanager requestWhenInUseAuthorization];     //NSLocationWhenInUseDescription
+        locationmanager.delegate = self;
+    }
+    
+    //获取经纬度
+    [self getLat];
+
 }
 
+-(void)getLat
+{
+    __block __weak JwTabBarController *wself = self;
+    
+    if (IS_IOS8) {
+        
+        [[CCLocationManager shareLocation] getLocationCoordinate:^(CLLocationCoordinate2D locationCorrrdinate) {
+            
+            NSLog(@"%f %f",locationCorrrdinate.latitude,locationCorrrdinate.longitude);
+            //nsuserdefaults
+            NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+            [ud setValue:[NSString stringWithFormat:@"%f",locationCorrrdinate.longitude] forKey:@"one"];
+            [ud setValue:[NSString stringWithFormat:@"%f",locationCorrrdinate.latitude] forKey:@"two"];
+            
+            
+            [wself setLabelText:[NSString stringWithFormat:@"%f %f",locationCorrrdinate.latitude,locationCorrrdinate.longitude]];
+            
+        }];
+    }
+    
+}
+-(void)setLabelText:(NSString *)text
+{
+    NSLog(@"text %@",text);
+   // NSString * s1  = text;
+    
+    
+    
+}
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kJwIsLogin object:nil];
 }
@@ -48,6 +97,43 @@
 
 - (void)setupControllers{
     
+    
+    JwPhysicalController *physical = [[JwPhysicalController alloc] init];
+    JwLookForController *lookfor = [[JwLookForController alloc] init];
+    JwFindController *find = [[JwFindController alloc] init];
+    JwLoginController *login = [[JwLoginController alloc] init];
+    WHpersonCenterViewController *center = [[WHpersonCenterViewController alloc] init];
+   
+    JwNavigationController *physicalVC = [[JwNavigationController alloc] initWithRootViewController:physical];
+    JwNavigationController *findVC = [[JwNavigationController alloc] initWithRootViewController:find];
+    JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
+    JwNavigationController *loginVC = [[JwNavigationController alloc] initWithRootViewController:login];
+    JwNavigationController *centerVC = [[JwNavigationController alloc] initWithRootViewController:center];
+    physicalVC.tabBarItem.image = [[UIImage imageNamed:@"physical"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    lookforVC.tabBarItem.image = [[UIImage imageNamed:@"lookfor"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    findVC.tabBarItem.image = [[UIImage imageNamed:@"find"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    centerVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    loginVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+    lookforVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
+    findVC.tabBarItem.selectedImage = [UIImage imageNamed:@"find_h"];
+    findVC.tabBarItem.tag = 101;
+    loginVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
+     centerVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
+    physicalVC.tabBarItem.selectedImage = [UIImage imageNamed:@"physical_h"];
+    physical.title = physicalVC.title = @"体检";
+    lookfor.title = lookforVC.title = @"找险种";
+    find.title = findVC.title = @"发现";
+    login.title = loginVC.title = @"我的";
+    center.title = centerVC.title = @"我的";
+    if ([JwUserCenter sharedCenter].key == nil) {
+    self.viewControllers = @[lookforVC,physicalVC,  findVC, loginVC];
+    }
+    else
+    {
+        self.viewControllers = @[lookforVC,physicalVC,  findVC, centerVC];
+    }
+    [self setupView];
+    /*
     JwHomeController *home = [[JwHomeController alloc] init];
     JwPhysicalController *physical = [[JwPhysicalController alloc] init];
     JwLookForController *lookfor = [[JwLookForController alloc] init];
@@ -64,7 +150,7 @@
     JwNavigationController *centerVC = [[JwNavigationController alloc] initWithRootViewController:center];
     JwNavigationController *loginVC = [[JwNavigationController alloc] initWithRootViewController:login];
     
-    homeVC.tabBarItem.image = [[UIImage imageNamed:@"home"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
+   homeVC.tabBarItem.image = [[UIImage imageNamed:@"home"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     physicalVC.tabBarItem.image = [[UIImage imageNamed:@"physical"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     lookforVC.tabBarItem.image = [[UIImage imageNamed:@"lookfor"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     lookforVC.tabBarItem.tag = 101;
@@ -75,15 +161,15 @@
     centerVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     loginVC.tabBarItem.image = [[UIImage imageNamed:@"user"] imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
     
-    homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"home_h"];
+   homeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"home_h"];
     physicalVC.tabBarItem.selectedImage = [UIImage imageNamed:@"physical_h"];
-    lookforVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
+   lookforVC.tabBarItem.selectedImage = [UIImage imageNamed:@"lookfor_h"];
     findVC.tabBarItem.selectedImage = [UIImage imageNamed:@"find_h"];
     
     centerVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     loginVC.tabBarItem.selectedImage = [UIImage imageNamed:@"user_h"];
     
-    home.title = homeVC.title = @"首页";
+   home.title = homeVC.title = @"首页";
     physical.title = physicalVC.title = @"体检";
     lookfor.title = lookforVC.title = @"找险";
     find.title = findVC.title = @"发现";
@@ -98,6 +184,14 @@
     }else{
         self.viewControllers = @[homeVC, physicalVC, lookforVC, findVC, centerVC];
     }
+    
+//    if ([JwUserCenter sharedCenter].key == nil) {
+//        self.viewControllers = @[ physicalVC, lookforVC, findVC, loginVC];
+//    }else{
+//        self.viewControllers = @[ physicalVC, lookforVC, findVC, centerVC];
+//    }
+
+    */
 }
 
 - (void)setupView{
@@ -127,9 +221,14 @@
     
     //中间按钮pop控制器
     DLog(@"中间点击事件");
+    JwFindController * lookfor = [[JwFindController alloc]init];
+    JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
+    lookfor.title = lookforVC.title = @"发现";
+    /*
     JwLookForController *lookfor = [[JwLookForController alloc] init];
     JwNavigationController *lookforVC = [[JwNavigationController alloc] initWithRootViewController:lookfor];
     lookfor.title = lookforVC.title = @"找险";
+     */
     
     [self presentViewController:lookforVC animated:YES completion:nil];
 }

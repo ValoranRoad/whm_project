@@ -16,7 +16,6 @@
 #import "WHrela.h"
 #import <UIImageView+WebCache.h>
 
-
 @interface LYTestOneViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -35,6 +34,8 @@
 
 @property(nonatomic,strong)NSMutableArray * secondArry;
 
+@property(nonatomic,strong)NSString * StrScore;
+
 
 @end
 static NSString * const TestCellIdentifer = @"TestCell";
@@ -46,14 +47,18 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
     [super viewWillAppear:YES];
     
    [self requartDate];
+      
+    
     
 }
+
+
 
 //数据请求
 -(void)requartDate
 {
     NSLog(@"%@",self.rela_id);
-    NSDictionary * infoDic = @{@"pro_id":@"8088",@"main_id":@"0",@"is_main_must":self.is_main_must, @"insured_amount":self.rate,@"pay_period":@"10年交",@"period":self.period};
+    NSDictionary * infoDic = @{@"pro_id":self.pro_id,@"main_id":@"0",@"is_main_must":@"0", @"insured_amount":self.insured_amount,@"rate":self.rate, @"pay_period":self.pay_period,@"period":self.period,@"payout":@"1"};
      NSError * error = nil;
     
    // NSArray * array = [NSArray array];
@@ -71,7 +76,17 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
                                        NSLog(@"%@", lists);
                                       
                                        WHgetreport * report = [lists firstObject];
-                                      
+                                       
+                                       WHtotalrate * totrate = report.total_rate ;
+                                       NSLog(@"?????%@",totrate.score);
+                                       self.StrScore = totrate.score;
+                                      // self.myValue = [self.StrScore doubleValue];
+                                       //block传值
+                                       if (self.StrScore != nil) {
+                                           self.mblock1([self.StrScore doubleValue]);
+                                           NSLog(@"%@",self.StrScore);
+                                       }
+
                                        //self.dateArry = [NSMutableArray arrayWithArray:pro];
                                        
                                        [self.dateArry addObjectsFromArray:report.pros];
@@ -80,10 +95,26 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
                                        self.level = report.score.level;
                                        self.Strate = report.score.rate;
                                        //获取cov数据
-                                       self.StrCov = report.cov.des;
+                                       self.StrCov = report.cov.des; //保障是否全面
                                        NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
-                                       [ud setValue:[NSString stringWithFormat:@"%@",self.StrCov] forKey:@"one"];
+                                       NSString * Strhasnt = report.hasnt.des; //缺少保障项目
+                                       
+                                       NSString * Straccident = report.accident_insured.des;
+                                       //意外保险保额
+                                       
+                                       NSString * Strdisease_insured = report.disease_insured.des ;
+                                       //重大疾病保额
+                                       
+                                       [ud setObject:[NSString stringWithFormat:@"%@",Strdisease_insured] forKey:@"disease"];
+                                       
+                                       [ud setObject:[NSString stringWithFormat:@"%@",Straccident] forKey:@"accident"];
+                                       
+                                       [ud setValue:[NSString stringWithFormat:@"%@",Strhasnt] forKey:@"hasnt"];
+                                       
+                                       [ud setValue:[NSString stringWithFormat:@"%@",self.StrCov] forKey:@"three"];
                                        NSLog(@"==%@",self.StrCov);
+                                       
+                                       
                                        //姓名的获取
                                        for (WHrela * rela in report.rela) {
                                            NSLog(@"%@",rela.name);
@@ -107,6 +138,9 @@ static NSString * const TestTwoCellIdentifer = @"TestTwoCell";
     } failure:^(NSError *error) {
         
     }];
+    
+    
+    
     
 }
 
