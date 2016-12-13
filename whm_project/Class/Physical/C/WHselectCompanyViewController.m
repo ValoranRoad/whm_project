@@ -209,11 +209,6 @@
 {
     NSString * key = self.firstArr[indexPath.section];
     NSArray * ary = [self.dic objectForKey:key];
-//    JwCompanys *model = ary[indexPath.row];
-//    
-//    WHinstruTypeTableViewController * instru = [[WHinstruTypeTableViewController alloc]init];
-//    instru.companyid = model.id;
-//    [self.navigationController pushViewController:instru animated:YES];
 
  JwCompanys * model = ary[indexPath.row];
 // NSLog(@"%@",model.id);
@@ -227,9 +222,6 @@ produceSearch.fuzhiDic = self.fuzhiDict;
 [self.navigationController pushViewController:produceSearch animated:YES];
 
 
-
-    //  [_delegate completeId:model.id completeName:model.name];
-    //[self.navigationController popViewControllerAnimated:YES];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

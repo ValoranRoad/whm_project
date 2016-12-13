@@ -12,6 +12,8 @@
 #import "WHprosearchTableViewCell.h"
 #import "WHgetproduct.h"
 #import "JwPhysicalController.h"
+#import "MJRefresh.h"
+
 @interface WHproductSearchTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 @property (nonatomic, strong) UITableView *tableV;
 @property(nonatomic,strong)WHprosearchTableViewCell * cell;
@@ -20,6 +22,8 @@
 @property(nonatomic,strong)NSString * ids;
 @property(nonatomic,strong)NSString * name;
 @property(nonatomic,strong)NSString * is_main;
+@property(nonatomic,assign)NSInteger numindex;
+
 
 @end
 
@@ -41,9 +45,34 @@
     [super viewWillAppear:YES];
     
     
-    [self quartData];
+   // [self quartData];
+     [self setupRefresh];
     
 }
+
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing )];
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self quartData];
+}
+//上拉加载
+-(void)footerRefreshing
+{
+    
+    self.numindex ++ ;
+    [self quartData];
+}
+
 //数据请求
 -(void)quartData
 {
@@ -61,12 +90,14 @@
                                   yearly_income:@""
                                            debt:@""
                                         rela_id:@""
-                                              p:@"1"
-                                       pagesize:@"10" success:^(NSArray *lists) {
+                                              p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                       pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 10]
+                                        success:^(NSArray *lists) {
                                            
                                            [hud hide:YES];
                                            self.dataArry = [NSMutableArray arrayWithArray:lists];
-                                           
+                                            [self.tableV headerEndRefreshing];
+                                            [self.tableV footerEndRefreshing];
                                            [self.tableV reloadData];
         
     } failure:^(NSError *error) {

@@ -18,6 +18,7 @@
 #import "WHnearMapViewController.h"
 #import "WHmaplistTableViewController.h"
 #import "WHLookforViewController.h"
+#import "JwCompanys.h"
 
 
 @interface WHnearAgentTableViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -63,6 +64,12 @@
 
 
 @property(nonatomic,strong)NSString * s ;
+@property(nonatomic,strong)UITableView * companyTableView;//公司筛选
+@property(nonatomic,strong)NSMutableArray * companyArr;
+@property(nonatomic,strong)UIView * companyBackView; //公司试图
+
+
+
 @end
 
 @implementation WHnearAgentTableViewController
@@ -83,9 +90,30 @@
     self.ageArry = [NSMutableArray array];
     self.agentIdArry = [NSMutableArray array];
     
-    
     [self quartDate];
+    //
+    self.companyArr = [NSMutableArray array];
+    
+    [self data];
+    
 }
+
+-(void)data
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_CompanysWithType:@"1,2" success:^(NSArray *lists) {
+        [hud hide:YES];
+        for (JwCompanys * model in lists) {
+            [self.companyArr addObject:model.name];
+        }
+        [self.companyTableView reloadData];
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+    }];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -378,6 +406,20 @@
 {
     NSLog(@"点击了类别筛选");
     self.arrowCartogyImage.image = [UIImage imageNamed:@"arrow.png"];
+    self.companyBackView  = [[UIView alloc]init];
+    self.companyBackView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 94);
+    self.companyBackView.backgroundColor = [UIColor yellowColor];
+    self.companyBackView.hidden = YES;
+    [self.view addSubview:_companyBackView];
+    self.companyTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_companyBackView.frame), CGRectGetHeight(self.view.frame) - 94) style:UITableViewStylePlain];
+    self.companyTableView.delegate = self;
+    self.companyTableView.dataSource = self;
+    self.companyTableView.tableFooterView = [UIView new];
+    self.companyTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [self.companyBackView addSubview:_companyTableView];
+    [self.provinceTableView registerClass:[CityTableViewCell class] forCellReuseIdentifier:@"CompanyCell"];
+ 
+    
 }
 
 - (void)didReceiveMemoryWarning {

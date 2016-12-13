@@ -224,6 +224,7 @@ typedef enum {
 
 - (void)fuzhiAge:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give Key:(NSString *)key {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+   
     if (((NSMutableDictionary *)[self.contentMutableDict objectForKey:key]).count == 3) {
         [dict setObject:age forKey:@"投保年龄"];
         [dict setObject:type forKey:@"缴费方式"];
@@ -238,7 +239,8 @@ typedef enum {
         [dict setObject:@"" forKey:@"保额"];
         [dict setObject:@"" forKey:@"保费"];
     }
-    [self.fuzhiDict setObject:dict forKey:key];
+        [self.fuzhiDict setObject:dict forKey:key];
+   
 }
 
 - (void)viewDidLoad {
