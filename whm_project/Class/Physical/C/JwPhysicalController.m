@@ -38,6 +38,7 @@
 #import "WHget_pro_rate.h"
 #import "WHrate.h"
 
+#import "WHselectCompanyViewController.h"
 
 typedef enum {
     TYPE_AGE = 0,   // 年龄
@@ -437,7 +438,9 @@ typedef enum {
         return;
     }
     //选择公司
-    HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
+    WHselectCompanyViewController * company = [[WHselectCompanyViewController alloc]init];
+    
+    //HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
     company.groupArr = self.groupMutableArr;
     company.isSelects = self.isSelectPersonName;
     company.contentDict = _contentMutableDict;

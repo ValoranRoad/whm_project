@@ -167,6 +167,8 @@
 		9FBAA0511DBC9D5100C288E3 /* WHcompanyDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0501DBC9D5100C288E3 /* WHcompanyDetail.m */; };
 		9FBAA0541DBCC5AD00C288E3 /* WHhospital.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */; };
 		9FBAA0571DBCCCCD00C288E3 /* WHget_product_detail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */; };
+		9FC4AF6A1DFFA2C200B5CBCC /* WHinsuranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC4AF691DFFA2C200B5CBCC /* WHinsuranceViewController.m */; };
+		9FC4AF6D1DFFC77D00B5CBCC /* WHselectCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC4AF6C1DFFC77D00B5CBCC /* WHselectCompanyViewController.m */; };
 		9FC53A3A1DC5D515008340B0 /* WHrecommentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */; };
 		9FC53A3D1DC5D547008340B0 /* WHrecommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3C1DC5D547008340B0 /* WHrecommentTableViewCell.m */; };
 		9FC53A401DC5FB78008340B0 /* WHgetrec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC53A3F1DC5FB78008340B0 /* WHgetrec.m */; };
@@ -673,6 +675,10 @@
 		9FBAA0531DBCC5AD00C288E3 /* WHhospital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHhospital.m; sourceTree = "<group>"; };
 		9FBAA0551DBCCCCD00C288E3 /* WHget_product_detail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHget_product_detail.h; sourceTree = "<group>"; };
 		9FBAA0561DBCCCCD00C288E3 /* WHget_product_detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHget_product_detail.m; sourceTree = "<group>"; };
+		9FC4AF681DFFA2C200B5CBCC /* WHinsuranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHinsuranceViewController.h; sourceTree = "<group>"; };
+		9FC4AF691DFFA2C200B5CBCC /* WHinsuranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHinsuranceViewController.m; sourceTree = "<group>"; };
+		9FC4AF6B1DFFC77D00B5CBCC /* WHselectCompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHselectCompanyViewController.h; sourceTree = "<group>"; };
+		9FC4AF6C1DFFC77D00B5CBCC /* WHselectCompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHselectCompanyViewController.m; sourceTree = "<group>"; };
 		9FC53A381DC5D515008340B0 /* WHrecommentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrecommentTableViewController.h; sourceTree = "<group>"; };
 		9FC53A391DC5D515008340B0 /* WHrecommentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHrecommentTableViewController.m; sourceTree = "<group>"; };
 		9FC53A3B1DC5D547008340B0 /* WHrecommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHrecommentTableViewCell.h; sourceTree = "<group>"; };
@@ -1328,6 +1334,8 @@
 				9F0096E71DF7973B004B6510 /* WHwantMessageViewController.m */,
 				9F0097021DF7F8EA004B6510 /* WHinstruTypeTableViewController.h */,
 				9F0097031DF7F8EA004B6510 /* WHinstruTypeTableViewController.m */,
+				9FC4AF681DFFA2C200B5CBCC /* WHinsuranceViewController.h */,
+				9FC4AF691DFFA2C200B5CBCC /* WHinsuranceViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1867,6 +1875,8 @@
 				9F35CE491DD6A462003F0C78 /* WHperiodTableViewController.m */,
 				9F21CFB01DDC50FC0089BADB /* WHpay_periodTableViewController.h */,
 				9F21CFB11DDC50FC0089BADB /* WHpay_periodTableViewController.m */,
+				9FC4AF6B1DFFC77D00B5CBCC /* WHselectCompanyViewController.h */,
+				9FC4AF6C1DFFC77D00B5CBCC /* WHselectCompanyViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -2807,6 +2817,7 @@
 				9FA6846E1DE2EA71003F70E3 /* WHgetpolicys.m in Sources */,
 				9F0A20C41DBDDFC4004C5F67 /* WHupdateTelView.m in Sources */,
 				C86354311DB473A500ED8B16 /* IQUIView+Hierarchy.m in Sources */,
+				9FC4AF6A1DFFA2C200B5CBCC /* WHinsuranceViewController.m in Sources */,
 				9FDAE5B11DDF0136000F91DF /* ZFPopoverLabel.m in Sources */,
 				9678AD021DEC297A00C91373 /* WHagentinfo.m in Sources */,
 				9F99E71E1DC3597700DC1265 /* WHmyMessageTableViewCell.m in Sources */,
@@ -2853,6 +2864,7 @@
 				9F0EE5921DBB568000B68F76 /* WHgetproduct.m in Sources */,
 				9F63ED461DCB851C00404AE7 /* WHgetproducedetalViewController.m in Sources */,
 				C8343DFE1DB5B79A00999301 /* JwFindController.m in Sources */,
+				9FC4AF6D1DFFC77D00B5CBCC /* WHselectCompanyViewController.m in Sources */,
 				9FCB4DF71DD301800094184A /* WHgetproperiod.m in Sources */,
 				C86354341DB473A600ED8B16 /* IQKeyboardManager.m in Sources */,
 				9FCA05721DDD4BF200B6B805 /* WHintroViewController.m in Sources */,
