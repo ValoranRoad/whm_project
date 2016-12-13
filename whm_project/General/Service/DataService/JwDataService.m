@@ -898,6 +898,7 @@
 -(void)getprovinceWithProvince:(NSString *)province
                           city:(NSString *)city
                         county:(NSString *)county
+                        com_id:(NSString *)com_id
                          type :(NSString *)type
                       distance:(NSString *)distance
                            map:(NSString *)map
@@ -906,6 +907,7 @@
     NSDictionary * param = [@{@"province":province,
                               @"city":city,
                               @"county":county,
+                              @"com_id":com_id,
                               @"type":type,
                               @"distance":@"10.00",
                               @"map":map}mutableCopy];
@@ -930,6 +932,7 @@
 -(void)getorgProvinceWithProvince:(NSString *)province
                              city:(NSString *)city
                            county:(NSString *)county
+                           com_id:(NSString *)com_id
                          distance:(NSString *)distance
                               map:(NSString *)map
                           success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -937,6 +940,7 @@
     NSDictionary * param = [@{@"province":province ,
                               @"city":city,
                               @"county":county,
+                              @"com_id":com_id,
                               @"distance":@"10.00",
                               @"map":map}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
@@ -989,6 +993,39 @@
     
 
 }
+//刷新医院接口数据
+-(void)gethospitalWithCom_id:(NSString *)com_id
+                    province:(NSString *)province
+                        city:(NSString *)city
+                      county:(NSString *)county
+                    distance:(NSString *)distance
+                         map:(NSString *)map
+                     success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary * param = [@{@"com_id":com_id,
+                                     @"province":province ,
+                                     @"city":city ,
+                                     @"county":county,
+                                     @"distance":distance,
+                                     @"map":map}mutableCopy];
+    param = [[self filterParam:param interface:@"kb/get_hospital"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kb/get_hospital" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *hospitals = [WHhospital arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(hospitals);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 
+    
+    
+}
 
 @end

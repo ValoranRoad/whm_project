@@ -12,7 +12,11 @@
 #import "CityTableViewCell.h"
 #import "JGProgressHelper.h"
 #import "WHhospital.h"
-@interface WHhospitalTableViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import <UIImageView+WebCache.h>
+//
+#import "JwCompanys.h"
+#import "completeTableViewCell.h"
+@interface WHhospitalTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 @property(nonatomic,strong)WHhospitalTableViewCell * cell;
 @property(nonatomic,strong)UITableView * tableV;
 @property(nonatomic,strong)NSString * tel;
@@ -40,6 +44,14 @@
 //
 @property (nonatomic,strong)NSMutableArray *allArr;
 @property (nonatomic,strong)NSMutableArray *areaIdArr;
+//
+@property(nonatomic,strong)UITableView * companyTableView;//公司筛选
+@property(nonatomic,strong)NSMutableArray * companyArr;
+@property(nonatomic,strong)UIView * companyBackView; //公司试图
+@property(nonatomic,strong)NSString * companyID;
+
+@property(nonatomic,strong)UIView * titleView;
+
 
 
 
@@ -54,6 +66,7 @@
      self.dataArry = [NSMutableArray array];
     [self quartDate];
 
+     [self data];
 }
 
 
@@ -82,6 +95,25 @@
     
 
 }
+
+-(void)data
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_CompanysWithType:@"1,2" success:^(NSArray *lists) {
+        [hud hide:YES];
+        //        for (JwCompanys * model in lists) {
+        //            [self.companyArr addObject:model.name];
+        //        }
+        self.companyArr = [NSMutableArray arrayWithArray:lists];
+        [self.companyTableView reloadData];
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@""];
+    }];
+}
+
+
 //数据请求处理
 -(void)quartDate
 {
@@ -102,7 +134,7 @@
         [self.tableV reloadData];
     } failure:^(NSError *error) {
         [hud hide:YES];
-        [JGProgressHelper showError:@""];
+        [JGProgressHelper showError:@"没有数据"];
         
     }];
 }
@@ -254,6 +286,60 @@
 {
     NSLog(@"点击了类别筛选");
     self.arrowCartogyImage.image = [UIImage imageNamed:@"arrow.png"];
+    _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh , 35)];//allocate titleView
+    UIColor *color =  self.navigationController.navigationBar.barTintColor;
+    
+    [_titleView setBackgroundColor:color];
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    
+    searchBar.delegate = self;
+    searchBar.frame = CGRectMake(0, 0, kScreenWitdh* 0.7, 35);
+    searchBar.backgroundColor = color;
+    //searchBar.layer.cornerRadius = 18;
+    searchBar.layer.masksToBounds = YES;
+    [searchBar.layer setBorderWidth:8];
+    [searchBar.layer setBorderColor:[UIColor whiteColor].CGColor];  //设置边框为白色
+    
+    searchBar.placeholder = @"请输入关键词";
+    [_titleView addSubview:searchBar];
+    
+    //Set to titleView
+    [self.navigationItem.titleView sizeToFit];
+    self.navigationItem.titleView = _titleView;
+    NSLog(@"点击了类别筛选");
+    self.arrowCartogyImage.image = [UIImage imageNamed:@"arrow.png"];
+    self.companyBackView  = [[UIView alloc]init];
+    self.companyBackView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 94);
+    self.companyBackView.backgroundColor = [UIColor whiteColor];
+    //self.companyBackView.hidden = YES;
+    [self.view addSubview:_companyBackView];
+    self.companyTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_companyBackView.frame), CGRectGetHeight(self.view.frame) - 94) style:UITableViewStylePlain];
+    self.companyTableView.delegate = self;
+    self.companyTableView.dataSource = self;
+    self.companyTableView.tableFooterView = [UIView new];
+    self.companyTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [self.companyBackView addSubview:_companyTableView];
+    
+    [self.companyTableView registerClass:[completeTableViewCell class] forCellReuseIdentifier:@"CompanyCell"];
+
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService get_productWithCompany_id:@"" keyword:searchBar.text  sex:@"" characters_insurance:@"" period:@"" cate_id:@"" pay_period:@"" rate:@"" insured:@"" birthday:@"" yearly_income:@"" debt:@"" rela_id:@"" p:@"1" pagesize:@"10" success:^(NSArray *lists) {
+        [hud hide:YES];
+        
+        self.companyArr = [NSMutableArray arrayWithArray:lists];
+        [self.companyTableView reloadData];
+        
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@"没有获取到数据"];
+        
+    }];
+    
 }
 
 #pragma mark - Table view data source
@@ -274,7 +360,11 @@
     else  if (tableView == _tableV) {
         return self.dataArry.count;
     }
-    
+    else if (tableView == _companyTableView)
+    {
+        return _companyArr.count;
+    }
+
     else
     {
         return _areaArr.count;
@@ -292,6 +382,18 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         return cell;
     }
+    else if (tableView == _companyTableView)
+    {
+        completeTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CompanyCell" forIndexPath:indexPath];
+        JwCompanys * model = self.companyArr[indexPath.row];
+        
+        [cell.headImage sd_setImageWithURL:[NSURL URLWithString:model.logo]];
+        cell.titleLab.text = model.name;
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        return cell;
+    }
+
     else if(tableView == _cityTableView)
     {
         CityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CitylistCell" forIndexPath:indexPath];
@@ -346,6 +448,30 @@
         myIntag = indexPath.row;
         [self.cityTableView reloadData];
     }
+    else if (tableView == _companyTableView)
+    {
+        self.titleView.hidden = YES;
+        self.companyBackView.hidden = YES;
+        JwCompanys * model = self.companyArr [indexPath.row];
+        self.companyID = model.id;
+        id hud = [JGProgressHelper showProgressInView:self.view];
+        [self.dataService gethospitalWithCom_id:self.companyID
+                                       province:@""
+                                           city:@""
+                                         county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]]
+                                       distance:@"10000.00"
+                                            map:@"1"
+                                        success:^(NSArray *lists) {
+                                            [hud hide:YES];
+                                             self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                            NSLog(@"%@",[[lists firstObject ]objectForKey:@"info"]);
+                                            [self.tableV reloadData];
+        } failure:^(NSError *error) {
+            [hud hide:YES];
+            [JGProgressHelper showError:@"没有数据"];
+        }];
+
+    }
     else if(tableView ==_cityTableView)
     {
         NSInteger provinceIndex =  _provinceTableView.indexPathForSelectedRow.row;
@@ -379,7 +505,7 @@
         //这里要根据你取出区的id，重新请求数据，然后刷新下方的tableview
         
         id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.dataService get_hospitalWithlat:@"" lng:@"" province:@"" city:@"" county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]] distance:@"10.00" map:@"1" success:^(NSArray *lists) {
+        [self.dataService get_hospitalWithlat:@"" lng:@"" province:@"" city:@"" county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]] distance:@"10000.00" map:@"1" success:^(NSArray *lists) {
             [hud hide:YES];
             self.dataArry = [NSMutableArray arrayWithArray:lists];
             [self.tableV reloadData];
@@ -419,6 +545,9 @@
 {
     if (tableView == _tableV) {
         return 100;
+    }
+    if (tableView == _companyTableView) {
+        return 60;
     }
     return 40;
 }

@@ -221,11 +221,6 @@
     
     searchBar.placeholder = @"请输入关键词";
     [titleView addSubview:searchBar];
-//    self.searBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-//    self.searBut.frame = CGRectMake(kScreenWitdh * 0.71, 0, kScreenWitdh*0.2, 35);
-//    [self.searBut setTitle:@"搜索" forState:(UIControlStateNormal)];
-//    [self.searBut setTintColor:[UIColor whiteColor]];
-//    [titleView addSubview:_searBut];
     
     //Set to titleView
     [self.navigationItem.titleView sizeToFit];
