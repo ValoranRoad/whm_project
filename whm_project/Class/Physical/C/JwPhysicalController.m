@@ -204,13 +204,15 @@ typedef enum {
 
         if (![self.contentMutableDict.allKeys containsObject:_modelType.id]) {
             // 不存在
-            [self.contentMutableDict setObject:pickerDict forKey:self.modelType.id];
-            [self fuzhiAge:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"投保年龄"]).firstObject
-                Type:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"缴费方式"]).firstObject
-                Baozhang:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"保障期间"]).firstObject
-                Give:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"给付方式"]).firstObject
-                Key:_modelType.id
-             ];
+            if (self.fuzhiDict.count != 0) {
+                [self.contentMutableDict setObject:pickerDict forKey:self.modelType.id];
+                [self fuzhiAge:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"投保年龄"]).firstObject
+                          Type:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"缴费方式"]).firstObject
+                      Baozhang:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"保障期间"]).firstObject
+                          Give:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"给付方式"]).firstObject
+                           Key:_modelType.id
+                 ];
+            }
         }
         
         
