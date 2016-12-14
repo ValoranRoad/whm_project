@@ -204,15 +204,13 @@ typedef enum {
 
         if (![self.contentMutableDict.allKeys containsObject:_modelType.id]) {
             // 不存在
-            if (self.fuzhiDict.count != 0) {
-                [self.contentMutableDict setObject:pickerDict forKey:self.modelType.id];
-                [self fuzhiAge:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"投保年龄"]).firstObject
-                          Type:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"缴费方式"]).firstObject
-                      Baozhang:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"保障期间"]).firstObject
-                          Give:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"给付方式"]).firstObject
-                           Key:_modelType.id
-                 ];
-            }
+            [self.contentMutableDict setObject:pickerDict forKey:self.modelType.id];
+            [self fuzhiAge:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"投保年龄"]).firstObject
+                      Type:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"缴费方式"]).firstObject
+                  Baozhang:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"保障期间"]).firstObject
+                      Give:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"给付方式"]).firstObject
+                       Key:_modelType.id
+             ];
         }
         
         
@@ -228,16 +226,30 @@ typedef enum {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
    
     if (((NSMutableDictionary *)[self.contentMutableDict objectForKey:key]).count == 3) {
-        [dict setObject:age forKey:@"投保年龄"];
-        [dict setObject:type forKey:@"缴费方式"];
-        [dict setObject:baozhang forKey:@"保障期间"];
+        if (age != nil) {
+            [dict setObject:age forKey:@"投保年龄"];
+        }
+        if (type != nil) {
+            [dict setObject:type forKey:@"缴费方式"];
+        }
+        if (baozhang != nil) {
+            [dict setObject:baozhang forKey:@"保障期间"];
+        }
         [dict setObject:@"" forKey:@"保额"];
         [dict setObject:@"" forKey:@"保费"];
     }else {
-        [dict setObject:age forKey:@"投保年龄"];
-        [dict setObject:type forKey:@"缴费方式"];
-        [dict setObject:baozhang forKey:@"保障期间"];
-        [dict setObject:give forKey:@"给付方式"];
+        if (age != nil) {
+            [dict setObject:age forKey:@"投保年龄"];
+        }
+        if (type != nil) {
+            [dict setObject:type forKey:@"缴费方式"];
+        }
+        if (baozhang != nil) {
+            [dict setObject:baozhang forKey:@"保障期间"];
+        }
+        if (give != nil) {
+            [dict setObject:give forKey:@"给付方式"];
+        }
         [dict setObject:@"" forKey:@"保额"];
         [dict setObject:@"" forKey:@"保费"];
     }
