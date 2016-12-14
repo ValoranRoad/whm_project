@@ -155,7 +155,7 @@
         
     self.myView = [[UIView alloc]init];
     self.myView.backgroundColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0];
-        self.myView.frame = CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds)*0.7, CGRectGetWidth([UIScreen mainScreen].bounds), 50);
+        self.myView.frame = CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds)*0.7, CGRectGetWidth([UIScreen mainScreen].bounds), 30);
         
     self.addBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.addBut.frame = CGRectMake(30, CGRectGetMinY(self.myView.frame)+40, CGRectGetWidth(self.view.frame)-60, CGRectGetHeight(self.myView.frame));
@@ -163,7 +163,7 @@
     
     [self.addBut addTarget:self action:@selector(nextButAction:) forControlEvents:(UIControlEventTouchUpInside)];
     
-    self.addBut.layer.cornerRadius = 20;
+    self.addBut.layer.cornerRadius = 15;
     [self.addBut setTitle:@"保存信息" forState:(UIControlStateNormal)];
     [self.addBut setTintColor:[UIColor whiteColor]];
     
@@ -261,10 +261,10 @@
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
             
             self.phoImage = [[UIImageView alloc]init];
-            self.phoImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.75, CGRectGetMaxY(cell.textLabel.frame)+20, CGRectGetWidth([UIScreen mainScreen].bounds)*0.144, CGRectGetWidth([UIScreen mainScreen].bounds)*0.144);
+            self.phoImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.75, CGRectGetMaxY(cell.textLabel.frame)+20, CGRectGetWidth([UIScreen mainScreen].bounds)*0.104, CGRectGetWidth([UIScreen mainScreen].bounds)*0.104);
             //self.phoImage.image = [UIImage imageNamed:@"test_head"];
             self.phoImage.layer.masksToBounds = YES;
-            self.phoImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.144/2;
+            self.phoImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.104/2;
             self.phoImage.userInteractionEnabled = YES;
             UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(picTapAction)];
             [self.phoImage addGestureRecognizer:picTap];

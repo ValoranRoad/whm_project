@@ -274,7 +274,11 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                          map:(NSString *)map
                      success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
+//体检报告合并
+-(void)getreportWithPolicyid:(NSString *)policy_id
+                         uid:(NSString *)uid
 
+                     success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
 
 

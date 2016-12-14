@@ -14,6 +14,7 @@
 #import "WHgetnewsdetail.h"
 #import "UMSocial.h"
 #import "YCXMenu.h"
+#import "WHwantMessageViewController.h"
 #define BASE_REST_URL @"https://www.kuaibao365.com/news/details"
 
 
@@ -142,7 +143,7 @@
     [self.headView addSubview:_nameLaber];
     //
     self.sexImage = [[UIImageView alloc]init];
-    self.sexImage.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+3, CGRectGetMinY(self.nameLaber.frame)+8, 20, 20);
+    self.sexImage.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+3, CGRectGetMinY(self.nameLaber.frame)+3, 20, 20);
     //self.sexImage.image = [UIImage imageNamed:@"test_male"];
     [self.headView addSubview:_sexImage];
     
@@ -178,16 +179,16 @@
     self.lineView = [[UIView alloc]init];
     self.lineView.frame = CGRectMake(0,kScreenHeight * 0.15 - 20, kScreenWitdh , 20);
     self.lineView.backgroundColor = [UIColor colorWithHex:0xD9D9D9];
-    [self.headView addSubview:_lineView];
+    //[self.headView addSubview:_lineView];
     //
    
     //
     self.titleLaber = [[UILabel alloc]init];
-    self.titleLaber.frame = CGRectMake(10, CGRectGetMaxY(self.lineView.frame)+2, kScreenWitdh-20, 30);
+    self.titleLaber.frame = CGRectMake(10, CGRectGetMaxY(self.telBut.frame)+2, kScreenWitdh-20, 30);
     [self.headView addSubview:_titleLaber];
     //
     self.timeLaber = [[UILabel alloc]init];
-    self.timeLaber.frame = CGRectMake(CGRectGetMinX(self.titleLaber.frame), CGRectGetMaxY(self.titleLaber.frame)+10, kScreenWitdh * 0.2, 20);
+    self.timeLaber.frame = CGRectMake(CGRectGetMinX(self.titleLaber.frame), CGRectGetMaxY(self.titleLaber.frame)+10, kScreenWitdh * 0.3, 20);
     self.timeLaber.font = [UIFont systemFontOfSize:13.0];
     self.timeLaber.textColor = [UIColor grayColor];
     [self.headView addSubview:_timeLaber];
@@ -324,6 +325,15 @@
 -(void)messageAction:(UIButton *)sender
 {
     NSLog(@"mseeage");
+    WHwantMessageViewController * wantMes = [[WHwantMessageViewController alloc]init];
+    wantMes.res_uid = self.agentID;
+    wantMes.name = self.nameLaber.text;
+    //    NSString * s1 = self.areaLaber.text ;
+    //wantMes.cityName = [s1 substringToIndex:2];
+   // wantMes.cityName = self.areaLaber.text;
+    
+    [self.navigationController pushViewController:wantMes animated:YES];
+
 }
 //电话事件
 -(void)telAction:(UIButton *)sender

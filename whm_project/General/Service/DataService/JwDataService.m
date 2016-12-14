@@ -1028,4 +1028,30 @@
     
 }
 
+//体检报告合并
+-(void)getreportWithPolicyid:(NSString *)policy_id
+                         uid:(NSString *)uid
+                     success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"policy_id":policy_id,
+                              @"uid":[JwUserCenter sharedCenter].uid,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/get_report"] mutableCopy];
+    
+    [self.httpManager POST:param withPoint:@"kbj/get_report" success:^(id data) {
+        
+        NSArray *infos = data[@"data"];
+        NSArray *reports = [WHgetreport arrayOfModelsFromDictionaries:infos error:nil];
+        
+        if (success) {
+            success(reports);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+
+}
+
 @end

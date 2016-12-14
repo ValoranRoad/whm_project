@@ -396,7 +396,7 @@
     
     //
     self.sexImage = [[UIImageView alloc]init];
-    self.sexImage.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+3, CGRectGetMinY(self.nameLaber.frame)+8, 20, 20);
+    self.sexImage.frame = CGRectMake(CGRectGetMaxX(self.nameLaber.frame)+3, CGRectGetMinY(self.nameLaber.frame)+3, 20, 20);
     //self.sexImage.image = [UIImage imageNamed:@"test_male"];
     [self.headView addSubview:_sexImage];
     
@@ -861,6 +861,7 @@
         detal.newsYear = self.yearLaber.text;
         detal.newsCompany = self.companyLaber.text;
         detal.tel = self.tel;
+        detal.agentID = self.agentID;
         [self.navigationController pushViewController:detal animated:YES];
         
         

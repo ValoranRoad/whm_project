@@ -27,4 +27,6 @@
 @property(nonatomic,strong)UIView * line3;
 @property(nonatomic,strong)UIView * line4;
 
+
+
 @end

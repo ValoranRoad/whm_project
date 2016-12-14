@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WHupdatePwdViewController : UIViewController
+#import "JwBackBaseController.h"
+@interface WHupdatePwdViewController : JwBackBaseController
 
 @end

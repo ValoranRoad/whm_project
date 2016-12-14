@@ -132,7 +132,7 @@
 
     //确认按钮
     self.nextBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.nextBut.frame = CGRectMake(30, CGRectGetMaxY(self.lineView5.frame)+30, CGRectGetWidth([UIScreen mainScreen].bounds)-60, CGRectGetHeight(self.nameText.frame));
+    self.nextBut.frame = CGRectMake(30, CGRectGetMaxY(self.lineView5.frame)+10, CGRectGetWidth([UIScreen mainScreen].bounds)-60, CGRectGetHeight(self.nameText.frame)*0.85);
     [self.nextBut setTitle:@"确认提交" forState:(UIControlStateNormal)];
     self.nextBut.backgroundColor = [UIColor colorWithHex:0x4367FF ];
     
@@ -141,7 +141,7 @@
     self.nextBut.layer.shadowColor = [UIColor colorWithHex:0x4367FF ].CGColor;
     
     [self.nextBut setTintColor:[UIColor whiteColor]];
-    self.nextBut.layer.cornerRadius = 23.0;
+    self.nextBut.layer.cornerRadius = 20.0;
     [self addSubview:_nextBut];
 
 

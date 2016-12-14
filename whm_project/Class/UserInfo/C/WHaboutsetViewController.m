@@ -31,7 +31,7 @@
     
     self.myimage = [[UIImageView alloc]init];
     self.myimage.image = [UIImage imageNamed:@"logo"];
-    self.myimage.frame = CGRectMake(125, 50, 150, 150);
+    self.myimage.frame = CGRectMake(125* 0.85, 50, 150, 150);
     [self.myview addSubview:_myimage];
     self.myimage.layer.cornerRadius = CGRectGetWidth(self.myimage.frame)/2;
     self.myimage.layer.masksToBounds = YES;

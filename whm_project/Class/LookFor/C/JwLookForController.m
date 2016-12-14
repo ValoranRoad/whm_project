@@ -169,7 +169,7 @@
     [self.view addSubview:_bigScrollV];
     
     // 搜索View searchView;
-    self.searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 100)];
+    self.searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 100/2)];
 //    _searchView.backgroundColor =  [UIColor colorWithHex:0x4367FF];
     _searchView.layer.contents = (__bridge id _Nullable)[UIImage imageNamed:@"xianzhong.png"].CGImage;
     //_searchView.backgroundColor = [ui]
@@ -182,7 +182,7 @@
 //    [self.bigScrollV addSubview:_image];
     //
     self.searText = [[UITextField alloc]init];
-    self.searText.frame = CGRectMake(20, CGRectGetHeight([UIScreen mainScreen].bounds)*0.07, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 46);
+    self.searText.frame = CGRectMake(20, CGRectGetHeight([UIScreen mainScreen].bounds)*0.02, CGRectGetWidth([UIScreen mainScreen].bounds)-40, 36);
     self.searText.placeholder = @"请输入关键词";
     self.searText.borderStyle = UITextBorderStyleLine;
     self.searText.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -206,7 +206,7 @@
     //
     // index = 0 btnConditions;
     self.btnConditions = [UIButton buttonWithType:UIButtonTypeCustom];
-    _btnConditions.frame = CGRectMake(0, CGRectGetMaxY(_searchView.frame), kScreenWitdh * 0.5, 54);
+    _btnConditions.frame = CGRectMake(0, CGRectGetMaxY(_searchView.frame), kScreenWitdh * 0.5, 34);
     [_btnConditions setTitle:@"筛选条件" forState:UIControlStateNormal];
     [_btnConditions setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_btnConditions setBackgroundImage:[UIImage imageNamed:@"xianzhong"] forState:UIControlStateNormal];
@@ -490,9 +490,9 @@
     
     //
     self.serchBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-    self.serchBut.frame = CGRectMake(30, CGRectGetMaxY(lineView4.frame)+20, CGRectGetWidth([UIScreen mainScreen].bounds)-60, 50);
+    self.serchBut.frame = CGRectMake(30, CGRectGetMaxY(lineView4.frame)+20, CGRectGetWidth([UIScreen mainScreen].bounds)-60, 30);
     self.serchBut.backgroundColor = [UIColor colorWithHex:0xFF4545];
-    self.serchBut.layer.cornerRadius = 25;
+    self.serchBut.layer.cornerRadius = 15;
     [self.serchBut setTitle:@"高级搜索" forState:(UIControlStateNormal)];
     [self.serchBut addTarget:self action:@selector(powSearch:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.serchBut setTintColor:[UIColor whiteColor]];
@@ -706,10 +706,10 @@
     lineView4.backgroundColor = [UIColor grayColor];
     [self.essentialScrollV addSubview:lineView4];
     
-    self.basText2.delegate = self;
-    self.basText3.delegate = self;
-    self.basText4.delegate = self;
-    self.basText1.delegate = self;
+//    self.basText2.delegate = self;
+//    self.basText3.delegate = self;
+//    self.basText4.delegate = self;
+//    self.basText1.delegate = self;
     
 }
 

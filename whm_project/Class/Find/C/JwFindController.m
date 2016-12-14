@@ -72,7 +72,7 @@
     
     [self.blackView addSubview:_moonImg];
     self.nearLaber = [[UILabel alloc]init];
-    self.nearLaber.frame = CGRectMake(CGRectGetMinX(self.moonImg.frame), CGRectGetMaxY(self.moonImg.frame)+5, CGRectGetWidth(self.moonImg.frame)*1.2, 25);
+    self.nearLaber.frame = CGRectMake(CGRectGetMinX(self.moonImg.frame), CGRectGetMaxY(self.moonImg.frame)+5, CGRectGetWidth(self.moonImg.frame)*1.5, 25);
     self.nearLaber.text = @"附近代理人";
     //self.nearLaber.textColor = [UIColor grayColor];
     self.nearLaber.font = [UIFont systemFontOfSize:12.0];
@@ -93,7 +93,7 @@
     self.mapImg.layer.cornerRadius = kScreenWitdh * 0.075;
     [self.blackView addSubview:_mapImg];
     self.orgLaber = [[UILabel alloc]init];
-    self.orgLaber.frame = CGRectMake(CGRectGetMinX(self.mapImg.frame)+3, CGRectGetMinY(self.nearLaber.frame), CGRectGetWidth(self.mapImg.frame), CGRectGetHeight(self.nearLaber.frame));
+    self.orgLaber.frame = CGRectMake(CGRectGetMinX(self.mapImg.frame)+3, CGRectGetMinY(self.nearLaber.frame), CGRectGetWidth(self.mapImg.frame)*1.2, CGRectGetHeight(self.nearLaber.frame));
     self.orgLaber.font = [UIFont systemFontOfSize:12.0];
     self.orgLaber.text = @"分支机构";
     [self.blackView addSubview:_orgLaber];
@@ -115,7 +115,7 @@
     [self.blackView addSubview:_cityImg];
     
     self.hosLaber = [[UILabel alloc]init];
-    self.hosLaber.frame = CGRectMake(CGRectGetMinX(self.cityImg.frame)+3, CGRectGetMinY(self.nearLaber.frame), CGRectGetWidth(self.cityImg.frame), CGRectGetHeight(self.nearLaber.frame));
+    self.hosLaber.frame = CGRectMake(CGRectGetMinX(self.cityImg.frame)+3, CGRectGetMinY(self.nearLaber.frame), CGRectGetWidth(self.cityImg.frame)*1.2, CGRectGetHeight(self.nearLaber.frame));
     self.hosLaber.font = [UIFont systemFontOfSize:12.0];
     self.hosLaber.text = @"定点医院";
     [self.blackView addSubview:_hosLaber];
@@ -134,7 +134,7 @@
     
     [self.blackView addSubview:_findImg];
     self.mesLaber = [[UILabel alloc]init];
-    self.mesLaber.frame = CGRectMake(CGRectGetMinX(self.findImg.frame)+3, CGRectGetMaxY(self.findImg.frame)+5, CGRectGetWidth(self.findImg.frame), CGRectGetHeight(self.nearLaber.frame));
+    self.mesLaber.frame = CGRectMake(CGRectGetMinX(self.findImg.frame)+3, CGRectGetMaxY(self.findImg.frame)+5, CGRectGetWidth(self.findImg.frame)*1.2, CGRectGetHeight(self.nearLaber.frame));
     self.mesLaber.font = [UIFont systemFontOfSize:12.0];
     self.mesLaber.text = @"信息批漏";
     [self.blackView addSubview:_mesLaber];
