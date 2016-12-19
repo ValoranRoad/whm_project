@@ -71,17 +71,8 @@
    success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 
-////保存认证信息
-//-(void)save_verifyWithUid:(NSString *)uid
-//                  company:(NSString *)company
-//                     name:(NSString *)name
-//               cardnumber:(NSString *)cardnumber
-//       organizationnumber:(NSString *)organizationnumber
-//                    point:(NSString *)point
-//                  address:(NSString *)address
-//                       jb:(NSString *)job
-//                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
+//
 //修改手机号
 -(void)update_mobileWithUid:(NSString *)uid
                      mobile:(NSString *)mobile
@@ -209,5 +200,16 @@ success:(void(^)())success failure:(void(^)(NSError *error))failure;
                  pid:(NSString *)pid
              success:(void(^)())success failure:(void(^)(NSError * error))failure;
 
+
+//保存认证信息
+-(void)save_verifyWithUid:(NSString *)uid
+                  company:(NSString *)company
+                     name:(NSString *)name
+               cardnumber:(NSString *)cardnumber
+       organizationnumber:(NSString *)organizationnumber
+                    point:(NSString *)point
+                  address:(NSString *)address
+                      job:(NSString *)job
+                  success:(void (^)())success failure:(void (^)(NSError *error))failure;
 
 @end

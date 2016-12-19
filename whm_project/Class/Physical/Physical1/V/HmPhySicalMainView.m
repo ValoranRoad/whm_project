@@ -118,7 +118,7 @@
     
     //self.lblPay.backgroundColor = [UIColor redColor];
     self.imgOwn.frame = CGRectMake(CGRectGetMinX(self.imgDate.frame), CGRectGetMinY(self.imgPay.frame), 20, 20);
-    self.imgOwn.image = [UIImage imageNamed:@"test_debts"];
+    self.imgOwn.image = [UIImage imageNamed:@"policyNum"];
     self.lblOwn.frame = CGRectMake(CGRectGetMinX(self.lblDate.frame), CGRectGetMinY(self.lblPay.frame), CGRectGetWidth(self.lblDate.frame), CGRectGetHeight(self.lblDate.frame));
     _lblOwn.text = @"哈哈";
     _lblPay.text = @"哈哈";
@@ -171,10 +171,10 @@
     
     self.lblDate.text = [s1 substringToIndex:11];
     self.lblYearCost.text = model.yearly_income;
-    self.lblOwn.text = model.debt;
+    self.lblOwn.text = model.policy_count;
     self.imgHead.layer.cornerRadius = 25;
     self.imgHead.layer.masksToBounds = YES;
-    self.lblPay.text = model.year_out;
+    self.lblPay.text = model.debt;
     
     [self.imgHead sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
     

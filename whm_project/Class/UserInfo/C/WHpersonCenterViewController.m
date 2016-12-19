@@ -24,6 +24,7 @@
 
 #import <UIImageView+WebCache.h>
 #import "WHaboutUsViewController.h"
+#import "WHKNetWorkUtils.h"
 
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIView * headview;
@@ -95,6 +96,23 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    [WHKNetWorkUtils netWorkState:^(NSInteger netState) {
+        switch (netState) {
+            case 1:{
+                NSLog(@"手机流量上网");
+            }
+                break;
+            case 2:{
+                NSLog(@"WIFI上网");
+            }
+                break;
+            default:{
+                NSLog(@"没网");
+            }
+                break;
+        }
+    }];
+
     
 }
 

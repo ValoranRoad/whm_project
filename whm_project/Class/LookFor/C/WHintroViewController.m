@@ -22,11 +22,10 @@
 
 @implementation WHintroViewController
 
--(void)viewWillDisappear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self requData];
- 
+    
     
 }
 
@@ -37,17 +36,14 @@
          [hud hide:YES];
          for (WHcompanyDetail * model in list) {
              self.s1 = model.descriptionJw;
-             NSLog(@"pppppppp%@",self.s1);
+            // NSLog(@"pppppppp%@",self.s1);
              
-            
-              //[self loadWithURLString:self.s1];
-             
-            
-             
+              [self loadWithURLString:self.s1];
          }
-         [self loadWithURLString:self.s1];
-
+      
      } failure:^(NSError *error) {
+         [hud hide:YES];
+         [JGProgressHelper showError:@""];
          
      }];
     
@@ -57,11 +53,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     //self.view.backgroundColor = [UIColor grayColor];
+     self.view.backgroundColor = [UIColor grayColor];
     self.scw.delegate = self;
     
-    self.scw = [[UIWebView alloc]initWithFrame:CGRectMake(0, kScreenHeight * 0.5 ,kScreenWitdh, kScreenHeight )];
-    self.scw.backgroundColor = [UIColor redColor];
+    self.scw = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0 ,kScreenWitdh, kScreenHeight  )];
+   
     [self.view addSubview:_scw];
 
     

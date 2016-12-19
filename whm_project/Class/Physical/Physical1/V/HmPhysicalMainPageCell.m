@@ -48,7 +48,7 @@
     
     self.lblDate.text = [s1 substringToIndex:11];
     self.lblYearCost.text = model.yearly_income;
-    self.lblOwe.text = model.debt;
+    self.lblOwe.text = model.policy_count;
     self.imgHead.layer.cornerRadius = 25;
     self.imgHead.layer.masksToBounds = YES;
     

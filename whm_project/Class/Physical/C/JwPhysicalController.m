@@ -40,6 +40,8 @@
 
 #import "WHselectCompanyViewController.h"
 
+#import "WHKNetWorkUtils.h"
+
 typedef enum {
     TYPE_AGE = 0,   // 年龄
     TYPE_PERIOD,   // 保障期间
@@ -113,6 +115,24 @@ typedef enum {
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [WHKNetWorkUtils netWorkState:^(NSInteger netState) {
+        switch (netState) {
+            case 1:{
+                NSLog(@"手机流量上网");
+            }
+                break;
+            case 2:{
+                NSLog(@"WIFI上网");
+            }
+                break;
+            default:{
+                NSLog(@"没网");
+            }
+                break;
+        }
+    }];
+
     
     // 刷新第一行数据
 //    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
@@ -671,7 +691,9 @@ typedef enum {
             // 1   保费= 保额(自己输入的值) * 基本保费(insured) / 基本保额(pay_period)
             NSMutableDictionary *dict = [_fuzhiDict objectForKey:((WHgetproduct *)self.groupMutableArr[self.openSection]).id];
             NSString *pay = [dict objectForKey:@"缴费方式"];
-            CGFloat baofei = [sender floatValue] * [mon.insured floatValue] / [[typeDict objectForKey:pay] floatValue];
+            CGFloat  c  = 2.59562060;
+            CGFloat baofei = [sender floatValue] * [mon.insured floatValue] / [[typeDict objectForKey:pay] floatValue]/c;
+            //CGFloat baofei = [mon.insured floatValue] * [[typeDict objectForKey:pay]floatValue]/[sender floatValue];
             [dict setObject:sender forKey:@"保额"];
             [dict setObject:[NSString stringWithFormat:@"%ld",(long)baofei] forKey:@"保费"];
             [self.tableVB reloadData];

@@ -236,43 +236,6 @@
     
 }
 
-//保存认证信息
--(void)save_verifyWithUid:(NSString *)uid
-                  company:(NSString *)company
-                     name:(NSString *)name
-               cardnumber:(NSString *)cardnumber
-       organizationnumber:(NSString *)organizationnumber
-                    point:(NSString *)point
-                  address:(NSString *)address
-                      job:(NSString *)job
-                  success:(void (^)())success failure:(void (^)(NSError *))failure
-{
-    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid ,
-                              @"company":company ,
-                              @"name":name ,
-                              @"cardnumber":cardnumber ,
-                              @"organizationnumber":organizationnumber,
-                              @"point":point ,
-                              @"address":address,
-                              @"job":job,
-                              @"token":[JwUserCenter sharedCenter].key}
-                            mutableCopy];
-    param = [[self filterParam:param interface:@"kbj/save_verify"]mutableCopy];
-    
-    [self.httpManager POST:param withPoint:@"kbj/save_verify" success:^(id data) {
-        
-        if (success) {
-            success();
-        }
-    } failure:^(NSError *error) {
-        if (failure) {
-            failure(error);
-        }
-    }];
-
-    
-    
-}
 
 //修改手机号
 -(void)update_mobileWithUid:(NSString *)uid
@@ -732,7 +695,40 @@
 
     
 }
+////保存认证信息
 
+-(void)save_verifyWithUid:(NSString *)uid
+                  company:(NSString *)company
+                     name:(NSString *)name
+               cardnumber:(NSString *)cardnumber
+       organizationnumber:(NSString *)organizationnumber
+                    point:(NSString *)point
+                  address:(NSString *)address
+                      job:(NSString *)job
+                  success:(void (^)())success failure:(void (^)(NSError *))failure
+{
+    NSDictionary * param = [@{@"uid":[JwUserCenter sharedCenter].uid,
+                              @"company":company,
+                              @"name":name,
+                              @"cardnumber":cardnumber,
+                              @"organizationnumber":organizationnumber ,
+                              @"point":point,
+                              @"address":address,
+                              @"job":job,
+                              @"token":[JwUserCenter sharedCenter].key}mutableCopy];
+    param = [[self filterParam:param interface:@"kbj/save_verify"]mutableCopy];
+    [self.httpManager POST:param withPoint:@"kbj/save_verify" success:^(id data) {
+        if (success) {
+            success();
+        }
+        
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 
+    
+}
 
 @end

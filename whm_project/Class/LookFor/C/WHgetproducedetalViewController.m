@@ -195,6 +195,12 @@
 
 -(void)onClickUILableAction:(UITapGestureRecognizer *)sender{
        NSLog(@"jjj");
+    
+    
+  
+    
+    
+    //
      WHstatisViewController * statisVC = [[WHstatisViewController alloc]init];
      WHcoverageViewController * coverVC = [[WHcoverageViewController alloc]init];
      coverVC.com_id = self.com_id;

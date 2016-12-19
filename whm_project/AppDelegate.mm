@@ -17,6 +17,7 @@
 #import "UMSocialQQHandler.h"
 #import "UMSocialSinaHandler.h"
 #import "UMSocialSinaSSOHandler.h"
+
 BMKMapManager *_mapManager;
 
 @interface AppDelegate () <BMKLocationServiceDelegate>
@@ -71,6 +72,8 @@ static void uncaughtExceptionHandler(NSException *exception) {
     
        return YES;
 }
+
+
 //分享
 -(void)shareUmeng
 {

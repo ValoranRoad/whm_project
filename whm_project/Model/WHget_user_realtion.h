@@ -18,8 +18,9 @@
 @property(nonatomic,strong)NSString<Optional> * debt;
 @property(nonatomic,strong)NSString<Optional> * relation;
 @property(nonatomic,strong)NSString<Optional> * relation_name;
-@property(nonatomic,strong)NSString<Optional> *type;
+@property(nonatomic,strong)NSString<Optional> * type;
 @property(nonatomic,strong)NSString<Optional> * year_out;
 @property(nonatomic,strong)NSString<Optional> * avatar;
+@property(nonatomic,strong)NSString<Optional> * policy_count;
 
 @end

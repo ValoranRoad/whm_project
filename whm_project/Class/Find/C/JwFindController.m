@@ -12,6 +12,7 @@
 #import "WHorginTableViewController.h"
 #import "WHnearAgentTableViewController.h"
 #import "WHhospitalTableViewController.h"
+#import "WHKNetWorkUtils.h"
 
 @interface JwFindController ()
 @property(nonatomic,strong)UIView * myview;
@@ -34,10 +35,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self network];
    
     [self setUI];
      self.navigationItem .leftBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:(UIBarButtonItemStylePlain) target:self action:@selector(left:)];
 }
+-(void)network
+{
+    [WHKNetWorkUtils netWorkState:^(NSInteger netState) {
+        switch (netState) {
+            case 1:{
+                NSLog(@"手机流量上网");
+            }
+                break;
+            case 2:{
+                NSLog(@"WIFI上网");
+            }
+                break;
+            default:{
+                NSLog(@"没网");
+            }
+                break;
+        }
+    }];
+
+}
+
 
 -(void)left:(UIBarButtonItem *)sender
 {
@@ -132,12 +155,12 @@
     self.findImg.layer.masksToBounds = YES;
     self.findImg.layer.cornerRadius = kScreenWitdh * 0.075;
     
-    [self.blackView addSubview:_findImg];
+    //[self.blackView addSubview:_findImg];
     self.mesLaber = [[UILabel alloc]init];
     self.mesLaber.frame = CGRectMake(CGRectGetMinX(self.findImg.frame)+3, CGRectGetMaxY(self.findImg.frame)+5, CGRectGetWidth(self.findImg.frame)*1.2, CGRectGetHeight(self.nearLaber.frame));
     self.mesLaber.font = [UIFont systemFontOfSize:12.0];
     self.mesLaber.text = @"信息批漏";
-    [self.blackView addSubview:_mesLaber];
+  //  [self.blackView addSubview:_mesLaber];
     
 }
 //定义响应事件

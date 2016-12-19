@@ -13,6 +13,7 @@
 #import "JGProgressHelper.h"
 #import "WHgetfollowList.h"
 #import <UIImageView+WebCache.h>
+#import "WHwantMessageViewController.h"
 
 @interface WHmyfollowListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView * tableV;
@@ -20,6 +21,9 @@
 @property(nonatomic,strong)NSMutableArray * dataArry;
 @property(nonatomic,strong)NSString * tel ;
 @property(nonatomic,strong)NSString * followId;
+@property(nonatomic,strong)NSString * follName;
+
+
 @end
 
 @implementation WHmyfollowListViewController
@@ -83,6 +87,9 @@
 {
     WHmyfollowListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     WHgetfollowList * model = self.dataArry[indexPath.row];
+    self.followId = model.id;
+    self.follName = model.name;
+    
     [cell.myImg sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
     cell.nameLaber.text = model.name;
     if ([model.sex isEqualToString:@"1"]) {
@@ -121,7 +128,12 @@
 //短信事件
 -(void)mesButAction:(UIButton *)sender
 {
-    NSLog(@"mes");
+    WHwantMessageViewController * wantMes = [[WHwantMessageViewController alloc]init];
+    wantMes.res_uid = self.followId;
+    wantMes.name = self.follName;
+    [self.navigationController pushViewController:wantMes animated:YES];
+    
+    
 }
 
 //电话事件

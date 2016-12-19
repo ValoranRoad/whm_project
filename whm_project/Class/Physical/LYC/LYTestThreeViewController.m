@@ -30,8 +30,8 @@
     NSTimer * timer4;
     int present4;
 
-    NSTimer * timer5;
-    int present5;
+//    NSTimer * timer5;
+//    int present5;
 }
 
 @property(nonatomic,strong)CustomProgress * custompro;
@@ -202,8 +202,8 @@
     _custompro5.bgimg.backgroundColor =[UIColor whiteColor];
     _custompro5.leftimg.backgroundColor =[UIColor colorWithRed:255/255.0 green:231/255.0 blue:240/255.0 alpha:1];;
     _custompro5.presentlab.textColor = [UIColor blackColor];
-    [self.view addSubview:_custompro5];
-    [self timer5];
+    //[self.view addSubview:_custompro5];
+   // [self timer5];
 
     //界面设计
     self.titLaber = [[UILabel alloc]init];
@@ -313,7 +313,7 @@
     
     if (present4<= 25) {
         
-        [_custompro4 setPresent:19 title:@"人寿保险保额" labelText:@"18分"];
+        [_custompro4 setPresent:19 title:@"个人缺少保障" labelText:@"38分"];
         
     }
     
@@ -321,11 +321,11 @@
 -(void)timer5
 {
     
-    if (present5<= 7) {
-        
-        [_custompro5 setPresent:3 title:@"个人缺少保障" labelText:@"3分" ];
-        
-    }
+//    if (present5<= 7) {
+//        
+//        [_custompro5 setPresent:3 title:@"个人缺少保障" labelText:@"3分" ];
+//        
+//    }
     
 }
 

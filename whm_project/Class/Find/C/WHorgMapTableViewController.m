@@ -14,6 +14,8 @@
 #import <BaiduMapAPI_Search/BMKGeocodeSearch.h>
 #import <UIImageView+WebCache.h>
 #import "MacroUtility.h"
+
+
 #define SCREENW [UIScreen mainScreen].bounds.size.width
 #define SCREENH [UIScreen mainScreen].bounds.size.height
 
@@ -90,6 +92,7 @@
     self.rodeBut.frame = CGRectMake(CGRectGetMaxX(self.telBut.frame)+5, CGRectGetMinY(self.telBut.frame), CGRectGetWidth(self.telBut.frame), CGRectGetHeight(self.telBut.frame));
     [self.rodeBut setBackgroundImage:[UIImage imageNamed:@"rideImg"] forState:(UIControlStateNormal)];
     [self.myView addSubview:_rodeBut];
+    [self.rodeBut addTarget:self action:@selector(rodeButAction:) forControlEvents:(UIControlEventTouchUpInside)];
 
     
 }
@@ -158,6 +161,13 @@
     
     
 }
+-(void)rodeButAction:(UIButton * )sender
+{
+    
+  
+}
+
+
 //根据被点击按钮的索引处理点击事件
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

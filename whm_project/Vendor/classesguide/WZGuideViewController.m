@@ -155,7 +155,7 @@
     NSArray *imageNameArray = [NSArray arrayWithObjects:@"1137", @"1138", @"1139",@"1140", nil];
     
     
-    _pageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds))];
+    _pageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -64, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)+64)];
     self.pageScroll.pagingEnabled = YES;
     self.pageScroll.contentSize = CGSizeMake(self.view.frame.size.width * imageNameArray.count, self.view.frame.size.height);
   

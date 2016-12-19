@@ -127,7 +127,7 @@
 {
     self.title = @"最新资讯";
     self.headView  = [[UIView alloc]init];
-    self.headView .frame = CGRectMake(0, 0, kScreenWitdh , kScreenHeight * 0.25);
+    self.headView .frame = CGRectMake(0, 0, kScreenWitdh , kScreenHeight * 0.20);
     [self.view addSubview:_headView ];
     self.headImage = [[UIImageView alloc]init];
     self.headImage.frame = CGRectMake(10, 10, kScreenWitdh * 0.15, kScreenWitdh *0.15);

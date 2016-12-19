@@ -66,7 +66,7 @@
     } failure:^(NSError *error) {
         
         [hud hide:YES];
-        [JGProgressHelper showError:nil inView:self.view];
+        [JGProgressHelper showError:@"没有数据"];
     }];
 }
 
