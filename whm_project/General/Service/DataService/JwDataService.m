@@ -230,6 +230,8 @@
                     county:(NSString *)county
                   distance:(NSString *)distance
                        map:(NSString *)map
+                         p:(NSString *)p
+                  pagesize:(NSString *)pagesize
                    success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary * param = [@{@"lat":lat,
@@ -238,6 +240,8 @@
                                      @"city":city ,
                                      @"county":county,
                                      @"distance":distance,
+                                     @"p":p,
+                                     @"pagesize":pagesize,
                                      @"map":map}
                                    mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_hospital"] mutableCopy];
@@ -264,7 +268,7 @@
                                 uid:(NSString *)uid
                             success:(void (^)(WHget_product_detail * userInfo ))success failure:(void (^)(NSError *))failure
 {
-    NSMutableDictionary * param = [@{@"pro_id":pro_id,
+        NSMutableDictionary * param = [@{@"pro_id":pro_id,
                                      @"uid":[JwUserCenter sharedCenter].uid}
                                    mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_product_detail"] mutableCopy];
@@ -282,7 +286,6 @@
             failure(error);
         }
     }];
-
     
     
 }
@@ -712,6 +715,8 @@
                       type:(NSString *)type
                   distance:(NSString *)distance
                        map:(NSString *)map
+                        p :(NSString *)p
+                  pagesize:(NSString *)pagesize
                    success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSDictionary * param = [@{@"lng":lng ,
@@ -722,6 +727,8 @@
                               @"county":county,
                               @"type":type,
                               @"distance":@"10.00",
+                              @"p":p,
+                              @"pagesize":pagesize,
                               @"map":map}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_near_agent"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_near_agent" success:^(id data) {
@@ -745,11 +752,15 @@
                           lat:(NSString *)lat
                      distance:(NSString *)distance
                           map:(NSString *)map
+                            p:(NSString *)p
+                     pagesize:(NSString *)pagesize
                       success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSDictionary * param = [@{@"lng":lng ,
                               @"lat":lat,
                               @"distance":@"10.00",
+                              @"p":p,
+                              @"pagesize":pagesize,
                               @"map":map}mutableCopy];
     param = [[self filterParam:param interface:@"kb/get_organization"]mutableCopy];
     [self.httpManager POST:param withPoint:@"kb/get_organization" success:^(id data) {

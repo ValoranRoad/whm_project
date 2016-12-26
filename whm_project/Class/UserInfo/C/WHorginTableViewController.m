@@ -18,6 +18,7 @@
 //
 #import "JwCompanys.h"
 #import "completeTableViewCell.h"
+#import "MJRefresh.h"
 @interface WHorginTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 @property(nonatomic,strong)WHorginTableViewCell * cell;
 @property(nonatomic,strong)UITableView * tableV;
@@ -52,6 +53,8 @@
 @property(nonatomic,strong)NSString * companyID;
 
 @property(nonatomic,strong)UIView * titleView;
+@property(nonatomic,assign)NSInteger numindex;
+
 
 
 @end
@@ -64,8 +67,10 @@
     [super viewWillAppear:YES];
     
     self.dataArry = [NSMutableArray array];
-    [self quartDate];
+   // [self quartDate];
     [self data];
+    [self setupRefresh];
+
 }
 
 -(void)data
@@ -84,6 +89,37 @@
         [JGProgressHelper showError:@""];
     }];
 }
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing )];
+    
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self quartDate];
+}
+//上拉加载
+-(void)footerRefreshing
+{
+    
+    
+    self.numindex ++ ;
+    if (self.dataArry.count <= 10) {
+        [self.tableV footerEndRefreshing];
+    }
+    else
+    {
+        [self quartDate];
+    }
+}
+
 
 
 //数据请求
@@ -109,10 +145,15 @@
    [self.dataService getorganizationWithLng:stringOne
                                         lat:stringTwo
                                    distance:@""
-                                        map:@"1"
+                                        map:@""
+                                          p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                   pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 15]
+
                                     success:^(NSArray *lists) {
                                         [hud hide:YES];
                                         self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                        [self.tableV headerEndRefreshing];
+                                        [self.tableV footerEndRefreshing];
                                         [self.tableV reloadData];
            
                                         

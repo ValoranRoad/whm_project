@@ -16,6 +16,8 @@
 //
 #import "JwCompanys.h"
 #import "completeTableViewCell.h"
+#import "MJRefresh.h"
+
 @interface WHhospitalTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 @property(nonatomic,strong)WHhospitalTableViewCell * cell;
 @property(nonatomic,strong)UITableView * tableV;
@@ -51,6 +53,8 @@
 @property(nonatomic,strong)NSString * companyID;
 
 @property(nonatomic,strong)UIView * titleView;
+@property(nonatomic,assign)NSInteger numindex;
+
 
 
 
@@ -64,11 +68,42 @@
 {
     [super viewWillAppear:animated];
      self.dataArry = [NSMutableArray array];
-    [self quartDate];
+    //[self quartDate];
 
      [self data];
+    [self setupRefresh];
 }
 
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing )];
+    
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self quartDate];
+}
+//上拉加载
+-(void)footerRefreshing
+{
+    
+    
+    self.numindex ++ ;
+    if (self.dataArry.count <= 10) {
+        [self.tableV footerEndRefreshing];
+    }
+    else
+    {
+        [self quartDate];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -127,10 +162,14 @@
                                      city:@""
                                    county:@""
                                  distance:@"10.00"
-                                      map:@"1"
+                                      map:@""
+                                        p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                 pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 15]
                                   success:^(NSArray *lists) {
         [hud hide:YES];
         self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                      [self.tableV headerEndRefreshing];
+                                      [self.tableV footerEndRefreshing];
         [self.tableV reloadData];
     } failure:^(NSError *error) {
         [hud hide:YES];
@@ -505,7 +544,7 @@
         //这里要根据你取出区的id，重新请求数据，然后刷新下方的tableview
         
         id hud = [JGProgressHelper showProgressInView:self.view];
-        [self.dataService get_hospitalWithlat:@"" lng:@"" province:@"" city:@"" county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]] distance:@"10000.00" map:@"1" success:^(NSArray *lists) {
+        [self.dataService get_hospitalWithlat:@"" lng:@"" province:@"" city:@"" county:[NSString stringWithFormat:@"%@",self.areaIdArr[indexPath.row]] distance:@"10000.00" map:@"1"p: @"" pagesize:@""  success:^(NSArray *lists) {
             [hud hide:YES];
             self.dataArry = [NSMutableArray arrayWithArray:lists];
             [self.tableV reloadData];

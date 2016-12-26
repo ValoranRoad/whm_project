@@ -14,6 +14,8 @@
 #import "JGProgressHelper.h"
 #import "WHgetpolicys.h"
 #import "WHpesfporViewController.h"
+#import "WHgetproducedetalViewController.h"
+
 
 @interface WHslipListTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -175,6 +177,12 @@
 -(void)lookButAction:(UIButton *)sender
 {
     NSLog(@"查看");
+    WHgetpolicys * pol = self.dataArry[sender.tag - 100];
+
+    WHgetproducedetalViewController * produce = [[WHgetproducedetalViewController alloc]init];
+    produce.pro_id = pol.id;
+    //NSLog(@"00000%@",produce.pro_id);
+    [self.navigationController pushViewController:produce animated:YES];
 }
 
 //完善事件

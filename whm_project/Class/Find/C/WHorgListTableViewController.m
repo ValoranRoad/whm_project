@@ -21,6 +21,7 @@
 #import "WHnearagentdata.h"
 #import <UIImageView+WebCache.h>
 #import "WHorganization.h"
+#import "MJRefresh.h"
 @interface WHorgListTableViewController ()<UITableViewDelegate,UITableViewDataSource,BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>
 {
     BMKMapView *_mapView;
@@ -32,6 +33,8 @@
 @property(nonatomic,strong)WHorginTableViewCell * cell;
 @property(nonatomic,strong)NSMutableArray * dataArry;
 @property(nonatomic,strong)NSString * tel ;
+@property(nonatomic,assign)NSInteger numindex;
+
 
 @end
 
@@ -41,7 +44,8 @@
     [super viewDidLoad];
     [self setUI];
     
-    [self dataBase];
+    //[self dataBase];
+    [self setupRefresh];
     
 }
 -(void)setUI
@@ -57,6 +61,38 @@
     
     
 }
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing )];
+    
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self dataBase];
+}
+//上拉加载
+-(void)footerRefreshing
+{
+    
+    
+    self.numindex ++ ;
+    if (self.dataArry.count <= 15) {
+        [self.tableV footerEndRefreshing];
+    }
+    else
+    {
+        [self dataBase];
+    }
+}
+
+
 
 -(void)dataBase
 {
@@ -67,13 +103,16 @@
     [self.dataService getorganizationWithLng:stringOne
                                          lat:stringTwo
                                     distance:@""
-                                         map:@"1"
+                                         map:@""
+                                           p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                    pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 15]
+
                                      success:^(NSArray *lists) {
                                          [hud hide:YES];
                                          self.dataArry = [NSMutableArray arrayWithArray:lists];
+                                         [self.tableV headerEndRefreshing];
+                                         [self.tableV footerEndRefreshing];
                                          [self.tableV reloadData];
-                                         
-                                         
                                      } failure:^(NSError *error) {
                                          [hud hide:YES];
                                          [JGProgressHelper showError:@""];

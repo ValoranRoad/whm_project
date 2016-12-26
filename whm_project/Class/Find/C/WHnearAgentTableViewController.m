@@ -21,6 +21,8 @@
 #import "JwCompanys.h"
 #import "completeTableViewCell.h"
 
+#import "MJRefresh.h"
+
 @interface WHnearAgentTableViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 @property(nonatomic,strong)UITableView * tableV;
 @property(nonatomic,strong)WHnearAgentTableViewController * cell;
@@ -70,7 +72,7 @@
 @property(nonatomic,strong)NSString * companyID;
 
 @property(nonatomic,strong)UIView * titleView;
-
+@property(nonatomic,assign)NSInteger numindex;
 
 @end
 
@@ -92,12 +94,42 @@
     self.ageArry = [NSMutableArray array];
     self.agentIdArry = [NSMutableArray array];
     
-    [self quartDate];
+   // [self quartDate];
     //
-  
+  [self setupRefresh];
     
     [self data];
     
+}
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing )];
+
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self quartDate];
+}
+//上拉加载
+-(void)footerRefreshing
+{
+    
+    
+    self.numindex ++ ;
+    if (self.dataArry.count <= 10) {
+        [self.tableV footerEndRefreshing];
+    }
+    else
+    {
+    [self quartDate];
+    }
 }
 
 -(void)data
@@ -161,7 +193,9 @@
                                    county:@""
                                      type:@"agent"
                                  distance:@""
-                                      map:@"1"
+                                      map:@""
+                                        p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                 pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 15]
                                   success:^(NSArray *lists) {
                                          [hud hide:YES];
                                        //  self.dataArry = [NSMutableArray arrayWithArray:lists];
@@ -220,13 +254,18 @@
                                              NSString * strWork = [strLab stringByAppendingString:near.data.work_time];
                                              NSString * strArea = [strWork stringByAppendingString:near.data.service_area];
                                              [self.mtitArry addObject:strArea];
+                                             if (near.data.age.length < 1) {
+                                                 near.data.age = @"0";
+                                             }
                                              [self.ageArry addObject:near.data.age];
                                              
                                              
                                              
                                          }
                                          
-        
+                                      [self.tableV headerEndRefreshing];
+                                      [self.tableV footerEndRefreshing];
+                                      
                                          [self.tableV reloadData];
     } failure:^(NSError *error) {
         [hud hide:YES];

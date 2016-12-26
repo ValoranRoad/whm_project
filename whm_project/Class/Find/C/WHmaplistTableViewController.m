@@ -20,6 +20,9 @@
 #import "WHgetnearagent.h"
 #import "WHnearagentdata.h"
 #import <UIImageView+WebCache.h>
+#import "MJRefresh.h"
+
+
 @interface WHmaplistTableViewController ()<UITableViewDelegate,UITableViewDataSource,BMKMapViewDelegate, BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate>
 {
     BMKMapView *_mapView;
@@ -42,6 +45,8 @@
 @property(nonatomic,strong)NSMutableArray * distArry;
 @property(nonatomic,strong)NSMutableArray * telArry;
 @property(nonatomic,strong)NSString * tel;
+@property(nonatomic,assign)NSInteger numindex;
+
 
 
 @end
@@ -52,7 +57,7 @@
     [super viewDidLoad];
     [self setUI];
 
-    [self dateBase];
+   // [self dateBase];
     self.dataArry = [NSMutableArray array];
     self.imgArry = [NSMutableArray array];
     self.mobileArry = [NSMutableArray array];
@@ -62,8 +67,40 @@
     self.distArry = [NSMutableArray array];
     self.telArry = [NSMutableArray array];
     self.title = @"位置";
+    [self setupRefresh];
     
 }
+//刷新
+-(void)setupRefresh
+{
+    [self.tableV addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"thable"];
+    [self.tableV headerBeginRefreshing];
+    [self.tableV addFooterWithTarget:self action:@selector(footerRefreshing)];
+    
+    
+}
+//下拉刷新
+-(void)headerRereshing
+{
+    self.numindex = 1 ;
+    //self.numindex ++;
+    [self dateBase];
+}
+//上拉加载
+-(void)footerRefreshing
+{
+    
+    
+    self.numindex ++ ;
+    if (self.dataArry.count <= 10) {
+        [self.tableV footerEndRefreshing];
+    }
+    else
+    {
+        [self dateBase];
+    }
+}
+
 -(void)dateBase
 {
     
@@ -80,7 +117,9 @@
                                    county:@""
                                      type:@"agent"
                                  distance:@"10.00"
-                                      map:@"1"
+                                      map:@""
+                                        p:[NSString stringWithFormat:@"%ld",self.numindex]
+                                 pagesize:[NSString stringWithFormat:@"%ld",self.numindex * 15]
                                   success:^(NSArray *lists) {
                                          [hud hide:YES];
                                          //  self.dataArry = [NSMutableArray arrayWithArray:lists];
@@ -126,6 +165,9 @@
                                              
                                             
                                          }
+                                      [self.tableV headerEndRefreshing];
+                                      [self.tableV footerEndRefreshing];
+                                      
                                          [self.tableV reloadData];
                                      } failure:^(NSError *error) {
                                          [hud hide:YES];

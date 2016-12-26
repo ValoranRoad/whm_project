@@ -65,8 +65,8 @@
     self.title = @"登录";
     [self setupView];
     
-//    self.mobTF.text = @"13213011251";
-//    self.pwdTF.text = @"wyg511688";
+    self.mobTF.text = @"13213011251";
+    self.pwdTF.text = @"wyg511688";
 
 }
 

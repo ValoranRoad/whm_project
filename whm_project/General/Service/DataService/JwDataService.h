@@ -95,6 +95,8 @@ success:(void (^)(NSArray * list))success failure:(void (^)(NSError *error))fail
                     county:(NSString *)county
                   distance:(NSString *)distance
                        map:(NSString *)map
+                         p:(NSString *)p
+                  pagesize:(NSString *)pagesize
                       success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
 
@@ -198,6 +200,8 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                       type:(NSString *) type
                   distance:(NSString *)distance
                        map:(NSString *)map
+                         p:(NSString *)p
+                  pagesize:(NSString *)pagesize
                    success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
@@ -206,6 +210,8 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                           lat:(NSString *)lat
                      distance:(NSString *)distance
                           map:(NSString *)map
+                            p:(NSString *)p
+                     pagesize:(NSString *)pagesize
                       success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
