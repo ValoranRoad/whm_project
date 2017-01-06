@@ -25,6 +25,8 @@
 #import "JGProgressHelper.h"
 #import "MacroUtility.h"
 #import <UIImageView+WebCache.h>
+#import "WHcredEntViewController.h"
+
 
 #define kScreenWitdh [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -47,6 +49,8 @@
 
 @property (nonatomic, strong) UITableView *tableV;
 @property (nonatomic, strong) WHaccountTableViewCell *cell;
+
+@property (nonatomic, strong)UILabel * StrCert;
 
 
 //图像data
@@ -96,6 +100,20 @@
         for (WHgetuseinfo * model in lists) {
             NSLog(@"%@",model.name);
             self.StrName.text = model.name;
+            self.StrCert.text = model.status_name;
+//            if ([s1 isEqualToString:@"0"]) {
+//                self.StrCert.text = @"未认证";
+//            }
+//            if ([s1 isEqualToString:@"1"]) {
+//                self.StrCert.text = @"已认证";
+//            }
+//            if ([s1 isEqualToString:@"2"]) {
+//                self.StrCert.text = @"认证驳回";
+//            }
+//            if ([s1 isEqualToString:@"3"]) {
+//                self.StrCert.text = @"审核中";
+//            }
+            
             [self.phoImage sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
             if ([model.sex isEqualToString:@"1"]) {
                 self.sexLaber.text = @"男";
@@ -155,7 +173,7 @@
         
     self.myView = [[UIView alloc]init];
     self.myView.backgroundColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0];
-        self.myView.frame = CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds)*0.7, CGRectGetWidth([UIScreen mainScreen].bounds), 50);
+        self.myView.frame = CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds)*0.7, CGRectGetWidth([UIScreen mainScreen].bounds), 30);
         
     self.addBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
     self.addBut.frame = CGRectMake(30, CGRectGetMinY(self.myView.frame)+40, CGRectGetWidth(self.view.frame)-60, CGRectGetHeight(self.myView.frame));
@@ -163,7 +181,7 @@
     
     [self.addBut addTarget:self action:@selector(nextButAction:) forControlEvents:(UIControlEventTouchUpInside)];
     
-    self.addBut.layer.cornerRadius = 20;
+    self.addBut.layer.cornerRadius = 15;
     [self.addBut setTitle:@"保存信息" forState:(UIControlStateNormal)];
     [self.addBut setTintColor:[UIColor whiteColor]];
     
@@ -261,10 +279,10 @@
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
             
             self.phoImage = [[UIImageView alloc]init];
-            self.phoImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.75, CGRectGetMaxY(cell.textLabel.frame)+20, CGRectGetWidth([UIScreen mainScreen].bounds)*0.144, CGRectGetWidth([UIScreen mainScreen].bounds)*0.144);
+            self.phoImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.75, CGRectGetMaxY(cell.textLabel.frame)+20, CGRectGetWidth([UIScreen mainScreen].bounds)*0.104, CGRectGetWidth([UIScreen mainScreen].bounds)*0.104);
             //self.phoImage.image = [UIImage imageNamed:@"test_head"];
             self.phoImage.layer.masksToBounds = YES;
-            self.phoImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.144/2;
+            self.phoImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.104/2;
             self.phoImage.userInteractionEnabled = YES;
             UITapGestureRecognizer *picTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(picTapAction)];
             [self.phoImage addGestureRecognizer:picTap];
@@ -334,9 +352,14 @@
             cell.textLabel.text = @"我的认证信息";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             //cell.detailTextLabel.textColor = [UIColor grayColor];
-            cell.detailTextLabel.textColor = [UIColor grayColor];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
-            
+//            cell.detailTextLabel.textColor = [UIColor grayColor];
+//            cell.detailTextLabel.font = [UIFont systemFontOfSize:15.0];
+            self.StrCert = [[UILabel alloc]init];
+            self.StrCert.frame = CGRectMake(kScreenWitdh * 0.65, CGRectGetMidY(cell.textLabel.frame), kScreenWitdh * 0.3, WHhight * 0.081);
+            self.StrCert.textColor = [UIColor redColor];
+            self.StrCert.font = [UIFont systemFontOfSize:15.0];
+            [cell.contentView addSubview:_StrCert];
+//            
             cell.textLabel.font = [UIFont systemFontOfSize:15.0];
             
         }
@@ -547,33 +570,60 @@
     if (indexPath.section == 0 && indexPath.row == 2) {
        // UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
         
-        WHsexViewController *sex = [[WHsexViewController alloc] init];
+//        WHsexViewController *sex = [[WHsexViewController alloc] init];
+//        
+//        sex.mblock1 = ^(NSString * s1)
+//        {
+//            self.sexLaber.text = s1 ;
+//            
+////            if ([s1 isEqualToString:@"男"]) {
+////                self.sexImage.image = [UIImage imageNamed:@"test_male"];
+////            }
+////            if ([s1 isEqualToString:@"女"]) {
+////                self.sexImage.image = [UIImage imageNamed:@"test_famale"];
+////
+////            }
+////            else
+////            {
+////                
+////            }
+//        };
+//        
+//        [self.navigationController pushViewController:sex animated:NO];
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:nil preferredStyle:  UIAlertControllerStyleActionSheet];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //点击按钮的响应事件；
+            NSLog(@"点击了确定");
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"男" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //点击按钮的响应事件；
+            NSLog(@"点击了男");
+            self.sexLaber.text = @"男";
+        }]];
         
-        sex.mblock1 = ^(NSString * s1)
-        {
-            self.sexLaber.text = s1 ;
-            
-//            if ([s1 isEqualToString:@"男"]) {
-//                self.sexImage.image = [UIImage imageNamed:@"test_male"];
-//            }
-//            if ([s1 isEqualToString:@"女"]) {
-//                self.sexImage.image = [UIImage imageNamed:@"test_famale"];
-//
-//            }
-//            else
-//            {
-//                
-//            }
-        };
+        [alert addAction:[UIAlertAction actionWithTitle:@"女" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //点击按钮的响应事件；
+            NSLog(@"点击了女");
+            self.sexLaber.text = @"女";
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            //点击按钮的响应事件；
+            NSLog(@"点击了取消");
+        }]];
         
-        [self.navigationController pushViewController:sex animated:NO];
+        //弹出提示框；
+        [self presentViewController:alert animated:true completion:nil];
         
-           }
+
+    
+    }
     
     //图片选择
-    if (indexPath.section == 0 && indexPath.row == 0) {
+    if (indexPath.section == 1 && indexPath.row == 0) {
         
-        
+        WHcredEntViewController * cred = [[WHcredEntViewController alloc]init];
+        [self.navigationController pushViewController:cred animated:YES];
         
     }
 

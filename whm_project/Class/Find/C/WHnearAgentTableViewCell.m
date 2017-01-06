@@ -51,7 +51,7 @@
 {
     if (_companyLaber == nil) {
         self.companyLaber = [[UILabel alloc]init];
-        self.companyLaber.frame = CGRectMake(CGRectGetMaxX(self.sexImg.frame)+5, CGRectGetMinY(self.sexImg.frame), kScreenWitdh * 0.15, 20);
+        self.companyLaber.frame = CGRectMake(CGRectGetMaxX(self.sexImg.frame)+5, CGRectGetMinY(self.sexImg.frame), kScreenWitdh * 0.25, 20);
         self.companyLaber.textColor = [UIColor grayColor];
         self.companyLaber.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:_companyLaber];

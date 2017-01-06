@@ -93,6 +93,7 @@
     _tableV.delegate = self;
     _tableV.dataSource = self;
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
+   /*
     _tableV.tableHeaderView = ({
         UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdh, 20 + HmInsuredH * 2 + 1.5)];
         headView.backgroundColor = [UIColor colorWithHex:0xD9D9D9];
@@ -121,6 +122,7 @@
         [headView addSubview:_collectionV];
         headView;
     });
+    */
     [self.view addSubview:_tableV];
     
     // 添加 (右上角)
@@ -194,7 +196,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"A";
+    return @"";
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -205,7 +207,7 @@
     UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(6, 5, kScreenWitdh - 6 * 2, 20)];
     lbl.textAlignment = NSTextAlignmentLeft;
     lbl.textColor = [UIColor colorWithHex:0x666666];
-    lbl.text = @"B";
+    lbl.text = @"";
     [headView addSubview:lbl];
     
     return headView;

@@ -16,6 +16,6 @@
 @property (nonatomic, strong) NSMutableDictionary *contentDict;
 @property (nonatomic, strong) NSMutableDictionary *fuzhiDict;
 
-@property(nonatomic,strong)NSString * addTend;
+
 
 @end

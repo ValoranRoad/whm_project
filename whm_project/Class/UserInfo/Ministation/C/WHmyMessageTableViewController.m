@@ -60,7 +60,13 @@
 {
     
     self.numindex ++ ;
+    if (self.dataArry.count <= 10) {
+        [self.tableV footerEndRefreshing];
+    }
+    else
+    {
     [self requestData];
+    }
 }
 
 - (void)viewDidLoad {

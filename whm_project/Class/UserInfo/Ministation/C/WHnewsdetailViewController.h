@@ -17,4 +17,6 @@
 @property(nonatomic,strong)NSString * newsSeximg;
 @property(nonatomic,strong)NSString * newsYear;
 @property(nonatomic,strong)NSString * newsCompany;
+@property(nonatomic,strong)NSString * agentID;
+
 @end

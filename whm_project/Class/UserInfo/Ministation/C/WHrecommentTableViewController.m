@@ -14,6 +14,7 @@
 #import "HmSelectCompanyController.h"
 //刷新数据
 #import "MJRefresh.h"
+#import "WHinsuranceViewController.h"
 
 @interface WHrecommentTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -60,7 +61,13 @@
 {
     
     self.numindex ++ ;
+    if (self.dataArry.count <= 10) {
+        [self.tableV footerEndRefreshing];
+    }
+    else
+    {
     [self requestData];
+    }
 }
 
 
@@ -77,9 +84,12 @@
 
 -(void)addNewSafeAction:(UIBarButtonItem * )sender
 {
-      HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
-      company.addTend = @"1";
-     [self.navigationController pushViewController:company animated:YES];
+//      HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
+//      company.addTend = @"1";
+//     [self.navigationController pushViewController:company animated:YES];
+    
+    WHinsuranceViewController * insure = [[WHinsuranceViewController alloc]init];
+    [self.navigationController pushViewController:insure animated:YES];
 }
 
 // 请求数据

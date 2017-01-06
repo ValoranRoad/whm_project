@@ -15,6 +15,7 @@
 #import "WHpersonCenterViewController.h"
 #import "RegisterTwoViewController.h"
 #import "MacroUtility.h"
+#import "WHKNetWorkUtils.h"
 
 @interface JwLoginController ()<UITextFieldDelegate>
 
@@ -40,19 +41,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [WHKNetWorkUtils netWorkState:^(NSInteger netState) {
+        switch (netState) {
+            case 1:{
+                NSLog(@"手机流量上网");
+            }
+                break;
+            case 2:{
+                NSLog(@"WIFI上网");
+            }
+                break;
+            default:{
+                NSLog(@"没网");
+            }
+                break;
+        }
+    }];
+
+    
     //去除返回按钮附近的字体
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
                                                          forBarMetrics:UIBarMetricsDefault];
     self.title = @"登录";
     [self setupView];
     
-//    if (self.mobTF.text.length == 0) {
-//        self.loginBut.userInteractionEnabled = NO;
-//    }
-//    else
-//    {
-//        self.loginBut.userInteractionEnabled = YES;
-//    }
     self.mobTF.text = @"13213011251";
     self.pwdTF.text = @"wyg511688";
 

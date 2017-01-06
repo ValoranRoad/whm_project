@@ -30,7 +30,9 @@
 @property (nonatomic, strong) UIButton * button;
 @property (nonatomic,strong)NSMutableArray *picArr;
 @property (nonatomic,strong) NSMutableArray * idsArry;
-@property(nonatomic,strong)NSString * strID;
+@property(nonatomic,strong) NSString * strID;
+
+@property(nonatomic,strong)NSString * currentDateString;
 
 
 @end
@@ -66,13 +68,35 @@
     } failure:^(NSError *error) {
         
         [hud hide:YES];
-        [JGProgressHelper showError:nil inView:self.view];
+        [JGProgressHelper showError:@"没有数据"];
     }];
 }
 
 -(void)setUI
 {
     [self.view addSubview:self.collectionView];
+    
+    NSDate*currentDate= [NSDate date];
+    
+    //用于格式化NSDate对象
+    
+    NSDateFormatter*dateFormatter= [[NSDateFormatter alloc]init];
+    
+    //设置格式：zzz表示时区
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-ddHH:mm:sszzz"];
+    
+    //NSDate转NSString
+    
+   //_currentDateString= [dateFormatter stringFromDate:currentDate];
+    
+    //输出currentDateString
+    
+    NSString *  Sdate = [dateFormatter stringFromDate:currentDate];
+    self.currentDateString = [Sdate substringToIndex:18];
+    
+
+    NSLog(@"pppp%@",_currentDateString);
 }
 
 
@@ -138,7 +162,7 @@
         PicUpdateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
         [cell sizeToFit];
         
-        [cell.picImage sd_setImageWithURL:[NSURL URLWithString:pic] placeholderImage:[UIImage imageNamed:@"addimage.png"]];
+        [cell.picImage sd_setImageWithURL:[NSURL URLWithString:pic] placeholderImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",self.currentDateString]]];
         return cell;
     }
     else
@@ -179,6 +203,7 @@
        [self.userService delhonorWithId:self.strID uid:@"" success:^{
            [hud hide:YES];
            [ JGProgressHelper showSuccess:@"删除图片成功"];
+           [self.navigationController popViewControllerAnimated:YES];
            
        } failure:^(NSError *error) {
            [hud hide:YES];
@@ -328,7 +353,12 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"上传成功" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alert show];
         //上传成功重新请求数据,并在请求数据中刷新界面
-       [self getData];
+       // [_collectionView reloadData];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+       // [self getData];
+        
         
     } failure:^(NSError *error) {
         

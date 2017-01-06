@@ -51,6 +51,7 @@
         [locationmanager requestAlwaysAuthorization];        //NSLocationAlwaysUsageDescription
         [locationmanager requestWhenInUseAuthorization];     //NSLocationWhenInUseDescription
         locationmanager.delegate = self;
+        
     }
     
     //获取经纬度
@@ -74,7 +75,7 @@
             
             
             [wself setLabelText:[NSString stringWithFormat:@"%f %f",locationCorrrdinate.latitude,locationCorrrdinate.longitude]];
-            
+           
         }];
     }
     

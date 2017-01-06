@@ -38,7 +38,7 @@
 {
     if (_baoeLaber == nil) {
         self.baoeLaber = [[UILabel alloc]init];
-        self.baoeLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5 , 50, 20);
+        self.baoeLaber.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.titLaber.frame)+5 , 40, 20);
         self.baoeLaber.textColor = [UIColor grayColor];
         self.baoeLaber.font = [UIFont systemFontOfSize:13.0];
         self.baoeLaber.text = @"保额:";
@@ -50,7 +50,7 @@
 {
     if (_insured == nil) {
         self.insured = [[UILabel alloc]init];
-        self.insured.frame = CGRectMake(CGRectGetMaxX(self.baoeLaber.frame)+3, CGRectGetMinY(self.baoeLaber.frame), CGRectGetWidth(self.baoeLaber.frame)*1.2, CGRectGetHeight(self.baoeLaber.frame));
+        self.insured.frame = CGRectMake(CGRectGetMaxX(self.baoeLaber.frame)+3, CGRectGetMinY(self.baoeLaber.frame), CGRectGetWidth(self.baoeLaber.frame)*1.4, CGRectGetHeight(self.baoeLaber.frame));
         self.insured.textColor = [UIColor grayColor];
         self.insured.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:_insured];
@@ -87,7 +87,7 @@
 {
     if (_scoreLaber  == nil) {
         self.scoreLaber = [[UILabel alloc]init];
-        self.scoreLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.80, CGRectGetMaxY(self.titLaber.frame), kScreenWitdh * 0.15, 30);
+        self.scoreLaber.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.85, CGRectGetMaxY(self.titLaber.frame), kScreenWitdh * 0.1, 30);
         self.scoreLaber.textColor = [UIColor redColor];
         self.scoreLaber.font = [UIFont systemFontOfSize:15.0];
         [self.contentView addSubview:_scoreLaber];
@@ -110,7 +110,7 @@
 {
     if (_img1 == nil) {
         self.img1 = [[UIImageView alloc]init];
-        self.img1.frame = CGRectMake(CGRectGetMinX(self.titLaber.frame), CGRectGetMaxY(self.baoeLaber.frame)+20, 20, 20);
+        self.img1.frame = CGRectMake(10, CGRectGetMaxY(self.baoeLaber.frame)+20, 20, 20);
         
       //  self.img1.image = [UIImage imageNamed:@"del"];
         [self.contentView addSubview:_img1];
@@ -136,7 +136,7 @@
 {
     if (_img2 == nil) {
         self.img2 = [[UIImageView alloc]init];
-        self.img2.frame = CGRectMake(kScreenWitdh *0.4 , CGRectGetMinY(self.img1.frame), CGRectGetWidth(self.img1.frame), CGRectGetHeight(self.img1.frame));
+        self.img2.frame = CGRectMake(kScreenWitdh *0.34 , CGRectGetMinY(self.img1.frame), CGRectGetWidth(self.img1.frame), CGRectGetHeight(self.img1.frame));
         self.img2.image = [UIImage imageNamed:@"wanshan"];
         [self.contentView addSubview:_img2];
     }
@@ -147,7 +147,7 @@
 {
     if (_pefBut == nil) {
         self.pefBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-        self.pefBut.frame = CGRectMake(CGRectGetMaxX(self.img2.frame)+3, CGRectGetMinY(self.img2.frame), CGRectGetWidth(self.delBut.frame), CGRectGetHeight(self.delBut.frame));
+        self.pefBut.frame = CGRectMake(CGRectGetMaxX(self.img2.frame)+3, CGRectGetMinY(self.img2.frame), CGRectGetWidth(self.delBut.frame)*1.2, CGRectGetHeight(self.delBut.frame));
         [self.pefBut setTintColor:[UIColor grayColor]];
         self.pefBut.titleLabel.font = [UIFont systemFontOfSize:14.0];
 //        [self.pefBut setTitle:@"完善保单" forState:(UIControlStateNormal)];
@@ -160,7 +160,7 @@
 {
     if (_img3 == nil) {
         self.img3 = [[UIImageView alloc]init];
-        self.img3.frame = CGRectMake(kScreenWitdh * 0.7, CGRectGetMinY(self.img2.frame), CGRectGetWidth(self.img2.frame), CGRectGetHeight(self.img2.frame));
+        self.img3.frame = CGRectMake(kScreenWitdh * 0.67, CGRectGetMinY(self.img2.frame), CGRectGetWidth(self.img2.frame), CGRectGetHeight(self.img2.frame));
         self.img3.image = [UIImage imageNamed:@"chakan"];
         [self.contentView addSubview:_img3];
     }
@@ -171,7 +171,7 @@
 {
     if (_lookBut == nil) {
         self.lookBut = [UIButton buttonWithType:(UIButtonTypeSystem)];
-        self.lookBut.frame = CGRectMake(CGRectGetMaxX(self.img3.frame)+3, CGRectGetMinY(self.img3.frame), CGRectGetWidth(self.delBut.frame), CGRectGetHeight(self.delBut.frame));
+        self.lookBut.frame = CGRectMake(CGRectGetMaxX(self.img3.frame)+3, CGRectGetMinY(self.img3.frame), CGRectGetWidth(self.delBut.frame)*1.4, CGRectGetHeight(self.delBut.frame));
         [self.lookBut setTintColor:[UIColor grayColor]];
 //        [self.lookBut setTitle:@"查看报告" forState:(UIControlStateNormal)];
         [self.contentView addSubview:_lookBut];

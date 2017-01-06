@@ -10,8 +10,8 @@
 
 @interface JwCompanys : JwModelBase
 
-@property (nonatomic, strong) NSString *id;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString<Optional> *id;
+@property (nonatomic, strong) NSString<Optional> *name;
 @property (nonatomic, strong) NSString<Optional> *short_name;
 @property (nonatomic, strong) NSString<Optional> *logo;
 

@@ -38,6 +38,9 @@
 #import "WHget_pro_rate.h"
 #import "WHrate.h"
 
+#import "WHselectCompanyViewController.h"
+
+#import "WHKNetWorkUtils.h"
 
 typedef enum {
     TYPE_AGE = 0,   // 年龄
@@ -112,6 +115,24 @@ typedef enum {
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [WHKNetWorkUtils netWorkState:^(NSInteger netState) {
+        switch (netState) {
+            case 1:{
+                NSLog(@"手机流量上网");
+            }
+                break;
+            case 2:{
+                NSLog(@"WIFI上网");
+            }
+                break;
+            default:{
+                NSLog(@"没网");
+            }
+                break;
+        }
+    }];
+
     
     // 刷新第一行数据
 //    [self.tableVB reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
@@ -205,10 +226,10 @@ typedef enum {
             // 不存在
             [self.contentMutableDict setObject:pickerDict forKey:self.modelType.id];
             [self fuzhiAge:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"投保年龄"]).firstObject
-                Type:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"缴费方式"]).firstObject
-                Baozhang:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"保障期间"]).firstObject
-                Give:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"给付方式"]).firstObject
-                Key:_modelType.id
+                      Type:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"缴费方式"]).firstObject
+                  Baozhang:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"保障期间"]).firstObject
+                      Give:((NSArray *)[((NSDictionary *)[self.contentMutableDict objectForKey:_modelType.id]) objectForKey:@"给付方式"]).firstObject
+                       Key:_modelType.id
              ];
         }
         
@@ -223,21 +244,37 @@ typedef enum {
 
 - (void)fuzhiAge:(NSString *)age Type:(NSString *)type Baozhang:(NSString *)baozhang Give:(NSString *)give Key:(NSString *)key {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+   
     if (((NSMutableDictionary *)[self.contentMutableDict objectForKey:key]).count == 3) {
-        [dict setObject:age forKey:@"投保年龄"];
-        [dict setObject:type forKey:@"缴费方式"];
-        [dict setObject:baozhang forKey:@"保障期间"];
+        if (age != nil) {
+            [dict setObject:age forKey:@"投保年龄"];
+        }
+        if (type != nil) {
+            [dict setObject:type forKey:@"缴费方式"];
+        }
+        if (baozhang != nil) {
+            [dict setObject:baozhang forKey:@"保障期间"];
+        }
         [dict setObject:@"" forKey:@"保额"];
         [dict setObject:@"" forKey:@"保费"];
     }else {
-        [dict setObject:age forKey:@"投保年龄"];
-        [dict setObject:type forKey:@"缴费方式"];
-        [dict setObject:baozhang forKey:@"保障期间"];
-        [dict setObject:give forKey:@"给付方式"];
+        if (age != nil) {
+            [dict setObject:age forKey:@"投保年龄"];
+        }
+        if (type != nil) {
+            [dict setObject:type forKey:@"缴费方式"];
+        }
+        if (baozhang != nil) {
+            [dict setObject:baozhang forKey:@"保障期间"];
+        }
+        if (give != nil) {
+            [dict setObject:give forKey:@"给付方式"];
+        }
         [dict setObject:@"" forKey:@"保额"];
         [dict setObject:@"" forKey:@"保费"];
     }
-    [self.fuzhiDict setObject:dict forKey:key];
+        [self.fuzhiDict setObject:dict forKey:key];
+   
 }
 
 - (void)viewDidLoad {
@@ -437,7 +474,9 @@ typedef enum {
         return;
     }
     //选择公司
-    HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
+    WHselectCompanyViewController * company = [[WHselectCompanyViewController alloc]init];
+    
+    //HmSelectCompanyController * company = [[HmSelectCompanyController alloc]init];
     company.groupArr = self.groupMutableArr;
     company.isSelects = self.isSelectPersonName;
     company.contentDict = _contentMutableDict;
@@ -652,7 +691,9 @@ typedef enum {
             // 1   保费= 保额(自己输入的值) * 基本保费(insured) / 基本保额(pay_period)
             NSMutableDictionary *dict = [_fuzhiDict objectForKey:((WHgetproduct *)self.groupMutableArr[self.openSection]).id];
             NSString *pay = [dict objectForKey:@"缴费方式"];
-            CGFloat baofei = [sender floatValue] * [mon.insured floatValue] / [[typeDict objectForKey:pay] floatValue];
+            CGFloat  c  = 2.59562060;
+            CGFloat baofei = [sender floatValue] * [mon.insured floatValue] / [[typeDict objectForKey:pay] floatValue]/c;
+            //CGFloat baofei = [mon.insured floatValue] * [[typeDict objectForKey:pay]floatValue]/[sender floatValue];
             [dict setObject:sender forKey:@"保额"];
             [dict setObject:[NSString stringWithFormat:@"%ld",(long)baofei] forKey:@"保费"];
             [self.tableVB reloadData];

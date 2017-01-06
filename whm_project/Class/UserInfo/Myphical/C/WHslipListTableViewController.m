@@ -14,6 +14,8 @@
 #import "JGProgressHelper.h"
 #import "WHgetpolicys.h"
 #import "WHpesfporViewController.h"
+#import "WHgetproducedetalViewController.h"
+
 
 @interface WHslipListTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -28,6 +30,12 @@
 
 @property(nonatomic,strong)NSString * ids;
 
+
+@property(nonatomic,assign)BOOL flag;
+
+@property(nonatomic,strong)NSMutableArray * selectArry;
+
+
 @end
 
 @implementation WHslipListTableViewController
@@ -35,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    
+    self.selectArry = [NSMutableArray array];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -61,7 +69,7 @@
         
   } failure:^(NSError *error) {
       [hud hide:YES];
-      [JGProgressHelper showError:@""];
+      [JGProgressHelper showError:@"没有数据了"];
       
   }];
     
@@ -102,11 +110,11 @@
    WHslipListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     WHgetpolicys * model = self.dataArry[indexPath.row];
-    [cell.selectBut setBackgroundImage:[UIImage imageNamed:@"Jw_voal"] forState:(UIControlStateNormal)];
     
     cell.insured.text = model.insured;
     cell.rate.text = model.rate;
-    cell.scoreLaber.text = model.score;
+    NSString * StrCore = @"分";
+    cell.scoreLaber.text = [model.score stringByAppendingString:StrCore];
     self.name = model.rela_name;
     NSString * s1 = @"的保单";
     self.title = [self.name stringByAppendingString:s1];
@@ -131,12 +139,50 @@
     [cell.lookBut addTarget:self action:@selector(lookButAction:) forControlEvents:(UIControlEventTouchUpInside)];
     cell.lookBut.tag = 100 + indexPath.row;
     
+    
+    cell.selectBut.tag = 100 + indexPath.row;
+    [cell.selectBut setBackgroundImage:[UIImage imageNamed:@"Jw_voal"] forState:(UIControlStateNormal)];
+   
+    [cell.selectBut addTarget:self action:@selector(aa:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.flag = YES;
     return cell;
 }
+-(void)aa:(UIButton *)sender
+{
+    
+    if (self.flag==YES) {
+        [sender setBackgroundImage:[UIImage imageNamed:@"Jw_select"] forState:UIControlStateNormal];
+        WHgetpolicys * pol = self.dataArry[sender.tag - 100];
+        [self.selectArry addObject:pol.id];
+        
+        NSLog(@"%@",self.selectArry);
+        
+        self.flag = NO ;
+    }
+    else
+    {
+    [sender setBackgroundImage:[UIImage imageNamed:@"Jw_voal"] forState:UIControlStateNormal];
+        WHgetpolicys * pol = self.dataArry[sender.tag - 100];
+        [self.selectArry removeObject:pol.id];
+        
+        self.flag =YES;
+   
+        
+    }
+    
+}
+
 //查看报告事件
 -(void)lookButAction:(UIButton *)sender
 {
     NSLog(@"查看");
+    WHgetpolicys * pol = self.dataArry[sender.tag - 100];
+
+    WHgetproducedetalViewController * produce = [[WHgetproducedetalViewController alloc]init];
+    produce.pro_id = pol.id;
+    //NSLog(@"00000%@",produce.pro_id);
+    [self.navigationController pushViewController:produce animated:YES];
 }
 
 //完善事件
@@ -230,7 +276,20 @@
 -(void)nextButAction:(UIButton *)sender
 {
     
-    DLog(@"sss");
+    NSString *string = [self.selectArry componentsJoinedByString:@","];
+   // NSLog(@"%@",string);
+    id hud = [JGProgressHelper showProgressInView:self.view];
+    [self.dataService getreportWithPolicyid:string
+                                        uid:@""
+                                    success:^(NSArray *lists) {
+        [hud hide:YES];
+        [JGProgressHelper showSuccess:@"合并成功"];
+        
+    } failure:^(NSError *error) {
+        [hud hide:YES];
+        [JGProgressHelper showError:@"合并失败"];
+    }];
+    
 }
 /*
 // Override to support conditional editing of the table view.

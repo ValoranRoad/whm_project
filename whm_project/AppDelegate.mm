@@ -17,10 +17,13 @@
 #import "UMSocialQQHandler.h"
 #import "UMSocialSinaHandler.h"
 #import "UMSocialSinaSSOHandler.h"
+#import <CoreLocation/CoreLocation.h>
+
+
 BMKMapManager *_mapManager;
 
 @interface AppDelegate () <BMKLocationServiceDelegate>
-
+@property(nonatomic,strong) CLLocationManager *locationManager;
 
 @end
 
@@ -29,7 +32,14 @@ static void uncaughtExceptionHandler(NSException *exception) {
     
     
 }
-
+- (CLLocationManager *)locationManager
+{
+    if (!_locationManager)
+    {
+        self.locationManager = [[CLLocationManager alloc] init];
+    }
+    return _locationManager;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -48,6 +58,17 @@ static void uncaughtExceptionHandler(NSException *exception) {
         NSLog(@"manager start failed!");
     } else {
         NSLog(@"鉴权成功！");
+    }
+    if ([CLLocationManager locationServicesEnabled])
+    {
+        //  如果没有授权则请求用户授权
+        if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+            NSLog(@"请求用户授权");
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+    }else
+    {
+        NSLog(@"还没有打开手机定位功能");
     }
     self.locationService = [[BMKLocationService alloc] init];
     //    self.locationService.delegate = self;
@@ -71,6 +92,8 @@ static void uncaughtExceptionHandler(NSException *exception) {
     
        return YES;
 }
+
+
 //分享
 -(void)shareUmeng
 {

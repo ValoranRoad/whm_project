@@ -92,6 +92,8 @@
              _lastCity = [NSString stringWithFormat:@"%@%@",placemark.administrativeArea,placemark.locality];
              [standard setObject:_lastCity forKey:CCLastCity];//省市地址
              NSLog(@"______%@",_lastCity);
+               NSUserDefaults * ud = [NSUserDefaults standardUserDefaults];
+             [ud setValue:[NSString stringWithFormat:@"%@",_lastCity] forKey:@"address"];
 
              _lastAddress = [NSString stringWithFormat:@"%@%@%@%@%@%@",placemark.country,placemark.administrativeArea,placemark.locality,placemark.subLocality,placemark.thoroughfare,placemark.subThoroughfare];//详细地址
              NSLog(@"______%@",_lastAddress);

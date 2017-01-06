@@ -150,9 +150,11 @@
     indexBar.textColor = [UIColor colorWithHex:0x666666];
     indexBar.textFont = [UIFont systemFontOfSize:11];
     
-    [indexBar setIndexes:_firstArr];
+   // [indexBar setIndexes:_firstArr];
     indexBar.delegate = self;
     [indexBar setIndexes:@[@"热",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"Q",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"]];
+    //[indexBar setIndexes:_firstArr];
+
     [self.view addSubview:indexBar];
 }
 
@@ -258,16 +260,7 @@
 //    produceSearch.fuzhiDic = self.fuzhiDict;
 //    [self.navigationController pushViewController:produceSearch animated:YES];
     
-    if ([self.addTend isEqualToString:@"1"]) {
-        
-        WHinstruTypeTableViewController * instru = [[WHinstruTypeTableViewController alloc]init];
-         JwCompanys * model = self.dataArry[indexPath.row];
-         instru.companyid = model.id;
-        [self.navigationController pushViewController:instru animated:YES];
-    }
-    else
-    {
-        JwCompanys * model = self.dataArry[indexPath.row];
+           JwCompanys * model = self.dataArry[indexPath.row];
         // NSLog(@"%@",model.id);
         
         WHproductSearchTableViewController * produceSearch = [[WHproductSearchTableViewController alloc]init];
@@ -278,7 +271,7 @@
         produceSearch.fuzhiDic = self.fuzhiDict;
         [self.navigationController pushViewController:produceSearch animated:YES];
 
-    }
+   
 }
 
 

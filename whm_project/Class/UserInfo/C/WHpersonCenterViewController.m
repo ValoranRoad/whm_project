@@ -24,6 +24,7 @@
 
 #import <UIImageView+WebCache.h>
 #import "WHaboutUsViewController.h"
+#import "WHKNetWorkUtils.h"
 
 @interface WHpersonCenterViewController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIView * headview;
@@ -95,6 +96,23 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    [WHKNetWorkUtils netWorkState:^(NSInteger netState) {
+        switch (netState) {
+            case 1:{
+                NSLog(@"手机流量上网");
+            }
+                break;
+            case 2:{
+                NSLog(@"WIFI上网");
+            }
+                break;
+            default:{
+                NSLog(@"没网");
+            }
+                break;
+        }
+    }];
+
     
 }
 
@@ -109,10 +127,10 @@
 {
     self.scolw.delegate = self;
     self.scolw = [[UIScrollView alloc]init];
-    self.scolw.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
+    self.scolw.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds ));
     
     
-    self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*1.2 *0.95);
+    self.scolw.contentSize = CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds)*1.2);
     [self.view addSubview:_scolw];
     
     self.image= [[UIImageView alloc]init];
@@ -124,11 +142,11 @@
     // [self.view addSubview:_headview];
     
     self.myImage = [[UIImageView alloc]init];
-    self.myImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.42, 10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18, CGRectGetWidth([UIScreen mainScreen].bounds)*0.18);
+    self.myImage.frame = CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)*0.42, 10, CGRectGetWidth([UIScreen mainScreen].bounds)*0.14, CGRectGetWidth([UIScreen mainScreen].bounds)*0.14);
      //self.myImage.image = [UIImage imageNamed:@"Hm_head.png"];
    // [self.myImage sd_setImageWithURL:[NSURL URLWithString:self.headimage]];
     self.myImage.layer.masksToBounds = YES;
-    self.myImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.18/2;
+    self.myImage.layer.cornerRadius = CGRectGetWidth([UIScreen mainScreen].bounds)*0.14/2;
     
     [self.scolw addSubview:_myImage];
     //图片点击事件触发账户详情

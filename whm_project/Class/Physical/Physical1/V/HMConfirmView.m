@@ -230,7 +230,11 @@
     // delegate for confirm action
     if ([self.delegate respondsToSelector:@selector(confirmActionWithIndexOfArr:SelectName:Key:)]) {
 //        [self.delegate confirmActionWithIndexOfArr:_index];
-        [self.delegate confirmActionWithIndexOfArr:_index SelectName:_itemArr[_index] Key:_key];
+        if (_itemArr.count != 0) {
+            [self.delegate confirmActionWithIndexOfArr:_index SelectName:_itemArr[_index] Key:_key];
+        }else {
+            [self.delegate confirmActionWithIndexOfArr:_index SelectName:@"" Key:_key];
+        }
     }
 }
 

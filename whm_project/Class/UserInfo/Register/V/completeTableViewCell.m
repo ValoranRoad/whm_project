@@ -28,7 +28,7 @@
 {
     if (_titleLab == nil)
     {
-        self.titleLab = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_headImage.frame), 12.5, CGRectGetWidth([UIScreen mainScreen].bounds)*0.7, 25)];
+        self.titleLab = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_headImage.frame)+3, 12.5, CGRectGetWidth([UIScreen mainScreen].bounds)*0.7, 25)];
         self.titleLab.font = [UIFont systemFontOfSize:15];
         self.titleLab.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:_titleLab];

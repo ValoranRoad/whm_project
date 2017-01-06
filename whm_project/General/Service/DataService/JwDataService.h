@@ -95,6 +95,8 @@ success:(void (^)(NSArray * list))success failure:(void (^)(NSError *error))fail
                     county:(NSString *)county
                   distance:(NSString *)distance
                        map:(NSString *)map
+                         p:(NSString *)p
+                  pagesize:(NSString *)pagesize
                       success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
 
@@ -196,6 +198,10 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                       city:(NSString *)city
                     county:(NSString *)county
                       type:(NSString *) type
+                  distance:(NSString *)distance
+                       map:(NSString *)map
+                         p:(NSString *)p
+                  pagesize:(NSString *)pagesize
                    success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
@@ -204,6 +210,8 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                           lat:(NSString *)lat
                      distance:(NSString *)distance
                           map:(NSString *)map
+                            p:(NSString *)p
+                     pagesize:(NSString *)pagesize
                       success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
 
@@ -235,6 +243,7 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
 -(void)getprovinceWithProvince:(NSString *)province
                           city:(NSString *)city
                         county:(NSString *)county
+                        com_id:(NSString *)com_id
                          type :(NSString *)type
                       distance:(NSString *)distance
                            map:(NSString *)map
@@ -243,6 +252,7 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
 -(void)getorgProvinceWithProvince:(NSString * )province
                           city:(NSString *)city
                         county:(NSString *)county
+                        com_id:(NSString *)com_id
                       distance:(NSString *)distance
                           map :(NSString *)map
  success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
@@ -261,6 +271,20 @@ success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))fai
                              pagesize:(NSString *)pagesize
                               success:(void (^)(NSArray * lists))success failure:(void (^)(NSError *error))failure;
 
+//刷新医院接口数据
+-(void)gethospitalWithCom_id:(NSString *)com_id
+                    province:(NSString *)province
+                        city:(NSString *)city
+                      county:(NSString * )county
+                    distance:(NSString *)distance
+                         map:(NSString *)map
+                     success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
+
+//体检报告合并
+-(void)getreportWithPolicyid:(NSString *)policy_id
+                         uid:(NSString *)uid
+
+                     success:(void (^)(NSArray *lists))success failure:(void (^)(NSError *error))failure;
 
 
 
