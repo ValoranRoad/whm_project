@@ -154,12 +154,12 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
  
  @param navigationConfig 设置导航栏样式的block对象
    navigationConfig 是一个Block对象，传入的参数包括：
-     @param bar 导航栏
-     @param closeButton 关闭按钮
-     @param backButton 返回按钮
-     @param postButton 发送按钮
-     @param refreshButton 刷新按钮
-     @param navigationItem 所在UINavigationController的navigationItem，可以改变相应的标题 
+      bar 导航栏
+      closeButton 关闭按钮
+      backButton 返回按钮
+      postButton 发送按钮
+      refreshButton 刷新按钮
+      navigationItem 所在UINavigationController的navigationItem，可以改变相应的标题
  */
 +(void)setNavigationBarConfig:(UMNavigationBarConfig)navigationConfig;
 
@@ -167,8 +167,8 @@ typedef void (^UMTableViewCellConfig)(UITableViewCell *cell,UMSViewControllerTyp
  设置分享列表页，个人中心页面等的UITableViewCell的样式
  
  @param tableViewCellConfig UITableViewCell的样式配置Block
-     @param cell UITableViewCell
-     @param viewControllerType 页面类型
+      cell UITableViewCell
+      viewControllerType 页面类型
 
  */
 +(void)setTableViewCellConfig:(UMTableViewCellConfig)tableViewCellConfig;

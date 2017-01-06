@@ -499,7 +499,7 @@
 {
     
     if (indexPath.section == 0 && indexPath.row == 1) {
-        UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        //UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
         WHinsuranceNameViewController * insurance = [[WHinsuranceNameViewController alloc]init];
         insurance.mblock1 = ^(NSString * s1)
         {
@@ -528,7 +528,7 @@
    
     
     if (indexPath.section == 2 && indexPath.row == 1) {
-        UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        //UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
         
         //
         WHaddressDetalViewController *address = [[WHaddressDetalViewController alloc] init];

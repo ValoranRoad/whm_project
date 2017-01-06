@@ -359,8 +359,7 @@ typedef void (^UMSocialDataServiceCompletion)(UMSocialResponseEntity * response)
  检测用户在各个开放平台上的token是否有效，失效的情况包括token过期，用户手动解除授权，用户修改密码等情况
  
  @param snsArray 微博平台数组，只支持传入支持授权的平台，包括新浪微博、腾讯微博、QQ空间等。不支持微信等平台。
- 
- @return completion 返回结果
+ completion 返回结果
  */
 - (void)requestIsTokenValid:(NSArray *)snsArray completion:(UMSocialDataServiceCompletion)completion;
 @end

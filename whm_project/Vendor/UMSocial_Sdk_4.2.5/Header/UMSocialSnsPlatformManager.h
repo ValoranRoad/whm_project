@@ -282,7 +282,7 @@ typedef void (^UMSocialSnsPlatformLoginHandler)(UIViewController *presentingCont
 /**
  根据平台名，返回平台对象
  
- @param platformName sns平台名
+ @param snsName sns平台名
  
  @return UMSocialSnsPlatform 平台对象
  */
@@ -291,7 +291,7 @@ typedef void (^UMSocialSnsPlatformLoginHandler)(UIViewController *presentingCont
 /**
  根据平台枚举变量，返回平台对象
  
- @param UMSocialSnsType sns平台枚举变量
+ @param socialSnsType sns平台枚举变量
  
  @return NSString 平台名
  */
